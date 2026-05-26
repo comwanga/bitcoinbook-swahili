@@ -1,0 +1,593 @@
+// TRANSLATION METADATA
+// source: ch02_overview.adoc
+// translator: comwanga
+// date: 2026-05-26
+// status: draft
+// glossary-version: 1.0
+
+[[ch02_bitcoin_overview]]
+== Jinsi Bitcoin Inavyofanya Kazi
+
+Mfumo wa Bitcoin, tofauti na benki za jadi na
+mifumo ya malipo, hauhitaji uaminifu kwa wahusika wa tatu. Badala ya mamlaka
+kuu inayoaminika, katika Bitcoin, kila mtumiaji anaweza kutumia programu inayokimbia kwenye
+kompyuta yake mwenyewe kuthibitisha uendeshaji sahihi wa kila
+kipengele cha mfumo wa Bitcoin.
+Katika sura hii, tutachunguza Bitcoin kwa kiwango cha juu kwa kufuatilia
+muamala mmoja kupitia mfumo wa Bitcoin na kutazama unaporekodiwa
+kwenye mlolongo wa vizuizi (blockchain), jarida lililozambazwa la miamala (transactions) yote.
+Sura zinazofuata zitachunguza kwa undani teknolojia nyuma ya
+miamala, mtandao, na ((("Bitcoin", "operational overview", id="bitcoin-operational-overview-ch2")))((("blockchain explorers", id="blockchain-explorers")))uchimbaji (mining).
+
+=== Muhtasari wa Bitcoin
+
+++++
+<p class="fix_tracking">
+The Bitcoin system consists of users with wallets containing keys,
+transactions that are propagated across the network, and miners who
+produce (through competitive computation) the consensus blockchain,
+which is the authoritative journal of all transactions.
+</p>
+
+<p class="fix_tracking2">
+Each example in this chapter is based
+on an actual transaction made on the Bitcoin network, simulating the
+interactions between several users by sending
+funds from one wallet to another. While tracking a transaction through
+the Bitcoin network to the blockchain, we will use a <em>blockchain
+explorer</em> site to visualize each step. A blockchain explorer is a web
+application that operates as a Bitcoin search engine, in that it allows
+you to search for addresses, transactions, and blocks and see the
+relationships and flows between them.
+</p>
+++++
+
+Wachunguzi maarufu wa mlolongo wa vizuizi (blockchain explorers) ni pamoja na yafuatayo:
+
+* https://blockstream.info[Blockstream Explorer]
+* https://mempool.space[Mempool.Space]
+* https://live.blockcypher.com[BlockCypher Explorer]
+
+Kila mmoja wa hawa ana kazi ya utafutaji inayoweza kuchukua anwani ya Bitcoin,
+heshi ya muamala (transaction hash), nambari ya kizuizi, au heshi ya kizuizi na kupata taarifa
+zinazolingana kutoka kwa mtandao wa Bitcoin. Pamoja na kila mfano wa muamala au kizuizi,
+tutawasilisha URL ili uweze kuutafuta mwenyewe na kuusoma
+kwa undani.
+
+[[block-explorer-privacy]]
+.Onyo la Faragha la Mchunguzi wa Kizuizi
+[WARNING]
+====
+Kutafuta taarifa((("privacy", "blockchain explorers"))) kwenye mchunguzi wa kizuizi kunaweza kufichua kwa mwendeshaji wake
+kwamba una nia na taarifa hiyo, ukiwaruhusu kuihusisha
+na anwani yako ya IP, maelezo ya kivinjari, utafutaji wa awali, au taarifa nyingine
+zinazotambulisha. Ukitafuta miamala katika kitabu hiki,
+mwendeshaji wa mchunguzi wa kizuizi anaweza kukisia kwamba unajifunza
+kuhusu Bitcoin, ambayo haipaswi kuwa tatizo. Lakini ukitafuta
+miamala yako mwenyewe, mwendeshaji anaweza kuweza kukisia wangapi wa bitcoins
+umepokea, umetumia, na ((("Bitcoin", "operational overview", startref="bitcoin-operational-overview-ch2")))((("blockchain explorers", startref="blockchain-explorers")))kwa sasa unamiliki.
+====
+
+[[spending_bitcoin]]
+=== Kununua Kutoka Duka la Mtandaoni
+
+Alice, ((("transactions", "spending bitcoins", id="transaction-spend")))((("bitcoins", "spending", id="bitcoin-spend")))((("spending bitcoins", id="spend-bitcoin")))aliyetambulishwa katika sura iliyotangulia, ni mtumiaji mpya ambaye
+amepata bitcoins zake za kwanza hivi karibuni. Katika <<getting_first_bitcoin>>, Alice alikutana na
+rafiki yake Joe kubadilishana pesa taslimu kwa bitcoins. Tangu wakati huo, Alice
+amenunua bitcoins zaidi. Sasa Alice atafanya
+muamala wake wa kwanza wa kutumia, kununua ufikiaji wa kipindi cha podcast cha premium kutoka duka la mtandaoni la Bob.
+
+Duka la wavuti la Bob hivi karibuni lilianza kukubali malipo ya bitcoin kwa kuongeza
+chaguo la Bitcoin kwenye tovuti yake. Bei katika duka la Bob zinaonyeshwa
+kwa sarafu ya ndani (dola za Marekani), lakini wakati wa malipo, wateja wana
+chaguo la kulipa kwa dola au bitcoin.
+
+Alice anapata kipindi cha podcast anachotaka kununua na kuendelea hadi ukurasa wa malipo. Wakati wa malipo,
+Alice anapewa chaguo la kulipa kwa bitcoin mbali na
+chaguo za kawaida. Gari la malipo linaonyesha bei kwa dola za Marekani na
+pia kwa bitcoin (BTC), kwa kiwango cha ubadilishaji kilichopo cha Bitcoin.
+
+Mfumo wa biashara ya kielektroniki wa Bob utaunda kiotomatiki msimbo wa QR (QR code)((("invoices")))((("QR codes"))) wenye
+_ankara (invoice)_ (<<invoice-QR>>).
+
+////
+TODO: Replace QR code with test-BTC address
+////
+
+[[invoice-QR]]
+.Msimbo wa QR wa ankara.
+image::images/mbc3_0201.png["payment-request"]
+
+Tofauti na msimbo wa QR unaoweka tu anwani ya Bitcoin ya ufikishaji, ankara hii
+ni URI iliyosimbwa kwa QR inayoweka anwani ya ufikishaji,
+kiasi cha malipo, na maelezo.
+Hii inaruhusu programu ya mkoba wa Bitcoin kujaza mapema
+taarifa zinazotumiwa kutuma malipo huku ikionyesha
+maelezo yanayosomeka na binadamu kwa mtumiaji. Unaweza kuskanisha msimbo wa QR kwa programu
+ya mkoba wa bitcoin kuona ambacho Alice angeliona:
+
+[[invoice-URI]]
+.Msimbo wa QR wa ankara unasimba URI ifuatayo, iliyofafanuliwa katika BIP21:
+----
+bitcoin:bc1qk2g6u8p4qm2s2lh3gts5cpt2mrv5skcuu7u3e4?amount=0.01577764&
+label=Bob%27s%20Store&
+message=Purchase%20at%20Bob%27s%20Store
+
+Components of the URI
+
+A Bitcoin address: "bc1qk2g6u8p4qm2s2lh3gts5cpt2mrv5skcuu7u3e4"
+The payment amount: "0.01577764"
+A label for the recipient address: "Bob's Store"
+A description for the payment: "Purchase at Bob's Store"
+----
+
+[TIP]
+====
+Jaribu kuskanisha hii kwa mkoba wako kuona
+anwani na kiasi lakini USITUME PESA.
+====
+
+Alice anatumia simu yake mahiri kuskanisha msimbo wa baa unaoonyeshwa. Simu yake mahiri
+inaonyesha malipo ya kiasi sahihi kwa +Bob's Store+ na anachagua Tuma
+kuidhinisha malipo. Ndani ya sekunde chache (takriban kiasi kile kile
+cha wakati kama idhini ya kadi ya mkopo), Bob anaona muamala kwenye
+rejista.
+
+[NOTE]
+====
+Mtandao
+wa Bitcoin((("bitcoins", "fractional values")))((("fractional values of bitcoins")))((("satoshis")))((("millibitcoins"))) unaweza kufanya miamala kwa maadili ya sehemu, k.m., kutoka
+millibitcoin (1/1000 ya bitcoin) hadi 1/100,000,000 ya
+bitcoin, inayojulikana kama satoshi. Kitabu hiki kinatumia sheria sawa
+za wingi zinazotumiwa kwa dola na sarafu nyingine za jadi
+wakati wa kuzungumza kuhusu kiasi kinachozidi bitcoin moja na wakati wa kutumia
+nukta ya desimali, kama vile "bitcoins 10" au "bitcoins 0.001." Sheria hizo hizo
+pia zinatumika kwa vitengo vingine vya uhasibu wa bitcoin, kama vile
+millibitcoins na satoshis.
+====
+
+Unaweza kutumia mchunguzi wa kizuizi kuchunguza data ya mlolongo wa vizuizi, kama malipo yaliyofanywa kwa Bob katika https://oreil.ly/hAeyh[muamala] wa Alice.((("transactions", "spending bitcoins", startref="transaction-spend")))((("bitcoins", "spending", startref="bitcoin-spend")))((("spending bitcoins", startref="spend-bitcoin")))
+
+Katika sehemu zifuatazo, tutachunguza muamala huu kwa undani zaidi. Tutaona jinsi mkoba wa Alice uliouunda, jinsi ulivyosambazwa kwenye mtandao, jinsi ulivyothibitishwa, na hatimaye, jinsi Bob anavyoweza kutumia kiasi hicho katika miamala inayofuata.
+
+=== Miamala ya Bitcoin
+
+Kwa ((("transactions", "defined")))((("bitcoins", "transactions", see="transactions")))maneno rahisi, muamala huambia
+mtandao kwamba mmiliki wa bitcoins fulani ameidhinisha uhamishaji
+wa thamani hiyo kwa mmiliki mwingine. Mmiliki mpya sasa anaweza kutumia bitcoin
+kwa kuunda muamala mwingine unaoidhinisha uhamishaji kwa mmiliki mwingine,
+na hivyo kuendelea, katika mnyororo wa umiliki.
+
+==== Maingizo na Matokeo ya Muamala
+
+Miamala((("transactions", "inputs", id="transaction-input-ch2")))((("transactions", "outputs", id="transaction-output-ch2")))((("inputs", id="input")))((("outputs", id="output"))) ni kama mistari katika daftari la uhasibu wa ingizo mara mbili. Kila muamala unajumuisha ingizo moja au zaidi (inputs),
+ambayo hutumia fedha. Upande wa pili wa
+muamala, kuna matokeo moja au zaidi (outputs), ambayo hupokea fedha.
+Maingizo
+na matokeo si lazima yajumlishe kwa kiasi kile kile.
+Badala yake, matokeo yanajumlisha kidogo zaidi kidogo kuliko maingizo na tofauti inawakilisha ((("transaction fees")))_ada ya muamala (transaction fee)_ iliyomaanishwa, ambayo ni malipo madogo
+yanayokusanywa na mchimbaji (miner) anayejumuisha muamala katika mlolongo wa vizuizi. Muamala wa Bitcoin unaonyeshwa kama ingizo la daftari la uhasibu katika
+<<transaction-double-entry>>.
+
+Muamala pia unajumuisha uthibitisho wa umiliki kwa kila kiasi cha
+bitcoins (maingizo) ambao thamani yake inatumika, kwa njia ya saini ya kidijitali
+kutoka kwa mmiliki, ambayo inaweza kuthibitishwa kwa kujitegemea na
+mtu yeyote. Kwa maneno ya Bitcoin, kutumia
+ni kutia saini muamala unaohamisha thamani kutoka muamala
+uliotangulia hadi mmiliki mpya aliyetambuliwa na anwani ya Bitcoin.
+
+[[transaction-double-entry]]
+.Muamala kama uhasibu wa ingizo mara mbili.
+image::images/mbc3_0202.png["Transaction Double-Entry"]
+
+==== Minyororo ya Miamala
+
+Malipo ((("transaction chains", id="transaction-chains")))ya Alice kwa Duka la Bob inatumia
+matokeo ya muamala uliotangulia kama ingizo lake. Katika sura iliyotangulia,
+Alice alipokea bitcoins kutoka kwa rafiki yake Joe kwa kubadilishana na pesa taslimu.
+Tumeifafanua kama _Muamala 1_ (Tx1) katika <<transaction-chain>>.
+
+Tx1 ilituma bitcoins 0.001 (satoshi 100,000) kwenye matokeo yaliyofungwa na
+ufunguo wa Alice. Muamala wake mpya kwa Duka la Bob (Tx2) unarejelea
+matokeo ya awali kama ingizo. Katika mchoro, tunaonyesha
+kumbukumbu hiyo kwa kutumia mshale na kuandika lebo kwenye ingizo kama "Tx1:0". Katika
+muamala halisi, kumbukumbu ni kitambulisho cha muamala cha byte 32
+(txid) kwa muamala ambapo Alice alipokea pesa kutoka kwa Joe. ":0" inaonyesha nafasi ya matokeo ambapo Alice alipokea
+pesa; katika kesi hii, nafasi ya kwanza (nafasi 0).
+
+Kama inavyoonyeshwa, miamala halisi ya Bitcoin haionyeshi
+wazi thamani ya maingizo yao. Ili kuamua thamani ya
+ingizo, programu inahitaji kutumia kumbukumbu ya ingizo kupata
+matokeo ya muamala uliotangulia yanayotumika.
+
+Tx2 ya Alice ina matokeo mawili mapya, moja inalipa satoshi 75,000 kwa
+podcast na nyingine inalipa satoshi 20,000 kurudi kwa Alice kupokea
+mabadiliko.
+
+////
+@startditaa
+      Transaction 1             Tx2                   Tx3
+     Inputs  Outputs         In     Out           In      Out
+   +-------+---------+   +-------+--------+    +-------+--------+
+   |       |         |   |       | cDDD   |    |       |        |
+<--+ Tx0꞉0 | 100,000 |<--+ Tx1꞉0 | 20,000 |  +-+ Tx2꞉1 | 67,000 |
+   |       |         |   |       |        |  | |       |        |
+   +-------+---------+   +-------+--------+  | +-------+--------+
+   |       | cDDD    |   |       |        |  | |       |        |
+   |       | 500,000 |   |       | 75,000 |<-+ |       |        |
+   |       |         |   |       |        |    |       |        |
+   +-------+---------+   +-------+--------+    +-------+--------+
+        Fee꞉ (unknown)           Fee꞉ 5,000            Fee꞉ 8,000
+@enddittaa
+////
+
+[[transaction-chain]]
+.Mnyororo wa miamala, ambapo matokeo ya muamala mmoja ndiyo ingizo la muamala unaofuata.
+image::images/mbc3_0203.png["Transaction chain"]
+
+[TIP]
+====
+Miamala ya Bitcoin iliyoserialized — muundo wa data ambao programu hutumia kwa
+kutuma miamala — husimba thamani ya kuhamisha kwa kutumia nambari kamili
+ya kitengo kidogo kabisa kilichofafanuliwa cha thamani kwenye mlolongo. Wakati Bitcoin ilipoundwa kwanza,
+kitengo hiki hakikuwa na jina na wasanidi baadhi walikiita tu
+_kitengo cha msingi (base unit)._ Baadaye watumiaji wengi walianza kuita kitengo hiki
+_satoshi_ (sat) kwa heshima ya mwanzilishi wa Bitcoin. Katika <<transaction-chain>>
+na mchoro mingine katika kitabu hiki, tunatumia maadili ya satoshi kwa sababu
+ndiyo itifaki yenyewe ((("satoshis")))inayotumia.
+====
+
+==== Kutoa Mabadiliko
+
+Mbali((("transactions", "change output", id="transaction-change-output")))((("change output", id="change-output")))((("outputs", "change output", id="output-change"))) na matokeo moja au zaidi yanayolipa mpokea wa
+bitcoins, miamala mingi pia itajumuisha matokeo yanayolipa
+mtumaji wa bitcoins, yanayoitwa matokeo ya _mabadiliko (change)_.
+Hii ni kwa sababu maingizo ya muamala,
+kama noti za sarafu, hayawezi kutumika kwa sehemu. Ukununua bidhaa ya dola 5 za Marekani kwenye duka lakini ukatumia noti ya dola 20 kulipa bidhaa hiyo, unatarajia kupokea dola 15 kama mabadiliko. Dhana ile ile inatumika kwa
+maingizo ya muamala wa Bitcoin. Ukinunua bidhaa inayogharimu
+bitcoins 5 lakini ulikuwa na ingizo lenye thamani ya bitcoins 20 tu la kutumia, ungetuma
+matokeo moja ya bitcoins 5 kwa mmiliki wa duka na matokeo moja ya bitcoins 15 kurudi
+kwako mwenyewe kama mabadiliko (bila kuhesabu ada yako ya muamala).
+
+Kwa kiwango cha itifaki ya Bitcoin, hakuna tofauti kati ya
+matokeo ya mabadiliko (na anwani inayolipa, inayoitwa _anwani ya mabadiliko (change address)_) na
+matokeo ya malipo.
+
+Muhimu zaidi, anwani ya mabadiliko si lazima iwe ile ile
+na ile ya ingizo na, kwa sababu za faragha, mara nyingi ni anwani mpya
+kutoka kwa mkoba wa mmiliki. Katika hali bora, matumizi mawili tofauti ya matokeo yote mawili hutumia anwani ambazo hazijaonekana kabla na
+vinginevyo zinaonekana sawa, kuzuia mhusika wowote wa tatu kutambua
+matokeo ni mabadiliko gani na ni malipo gani. Hata hivyo, kwa
+madhumuni ya mchoro, tumeongeza kivuli kwenye matokeo ya mabadiliko katika
+<<transaction-chain>>.
+
+Si kila muamala una matokeo ya mabadiliko. Yale ambayo hayana ((("changeless transactions")))((("transactions", "changeless")))yanaitwa
+_miamala isiyo na mabadiliko (changeless transactions)_, na inaweza kuwa na matokeo moja tu.
+Miamala isiyo na mabadiliko ni chaguo la vitendo tu ikiwa kiasi kinachotumika
+ni karibu sawa na kiasi kinachopatikana katika maingizo ya muamala ikiwa
+pungufu ya ada ya muamala inayotarajiwa. Katika <<transaction-chain>>,
+tunaona Bob akiunda Tx3 kama muamala usio na mabadiliko unaotumia
+matokeo aliyopokea katika Tx2.
+
+==== Uchaguzi wa Sarafu
+
+Mikoba tofauti((("transactions", "coin selection")))((("coin selection in transactions")))((("selecting", "coins in transactions"))) hutumia mikakati tofauti wakati wa kuchagua
+maingizo gani ya kutumia katika malipo, inayoitwa _uchaguzi wa sarafu (coin selection)_.
+
+Inaweza kukusanya maingizo mengi madogo,
+au kutumia moja sawa au kubwa zaidi ya malipo yanayotakiwa.
+Isipokuwa mkoba unaweza kukusanya maingizo kwa njia ambayo inafanana
+na malipo yanayotakiwa pamoja na ada za muamala, mkoba utahitaji
+kuzalisha mabadiliko fulani. Hii inafanana sana na jinsi watu wanavyoshughulikia pesa taslimu. Ukitumia daima noti kubwa zaidi mfukoni mwako, utamaliza na
+mfuko uliojaa sarafu ndogo ndogo. Ukitumia sarafu ndogo ndogo tu, mara nyingi
+utakuwa na noti kubwa tu. Watu bila fahamu hupata usawa kati ya
+mambo haya mawili ya mwisho, na wasanidi wa mkoba wa Bitcoin wanajitahidi kupanga
+usawa huu.
+
+==== Miundo ya Kawaida ya Muamala
+
+Muundo ((("transactions", "common types", id="transaction-common-ch2")))maarufu sana wa muamala ni malipo rahisi. Aina hii ya
+muamala ina ingizo moja na matokeo mawili na inaonyeshwa katika
+<<transaction-common>>.
+
+[[transaction-common]]
+.Muamala wa kawaida zaidi.
+image::images/mbc3_0204.png["Common Transaction"]
+
+Muundo mwingine wa kawaida wa muamala ((("consolidation transactions")))ni _muamala wa ujumuishaji (consolidation transaction)_, ambao hutumia maingizo kadhaa
+katika matokeo moja (<<transaction-consolidating>>). Hii inawakilisha
+sawa halisi ya kubadilishana rundo la sarafu na noti za sarafu kwa noti moja kubwa zaidi. Miamala kama hii wakati mwingine
+huzalishwa na mikoba na biashara kusafisha kiasi kikubwa cha fedha ndogo ndogo.
+
+[[transaction-consolidating]]
+.Muamala wa ujumuishaji ukikusanya fedha.
+image::images/mbc3_0205.png["Aggregating Transaction"]
+
+Hatimaye, muundo mwingine wa muamala unaopatikana mara nyingi kwenye
+mlolongo wa vizuizi ((("payment batching")))ni _uundaji wa malipo ya kundi (payment batching)_, unaolipa matokeo mengi
+yanayowakilisha wapokeaji wengi (<<transaction-distributing>>).
+Aina hii ya muamala wakati mwingine hutumiwa na vyombo vya biashara
+kusambaza fedha, kama vile wakati wa kuchakata malipo ya mishahara kwa wafanyakazi wengi.
+
+[[transaction-distributing]]
+.Muamala wa kundi ukisambaza fedha.
+image::images/mbc3_0206.png["Distributing Transaction"]
+
+=== Kuunda Muamala
+
+Programu ya ((("transactions", "constructing", id="transaction-construct")))mkoba wa Alice inajumuisha mantiki yote ya
+kuchagua maingizo na kuzalisha matokeo kuunda
+muamala kulingana na maelezo ya Alice. Alice anahitaji tu kuchagua
+mahali pa ufikishaji, kiasi, na ada ya muamala, na mengine hutokea katika programu ya mkoba
+bila yeye kuona maelezo. Muhimu zaidi, kama mkoba
+tayari unajua maingizo gani unadhibiti, unaweza kuunda miamala
+hata kama imekata kabisa kutoka mtandaoni.
+Kama kuandika hundi nyumbani na baadaye kuipeleka benki katika
+bahasha, muamala hauhitaji kuundwa na kutia saini
+ukiwa umeunganishwa na mtandao wa Bitcoin.
+
+==== Kupata Maingizo Sahihi
+
+Programu ya mkoba
+wa Alice ((("inputs", "constructing transactions")))kwanza itahitaji kupata maingizo yanayoweza kulipa kiasi anachotaka
+kutuma kwa Bob. Mikoba mingi huhifadhi rekodi ya matokeo yote yanayopatikana
+yanayomilikiwa na anwani katika mkoba. Kwa hivyo, mkoba wa Alice
+ungekuwa na nakala ya matokeo ya muamala kutoka muamala wa Joe,
+ambayo iliundwa kwa kubadilishana na pesa taslimu (tazama <<getting_first_bitcoin>>).
+Programu ya mkoba wa Bitcoin inayokimbia kwenye nodi kamili kwa kweli
+ina nakala ya matokeo yasiyotumika ya kila muamala uliothibitishwa, yanayoitwa
+_matokeo ya miamala yasiyotumika (unspent transaction outputs)_ (UTXOs).
+Hata hivyo, kwa sababu nodi kamili zinatumia rasilimali zaidi, mikoba
+mingi ya mtumiaji inakimbia wateja mwepesi wanaofuatilia tu
+UTXOs za mtumiaji mwenyewe.
+
+Katika kesi hii, UTXO moja hii
+inatosha kulipa podcast. Haikuwa hivyo,
+programu ya mkoba wa Alice ingehitaji kuchanganya
+UTXOs kadhaa ndogo ndogo, kama kuchagua sarafu kutoka purse, hadi iweze
+kupata ya kutosha kulipa podcast. Katika hali zote mbili, kunaweza kuwa na haja
+ya kupata mabadiliko fulani, ambayo tutaona katika sehemu inayofuata, kama
+programu ya mkoba inavyounda matokeo ya muamala (malipo).
+
+==== Kuunda Matokeo
+
+Matokeo ya muamala((("outputs", "constructing transactions"))) huundwa kwa
+skripti inayosema kitu kama, "Matokeo haya yanalipwa kwa mtu yeyote anayeweza
+kuwasilisha saini kutoka kwa ufunguo unaolingana na anwani ya umma ya Bob."
+Kwa sababu Bob peke yake ndiye mwenye mkoba wenye funguo zinazolingana na anwani hiyo, mkoba wa Bob peke yake unaweza kuwasilisha saini kama hiyo ili baadaye kutumia
+matokeo haya. Alice kwa hivyo atamlazimisha matokeo ya thamani na mahitaji
+ya saini kutoka kwa Bob.
+
+Muamala huu pia utajumuisha matokeo ya pili ((("change output")))kwa sababu fedha za Alice
+zina pesa zaidi kuliko gharama ya
+podcast. Matokeo ya mabadiliko ya Alice
+yanaundwa katika muamala ule ule
+kama malipo kwa Bob. Kimsingi, mkoba wa Alice hugawanya
+fedha zake katika matokeo mawili: moja kwa Bob na moja kurudi kwake mwenyewe. Kisha anaweza
+kutumia matokeo ya mabadiliko katika muamala unaofuata.
+
+Hatimaye, ili muamala ushughulikiwe na mtandao kwa wakati((("transaction fees"))) muafaka,
+programu ya mkoba wa Alice itaongeza ada ndogo. Ada haijaelezwa wazi
+katika muamala; inamaanishwa na tofauti ya thamani kati ya
+maingizo na matokeo. Ada hii ya muamala hukusanywa na
+mchimbaji kama malipo ya kujumuisha muamala katika kizuizi
+kinachorekodiwa kwenye mlolongo wa vizuizi.
+
+[[transaction-alice-url]]
+[TIP]
+====
+Angalia https://oreil.ly/GwBq1[muamala kutoka kwa Alice hadi Duka la Bob].
+====
+
+==== Kuongeza Muamala kwenye Mlolongo wa Vizuizi
+
+Muamala ((("transactions", "adding to blockchain", id="transaction-add-blockchain")))((("blockchain", "adding transactions to", id="blockchain-add-transaction")))ulioandaliwa na programu ya mkoba wa Alice
+unajumuisha kila kitu kinachohitajika kuthibitisha umiliki wa fedha na
+kukasimu wamiliki wapya. Sasa, muamala lazima usambazwe kwenye
+mtandao wa Bitcoin ambapo utakuwa sehemu ya mlolongo wa vizuizi. Katika sehemu inayofuata tutaona jinsi muamala unavyokuwa sehemu ya kizuizi kipya na
+jinsi kizuizi kinavyochimbwa. Hatimaye, tutaona jinsi kizuizi kipya, mara
+kikiongezwa kwenye mlolongo wa vizuizi, kinavyoaminika zaidi na zaidi na mtandao kadri
+vizuizi zaidi vinavyoongezwa.
+
+===== Kusambaza Muamala
+
+Kwa sababu muamala unajumuisha taarifa zote
+zinazohitajika kushughulikiwa, haifai jinsi au wapi
+unasambazwa kwenye mtandao wa Bitcoin. Mtandao wa Bitcoin ni
+mtandao wa rika-kwa-rika, na kila rika la Bitcoin lishirikialo kwa
+kuunganishwa na rika kadhaa nyingine za Bitcoin. Madhumuni ya mtandao
+wa Bitcoin ni kusambaza miamala na vizuizi kwa washiriki wote.
+
+===== Jinsi Unavyosambaa
+
+Rika ((("Bitcoin", "as peer-to-peer network", secondary-sortas="peer-to-peer network")))((("peer-to-peer networks, Bitcoin as")))katika mtandao wa rika-kwa-rika wa Bitcoin ni programu zenye mantiki ya programu
+na data zote zinazohitajika kwa uthibitisho kamili wa
+usahihi wa muamala mpya. Miunganiko kati ya rika
+mara nyingi huvisualiswa kama ncha (mistari) katika grafu, na rika wenyewe
+wakiwa nodi (nukta). Kwa sababu hiyo, rika za Bitcoin kawaida
+huitwa "nodi kamili za uthibitisho," ((("full nodes")))au _nodi kamili (full nodes)_ kwa ufupi.
+
+Programu ya mkoba wa Alice inaweza kutuma
+muamala mpya kwa nodi yoyote ya Bitcoin kupitia aina yoyote ya
+muunganiko: waya, WiFi, simu, n.k. Inaweza pia kutuma muamala
+kwa programu nyingine (kama mchunguzi wa kizuizi) ambayo itaupeleka kwa nodi. Mkoba wa Bitcoin wa Alice
+hauhitaji kuunganishwa moja kwa moja na mkoba wa Bitcoin wa Bob na yeye
+hahitaji kutumia muunganiko wa intaneti unaotolewa na Bob, ingawa chaguo zote mbili
+zinawezekana pia. Nodi yoyote ya Bitcoin inayopokea
+muamala halali ambao haukuona kabla utauwasilisha kwa
+nodi zote nyingine ambazo imeunganishwa nazo, mbinu ya usambazaji inayojulikana
+((("gossiping")))kama _kuzungumzwa (gossiping)_. Kwa hivyo, muamala husambaa haraka nje kwenye
+mtandao wa rika-kwa-rika, ukifikia asilimia kubwa ya nodi ndani ya
+sekunde chache.
+
+===== Mtazamo wa Bob
+
+Kama programu ya mkoba wa Bitcoin wa Bob imeunganishwa moja kwa moja na
+programu ya mkoba wa Alice, programu ya mkoba wa Bob inaweza kuwa ya kwanza
+kupokea muamala. Hata hivyo, hata kama mkoba wa Alice utuma muamala
+kupitia nodi nyingine, utafikia mkoba wa Bob ndani ya sekunde chache.
+Mkoba wa Bob utabainisha mara moja muamala wa Alice kama
+malipo yanayoingia kwa sababu unajumuisha matokeo yanayoweza kukombolewa na funguo za Bob.
+Programu ya mkoba wa Bob pia inaweza kuthibitisha kwa kujitegemea kwamba
+muamala umeundwa vizuri. Kama Bob anatumia nodi yake kamili yenyewe, mkoba wake
+unaweza zaidi kuthibitisha muamala wa Alice unautumia((("transactions", "constructing", startref="transaction-construct")))((("transactions", "adding to blockchain", startref="transaction-add-blockchain")))((("blockchain", "adding transactions to", startref="blockchain-add-transaction"))) UTXOs halali tu.
+
+=== Uchimbaji wa Bitcoin
+
+Muamala wa Alice((("mining", "operational overview", id="mining-operational-overview"))) sasa umesambazwa kwenye mtandao wa Bitcoin.
+Hauwi sehemu ya _mlolongo wa vizuizi_ mpaka ujumuishwe katika kizuizi na mchakato unaoitwa _uchimbaji (mining)_ na kizuizi hicho kithibitishwe na nodi kamili. Tazama
+<<mining>> kwa maelezo ya kina.
+
+Mfumo wa ulinzi wa kughushi wa Bitcoin unategemea mahesabu.
+Miamala hukusanywa((("transactions", "in blocks", secondary-sortas="blocks")))((("blocks"))) katika _vizuizi (blocks)_. Vizuizi vina kichwa kidogo sana
+ambacho lazima kiundwe kwa njia maalum sana, ikihitaji kiasi kikubwa sana
+cha mahesabu kukipata sahihi — lakini kiasi kidogo tu
+cha mahesabu kuthibitisha kama sahihi.
+Mchakato wa uchimbaji unakusudia madhumuni mawili katika Bitcoin:
+
+[role="less_space pagebreak-before"]
+* Wachimbaji wanaweza
+kupata mapato ya uaminifu tu kwa kuunda vizuizi vinavyofuata sheria zote za _makubaliano (consensus rules)_ za Bitcoin.((("consensus rules"))) Kwa hivyo, wachimbaji kawaida wana motisha
+ya kujumuisha tu miamala halali katika vizuizi vyao na vizuizi wanavyojenga juu yake. Hii inaruhusu watumiaji kwa hiari kufanya dhana ya kuamini kwamba muamala wowote katika kizuizi ni muamala halali.
+
+* Uchimbaji kwa sasa unaunda bitcoins mpya katika kila kizuizi, karibu kama benki kuu
+ikichapisha pesa mpya. Kiasi cha bitcoin kilichoundwa kwa kila kizuizi ni
+mfumo na hupungua kwa muda, ukifuata ratiba iliyowekwa ya utoaji.
+
+Uchimbaji hufikia usawa mzuri kati ya gharama na malipo. Uchimbaji hutumia
+umeme kutatua tatizo la mahesabu. Mchimbaji mwenye mafanikio atakusanya ((("rewards")))_tuzo (reward)_ kwa njia ya bitcoins mpya na ada za muamala.
+Hata hivyo, tuzo itakusanywa tu kama mchimbaji
+amejumuisha tu miamala halali, huku sheria za itifaki ya Bitcoin za
+_makubaliano (consensus)_ zikitambua ni nini halali. Usawa huu nyeti hutoa
+usalama kwa Bitcoin bila mamlaka kuu.
+
+Uchimbaji umeundwa kuwa bahati nasibu ya usambazaji. Kila mchimbaji anaweza kuunda
+tiketi yake ya bahati nasibu kwa kuunda ((("candidate blocks")))_kizuizi cha mgombeaji (candidate block)_ ambacho kinajumuisha
+miamala mipya wanayotaka kuchimba pamoja na baadhi ya nyanja za data za ziada.
+Mchimbaji huingiza mgombeaji wao katika algoriti iliyoundwa maalum ambayo
+hupanga upya((("hash functions"))) (au "kuheshi") data, kuzalisha matokeo yanayoionekana tofauti kabisa
+na data ya ingizo. Kazi hii ya _heshi (hash)_ daima itazalisha matokeo yale yale kwa ingizo lile lile — lakini hakuna anayeweza kutabiri matokeo yatakavyokuwa kwa ingizo jipya, hata kama inatofautiana kidogo tu na
+ingizo la awali. Kama matokeo ya kazi ya heshi yanafanana na kiolezo
+kilichotambuliwa na itifaki ya Bitcoin, mchimbaji anashinda bahati nasibu na
+watumiaji wa Bitcoin watalikubali kizuizi pamoja na miamala yake kama
+kizuizi halali. Kama matokeo hayafanani na kiolezo, mchimbaji hufanya
+mabadiliko madogo kwenye kizuizi chake cha mgombeaji na kujaribu tena. Kufikia
+wakati wa uandishi huu, idadi ya vizuizi vya mgombeaji wachimbaji wanahitaji kujaribu kabla ya kupata
+mchanganyiko wa kushinda ni karibu trilioni 168. Hiyo pia ni kiasi
+cha mara ambacho kazi ya heshi inahitaji kukimbia.
+
+Hata hivyo, mara mchanganyiko wa kushinda unapopatikana, mtu yeyote anaweza kuthibitisha
+kizuizi ni halali kwa kukimbia kazi ya heshi mara moja tu. Hiyo inafanya kizuizi
+halali kuwa kitu kinachohitaji kiasi cha kazi kisichokuwa cha kawaida kuunda lakini kiasi kidogo tu cha kazi kuthibitisha. Mchakato rahisi wa
+uthibitisho unaweza kuthibitisha kwa uwezekano kwamba kazi ilifanywa,
+kwa hivyo data inayohitajika kuzalisha uthibitisho huo — katika kesi hii, kizuizi — inaitwa((("proof-of-work algorithm"))) _uthibitisho wa kazi (proof of work — PoW)_.
+
+Miamala huongezwa kwenye kizuizi kipya, ikipewa kipaumbele cha miamala yenye kiwango cha juu zaidi cha ada kwanza na vigezo vingine vichache. Kila mchimbaji huanza
+mchakato wa kuchimba kizuizi kipya cha mgombeaji cha miamala mara tu wanapopokea kizuizi
+cha awali kutoka kwa mtandao, wakijua kwamba mchimbaji mwingine alishinda toleo hilo
+la bahati nasibu. Wanaunda mara moja kizuizi kipya cha mgombeaji
+chenye ahadi ya kizuizi cha awali, wanakijaza na miamala, na kuanza
+kuhesabu PoW kwa kizuizi cha mgombeaji. Kila mchimbaji hujumuisha muamala maalum
+katika vizuizi vyao vya mgombeaji, moja inayolipa anwani yao wenyewe ya Bitcoin
+tuzo ya kizuizi pamoja na jumla ya
+ada za muamala kutoka miamala yote iliyojumuishwa katika kizuizi cha mgombeaji. Wakipata
+suluhisho ambalo linafanya mgombeaji kuwa kizuizi halali, wanapokea tuzo hii
+baada ya kizuizi chao kilichofanikiwa kuongezwa kwenye mlolongo wa vizuizi wa kimataifa na
+muamala wa tuzo waliojumuisha kuwa unaoweza kutumika. Wachimbaji wanaoshiriki katika dimbwi la uchimbaji (mining pool) wameweka
+programu yao kuunda vizuizi vya mgombeaji vinavyokasimu tuzo kwa anwani ya dimbwi.
+Kutoka hapo, sehemu ya tuzo husambazwa kwa wanachama wa wachimbaji wa dimbwi
+kwa uwiano na kiasi cha kazi walizochangia.
+
+Muamala wa Alice
+ulichukuliwa na mtandao na kujumuishwa katika bwawa la miamala
+isiyothibitishwa. Ukithibitishwa na nodi kamili, ulijumuishwa
+katika kizuizi cha mgombeaji.
+Takriban dakika tano baada ya muamala kutumwa kwanza
+na mkoba wa Alice, mchimbaji anapata suluhisho kwa
+kizuizi na kutangaza kwenye mtandao. Baada ya kila mchimbaji mwingine
+kuthibitisha kizuizi cha kushinda, wanaanza bahati nasibu mpya kuzalisha kizuizi
+kinachofuata.
+
+Kizuizi cha kushinda chenye muamala wa Alice kikawa sehemu ya
+mlolongo wa vizuizi. Kizuizi chenye muamala wa Alice kinahesabiwi kama ((("confirmations")))((("clearing transactions")))((("transactions", "clearing")))uthibitisho mmoja
+wa muamala huo. Baada ya kizuizi chenye muamala wa Alice kusambazwa kupitia mtandao, kuunda kizuizi mbadala chenye toleo tofauti la muamala wa Alice (kama vile
+muamala usiomlipa Bob) kungehitaji kufanya kiasi kile kile
+cha kazi kama itakavyochukua wachimbaji wote wa Bitcoin kuunda kizuizi kipya kabisa. Kunapokuwa na vizuizi vingi mbadala vya kuchagua,
+nodi kamili za Bitcoin huchagua mnyororo wa vizuizi halali wenye PoW ya jumla kubwa zaidi,
+unaoitwa _mlolongo bora wa vizuizi (best blockchain)_. Kwa mtandao wote
+kukubali kizuizi mbadala, kizuizi kipya cha ziada kingehitaji
+kuchimbwa juu ya mbadala.
+
+Hiyo inamaanisha wachimbaji wana chaguo. Wanaweza kufanya kazi na Alice kwenye
+mbadala wa muamala ambapo analipa Bob, labda
+Alice akilipa wachimbaji sehemu ya pesa aliyolipa Bob awali. Tabia hii ya udanganyifu itahitaji watumie nguvu zinazohitajika
+kuunda vizuizi viwili vipya. Badala yake, wachimbaji wanaofanya kwa uaminifu wanaweza kuunda
+kizuizi kimoja kipya na kupokea ada zote za miamala
+wanayoijumuisha ndani yake, pamoja na ruzuku ya kizuizi. Kawaida, gharama kubwa ya
+kuunda kwa udanganyifu vizuizi viwili kwa malipo madogo ya ziada ni
+faida ndogo sana kuliko kuunda kwa uaminifu kizuizi kipya, hivyo kufanya uwezekano wa
+muamala uliothibitishwa kubadilishwa kwa makusudi kuwa mdogo. Kwa Bob, hii
+inamaanisha kwamba anaweza kuanza kuamini kwamba malipo kutoka kwa Alice yanaweza
+kutegemewa.
+
+[TIP]
+====
+Unaweza kuona kizuizi ambacho kina
+https://oreil.ly/7v_lH[muamala wa Alice].
+====
+
+Takriban dakika 19
+baada ya kizuizi chenye muamala wa Alice kutangazwa, kizuizi kipya
+huchimbwa na mchimbaji mwingine. Kwa sababu kizuizi
+hiki kipya kimejengwa juu ya kizuizi kilichokuwa na muamala wa Alice (kumpa muamala wa Alice uthibitisho mbili), muamala wa Alice sasa unaweza kubadilishwa tu kama vizuizi viwili mbadala vichimbwe — pamoja na kizuizi kipya kilichojengwa juu yao — jumla ya vizuizi vitatu ambavyo vingehitaji kuchimbwa ili Alice achukue tena pesa aliyomtumia Bob. Kila kizuizi kilichochimbwa juu ya kile chenye muamala wa Alice kinahesabiwi kama uthibitisho wa ziada. Vizuizi vikiongezeka
+juu ya kila kimoja, inakuwa vigumu zaidi kubadilisha muamala, hivyo
+kumpa Bob imani zaidi na zaidi kwamba malipo ya Alice ni salama.
+
+Katika <<block-alice1>>, tunaweza kuona kizuizi chenye muamala wa Alice. Chini yake kuna
+mamia ya maelfu ya vizuizi, vilivyounganishwa kwa kila mmoja katika mnyororo wa
+vizuizi (mlolongo wa vizuizi) hadi kizuizi #0, kinachojulikana kama((("genesis block"))) _kizuizi cha asili (genesis
+block)_. Kwa muda, wakati "urefu" wa vizuizi vipya unavyoongezeka, ndivyo pia
+ugumu wa mahesabu kwa mnyororo kwa ujumla.
+Kwa makubaliano, kizuizi chochote chenye uthibitisho zaidi ya sita
+kinachukuliwa kuwa kigumu sana kubadilisha, kwa sababu kingehitaji kiasi kikubwa sana cha
+mahesabu kuhesabu upya vizuizi sita (pamoja na kizuizi kipya kimoja). Tutachunguza
+mchakato wa uchimbaji na jinsi unavyojenga imani kwa undani zaidi katika ((("mining", "operational overview", startref="mining-operational-overview")))
+<<mining>>.
+
+[[block-alice1]]
+.Muamala wa Alice umejumuishwa katika kizuizi.
+image::images/mbc3_0207.png["Alice's transaction included in a block"]
+
+[role="less_space pagebreak-before"]
+=== Kutumia Muamala
+
+Sasa((("transactions", "spending bitcoins", id="transaction-spend2")))((("bitcoins", "spending", id="bitcoin-spend2")))((("spending bitcoins", id="spend-bitcoin2"))) kwamba muamala wa Alice
+umezikwa kwenye mlolongo wa vizuizi kama sehemu ya kizuizi, unaweza kuonekana na
+programu zote za Bitcoin.
+Kila nodi kamili ya Bitcoin inaweza kuthibitisha kwa kujitegemea
+muamala kama halali na unaoweza kutumika. Nodi kamili huthibitisha kila uhamisho
+wa fedha kutoka wakati bitcoins zilipoandaliwa kwanza
+katika kizuizi kupitia kila muamala unaofuata mpaka unapofikia
+anwani ya Bob. Wateja mwepesi wanaweza kuthibitisha kwa sehemu malipo
+kwa kuthibitisha kwamba
+muamala uko kwenye mlolongo wa vizuizi na una vizuizi kadhaa vilivyochimbwa baadaye yake,
+hivyo kutoa uhakika kwamba wachimbaji walitoa nguvu kubwa
+kujitolea kwake (tazama <<spv_nodes>>).
+
+Bob sasa anaweza kutumia matokeo kutoka kwenye hii na miamala mingine. Kwa
+mfano, Bob anaweza kulipa mkandarasi au msambazaji kwa kuhamisha thamani kutoka
+malipo ya podcast ya Alice kwa wamiliki wapya hawa.
+Bob akitumia malipo aliyopokea kutoka kwa Alice na wateja wengine, yeye
+hupanua mnyororo wa miamala. Tutadhani Bob analipa msanifu wake wa wavuti Gopesh
+kwa ukurasa mpya wa tovuti. Sasa mnyororo wa miamala utaonekana kama <<block-alice2>>.
+
+[[block-alice2]]
+.Muamala wa Alice kama sehemu ya mnyororo wa miamala kutoka kwa Joe hadi Gopesh.
+image::images/mbc3_0208.png["Alice's transaction as part of a transaction chain"]
+
+Katika sura hii, tuliona jinsi miamala inavyojenga mnyororo unaohamisha thamani
+kutoka mmiliki hadi mmiliki. Pia tuliona muamala wa Alice kutoka
+wakati ulioundwa katika mkoba wake, kupitia mtandao wa Bitcoin, na hadi
+wachimbaji waliourekodi kwenye mlolongo wa vizuizi. Katika sehemu zilizobaki za kitabu hiki,
+tutachunguza teknolojia maalum nyuma ya mikoba, anwani,
+saini, miamala, mtandao, na hatimaye, uchimbaji.

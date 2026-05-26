@@ -49,3 +49,22 @@ def test_build_scaffold_deduplicates_seed_and_scanned():
     scanned = {"block"}
     scaffold = build_scaffold(scanned, seed)
     assert scaffold.count("block::") == 1
+
+
+def test_extract_index_terms_ignores_partial_markers():
+    text = 'See ((("incomplete" for details.'  # no closing )))
+    result = extract_index_terms(text)
+    assert result == set()
+
+
+def test_build_scaffold_anchor_strips_parentheses():
+    seed = [{"english": "pay-to-script-hash (P2SH)", "swahili": "P2SH", "type": "preserved"}]
+    scaffold = build_scaffold(set(), seed)
+    assert "(P2SH)" not in scaffold.split("[[")[1].split("]]")[0]  # no parens in anchor
+
+
+def test_build_scaffold_no_duplicate_for_case_variant():
+    seed = [{"english": "UTXO", "swahili": "UTXO", "type": "preserved"}]
+    scanned = {"utxo"}
+    scaffold = build_scaffold(scanned, seed)
+    assert scaffold.count("utxo::") + scaffold.count("UTXO::") == 1

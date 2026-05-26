@@ -1,9 +1,8 @@
 import sys
 from pathlib import Path
-import pytest
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "tools"))
-from translation_status import get_status, word_count
+from translation_status import get_status, word_count  # noqa: E402
 
 
 def test_get_status_returns_missing_for_nonexistent_file(tmp_path):
@@ -40,6 +39,17 @@ def test_word_count_counts_prose_words(tmp_path):
 
 def test_word_count_excludes_adoc_anchors(tmp_path):
     f = tmp_path / "ch01.adoc"
-    f.write_text("[[ch01_intro]]\n== Utangulizi\nManeno matano ya kweli.", encoding="utf-8")
+    f.write_text(
+        "[[ch01_intro]]\n== Utangulizi\nManeno matano ya kweli.",
+        encoding="utf-8",
+    )
     result = word_count(f)
-    assert result < 10
+    assert result <= 6  # anchors stripped; heading text may remain
+
+
+def test_get_status_ignores_status_in_code_block(tmp_path):
+    f = tmp_path / "ch01.adoc"
+    # status: active appears deep in a code listing, not in the header
+    content = "== Utangulizi\n\n" + ("line\n" * 20) + "// status: active\n"
+    f.write_text(content, encoding="utf-8")
+    assert get_status(f) == "draft"

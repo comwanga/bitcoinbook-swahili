@@ -4,7 +4,7 @@
 import re
 from pathlib import Path
 
-SWAHILI_DIR = Path("swahili")
+SWAHILI_DIR = Path(__file__).parent.parent / "swahili"
 
 TRANSLATION_ORDER = [
     "glossary.asciidoc",
@@ -41,16 +41,24 @@ def get_status(filepath: Path) -> str:
     if not filepath.exists():
         return "missing"
     text = filepath.read_text(encoding="utf-8")
-    match = re.search(r"// status:\s*(\w+)", text)
-    return match.group(1) if match else "draft"
+    header = "\n".join(text.splitlines()[:10])
+    match = re.search(r"^//\s*status:\s*(\w+)", header, re.MULTILINE)
+    if match:
+        status = match.group(1)
+        if status in STATUS_ICONS:
+            return status
+    return "draft"
 
 
 def word_count(filepath: Path) -> int:
     if not filepath.exists():
         return 0
     text = filepath.read_text(encoding="utf-8")
-    text = re.sub(r"//.*", "", text)
-    text = re.sub(r"\[\[.*?\]\]", "", text)
+    text = re.sub(r"//.*", "", text)                    # strip comments
+    text = re.sub(r"\(\(\(.*?\)\)\)", "", text)         # strip index terms
+    text = re.sub(r"\[\[.*?\]\]", "", text)             # strip anchors
+    text = re.sub(r"^\[.*?\]$", "", text, flags=re.MULTILINE)   # strip block annotations
+    text = re.sub(r"^=+\s*", "", text, flags=re.MULTILINE)      # strip heading markers
     return len(text.split())
 
 

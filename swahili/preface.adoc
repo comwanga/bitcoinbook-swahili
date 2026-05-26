@@ -1,0 +1,204 @@
+// TRANSLATION METADATA
+// source: preface.adoc
+// translator: AI-assisted translation
+// date: 2026-05-26
+// status: draft
+// glossary-version: 1.0
+
+[preface]
+== Utangulizi
+
+=== Kuandika Kitabu cha Bitcoin
+
+Mimi (Andreas) nilikutana kwanza na Bitcoin (bitcoini) katikati ya mwaka wa 2011. Majibu yangu ya haraka yalikuwa takriban "Pfft! Pesa za wachawi!" na nilipuuza kwa miezi mingine sita, nikishindwa kutambua umuhimu wake. Hii ni majibu ambayo nimeyaona yakijirudia miongoni mwa watu wengi wenye akili zaidi wanaonijua, ambayo inanipa faraja kidogo. Mara ya pili nilipokutana na Bitcoin, katika majadiliano ya orodha ya barua pepe, niliamua kusoma waraka (whitepaper) ulioandikwa na Satoshi Nakamoto ili kujua kiini chake. Bado nakumbuka wakati nilipomaliza kusoma kurasa zile tisa, nilipotambua kwamba Bitcoin haikuwa tu sarafu ya kidijitali (digital currency), bali mtandao wa uaminifu (trust network) ambao ungeweza pia kutoa msingi wa mengi zaidi ya sarafu peke yake. Ugunduzi kwamba "hii si pesa, ni mtandao wa uaminifu uliosambazwa (decentralized trust network)," ulinizindua kwenye safari ya miezi minne ya kutafuta kila kipande cha habari kuhusu Bitcoin nilichoweza kupata. Nilikuwa nimezama kabisa na kupigwa na butwaa, nikitumia masaa 12 au zaidi kila siku nikichungulia skrini, nikisoma, kuandika, kupanga kodi, na kujifunza kadri niwezavyo. Nilitoka katika hali hiyo ya kuzama, uzito wangu ulipungua kwa paundi zaidi ya 20 kutokana na kukosa milo ya kutosha, nikiwa nimejidhibiti kufanya kazi kwenye Bitcoin.
+
+Miaka miwili baadaye, baada ya kuunda biashara ndogo ndogo kadhaa kuchunguza huduma na bidhaa mbalimbali zinazohusiana na Bitcoin, niliamua kwamba ilikuwa wakati wa kuandika kitabu changu cha kwanza. Bitcoin ilikuwa mada iliyonisukuma katika msongo wa ubunifu na kuchukua mawazo yangu; ilikuwa teknolojia ya kusisimua zaidi niliyokutana nayo tangu mtandao wa intaneti. Ilikuwa sasa wakati wa kushiriki shauku yangu kuhusu teknolojia hii ya ajabu na hadhira pana zaidi.
+
+=== Hadhira Inayokusudiwa
+
+Kitabu hiki kinakusudiwa hasa kwa waandishi wa kodi. Kama unaweza kutumia lugha ya upangaji kodi, kitabu hiki kitakufundisha jinsi sarafu za kidijitali (cryptocurrencies) zinavyofanya kazi, jinsi ya kuzitumia, na jinsi ya kutengeneza programu zinazofanya kazi nazo. Sura chache za kwanza pia zinafaa kama utangulizi wa kina wa Bitcoin kwa wasiokuwa waandishi wa kodi—wale wanaojaribu kuelewa utendaji wa ndani wa Bitcoin na sarafu za kidijitali.
+
+=== Kwa Nini Kuna Wadudu kwenye Jalada?
+
+Siafu ya mkato wa majani ni spishi inayoonyesha tabia ngumu sana katika koloni la kiumbe kikubwa, lakini kila siafu mmoja mmoja hufanya kazi kwa mfululizo wa kanuni rahisi zinazochochewa na mwingiliano wa kijamii na ubadilishaji wa harufu za kemikali (pheromones). Kulingana na Wikipedia: "Baada ya wanadamu, siafu za mkato wa majani zinaunda jamii kubwa zaidi na ngumu zaidi za wanyama duniani." Siafu za mkato wa majani hazijakula majani kwa kweli, bali huzitumia kulima kuvu, ambayo ni chanzo kikuu cha chakula cha koloni. Je, unaelewa? Siafu hizi zinalima!
+
+Ingawa siafu zinaunda jamii yenye mfumo wa tabaka na zina malkia wa kuzaa watoto, hakuna mamlaka kuu wala kiongozi katika koloni la siafu. Tabia ya akili na ustadi wa hali ya juu inayoonyeshwa na koloni la wanachama mamilioni ni sifa inayotokana na mwingiliano wa watu binafsi katika mtandao wa kijamii.
+
+Asili inaonyesha kwamba mifumo iliyosambazwa (decentralized systems) inaweza kuwa thabiti na inaweza kuzalisha utata wa kipekee na ustadi wa ajabu bila ya kuhitaji mamlaka kuu, uongozi, au vipande ngumu.
+
+Bitcoin ni mtandao wa uaminifu uliosambazwa wa hali ya juu sana ambao unaweza kusaidia michakato mbalimbali ya kifedha. Hata hivyo, kila nodi (node) katika mtandao wa Bitcoin hufuata kanuni chache rahisi. Mwingiliano kati ya nodi nyingi ndio unaosababisha kuibuka kwa tabia ya kisasa, si utata wowote wa asili au uaminifu katika nodi yoyote moja. Kama koloni la siafu, mtandao wa Bitcoin ni mtandao thabiti wa nodi rahisi zinazofuata kanuni rahisi ambazo pamoja zinaweza kufanya mambo ya ajabu bila kuratibu kuu lolote.
+
+=== Mikataba Inayotumiwa katika Kitabu Hiki
+
+Mikataba ifuatayo ya typografia inatumika katika kitabu hiki:
+
+_Italiki_:: Inaonyesha maneno mapya, URLs, anwani za barua pepe, majina ya faili, na viongezeo vya faili.
+
++Upana wa mara kwa mara+:: Inatumika kwa orodha za programu, pamoja na ndani ya aya kurejelea vipengele vya programu kama majina ya vigezo au vitendakazi, hifadhidata, aina za data, vigezo vya mazingira, kauli, na maneno muhimu.
+
+**`Upana wa mara kwa mara mzito`**:: Inaonyesha amri au maandishi mengine ambayo mtumiaji anapaswa kuandika kwa usahihi.
+
+_++Italiki ya upana wa mara kwa mara++_:: Inaonyesha maandishi ambayo yanapaswa kubadilishwa na maadili yaliyotolewa na mtumiaji au maadili yaliyoamuliwa na muktadha.
+
+
+[TIP]
+====
+Kipengele hiki kinaashiria kidokezo au pendekezo.
+====
+
+[NOTE]
+====
+Kipengele hiki kinaashiria kumbuka ya jumla.
+====
+
+[WARNING]
+====
+Kipengele hiki kinaonyesha onyo au tahadhari.
+====
+
+=== Mifano ya Kodi
+
+Vipande vyote vya kodi vinaweza kuigwa kwenye mifumo mingi ya uendeshaji kwa usakinishaji mdogo wa wakusanyaji na watafsiri wa lugha zinazolingana. Inapohitajika, tunatoa maelekezo ya msingi ya usakinishaji na mifano ya hatua kwa hatua ya matokeo ya maelekezo hayo.
+
+Baadhi ya vipande vya kodi na matokeo ya kodi vimeandikwa upya kwa uchapishaji. Katika kesi zote kama hizo, mistari imegawanywa na alama ya mstari wa nyuma (\) ikifuatiwa na herufi ya mstari mpya. Unapoandika mifano, ondoa herufi hizo mbili na unganisha mistari tena na unapaswa kuona matokeo sawa kama inavyoonyeshwa katika mfano.
+
+Vipande vyote vya kodi vinatumia maadili halisi na mahesabu inapowezekana, ili uweze kujenga kutoka mfano hadi mfano na kuona matokeo sawa katika kodi yoyote unayoandika kuhesabu maadili sawa.
+
+=== Kutumia Mifano ya Kodi
+
+Kitabu hiki kiko hapa kukusaidia kukamilisha kazi yako. Kwa ujumla, kama mfano wa kodi unatolewa pamoja na kitabu hiki, unaweza kuutumia katika programu zako na nyaraka. Huhitaji kuwasiliana nasi kwa ruhusa isipokuwa unarudia sehemu kubwa ya kodi. Kwa mfano, kuandika programu inayotumia vipande kadhaa vya kodi kutoka kitabu hiki hakuhitaji ruhusa. Kuuza au kusambaza mifano kutoka vitabu vya O'Reilly kunahitaji ruhusa. Kujibu swali kwa kunukuu kitabu hiki na kununukuu mfano wa kodi hakuhitaji ruhusa. Kuingiza kiasi kikubwa cha mfano wa kodi kutoka kitabu hiki katika nyaraka za bidhaa yako kunahitaji ruhusa.
+
+Tunashukuru, lakini hatuhitaji, kutaja chanzo. Kutaja chanzo kwa kawaida kunajumuisha [.keep-together]#kichwa,# mwandishi, mchapishaji, na ISBN. Kwa mfano: "_Mastering Bitcoin_, toleo la 3, na [.keep-together]#Andreas M.# Antonopoulos na David A. Harding (O'Reilly). Hakimiliki 2024 David Harding, ISBN 978-1-098-15009-9."
+
+Baadhi ya matoleo ya kitabu hiki yanapatikana chini ya leseni ya chanzo wazi (open source), kama vile https://oreil.ly/RzUHE[CC-BY-NC], katika hali hiyo masharti ya leseni hiyo yanatumika.
+
+Ikiwa unahisi matumizi yako ya mifano ya kodi yanaanguka nje ya matumizi ya haki au ruhusa iliyotolewa hapo juu, jisikie huru kuwasiliana nasi kwenye pass:[<a href="mailto:permissions@oreilly.com">permissions@oreilly.com</a>].
+
+=== Mabadiliko Tangu Toleo la Awali
+
+include::meta/third_edition_changes.asciidoc[]
+
+=== Anwani za Bitcoin na Miamala katika Kitabu Hiki
+
+Anwani (addresses) za Bitcoin, miamala (transactions), funguo (keys), nambari za QR, na data ya mlolongo wa vizuizi (blockchain) zinazotumiwa katika kitabu hiki ni, kwa sehemu kubwa, halisi. Hiyo inamaanisha unaweza kuvinjari mlolongo wa vizuizi, kutazama miamala inayotolewa kama mifano, kuipata kwa hati au programu zako mwenyewe, n.k.
+
+Hata hivyo, kumbuka kwamba ufunguo wa siri (private keys) uliotumika kuunda anwani unadrukiwa katika kitabu hiki au umekuwa "umechomwa." Hiyo inamaanisha kama ukituma pesa kwa mojawapo ya anwani hizi, pesa itapotea milele, au katika baadhi ya matukio kila mtu anayeweza kusoma kitabu anaweza kuichukua kwa kutumia ufunguo wa siri uliochapishwa hapa.
+
+[WARNING]
+====
+USITUME PESA KWENYE MOJAWAPO YA ANWANI KATIKA KITABU HIKI. Pesa yako itachukuliwa na msomaji mwingine au itapotea milele.
+====
+
+=== Kujifunza Mtandaoni kwa O'Reilly
+[role = "ormenabled"]
+[NOTE]
+====
+Kwa zaidi ya miaka 40, pass:[<a href="https://oreilly.com" class="orm:hideurl"><em class="hyperlink">O'Reilly Media</em></a>] imetoa mafunzo ya teknolojia na biashara, maarifa, na ufahamu kusaidia makampuni kufanikiwa.
+====
+
+Mtandao wetu wa kipekee wa wataalam na wavumbuzi wanashiriki maarifa na utaalamu wao kupitia vitabu, makala, na jukwaa letu la kujifunza mtandaoni. Jukwaa la kujifunza mtandaoni la O'Reilly linakupa ufikiaji wa mahitaji ya mafunzo ya moja kwa moja, njia za kujifunza kwa kina, mazingira ya upangaji kodi ya mwingiliano, na mkusanyiko mkubwa wa maandishi na video kutoka O'Reilly na wachapishaji 200+ wengine. Kwa maelezo zaidi, tembelea pass:[<a href="https://oreilly.com" class="orm:hideurl"><em>https://oreilly.com</em></a>].
+
+=== Jinsi ya Kuwasiliana Nasi
+
+Tafadhali elekeza maoni na maswali kuhusu kitabu hiki kwa mchapishaji:
+
+++++
+<ul class="simplelist">
+  <li>O'Reilly Media, Inc.</li>
+  <li>1005 Gravenstein Highway North</li>
+  <li>Sebastopol, CA 95472</li>
+  <li>800-889-8969 (in the United States or Canada)</li>
+  <li>707-829-7019 (international or local)</li>
+  <li>707-829-0104 (fax)</li>
+  <li><a class="email" href="mailto:support@oreilly.com"><em>support@oreilly.com</em></a></li>
+  <li><a href="https://www.oreilly.com/about/contact.html"><em>https://www.oreilly.com/about/contact.html</em></a></li>
+</ul>
+++++
+
+Tuna ukurasa wa wavuti kwa kitabu hiki, ambapo tunaonyesha makosa, mifano, na habari yoyote ya ziada. Unaweza kufikia ukurasa huu kwenye link:$$https://oreil.ly/MasteringBitcoin3e$$[].
+
+++++
+<!--Don't forget to update the link above.-->
+++++
+
+Kwa habari na maelezo kuhusu vitabu na kozi zetu, tembelea link:$$https://oreilly.com$$[].
+
+Tupate kwenye LinkedIn: link:$$https://linkedin.com/company/oreilly-media$$[].
+
+Tufuate kwenye Twitter: link:$$https://twitter.com/oreillymedia$$[].
+
+Tuangalie kwenye YouTube: link:$$https://youtube.com/oreillymedia$$[].
+
+
+=== Kuwasiliana na Waandishi
+
+++++
+<p class="left-align">
+You can contact Andreas M. Antonopoulos on his personal site:
+<span class="keep-together"><a href="https://antonopoulos.com"><em class="hyperlink">https://antonopoulos.com</em></a>.</span></p>
+++++
+
+Mfuate Andreas kwenye Facebook:
+link:$$https://facebook.com/AndreasMAntonopoulos$$[].
+
+Mfuate Andreas kwenye Twitter:
+link:$$https://twitter.com/aantonop$$[].
+
+Mfuate Andreas kwenye LinkedIn:
+link:$$https://linkedin.com/company/aantonop$$[].
+
+Shukrani nyingi kwa wafuasi wote wa Andreas wanaounga mkono kazi yake kupitia michango ya kila mwezi. Unaweza kufuata ukurasa wake wa Patreon hapa:
+link:$$https://patreon.com/aantonop$$[].
+
+Maelezo kuhusu _Mastering Bitcoin_, pamoja na Toleo Wazi la Andreas na tafsiri, yanapatikana kwenye
+link:$$https://bitcoinbook.info$$[].
+
+Unaweza kuwasiliana na David A. Harding kwenye tovuti yake ya kibinafsi:
+link:$$https://dtrt.org$$[].
+
+=== Shukrani kwa Matoleo ya Kwanza na ya Pili
+
+_Na Andreas M. Antonopoulos_
+
+Kitabu hiki kinawakilisha juhudi na michango ya watu wengi. Ninashukuru kwa msaada wote niliopokea kutoka kwa marafiki, wenzake, na hata wageni kamili, ambao walijiunga nami katika juhudi hii ya kuandika kitabu cha kiufundi cha kina kuhusu sarafu za kidijitali na Bitcoin.
+
+Haiwezekani kutofautisha kati ya teknolojia ya Bitcoin na jamii ya Bitcoin, na kitabu hiki ni bidhaa ya jamii hiyo kama vile ni kitabu kuhusu teknolojia. Kazi yangu kwenye kitabu hiki ilitiwa moyo, kupongezwa, kusaidiwa, na kutunuliwa na jamii nzima ya Bitcoin tangu mwanzo hadi mwisho. Zaidi ya yote, kitabu hiki kimenipa fursa ya kuwa sehemu ya jamii nzuri kwa miaka miwili na siwezi kukushukuru vya kutosha kwa kunikubali katika jamii hii. Kuna watu wengi mno kutajwa kwa majina—watu niliowakutana nao katika mikutano ya kitaaluma, matukio, semina, makutano, mikutano ya pizza, na makusanyiko madogo ya kibinafsi, pamoja na wengi waliounganika nami kupitia Twitter, kwenye reddit, kwenye bitcointalk.org, na kwenye GitHub ambao wamekuwa na athari kwenye kitabu hiki. Kila wazo, mfano wa kulinganisha, swali, jibu, na maelezo unayopata katika kitabu hiki yalisukumwa, kujaribiwa, au kuboreshwa wakati fulani kupitia mwingiliano wangu na jamii. Asanteni nyote kwa msaada wenu; bila nyinyi kitabu hiki kisingeweza kutokea. Ninashukuru milele.
+
+Safari ya kuwa mwandishi inaanza muda mrefu kabla ya kitabu cha kwanza, bila shaka. Lugha yangu ya kwanza (na masomo) ilikuwa Kigiriki, kwa hivyo nilipaswa kuchukua kozi ya uandishi wa Kiingereza ya kurekebisha katika mwaka wangu wa kwanza wa chuo kikuu. Ninashukuru Diana Kordas, mwalimu wangu wa uandishi wa Kiingereza, aliyenijenga ujasiri na ustadi katika mwaka huo. Baadaye, kama mtaalamu, nilijenga ustadi wangu wa uandishi wa kiufundi kwenye mada ya vituo vya data, nikiandika kwa jarida la _Network World_. Ninashukuru John Dix na John Gallant, walionipatia kazi yangu ya kwanza ya uandishi kama mwandishi mkuu kwenye _Network World_, na mhariri wangu Michael Cooney na mwenzangu Johna Till Johnson waliohariri safu zangu na kuzifanya zinafaa kuchapishwa. Kuandika maneno 500 kwa wiki kwa miaka minne kulinipa uzoefu wa kutosha hatimaye kufikiria kuwa mwandishi.
+
+Shukrani pia kwa wale walioniungama mkono nilipopeleka pendekezo langu la kitabu kwa O'Reilly kwa kutoa marejeo na kukagua pendekezo. Hasa, shukrani kwa John Gallant, Gregory Ness, Richard Stiennon, Joel Snyder, Adam B. Levine, Sandra Gittlen, John Dix, Johna Till Johnson, Roger Ver, na Jon Matonis. Shukrani maalum kwa Richard Kagan na Tymon Mattoszko, waliokagua matoleo ya mapema ya pendekezo, na Matthew Taylor, aliyehariri pendekezo.
+
+Shukrani kwa Cricket Liu, mwandishi wa kichwa cha O'Reilly _DNS and BIND_, aliyenijulisha O'Reilly. Shukrani pia kwa Michael Loukides na Allyson MacDonald huko O'Reilly, waliofanya kazi kwa miezi kusaidia kufanikisha kitabu hiki. Allyson alikuwa na uvumilivu hasa wakati tarehe za mwisho zilipokoswa na matokeo yaliyochelewa wakati maisha yalipoingiliana katika ratiba yetu iliyopangwa. Kwa toleo la pili, ninashukuru Timothy McGovern kwa kuongoza mchakato, Kim Cofer kwa kuhariri kwa uvumilivu, na Rebecca Panzer kwa kuonyesha michoro mingi mipya.
+
+Rasimu chache za kwanza za sura chache za kwanza zilikuwa ngumu zaidi, kwa sababu Bitcoin ni somo gumu kufungua. Kila wakati nilipovuta uzi mmoja wa teknolojia ya Bitcoin, nilihitaji kuvuta yote. Nilikwama mara kwa mara na kusikitika kidogo nilipojaribu kufanya mada iwe rahisi kuelewa na kuunda hadithi kuhusu somo zito la kiufundi. Hatimaye, niliamua kusimulia hadithi ya Bitcoin kupitia hadithi za watu wanaotumia Bitcoin na kitabu kizima kilikuwa rahisi zaidi kuandika. Ninashukuru rafiki yangu na mshauri, Richard Kagan, aliyenisaidia kufungua hadithi na kupita nyakati za kukwama uandishi. Ninashukuru Pamela Morgan, aliyekagua rasimu za mapema za kila sura katika toleo la kwanza na la pili la kitabu na kuuliza maswali magumu ili kuyaboresha. Pia, shukrani kwa watengenezaji wa kikundi cha San Francisco Bitcoin Developers Meetup pamoja na Taariq Lewis na Denise Terry kwa kusaidia kujaribu nyenzo za mapema. Shukrani pia kwa Andrew Naugler kwa ubunifu wa infografia.
+
+Wakati wa maendeleo ya kitabu, nilifanya rasimu za mapema zipatikane kwenye GitHub na kukaribisha maoni ya umma. Maoni zaidi ya mia moja, mapendekezo, marekebisho, na michango iliwasilishwa kwa majibu. Michango hiyo inatambuliwa wazi, pamoja na shukrani zangu, katika <<github_contrib>>. Zaidi ya yote, shukrani zangu za kweli kwa wahariri wangu wa kujitolea kwenye GitHub Ming T. Nguyen (toleo la 1) na Will Binns (toleo la 2), waliofanya kazi bila kuchoka kukusanya, kusimamia, na kutatua maombi ya kuvuta, ripoti za matatizo, na kurekebisha hitilafu kwenye GitHub.
+
+Kitabu kilipokamilika, kilipitia raundi kadhaa za ukaguzi wa kiufundi. Shukrani kwa Cricket Liu na Lorne Lantz kwa ukaguzi wao wa kina, maoni, na msaada.
+
+Wasanidi kadhaa wa Bitcoin walichangia sampuli za kodi, ukaguzi, maoni, na msaada. Shukrani kwa Amir Taaki na Eric Voskuil kwa vipande vya mfano wa kodi na maoni mengi mazuri; Chris Kleeschulte kwa kuchangia maelezo kuhusu Bitcore; Vitalik Buterin na Richard Kiss kwa msaada wa hisabati ya mkondo wa duaradufu (elliptic curve) na michango ya kodi; Gavin Andresen kwa marekebisho, maoni, na msaada; Michalis Kargakis kwa maoni, michango, na maelezo ya btcd; na Robin Inge kwa mawasilisho ya makosa yanayoboresha chapa ya pili. Katika toleo la pili, nilipokea tena msaada mkubwa kutoka kwa wasanidi wengi wa Bitcoin Core, ikiwa ni pamoja na Eric Lombrozo aliyefafanua segregated witness, Luke Dashjr aliyesaidia kuboresha sura kuhusu miamala (transactions), Johnson Lau aliyekagua segregated witness na sura nyingine, na wengi wengine. Ninashukuru Joseph Poon, Tadge Dryja, na Olaoluwa Osuntokun waliofafanua Lightning Network, wakakagua uandishi wangu, na kujibu maswali nilipokwama.
+
+Ninaweza kusema ninastahili upendo wangu wa maneno na vitabu kwa mama yangu, Theresa, aliyenilewa katika nyumba yenye vitabu kila ukutani. Mama yangu pia alinununulia kompyuta yangu ya kwanza mnamo 1982, ingawa alijielezea kuwa mtu asiyeijua teknolojia. Baba yangu, Menelaos, mhandisi wa ujenzi aliyechapisha kitabu chake cha kwanza akiwa na umri wa miaka 80, ndiye aliyonifundisha fikira za kimantiki na za uchanganuzi na upendo wa sayansi na uhandisi.
+
+Asanteni nyote kwa kuniungama mkono katika safari hii yote.
+
+=== Shukrani kwa Toleo la Tatu
+
+_Na David A. Harding_
+
+Utangulizi wa itifaki (protocol) ya saini ya Schnorr isiyoingiliana ambayo inaanza kwa kuelezea kwanza itifaki ya utambulisho wa Schnorr inayoingiliana katika <<schnorr_signatures>> uliathiriwa sana na utangulizi wa mada hiyo katika "Borrommean Ring Signatures" (2015) na Gregory Maxwell na Andrew Poelstra. Ninadaiwa kwa kila mmoja wao kwa msaada wao wote uliotolewa bure katika kipindi cha muongo uliopita.
+
+Ukaguzi wa kiufundi wa thamani sana wa rasimu za hati hii ulitolewa na Jorge Lesmes, Olaoluwa Osuntokun, René Pickhardt, na Mark "Murch" Erhardt. Hasa, ukaguzi wa kina na wenye ufahamu wa Murch, na utayari wake wa kutathmini marudio mengi ya maandishi sawa, umeinua ubora wa kitabu hiki zaidi ya matarajio yangu ya juu zaidi.
+
+Pia nina deni la shukrani kwa Jimmy Song kwa kunipendekeza kwa mradi huu, kwa mwandishi mwenzangu Andreas kwa kuniruhusu kusasisha maandishi yake yanayouza sana, kwa Angela Rufino kwa kuniongoza katika mchakato wa uandishi wa O'Reilly, na kwa wafanyakazi wote wengine wa O'Reilly kwa kufanya uandishi wa toleo la tatu kuwa uzoefu wa kufurahisha na wa tija.
+
+Hatimaye, sijui jinsi ninavyoweza kushukuru wachangiaji wote wa Bitcoin walionisaidia katika safari yangu—kuanzia kuunda programu ninayoitumia, hadi kunifundisha jinsi inavyofanya kazi, hadi kunisaidia kupitisha maarifa kidogo niliyoyapata. Kuna wengi sana wenu kutaja majina yenu, lakini ninafikiria juu yenu mara nyingi na najua kwamba michango yangu kwenye kitabu hiki isingekuwa iwezekana bila yote mliyofanya kwa ajili yangu.
+
+[[github_contrib]]
+=== Rasimu ya Kutolewa Mapema (Michango ya GitHub)
+
+Wachangiaji wengi walitoa maoni, marekebisho, na nyongeza kwenye rasimu ya kutolewa mapema kwenye GitHub. Asanteni nyote kwa michango yenu kwenye kitabu hiki.
+
+Ifuatayo ni orodha ya wachangiaji mashuhuri wa GitHub, ikiwa ni pamoja na kitambulisho chao cha GitHub kati ya mabano:
+
+include::meta/github_contrib.adoc[]

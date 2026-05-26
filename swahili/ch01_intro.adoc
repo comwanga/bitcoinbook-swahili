@@ -1,6 +1,6 @@
 // TRANSLATION METADATA
 // source: ch01_intro.adoc
-// translator: AI-assisted translation
+// translator: comwanga
 // date: 2026-05-26
 // status: draft
 // glossary-version: 1.0

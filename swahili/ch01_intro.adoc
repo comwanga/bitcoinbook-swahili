@@ -1,0 +1,426 @@
+// TRANSLATION METADATA
+// source: ch01_intro.adoc
+// translator: AI-assisted translation
+// date: 2026-05-26
+// status: draft
+// glossary-version: 1.0
+
+[role="pagenumrestart"]
+[[ch01_intro_what_is_bitcoin]]
+== Utangulizi
+
+Bitcoin((("Bitcoin", "operational overview", id="bitcoin-operational-overview"))) ni mkusanyiko wa dhana na teknolojia zinazoundwa msingi wa mfumo wa pesa ya kidijitali (digital money). Vitengo vya sarafu viitwavyo bitcoin hutumiwa kuhifadhi na kupitisha thamani kati ya washiriki katika mtandao wa Bitcoin. Watumiaji wa Bitcoin huwasiliana wao kwa wao kwa kutumia itifaki ya Bitcoin (Bitcoin protocol) hasa kupitia intaneti, ingawa mitandao mingine ya usafiri pia inaweza kutumika. Mfumo wa itifaki ya Bitcoin, unaopatikana kama programu ya chanzo wazi (open source), unaweza kukimbia kwenye aina mbalimbali za vifaa vya kompyuta, ikiwa ni pamoja na kompyuta za mkononi na simu mahiri, hivyo kufanya teknolojia kupatikana kwa urahisi.
+
+[TIP]
+====
+Katika kitabu hiki, ((("bitcoins", "defined")))kitengo cha sarafu kinaitwa "bitcoin" kwa _b_ ndogo,
+na mfumo unaitwa "Bitcoin," kwa _B_ kubwa.
+====
+
+Watumiaji wanaweza kuhamisha bitcoin kwenye mtandao kufanya karibu kila kitu
+kinachoweza kufanywa na sarafu za kawaida, ikiwa ni pamoja na kununua na kuuza
+bidhaa, kutuma pesa kwa watu au mashirika, au kutoa mkopo. Bitcoin
+inaweza kununuliwa, kuuzwa, na kubadilishwa kwa sarafu nyingine katika
+masoko maalum ya ubadilishaji wa sarafu. Bitcoin inaweza kusemwa ni aina
+bora ya pesa kwa intaneti kwa sababu ni ya haraka, salama, na haina mipaka.
+
+Tofauti na sarafu za jadi, sarafu ya bitcoin ni ya kidijitali kabisa. Hakuna
+sarafu za kimwili wala hata sarafu za kidijitali za mtu binafsi. Sarafu zinaonekana
+katika miamala (transactions) inayopitisha thamani kutoka kwa mtumaji hadi kwa mpokea. Watumiaji wa
+Bitcoin wanadhibiti funguo zinazowapasha kuthibitisha umiliki wa bitcoin katika
+mtandao wa Bitcoin. Kwa funguo hizi, wanaweza kutia saini miamala ili kufungua
+thamani na kuitumia kwa kuihamisha kwa mmiliki mpya. Funguo mara nyingi
+huhifadhiwa katika mkoba wa kidijitali (digital wallet) kwenye kompyuta au simu mahiri ya kila mtumiaji.
+Kuwa na ufunguo unaoweza kutia saini muamala ndiyo mahitaji pekee
+ya kutumia bitcoin, hivyo kuweka udhibiti mikononi mwa kila mtumiaji.
+
+Bitcoin ni mfumo uliosambazwa wa rika-kwa-rika (peer-to-peer). Kwa hivyo, hakuna
+seva kuu au kituo cha udhibiti. Vitengo vya bitcoin
+vimeundwa kupitia mchakato((("bitcoins", "mining")))((("mining"))) unaoitwa "uchimbaji (mining)," ambao unahusisha kufanya
+kazi ya mahesabu mara kwa mara inayorejelea orodha ya miamala ya hivi karibuni ya Bitcoin.
+Mshiriki yeyote katika mtandao wa Bitcoin anaweza kufanya kazi kama mchimbaji (miner),
+kwa kutumia vifaa vyao vya kompyuta kusaidia kulinda usalama wa
+miamala. Kila dakika 10, kwa wastani, mchimbaji mmoja wa Bitcoin anaweza kuongeza usalama kwa
+miamala iliyopita na hulipwa kwa bitcoins mpya kabisa
+na ada zilizolipwa na miamala ya hivi karibuni. Kimsingi, uchimbaji wa Bitcoin
+husambaza utoaji wa sarafu
+na kazi za usafishaji wa benki kuu na kuondoa haja ya benki yoyote kuu.
+
+//-- Math for following paragraph --
+//total_btc = 0
+//for i in range(0, 10_000_000):
+//  total_btc += (50 /  (2**int(i/210000)) )
+//  if total_btc / 21e6 > 0.99:
+//     print(i)
+//     break
+
+Itifaki ya Bitcoin inajumuisha algoriti zilizojengewa ndani zinazosimamia
+kazi ya uchimbaji kote mtandaoni. Ugumu wa kazi ya mahesabu
+ambayo wachimbaji lazima wafanye unabadilishwa kwa njia ya moja kwa moja ili kwamba, kwa wastani,
+mtu anafaulu kila dakika 10 bila kujali ni wachimbaji wangapi
+(na mchakato mwingi kiasi gani) wanashindana wakati wowote. Itifaki pia
+mara kwa mara hupunguza idadi ya bitcoins mpya zinazoundwa,
+ikipunguza jumla ya bitcoins zitakazotengenezwa milele hadi jumla isiyobadilika
+chini ya sarafu milioni 21. Matokeo yake ni kwamba idadi ya bitcoins zilizo
+katika mzunguko hufuata kwa karibu mkondo unaotabiriwa kwa urahisi ambapo nusu ya
+sarafu zilizobaki zinaongezwa kwenye mzunguko kila miaka minne. Karibu na
+kizuizi 1,411,200, ambacho kinatarajiwa kuzalishwa karibu na
+mwaka 2035, 99% ya bitcoins zote
+zitakazowepo zitakuwa zimetolewa. Kutokana na kiwango cha Bitcoin cha kupungua
+cha utoaji, kwa muda mrefu, sarafu ya Bitcoin
+ni ya kupunguka kwa bei. Zaidi ya hayo, hakuna anayeweza kukulazimisha
+kukubali bitcoins yoyote iliyoundwa zaidi ya
+kiwango cha utoaji kilichotarajiwa.
+
+Nyuma ya pazia, Bitcoin pia ni jina la itifaki, mtandao wa rika-kwa-rika, na uvumbuzi wa kompyuta iliyosambazwa. Bitcoin imejengwa juu ya miongo ya utafiti katika kriptografia (cryptography) na mifumo iliyosambazwa na inajumuisha angalau uvumbuzi minne muhimu ulioletwa pamoja katika mchanganyiko wa kipekee na wenye nguvu. Bitcoin inajumuisha:
+
+* Mtandao usio na kitovu wa rika-kwa-rika (itifaki ya Bitcoin)
+* Jarida la muamala wa umma (mlolongo wa vizuizi — blockchain)
+* Seti ya sheria za uthibitisho wa miamala huru na utoaji wa sarafu (sheria za makubaliano — consensus rules)
+* Utaratibu wa kufikia makubaliano ya kimataifa ya usambazaji kwenye mlolongo wa vizuizi ulio sahihi (algoriti ya uthibitisho wa kazi — proof-of-work algorithm)
+
+Kama msanidi, naona Bitcoin kama sawa na intaneti ya pesa, mtandao wa kusambaza thamani na kulinda umiliki wa mali za kidijitali kupitia mahesabu ya usambazaji. Kuna zaidi sana ya Bitcoin kuliko inavyoonekana ((("Bitcoin", "operational overview", startref="bitcoin-operational-overview")))kwa mara ya kwanza.
+
+Katika sura hii tutaanza kwa kuelezea baadhi ya dhana na istilahi kuu, kupata programu muhimu, na kutumia Bitcoin kwa miamala rahisi. Katika sura zifuatazo, tutaanza kufungua tabaka za teknolojia zinazofanya Bitcoin iwezekane na kuchunguza jinsi ya ndani ya mtandao na itifaki ya Bitcoin.
+
+.Sarafu za Kidijitali Kabla ya Bitcoin
+****
+
+Kuibuka((("digital currencies, history of")))((("history", "of digital currencies", secondary-sortas="digital currencies")))((("cryptography"))) kwa sarafu za kidijitali zinazofaa kunatokana kwa karibu na maendeleo katika kriptografia. Hii haina mshangao ukizingatia changamoto za kimsingi zinazohusika na kutumia biti kuwakilisha thamani inayoweza kubadilishwa kwa bidhaa na huduma. Maswali matatu ya kimsingi kwa mtu yeyote anayekubali pesa ya kidijitali ni:
+
+*     Je, ninaweza kuamini kwamba pesa ni halisi na si ya kuigwa?
+*     Je, ninaweza kuamini kwamba pesa ya kidijitali inaweza kutumiwa mara moja tu (inayojulikana kama tatizo la "matumizi mara mbili" — "double-spend")?
+*     Je, ninaweza kuhakikisha kwamba hakuna mtu mwingine anayeweza kudai pesa hii ni yake na si yangu?
+
+Watoa pesa za karatasi daima wanazozana na tatizo la kuiga kwa kutumia karatasi na teknolojia ya uchapishaji inayozidi kuwa ya kisasa. Pesa za kimwili zinashughulikia tatizo la matumizi mara mbili kwa urahisi kwa sababu noti ile ile ya karatasi haiwezi kuwa sehemu mbili kwa wakati mmoja. Bila shaka, pesa za kawaida pia mara nyingi huhifadhiwa na kupitishwa kwa njia ya kidijitali. Katika hali hizi, matatizo ya kuiga na matumizi mara mbili yanashughulikiwa kwa kusafisha miamala yote ya kielektroniki kupitia mamlaka kuu zenye mtazamo wa kimataifa wa sarafu iliyo katika mzunguko. Kwa pesa ya kidijitali, ambayo haiwezi kufaidika na wino wa kipekee au mistari ya holographic, kriptografia hutoa msingi wa kuamini halali ya madai ya mtumiaji ya thamani. Hasa, saini za kidijitali za kriptografia (cryptographic digital signatures) humwezesha mtumiaji kutia saini mali ya kidijitali au muamala kuthibitisha umiliki wa mali hiyo. Kwa usanifu unaofaa, saini za kidijitali pia zinaweza kutumika kushughulikia tatizo la matumizi mara mbili.
+
+Wakati kriptografia ilipoanza kupatikana kwa upana zaidi na kueleweka mwishoni mwa miaka ya 1980, watafiti wengi walianza kujaribu kutumia kriptografia kujenga sarafu za kidijitali. Miradi hii ya mapema ya sarafu za kidijitali ilitoa pesa za kidijitali, kawaida zikitegemea sarafu ya taifa au chuma cha thamani kama vile dhahabu.
+
+Ingawa sarafu hizi za mapema za kidijitali zilifanya kazi, zilikuwa na kitovu na, kwa sababu hiyo, zilikuwa rahisi kushambuliwa na serikali na wahalifu wa kidijitali. Sarafu za mapema za kidijitali zilitumia chumba cha usafishaji cha kati kusafisha miamala yote kwa vipindi vya kawaida, kama mfumo wa benki wa jadi. Kwa bahati mbaya, katika hali nyingi sarafu hizi za kidijitali za mwanzo zililenga na serikali zilizosumbuka na hatimaye zilifutwa kwa njia ya kisheria. Baadhi zilifeli kwa njia ya kushangaza wakati kampuni mama ilipofutwa haraka. Ili iwe imara dhidi ya uingiliaji kati na wapinzani, iwe ni serikali halali au wahalifu, sarafu ya kidijitali _isiyokuwa na kitovu (decentralized)_ ilihitajika ili kuepuka mahali pa shambulio la kipenyo. Bitcoin ni mfumo kama huo, ulioundwa bila kitovu, na huru kutoka kwa mamlaka yoyote ya kati au kituo cha udhibiti kinachoweza kushambuliwa au kuharibiwa.
+
+****
+
+=== Historia ya Bitcoin
+
+Bitcoin((("Bitcoin", "history of")))((("history", "of Bitcoin", secondary-sortas="Bitcoin")))((("Nakamoto, Satoshi"))) ilianzishwa kwanza mwaka 2008 na kuchapishwa kwa
+karatasi iliyoitwa "Bitcoin: A Peer-to-Peer Electronic Cash
+System,"footnote:[https://oreil.ly/KUaBM["Bitcoin: A Peer-to-Peer Electronic Cash System"],
+Satoshi Nakamoto.] iliyoandikwa chini ya
+jina bandia la Satoshi Nakamoto (tazama <<satoshi_whitepaper>>). Nakamoto
+alichanganya uvumbuzi kadhaa wa awali kama vile saini za kidijitali na Hashcash kuunda
+mfumo wa pesa taslimu ya kielektroniki usio na kitovu kabisa ambao hautegemei
+mamlaka ya kati kwa utoaji wa sarafu au usafishaji na uthibitisho wa
+miamala. Uvumbuzi muhimu ulikuwa kutumia mfumo wa mahesabu ya usambazaji
+(unaoitwa algoriti ya "uthibitisho wa kazi" — "proof-of-work" algorithm) kufanya
+bahati nasibu ya kimataifa kila dakika 10 kwa wastani, ikiruhusu mtandao usio na kitovu
+kufikia _makubaliano (consensus)_ kuhusu hali ya miamala. Hii
+hutatua kwa kina tatizo la matumizi mara mbili ambapo kitengo kimoja cha sarafu
+kinaweza kutumika mara mbili. Hapo awali, tatizo la matumizi mara mbili lilikuwa udhaifu
+wa sarafu ya kidijitali na lilishughulikiwa kwa kusafisha miamala yote
+kupitia chumba cha usafishaji cha kati.
+
+Mtandao wa Bitcoin ulianza mwaka 2009, kulingana na utekelezaji wa kumbukumbu
+uliochapishwa na Nakamoto na tangu wakati huo ukarekebishwa na wasanidi wa programu wengi wengine. Idadi na nguvu za mashine zinazoendesha((("proof-of-work algorithm", seealso="mining"))) algoriti ya uthibitisho wa kazi (uchimbaji) inayotoa usalama na ustahimilivu kwa Bitcoin zimekua kwa kasi ya kigeometri, na nguvu yao ya pamoja ya mahesabu sasa inazidi idadi ya pamoja ya shughuli za mahesabu za
+kompyuta kuu bora zaidi duniani.
+
+Satoshi Nakamoto alijiondoa hadharani Aprili 2011, akiacha jukumu la kuendeleza msimbo na mtandao kwa kikundi cha kujitolea cha wasanidi. Utambulisho wa mtu au watu nyuma ya Bitcoin bado haujulikani. Hata hivyo, wala Satoshi Nakamoto wala mtu mwingine yeyote hahadhibiti mfumo wa Bitcoin kwa mtu binafsi, ambao unafanya kazi kulingana na kanuni za hisabati zinazowazi kabisa, msimbo wa chanzo wazi, na makubaliano kati ya washiriki. Uvumbuzi wenyewe ni wa msingi na tayari umezaa sayansi mpya katika nyanja za mahesabu ya usambazaji, uchumi, na uchumi wa takwimu.
+
+.Suluhisho kwa Tatizo la Mahesabu ya Usambazaji
+****
+Uvumbuzi wa Satoshi Nakamoto ((("Byzantine Generals&#x27; Problem")))((("distributed computing problem")))ni
+pia suluhisho la vitendo na la riwaya kwa tatizo katika
+mahesabu ya usambazaji, linalojulikana kama "Tatizo la Majenerali wa Byzantine" (Byzantine Generals' Problem). Kwa ufupi, tatizo
+linajumuisha kujaribu kupata washiriki wengi bila kiongozi
+kukubaliana na njia ya kuchukua kwa kubadilishana taarifa kwenye
+mtandao usioaminika na unaoathiriwa. Suluhisho la Satoshi Nakamoto, ambalo linatumia dhana ya
+uthibitisho wa kazi kufikia makubaliano _bila mamlaka kuu inayoaminika_,
+linawakilisha uvukaji mkubwa katika mahesabu ya usambazaji.
+****
+
+=== Kuanza
+
+Bitcoin((("Bitcoin", "wallets", see="wallets")))((("wallets", "explained"))) ni itifaki inayoweza kutumiwa kwa kutumia
+programu inayozungumza itifaki. "Mkoba wa Bitcoin" (Bitcoin wallet) ndio
+kiolesura cha kawaida cha mtumiaji kwa mfumo wa Bitcoin, kama vile kivinjari cha wavuti
+ndio kiolesura cha kawaida cha mtumiaji kwa itifaki ya HTTP. Kuna
+utekelezaji na alama nyingi za mikoba ya Bitcoin, kama vile kuna
+alama nyingi za vivinjari vya wavuti (k.m., Chrome, Safari, na Firefox).
+Na kama tunavyopenda vivinjari vyetu,
+mikoba ya Bitcoin hutofautiana kwa ubora, utendaji, usalama, faragha, na
+kuaminika. Pia kuna utekelezaji wa kumbukumbu wa itifaki ya Bitcoin
+unaojumuisha mkoba, unaojulikana kama "Bitcoin Core," ambao
+umetokana na utekelezaji wa asili ulioandikwa na Satoshi Nakamoto.
+
+==== Kuchagua Mkoba wa Bitcoin
+
+Mikoba ya Bitcoin ((("wallets", "choosing")))((("selecting", "wallets")))((("choosing", see="selecting")))ni moja ya programu zinazoendelezwa kwa nguvu zaidi katika mfumo wa ikolojia wa Bitcoin. Kuna ushindani mkubwa, na ingawa mkoba mpya labda unatengenezwa sasa hivi, mikoba kadhaa ya mwaka uliopita haitunzwi tena kikamilifu. Mikoba mingi inazingatia majukwaa maalum au matumizi maalum na baadhi inafaa zaidi kwa waanziaji wakati wengine wamejaa vipengele kwa watumiaji wa kina. Kuchagua mkoba ni suala la kibinafsi sana na inategemea matumizi na ujuzi wa mtumiaji. Kwa hivyo, ingekuwa bure kupendekeza alama au mkoba maalum. Hata hivyo, tunaweza kuainisha mikoba ya Bitcoin kulingana na jukwaa na kazi yake na kutoa uwazi fulani kuhusu aina zote tofauti za mikoba iliyopo. Inastahili kujaribu mikoba kadhaa tofauti hadi upate inayofaa mahitaji yako.
+
+===== Aina za Mikoba ya Bitcoin
+Mikoba ya Bitcoin ((("wallets", "types of", id="wallet-type")))inaweza kuainishwa kama ifuatavyo, kulingana na jukwaa:
+
+Mkoba wa eneo-kazi (Desktop wallet):: Mkoba ((("desktop wallets")))wa eneo-kazi ulikuwa aina ya kwanza ya mkoba wa Bitcoin iliyoundwa kama utekelezaji wa kumbukumbu. Watumiaji wengi wanaendesha mikoba ya eneo-kazi kwa sababu ya vipengele, uhuru, na udhibiti wanaotoa. Kukimbia kwenye mifumo ya uendeshaji ya matumizi ya jumla kama vile Windows na macOS kuna hasara fulani za usalama, hata hivyo, kwani majukwaa haya mara nyingi yana usalama mbaya na hayasanidiwi vizuri.
+
+Mkoba wa simu (Mobile wallet):: Mkoba ((("mobile wallets")))wa simu ndio aina ya kawaida zaidi ya mkoba wa Bitcoin. Ukikimbia kwenye mifumo ya uendeshaji ya simu mahiri kama vile Apple iOS na Android, mikoba hii mara nyingi ni chaguo zuri kwa watumiaji wapya. Mingi imeundwa kwa urahisi na utumiaji rahisi, lakini pia kuna mikoba ya simu yenye vipengele vyote kwa watumiaji wa nguvu. Ili kuepuka kupakua na kuhifadhi kiasi kikubwa cha data, mikoba mingi ya simu hupokea taarifa kutoka kwa seva za mbali, ikipunguza faragha yako kwa kufichua kwa wahusika wa tatu taarifa kuhusu anwani na salio zako za Bitcoin.
+
+Mkoba wa wavuti (Web wallet):: Mikoba ya wavuti ((("web wallets")))hupatikana kupitia kivinjari cha wavuti na kuhifadhi mkoba wa mtumiaji kwenye seva inayomilikiwa na mhusika wa tatu. Hii ni sawa na barua pepe ya wavuti kwa kuwa inategemea kabisa seva ya mhusika wa tatu. Baadhi ya huduma hizi zinafanya kazi kwa kutumia msimbo wa upande wa mteja unaokimbia katika kivinjari cha mtumiaji, ambao huweka udhibiti wa funguo za Bitcoin mikononi mwa mtumiaji, ingawa utegemezi wa mtumiaji kwenye seva bado unaathiri faragha yao. Wengi, hata hivyo, huchukua udhibiti wa funguo za Bitcoin kutoka kwa watumiaji kubadilishana na urahisi wa matumizi. Inashauriwa kutohifadhi kiasi kikubwa cha bitcoin kwenye mifumo ya wahusika wa tatu.
+
+Vifaa vya kutia saini vya vifaa (Hardware signing devices):: Vifaa vya kutia saini vya vifaa((("hardware signing devices"))) ni vifaa vinavyoweza
+kuhifadhi funguo na kutia saini miamala kwa kutumia vifaa na programu dhibiti maalum. Kawaida
+huunganishwa na mkoba wa eneo-kazi, simu, au wavuti kupitia kebo ya USB,
+mawasiliano ya karibu-ya-uwanja (near-field-communication — NFC), au kamera yenye misimbo ya QR. Kwa kushughulikia
+shughuli zote zinazohusiana na Bitcoin kwenye vifaa maalum, vifaa hivi vya kutia saini
+vina mazingira ya chini ya aina nyingi za mashambulizi. Vifaa vya kutia saini vya vifaa
+wakati mwingine huitwa "mikoba ya vifaa" (hardware wallets), lakini lazima viwe
+vikiunganishwa na mkoba wenye vipengele vyote kutuma na kupokea miamala, na
+usalama na faragha inayotolewa na mkoba huo uliounganishwa inacheza jukumu muhimu
+katika kiwango cha usalama na faragha ambacho mtumiaji hupata wakati wa kutumia
+kifaa cha kutia saini cha vifaa.
+
+===== Nodi Kamili dhidi ya Mwepesi
+Njia nyingine ya kuainisha mikoba ya Bitcoin ni kwa kiwango cha uhuru wao na jinsi wanavyoingiliana na mtandao wa Bitcoin:
+
+Nodi kamili (Full node):: Nodi kamili ((("full nodes")))ni programu inayothibitisha
+historia yote ya miamala ya Bitcoin (kila muamala na kila mtumiaji, milele). Kwa hiari, nodi kamili pia zinaweza kuhifadhi
+miamala iliyothibitishwa hapo awali na kutoa data kwa programu nyingine za Bitcoin, iwe kwenye
+kompyuta ile ile au kupitia intaneti. Nodi kamili inatumia rasilimali kubwa za kompyuta — takriban sawa na kutazama video ya kutiririka ya saa moja kwa kila siku ya miamala ya Bitcoin — lakini nodi kamili inatoa uhuru kamili kwa watumiaji wake.
+
+Mteja mwepesi (Lightweight client)::
+Mteja mwepesi,((("lightweight clients")))((("simplified-payment-verification (SPV) clients")))((("SPV (simplified-payment-verification) clients"))) pia anajulikana kama mteja wa uthibitisho-wa-malipo-rahisi (simplified-payment-verification — SPV),
+huunganishwa na nodi kamili au seva nyingine ya mbali kupokea na kutuma
+taarifa za muamala wa Bitcoin, lakini huhifadhi mkoba wa mtumiaji mahali pale pale,
+kuthibitisha kwa sehemu miamala anayoipokea, na kuunda kwa kujitegemea
+miamala inayotoka.
+
+Mteja wa API ya mhusika wa tatu (Third-party API client):: Mteja wa API ya mhusika wa tatu
+((("third-party API clients"))) ni mmoja anayeingiliana na Bitcoin kupitia mfumo wa wahusika wa tatu
+wa APIs badala ya
+kuunganishwa na mtandao wa Bitcoin moja kwa moja. Mkoba unaweza kuhifadhiwa na
+mtumiaji au na seva za wahusika wa tatu, lakini mteja anaamini seva ya mbali
+kumpa taarifa sahihi na kulinda ((("wallets", "types of", startref="wallet-type")))faragha yake.
+
+[TIP]
+====
+Bitcoin ((("Bitcoin", "as peer-to-peer network", secondary-sortas="peer-to-peer network")))((("peer-to-peer networks, Bitcoin as")))((("peers")))((("clients")))ni mtandao wa rika-kwa-rika (P2P). Nodi kamili ni _rika (peers):_
+kila rika huthibitisha kwa kujitegemea kila muamala uliothibitishwa na inaweza
+kutoa data kwa mtumiaji wake kwa mamlaka kamili. Mikoba mwepesi
+na programu nyingine ni _wateja (clients):_ kila mteja hutegemea rika moja au zaidi
+kumpa data sahihi. Wateja wa Bitcoin wanaweza kufanya uthibitisho wa pili
+kwenye baadhi ya data wanayoipokea na kuunda miunganiko na
+rika nyingi ili kupunguza utegemezi wao kwenye uaminifu wa rika moja,
+lakini usalama wa mteja hatimaye unategemea uaminifu wa
+rika zake.
+====
+
+===== Nani Anadhibiti Funguo
+
+Kuzingatia((("wallets", "key control")))((("keys, control of")))((("bitcoins", "key control"))) zaidi muhimu ni _nani anadhibiti funguo_. Kama
+tutakavyoona katika sura zinazofuata, ufikiaji wa bitcoins
+unasimamishwa na "ufunguo wa siri (private keys)," ambao ni kama PIN ndefu sana. Kama
+wewe peke yako ndiye mwenye udhibiti wa funguo hizi za siri,
+uko katika udhibiti wa bitcoins zako. Kinyume chake, kama huna
+udhibiti, basi bitcoins zako zinasimamishwa na mhusika wa tatu ambaye
+hatimaye anadhibiti fedha zako kwa niaba yako. Programu ya kusimamia funguo inaanguka katika makundi mawili
+muhimu kulingana na udhibiti: _mikoba_, ambapo
+wewe unadhibiti funguo, na fedha na akaunti zenye walezi ambapo mhusika fulani
+wa tatu anadhibiti funguo. Kusisitiza hili, mimi (Andreas)
+nilitengeneza msemo: _Funguo zako, sarafu zako. Si funguo zako, si sarafu zako_.
+
+Kwa kuchanganya uainishaji huu, mikoba mingi ya Bitcoin inaanguka katika vikundi vichache,
+na vitatu vya kawaida zaidi vikijumuisha nodi kamili ya eneo-kazi
+(wewe unadhibiti funguo), mkoba mwepesi wa simu (wewe unadhibiti funguo), na
+akaunti za wavuti na wahusika wa tatu (huna udhibiti wa funguo). Mstari kati ya makundi tofauti
+mara nyingi ni mzito, kwani programu inakimbia kwenye majukwaa mengi na inaweza
+kuingiliana na mtandao kwa njia tofauti.
+
+==== Kuanza Haraka
+
+Alice si mtumiaji wa kiufundi na hivi karibuni tu alisikia kuhusu Bitcoin kutoka kwa rafiki yake Joe. Wakati wa sherehe, Joe anafafanua kwa shauku Bitcoin kwa kila mtu karibu naye na anatoa onyesho. Akiwa na nia, Alice anauliza jinsi ya kuanza na Bitcoin. Joe anasema mkoba wa simu ndio bora kwa watumiaji wapya na anapendekeza mikoba kadhaa ya kupendeza kwake. Alice anapakua moja ya mapendekezo ya Joe na kuiinstall kwenye simu yake.
+
+Alipoendesha programu yake ya mkoba kwa mara ya kwanza, Alice alichagua
+chaguo la kuunda mkoba mpya wa Bitcoin. Kwa sababu mkoba aliochagua
+ni mkoba ((("wallets", "noncustodial")))((("noncustodial wallets")))asiyehodhi (noncustodial wallet), Alice (na Alice peke yake) atakuwa
+katika udhibiti wa funguo zake. Kwa hivyo, anabeba jukumu la kuzihifadhi nakala za akiba,
+kwani kupoteza funguo kunamaanisha anapoteza ufikiaji wa bitcoins zake. Ili
+kurahisisha hili, mkoba wake unazalisha _msimbo wa kurejesha (recovery code)_ ambao unaweza kutumika
+kurejesha mkoba wake.
+
+[[recovery_code_intro]]
+==== Misimbo ya Kurejesha
+
+Mikoba ((("wallets", "recovery codes", id="wallet-recovery")))((("recovery codes", id="recovery-code")))((("backing up", "recovery codes", see="recovery codes")))mingi ya kisasa ya Bitcoin isiyohodhi itatoa msimbo wa kurejesha
+kwa mtumiaji wao
+kuhifadhi nakala ya akiba. Msimbo wa kurejesha kawaida unajumuisha nambari, herufi, au maneno
+yaliyochaguliwa kwa nasibu na programu, na hutumika kama msingi wa funguo
+zinazozalishwa na mkoba. Tazama <<recovery_code_sample>> kwa
+mifano.
+
+[[recovery_code_sample]]
+++++
+<table id="recovery_code_sample">
+<caption>Sample recovery codes</caption>
+<thead>
+<tr>
+<th>Wallet</th>
+<th>Recovery code</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>BlueWallet</p></td>
+<td><p>(1) media (2) suspect (3) effort (4) dish (5) album (6) shaft (7) price (8) junk (9) pizza (10) situate (11) oyster (12) rib</p></td>
+</tr>
+<tr>
+<td><p>Electrum</p></td>
+<td><p>nephew dog crane clever quantum crazy purse traffic repeat fruit old clutch</p></td>
+</tr>
+<tr>
+<td><p>Muun</p></td>
+<td><p>LAFV TZUN V27E NU4D WPF4 BRJ4 ELLP BNFL</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+[TIP]
+====
+Msimbo wa kurejesha ((("mnemonic phrases", see="recovery codes")))((("seed phrases", see="recovery codes")))wakati mwingine unaitwa "mnemonic" au "msemo wa mnemonic,"
+ambayo inamaanisha unapaswa kukariri msemo huo, lakini kuandika msemo huo
+kwenye karatasi kunahitaji kazi kidogo na huwa wa kuaminika zaidi kuliko
+kumbukumbu za watu wengi. Jina lingine mbadala ni "msemo wa mbegu" (seed phrase) kwa sababu
+hutoa ingizo ("mbegu" — "seed") kwa kazi inayozalisha funguo zote za
+mkoba.
+====
+
+Kitu chochote kikitokea kwa mkoba wa Alice, anaweza kupakua nakala mpya ya
+programu ya mkoba wake na kuingiza msimbo huu wa kurejesha kujenga upya hifadhidata ya mkoba wa miamala yote
+kwenye mlolongo wa vizuizi aliyowahi kutuma au kupokea.
+Hata hivyo, kurejesha kutoka kwa msimbo wa kurejesha peke yake hakutarejesha data yoyote ya ziada
+Alice aliyoingiza kwenye mkoba wake, kama lebo alizoziambatanisha
+na anwani au miamala fulani. Ingawa kupoteza ufikiaji wa
+metadata hiyo si muhimu kama kupoteza ufikiaji wa pesa, bado inaweza
+kuwa muhimu kwa njia yake. Fikiria unahitaji kukagua taarifa ya zamani ya
+benki au kadi ya mkopo na jina la kila taasisi uliyolipa (au
+iliyokulipa) limefutwa. Kuzuia kupoteza metadata, mikoba mingi
+hutoa kipengele cha ziada cha nakala ya akiba zaidi ya misimbo ya kurejesha.
+
+Kwa mikoba fulani, kipengele hicho cha ziada cha nakala ya akiba kina umuhimu zaidi
+leo kuliko ilivyokuwa. Malipo mengi ya Bitcoin ((("offchain technology")))sasa hivi yanafanywa kwa kutumia
+teknolojia ya _nje ya mlolongo (offchain)_, ambapo si kila malipo yanahifadhiwa kwenye mlolongo wa vizuizi wa umma. Hii hupunguza gharama za watumiaji na kuboresha faragha, miongoni mwa faida nyingine, lakini inamaanisha kwamba utaratibu kama misimbo ya kurejesha unaotegemea
+data ya kwenye mlolongo hauwezi kuhakikisha urejeshaji wa bitcoins zote za mtumiaji. Kwa
+programu zenye msaada wa nje ya mlolongo, ni muhimu kufanya nakala za akiba za mara kwa mara
+za hifadhidata ya mkoba.
+
+Inastahili kuzingatia kwamba, unapopokea fedha kwa mkoba mpya wa simu kwa mara ya kwanza,
+mikoba mingi mara nyingi itathibitisha upya kwamba umehifadhi kwa usalama nakala ya akiba ya
+msimbo wako wa kurejesha. Hii inaweza kuanzia ombi rahisi hadi kuhitaji
+mtumiaji kuingiza tena msimbo kwa mkono.
+
+[WARNING]
+====
+Ingawa mikoba mingi halali itakuomba kuingiza upya
+msimbo wako wa kurejesha, pia kuna programu nyingi za programu hasidi zinazowiga
+muundo wa mkoba, zinadai uingize msimbo wako wa kurejesha, na kisha
+kupeleka msimbo wowote ulioingizwa kwa msanidi wa programu hasidi ili waweze kuiba
+fedha zako. Hii ni sawa na tovuti za ulaghai zinazojaribu
+kukudanganya uwape kauli yako ya siri ya benki. Kwa programu nyingi za mkoba, nyakati pekee watakizokuomba
+msimbo wako wa kurejesha ni wakati wa kusanidi kwa mara ya kwanza (kabla
+ya kupokea bitcoins yoyote) na wakati wa kurejesha (baada
+ya kupoteza ufikiaji wa mkoba wako wa asili). Kama programu
+inakuomba msimbo wako wa kurejesha wakati mwingine wowote, wasiliana na mtaalamu kuamua
+huna ((("wallets", "recovery codes", startref="wallet-recovery")))((("recovery codes", startref="recovery-code")))kujaribu kulaghaiwa.
+====
+
+==== Anwani za Bitcoin
+
+Alice ((("addresses", "explained")))sasa yuko tayari kuanza kutumia mkoba wake mpya wa Bitcoin. Programu ya mkoba wake ilizalisha kwa nasibu ufunguo wa siri (private key) (ulioelezwa kwa undani zaidi katika <<private_keys>>) ambao utatumika kupata anwani za Bitcoin zinazohusika na mkoba wake. Wakati huu, anwani za Bitcoin za Alice hazijulikani na mtandao wa Bitcoin au "zimesajiliwa" na sehemu yoyote ya mfumo wa Bitcoin. Anwani za Bitcoin za Alice ni nambari tu zinazofanana na ufunguo wake wa siri ambao anaweza kutumia kudhibiti ufikiaji wa fedha. Anwani zinazalishwa kwa kujitegemea na mkoba wake bila kumbukumbu au usajili na huduma yoyote.
+
+[TIP]
+====
+Kuna ((("invoices")))aina mbalimbali za anwani za Bitcoin na miundo ya ankara. Anwani na ankara zinaweza kushirikiwa na watumiaji wengine wa Bitcoin ambao wanaweza kuzitumia kutuma bitcoins moja kwa moja kwenye mkoba wako. Unaweza kushiriki anwani au ankara na watu wengine bila kuwa na wasiwasi kuhusu usalama wa bitcoins zako. Tofauti na nambari ya akaunti ya benki, hakuna anayejua moja ya anwani zako za Bitcoin anayeweza kutoa pesa kutoka kwa mkoba wako — lazima uanzishe matumizi yote. Hata hivyo, ukimpa watu wawili anwani ile ile, wataweza kuona wangapi wa bitcoins mtu mwingine aliyokutumia. Ukichapisha anwani yako hadharani, kila mtu ataweza kuona kiasi gani cha bitcoin watu wengine walituma kwenye anwani hiyo. Kulinda faragha yako, unapaswa kuzalisha ankara mpya yenye anwani mpya kila wakati unaoomba malipo.
+====
+
+==== Kupokea Bitcoin
+
+Alice((("bitcoins", "receiving")))((("receiving bitcoins"))) anatumia kitufe cha _Pokea (Receive)_, ambacho kinaonyesha msimbo wa QR (QR code), unaoonyeshwa katika <<wallet_receive>>.
+
+[role="width-50"]
+[[wallet_receive]]
+.Alice anatumia skrini ya Kupokea kwenye mkoba wake wa simu wa Bitcoin na kuonyesha anwani yake katika muundo wa msimbo wa QR.
+image::images/mbc3_0101.png["Wallet receive screen with QR code displayed.  Image derived from Bitcoin Design Guide CC-BY"]
+
+Msimbo wa QR ni mraba wenye mchoro wa nukta nyeusi na nyeupe, ukifanya kazi kama aina ya msimbo wa baa (barcode) unaowakilisha taarifa ile ile katika muundo ambao unaweza kuskanwa na kamera ya simu mahiri ya Joe.
+
+[WARNING]
+====
+Fedha yoyote iliyotumwa kwa anwani katika kitabu hiki itapotea. Ukitaka
+kujaribu kutuma bitcoins, tafadhali fikiria kuzichangia kwa shirika la hisani
+linayokubali bitcoin.
+====
+
+[[getting_first_bitcoin]]
+==== Kupata Bitcoin Yako ya Kwanza
+
+Kazi((("bitcoins", "acquiring", id="bitcoin-acquire")))((("acquiring bitcoins", id="acquire-bitcoin"))) ya kwanza kwa watumiaji wapya ni kupata bitcoin fulani.
+
+Miamala ya Bitcoin haiwezi kubatilishwa. Mitandao mingi ya malipo ya kielektroniki kama vile kadi za mkopo, kadi za debit, PayPal, na uhamisho wa akaunti ya benki inaweza kubatilishwa. Kwa mtu anayeuza bitcoin, tofauti hii inaanzisha hatari kubwa sana kwamba mnunuzi atabatilisha malipo ya kielektroniki baada ya kupokea bitcoin, kimsingi akihadaa muuzaji. Kupunguza hatari hii, makampuni yanayokubali malipo ya kielektroniki ya jadi kwa kubadilishana na bitcoin kawaida yanahitaji wanunuzi kupitia uthibitisho wa utambulisho na ukaguzi wa ustahili wa mkopo, ambao unaweza kuchukua siku kadhaa au wiki. Kama mtumiaji mpya, hii inamaanisha huwezi kununua bitcoin mara moja kwa kadi ya mkopo. Hata hivyo, kwa subira kidogo na fikira za ubunifu, hutahitaji.
+
+Hapa kuna baadhi ya njia za kupata bitcoin kama mtumiaji mpya:
+
+* Pata rafiki ambaye ana bitcoins na ununue moja kwa moja kutoka kwake. Watumiaji wengi wa Bitcoin wanaanza hivi. Njia hii ni rahisi kabisa. Njia moja ya kukutana na watu wanaomiliki bitcoins ni kuhudhuria mkutano wa Bitcoin wa mahali pa kuishi ulioorodheshwa kwenye pass:[<a href="https://meetup.com" class="orm:hideurl">Meetup.com</a>].
+* Pata bitcoin kwa kuuza bidhaa au huduma kwa bitcoin. Ukiwa msanidi, uuze ujuzi wako wa usanidi wa programu. Ukiwa mpiga nywele, kata nywele kwa bitcoins.
+* Tumia ATM ya Bitcoin katika mji wako. ATM ya Bitcoin ni mashine inayokubali pesa taslimu na kutuma bitcoins kwenye mkoba wako wa Bitcoin wa simu mahiri.
+* Tumia((("bitcoins", "currency exchanges")))((("currency exchanges"))) soko la ubadilishaji wa sarafu ya Bitcoin lililounganishwa na akaunti yako ya benki. Nchi nyingi sasa zina masoko ya ubadilishaji wa sarafu yanayotoa soko kwa wanunuzi na wauzaji kubadilishana bitcoins na sarafu ya ndani. Huduma za kuorodhesha kiwango cha ubadilishaji, kama vile https://bitcoinaverage.com[BitcoinAverage], mara nyingi zinaonyesha orodha ya masoko ya ubadilishaji wa Bitcoin kwa kila sarafu.
+
+[TIP]
+====
+Moja ya faida za
+Bitcoin juu ya mifumo mingine ya malipo ni kwamba, inapotumika vizuri, inatoa
+faragha zaidi sana kwa watumiaji. Kupata, kushikilia, na kutumia
+bitcoin hauhitajiki kufichua taarifa nyeti na zinazotambulisha kibinafsi kwa wahusika wa tatu. Hata hivyo, bitcoin inapogusa mifumo ya jadi, kama vile masoko ya ubadilishaji wa sarafu, kanuni za kitaifa na za kimataifa mara nyingi zinatumika. Ili kubadilishana bitcoin kwa sarafu yako ya taifa, mara nyingi utahitajika kutoa uthibitisho wa utambulisho na taarifa za benki. Watumiaji wanapaswa kujua kwamba mara anwani ya Bitcoin inapounganishwa na utambulisho, miamala mingine inayohusiana ya Bitcoin pia inaweza kuwa rahisi kutambuliwa na kufuatiliwa — ikiwa ni pamoja na miamala iliyofanywa mapema. Hii ni moja ya sababu watumiaji wengi wanachagua kudumisha akaunti za soko la kubadilishana zilizotengwa tofauti na mikoba yao.
+====
+
+Alice alianzishwa kwa Bitcoin na rafiki, kwa hivyo ana njia rahisi ya kupata bitcoins zake za kwanza. Ifuatayo, tutaangalia jinsi anavyonunua bitcoins kutoka kwa rafiki yake Joe na jinsi Joe anavyotuma bitcoins kwake ((("bitcoins", "acquiring", startref="bitcoin-acquire")))((("acquiring bitcoins", startref="acquire-bitcoin")))mkobani mwake.
+
+[[bitcoin_price]]
+==== Kutafuta Bei ya Sasa ya Bitcoin
+
+Kabla ((("bitcoins", "exchange rate", id="bitcoin-exchange-rate")))((("exchange rate", id="exchange-rate")))((("current price of bitcoins", id="current-price")))Alice kununua bitcoin kutoka kwa Joe, lazima wakubaliane kuhusu _kiwango cha ubadilishaji (exchange rate)_ kati ya bitcoin na dola za Marekani. Hii inaleta swali la kawaida kwa wale wapya kwa Bitcoin: "Nani anaweka bei ya bitcoins?" Jibu fupi ni kwamba bei inawekwa na masoko.
+
+Bitcoin, kama sarafu nyingine nyingi, ina _kiwango cha ubadilishaji kinachoelea (floating exchange rate)_. Hiyo inamaanisha thamani ya bitcoin hubadilika kulingana na usambazaji na mahitaji katika masoko mbalimbali ambapo inafanyiwa biashara. Kwa mfano, "bei" ya bitcoin kwa dola za Marekani imehesabiwi katika kila soko kulingana na biashara ya hivi karibuni zaidi ya bitcoins na dola za Marekani. Kwa hivyo, bei huwa inabadilika kwa dakika kila sekunde kadhaa. Huduma ya bei itakusanya bei kutoka masoko kadhaa na kuhesabu wastani wa uzito wa kiasi unaowakilisha kiwango cha ubadilishaji wa soko pana la jozi ya sarafu (k.m., BTC/USD).
+
+Kuna programu na tovuti mamia ambazo zinaweza kutoa kiwango cha sasa cha soko. Hapa kuna baadhi ya maarufu zaidi:
+
+https://bitcoinaverage.com[Bitcoin Average]:: Tovuti inayotoa mtazamo rahisi wa wastani uliopimwa kwa kiasi kwa kila sarafu.
+https://coincap.io[CoinCap]:: Huduma inayoorodhesha ukubwa wa soko na kiwango cha ubadilishaji wa mamia ya sarafu za kriptografia, ikiwa ni pamoja na bitcoins.
+https://oreil.ly/ACieC[Chicago Mercantile Exchange Bitcoin Reference Rate]:: Kiwango cha kumbukumbu kinachoweza kutumika kwa kumbukumbu ya taasisi na ya kimkataba, kinachotolewa kama sehemu ya mipasho ya data ya uwekezaji na CME.
+
+Mbali na tovuti hizi mbalimbali na programu, mikoba fulani ya Bitcoin
+itabadilisha kiotomatiki kiasi kati ya bitcoin na sarafu nyingine.
+
+[[sending_receiving]]
+==== Kutuma na Kupokea Bitcoin
+
+Alice ((("bitcoins", "spending", id="bitcoin-send")))((("spending bitcoins", id="send-bitcoin")))((("bitcoins", "receiving", id="bitcoin-receive")))((("receiving bitcoins", id="receive-bitcoin")))ameamua kununua bitcoin 0.001. Baada yake na Joe kuangalia kiwango cha ubadilishaji, anampa Joe kiasi kinachofaa cha pesa taslimu, anafungua programu yake ya mkoba wa simu, na kuchagua Pokea. Hii inaonyesha msimbo wa QR wenye anwani ya kwanza ya Bitcoin ya Alice.
+
+Joe kisha huchagua Tuma kwenye mkoba wa simu yake na kufungua kiskaneli cha msimbo wa QR. Hii humruhusu Joe kuskanisha msimbo wa baa kwa kamera ya simu yake ili asihitaji kuandika anwani ya Bitcoin ya Alice, ambayo ni ndefu sana.
+
+Joe sasa ana anwani ya Bitcoin ya Alice imewekwa kama mpokea. Joe huingiza kiasi kama bitcoin 0.001 (BTC); tazama <<wallet-send>>. Mikoba fulani inaweza kuonyesha kiasi katika mfumo mwingine wa dhehebu: 0.001 BTC ni millibitcoin 1 (mBTC) au satoshi 100,000 (sats).
+
+Mikoba fulani pia inaweza kupendekeza Joe aingize lebo kwa muamala huu; kama ni hivyo, Joe huingiza "Alice". Wiki au miezi kutoka sasa, hii itasaidia Joe kukumbuka kwa nini alituma bitcoin 0.001 hizi. Mikoba fulani pia inaweza kumwuliza Joe kuhusu ada. Kulingana na mkoba na jinsi muamala unavyotumwa, mkoba unaweza kumwomba Joe aingize kiwango cha ada ya muamala au kumwonyesha ada iliyopendekezwa (au kiwango cha ada). Kadri ada ya muamala inavyokuwa juu, ndivyo muamala unavyothibitishwa haraka zaidi (tazama <<confirmations>>).
+
+[[wallet-send]]
+.Skrini ya kutuma ya mkoba wa Bitcoin.
+image::images/mbc3_0102.png["Wallet send screen.  Image derived from Bitcoin Design Guide CC-BY"]
+
+Joe kisha hukagua kwa makini kuhakikisha ameweka kiasi sahihi, kwa sababu yuko karibu kutuma pesa na makosa hivi karibuni yatakuwa hayabatilishwi. Baada ya kuangalia mara mbili anwani na kiasi, anabonyeza Tuma kusambaza muamala. Mkoba wa Bitcoin wa simu wa Joe huunda muamala unaokabidhia BTC 0.001 kwenye anwani iliyotolewa na Alice, ukichota fedha kutoka kwenye mkoba wa Joe, na kutia saini muamala kwa funguo za siri za Joe. Hii inaiambia mtandao wa Bitcoin kwamba Joe ameidhinisha uhamisho wa thamani kwenda kwenye anwani mpya ya Alice. Muamala unapotumwa kupitia itifaki ya rika-kwa-rika, husambaa haraka katika mtandao wa Bitcoin. Sekunde chache tu baadaye, nodi nyingi zilizounganishwa vizuri katika mtandao zinapokea muamala na kuona anwani ya Alice kwa mara ya kwanza.
+
+Wakati huo huo, mkoba wa Alice daima "unakusikiliza" kwa miamala mipya
+kwenye mtandao wa Bitcoin, ukitafuta zozote zinazofanana na anwani zake. Sekunde chache baada ya mkoba wa Joe kutuma muamala, mkoba wa Alice utaonyesha kwamba unapokea BTC 0.001.
+
+[[confirmations]]
+.Uthibitisho
+****
+Mwanzoni, ((("bitcoins", "clearing transactions")))((("clearing transactions")))((("transactions", "clearing")))((("confirmations")))anwani ya Alice itaonyesha muamala kutoka kwa Joe kama "Haukuthibitishwa" (Unconfirmed). Hii inamaanisha kwamba muamala umesambazwa kwenye mtandao lakini bado haujarekodiwa katika jarida la muamala wa Bitcoin, linalojulikana kama mlolongo wa vizuizi (blockchain). Ili kuthibitishwa, muamala lazima ujumuishwe katika kizuizi (block) na kuongezwa kwenye mlolongo wa vizuizi, ambayo hutokea kila dakika 10, kwa wastani. Kwa maneno ya kifedha ya jadi hii inajulikana kama _usafishaji (clearing)_. Kwa maelezo zaidi kuhusu usambazaji, uthibitisho, na usafishaji wa miamala ya bitcoin, tazama <<mining>>.
+****
+
+Alice sasa ni mmiliki mwenye furaha wa BTC 0.001 ambazo anaweza kutumia. Katika siku chache zifuatazo, Alice ananunua bitcoin zaidi kwa kutumia ATM na((("bitcoins", "spending", startref="bitcoin-send")))((("spending bitcoins", startref="send-bitcoin")))((("bitcoins", "receiving", startref="bitcoin-receive")))((("receiving bitcoins", startref="receive-bitcoin"))) soko la ubadilishaji. Katika sura inayofuata tutaangalia ununuzi wake wa kwanza na Bitcoin, na kuchunguza miamala ya msingi na teknolojia za usambazaji kwa undani zaidi.

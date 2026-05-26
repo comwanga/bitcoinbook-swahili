@@ -51,3 +51,28 @@ def test_check_metadata_header_fails_missing_field():
     assert any("date" in i for i in issues)
     assert any("status" in i for i in issues)
     assert any("glossary-version" in i for i in issues)
+
+
+def test_check_anchors_ignores_xrefs_in_code_blocks():
+    # xref inside ---- block should not be flagged as broken
+    text = "[[real_anchor]]\n== Title\n\n----\nSee <<fake_missing>>.\n----\n"
+    assert check_anchors(text) == []
+
+
+def test_check_anchors_deduplicates_broken_xrefs():
+    # same broken xref appearing twice should produce only one issue
+    text = "See <<gone>> and also <<gone>> again."
+    issues = check_anchors(text)
+    assert len([i for i in issues if "gone" in i]) == 1
+
+
+def test_check_metadata_header_passes_with_blank_preamble_line():
+    # a blank line before the comment block should still be found within 20 lines
+    header = "\n" + VALID_HEADER
+    assert check_metadata_header(header) == []
+
+
+def test_check_anchors_handles_xref_with_title():
+    # <<anchor,Title>> format should resolve if anchor exists
+    text = "[[target]]\n== Section\nSee <<target,Click here>>."
+    assert check_anchors(text) == []

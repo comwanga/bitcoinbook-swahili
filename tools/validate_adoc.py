@@ -13,11 +13,17 @@ REQUIRED_HEADER_FIELDS = [
     "// glossary-version:",
 ]
 
-BLOCK_DELIMITERS = ("====", "----", "****", "____", "....")
+BLOCK_DELIMITERS = ("====", "----", "****", "____", "....", "++++")
+
+
+def _strip_code_blocks(text: str) -> str:
+    """Remove content between ---- delimiters so code listings are not scanned."""
+    return re.sub(r"(?ms)^----$.*?^----$", "", text)
 
 
 def check_metadata_header(text: str) -> list:
-    header = "\n".join(text.splitlines()[:10])
+    """Return issues for any missing required metadata header fields."""
+    header = "\n".join(text.splitlines()[:20])
     return [
         f"  Missing header field: {field}"
         for field in REQUIRED_HEADER_FIELDS
@@ -26,8 +32,10 @@ def check_metadata_header(text: str) -> list:
 
 
 def check_anchors(text: str) -> list:
-    anchors = set(re.findall(r"\[\[([^\]]+)\]\]", text))
-    xrefs = re.findall(r"<<([^,>\s]+)[,>]", text)
+    """Return issues for cross-references that have no matching anchor definition."""
+    prose = _strip_code_blocks(text)
+    anchors = set(re.findall(r"\[\[([^\]\n]+)\]\]", prose))
+    xrefs = set(re.findall(r"<<([^,>\s]+)[,>]", prose))
     return [
         f"  Broken cross-reference: <<{xref}>>"
         for xref in xrefs

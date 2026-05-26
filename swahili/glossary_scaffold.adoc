@@ -1,0 +1,2076 @@
+// TRANSLATION METADATA
+// source: glossary.asciidoc
+// translator:
+// date:
+// status: draft
+// glossary-version: 1.0
+
+= Faharasa / Glossary
+
+[[term-51-attacks]]
+51% attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-absolute-timelocks]]
+absolute timelocks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-abstract-syntax-trees-ast]]
+abstract syntax trees (ast)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-absurd-fees]]
+absurd fees::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-acquiring-bitcoins]]
+acquiring bitcoins::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-activation-soft-forks]]
+activation (soft forks)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-additivity]]
+additivity::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-address]]
+address::
+  [type:translated] anwani
+
+[[term-addresses]]
+addresses::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-aezeed-recovery-codes]]
+aezeed recovery codes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-aggregated-public-keys]]
+aggregated public keys::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-alertnotify-option-bitcoind-option]]
+alertnotify option (bitcoind option)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-amount-field-transaction-outputs]]
+amount field (transaction outputs)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-ancestor-fee-rate-mining]]
+ancestor fee rate mining::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-anchor-outputs-cpfp]]
+anchor outputs (cpfp)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-api-access]]
+api access::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-application-platform-bitcoin-as]]
+application platform, bitcoin as::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-archival-full-nodes]]
+archival full nodes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-ast-abstract-syntax-trees]]
+ast (abstract syntax trees)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-asymmetric-cryptography]]
+asymmetric cryptography::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-asymmetric-revocable-commitments]]
+asymmetric revocable commitments::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-authentication]]
+authentication::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-authentication-path]]
+authentication path::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-authorization]]
+authorization::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-backing-up]]
+backing up::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-balanced-merkle-trees]]
+balanced merkle trees::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-base58]]
+base58::
+  [type:preserved] base58
+
+[[term-base58check-encoding]]
+base58check encoding::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-base64-encoding]]
+base64 encoding::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-batch-verification-of-digital-signatures]]
+batch verification of digital signatures::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bcoin]]
+bcoin::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bech32]]
+bech32::
+  [type:preserved] bech32
+
+[[term-bech32-addresses]]
+bech32 addresses::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bech32m-addresses]]
+bech32m addresses::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-best-practices-security]]
+best practices, security::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-binary-hash-trees]]
+binary hash trees::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-binomial-random-walk]]
+binomial random walk::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip]]
+BIP::
+  [type:preserved] BIP
+
+[[term-bip118-sighash-flags]]
+bip118 sighash flags::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip144-extended-serialization-format]]
+bip144 extended serialization format::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip148-activation-of-segwit]]
+bip148 activation of segwit::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip32-hd-hierarchical-deterministic-key-generation]]
+bip32 hd (hierarchical deterministic) key generation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip34-signaling-activation]]
+bip34 signaling/activation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip39-recovery-codes]]
+bip39 recovery codes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip43-hd-wallet-tree-structure]]
+bip43 hd wallet tree structure::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip44-hd-wallet-tree-structure]]
+bip44 hd wallet tree structure::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip8-mandatory-lock-in]]
+bip8 mandatory lock-in::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bip9-signaling-activation]]
+bip9 signaling/activation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bips-bitcoin-improvement-proposals]]
+bips (bitcoin improvement proposals)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bitcoin]]
+bitcoin::
+  [type:transliterated] bitcoini
+
+[[term-bitcoin-core]]
+bitcoin core::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bitcoin-improvement-proposals]]
+bitcoin improvement proposals::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bitcoin-network]]
+bitcoin network::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bitcoin-relay-network]]
+bitcoin relay network::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bitcoin-whitepaper]]
+bitcoin whitepaper::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bitcoin-s]]
+bitcoin-s::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bitcoinj]]
+bitcoinj::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bitcoins]]
+bitcoins::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bitcore]]
+bitcore::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-block]]
+block::
+  [type:translated] kizuizi
+
+[[term-block-header]]
+block header::
+  [type:translated] kichwa cha kizuizi
+
+[[term-block-header-hash]]
+block header hash::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-block-height]]
+block height::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-block-reward]]
+block reward::
+  [type:translated] tuzo ya kizuizi
+
+[[term-block-subsidy]]
+block subsidy::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-block-finding-races]]
+block-finding races::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-blockchain]]
+blockchain::
+  [type:translated] mlolongo wa vizuizi
+
+[[term-blockchain-explorers]]
+blockchain explorers::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-blocks]]
+blocks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-blocksonly-option-bitcoind-option]]
+blocksonly option (bitcoind option)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-bloom-filters]]
+bloom filters::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-brainwallets]]
+brainwallets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-btcd]]
+btcd::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-building-blocks]]
+building blocks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-byzantine-generals-x27-problem]]
+byzantine generals&#x27; problem::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-c-toolkits]]
+c# toolkits::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-c-c-toolkits]]
+c/c++ toolkits::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-calculations]]
+calculations::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-candidate-blocks]]
+candidate blocks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-carve-outs-cpfp]]
+carve outs (cpfp)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-chain-forks]]
+chain forks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-challenge-script]]
+challenge script::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-change-output]]
+change output::
+  [type:translated] matokeo ya chenji
+
+[[term-changeless-transactions]]
+changeless transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-channel]]
+channel::
+  [type:translated] njia
+
+[[term-checksum]]
+checksum::
+  [type:translated] ukaguzi wa jumla
+
+[[term-checksums]]
+checksums::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-child-blocks]]
+child blocks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-child-key-pair-derivation]]
+child key pair derivation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-choosing]]
+choosing::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-circular-dependencies]]
+circular dependencies::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-clearing-transactions]]
+clearing transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-client-side-validation]]
+client-side validation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-clients]]
+clients::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-codex32-recovery-codes]]
+codex32 recovery codes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-coin-selection-in-transactions]]
+coin selection in transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-coinbase]]
+coinbase::
+  [type:translated] muamala wa asili
+
+[[term-coinbase-data]]
+coinbase data::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-coinbase-transactions]]
+coinbase transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-cold-storage]]
+cold storage::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-collision-attacks]]
+collision attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-colored-coins-application]]
+colored coins application::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-command-line-interface-bitcoin-core]]
+command-line interface (bitcoin core)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-commitment-hash]]
+commitment hash::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-commitment-transactions]]
+commitment transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-commitments]]
+commitments::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-compact-block-filters]]
+compact block filters::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-compact-block-relay]]
+compact block relay::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-compactsize-unsigned-integers]]
+compactsize  unsigned integers::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-compiling-bitcoin-core-from-source-code]]
+compiling bitcoin core from source code::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-compressed-private-keys]]
+compressed private keys::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-compressed-public-keys]]
+compressed public keys::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-conditional-clauses-in-scripts]]
+conditional clauses in scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-conf-option-bitcoind-option]]
+conf option (bitcoind option)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-configuring]]
+configuring::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-confirmation]]
+confirmation::
+  [type:translated] uthibitisho
+
+[[term-confirmations]]
+confirmations::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-conflicting-transactions]]
+conflicting transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-consensus]]
+consensus::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-consensus-rules]]
+consensus rules::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-consolidation-transactions]]
+consolidation transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-contentious-hard-forks]]
+contentious hard forks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-cpfp]]
+CPFP::
+  [type:preserved] CPFP
+
+[[term-cpfp-child-pays-for-parent-fee-bumping]]
+cpfp (child pays for parent) fee bumping::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-crowdfunding]]
+crowdfunding::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-cryptography]]
+cryptography::
+  [type:translated] usimbaji fiche
+
+[[term-currency-creation]]
+currency creation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-currency-exchanges]]
+currency exchanges::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-current-price-of-bitcoins]]
+current price of bitcoins::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-custom-signets]]
+custom signets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-datadir-option-bitcoind-option]]
+datadir option (bitcoind option)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-dbcache-option-bitcoind-option]]
+dbcache option (bitcoind option)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-decentralized]]
+decentralized::
+  [type:translated] iliyosambazwa
+
+[[term-decentralized-consensus]]
+decentralized consensus::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-decoding]]
+decoding::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-default-signet]]
+default signet::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-deflation]]
+deflation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-derivation-path]]
+derivation path::
+  [type:translated] njia ya utokaji
+
+[[term-desktop-wallets]]
+desktop wallets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-deterministic-key-generation]]
+deterministic key generation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-difficulty]]
+difficulty::
+  [type:translated] ugumu
+
+[[term-digests]]
+digests::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-digital-currencies-history-of]]
+digital currencies, history of::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-digital-currency]]
+digital currency::
+  [type:translated] sarafu ya kidijitali
+
+[[term-digital-signatures]]
+digital signatures::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-disk-space]]
+disk space::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-disk-space-reclaiming]]
+disk space, reclaiming::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-display-byte-order]]
+display byte order::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-distributed-computing-problem]]
+distributed computing problem::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-dns-seeds]]
+dns seeds::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-double-spending]]
+double spending::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-double-spend-attacks]]
+double-spend attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-downloading-multiple-block-filters]]
+downloading multiple block filters::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-dummy-stack-element]]
+dummy stack element::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-dust]]
+dust::
+  [type:translated] vumbi
+
+[[term-dust-policies]]
+dust policies::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-ecdsa]]
+ECDSA::
+  [type:preserved] ECDSA
+
+[[term-ecdsa-elliptic-curve-digital-signature-algorithm]]
+ecdsa (elliptic curve digital signature algorithm)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-economics-of-bitcoin]]
+economics of bitcoin::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-electrum-v2-recovery-codes]]
+electrum v2 recovery codes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-elliptic-curve]]
+elliptic curve::
+  [type:translated] mkondo wa duaradufu
+
+[[term-elliptic-curve-cryptography-ecc]]
+elliptic curve cryptography (ecc)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-elliptic-curve-multiplication]]
+elliptic curve multiplication::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-embedded-segregated-witness]]
+embedded segregated witness::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-emergent-consensus]]
+emergent consensus::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-encoding]]
+encoding::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-encryption]]
+encryption::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-entropy]]
+entropy::
+  [type:translated] nasibu
+
+[[term-estate-planning]]
+estate planning::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-estimating-fee-rates]]
+estimating fee rates::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-excessive-fees]]
+excessive fees::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-exchange-rate]]
+exchange rate::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-executables-bitcoin-core-building]]
+executables (bitcoin core), building::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-explicit-paths]]
+explicit paths::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-exploring]]
+exploring::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-extended-keys]]
+extended keys::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-extended-serialization-format]]
+extended serialization format::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-extra-nonce-solution]]
+extra nonce solution::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-false-positives]]
+false positives::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-fast-internet-bitcoin-relay-engine-fibre]]
+fast internet bitcoin relay engine (fibre)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-fec-forward-error-correction]]
+fec (forward error correction)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-fee]]
+fee::
+  [type:translated] ada
+
+[[term-fee-bumping]]
+fee bumping::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-fee-rates]]
+fee rates::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-fee-sniping]]
+fee sniping::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-fees]]
+fees::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-fibre-fast-internet-bitcoin-relay-engine]]
+fibre (fast internet bitcoin relay engine)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-flow-control-in-scripts]]
+flow control in scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-fork]]
+fork::
+  [type:translated] tawi
+
+[[term-forks]]
+forks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-forward-error-correction-fec]]
+forward error correction (fec)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-fractional-values-of-bitcoins]]
+fractional values of bitcoins::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-free-american-call-option]]
+free american call option::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-full-node]]
+full node::
+  [type:translated] nodi kamili
+
+[[term-full-nodes]]
+full nodes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-funding-transactions]]
+funding transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-gambler-x27-s-ruin-problem]]
+gambler&#x27;s ruin problem::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-gap-limit]]
+gap limit::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-gcs-golomb-rice-coded-sets]]
+gcs (golomb-rice coded sets)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-generation-transactions]]
+generation transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-genesis-block]]
+genesis block::
+  [type:translated] kizuizi cha mwanzo
+
+[[term-go-toolkits]]
+go toolkits::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-gossiping]]
+gossiping::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-guard-clauses-in-scripts]]
+guard clauses in scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-halving]]
+halving::
+  [type:translated] upunguzaji wa nusu
+
+[[term-hard-fork]]
+hard fork::
+  [type:translated] tawi gumu
+
+[[term-hard-forks]]
+hard forks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-hardened-child-key-derivation]]
+hardened child key derivation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-hardware-signing-devices]]
+hardware signing devices::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-hash]]
+hash::
+  [type:transliterated] hashi
+
+[[term-hash-functions]]
+hash functions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-hash-time-lock-contract-htlc]]
+hash time lock contract (htlc)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-hash160]]
+hash160::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-hashrate-attacks]]
+hashrate attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-hd-hierarchical-deterministic-key-generation]]
+hd (hierarchical deterministic) key generation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-hd-wallet]]
+HD wallet::
+  [type:translated] mkoba wa kihierarki
+
+[[term-help-command-bitcoin-core]]
+help command (bitcoin core)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-high-bandwidth-mode-compact-block-relay]]
+high-bandwidth mode (compact block relay)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-high-frequency-transactions]]
+high-frequency transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-history]]
+history::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-homogeneity-of-degree-1]]
+homogeneity of degree 1::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-htlc-hash-time-lock-contract]]
+htlc (hash time lock contract)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-implicit-paths]]
+implicit paths::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-incentives]]
+incentives::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-independent-key-generation]]
+independent key generation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-independent-transaction-verification]]
+independent transaction verification::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-index-numbers-for-hardened-derivation]]
+index numbers for hardened derivation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-inflation]]
+inflation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-input]]
+input::
+  [type:translated] ingizo
+
+[[term-input-scripts]]
+input scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-inputs]]
+inputs::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-internal-byte-order]]
+internal byte order::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-invoices]]
+invoices::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-ip-addresses-for-bitcoin-payments]]
+ip addresses for bitcoin payments::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-java-toolkits]]
+java toolkits::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-javascript-toolkits]]
+javascript toolkits::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-key-cancellation-attacks]]
+key cancellation attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-key-generation]]
+key generation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-key-pair]]
+key pair::
+  [type:translated] jozi ya ufunguo
+
+[[term-key-pairs]]
+key pairs::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-key-tweaks]]
+key tweaks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-key-stretching-functions]]
+key-stretching functions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-keypath-spending]]
+keypath spending::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-keys-control-of]]
+keys, control of::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-labels-backing-up]]
+labels, backing up::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-legacy-serialization]]
+legacy serialization::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-lightning-network]]
+lightning network::
+  [type:preserved] Lightning Network
+
+[[term-lightning-network-ln]]
+lightning network (ln)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-lightweight-clients]]
+lightweight clients::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-linearity]]
+linearity::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-linking-blocks-in-blockchain]]
+linking blocks in blockchain::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-ln]]
+ln::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-lock-time]]
+lock time::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-lock-in-mandatory]]
+lock-in, mandatory::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-locktime]]
+locktime::
+  [type:translated] muda wa kufunga
+
+[[term-lossless-encoding]]
+lossless encoding::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-lossy-encoding]]
+lossy encoding::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-low-bandwidth-mode-compact-block-relay]]
+low-bandwidth mode (compact block relay)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-mainnet]]
+mainnet::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-majority-attacks]]
+majority attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-managed-pools]]
+managed pools::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-mandatory-lock-in]]
+mandatory lock-in::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-mast-merklized-alternative-script-trees]]
+mast (merklized alternative script trees)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-maturity-rule]]
+maturity rule::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-maxmempool-option-bitcoind-option]]
+maxmempool option (bitcoind option)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-median-time-past-mtp]]
+median time past (mtp)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-memorizing-recovery-codes]]
+memorizing recovery codes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-memory-pool]]
+memory pool::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-mempool]]
+mempool::
+  [type:translated] hifadhi ya miamala
+
+[[term-merkle-path]]
+merkle path::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-merkle-root]]
+merkle root::
+  [type:translated] mzizi wa merkle
+
+[[term-merkle-tree]]
+merkle tree::
+  [type:translated] mti wa merkle
+
+[[term-merkle-trees]]
+merkle trees::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-millibitcoins]]
+millibitcoins::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-miner]]
+miner::
+  [type:translated] mchimbaji
+
+[[term-mining]]
+mining::
+  [type:translated] uchimbaji
+
+[[term-mining-forks]]
+mining forks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-mining-pools]]
+mining pools::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-mnemonic]]
+mnemonic::
+  [type:transliterated] mnemoni
+
+[[term-mnemonic-phrases]]
+mnemonic phrases::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-mobile-wallets]]
+mobile wallets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-moore-x27-s-law]]
+moore&#x27;s law::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-mtp-median-time-past]]
+mtp (median time past)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-multiple-block-filters-downloading]]
+multiple block filters, downloading::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-multisig]]
+multisig::
+  [type:translated] saini nyingi
+
+[[term-multisignature-addresses]]
+multisignature addresses::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-multisignature-scripts]]
+multisignature scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-musig-protocol]]
+musig protocol::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-musig-dn-protocol]]
+musig-dn protocol::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-musig2-protocol]]
+musig2 protocol::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-mutual-satisfaction-contracts]]
+mutual satisfaction contracts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-muun-recovery-codes]]
+muun recovery codes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-nakamoto-satoshi]]
+nakamoto, satoshi::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-native-forwarding]]
+native forwarding::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-nbitcoin]]
+nbitcoin::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-network]]
+network::
+  [type:translated] mtandao
+
+[[term-network-discovery]]
+network discovery::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-network-forks]]
+network forks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-networks-bitcoin]]
+networks (bitcoin)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-node]]
+node::
+  [type:transliterated] nodi
+
+[[term-nodes]]
+nodes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-nonce]]
+nonce::
+  [type:translated] nambari ya matumizi mara moja
+
+[[term-nonce-attacks]]
+nonce attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-noncustodial-wallets]]
+noncustodial wallets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-nonkey-data-backing-up]]
+nonkey data, backing up::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-nonpayment-data]]
+nonpayment data::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-nop-opcodes]]
+nop opcodes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-offchain-technology]]
+offchain technology::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-op-checkmultisig-execution]]
+op_checkmultisig execution::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-op-cltv-script-operator]]
+op_cltv  script operator::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-op-csv-script-opcode]]
+op_csv script opcode::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-op-nop-opcodes]]
+op_nop opcodes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-op-return-scripts]]
+op_return scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-opcode]]
+opcode::
+  [type:preserved] opcode
+
+[[term-open-source]]
+open source::
+  [type:translated] chanzo wazi
+
+[[term-opt-in-transaction-replacement]]
+opt-in transaction replacement::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-orphan-pools]]
+orphan pools::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-outpoint-field-transaction-inputs]]
+outpoint field (transaction inputs)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-output]]
+output::
+  [type:translated] tokeo
+
+[[term-output-indexes]]
+output indexes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-output-scripts]]
+output scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-outputs]]
+outputs::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-overpaying-transaction-fees]]
+overpaying transaction fees::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-p2c-pay-to-contract]]
+p2c (pay to contract)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-p2pk-pay-to-public-key]]
+p2pk (pay to public key)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-p2pkh]]
+P2PKH::
+  [type:preserved] P2PKH
+
+[[term-p2pkh-pay-to-public-key-hash]]
+p2pkh (pay to public key hash)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-p2pool-peer-to-peer-mining-pool]]
+p2pool (peer-to-peer mining pool)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-p2sh]]
+P2SH::
+  [type:preserved] P2SH
+
+[[term-p2sh-pay-to-script-hash]]
+p2sh (pay to script hash)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-p2tr]]
+P2TR::
+  [type:preserved] P2TR
+
+[[term-p2wpkh]]
+P2WPKH::
+  [type:preserved] P2WPKH
+
+[[term-p2wpkh-pay-to-witness-public-key-hash]]
+p2wpkh (pay to witness public key hash)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-p2wsh]]
+P2WSH::
+  [type:preserved] P2WSH
+
+[[term-p2wsh-pay-to-witness-script-hash]]
+p2wsh (pay to witness script hash)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-package-fee-rate]]
+package fee rate::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-package-relay]]
+package relay::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-paper-wallets]]
+paper wallets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-parent-blocks]]
+parent blocks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-partial-private-keys]]
+partial private keys::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-partially-signed-bitcoin-transaction-psbt-format]]
+partially signed bitcoin transaction (psbt) format::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-passphrases-for-recovery-codes]]
+passphrases (for recovery codes)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-path-references-in-hd-wallets]]
+path references in hd wallets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-pathfinding-in-lightning-network]]
+pathfinding in lightning network::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-payment-batching]]
+payment batching::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-payment-channels]]
+payment channels::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-payment-verification]]
+payment verification::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-payments]]
+payments::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-peer-to-peer]]
+peer-to-peer::
+  [type:translated] rika kwa rika
+
+[[term-peer-to-peer-networks-bitcoin-as]]
+peer-to-peer networks, bitcoin as::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-peers]]
+peers::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-physical-bitcoin-storage]]
+physical bitcoin storage::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-preimage-attacks]]
+preimage attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-presigned-transactions]]
+presigned transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-primitives]]
+primitives::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-privacy]]
+privacy::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-private-block-relay]]
+private block relay::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-private-child-key-derivation]]
+private child key derivation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-private-key]]
+private key::
+  [type:translated] ufunguo wa siri
+
+[[term-private-keys]]
+private keys::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-proof-of-work]]
+proof of work::
+  [type:translated] uthibitisho wa kazi
+
+[[term-proof-of-work-algorithm]]
+proof-of-work algorithm::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-protocol]]
+protocol::
+  [type:translated] itifaki
+
+[[term-prune-option-bitcoind-option]]
+prune option (bitcoind option)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-psbt]]
+PSBT::
+  [type:preserved] PSBT
+
+[[term-psbt-partially-signed-bitcoin-transaction-format]]
+psbt (partially signed bitcoin transaction) format::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-public-child-key-derivation]]
+public child key derivation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-public-key]]
+public key::
+  [type:translated] ufunguo wa umma
+
+[[term-public-key-cryptography]]
+public key cryptography::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-public-keys]]
+public keys::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-pycoin]]
+pycoin::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-python-toolkits]]
+python toolkits::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-python-bitcoinlib]]
+python-bitcoinlib::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-qr-codes]]
+qr codes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-randomness-importance-in-digital-signatures]]
+randomness, importance in digital signatures::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-rbf]]
+RBF::
+  [type:preserved] RBF
+
+[[term-rbf-replace-by-fee-fee-bumping]]
+rbf (replace by fee) fee bumping::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-receiving-bitcoins]]
+receiving bitcoins::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-reclaiming]]
+reclaiming::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-reclaiming-disk-space]]
+reclaiming disk space::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-recovery-codes]]
+recovery codes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-redeem-scripts]]
+redeem scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-regtest]]
+regtest::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-relative-timelocks]]
+relative timelocks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-release-candidates]]
+release candidates::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-release-version-bitcoin-core-selecting]]
+release version (bitcoin core), selecting::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-repeated-session-attacks]]
+repeated session attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-replace-by-fee-rbf]]
+replace by fee (rbf)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-revocable-commitments]]
+revocable commitments::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-rewards]]
+rewards::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-rgb-protocol]]
+rgb protocol::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-ripemd-160-hash-function]]
+ripemd-160 hash function::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-risk-diversification]]
+risk diversification::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-root-of-trust]]
+root of trust::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-root-seeds]]
+root seeds::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-routed-payment-channels]]
+routed payment channels::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-running-nodes]]
+running nodes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-rust-toolkits]]
+rust toolkits::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-rust-bitcoin]]
+rust-bitcoin::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-salt]]
+salt::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-satoshis]]
+satoshis::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-scala-toolkits]]
+scala toolkits::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-schnorr-signature]]
+Schnorr signature::
+  [type:translated] saini ya Schnorr
+
+[[term-schnorr-signature-algorithm]]
+schnorr signature algorithm::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-script]]
+script::
+  [type:translated] hati
+
+[[term-script-programming-language]]
+script programming language::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-scripted-multisignatures]]
+scripted multisignatures::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-scriptless-multisignatures]]
+scriptless multisignatures::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-scriptless-threshold-signatures]]
+scriptless threshold signatures::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-scriptpath-spending]]
+scriptpath spending::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-scriptpubkey]]
+scriptPubKey::
+  [type:preserved] scriptPubKey
+
+[[term-scripts]]
+scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-scriptsig]]
+scriptSig::
+  [type:preserved] scriptSig
+
+[[term-second-preimage-attacks]]
+second preimage attacks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-second-party-transaction-malleability]]
+second-party transaction malleability::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-security]]
+security::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-seed-phrase]]
+seed phrase::
+  [type:translated] maneno ya mbegu
+
+[[term-seed-phrases]]
+seed phrases::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-seeds]]
+seeds::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-segregated-witness-segwit]]
+segregated witness (segwit)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-segwit]]
+SegWit::
+  [type:preserved] SegWit
+
+[[term-selecting]]
+selecting::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-sequence-field-transaction-inputs]]
+sequence field (transaction inputs)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-sequence-based-transaction-replacement]]
+sequence-based transaction replacement::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-serialization]]
+serialization::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-serialized-transactions]]
+serialized transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-settlement-transactions]]
+settlement transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-setup-transactions]]
+setup transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-sha-256]]
+SHA-256::
+  [type:preserved] SHA-256
+
+[[term-sha256-hash-function]]
+sha256 hash function::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-share-chains]]
+share chains::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-sighash-flags]]
+sighash flags::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-signaling]]
+signaling::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-signature]]
+signature::
+  [type:translated] saini
+
+[[term-signatures]]
+signatures::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-signet]]
+signet::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-simplified-payment-verification-spv-clients]]
+simplified-payment-verification (spv) clients::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-single-use-seals]]
+single-use seals::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-slip39-recovery-codes]]
+slip39 recovery codes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-soft-fork]]
+soft fork::
+  [type:translated] tawi laini
+
+[[term-soft-forks]]
+soft forks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-software-development-for-consensus-rules]]
+software development for consensus rules::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-software-forks]]
+software forks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-source-code-compiling-bitcoin-core]]
+source code, compiling bitcoin core::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-speedy-trial-activation]]
+speedy trial activation::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-spending-bitcoins]]
+spending bitcoins::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-spv]]
+SPV::
+  [type:preserved] SPV
+
+[[term-spv-simplified-payment-verification-clients]]
+spv (simplified-payment-verification) clients::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-stack]]
+stack::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-standard-transaction-outputs]]
+standard transaction outputs::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-state-channels]]
+state channels::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-stateless-script-verification]]
+stateless script verification::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-status-information-bitcoin-core]]
+status information (bitcoin core)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-storing-bitcoins]]
+storing bitcoins::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-stratum]]
+stratum::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-survivability-of-bitcoin-access]]
+survivability (of bitcoin access)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-syncing-blockchain]]
+syncing blockchain::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-taproot]]
+Taproot::
+  [type:preserved] Taproot
+
+[[term-taproot-assets]]
+taproot assets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-tapscript]]
+Tapscript::
+  [type:preserved] Tapscript
+
+[[term-target]]
+target::
+  [type:translated] lengo
+
+[[term-targets]]
+targets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-technical-debt]]
+technical debt::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-test-blockchains]]
+test blockchains::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-testnet]]
+testnet::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-third-party-api-clients]]
+third-party api clients::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-third-party-transaction-malleability]]
+third-party transaction malleability::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-threshold-signatures]]
+threshold signatures::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-timelock]]
+timelock::
+  [type:translated] kufunga kwa wakati
+
+[[term-timelocks]]
+timelocks::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-timestamp]]
+timestamp::
+  [type:translated] muhuri wa wakati
+
+[[term-timestamp-servers]]
+timestamp servers::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-timestamps]]
+timestamps::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-tor-transport]]
+tor transport::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-transaction]]
+transaction::
+  [type:translated] muamala
+
+[[term-transaction-chains]]
+transaction chains::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-transaction-fees]]
+transaction fees::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-transaction-ids-txid]]
+transaction ids (txid)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-transaction-pinning]]
+transaction pinning::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-transaction-scripts]]
+transaction scripts::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-transactions]]
+transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-translated-forwarding]]
+translated forwarding::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-tree-structure-in-hd-wallets]]
+tree structure in hd wallets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-trustless-channels]]
+trustless channels::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-trustless-protocols]]
+trustless protocols::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-turing-complete]]
+turing complete::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-txindex-option-bitcoind-option]]
+txindex option (bitcoind option)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-uncompressed-public-keys]]
+uncompressed public keys::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-unconfirmed-transactions]]
+unconfirmed transactions::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-uneconomical-outputs]]
+uneconomical outputs::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-unsigned-integers]]
+unsigned integers::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-upgrading-to-segregated-witness]]
+upgrading to segregated witness::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-utreexo]]
+utreexo::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-utxo]]
+UTXO::
+  [type:preserved] UTXO
+
+[[term-utxos-unspent-transaction-outputs]]
+utxos (unspent transaction outputs)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-validating]]
+validating::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-vanity-addresses]]
+vanity addresses::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-vanity-pools]]
+vanity pools::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-vbytes]]
+vbytes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-verify-opcodes]]
+verify opcodes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-verifying]]
+verifying::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-version-of-transactions]]
+version (of transactions)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-version-prefixes]]
+version prefixes::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-wallet]]
+wallet::
+  [type:translated] mkoba
+
+[[term-wallets]]
+wallets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-web-store-example-extended-keys]]
+web store example (extended keys)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-web-wallets]]
+web wallets::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-weights-of-transactions]]
+weights (of transactions)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-whitepaper-bitcoin]]
+whitepaper (bitcoin)::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-wif]]
+WIF::
+  [type:preserved] WIF
+
+[[term-witness]]
+witness::
+  [type:translated] shahidi
+
+[[term-witness-items]]
+witness items::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-witnesses]]
+witnesses::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-wrapper-libraries]]
+wrapper libraries::
+  [type:] [TAFSIRI INAHITAJIKA]
+
+[[term-xpriv]]
+xpriv::
+  [type:preserved] xpriv
+
+[[term-xpub]]
+xpub::
+  [type:preserved] xpub
+
+[[term-zero-knowledge-proof]]
+zero-knowledge proof::
+  [type:] [TAFSIRI INAHITAJIKA]

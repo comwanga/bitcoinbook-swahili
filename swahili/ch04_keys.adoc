@@ -1,0 +1,1853 @@
+[[ch04_keys_addresses]]
+== Funguo na Anwani
+
+Alice anataka kumlipa Bob, lakini maelfu ya nodi kamili za Bitcoin ambazo
+zitahakikisha muamala wake hazijui ni nani Alice au Bob—na tunataka
+iwe hivyo ili kulinda faragha yao. Alice anahitaji
+kumwambia Bob apokee sehemu ya bitcoins zake bila ya kuunganisha
+sehemu yoyote ya muamala huo na utambulisho wa Bob katika ulimwengu halisi au
+na malipo mengine ya Bitcoin ambayo Bob anapokea. Njia anayotumia Alice lazima
+ihakikishe kwamba Bob peke yake ndiye anayeweza kutumia zaidi bitcoins anazopokea.
+
+Karatasi ya asili ya Bitcoin inaelezea mpango rahisi sana wa kufikia
+malengo hayo, ulioonyeshwa katika <<pay-to-pure-pubkey>>.
+
+[[pay-to-pure-pubkey]]
+.Mfululizo wa muamala kutoka karatasi ya asili ya Bitcoin.
+image::images/mbc3_aain01.png["Mfululizo wa muamala kutoka karatasi ya asili ya Bitcoin"]
+
+Mpokeaji kama Bob
+anakubali bitcoins kwenye funguo ya umma katika muamala ambao umesainiwa na
+mtumaji (kama Alice). Bitcoins ambazo Alice anatumia zilikuwa
+zimepokelewa awali kwenye moja ya funguo zake za umma, na anatumia
+funguo ya siri inayolingana kuzalisha sahihi yake. Nodi kamili zinaweza
+kuthibitisha kwamba sahihi ya Alice inabeba matokeo ya kazi ya hash ambayo
+yenyewe inabeba funguo ya umma ya Bob na maelezo mengine ya muamala.
+
+Tutachunguza funguo za umma, funguo za siri, sahihi, na kazi za hash
+katika sura hii, kisha tutatumia vyote pamoja kuelezea
+anwani zinazotumiwa na programu za kisasa za Bitcoin.
+
+=== Kriptografia ya Funguo za Umma
+
+Kriptografia ((("public key cryptography", id="pub-key")))ya funguo za umma
+iligunduliwa miaka ya 1970 na ni msingi wa kihesabu
+kwa usalama wa kisasa wa kompyuta na habari.
+
+Tangu ugunduzi wa kriptografia ya funguo za umma, kazi kadhaa za kihesabu
+zinazofaa, kama vile ukuzaji wa nambari za kwanza na
+mzidishano wa mzunguko wa mviringo, zimegunduliwa. Kazi hizi za kihesabu
+ni rahisi kuhesabu katika
+mwelekeo mmoja na haiwezekani kuhesabu katika mwelekeo wa pili
+kwa kutumia kompyuta na algoriti zinazopatikana leo.
+Kulingana na kazi hizi za kihesabu, kriptografia inawezesha uundaji
+wa sahihi za dijitali ambazo haziwezi kuigwa. Bitcoin inatumia
+kuongeza na kuzidisha mzunguko wa mviringo kama msingi wa kriptografia yake.
+
+Katika Bitcoin, tunaweza kutumia kriptografia ya funguo za umma kuunda ((("key pairs", id="key-pair")))((("public keys", "purpose of")))((("private keys", "purpose of")))jozi ya funguo ambayo
+inadhibiti ufikiaji wa bitcoins. Jozi ya funguo ina funguo ya siri
+na funguo ya umma inayotokana na funguo ya siri. Funguo ya umma inatumika
+kupokea fedha, na funguo ya siri inatumika kusaini miamala kutumia
+fedha.
+
+Kuna uhusiano wa kihesabu kati ya funguo ya umma na funguo ya siri
+ambao unaruhusu funguo ya siri kutumika kuzalisha sahihi kwenye
+ujumbe. Sahihi hizi zinaweza kuthibitishwa dhidi ya funguo ya umma bila
+kufunua funguo ya siri.
+
+[TIP]
+====
+Katika baadhi ya
+utekelezaji wa mkoba, funguo ya siri na funguo ya umma zinahifadhiwa pamoja kama
+_jozi ya funguo_ kwa urahisi. Hata hivyo, funguo ya umma inaweza kuhesabiwa
+kutoka kwa funguo ya siri, hivyo kuhifadhi funguo ya siri peke yake pia kunawezekana.
+====
+
+Mkoba wa Bitcoin una mkusanyiko wa jozi za funguo,
+kila moja ikiwa na funguo ya siri na funguo ya umma. Funguo ya siri
+(_k_) ni nambari, kawaida inayotokana na nambari iliyochaguliwa kiholela.
+Kutoka kwa funguo ya siri, tunatumia
+mzidishano wa mzunguko wa mviringo, kazi ya kriptografia ya mwelekeo mmoja, kuzalisha
+funguo ya umma (_K_).
+
+[role="less_space pagebreak-before"]
+.Kwa Nini Kutumia Kriptografia Asymmetric (Funguo za Umma/Siri)?
+****
+Kwa nini ((("asymmetric cryptography", see="public key cryptography")))((("public key cryptography", "purpose in Bitcoin")))((("digital signatures")))kriptografia
+asymmetric inatumika katika Bitcoin? Haitumiwi "kusimba" (kufanya siri)
+miamala. Badala yake, sifa muhimu ya kriptografia asymmetric
+ni uwezo wa kuzalisha _sahihi za dijitali_. Funguo ya siri inaweza
+kutumika kwenye muamala kuzalisha sahihi ya
+nambari. Sahihi hii inaweza kuzalishwa tu na mtu mwenye
+ujuzi wa funguo ya siri. Hata hivyo, mtu yeyote mwenye ufikiaji wa funguo ya umma
+na muamala anaweza kuzitumia _kuthibitisha_ sahihi.
+Sifa hii muhimu ya kriptografia asymmetric inafanya
+iwezekane kwa mtu yeyote kuthibitisha kila sahihi kwenye kila muamala,
+huku ikihakikisha kwamba wenye funguo za siri peke yao ndio wanaoweza kuzalisha
+sahihi halali.
+****
+
+[[private_keys]]
+==== Funguo za Siri
+
+Funguo ((("private keys", "generating", id="private-key-generate")))ya siri ni nambari tu, iliyochaguliwa kiholela. Udhibiti
+wa funguo ya siri ndio chanzo cha udhibiti wa mtumiaji juu ya fedha zote
+zinazohusiana na funguo inayolingana ya umma ya Bitcoin. Funguo ya siri
+inatumika kuunda sahihi zinazotumika kutumia bitcoins kwa kuthibitisha
+udhibiti wa fedha zilizotumika katika muamala. Funguo ya siri lazima ibaki
+siri kila wakati kwa sababu kuifunua kwa watu wa tatu ni sawa na
+kuwapa udhibiti wa bitcoins zilizolindwa na ufunguo huo. Funguo ya siri
+pia lazima ihifadhiwe na kulindwa dhidi ya upotezaji wa bahati mbaya kwa sababu
+ikipotea, haiwezi kurejeshwa na fedha zilizolindwa nazo
+zinapotea milele.
+
+[TIP]
+====
+Funguo ya siri ya Bitcoin ni nambari tu. Unaweza kuchagua funguo zako za siri
+kiholela kwa kutumia sarafu, kalamu, na karatasi tu: tupa sarafu mara 256 na
+utakuwa na tarakimu za binary za funguo ya siri ya nasibu unayoweza kutumia katika
+mkoba wa Bitcoin. Funguo ya umma inaweza kisha kuzalishwa kutoka kwa funguo ya siri.
+Kuwa makini, hata hivyo, kwani mchakato wowote ambao si wa nasibu kabisa
+unaweza kupunguza kwa kiasi kikubwa usalama wa funguo yako ya siri na
+bitcoins inazozibaidi.
+====
+
+Hatua ya kwanza na muhimu zaidi katika kuzalisha funguo ni kupata chanzo
+salama cha nasibu (ambacho wanasayansi wa kompyuta ((("entropy")))huita _entropi_). Kuunda funguo ya Bitcoin ni karibu
+sawa na "Chagua nambari kati ya 1 na 2^256^." Njia halisi unayotumia
+kuchagua nambari hiyo haihusiani mradi haiwezi kutabiriwa
+au kurudiwa. Programu ya Bitcoin inatumia jenereta za nambari nasibu
+zinazolindwa kwa kriptografia kuzalisha bits 256 za entropi.
+
+[role="less_space pagebreak-before"]
+Kwa usahihi zaidi, funguo ya siri inaweza kuwa nambari yoyote kati ya 0 na _n_ -
+1 inayojumuisha, ambapo _n_ ni mara kwa mara (_n_ = 1.1578 × 10^77^, kidogo pungufu
+kuliko 2^256^) iliyofafanuliwa kama mpangilio wa mzunguko wa mviringo unaotumika katika Bitcoin
+(angalia <<elliptic_curve>>). Kuunda ufunguo kama huo, tunachagua kiholela nambari ya
+bits 256 na kuangalia kwamba ni ndogo kuliko _n_. Kwa maneno ya uprogramu,
+hii kawaida hupatikana kwa kulisha mfululizo mrefu wa bits za nasibu,
+zilizokusanywa kutoka chanzo kinachohakikishwa kwa kriptografia cha nasibu, kwenye algoriti
+ya hash ya SHA256, ambayo itazalisha kwa urahisi thamani ya bits 256
+ambayo inaweza kufasiriwa kama nambari.
+Kama matokeo ni kidogo kuliko _n_, tuna funguo ya siri inayofaa.
+Vinginevyo, tunajaribu tena tu na nambari nyingine ya nasibu.
+
+[WARNING]
+====
+Usiandike msimbo wako mwenyewe kuunda nambari
+nasibu au kutumia jenereta ya nambari nasibu "rahisi" inayotolewa na lugha yako
+ya uprogramu. Tumia jenereta ya nambari nasibu bandia inayolindwa kwa kriptografia
+(CSPRNG) yenye mbegu kutoka chanzo cha entropi ya kutosha.
+Soma nyaraka za maktaba ya jenereta ya nambari nasibu unayochagua
+ili kuhakikisha inalindwa kwa kriptografia. Utekelezaji sahihi
+wa CSPRNG ni muhimu kwa usalama wa funguo.
+====
+
+Ifuatayo ni funguo ya siri iliyozalishwa kiholela (_k_) ikionyeshwa katika
+muundo wa hexadecimal (bits 256 zikionyeshwa kama tarakimu 64 za hexadecimal, kila moja ya bits 4):
+
+----
+1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD
+----
+
+[TIP]
+====
+Ukubwa wa nafasi ya funguo ya siri ya Bitcoin (2^256^) ni nambari kubwa isiyoweza
+kufikirika. Ni takriban 10^77^ katika desimali. Kwa ulinganisho, ulimwengu
+unaoonekana unakadiriwa((("private keys", "generating", startref="private-key-generate"))) kuwa na atomi 10^80^.
+====
+
+[[elliptic_curve]]
+==== Kriptografia ya Mzunguko wa Mviringo Imeelezwa
+
+Kriptografia ya mzunguko wa mviringo (ECC) ni((("public key cryptography", "elliptic curve cryptography as", id="pub-key-ecc")))((("elliptic curve cryptography (ECC)", id="ecc"))) aina ya kriptografia
+ya asymmetric au funguo za umma inayotegemea tatizo la logarithm ya kipekee kama
+inavyoonyeshwa kwa kuongeza na kuzidisha kwenye pointi za mzunguko
+wa mviringo.
+
+<<ecc-curve>> ni mfano wa mzunguko wa mviringo, unaofanana na ule unaotumika
+na Bitcoin.
+
+[[ecc-curve]]
+[role="width-50"]
+.Mzunguko wa mviringo.
+image::images/mbc3_0402.png["ecc-curve"]
+
+Bitcoin inatumia mzunguko maalum wa mviringo na seti ya
+mara kwa mara za kihesabu, kama ilivyofafanuliwa katika kiwango kinachojulikana kama +secp256k1+, kilichoanzishwa na
+Taasisi ya Kitaifa ya Viwango na Teknolojia (NIST). Mzunguko
+wa +secp256k1+ umefafanuliwa na kazi ifuatayo, ambayo inazalisha
+mzunguko wa mviringo:
+
+[latexmath]
+++++
+\begin{equation}
+{y^2 = (x^3 + 7)}~\text{over}~(\mathbb{F}_p)
+\end{equation}
+++++
+
+au
+
+[latexmath]
+++++
+\begin{equation}
+{y^2 \mod p = (x^3 + 7) \mod p}
+\end{equation}
+++++
+
+_mod p_ (modulo nambari ya kwanza _p_) inaonyesha kwamba mzunguko huu uko juu ya
+uwanja mdogo wa mpangilio wa kwanza _p_, pia uliowekwa kama latexmath:[\(
+\mathbb{F}_p\)], ambapo _p_ = 2^256^ – 2^32^ – 2^9^ – 2^8^ – 2^7^ – 2^6^ –
+2^4^ – 1, nambari kubwa sana ya kwanza.
+
+Kwa sababu mzunguko huu umefafanuliwa juu ya uwanja mdogo wa mpangilio wa kwanza badala
+ya juu ya nambari halisi, unafanana na mchoro wa nukta zilizotawanyika katika
+vipimo viwili, ambavyo hufanya iwe vigumu kuibua mawazo. Hata hivyo, hesabu
+ni sawa na ile ya mzunguko wa mviringo juu ya nambari halisi. Kama
+mfano, <<ecc-over-F17-math>> inaonyesha mzunguko ule ule wa mviringo juu ya uwanja mdogo
+mdogo sana wa mpangilio wa kwanza 17, ikionyesha mchoro wa nukta kwenye
+gridi. Mzunguko wa mviringo wa Bitcoin wa +secp256k1+ unaweza kufikirika kama mchoro
+mgumu zaidi wa nukta kwenye gridi kubwa isiyoweza kufikirika.
+
+[[ecc-over-F17-math]]
+.Kriptografia ya mzunguko wa mviringo: kuibua mzunguko wa mviringo juu ya F(p), ambapo p=17.
+image::images/mbc3_0403.png["ecc-over-F17-math"]
+
+Kwa hivyo, kwa mfano, ifuatayo ni pointi P yenye kuratibu (x, y) ambayo
+ni pointi kwenye mzunguko wa +secp256k1+:
+
+[source, python]
+----
+P =
+(55066263022277343669578718895168534326250603453777594175500187360389116729240,
+32670510020758816978083085130507043184471273380659243275938904335757337482424)
+----
+
+<<example_4_1>> inaonyesha jinsi unavyoweza kuangalia hili mwenyewe ukitumia Python.
+
+[[example_4_1]]
+.Kutumia Python kuthibitisha kwamba pointi hii iko kwenye mzunguko wa mviringo
+====
+[source, pycon]
+----
+Python 3.10.6 (main, Nov 14 2022, 16:10:14) [GCC 11.3.0] on linux
+Type "help", "copyright", "credits" or "license" for more information.
+> p = 115792089237316195423570985008687907853269984665640564039457584007908834671663
+> x = 55066263022277343669578718895168534326250603453777594175500187360389116729240
+> y = 32670510020758816978083085130507043184471273380659243275938904335757337482424
+> (x ** 3 + 7 - y**2) % p
+0
+----
+====
+
+[role="less_space pagebreak-before"]
+Katika hesabu ya mzunguko wa mviringo, kuna pointi inayoitwa "pointi ya infinity,"
+ambayo inafanana takriban na jukumu la sifuri katika kuongeza. Kwenye kompyuta,
+wakati mwingine inawakilishwa na x = y = 0 (ambayo haitimizi mlinganyo
+wa mzunguko wa mviringo, lakini ni kesi rahisi tofauti ambayo inaweza
+kuangaliwa).
+
+Pia kuna opereta pass:[+], inayoitwa "kuongeza," ambayo ina baadhi ya
+sifa zinazofanana na kuongeza kwa kawaida kwa nambari halisi ambayo
+watoto wa shule ya msingi hujifunza. Kwa pointi mbili P~1~ na P~2~ kwenye
+mzunguko wa mviringo, kuna pointi ya tatu P~3~ = P~1~ + P~2~, pia kwenye
+mzunguko wa mviringo.
+
+Kijiometri, pointi hii ya tatu P~3~ inahesabiwa kwa kuchora mstari
+kati ya P~1~ na P~2~. Mstari huu utapita kwenye mzunguko wa mviringo katika
+mahali moja ya ziada. Iita pointi hii P~3~' = (x, y). Kisha
+onyesha upya kwenye mhimili wa x kupata P~3~ = (x, –y).
+
+Kuna visa vichache maalum vinavyoelezea haja ya "pointi
+ya infinity."
+
+Kama P~1~ na P~2~ ni pointi ile ile, mstari "kati" ya P~1~ na P~2~
+unapaswa kurefushwa ili kuwa tangent kwenye mzunguko kwenye pointi hii P~1~. Hii
+tangent itapita kwenye mzunguko katika pointi moja mpya. Unaweza kutumia
+mbinu kutoka kwa calculus kuamua mteremko wa mstari wa tangent.
+Mbinu hizi zinafanya kazi kwa kushangaza, hata ingawa tunaizuia
+maslahi yetu kwa pointi kwenye mzunguko zenye kuratibu mbili za nambari kamili!
+
+Katika visa fulani (yaani, kama P~1~ na P~2~ zina thamani sawa za x lakini
+thamani tofauti za y), mstari wa tangent utakuwa wima kabisa, katika hali hiyo
+P~3~ = "pointi ya infinity."
+
+Kama P~1~ ni "pointi ya infinity," basi P~1~ + P~2~ = P~2~. Vivyo hivyo,
+kama P~2~ ni pointi ya infinity, basi P~1~ + P~2~ = P~1~. Hii inaonyesha
+jinsi pointi ya infinity inavyocheza jukumu la sifuri.
+
+Inabainika kwamba pass:[+] inashirikiana, ambayo inamaanisha kwamba (A pass:[+]
+B) pass:[+] C = A pass:[+] (B pass:[+] C). Hii inamaanisha tunaweza kuandika A
+pass:[+] B pass:[+] C bila mabano na bila utata.
+
+Sasa baada ya kufafanua kuongeza, tunaweza kufafanua kuzidisha kwa
+njia ya kawaida inayopanua kuongeza. Kwa pointi P kwenye mzunguko wa mviringo,
+kama k ni nambari kamili, basi kP = P + P + P + ... + P (mara k). Kumbuka
+kwamba k wakati mwingine huitwa kwa mkanganyiko "exponent" katika ((("public key cryptography", "elliptic curve cryptography as", startref="pub-key-ecc")))((("elliptic curve cryptography (ECC)", startref="ecc")))kesi hii.
+
+[[public_key_derivation]]
+==== Funguo za Umma
+
+Funguo ((("public keys", "generating", id="public-key-generate")))((("elliptic curve multiplication", id="elliptic-multiply")))ya umma inahesabiwa kutoka
+kwa funguo ya siri kwa kutumia mzidishano wa mzunguko wa mviringo, ambao
+hauwezi kubadilishwa: _K_ = _k_ × _G_, ambapo _k_ ni funguo ya siri, _G_ ni
+pointi ya mara kwa mara inayoitwa _pointi ya jenereta_, na _K_ ni
+funguo ya umma inayotokana. Operesheni ya nyuma, inayojulikana kama "kutafuta logarithm ya kipekee"—kuhesabu _k_ ukijua __K__—ni ngumu kama kujaribu
+thamani zote zinazowezekana za _k_ (yaani, utafutaji wa nguvu). Kabla ya
+kuonyesha jinsi ya kuzalisha funguo ya umma kutoka kwa funguo ya siri, tuangalie
+kriptografia ya mzunguko wa mviringo kwa undani zaidi kidogo.
+
+[TIP]
+====
+Mzidishano wa mzunguko wa mviringo ni aina ya kazi ambayo wataalamu wa kriptografia
+huiita kazi ya "mlango wa mtego": ni rahisi kufanya katika mwelekeo mmoja
+(kuzidisha) na haiwezekani kufanya katika mwelekeo wa nyuma
+(kugawanya). Mtu mwenye funguo ya siri anaweza kwa urahisi kuunda funguo ya umma
+na kisha kuishiriki na dunia akijua kwamba hakuna mtu anayeweza kuibadilisha
+kazi na kuhesabu funguo ya siri kutoka kwa funguo ya umma. Ujanja huu wa kihesabu
+unakuwa msingi wa sahihi za dijitali ambazo haziwezi kuigwa na salama
+zinazothibitisha udhibiti wa fedha za bitcoin.
+====
+
+Tunaanza na funguo ya siri katika
+muundo wa nambari iliyozalishwa kiholela _k_, tunaisidisha na
+pointi iliyopangwa awali kwenye mzunguko inayoitwa _pointi ya jenereta_ _G_ kuzalisha
+pointi nyingine mahali pengine kwenye mzunguko, ambayo ni
+funguo ya umma inayolingana _K_. Pointi ya jenereta imebainishwa kama sehemu
+ya kiwango cha +secp256k1+ na daima ni sawa kwa funguo zote za
+bitcoin:
+
+[latexmath]
+++++
+\begin{equation}
+{K = k \times G}
+\end{equation}
+++++
+
+ambapo _k_ ni funguo ya siri, _G_ ni pointi ya jenereta, na _K_ ni
+funguo ya umma inayotokana, pointi kwenye mzunguko. Kwa sababu pointi ya jenereta
+daima ni sawa kwa watumiaji wote wa Bitcoin, funguo ya siri _k_ iliyosidishwa
+na _G_ daima itatoa funguo ile ile ya umma _K_. Uhusiano
+kati ya _k_ na _K_ umewekwa lakini unaweza kuhesabiwa tu katika mwelekeo mmoja,
+kutoka _k_ hadi _K_. Ndiyo maana funguo ya umma ya Bitcoin (_K_) inaweza
+kushirikiwa na mtu yeyote na haifunui funguo ya siri ya mtumiaji (_k_).
+
+[TIP]
+====
+Funguo ya siri inaweza kubadilishwa kuwa funguo ya umma, lakini funguo ya umma
+haiwezi kubadilishwa kuwa funguo ya siri kwa sababu hesabu inafanya kazi
+katika mwelekeo mmoja tu.
+====
+
+Tukitekeleza mzidishano wa mzunguko wa mviringo, tunachukua funguo ya siri
+_k_ iliyozalishwa hapo awali na kuisidisha na pointi ya jenereta _G_ kupata
+funguo ya umma _K_:
+
+[source, python]
+----
+K = 1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD × G
+----
+
+Funguo ya umma _K_ imefafanuliwa kama pointi _K_ = (_x_, _y_):
+
+[latexmath]
+++++
+\begin{equation}
+K = (x, y)
+\end{equation}
+++++
+
+ambapo,
+
+----
+x = F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A
+y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB
+----
+
+Ili kuibua mzidishano wa pointi na nambari kamili, tutatumia
+mzunguko rahisi zaidi wa mviringo juu ya nambari halisi&#x2014;kumbuka, hesabu ni
+sawa. Lengo letu ni kupata kizidishi _kG_ cha pointi ya jenereta
+_G_, ambayo ni sawa na kuongeza _G_ na yenyewe, mara _k_ mfululizo. Katika
+mzunguko wa mviringo, kuongeza pointi na yenyewe ni sawa na kuchora mstari wa
+tangent kwenye pointi na kutafuta mahali inapokata mzunguko tena,
+kisha kuonyesha pointi hiyo upya kwenye mhimili wa x.
+
+<<ecc_illustrated>> inaonyesha mchakato wa kutenga _G_, _2G_, _4G_, kama
+operesheni ya kijiometri kwenye mzunguko.
+
+[TIP]
+====
+Utekelezaji mwingi wa Bitcoin hutumia
+https://oreil.ly/wD60m[maktaba ya kriptografia ya libsecp256k1]
+kufanya hesabu ya mzunguko wa mviringo.((("public keys", "generating", startref="public-key-generate")))((("elliptic curve multiplication", startref="elliptic-multiply")))
+====
+
+[[ecc_illustrated]]
+.Kriptografia ya mzunguko wa mviringo: kuibua mzidishano wa pointi G na nambari kamili k kwenye mzunguko wa mviringo.
+image::images/mbc3_0404.png["ecc_illustrated"]
+
+=== Hati za Matokeo na Ingizo
+
+Ingawa((("public key cryptography", "input/output scripts", id="pub-key-input-output")))((("input scripts", id="input-script")))((("output scripts", id="output-script")))((("scripts", "input/output", id="script-input-output"))) mchoro kutoka karatasi ya asili ya Bitcoin, <<pay-to-pure-pubkey>>,
+unaonyesha funguo za umma (pubkeys) na sahihi (sigs) zikitumiwa moja kwa moja,
+toleo la kwanza la Bitcoin badala yake lilikuwa na malipo yaliyotumwa kwenye sehemu inayoitwa
+_hati ya matokeo_ na lilikuwa na matumizi ya bitcoins hizo yakeidhinishwa na sehemu inayoitwa _hati ya ingizo_.
+Sehemu hizi zinaruhusu operesheni za ziada kufanywa mbali na
+(au badala ya) kuthibitisha kwamba sahihi inalingana na funguo ya umma.
+Kwa mfano, hati ya matokeo inaweza kuwa na funguo mbili za umma na kuhitaji sahihi mbili
+zinazofaa ziwekwe katika hati ya ingizo ya kutumia.
+
+Baadaye, katika <<tx_script>>, tutajifunza kuhusu hati kwa undani. Kwa sasa,
+yote tunayohitaji kuelewa ni kwamba bitcoins zinapokelewa kwenye
+hati ya matokeo inayofanya kazi kama funguo ya umma, na matumizi ya bitcoin yanaidhinishwa
+na hati ya ingizo inayofanya kazi kama ((("public key cryptography", "input/output scripts", startref="pub-key-input-output")))((("input scripts", startref="input-script")))((("output scripts", startref="output-script")))((("scripts", "input/output", startref="script-input-output")))sahihi.
+
+[[p2pk]]
+=== Anwani za IP: Anwani ya Asili ya Bitcoin (P2PK)
+
+Tumeanzisha((("public key cryptography", "IP address payments and", id="pub-key-ipaddress")))((("IP addresses for Bitcoin payments", id="ipaddress-payment")))((("payments", "via IP addresses", id="payment-ipaddress")))((("P2PK (pay to public key)", id="p2pk-ch4")))((("addresses", "P2PK (pay to public key)", id="address-p2pk-ch4"))) kwamba Alice anaweza kumlipa Bob kwa kupanga sehemu ya
+bitcoins zake kwenye moja ya funguo za umma za Bob. Lakini Alice anapata funguo ya umma
+ya Bob vipi? Bob angeweza tu kumpa nakala, lakini tuangalie tena
+funguo ya umma tuliyofanya kazi nayo katika <<public_key_derivation>>. Angalia
+kwamba ni ndefu sana. Fikiria Bob akijaribu kuisoma kwa Alice
+kwenye simu:
+
+----
+x = F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A
+y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB
+----
+
+Badala ya kuingiza funguo ya umma moja kwa moja, toleo la kwanza la programu
+ya Bitcoin liliruhusu mtumaji kuingiza anwani ya IP ya mpokeaji, kama inavyoonyeshwa katika <<bitcoin_01_send>>. Kipengele hiki
+kiliondolewa baadaye—kuna matatizo mengi
+ya kutumia anwani za IP—lakini maelezo mafupi yake yatatusaidia
+kuelewa vizuri zaidi kwa nini baadhi ya vipengele vingeweza kuongezwa kwenye
+itifaki ya Bitcoin.
+
+[[bitcoin_01_send]]
+.Skrini ya mapema ya kutuma ya Bitcoin kupitia https://oreil.ly/IDV1a[Hifadhi ya Mtandao].
+image::images/mbc3_0405.png["Early Bitcoin send screen"]
+
+Kama Alice aliingiza anwani ya IP ya Bob katika Bitcoin 0.1, nodi yake kamili ingeanzisha
+muunganiko na nodi yake kamili na kupokea funguo mpya ya umma
+kutoka mkoba wa Bob ambayo nodi yake haikuwahi kumpa mtu yeyote awali. Hii
+kuwa funguo mpya ya umma ilikuwa muhimu kuhakikisha kwamba miamala tofauti
+inayolipa Bob haingaliweza kuunganishwa pamoja na mtu
+anayeangalia blockchain na kuona kwamba miamala yote ililipa
+funguo ile ile ya umma.
+
+Kwa kutumia funguo ya umma nodi yake iliyopokea kutoka nodi ya Bob, mkoba wa Alice
+ungeunda matokeo ya muamala yanayolipa hati rahisi sana ya matokeo:
+
+----
+<Bob's public key> OP_CHECKSIG
+----
+
+Bob baadaye angeweza kutumia matokeo hayo na hati ya ingizo yenye
+sahihi yake tu:
+
+----
+<Bob's signature>
+----
+
+Ili kuelewa hati ya matokeo na ingizo zinafanya nini, unaweza
+kuziunganisha pamoja (hati ya ingizo kwanza) na kisha kuona kwamba kila kipande cha
+data (kilichoonyeshwa katika mabano ya pembe) huwekwa juu ya orodha ya vitu,
+inayoitwa rundo. Wakati msimbo wa operesheni (opcode) unapatikana, unatumia
+vitu kutoka kwenye rundo, ukianza na vitu vilivyo juu zaidi. Tuangalie
+jinsi hilo linavyofanya kazi kwa kuanza na hati iliyounganishwa:
+
+----
+<Bob's signature> <Bob's public key> OP_CHECKSIG
+----
+
+Kwa hati hii, sahihi ya Bob huwekwa kwenye rundo, kisha funguo ya umma ya Bob
+huwekwa juu yake. Operesheni ya +OP_CHECKSIG+ inatumia vipande viwili,
+ukianza na funguo ya umma ikifuatwa na sahihi,
+ikiviondoa kutoka kwenye rundo. Inathibitisha sahihi inalingana na
+funguo ya umma na pia inabeba (kusaini) sehemu mbalimbali za
+muamala. Kama sahihi ni sahihi, +OP_CHECKSIG+ inabadilisha nafsi yake
+kwenye rundo na thamani 1; kama sahihi haikuwa sahihi, inabadilisha nafsi yake na 0.
+Kama kuna kipande kisicho na sifuri juu ya rundo mwishoni mwa tathmini,
+hati inapita. Kama hati zote katika muamala zinapita,
+na maelezo mengine yote kuhusu muamala ni halali, basi
+nodi kamili zitaona muamala kuwa halali.
+
+Kwa muhtasari, hati iliyotangulia inatumia funguo ile ile ya umma na sahihi
+iliyoelezwa katika karatasi ya asili lakini inaongeza ugumu wa sehemu mbili za hati
+na opcode. Hiyo inaonekana kama kazi ya ziada hapa, lakini tutaanza
+kuona manufaa yake tutakapoangalia sehemu ifuatayo.
+
+Aina hii ya matokeo inajulikana leo kama _kulipa funguo ya umma_, au _P2PK_ kwa
+ufupi. Haikutumiwa sana kwa malipo, na hakuna programu inayotumiwa sana
+ambayo imeunga mkono malipo ya anwani ya IP kwa karibu((("public key cryptography", "IP address payments and", startref="pub-key-ipaddress")))((("IP addresses for Bitcoin payments", startref="ipaddress-payment")))((("payments", "via IP addresses", startref="payment-ipaddress")))((("P2PK (pay to public key)", startref="p2pk-ch4")))((("addresses", "P2PK (pay to public key)", startref="address-p2pk-ch4"))) muongo mmoja.
+
+[[addresses_for_p2pkh]]
+=== Anwani za Zamani za P2PKH
+
+Kuingiza ((("public key cryptography", "hash functions and", id="pub-key-hash")))((("hash functions", "Bitcoin payments and", id="hash-payment")))((("payments", "with hash functions", secondary-sortas="hash functions", id="payment-hash")))((("P2PKH (pay to public key hash)", id="p2pkh-legacy")))((("addresses", "P2PKH (pay to public key hash)", id="address-p2pkh-legacy")))anwani ya IP ya mtu unayetaka kumlipa kuna
+faida kadhaa, lakini pia kuna hasara kadhaa. Hasara moja mahususi
+ni kwamba mpokeaji anahitaji mkoba wao kuwa mtandaoni kwenye anwani yao ya IP,
+na unahitaji kuwa unapatikana kutoka nje ya ulimwengu. Kwa
+watu wengi, hiyo si chaguo. Wanazima kompyuta zao
+usiku, kompyuta ndogo zao zinalala, wako nyuma ya ngome za moto, au wako
+wakitumia Tafsiri ya Anwani ya Mtandao (NAT).
+
+Hii inarudisha tatizo la wapokeaji kama Bob kulazimika kumpa
+watumaji kama Alice funguo ndefu ya umma. Toleo fupi zaidi la funguo za umma
+za Bitcoin zinazojulikana kwa wasanidi wa Bitcoin wa mapema zilikuwa bytes 65, sawa na herufi 130
+zinapoandikwa katika hexadecimal. Hata hivyo, Bitcoin
+tayari ina miundo kadhaa ya data kubwa zaidi ya bytes 65
+ambayo inahitaji kurejeshwa salama katika sehemu nyingine za Bitcoin kwa kutumia
+kiasi kidogo zaidi cha data ambacho kilikuwa salama.
+
+Bitcoin hufanikisha hilo na _kazi ya hash_, kazi inayochukua
+kiasi kikubwa kinachowezekana cha data, kuigawanya (kuihash), na kutoa
+kiasi kilichowekwa cha data. Kazi ya hash ya kriptografia daima itatoa
+matokeo yale yale ikipewa ingizo lile lile, na kazi salama pia
+itafanya iwe vigumu kwa mtu kuchagua ingizo tofauti ambalo
+linazalisha matokeo yaliyoonekana awali. Hilo hufanya ((("commitments", id="commitment")))matokeo kuwa _ahadi_
+kwa ingizo. Ni ahadi kwamba, kwa vitendo, tu ingizo _x_ peke yake ndiyo litakalozalisha matokeo _X_.
+
+Kwa mfano, fikiria ninataka kukuuliza swali na pia kukupa jibu langu
+kwa muundo ambao huwezi kusoma mara moja. Tuseme swali
+ni, "Satoshi Nakamoto alianza kufanya kazi kwenye Bitcoin mwaka gani?" Nitakupa
+ahadi kwa jibu langu kwa muundo wa
+matokeo kutoka kwa ((("SHA256 hash function")))kazi ya hash ya SHA256, kazi inayotumiwa sana
+katika Bitcoin:
+
+----
+94d7a772612c8f2f2ec609d41f5bd3d04a5aa1dfe3582f04af517d396a302e4e
+----
+
+Baadaye, baada ya kuniambia nadharia yako ya jibu la swali, ninaweza
+kufunua jibu langu na kuthibitisha kwako kwamba jibu langu, kama ingizo kwenye kazi ya hash,
+linazalisha matokeo yale yale niliyokupa awali:
+
+----
+$ echo "2007.  He said about a year and a half before Oct 2008" | sha256sum
+94d7a772612c8f2f2ec609d41f5bd3d04a5aa1dfe3582f04af517d396a302e4e
+----
+
+Sasa fikiria tunamwuliza Bob swali, "funguo yako ya umma ni nini?" Bob
+anaweza kutumia kazi ya hash kutupa ahadi salama kwa kriptografia
+ya funguo yake ya umma. Akifunua ufunguo wake baadaye, na tukithibitisha kwamba
+unazalisha ahadi ile ile aliyotupa awali, tunaweza kuwa na uhakika kwamba
+ilikuwa ufunguo ule ule uliotumika kuunda ahadi hiyo ya awali.
+
+Kazi ya hash ya SHA256 inachukuliwa kuwa salama sana na inazalisha
+bits 256 (bytes 32) za matokeo, chini ya nusu ya ukubwa wa funguo za asili
+za umma za Bitcoin. Hata hivyo, kuna kazi zingine za hash ambazo ni salama kidogo pungufu
+zinazozalisha matokeo madogo zaidi, kama vile ((("RIPEMD-160 hash function")))kazi ya hash ya RIPEMD-160
+ambaye matokeo yake ni bits 160 (bytes 20). Kwa sababu ambazo Satoshi
+Nakamoto hakuwahi kutaja, toleo la asili la Bitcoin lilifanya ahadi
+za funguo za umma kwa kwanza kuhash ufunguo na SHA256 na kisha kuhash
+matokeo hayo na RIPEMD-160; hii ilizalisha ahadi ya bytes 20 ya
+funguo ya umma.
+
+[role="less_space pagebreak-before"]
+Tunaweza kuangalia hilo kwa algorithm.
+Tukianza na funguo ya umma _K_, tunahesabu hash ya SHA256 na kisha
+tunahesabu hash ya RIPEMD-160 ya matokeo, kuzalisha nambari ya bits 160 (bytes 20):
+
+[latexmath]
+++++
+\begin{equation}
+{A = RIPEMD160(SHA256(K))}
+\end{equation}
+++++
+
+ambapo _K_ ni funguo ya umma na _A_ ni ahadi inayotokana.
+
+Sasa baada ya kuelewa jinsi ya kufanya ahadi ya funguo ya umma, tunahitaji
+kujua jinsi ya kuitumia katika muamala. Fikiria hati ifuatayo ya matokeo:
+
+----
+OP_DUP OP_HASH160 <Bob's commitment> OP_EQUAL OP_CHECKSIG
+----
+
+Na pia hati ifuatayo ya ingizo:
+
+----
+<Bob's signature> <Bob's public key>
+----
+
+Pamoja, zinaunda hati ifuatayo:
+
+----
+<sig> <pubkey> OP_DUP OP_HASH160 <commitment> OP_EQUALVERIFY OP_CHECKSIG
+----
+
+Kama tulivyofanya katika <<p2pk>>, tunaanza kuweka vitu kwenye rundo. Sahihi ya Bob
+huenda kwanza; funguo yake ya umma kisha huwekwa juu ya rundo.
+Operesheni ya +OP_DUP+ inarudia kipande kilichoko juu, kwa hivyo kipande kilichoko juu na
+cha pili kutoka juu kwenye rundo sasa vyote viwili ni funguo ya umma ya Bob.
+Operesheni ya +OP_HASH160+ inatumia (kuondoa) funguo ya umma iliyo juu na
+kuibadilisha na matokeo ya kuihash na +RIPEMD160(SHA256(K))+,
+kwa hivyo sasa juu ya rundo ni hash ya funguo ya umma ya Bob. Ijayo, ahadi
+ya funguo ya umma ya Bob huongezwa juu ya rundo. Operesheni ya
++OP_EQUALVERIFY+ inatumia vipande viwili vilivyo juu na kuthibitisha kwamba
+ni sawa; hilo linapaswa kuwa hivyo kama funguo ya umma ambayo Bob alitoa
+katika hati ya ingizo ni funguo ile ile ya umma iliyotumika kuunda ahadi katika
+hati ya matokeo ambayo Alice alilipa. Kama +OP_EQUALVERIFY+ inashindwa, hati
+nzima inashindwa. Hatimaye, tunabaki na rundo lenye tu sahihi ya Bob
+na funguo yake ya umma; opcode ya +OP_CHECKSIG+ inathibitisha zinalingana
+na kila moja na kwamba sahihi inabeba muamala.
+
+Ingawa mchakato huu wa kulipa hash ya funguo ya umma (_P2PKH_) unaweza
+kuonekana mgumu, unaruhusu malipo ya Alice kwa
+Bob kuwa na bytes 20 tu za ahadi ya funguo yake ya umma badala ya
+ufunguo wenyewe, ambao ungekuwa bytes 65 katika toleo la asili la
+Bitcoin. Hiyo ni data kidogo zaidi sana ambayo Bob anahitaji kuwasiliana na
+Alice.
+
+Hata hivyo, bado hatujaelezea jinsi Bob anapata bytes hizo 20 kutoka kwenye mkoba wake
+wa Bitcoin hadi mkoba wa Alice. Kuna usimbaji unaotumika sana kwa
+thamani za byte, kama hexadecimal, lakini kosa lolote lililofanywa katika kunakili
+ahadi lingesababisha bitcoins kutumwa kwenye matokeo ambayo hayawezi kutumika,
+na kusababisha kupotea milele. Katika sehemu inayofuata, tutaangalia usimbaji
+mfupi na ((("public key cryptography", "hash functions and", startref="pub-key-hash")))((("hash functions", "Bitcoin payments and", startref="hash-payment")))((("payments", "with hash functions", secondary-sortas="hash functions", startref="payment-hash")))((("P2PKH (pay to public key hash)", startref="p2pkh-legacy")))((("addresses", "P2PKH (pay to public key hash)", startref="address-p2pkh-legacy")))((("commitments", startref="commitment")))checksums zinazotegemewa.
+
+[[base58]]
+=== Usimbaji wa Base58check
+
+Ili((("public key cryptography", "base58check encoding", id="pub-key-base58")))((("base58check encoding", id="base58-ch4")))((("encoding", "base58check", id="encode-base58"))) kuwakilisha nambari ndefu kwa njia ya muhtasari,
+kwa kutumia alama chache, mifumo mingi ya kompyuta hutumia
+uwakilishi wa alphanumeric mchanganyiko wenye msingi (au radix) zaidi ya 10. Kwa mfano,
+wakati mfumo wa jadi wa desimali unatumia tarakimu 10, 0 hadi 9,
+mfumo wa hexadecimal unatumia 16, ukitumia herufi A hadi F kama alama sita
+za ziada. Nambari iliyowakilishwa katika muundo wa hexadecimal ni
+fupi kuliko uwakilishi sawa wa desimali. Mfupi zaidi bado,
+uwakilishi wa base64 ((("base64 encoding")))unatumia herufi 26 ndogo, herufi 26 kubwa, tarakimu 10,
+na herufi 2 zaidi kama "+" na "/" kutuma
+data ya binary kwenye vyombo vya maandishi kama barua pepe.
+
+Base58 ni usimbaji unaofanana na
+base64, ukitumia herufi kubwa na ndogo na nambari,
+lakini ukiacha baadhi ya herufi ambazo mara nyingi huchanganywa
+na kuonekana sawa zinapoonyeshwa katika fonti fulani.
+Hasa, base58 ni base64 bila 0 (sifuri ya nambari), O (o kubwa),
+l (L ndogo), I (i kubwa), na alama "+" na
+"/." Au, kwa urahisi zaidi, ni seti ya herufi ndogo na kubwa na
+nambari bila nne (0, O, l, I) zilizotajwa tu. <<base58alphabet>>
+inaonyesha alfabeti kamili ya base58.
+
+[[base58alphabet]]
+.Alfabeti ya base58 ya Bitcoin
+====
+----
+123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz
+----
+====
+
+Ili kuongeza usalama wa ziada dhidi ya makosa ya uandishi au makosa ya kunakili, base58check
+inajumuisha((("checksums"))) _checksum_ iliyosimbwa katika alfabeti ya base58. Checksum ni
+bytes nne za ziada
+zilizoongezwa mwishoni mwa data inayosimbwa. Checksum
+inatokana na hash ya data iliyosimbwa na kwa hivyo inaweza kutumika
+kugundua makosa ya kunakili na uandishi. Inapowasilishwa na
+msimbo wa base58check, programu ya kusimbuliwa itahesabu checksum ya
+data na kuilinganisha na checksum iliyojumuishwa katika msimbo. Kama hizo mbili
+hazilingani, kosa limeanzishwa na data ya base58check ni
+batili. Hii inazuia anwani ya Bitcoin iliyoandikwa vibaya kukubaliwa na
+programu ya mkoba kama marudio halali, kosa ambalo
+lingesababisha upotezaji wa fedha.
+
+Kubadilisha data (nambari) kuwa muundo wa base58check, kwanza tunaongeza
+kiambishi awali kwa data, kinachojulikana kama ((("version prefixes", id="version-prefix")))"baiti ya toleo," ambayo hutumika kwa urahisi
+kutambua aina ya data inayosimbwa. Kwa mfano, kiambishi awali cha sifuri
+(0x00 katika hex) kinaonyesha kwamba data inapaswa kutumika kama ahadi (hash) katika
+hati ya matokeo ya P2PKH ya zamani. Orodha ya viambishi awali vya kawaida vya toleo inaonyeshwa
+katika <<base58check_versions>>.
+
+Ijayo, tunahesabu checksum ya "SHA mara mbili," maana yake tunatumia algorithm
+ya hash ya SHA256 mara mbili kwenye matokeo ya awali (kiambishi awali kilichounganishwa
+na data):
+
+----
+checksum = SHA256(SHA256(prefix||data))
+----
+
+Kutoka kwenye hash ya bytes 32 inayotokana (hash ya hash), tunachukua tu
+bytes nne za kwanza. Bytes hizi nne hutumika kama msimbo wa kuangalia makosa, au
+checksum. Checksum huongezwa mwishoni.
+
+Matokeo yanajumuisha vitu vitatu: kiambishi awali, data, na
+checksum. Matokeo haya husimbwa kwa kutumia alfabeti ya base58 iliyoelezwa
+hapo awali. <<base58check_encoding>> inaonyesha
+mchakato wa usimbaji wa base58check.
+
+[[base58check_encoding]]
+.Usimbaji wa Base58check: muundo wa base58, wenye toleo, na checksum kwa usimbaji usio na utata wa data ya bitcoin.
+image::images/mbc3_0406.png["Base58checkEncoding"]
+
+++++
+<p class="fix_tracking2">
+Katika Bitcoin, data nyingine mbali na ahadi za funguo za umma zinawasilishwa kwa mtumiaji katika
+usimbaji wa base58check ili kufanya data hiyo kuwa mfupi, rahisi kusoma, na rahisi kugundua
+makosa. Kiambishi awali cha toleo katika usimbaji wa base58check hutumika kuunda
+muundo unaotofautika kwa urahisi, ambao ukisimbwa katika base58 una
+herufi maalum mwanzoni mwa mzigo uliosimbwa kwa base58check.
+Herufi hizi hufanya iwe rahisi kwa binadamu kutambua aina ya data
+inayosimbwa na jinsi ya kuitumia. Hii ndiyo inayotofautisha, kwa
+mfano, anwani ya Bitcoin iliyosimbwa kwa base58check inayoanza na 1 na
+muundo wa uagizaji wa mkoba wa funguo ya siri ya siri (WIF) iliyosimbwa kwa base58check inayoanza na 5. Baadhi ya mifano
+ya viambishi awali vya toleo na herufi za base58 zinazotokana zinaonyeshwa katika
+<a data-type="xref" href="#base58check_versions">#base58check_versions</a>.
+</p>
+++++
+
+++++
+<table id="base58check_versions">
+<caption>Mifano ya kiambishi awali cha toleo la Base58check na matokeo yaliyosimbwa</caption>
+<thead>
+<tr>
+<th>Aina</th>
+<th>Kiambishi awali cha toleo (hex)</th>
+<th>Kiambishi awali cha matokeo ya Base58</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Anwani ya kulipa hash ya funguo ya umma (P2PKH)</p></td>
+<td><p>0x00</p></td>
+<td><p>1</p></td>
+</tr>
+<tr>
+<td><p>Anwani ya kulipa hash ya hati (P2SH)</p></td>
+<td><p>0x05</p></td>
+<td><p>3</p></td>
+</tr>
+<tr>
+<td><p>Anwani ya Testnet ya P2PKH</p></td>
+<td><p>0x6F</p></td>
+<td><p>m au n</p></td>
+</tr>
+<tr>
+<td><p>Anwani ya Testnet ya P2SH</p></td>
+<td><p>0xC4</p></td>
+<td><p>2</p></td>
+</tr>
+<tr>
+<td><p>WIF ya Funguo ya Siri</p></td>
+<td><p>0x80</p></td>
+<td><p>5, K, au L</p></td>
+</tr>
+<tr>
+<td><p>Funguo ya Umma Iliyopanuliwa ya BIP32</p></td>
+<td><p>0x0488B21E</p></td>
+<td><p>xpub</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Kwa kuchanganya funguo za umma, ahadi za msingi wa hash, na usimbaji wa base58check,
+<<pubkey_to_address>> inaonyesha ubadilishaji wa funguo ya umma
+kuwa anwani ya ((("public key cryptography", "base58check encoding", startref="pub-key-base58")))((("base58check encoding", startref="base58-ch4")))((("encoding", "base58check", startref="encode-base58")))((("version prefixes", startref="version-prefix")))Bitcoin.
+
+[[pubkey_to_address]]
+.Funguo ya umma hadi anwani ya Bitcoin: ubadilishaji wa funguo ya umma kuwa anwani ya Bitcoin.
+image::images/mbc3_0407.png["pubkey_to_address"]
+
+[[comp_pub]]
+=== Funguo za Umma Zilizosongwa
+
+//https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2011-November/000778.html
+
+Wakati ((("public key cryptography", "compressed public keys", id="pub-key-compress")))((("compressed public keys", id="compress-pub-key")))((("uncompressed public keys", id="uncompress-pub-key")))Bitcoin iliandikwa kwanza, wasanidi wake walijua tu jinsi ya kuunda
+funguo za umma za bytes 65. Hata hivyo, msanidi wa baadaye alipata habari ya
+usimbaji mbadala wa funguo za umma uliotumia bytes 33 tu na ambao
+ulikuwa na uendanifu wa nyuma na nodi zote kamili za Bitcoin wakati huo,
+kwa hivyo hakukuwa na haja ya kubadilisha itifaki ya Bitcoin. Funguo hizo za bytes 33
+za umma zinajulikana kama _funguo za umma zilizosongwa_, na funguo za asili za bytes 65 zinajulikana kama _funguo za umma zisizosongwa_. Kutumia funguo ndogo za umma
+kunasababisha miamala midogo, kuruhusu malipo mengi zaidi kufanywa katika
+block moja.
+
+Kama tulivyoona katika sehemu <<public_key_derivation>>, funguo ya umma ni pointi [.keep-together]#(x, y)# kwenye
+mzunguko wa mviringo. Kwa sababu mzunguko unaonyesha kazi ya kihesabu,
+pointi kwenye mzunguko inawakilisha suluhisho la mlinganyo na, kwa hivyo,
+tukijua kuratibu _x_, tunaweza kuhesabu kuratibu _y_ kwa
+kutatua mlinganyo [.keep-together]#y^2^ mod p = (x^3^ + 7) mod p.# Hilo linatuwezesha
+kuhifadhi kuratibu _x_ tu ya pointi ya funguo ya umma, tukiacha kuratibu _y_
+na kupunguza ukubwa wa ufunguo na nafasi inayohitajika kuuhifadhi kwa bits 256.
+Upungufu wa karibu 50% kwa ukubwa katika kila
+muamala unajumlishwa hadi kiasi kikubwa cha data iliyookolewa baada ya muda!
+
+Hapa kuna funguo ya umma iliyozalishwa na funguo ya siri tuliyounda katika
+<<public_key_derivation>>:
+
+----
+x = F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A
+y = 07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB
+----
+
+Hapa ni funguo ile ile ya umma ikionyeshwa kama nambari ya bits 520 (tarakimu 130 za hex)
+yenye kiambishi awali +04+ ikifuatwa na kuratibu +x+ na kisha +y+, kama +04 x
+y+:
+
+++++
+<pre data-type="programlisting">
+K = 04F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A\
+    07CF33DA18BD734C600B96A72BBC4749D5141C90EC8AC328AE52DDFE2E505BDB
+</pre>
+++++
+
+Wakati funguo za umma zisizosongwa zina kiambishi awali cha +04+, funguo
+za umma zilizosongwa zinaanza na kiambishi awali cha +02+ au +03+. Tuangalie kwa nini
+kuna viambishi awali viwili vinavyowezekana: kwa sababu upande wa kushoto wa mlinganyo
+ni __y__^2^, suluhisho la _y_ ni mzizi wa mraba, ambao unaweza kuwa na thamani
+chanya au hasi. Kiibua, hii inamaanisha kwamba kuratibu _y_ inayotokana inaweza
+kuwa juu au chini ya mhimili wa x. Kama unavyoweza kuona kutoka kwenye
+grafu ya mzunguko wa mviringo katika <<ecc-curve>>, mzunguko una usawa,
+maana yake unaonyeshwa kama kioo na mhimili wa x. Kwa hivyo, wakati tunaweza
+kuacha kuratibu _y_, tunapaswa kuhifadhi _alama_ ya _y_ (chanya au
+hasi); kwa maneno mengine, tunahitaji kukumbuka kama ilikuwa juu au
+chini ya mhimili wa x kwa sababu kila moja ya chaguzi hizo zinawakilisha pointi tofauti
+na funguo tofauti ya umma. Tunapohesabu mzunguko wa mviringo katika
+hesabu ya binary kwenye uwanja mdogo wa mpangilio wa kwanza p, kuratibu _y_
+ni ya-jozi au ya-visiwa, ambayo inalingana na
+alama ya chanya/hasi kama ilivyoelezwa hapo awali. Kwa hivyo, kutofautisha
+kati ya thamani mbili zinazowezekana za _y_, tunahifadhi funguo ya umma iliyosongwa
+yenye kiambishi awali +02+ kama _y_ ni ya-jozi, na +03+ kama ni ya-visiwa, kuruhusu
+programu kutoa kwa usahihi kuratibu _y_ kutoka kwa kuratibu _x_
+na kupanua funguo ya umma hadi kuratibu kamili za
+pointi. Usongaji wa funguo ya umma unaonyeshwa katika <<pubkey_compression>>.
+
+[[pubkey_compression]]
+.Usongaji wa funguo ya umma.
+image::images/mbc3_0408.png["pubkey_compression"]
+
+Hapa kuna funguo ile ile ya umma iliyozalishwa katika <<public_key_derivation>>, ikionyeshwa kama funguo ya umma iliyosongwa iliyohifadhiwa katika bits 264 (tarakimu 66 za hex) yenye kiambishi awali +03+
+inayoonyesha kuratibu _y_ ni ya-visiwa:
+
+----
+K = 03F028892BAD7ED57D2FB57BF33081D5CFCF6F9ED3D3D7F159C2E2FFF579DC341A
+----
+
+Funguo hii ya umma iliyosongwa inalingana na funguo ile ile ya siri, maana yake
+inazalishwa kutoka kwa funguo ile ile ya siri. Hata hivyo, inaonekana tofauti
+na funguo ya umma isiyosongwa. Muhimu zaidi, tukibadilisha funguo hii
+ya umma iliyosongwa kuwa ahadi kwa kutumia kazi ya HASH160
+(+RIPEMD160(SHA256(K))+), itazalisha ahadi _tofauti_
+kuliko funguo ya umma isiyosongwa, na kusababisha anwani tofauti. Hii inaweza
+kuchanganya kwa sababu inamaanisha kwamba funguo moja ya siri inaweza kuzalisha funguo ya umma iliyoonyeshwa
+katika muundo mbili tofauti (iliyosongwa na isiyosongwa) ambazo zinazalisha anwani mbili tofauti za Bitcoin.
+Hata hivyo, funguo ya siri ni sawa kwa anwani zote mbili za Bitcoin.
+
+Funguo za umma zilizosongwa sasa ni chaguo-msingi katika programu karibu yote za Bitcoin
+na zilihitajika wakati wa kutumia baadhi ya vipengele vipya vilivyoongezwa
+katika uboreshaji wa itifaki wa baadaye.
+
+Hata hivyo, baadhi ya programu bado zinahitaji kusaidia funguo za umma zisizosongwa,
+kama vile programu ya mkoba inayoagiza funguo za siri kutoka mkoba wa zamani.
+Mkoba mpya ukiskanisha blockchain kwa matokeo ya zamani ya P2PKH
+na maingizo, unahitaji kujua kama kuskanisha funguo za bytes 65 (na
+ahadi za funguo hizo) au funguo za bytes 33 (na ahadi zao). Kushindwa
+kuskanisha aina sahihi kunaweza kusababisha mtumiaji kushindwa
+kutumia salio lake lote. Kutatua tatizo hili, wakati funguo za siri
+zinapoagiziwa kutoka mkoba, WIF inayotumiwa kuzuwakilisha
+zinatekelezwa tofauti kidogo katika mikoba ya kisasa ya Bitcoin ili kuonyesha kwamba funguo hizi za siri zimetumika kuzalisha((("public key cryptography", "compressed public keys", startref="pub-key-compress")))((("compressed public keys", startref="compress-pub-key")))((("uncompressed public keys", startref="uncompress-pub-key")))
+funguo za umma zilizosongwa.
+
+[[addresses_for_p2sh]]
+=== Kulipa Hash ya Hati ya Zamani (P2SH)
+
+Kama ((("public key cryptography", "hash functions and", id="pub-key-hash2")))((("hash functions", "Bitcoin payments and", id="hash-payment2")))((("payments", "with hash functions", secondary-sortas="hash functions", id="payment-hash2")))((("P2SH (pay to script hash)", id="p2sh-ch4")))((("addresses", "P2SH (pay to script hash)", id="address-p2sh-ch4")))tulivyoona katika sehemu zilizotangulia, mtu anayepokea bitcoins (kama
+Bob) anaweza kuhitaji kwamba malipo kwake yana vikwazo fulani katika
+hati yao ya matokeo. Bob atahitaji kutimiza vikwazo hivyo kwa kutumia
+hati ya ingizo anapotumia bitcoins hizo. Katika <<p2pk>>, kikwazo
+kilikuwa tu kwamba hati ya ingizo ilihitaji kutoa sahihi inayofaa.
+Katika <<addresses_for_p2pkh>>, funguo inayofaa ya umma pia ilihitajika
+kutolewa.
+
+++++
+<p class="fix_tracking3">
+Ili mtumaji (kama Alice) aweke vikwazo anavyovitaka Bob
+katika hati ya matokeo anayoitumia kumlipa, Bob anahitaji kuwasiliana naye
+vikwazo hivyo. Hii ni sawa na tatizo la Bob kuhitaji
+kuwasiliana naye funguo yake ya umma. Kama tatizo hilo, ambapo
+funguo za umma zinaweza kuwa kubwa kiasi, vikwazo anavyotumia Bob pia vinaweza kuwa
+vikubwa sana—labda maelfu ya bytes. Hiyo si maelfu tu ya
+bytes ambazo zinahitaji kuwasilishwa kwa Alice, bali maelfu ya bytes
+ambazo anahitaji kulipa ada za muamala kila wakati anapotaka kutuma pesa kwa Bob. Hata hivyo, suluhisho la kutumia kazi za hash kuunda
+ahadi ndogo za kiasi kikubwa cha data pia linatumika hapa.
+</p>
+++++
+
+Uboreshaji wa BIP16 wa itifaki ya Bitcoin mwaka 2012 unaruhusu
+hati ya matokeo ((("redeem scripts", id="redeem-script")))kubeba ahadi ya _hati ya ukombozi_ (_redeem script_). Wakati
+Bob anapotumia bitcoins zake, hati yake ya ingizo inahitaji kutoa hati ya ukombozi
+inayolingana na ahadi na pia data yoyote inayohitajika kutimiza hati ya
+ukombozi (kama sahihi). Tuanze kwa kufikiria Bob anataka
+kuhitaji sahihi mbili kutumia bitcoins zake, sahihi moja kutoka mkoba wake
+wa kompyuta ya mezani na moja kutoka kifaa cha kusaini cha maunzi. Anaweka masharti
+hayo katika hati ya ukombozi:
+
+----
+<public key 1> OP_CHECKSIGVERIFY <public key 2> OP_CHECKSIG
+----
+
+Kisha anaunda ahadi ya hati ya ukombozi kwa kutumia utaratibu ule ule
+wa HASH160 uliotumika kwa ahadi za P2PKH, +RIPEMD160(SHA256(script))+.
+Ahadi hiyo huwekwa katika hati ya matokeo kwa kutumia kiolezo maalum:
+
+----
+OP_HASH160 <commitment> OP_EQUAL
+----
+
+[WARNING]
+====
+Unapotumia kulipa hash ya hati (P2SH), lazima utumie kiolezo maalum cha P2SH
+bila data ya ziada au masharti katika hati ya matokeo. Kama
+hati ya matokeo si hasa +OP_HASH160 <bytes 20> OP_EQUAL+, hati ya ukombozi
+haitatumika na bitcoins yoyote inaweza kuwa haiwezi kutumika
+au inaweza kutumika na mtu yeyote (maana yake mtu yeyote anaweza kuzichukua).
+====
+
+Bob anapokwenda kutumia malipo aliyopokea kwa ahadi ya hati yake,
+anatumia hati ya ingizo inayojumuisha hati ya ukombozi, ikitolewa kama
+kipande kimoja cha data. Anatoa pia sahihi
+anazohitaji kutimiza hati ya ukombozi, akiziweka kwa mpangilio ambazo
+zitatolewa na opcodes:
+
+----
+<signature2> <signature1> <redeem script>
+----
+
+Nodi kamili za Bitcoin zinapopokea matumizi ya Bob, zitathibitisha kwamba
+hati ya ukombozi iliyotolewa itahashiwa hadi thamani ile ile ya ahadi.
+Kisha zitaibadilisha kwenye rundo na thamani yake iliyofunguliwa:
+
+----
+<signature2> <signature1> <pubkey1> OP_CHECKSIGVERIFY <pubkey2> OP_CHECKSIG
+----
+
+Hati inatekelezwa na, kama inapita na maelezo mengine yote ya
+muamala ni sahihi, muamala ni halali.
+
+Anwani za P2SH pia huundwa kwa
+base58check. Kiambishi awali cha toleo kimewekwa kuwa 5, ambalo kinasababisha
+anwani iliyosimbwa kuanza na +3+. Mfano wa anwani ya P2SH ni
++3F6i6kwkevjR7AsAd4te2YB2zZyASEm1HM+.
+
+[TIP]
+====
+P2SH si lazima sawa na muamala
+wa saini nyingi. Anwani ya P2SH _mara nyingi zaidi_ inawakilisha hati ya
+saini nyingi, lakini inaweza pia kuwakilisha hati inayosimba aina nyingine za
+miamala.
+====
+
+P2PKH na P2SH ni violezo viwili pekee vya hati vinavyotumika na usimbaji wa base58check.
+Sasa vinajulikana kama anwani za zamani na zimekuwa chini ya matumizi baada ya muda.
+Anwani za zamani zilibadilishwa na familia ya ((("redeem scripts", startref="redeem-script")))anwani za bech32.
+
+[[p2sh_collision_attacks]]
+.Mashambulizi ya Mgongano wa P2SH
+****
+Anwani zote ((("collision attacks", id="collision")))zinazotegemea kazi za hash kwa nadharia zina hatari ya
+mshambuliaji kupata kwa kujitegemea ingizo lile lile lililozalisha
+matokeo ya kazi ya hash (ahadi). Katika kesi ya Bitcoin, wakisoma
+ingizo kwa njia ile ile mtumiaji wa asili alivyofanya, watajua funguo ya siri ya mtumiaji
+na kuweza kutumia bitcoins za mtumiaji huyo. Uwezekano wa mshambuliaji
+kuzalisha kwa kujitegemea ingizo la ahadi iliyopo ni
+sawia na nguvu ya algorithm ya hash. Kwa algorithm salama ya
+bits 160 kama HASH160, uwezekano ni 1-kwa-2^160^. Hii ((("preimage attacks")))ni
+_shambulio la picha ya awali_.
+
+Mshambuliaji pia anaweza kujaribu kuzalisha ingizo mbili tofauti (k.m., hati za
+ukombozi) ambazo zinazalisha ahadi ile ile. Kwa anwani zilizoundwa
+kabisa na upande mmoja, uwezekano wa mshambuliaji kuzalisha
+ingizo tofauti la ahadi iliyopo pia ni takriban 1-kwa-2^160^ kwa
+algorithm ya HASH160. Hii ni((("second preimage attacks"))) _shambulio la picha ya pili_.
+
+Hata hivyo, hili hubadilika mshambuliaji anapoweza kushawishi thamani ya ingizo la asili.
+Kwa mfano, mshambuliaji anashiriki katika uundaji wa hati ya
+saini nyingi ambapo hawahitaji kutoa funguo yao ya umma hadi baada ya kujua
+funguo za umma za wahusika wengine wote.
+Katika kesi hiyo, nguvu ya algorithm ya hash inapunguzwa hadi mzizi wake wa
+mraba. Kwa HASH160, uwezekano unakuwa 1-kwa-2^80^. Hii ni
+_shambulio la mgongano_.
+
+// bits80=$( echo '2^80' | bc )
+// seconds_per_hour="$(( 60 * 60))"
+// bitcoin-cli getmininginfo | jq "(.networkhashps / $bits80 * $seconds_per_hour)"
+// 0.8899382363032076
+
+Kuweka nambari hizo katika muktadha, kufikia mapema 2023, wachimbaji wote wa Bitcoin
+pamoja wanatekeleza kazi za hash takriban 2^80^ kila saa. Wanatekeleza kazi
+tofauti ya hash kuliko HASH160, kwa hivyo maunzi yao yaliyopo hayawezi
+kuunda mashambulizi ya mgongano dhidi yake, lakini uwepo wa mtandao wa Bitcoin
+unathibitisha kwamba mashambulizi ya mgongano dhidi ya kazi za bits 160 kama
+HASH160 ni ((("HASH160")))ya vitendo. Wachimbaji wa Bitcoin wametumia sawa la
+mabilioni ya dola za Marekani kwenye maunzi maalum, kwa hivyo kuunda shambulio la
+mgongano kusingekuwa rahisi, lakini kuna mashirika yanayotegemea
+kupokea mabilioni ya dola katika bitcoins kwa anwani zinazozalishwa na
+michakato inayohusisha wahusika wengi, ambayo ingeweza kufanya shambulio kuwa
+la faida.
+
+Kuna itifaki za kriptografia zilizowekwa vizuri za kuzuia
+mashambulizi ya mgongano, lakini suluhisho rahisi ambalo haihitaji ujuzi wowote
+maalum kwa upande wa wasanidi wa mkoba ni kutumia tu
+kazi ya hash yenye nguvu zaidi. Uboreshaji wa baadaye wa Bitcoin ulifanya hivyo uwezekane,
+na anwani mpya za Bitcoin hutoa angalau bits 128 za upinzani wa mgongano.
+Kutekeleza operesheni za hash 2^128^ kungehitaji wachimbaji wote wa sasa wa
+Bitcoin takriban miaka bilioni 32.
+
+Ingawa hatuamini kuna tishio lolote la karibu kwa mtu yeyote
+anayeunda anwani mpya za P2SH, tunapendekeza mikoba yote mipya itumie aina mpya
+za anwani ili kuondoa mashambulizi ya mgongano wa anwani((("public key cryptography", "hash functions and", startref="pub-key-hash2")))((("hash functions", "Bitcoin payments and", startref="hash-payment2")))((("payments", "with hash functions", secondary-sortas="hash functions", startref="payment-hash2")))((("P2SH (pay to script hash)", startref="p2sh-ch4")))((("addresses", "P2SH (pay to script hash)", startref="address-p2sh-ch4"))) kama wasiwasi.
+****
+
+=== Anwani za Bech32
+
+Mwaka ((("public key cryptography", "bech32 addresses", "advantages of", id="pub-key-bech32-adv")))((("addresses", "bech32", "advantages of", id="address-bech32-adv")))((("bech32 addresses", "advantages of", id="bech32-adv")))2017, itifaki ya Bitcoin iliboreshwa. Uboreshaji ukitumiwa,
+unazuia vitambulisho vya muamala (txids) kubadilishwa bila idhini ya mtumiaji
+anayetumia (au akidi ya wasainiaji wakati sahihi nyingi zinahitajika).
+Uboreshaji, ((("segregated witness (segwit)", id="segwit-bech32")))unaoitwa _shahidi aliyetengwa_ (au _segwit_ kwa ufupi), pia
+ulitoa uwezo wa ziada kwa data ya muamala katika vitalu na faida
+nyingine kadhaa. Hata hivyo, watumiaji wanaotaka ufikiaji wa moja kwa moja wa
+faida za segwit walilazimika kukubali malipo kwenye hati mpya za matokeo.
+
+Kama ilivyotajwa katika <<p2sh>>, moja ya faida za aina ya matokeo ya P2SH
+ilikuwa kwamba mtumaji (kama Alice) hakuhitaji kujua maelezo ya
+hati iliyotumiwa na mpokeaji (kama Bob). Uboreshaji wa segwit
+ulibuniwa kutumia utaratibu huu, kuruhusu watumiaji
+kuanza mara moja kupata faida nyingi mpya kwa kutumia anwani ya P2SH.
+Lakini kwa Bob kupata ufikiaji wa faida zote, angehitaji
+mkoba wa Alice kumlipa kwa kutumia aina tofauti ya hati. Hilo
+lingehitaji mkoba wa Alice kuboreshwa kusaidia hati mpya.
+
+Kwanza, wasanidi wa Bitcoin walipendekeza BIP142, ambayo ingeendelea kutumia
+base58check na baiti mpya ya toleo, sawa na uboreshaji wa P2SH. Lakini
+kupata mikoba yote kuboreshwa kwenye hati mpya na toleo jipya la base58check
+ilikadiriwa kuhitaji karibu kazi sawa ya kupata kuboreshwa kwenda
+muundo kabisa mpya wa anwani, kwa hivyo wachangiaji kadhaa wa Bitcoin
+walijitahidi kubuni muundo bora zaidi unaowezekana wa anwani. Walitambua matatizo ((("public key cryptography", "base58check encoding")))((("base58check encoding")))((("encoding", "base58check")))kadhaa na base58check:
+
+- Uwasilishaji wake wa herufi mchanganyiko ulifanya iwe vigumu kusoma kwa sauti au
+  kunakili. Jaribu kusoma moja ya anwani za zamani katika sura hii
+  kwa rafiki anayenakili. Angalia jinsi unavyolazimika kuambatanisha
+  kila herufi na maneno "kubwa" na "ndogo." Pia, angalia
+  ukipitiapitia uandishi wao kwamba matoleo makubwa na madogo
+  ya baadhi ya herufi yanaweza kuonekana sawa katika uandishi wa
+  watu wengi.
+
+- Inaweza kugundua makosa, lakini haiwezi kusaidia watumiaji kurekebisha makosa hayo.
+  Kwa mfano, ukibadilisha bila kukusudia herufi mbili unapoingiza
+  anwani kwa mkono, mkoba wako karibu hakika utaonya kwamba
+  kosa lipo, lakini hautakusaidia kujua kosa liko wapi.
+  Inaweza kukuchukua dakika kadhaa za kufadhaika hatimaye
+  kugundua kosa.
+
+- Alfabeti ya herufi mchanganyiko pia inahitaji nafasi ya ziada kusimba katika msimbo wa QR,
+  ambao hutumika sana kushiriki anwani na ankara
+  kati ya mikoba. Nafasi hiyo ya ziada inamaanisha msimbo wa QR unahitaji kuwa mkubwa zaidi kwa
+  azimio lile lile au unakuwa mgumu zaidi kusoma haraka.
+
+[role="less_space pagebreak-before"]
+- Inahitaji kila uboreshaji wa mkoba wa mtumaji kusaidia vipengele vipya vya itifaki
+  kama P2SH na segwit. Ingawa uboreshaji wenyewe unaweza
+  usihitaji msimbo mwingi, uzoefu unaonyesha kwamba waandishi wengi wa mkoba wana
+  shughuli nyingine na wakati mwingine wanaweza kuchelewa kuboreshwa kwa miaka.
+  Hilo linaathiri vibaya kila mtu anayetaka kutumia vipengele vipya.
+
+Wasanidi waliofanya kazi kwenye muundo wa anwani kwa segwit walipata suluhisho
+kwa kila tatizo hili katika muundo mpya wa anwani unaoitwa
+bech32 (unaotamkwa na "ch" laini, kama katika "besh thelathini na mbili").
+"bech" inasimama kwa BCH, herufi za mwanzo za watu watatu waliogunduliwa
+kanuni ya mzunguko wa mkondo mwaka 1959 na 1960 ambayo bech32 inategemea.
+"32" inasimama kwa idadi ya herufi katika alfabeti ya bech32
+(sawa na 58 katika base58check):
+
+- Bech32 inatumia nambari tu na herufi za mkono mmoja (inayopendelewa
+  kuonyeshwa kwa herufi ndogo). Ingawa alfabeti yake ni karibu nusu ya
+  ukubwa wa alfabeti ya base58check, anwani ya bech32 ya hati ya kulipa
+  hash ya funguo ya umma ya shahidi (P2WPKH) ni ndefu kidogo tu kuliko anwani ya zamani
+  ya hati inayolingana ya P2PKH.
+
+- Bech32 inaweza kugundua na kusaidia kurekebisha makosa. Katika anwani ya
+  urefu unaotarajiwa, kihesabu imehakikishiwa kugundua kosa lolote
+  linaloathiri herufi nne au chini; hiyo ni ya kutegemewa zaidi kuliko
+  base58check. Kwa makosa marefu zaidi, itashindwa kuyagundua chini ya
+  mara moja kwa bilioni, ambayo ni takriban uaminifu ule ule kama
+  base58check. Bora zaidi, kwa anwani iliyoandikwa na makosa machache tu,
+  inaweza kumwambia mtumiaji makosa hayo yalitokea wapi, kuruhusu
+  kurekebisha haraka makosa madogo ya kunakili. Angalia <<bech32_typo_detection>>
+  kwa mfano wa anwani iliyoingizwa na makosa.
++
+[[bech32_typo_detection]]
+.Ugunduzaji wa makosa ya uandishi ya Bech32
+====
+Anwani:
+  bc1p9nh05ha8wrljf7ru236awpass:[<u><strong>n</strong></u>]4t2x0d5ctkkywmpass:[<u><strong>v</strong></u>]9sclnm4t0av2vgs4k3au7
+
+Makosa yaliyogunduliwa yanaonyeshwa kwa herufi nzito na mstari chini. Imezalishwa kwa kutumia
+https://oreil.ly/paWIx[onyesho la kusimbua anwani ya bech32].
+====
+
+- Bech32 inapendelewa kuandikwa na herufi ndogo tu, lakini herufi hizo
+  ndogo zinaweza kubadilishwa na herufi kubwa kabla ya
+  kusimba anwani katika msimbo wa QR. Hii inaruhusu matumizi ya hali maalum ya usimbaji wa QR
+  inayotumia nafasi ndogo zaidi. Angalia tofauti ya ukubwa na
+  ugumu wa misimbo miwili ya QR kwa anwani ile ile katika
+  <<bech32_qrcode_uc_lc>>.
++
+[[bech32_qrcode_uc_lc]]
+.Anwani ile ile ya bech32 iliyosimbwa kwa QR katika herufi ndogo na kubwa.
+image::images/mbc3_0409.png["The same bech32 address QR encoded in lowercase and uppercase"]
+
+- Bech32 inatumia utaratibu wa uboreshaji uliobuniwa kama sehemu ya
+  segwit kuwezesha mikoba ya watumaji kuweza kulipa
+  aina za matokeo ambazo bado hazijatumiwa. Lengo lilikuwa kuruhusu wasanidi
+  kujenga mkoba leo unaoruhusu kutumia kwa anwani ya bech32
+  na mkoba huo kubaki ukiweza kutumia kwa anwani za bech32 kwa
+  watumiaji wa vipengele vipya vilivyoongezwa katika uboreshaji wa itifaki wa baadaye.
+  Ilitumainiwa kwamba labda hatutahitaji tena kupitia mizunguko ya
+  uboreshaji wa mfumo mzima inayohitajika kuruhusu watu kutumia kikamilifu P2SH na((("public key cryptography", "bech32 addresses", "advantages of", startref="pub-key-bech32-adv")))((("addresses", "bech32", "advantages of", startref="address-bech32-adv")))((("bech32 addresses", "advantages of", startref="bech32-adv")))((("segregated witness (segwit)", startref="segwit-bech32"))) segwit.
+
+==== Matatizo ya Anwani za Bech32
+
+Anwani za Bech32 ((("public key cryptography", "bech32 addresses", "problems with", id="pub-key-bech32-prob")))((("addresses", "bech32", "problems with", id="address-bech32-prob")))((("bech32 addresses", "problems with", id="bech32-prob")))zingestahili kufanikiwa katika kila eneo isipokuwa tatizo moja.
+Uhakika wa kihesabu kuhusu uwezo wao wa kugundua
+makosa unatumika tu kama urefu wa anwani unayoingiza kwenye mkoba
+ni urefu ule ule wa anwani ya asili. Ukiongeza au kuondoa herufi yoyote
+wakati wa kunakili, uhakika hautumiki na mkoba wako unaweza
+kutuma fedha kwa anwani isiyo sahihi. Hata hivyo, hata bila uhakika huo,
+ilifikiriwa kwamba ingekuwa vigumu sana kwa mtumiaji anayeongeza
+au kuondoa herufi kuzalisha mfuatano wenye checksum halali, kuhakikisha
+fedha za watumiaji zilikuwa salama.
+
+Kwa bahati mbaya, chaguo la moja ya mara kwa mara katika algorithm ya bech32
+lilitokea kufanya iwe rahisi sana kuongeza au kuondoa herufi
+"q" katika nafasi ya mwisho kabla ya mwisho ya anwani inayoisha na herufi
+"p." Katika visa hivyo, unaweza pia kuongeza au kuondoa herufi "q" mara nyingi.
+Hii itakamatwa na checksum wakati mwingine, lakini
+itakosekana mara nyingi zaidi kuliko matarajio ya moja-kwa-bilioni ya
+makosa ya ubadilishaji ya bech32. Kwa mfano, angalia <<bech32_length_extension_example>>.
+
+[role="less_space pagebreak-before"]
+[[bech32_length_extension_example]]
+.Kuongeza urefu wa anwani ya bech32 bila kuibatilisha checksum yake
+====
+----
+Anwani ya bech32 iliyokusudiwa:
+bc1pqqqsq9txsqp
+
+Anwani zisizo sahihi zenye checksum halali:
+bc1pqqqsq9txsqqqqp
+bc1pqqqsq9txsqqqqqqp
+bc1pqqqsq9txsqqqqqqqqp
+bc1pqqqsq9txsqqqqqqqqqp
+bc1pqqqsq9txsqqqqqqqqqqqp
+----
+====
+//from segwit_addr import *
+//
+//for foo in range(0,1000):
+//    addr = encode('bc', 1, foo.to_bytes(3,'big'))
+//    print(foo, addr)
+
+Kwa toleo la awali la segwit (toleo 0), hili halikuwa wasiwasi wa vitendo.
+Urefu mbili tu halali zilifafanuliwa kwa matokeo ya segwit ya v0: bytes 22
+na bytes 34. Hizo zinalingana na anwani za bech32 zenye urefu wa herufi 42
+au herufi 62, kwa hivyo mtu angehitaji kuongeza au kuondoa herufi "q"
+kutoka nafasi ya mwisho kabla ya mwisho ya anwani ya bech32 mara 20 ili
+kutuma pesa kwa anwani isiyo halali bila mkoba kuweza kuigundua.
+Hata hivyo, ingekuwa tatizo kwa watumiaji katika siku zijazo kama
+uboreshaji wowote kulingana na segwit ungewahi ((("public key cryptography", "bech32 addresses", "problems with", startref="pub-key-bech32-prob")))((("addresses", "bech32", "problems with", startref="address-bech32-prob")))((("bech32 addresses", "problems with", startref="bech32-prob")))kutekelezwa.
+
+==== Bech32m
+
+Ingawa((("public key cryptography", "bech32 addresses", "bech32m", id="pub-key-bech32-bech32m")))((("bech32 addresses", "bech32m", id="bech32-bech32m")))((("addresses", "bech32m", id="address-bech32m")))((("bech32m addresses", id="bech32m"))) bech32 ilifanya kazi vizuri kwa segwit v0, wasanidi hawakutaka
+kupunguza bila sababu ukubwa wa matokeo katika matoleo ya baadaye ya segwit.
+Bila vizuizi, kuongeza au kuondoa "q" moja katika anwani ya bech32
+kungeweza kusababisha mtumiaji kutuma pesa zake kwa bahati mbaya kwenye
+matokeo ambayo hayakuweza kutumika au yangeweza kutumika na mtu yeyote (kuruhusu
+bitcoins hizo kuchukuliwa na mtu yeyote). Wasanidi walichunguza kwa kina tatizo la bech32
+na walipata kwamba kubadilisha mara kwa mara moja katika algorithm yao
+kungeondoa tatizo, kuhakikisha kwamba uongezaji au ufutaji wowote wa
+herufi hadi tano hautashindwa kugunduliwa mara nyingi zaidi ya mara moja
+kwa bilioni.
+
+//https://gist.github.com/sipa/a9845b37c1b298a7301c33a04090b2eb
+
+Toleo la bech32 lenye mara kwa mara moja tofauti linajulikana kama
+bech32 iliyobadilishwa (bech32m). Herufi zote katika anwani za bech32 na bech32m
+za data ile ile ya msingi zitakuwa sawa isipokuwa sita za mwisho (checksum).
+Hiyo inamaanisha mkoba utahitaji kujua toleo linalotumika ili
+kuthibitisha checksum, lakini aina zote mbili za anwani zina baiti ya toleo ya ndani
+inayofanya uamuzi huo kuwa rahisi.
+
+Kufanya kazi na bech32 na((("encoding", "bech32m addresses", id="encode-bech32m")))((("decoding", "addresses", see="addresses"))) bech32m, tutaangalia sheria za usimbaji na uchambuzi kwa
+anwani za bech32m za Bitcoin kwa kuwa zinajumuisha uwezo wa kuchambuwa
+anwani za bech32 na ni muundo wa anwani unaopendekezwa wa sasa kwa
+mikoba ya Bitcoin.
+
+Anwani za Bech32m zinaanza na sehemu inayosomeka na binadamu (HRP). Kuna
+sheria katika BIP173 za kuunda HRP zako mwenyewe, lakini kwa Bitcoin unahitaji
+tu kujua HRP zilizochaguliwa tayari, zilizoonyeshwa katika
+<<bech32_hrps_for_bitcoin>>.
+
+++++
+<table id="bech32_hrps_for_bitcoin">
+<caption>HRP za Bech32 kwa Bitcoin</caption>
+<thead>
+<tr>
+<th>HRP</th>
+<th>Mtandao</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>bc</p></td>
+<td><p>Mtandao mkuu wa Bitcoin</p></td>
+</tr>
+<tr>
+<td><p>tb</p></td>
+<td><p>Mtandao wa majaribio wa Bitcoin</p></td>
+</tr></tbody>
+</table>
+++++
+
+HRP inafuatwa na kitenganishi, nambari "1." Mapendekezo ya awali
+ya kitenganishi cha itifaki yalitumia koloni lakini mifumo mingine ya uendeshaji na
+programu zinazoruhusu mtumiaji kubonyeza mara mbili neno kulipambuwa
+kwa kunakili na kubandika hazipanui upambanuzi hadi na baada ya
+koloni. Nambari ilihakikisha upambanuzi wa kubonyeza mara mbili ungefanya kazi na programu yoyote
+inayosaidia mifuatano ya bech32m kwa ujumla (ambayo inajumuisha nambari nyingine).
+Nambari "1" ilichaguliwa kwa sababu mifuatano ya bech32 haitumii nambari hiyo vinginevyo
+ili kuzuia uandishi wa makosa kati ya nambari "1" na herufi ndogo "l."
+
+Sehemu nyingine ya anwani ya bech32m inaitwa "sehemu ya data." Kuna
+vipande vitatu kwa sehemu hii:
+
+Toleo la shahidi::
+  Baiti moja inayosimbwa kama herufi moja
+  katika anwani ya bech32m ya Bitcoin mara baada ya kitenganishi.
+  Herufi hii inawakilisha toleo la segwit. Herufi "q" ni
+  usimbaji wa "0" kwa segwit v0, toleo la awali la segwit ambapo
+  anwani za bech32 zilianzishwa. Herufi "p" ni usimbaji wa
+  "1" kwa segwit v1 (pia inaitwa taproot) ambapo bech32m ilianza
+  kutumika. Kuna matoleo kumi na saba yanayowezekana ya segwit na
+  inahitajika kwa Bitcoin kwamba baiti ya kwanza ya sehemu ya data ya bech32m isimbuke
+  hadi nambari 0 hadi 16 (ikijumuisha).
+
+Programu ya shahidi::
+  Kutoka bytes 2 hadi 40. Kwa segwit v0, programu hii ya shahidi
+  lazima iwe bytes 20 au 32; hakuna urefu mwingine unaokubalika. Kwa segwit
+  v1, urefu pekee uliofafanuliwa wakati wa uandishi huu ni bytes 32 lakini
+  urefu mwingine unaweza kufafanuliwa baadaye.
+
+Checksum::
+  Herufi 6 hasa. Hii inaundwa kwa kutumia kanuni ya BCH, aina ya
+  kanuni ya urekebishaji wa makosa (ingawa kwa anwani za Bitcoin, tutaona baadaye
+  kwamba ni muhimu kutumia checksum kwa ugunduzaji wa makosa tu—si
+  urekebishaji).
+//TODO
+
+Tuonyeshe sheria hizi kwa kupitia mfano wa kuunda
+anwani za bech32 na bech32m. Kwa mifano yote ifuatayo, tutatumia
+https://oreil.ly/gpTT6[msimbo wa kumbukumbu wa bech32m kwa Python].
+
+Tutaanza kwa kuzalisha hati nne za matokeo, moja kwa kila moja ya
+aina tofauti za matokeo ya segwit yaliyopo wakati wa uchapishaji, pamoja na moja ya
+toleo la segwit la baadaye ambalo bado halijafafanuliwa maana yake. Hati
+zimeorodheshwa katika <<scripts_for_diff_segwit_outputs>>.
+
+// bc1q9d3xa5gg45q2j39m9y32xzvygcgay4rgc6aaee
+// 2b626ed108ad00a944bb2922a309844611d25468
+//
+// bc1qvj9r9egtd7mu2gemy28kpf4zefq4ssqzdzzycj7zjhk4arpavfhsct5a3p
+// 648a32e50b6fb7c5233b228f60a6a2ca4158400268844c4bc295ed5e8c3d626f
+//
+// bc1p9nh05ha8wrljf7ru236awm4t2x0d5ctkkywmu9sclnm4t0av2vgs4k3au7
+// 2ceefa5fa770ff24f87c5475d76eab519eda6176b11dbe1618fcf755bfac5311
+//
+// bc1sqqqqkfw08p
+// O_16 OP_PUSH2 0000
+
+++++
+<table id="scripts_for_diff_segwit_outputs">
+<caption>Hati kwa aina tofauti za matokeo ya segwit</caption>
+<thead>
+<tr>
+<th>Aina ya matokeo</th>
+<th>Hati ya mfano</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>P2WPKH</p></td>
+<td><p><code>OP_0 2b626ed108ad00a944bb2922a309844611d25468</code></p></td>
+</tr>
+<tr>
+<td><p>P2WSH</p></td>
+<td><p><code>OP_0 648a32e50b6fb7c5233b228f60a6a2ca4158400268844c4bc295ed5e8c3d626f</code></p></td>
+</tr>
+<tr>
+<td><p>P2TR</p></td>
+<td><p><code>OP_1 2ceefa5fa770ff24f87c5475d76eab519eda6176b11dbe1618fcf755bfac5311</code></p></td>
+</tr>
+<tr>
+<td><p>Mfano wa Baadaye</p></td>
+<td><p><code>OP_16 0000</code></p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Kwa matokeo ya P2WPKH, programu ya shahidi ina ahadi iliyoundwa kwa njia ile ile
+kama ahadi ya matokeo ya P2PKH iliyoonekana katika <<addresses_for_p2pkh>>. Funguo ya umma hupitishwa kwenye kazi ya hash
+ya SHA256. Muhtasari wa bytes 32 unaotokana kisha hupitishwa kwenye kazi ya hash ya
+RIPEMD-160. Muhtasari wa kazi hiyo (ahadi) huwekwa
+katika programu ya shahidi.
+
+Kwa matokeo ya kulipa hash ya hati ya shahidi (P2WSH), hatutumii algorithm ya P2SH. Badala yake tunachukua
+hati, kuipitisha kwenye kazi ya hash ya SHA256, na kutumia muhtasari wa bytes 32
+wa kazi hiyo katika programu ya shahidi. Kwa P2SH, muhtasari wa SHA256
+ulihashiwa tena na RIPEMD-160, lakini hilo linaweza kuwa si salama katika
+visa fulani; kwa maelezo, angalia <<p2sh_collision_attacks>>. Matokeo ya
+kutumia SHA256 bila RIPEMD-160 ni kwamba ahadi za P2WSH ni bytes 32
+(bits 256) badala ya bytes 20 (bits 160).
+
+Kwa matokeo ya kulipa-kwa-taproot (P2TR), programu ya shahidi ni pointi kwenye
+mzunguko wa secp256k1. Inaweza kuwa funguo rahisi ya umma, lakini katika hali nyingi
+inapaswa kuwa funguo ya umma inayobeba data ya ziada. Tutajifunza zaidi
+kuhusu ahadi hiyo katika <<taproot>>.
+
+++++
+<p class="fix_tracking2">
+Kwa mfano wa toleo la segwit la baadaye, tunatumia tu nambari ya juu zaidi
+inayowezekana ya toleo la segwit (16) na programu ndogo zaidi inayoruhusiwa ya shahidi
+(bytes 2) yenye thamani ya sifuri.</p>
+++++
+
+Sasa baada ya kujua nambari ya toleo na programu ya shahidi, tunaweza
+kubadilisha kila moja yao kuwa anwani ya bech32. Tutatumia maktaba ya kumbukumbu ya bech32m
+kwa Python kuzalisha haraka anwani hizo, kisha tuangalie
+kwa undani zaidi kinachoendelea:
+
+----
+$ github="https://raw.githubusercontent.com"
+$ wget $github/sipa/bech32/master/ref/python/segwit_addr.py
+
+$ python
+>>> from segwit_addr import *
+>>> from binascii import unhexlify
+
+>>> help(encode)
+encode(hrp, witver, witprog)
+    Encode a segwit address.
+
+>>> encode('bc', 0, unhexlify('2b626ed108ad00a944bb2922a309844611d25468'))
+'bc1q9d3xa5gg45q2j39m9y32xzvygcgay4rgc6aaee'
+>>> encode('bc', 0,
+unhexlify('648a32e50b6fb7c5233b228f60a6a2ca4158400268844c4bc295ed5e8c3d626f'))
+'bc1qvj9r9egtd7mu2gemy28kpf4zefq4ssqzdzzycj7zjhk4arpavfhsct5a3p'
+>>> encode('bc', 1,
+unhexlify('2ceefa5fa770ff24f87c5475d76eab519eda6176b11dbe1618fcf755bfac5311'))
+'bc1p9nh05ha8wrljf7ru236awm4t2x0d5ctkkywmu9sclnm4t0av2vgs4k3au7'
+>>> encode('bc', 16, unhexlify('0000'))
+'bc1sqqqqkfw08p'
+----
+
+Tukifungua faili __segwit_addr.py__ na kuangalia msimbo unafanya nini,
+jambo la kwanza tutakaloona ni tofauti pekee kati ya bech32 (inayotumika kwa segwit v0) na bech32m
+(inayotumika kwa matoleo ya baadaye ya segwit) ni mara kwa mara:
+
+----
+BECH32_CONSTANT = 1
+BECH32M_CONSTANT = 0x2bc830a3
+----
+
+Ijayo tunaona msimbo unaozalisha checksum. Katika hatua ya mwisho ya
+checksum, mara kwa mara inayofaa huunganishwa kwenye thamani kwa kutumia operesheni ya xor.
+Thamani hiyo moja ndiyo tofauti pekee kati ya bech32 na bech32m.
+
+Checksum ikisha kuundwa, kila herufi ya bits 5 katika sehemu ya data
+(ikijumuisha toleo la shahidi, programu ya shahidi, na checksum) hubadilishwa
+kuwa herufi za alphanumeric.
+
+Kwa kusimbua tena kwenye hati ya matokeo, tunafanya kwa nyuma. Kwanza tutatumia
+maktaba ya kumbukumbu kusimbua anwani mbili zetu:
+
+----
+>>> help(decode)
+decode(hrp, addr)
+    Decode a segwit address.
+
+>>> _ = decode("bc", "bc1q9d3xa5gg45q2j39m9y32xzvygcgay4rgc6aaee")
+>>>  _[0], bytes(_[1]).hex()
+(0, '2b626ed108ad00a944bb2922a309844611d25468')
+>>> _ = decode("bc",
+        "bc1p9nh05ha8wrljf7ru236awm4t2x0d5ctkkywmu9sclnm4t0av2vgs4k3au7")
+>>> _[0], bytes(_[1]).hex()
+(1, '2ceefa5fa770ff24f87c5475d76eab519eda6176b11dbe1618fcf755bfac5311')
+----
+
+Tunapata tena toleo la shahidi na programu ya shahidi. Hizo zinaweza
+kuwekwa kwenye kiolezo cha hati yetu ya matokeo:
+
+----
+<version> <program>
+----
+
+Kwa mfano:
+
+----
+OP_0 2b626ed108ad00a944bb2922a309844611d25468
+OP_1 2ceefa5fa770ff24f87c5475d76eab519eda6176b11dbe1618fcf755bfac5311
+----
+
+[WARNING]
+====
+Kosa moja linalowezekana hapa la kukuwa makini nalo ni kwamba toleo la shahidi la `0` ni
+kwa `OP_0`, ambayo inatumia baiti 0x00—lakini toleo la shahidi la `1` inatumia
+`OP_1`, ambayo ni baiti 0x51. Matoleo ya shahidi `2` hadi `16` yanatumia 0x52
+hadi 0x60, mtawalia.
+====
+
+Ukitekeleza usimbaji au usimbuaji wa bech32m, tunapendekeza kwa nguvu sana
+kwamba utumie vekta za majaribio zilizotolewa katika BIP350. Pia tunaomba
+uhakikishe msimbo wako unapita vekta za majaribio zinazohusiana na kulipa matoleo ya segwit ya baadaye
+ambayo bado hayajafafanuliwa. Hii itasaidia kufanya programu yako itumike
+kwa miaka mingi ijayo hata kama huwezi kuongeza msaada kwa vipengele vipya vya Bitcoin
+mara vinavyopatikana.((("public key cryptography", "bech32 addresses", "bech32m", startref="pub-key-bech32-bech32m")))((("bech32 addresses", "bech32m", startref="bech32-bech32m")))((("addresses", "bech32m", startref="address-bech32m")))((("bech32m addresses", startref="bech32m")))((("encoding", "bech32m addresses", startref="encode-bech32m")))
+
+[[priv_formats]]
+==== Miundo ya Funguo za Siri
+
+Funguo ((("private keys", "formats", id="private-key-format")))ya siri
+inaweza kuwakilishwa katika miundo kadhaa tofauti, ambayo yote
+inalingana na nambari ile ile ya bits 256. <<table_4-2>> inaonyesha miundo kadhaa ya kawaida
+inayotumika kuwakilisha funguo za siri. Miundo tofauti hutumika katika
+hali tofauti. Miundo ya hexadecimal na binary ya moja kwa moja hutumika
+ndani ya programu na mara chache huonyeshwa kwa watumiaji. WIF hutumika kwa
+kuagiza/kusafirisha funguo kati ya mikoba na mara nyingi hutumika katika uwakilishi
+wa msimbo wa QR (barcodi) wa funguo za siri.
+
+.Umuhimu wa Kisasa wa Miundo ya Funguo za Siri
+****
+Programu ya mapema ya mkoba wa Bitcoin ((("wallets", "private key formats")))ilizalisha funguo moja au zaidi za siri zisizo tegemezi
+wakati mkoba mpya wa mtumiaji ulianzishwa. Seti ya awali ya
+funguo zote zilipotumiwa, mkoba ungeweza kuzalisha funguo za ziada za siri.
+Funguo za siri za mtu binafsi zingeweza kusafirishwa au kuagizwa. Kila wakati
+funguo mpya za siri zilizalishwa au kuagizwa, nakala rudufu mpya ya mkoba
+ilihitajika kuundwa.
+
+Mikoba ya baadaye ya Bitcoin ilianza kutumia mikoba ya uhakika ambapo
+funguo zote za siri huzalishwa kutoka thamani moja ya mbegu. Mikoba hii
+mara nyingi inahitaji kurudufiwa mara moja tu kwa matumizi ya kawaida ya onchain. Hata hivyo, kama
+mtumiaji anasafirisha funguo moja ya siri kutoka kwenye mkoba huu na
+mshambuliaji anapata ufunguo huo pamoja na data fulani isiyo ya siri kuhusu mkoba,
+wanaweza kutoa funguo yoyote ya siri katika mkoba—kuruhusu
+mshambuliaji kuiba fedha zote za mkoba. Aidha, funguo haziwezi
+kuagizwa kwenye mikoba ya uhakika. Hii inamaanisha karibu hakuna mikoba ya kisasa
+inayosaidia uwezo wa kusafirisha au kuagiza ufunguo binafsi. Habari
+katika sehemu hii ni ya kuvutia hasa kwa mtu yeyote anayehitaji
+uendanifu na mikoba ya mapema ya Bitcoin.
+
+Angalia <<hd_wallets>> kwa habari zaidi.
+****
+
+++++
+<table id="table_4-2">
+<caption>Uwakilishi wa funguo za siri (miundo ya usimbaji)</caption>
+<thead>
+<tr>
+<th>Aina</th>
+<th>Kiambishi awali</th>
+<th>Maelezo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Hex</p></td>
+<td><p>Hakuna</p></td>
+<td><p>Tarakimu 64 za hexadecimal</p></td>
+</tr>
+<tr>
+<td><p>WIF</p></td>
+<td><p>5</p></td>
+<td><p>Usimbaji wa Base58check: base58 yenye kiambishi awali cha toleo 128 na checksum ya bits 32</p></td>
+</tr>
+<tr>
+<td><p>WIF-iliyosongwa</p></td>
+<td><p>K au L</p></td>
+<td><p>Kama hapo juu, yenye kiambishi cha mwisho cha 0x01 kilichoongezwa kabla ya usimbaji</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+<<table_4-3>> inaonyesha funguo ya siri iliyozalishwa katika miundo kadhaa tofauti.
+
+++++
+<table id="table_4-3">
+<caption>Mfano: Funguo ile ile, miundo tofauti</caption>
+<thead>
+<tr>
+<th>Muundo</th>
+<th>Funguo ya siri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Hex</p></td>
+<td><p>1e99423a4ed27608a15a2616a2b0e9e52ced330ac530edcc32c8ffc6a526aedd</p></td>
+</tr>
+<tr>
+<td><p>WIF</p></td>
+<td><p>5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+<tr>
+<td><p>WIF-iliyosongwa</p></td>
+<td><p>KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Uwakilishi wote huu ni njia tofauti za kuonyesha nambari ile ile,
+funguo ile ile ya siri. Zinaonekana tofauti, lakini muundo wowote
+unaweza kwa urahisi kubadilishwa kuwa muundo mwingine((("private keys", "formats", startref="private-key-format"))) wowote.
+
+[[comp_priv]]
+==== Funguo za Siri Zilizosongwa
+
+Neno ((("private keys", "compressed", id="private-key-compress")))((("compressed private keys", id="compress-private-key")))linalotumika sana "funguo ya siri iliyosongwa" ni jina lisilo sahihi, kwa sababu funguo ya siri
+inaposafiriwa kama WIF-iliyosongwa, kwa kweli ni byte _moja ndefu zaidi_ kuliko
+funguo ya siri "isiyosongwa." Hilo ni kwa sababu funguo ya siri ina
+kiambishi cha mwisho cha byte moja kilichoongezwa (kinachoonyeshwa kama 01 katika hex katika <<table_4-4>>), ambacho
+kinaashiria kwamba funguo ya siri inatoka kwenye mkoba mpya na inapaswa
+kutumika tu kuzalisha funguo za umma zilizosongwa. Funguo za siri hazisongwi zenyewe
+na haziwezi kusongwa. Neno _funguo ya siri iliyosongwa_
+kwa kweli linamaanisha "funguo ya siri ambayo funguo zilizosongwa za umma peke yake zinapaswa
+kutokana nayo," wakati _funguo ya siri isiyosongwa_ kwa kweli linamaanisha "funguo ya siri
+ambayo funguo zisizosongwa za umma peke yake zinapaswa kutokana nayo." Unapaswa
+kurejea tu muundo wa usafirishaji kama "WIF-iliyosongwa" au "WIF" na
+usirejee funguo ya siri yenyewe kama "iliyosongwa" ili kuepuka mkanganyiko zaidi.
+
+<<table_4-4>> inaonyesha ufunguo ule ule, uliosimbwa katika miundo ya WIF na WIF-iliyosongwa.
+
+++++
+<table id="table_4-4">
+<caption>Mfano: Funguo ile ile, miundo tofauti</caption>
+<thead>
+<tr>
+<th>Muundo</th>
+<th>Funguo ya siri</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>Hex</p></td>
+<td><p>1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD</p></td>
+</tr>
+<tr>
+<td><p>WIF</p></td>
+<td><p>5J3mBbAH58CpQ3Y5RNJpUKPE62SQ5tfcvU2JpbnkeyhfsYB1Jcn</p></td>
+</tr>
+<tr>
+<td><p>Hex-iliyosongwa</p></td>
+<td><p>1E99423A4ED27608A15A2616A2B0E9E52CED330AC530EDCC32C8FFC6A526AEDD01</p></td>
+</tr>
+<tr>
+<td><p>WIF-iliyosongwa</p></td>
+<td><p>KxFC1jmwwCoACiCAWZ3eXa96mBM6tb3TYzGmf6YwgdGWZgawvrtJ</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Angalia kwamba muundo wa hex-iliyosongwa wa funguo ya siri una byte moja ya ziada
+mwishoni (01 katika hex). Wakati kiambishi awali cha toleo la usimbaji wa base58 ni
+sawa (0x80) kwa miundo yote ya WIF na WIF-iliyosongwa, kuongeza byte moja
+mwishoni mwa nambari kunasababisha herufi ya kwanza ya
+usimbaji wa base58 kubadilika kutoka 5 hadi _K_ au _L_. Fikiria hii kama
+sawa la base58 la tofauti ya usimbaji wa desimali kati ya nambari
+100 na nambari 99. Wakati 100 ni tarakimu moja ndefu zaidi kuliko 99, pia
+ina kiambishi awali cha 1 badala ya kiambishi awali cha 9. Urefu ukibadilika,
+unaathiri kiambishi awali. Katika base58, kiambishi awali 5 hubadilika kuwa _K_ au _L_ ukiwa
+urefu wa nambari unaongezeka kwa byte moja.
+
+Kumbuka, miundo hii _haitumiwi_ kwa kubadilishana. Katika mkoba mpya
+unaotekeleza funguo za umma zilizosongwa, funguo za siri
+zitasafirishwa kila wakati kama WIF-iliyosongwa (yenye kiambishi awali cha _K_ au _L_).
+Kama mkoba ni utekelezaji wa zamani na hautumii funguo za umma zilizosongwa,
+funguo za siri zitasafirishwa kila wakati kama WIF (yenye kiambishi awali cha 5).
+Lengo hapa ni kuashiria kwa mkoba unaoagiza funguo za siri kama unapaswa
+kutafuta kwenye blockchain kwa funguo za umma zilizosongwa au
+zisizosongwa na anwani zao.
+
+Kama mkoba wa Bitcoin unaweza kutekeleza funguo za umma zilizosongwa, utatumia
+hizo katika miamala yote. Funguo za siri katika mkoba zitatumika
+kutoa pointi za funguo za umma kwenye mzunguko, ambazo zitasongwa.
+Funguo za umma zilizosongwa zitatumika kuzalisha anwani za Bitcoin na hizo
+zitatumika katika miamala. Ukisafirisha funguo za siri kutoka mkoba mpya
+unaotekeleza funguo za umma zilizosongwa, WIF
+inabadilishwa, ukiongeza kiambishi cha mwisho cha byte moja +01+ kwenye funguo ya siri.
+Funguo ya siri inayotokana iliyosimbwa kwa base58check inaitwa
+"WIF iliyosongwa" na inaanza na herufi _K_ au _L_ badala ya
+kuanza na "5," kama ilivyo kwa funguo zilizosimbwa kwa WIF (zisizosongwa)
+kutoka((("private keys", "compressed", startref="private-key-compress")))((("compressed private keys", startref="compress-private-key"))) mikoba ya zamani.
+
+=== Funguo na Anwani za Hali ya Juu
+
+Katika
+sehemu zifuatazo tutaangalia aina za hali ya juu za funguo na anwani,
+kama vile anwani za mapambo na mikoba ya karatasi.
+
+==== Anwani za Mapambo
+
+Anwani ((("public key cryptography", "vanity addresses", id="pub-key-vanity")))((("vanity addresses", id="vanity-addr")))((("addresses", "vanity", id="address-vanity")))za mapambo ni anwani halali za Bitcoin
+zenye ujumbe unaosomeka na binadamu. Kwa mfano,
++1LoveBPzzD72PUXLzCkYAtGFYmK5vYNR33+ ni anwani halali inayohusu
+herufi zinazounda neno "Love" kama herufi nne za kwanza za base58.
+Anwani za mapambo zinahitaji kuzalisha na kujaribu mabilioni ya funguo za siri za mgombea
+hadi anwani ya Bitcoin yenye mchoro unaotarajiwa inapopatikana.
+Ingawa kuna baadhi ya uboreshaji katika algorithm ya kuzalisha mapambo,
+mchakato kimsingi unahusisha kuchagua funguo ya siri kiholela,
+kutoa funguo ya umma, kutoa anwani ya Bitcoin, na
+kuangalia kama inalingana na mchoro unaotarajiwa wa mapambo, kurudia
+mabilioni ya mara hadi mechi inapopatikana.
+
+Anwani ya mapambo inayolingana na mchoro unaotarajiwa ikipatikana, funguo ya siri
+iliyotokana nayo inaweza kutumika na mmiliki kutumia bitcoins
+kwa njia ile ile na anwani nyingine yoyote. Anwani za mapambo si
+salama zaidi wala kidogo kuliko anwani nyingine yoyote. Zinategemea kriptografia ile ile
+ya mzunguko wa mviringo (ECC) na algorithm salama ya hash (SHA) kama anwani nyingine yoyote.
+Huwezi kupata funguo ya siri ya anwani inayoanza na
+mchoro wa mapambo kwa urahisi zaidi kuliko anwani nyingine yoyote.
+
+Eugenia ni mkurugenzi wa shirika la hisani la watoto
+anayefanya kazi nchini Ufilipino. Tuseme kwamba Eugenia ana
+kampeni ya kukusanya fedha na anataka kutumia anwani ya Bitcoin ya mapambo
+kutangaza ukusanyaji wa fedha. Eugenia ataunda anwani ya mapambo
+inayoanza na "1Kids" kukuza ukusanyaji wa fedha wa hisani ya watoto.
+Tuangalie jinsi anwani hii ya mapambo itakavyoundwa na maana yake
+kwa usalama wa hisani ya Eugenia.
+
+===== Kuzalisha Anwani za Mapambo
+
+Ni muhimu kutambua kwamba anwani ya Bitcoin ni nambari tu
+iliyowakilishwa na alama katika alfabeti ya base58. Utafutaji wa mchoro
+kama "1Kids" unaweza kuonekana kama kutafuta anwani katika safu kutoka
++1Kids11111111111111111111111111111+ hadi
++1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz+. Kuna takriban 58^29^
+(takriban 1.4 × 10^51^) anwani katika safu hiyo, zote zinazoanza na
+"1Kids." <<table_4-11>> inaonyesha safu ya anwani zenye
+kiambishi awali cha 1Kids.
+
+++++
+<table id="table_4-11">
+<caption>Safu ya anwani za mapambo zinazoanza na "1Kids"</caption>
+<tbody>
+<tr>
+<td><p><strong>Kutoka</strong></p></td>
+<td><p><code>1Kids11111111111111111111111111111</code></p></td>
+</tr>
+<tr>
+<td/>
+<td><p><code>1Kids11111111111111111111111111112</code></p></td>
+</tr>
+<tr>
+<td/>
+<td><p><code>1Kids11111111111111111111111111113</code></p></td>
+</tr>
+<tr>
+<td/>
+<td><p><code>…​</code></p></td>
+</tr>
+<tr>
+<td><p><strong>Hadi</strong></p></td>
+<td><p><code>1Kidszzzzzzzzzzzzzzzzzzzzzzzzzzzzz</code></p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Tuangalie mchoro "1Kids" kama nambari na tuone mara ngapi tungeweza
+kupata mchoro huu katika anwani ya Bitcoin (angalia <<table_4-12>>). Kompyuta ya kawaida
+ya mezani, bila maunzi yoyote maalum, inaweza
+kutafuta takriban funguo 100,000 kwa sekunde.
+
+++++
+<table id="table_4-12">
+<caption>Mara za mchoro wa mapambo (1KidsCharity) na muda wa wastani wa utafutaji kwenye kompyuta ya mezani</caption>
+<thead>
+<tr>
+<th>Urefu</th>
+<th>Mchoro</th>
+<th>Mara</th>
+<th>Muda wa wastani wa utafutaji</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>1</p></td>
+<td><p>1K</p></td>
+<td><p>1 kati ya funguo 58</p></td>
+<td><p>&lt; millisekunde 1</p></td>
+</tr>
+<tr>
+<td><p>2</p></td>
+<td><p>1Ki</p></td>
+<td><p>1 kati ya 3,364</p></td>
+<td><p>millisekunde 50</p></td>
+</tr>
+<tr>
+<td><p>3</p></td>
+<td><p>1Kid</p></td>
+<td><p>1 kati ya 195,000</p></td>
+<td><p>&lt; sekunde 2</p></td>
+</tr>
+<tr>
+<td><p>4</p></td>
+<td><p>1Kids</p></td>
+<td><p>1 kati ya milioni 11</p></td>
+<td><p>dakika 1</p></td>
+</tr>
+<tr>
+<td><p>5</p></td>
+<td><p>1KidsC</p></td>
+<td><p>1 kati ya milioni 656</p></td>
+<td><p>saa 1</p></td>
+</tr>
+<tr>
+<td><p>6</p></td>
+<td><p>1KidsCh</p></td>
+<td><p>1 kati ya bilioni 38</p></td>
+<td><p>siku 2</p></td>
+</tr>
+<tr>
+<td><p>7</p></td>
+<td><p>1KidsCha</p></td>
+<td><p>1 kati ya trilioni 2.2</p></td>
+<td><p>miezi 3–4</p></td>
+</tr>
+<tr>
+<td><p>8</p></td>
+<td><p>1KidsChar</p></td>
+<td><p>1 kati ya trilioni 128</p></td>
+<td><p>miaka 13–18</p></td>
+</tr>
+<tr>
+<td><p>9</p></td>
+<td><p>1KidsChari</p></td>
+<td><p>1 kati ya quadrilioni 7</p></td>
+<td><p>miaka 800</p></td>
+</tr>
+<tr>
+<td><p>10</p></td>
+<td><p>1KidsCharit</p></td>
+<td><p>1 kati ya quadrilioni 400</p></td>
+<td><p>miaka 46,000</p></td>
+</tr>
+<tr>
+<td><p>11</p></td>
+<td><p>1KidsCharity</p></td>
+<td><p>1 kati ya quintilioni 23</p></td>
+<td><p>miaka milioni 2.5</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Kama unavyoweza kuona, Eugenia hataunda anwani ya mapambo
+"1KidsCharity" hivi karibuni, hata kama angekuwa na ufikiaji wa kompyuta kadhaa za
+elfu. Kila herufi ya ziada huongeza ugumu kwa kipengele cha 58. Mifumo yenye herufi
+zaidi ya saba kawaida hupatikana
+na maunzi maalum, kama vile kompyuta za mezani zilizobuniwa maalum zenye
+vitengo vingi vya usindikaji wa graphics (GPU).
+Utafutaji wa mapambo kwenye mifumo ya GPU ni haraka mara nyingi zaidi za ukubwa
+kuliko kwenye CPU ya matumizi ya jumla.
+
+Njia nyingine((("vanity pools"))) ya kupata anwani ya mapambo ni kuhamishia kazi kwenye bwawa
+la wachimbaji wa mapambo. https://oreil.ly/99K81[Bwawa la mapambo] ni huduma inayoruhusu
+wale wenye maunzi ya haraka kupata bitcoin wakitafuta anwani za mapambo
+kwa wengine. Kwa ada, Eugenia anaweza kuhamishia utafutaji wa anwani ya mapambo ya mchoro wa
+herufi saba na kupata matokeo katika masaa machache
+badala ya kulazimika kuendesha utafutaji wa CPU kwa miezi.
+
+Kuzalisha anwani ya mapambo ni zoezi la nguvu: jaribu ufunguo nasibu,
+angalia anwani inayotokana kuona kama inalingana na mchoro unaotarajiwa,
+rudia hadi kufanikiwa.
+
+===== Usalama na Faragha ya Anwani za Mapambo
+
+Anwani za mapambo ((("privacy", "vanity addresses", id="privacy-vanity")))zilikuwa maarufu katika
+miaka ya mapema ya Bitcoin lakini zimetoweka karibu kabisa kutoka matumizi
+kufikia 2023. Kuna sababu mbili zinazowezekana za mwenendo huu:
+
+Mikoba ya uhakika:: Kama tulivyoona katika <<recovery_code_intro>>, inawezekana
+kurudufi kila ufunguo katika mikoba mingi ya kisasa kwa kuandika maneno au
+herufi chache tu. Hili hupatikana kwa kutoa kila ufunguo katika mkoba
+kutoka maneno au herufi hizo kwa kutumia algorithm ya uhakika.
+Haiwezekani kutumia anwani za mapambo na mkoba wa uhakika
+isipokuwa mtumiaji arudufi data ya ziada kwa kila anwani ya mapambo wanayounda.
+Kwa vitendo zaidi, mikoba mingi inayotumia uzalishaji wa ufunguo wa uhakika
+haijai ruhusu kuagiza ufunguo wa siri au mabadiliko ya ufunguo kutoka
+jenereta ya mapambo.
+
+Kuepuka matumizi ya anwani upya:: Kutumia anwani ya mapambo kupokea malipo
+mengi kwenye anwani ile ile huunda kiungo kati ya malipo yote hayo.
+Hili linaweza kukubalika kwa Eugenia kama shirika lake lisilo la faida linahitaji
+kuripoti mapato na matumizi yake kwa mamlaka ya kodi hata hivyo.
+Hata hivyo, pia hupunguza faragha ya watu wanaolipa Eugenia au
+kupokea malipo kutoka kwake. Kwa mfano, Alice anaweza kutaka kutoa
+bila kutambuliwa na Bob anaweza kutotaka wateja wake wengine kujua kwamba
+anampa Eugenia bei ya punguzo.
+
+// https://github.com/MakisChristou/vanitybech
+
+Hatutarajii kuona anwani nyingi za mapambo katika
+siku zijazo isipokuwa matatizo yaliyotangulia ((("addresses", "vanity", startref="address-vanity")))((("vanity addresses", startref="vanity-addr")))((("public key cryptography", "vanity addresses", startref="pub-key-vanity")))yatasuluhiwa.
+
+[[paper_wallets]]
+==== Mikoba ya Karatasi
+
+Mikoba ya karatasi ((("public key cryptography", "paper wallets", id="pub-key-paper")))((("paper wallets", id="paper-wallet")))((("wallets", "paper", id="wallet-paper")))ni funguo za siri zilizochapishwa kwenye karatasi.
+Mara nyingi mkoba wa karatasi pia hujumuisha anwani ya Bitcoin inayolingana
+kwa urahisi, lakini hii si lazima kwa sababu inaweza kutokana na
+funguo ya siri.
+
+[WARNING]
+====
+Mikoba ya karatasi ni teknolojia ILIYOPITWA NA WAKATI na ni hatari kwa watumiaji
+wengi. Kuna mitego mingi ya hila inayohusika katika kuizalisha, si kidogo ambayo ni uwezekano kwamba msimbo wa kuzalisha umefungwa
+na "mlango wa nyuma." Bitcoins nyingi zimeibwa kwa njia hii. Mikoba ya
+karatasi inaonyeshwa hapa kwa madhumuni ya habari tu na haipaswi
+kutumika kuhifadhi bitcoin. Tumia msimbo wa urejeshaji kurudufi funguo
+zako, labda na kifaa cha kusaini cha maunzi kuhifadhi funguo na kusaini miamala. USITUMIE
+MIKOBA [.keep-together]#YA KARATASI.#
+====
+
+Mikoba ya karatasi huja katika miundo na ukubwa mingi, yenye vipengele
+vingi tofauti. <<paper_wallet_simple>> inaonyesha sampuli ya mkoba wa karatasi.
+
+[[paper_wallet_simple]]
+.Mfano wa mkoba rahisi wa karatasi.
+image::images/mbc3_0410.png[]
+
+Baadhi imekusudiwa kutolewa kama zawadi na ina mada za msimu, kama vile
+Krismasi na Mwaka Mpya. Nyingine imebuniwa kwa uhifadhi katika
+pango la benki au kasisi yenye funguo ya siri iliyofichwa kwa njia fulani, ama kwa
+vipande vya kufuta visivyo wazi au kwa kukunjwa na kufungwa na foil ya kuzuia
+uchezwaji. Miundo mingine ina nakala za ziada za ufunguo na
+anwani, kwa muundo wa vipande vinavyoweza kung'olewa kama vipande vya tiketi,
+kukuruhusu kuhifadhi nakala nyingi kulinda dhidi ya moto, mafuriko, au
+majanga mengine ya asili.
+
+Kutoka muundo wa asili wa Bitcoin uliozingatia funguo za umma hadi anwani za kisasa
+na hati kama bech32m na kulipa taproot—na hata anwani za
+uboreshaji wa baadaye wa Bitcoin—umejifunza jinsi itifaki ya Bitcoin inavyoruhusu
+watumaji kutambua mikoba inayopaswa kupokea malipo yao.
+Lakini mkoba wako ukipokea malipo, utataka uhakika kwamba
+bado utakuwa na ufikiaji wa pesa hizo hata kama kitu kitatokea
+kwenye data ya mkoba wako. Katika sura inayofuata, tutaangalia jinsi
+mikoba ya Bitcoin imebuniwa kulinda fedha zake ((("public key cryptography", "paper wallets", startref="pub-key-paper")))((("paper wallets", startref="paper-wallet")))((("wallets", "paper", startref="wallet-paper")))dhidi ya
+vitisho mbalimbali.
+

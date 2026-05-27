@@ -1,0 +1,1401 @@
+[[c_authorization_authentication]]
+== Idhini na Uthibitisho
+
+Unapopokea bitcoini, lazima uamue ni nani atakayekuwa na ruhusa ya kuzitumia, ((("idhini")))((("uthibitisho")))inayoitwa _idhini_. Pia lazima uamue jinsi nodi kamili zitakavyotofautisha watumia walioidhinishwa na wengine wote, inayoitwa _uthibitisho_. Maelekezo yako ya idhini na uthibitisho wa mtumia wa uhalali vitakaguliwa na maelfu ya nodi kamili huru, zote zinazohitaji kufika hitimisho lile lile kwamba matumizi yaliruhusiwa na kuthibitishwa ili muamala unaouwa uwe halali.
+
+Maelezo ya asili ya Bitcoin yalitumia funguo ya umma kwa idhini. Alice alilipa Bob kwa kuweka funguo yake ya umma katika tokeo la muamala. Uthibitisho ulitoka kwa Bob kwa njia ya saini iliyojitolea kwa muamala wa matumizi, kama vile kutoka Bob hadi Carol.
+
+Toleo halisi la Bitcoin lililotolewa awali lilitoa utaratibu wa kubadilika zaidi kwa idhini na uthibitisho. Maboresho tangu wakati huo yamepanua zaidi kubadilika huko. Katika sura hii, tutachunguza vipengele hivyo na kuona jinsi vinavyotumiwa zaidi.
+
+[[tx_script]]
+=== Hati za Miamala na Lugha ya Hati
+
+Toleo ((("hati za miamala", see="hati")))((("lugha ya programu ya Script")))la asili la Bitcoin lilianzisha lugha mpya ya programu inayoitwa _Script_, lugha inayofanana na Forth inayotegemea mrundikano. Hati inayowekwa katika tokeo na hati ya zamani ya pembejeo inayotumika katika muamala wa matumizi zote zimeandikwa katika lugha hii ya hati.
+
+Script ni lugha rahisi sana. Inahitaji usindikaji mdogo na haiwezi kufanya kwa urahisi mambo mengi ya kuvutia ambayo lugha za kisasa za programu zinaweza kufanya.
+
+Wakati miamala ya zamani ilikuwa aina ya muamala inayotumiwa zaidi, miamala mingi iliyoshughulikiwa kupitia mtandao wa Bitcoin ilikuwa na muundo wa "Malipo kwa anwani ya Bitcoin ya Bob" na ilitumia hati inayoitwa hati ya kulipa kwa heshi ya funguo ya umma (P2PKH). Hata hivyo, miamala ya Bitcoin haizuiwi kwa hati ya "Malipo kwa anwani ya Bitcoin ya Bob". Kwa kweli, hati zinaweza kuandikwa kuonyesha aina nyingi za hali ngumu. Ili kuelewa hati hizi ngumu zaidi, lazima kwanza tuelewa misingi ya hati za miamala na lugha ya Script.
+
+Katika sehemu hii, tutaonyesha vipengele vya msingi vya lugha ya hati ya muamala wa Bitcoin na kuonyesha jinsi inavyoweza kutumika kuonyesha masharti ya matumizi na jinsi masharti hayo yanavyoweza kutimizwa.
+
+[TIP]
+====
+Uthibitishaji ((("miamala", "kuthibitisha")))((("kuthibitisha", "miamala")))wa muamala wa Bitcoin hauegemei mfumo wa kimya bali unafanikiwa kupitia utekelezaji wa lugha ya hati. Lugha hii inaruhusu aina nyingi sana za masharti kuonyeshwa.
+====
+
+==== Kutokamilika kwa Turing
+
+Lugha ((("hati", "kutokamilika kwa Turing")))((("Kamili ya Turing")))ya hati ya muamala wa Bitcoin ina waendeshaji wengi, lakini imezuiwa kwa makusudi kwa njia moja muhimu—hakuna mizunguko au uwezo wa kudhibiti mtiririko ngumu zaidi ya udhibiti wa mtiririko wa masharti. Hii inahakikisha kwamba lugha si _Kamili ya Turing_, kumaanisha kwamba hati zina ugumu mdogo na nyakati za utekelezaji zinazotabirika. Script si lugha ya matumizi ya jumla. Vizuizi hivi vinahakikisha kwamba lugha haiwezi kutumika kuunda mzunguko usio na kikomo au aina nyingine ya "bomu la mantiki" ambalo lingeweza kufichwa katika muamala kwa njia inayosababisha shambulio la kukataa huduma dhidi ya mtandao wa Bitcoin. Kumbuka, kila muamala unathibitishwa na kila nodi kamili kwenye mtandao wa Bitcoin. Lugha iliyozuiwa inazuia utaratibu wa uthibitishaji wa muamala kutumika kama udhaifu.
+
+==== Uthibitishaji Usio na Hali
+
+Lugha ((("hati", "uthibitishaji usio na hali")))((("uthibitishaji wa hati usio na hali")))((("kuthibitisha", "hati")))ya hati ya muamala wa Bitcoin haina hali, kwa kumaanisha kwamba hakuna hali kabla ya utekelezaji wa hati au hali iliyohifadhiwa baada ya utekelezaji wa hati. Taarifa zote zinazohitajika kutekeleza hati zimo ndani ya hati na muamala unaotekeleza hati. Hati itatekelezwa kwa njia inayotabirika kwa njia ile ile kwenye mfumo wowote. Ikiwa mfumo wako ulithibitisha hati, unaweza kuwa na uhakika kwamba kila mfumo mwingine katika mtandao wa Bitcoin pia utathibitisha hati, kumaanisha kwamba muamala halali ni halali kwa kila mtu na kila mtu anajua hili. Utabirikaji huu wa matokeo ni faida muhimu ya mfumo wa Bitcoin.
+
+[[tx_lock_unlock]]
+==== Ujenzi wa Hati
+
+Injini ((("hati", "pembejeo/tokeo", "kuunda", id="script-input-output-construct")))((("hati za pembejeo", "kuunda", id="input-script-construct")))((("hati za matokeo", "kuunda", id="output-script-construct")))ya uthibitishaji wa miamala ya zamani ya Bitcoin inategemea sehemu mbili za hati kuthibitisha miamala: hati ya tokeo na hati ya pembejeo.
+
+Hati ya tokeo inabainisha masharti yanayopaswa kutimizwa ili kutumia tokeo katika siku zijazo, kama vile ni nani aliye ruhusiwa kutumia tokeo na jinsi watakavyothibitishwa.
+
+Hati ya pembejeo ni hati inayotimiza masharti yaliyowekwa katika hati ya tokeo na kuruhusu tokeo kutumika. Hati za pembejeo ni sehemu ya kila pembejeo ya muamala. Mara nyingi katika miamala ya zamani zinajumuisha saini ya kidijitali iliyoundwa na mkoba wa mtumiaji kutoka kwa funguo yake ya siri, lakini si hati zote za pembejeo lazima ziwe na saini.
+
+Kila ((("miamala", "kuthibitisha")))((("kuthibitisha", "miamala")))nodi ya Bitcoin inayothibitisha itathibitisha miamala kwa kutekeleza hati za tokeo na pembejeo. Kama tulivyoona katika <<c_transactions>>, kila pembejeo ina nukta ya kutoka inayorejelea tokeo la muamala wa awali. Pembejeo pia ina hati ya pembejeo. Programu ya uthibitishaji itanakili hati ya pembejeo, kupata UTXO iliyorejelewa na pembejeo, na kunakili hati ya tokeo kutoka kwa UTXO hiyo. Hati za pembejeo na tokeo zinatekelezwa kisha pamoja. Pembejeo ni halali ikiwa hati ya pembejeo inatimiza masharti ya hati ya tokeo (ona <<script_exec>>). Pembejeo zote zinathibitishwa kwa kujitegemea kama sehemu ya uthibitishaji wa jumla wa muamala.
+
+Kumbuka kwamba hatua zilizotangulia zinahusisha kufanya nakala za data zote. Data ya asili katika tokeo la awali na pembejeo ya sasa haibadilishwi kamwe. Hasa, tokeo la awali ni thabiti na haliathiriki na majaribio yaliyoshindwa ya kulitumia. Muamala halali tu unaotimiza kwa usahihi masharti ya hati ya tokeo unasababisha tokeo kuzingatiwa "limetumika."
+
+<<input_and_output_scripts_legacy>> ni mfano wa hati za tokeo na pembejeo kwa aina ya kawaida zaidi ya muamala wa zamani wa Bitcoin (malipo kwa heshi ya funguo ya umma), ukionyesha hati iliyounganishwa inayotokana na muunganisho wa hati kabla ya uthibitishaji.
+
+[[input_and_output_scripts_legacy]]
+.Kuunganisha hati za pembejeo na tokeo kutathmini hati ya muamala.
+image::images/mbc3_0701.png["input_and_output_scripts"]
+
+
+===== Mrundikano wa Utekelezaji wa Hati
+
+Lugha ((("hati", "mrundikano", id="script-stack")))((("mrundikano", id="stack")))ya hati ya Bitcoin inaitwa lugha inayotegemea mrundikano kwa sababu inatumia muundo wa data unaoitwa _mrundikano_. Mrundikano ni muundo rahisi sana wa data ambao unaweza kuonyeshwa kama rundo la kadi. Mrundikano una shughuli mbili za msingi: sukuma na toa. Sukuma huongeza kipengele juu ya mrundikano. Toa huondoa kipengele cha juu kutoka kwa mrundikano.
+
+Lugha ya hati inatekeleza hati kwa kushughulikia kila kipengele kutoka kushoto kwenda kulia. Nambari (virefu vya data) husukumwa kwenye mrundikano. Waendeshaji husukuma au kutoa vigawanyo moja au zaidi kutoka kwa mrundikano, kutenda kwao, na wanaweza kusukuma matokeo kwenye mrundikano. Kwa mfano, +OP_ADD+ itatoa vipengele viwili kutoka kwa mrundikano, kuvijumlisha, na kusukuma jumla inayosababishwa kwenye mrundikano.
+
+Waendeshaji wa masharti hutathmini hali, wakizalisha matokeo ya boolean ya +TRUE+ au +FALSE+. Kwa mfano, +OP_EQUAL+ itatoa vipengele viwili kutoka kwa mrundikano na kusukuma +TRUE+ (+TRUE+ inawakilishwa na nambari 1) ikiwa ni sawa au +FALSE+ (inawakilishwa na 0) ikiwa si sawa. Hati za miamala ya Bitcoin kawaida zina mwendeshaji wa masharti ili ziweze kuzalisha matokeo ya +TRUE+ yanayoashiria muamala ((("hati", "mrundikano", startref="script-stack")))((("mrundikano", startref="stack")))halali.
+
+===== Hati Rahisi
+
+Sasa ((("hati", "pembejeo/tokeo", "mifano ya", id="script-input-output-example")))((("hati za pembejeo", "mifano ya", id="input-script-example")))((("hati za matokeo", "mifano ya", id="output-script-example")))hebu tutumie kilichojifunzwa kuhusu hati na mirundikano kwa mifano rahisi.
+
+Kama tutakavyoona katika <<simplemath_script>>, hati +2 3 OP_ADD 5 OP_EQUAL+ inaonyesha mwendeshaji wa jumla wa hisabati +OP_ADD+, ukijumlisha nambari mbili na kuweka matokeo kwenye mrundikano, ukifuatwa na mwendeshaji wa masharti +OP_EQUAL+, ambao huangalia kwamba jumla inayosababishwa ni sawa na +5+. Kwa ufupi, kiambatisho cha +OP_+ wakati mwingine kinaweza kuachwa katika mifano katika kitabu hiki.
+
+Ingawa hati nyingi za zamani za matokeo hurejea heshi ya funguo ya umma (kimsingi, anwani ya zamani ya Bitcoin), hivyo kuhitaji uthibitisho wa umiliki kutumia fedha, hati si lazima iwe ngumu hivyo. Mchanganyiko wowote wa hati za matokeo na pembejeo unaosababisha thamani ya +TRUE+ ni halali. Hisabati rahisi tuliyoitumia kama mfano wa lugha ya hati pia ni hati halali.
+
+Tumia sehemu ya hati ya mfano wa hisabati kama hati ya tokeo:
+
+----
+3 OP_ADD 5 OP_EQUAL
+----
+
+ambayo inaweza kutimizwa na muamala wenye pembejeo yenye hati ya pembejeo:
+
+----
+2
+----
+
+Programu ya uthibitishaji huunganisha hati:
+
+----
+2 3 OP_ADD 5 OP_EQUAL
+----
+
+Kama tunavyoona katika <<simplemath_script>>, hati hii inapotekelezwa, matokeo ni +OP_TRUE+, kuufanya muamala kuwa halali. Ingawa hii ni hati ya tokeo ya muamala halali, kumbuka kwamba UTXO inayosababishwa inaweza kutumika na yeyote mwenye ujuzi wa hisabati wa kujua kwamba nambari 2 inatimiza hati.
+
+
+[[simplemath_script]]
+.Uthibitishaji wa hati wa Bitcoin ukifanya hisabati rahisi.
+image::images/mbc3_0702.png["TxScriptSimpleMathExample"]
+
+[TIP]
+====
+Miamala ni halali ikiwa matokeo ya juu kwenye mrundikano ni +TRUE+, ambayo ni thamani yoyote isiyo sifuri. Miamala si halali ikiwa thamani ya juu kwenye mrundikano ni +FALSE+ (thamani ya sifuri au mrundikano tupu), utekelezaji wa hati umesimamishwa wazi na mwendeshaji (kama vile +VERIFY+, +OP_RETURN+), au hati haikuwa halali kisemantiki (kama vile kuwa na taarifa ya +OP_IF+ ambayo haikumalizwa na opcode ya +OP_ENDIF+).
+====
+
+
+Ifuatayo ni hati ngumu kidogo zaidi, inayohesabu 2 + 7 – 3 + 1. Angalia kwamba hati inapojumuisha waendeshaji kadhaa mfululizo, mrundikano unaruhusu matokeo ya mwendeshaji mmoja kutumiwa na mwendeshaji unaofuata:
+
+----
+2 7 OP_ADD 3 OP_SUB 1 OP_ADD 7 OP_EQUAL
+----
+
+Jaribu kuthibitisha hati iliyotangulia mwenyewe kwa kutumia kalamu na karatasi. Utekelezaji wa hati unapoisha, unapaswa kubakiwa na thamani ya +TRUE+ kwenye ((("hati", "pembejeo/tokeo", "mifano ya", startref="script-input-output-example")))((("hati za pembejeo", "mifano ya", startref="input-script-example")))((("hati za matokeo", "mifano ya", startref="output-script-example")))mrundikano.
+
+[[script_exec]]
+===== Utekelezaji Tofauti wa Hati za Tokeo na Pembejeo
+
+Katika ((("hati", "pembejeo/tokeo", "utekelezaji tofauti")))((("hati za pembejeo", "utekelezaji tofauti na hati za matokeo")))((("hati za matokeo", "utekelezaji tofauti na hati za pembejeo")))mteja wa asili wa Bitcoin, hati za tokeo na pembejeo ziliungaishwa na kutekelezwa kwa mpangilio. Kwa sababu za usalama, hii ilibadilishwa mnamo 2010 kwa sababu ya udhaifu unaojulikana kama hitilafu ya +1 OP_RETURN+. Katika utekelezaji wa sasa, hati zinatekelezwa tofauti na mrundikano ukihamishiwa kati ya utekelezaji huo miwili.
+
+Kwanza, hati ya pembejeo inatekelezwa kwa kutumia injini ya utekelezaji wa mrundikano. Ikiwa hati ya pembejeo inatekelezwa bila hitilafu na haina shughuli zilizobaki, mrundikano hunakiliwa na hati ya tokeo inatekelezwa. Ikiwa matokeo ya kutekeleza hati ya tokeo na data ya mrundikano iliyonakiliwa kutoka kwa hati ya pembejeo ni +TRUE+, hati ya pembejeo imefanikiwa kutatua masharti yaliyowekwa na hati ya tokeo na, kwa hivyo, pembejeo ni idhini halali ya kutumia UTXO. Ikiwa matokeo yoyote zaidi ya +TRUE+ yanabaki baada ya utekelezaji wa hati iliyounganishwa, pembejeo si halali kwa sababu imeshindwa kutimiza masharti ya matumizi yaliyowekwa kwenye tokeo.
+
+//SOMEDAY:implications of not being able to use script in input script
+
+[[p2pkh]]
+==== Lipa kwa Heshi ya Funguo ya Umma
+
+Hati ((("P2PKH (lipa kwa heshi ya funguo ya umma)")))((("anwani", "P2PKH (lipa kwa heshi ya funguo ya umma)")))((("hati", "P2PKH (lipa kwa heshi ya funguo ya umma)")))ya kulipa kwa heshi ya funguo ya umma (P2PKH) inatumia hati ya tokeo inayojumuisha heshi inayojitolea kwa funguo ya umma. P2PKH inajulikana zaidi kama msingi wa anwani ya zamani ya Bitcoin. Tokeo la P2PKH linaweza kutumika kwa kuwasilisha funguo ya umma inayolingana na ahadi ya heshi na saini ya kidijitali iliyoundwa na funguo ya siri inayolingana (ona <<c_signatures>>). Hebu tuangalie mfano wa hati ya tokeo ya P2PKH:
+
+----
+OP_DUP OP_HASH160 <Key Hash> OP_EQUALVERIFY OP_CHECKSIG
+----
+
+[role="less_space pagebreak-before"]
++Key Hash+ ni data ambayo ingefichwa katika anwani ya zamani ya base58check. Programu nyingi zinaonyesha _heshi ya funguo ya umma_ katika hati kwa kutumia ufichaji wa heksadesimali na si umbizo la kawaida la anwani ya Bitcoin ya base58check linaloanza na [.keep-together]#"1."#
+
+Hati ya tokeo iliyotangulia inaweza kutimizwa na hati ya pembejeo ya muundo:
+
+----
+<Signature> <Public Key>
+----
+
+Hati hizo mbili pamoja zingunda hati ya uthibitishaji iliyounganishwa ifuatayo:
+
+----
+<Sig> <Pubkey> OP_DUP OP_HASH160 <Hash> OP_EQUALVERIFY OP_CHECKSIG
+----
+
+Matokeo yatakuwa +TRUE+ ikiwa hati ya pembejeo ina saini halali kutoka kwa funguo ya siri ya Bob inayolingana na heshi ya funguo ya umma iliyowekwa kama kizuizi.
+
+Takwimu pass:[<a data-type="xref" href="#P2PubKHash1" data-xrefstyle="select: labelnumber">#P2PubKHash1</a>] na pass:[<a data-type="xref" href="#P2PubKHash2" data-xrefstyle="select: labelnumber">#P2PubKHash2</a>] zinaonyesha (katika sehemu mbili) utekelezaji wa hatua kwa hatua wa hati iliyounganishwa, utakaothibitisha kwamba hii ni muamala halali.
+
+[[P2PubKHash1]]
+.Kutathmini hati kwa muamala wa P2PKH (sehemu 1 ya 2).
+image::images/mbc3_0703.png["Tx_Script_P2PubKeyHash_1"]
+
+[[P2PubKHash2]]
+.Kutathmini hati kwa muamala wa P2PKH (sehemu 2 ya 2).
+image::images/mbc3_0704.png["Tx_Script_P2PubKeyHash_2"]
+
+[[multisig]]
+=== Saini Nyingi za Hati
+
+Hati ((("saini nyingi za hati", id="script-multisignature")))((("hati za saini nyingi", id="multi-script")))za saini nyingi zinaweka hali ambapo funguo _k_ za umma zimerekodiwa katika hati na angalau _t_ kati ya hizo lazima zitoe saini kutumia fedha, inayoitwa _t_-kati-ya-_k_. Kwa mfano, saini nyingi za 2-kati-ya-3 ni ile ambapo funguo tatu za umma zimeorodheshwa kama wasainishaji wanaowezekana na angalau mbili kati ya hizo lazima zitumike kuunda saini kwa muamala halali kutumia fedha.
+
+[TIP]
+====
+Nyaraka fulani za Bitcoin, ikiwemo matoleo ya awali ya kitabu hiki, zinatumia neno "m-kati-ya-n" kwa saini nyingi ya kawaida. Hata hivyo, ni vigumu kutofautisha "m" na "n" zinapozungumzwa, kwa hivyo tunatumia mbadala _t_-kati-ya-_k_. Misemo yote miwili inarejelea aina ile ile ya mpango wa saini.
+====
+
+Muundo wa jumla wa hati ya tokeo inayoweka hali ya saini nyingi za _t_-kati-ya-_k_ ni:
+
+----
+t <Public Key 1> <Public Key 2> ... <Public Key k> k OP_CHECKMULTISIG
+----
+
+ambapo _k_ ni jumla ya funguo za umma zilizoorodheshwa na _t_ ni kiwango cha chini cha saini zinazohitajika kutumia tokeo.
+
+Hati ya tokeo inayoweka hali ya saini nyingi za 2-kati-ya-3 inaonekana hivi:
+
+----
+2 <Public Key A> <Public Key B> <Public Key C> 3 OP_CHECKMULTISIG
+----
+
+Hati ya tokeo iliyotangulia inaweza kutimizwa na hati ya pembejeo inayojumuisha [.keep-together]#saini:#
+
+----
+<Signature B> <Signature C>
+----
+
+au mchanganyiko wowote wa saini mbili kutoka kwa funguo za siri zinazolingana na funguo tatu za umma zilizoorodheshwa.
+
+Hati hizo mbili pamoja zingunda hati ya uthibitishaji iliyounganishwa:
+
+----
+<Sig B> <Sig C> 2 <Pubkey A> <Pubkey B> <Pubkey C> 3 OP_CHECKMULTISIG
+----
+
+Inapotekelezwa, hati hii iliyounganishwa itatathminia hadi +TRUE+ ikiwa hati ya pembejeo ina saini mbili halali kutoka kwa funguo za siri zinazolingana na mbili ya funguo tatu za umma zilizowekwa kama kizuizi.
+
+Kwa sasa, sera ya usambazaji wa miamala ya Bitcoin Core inazuia hati za matokeo za saini nyingi hadi, angalau, funguo tatu za umma zilizoorodheshwa, kumaanisha unaweza kufanya chochote kutoka saini nyingi ya 1-kati-ya-1 hadi 3-kati-ya-3 au mchanganyiko wowote ndani ya wigo huo. Unaweza kutaka kuangalia kazi ya +IsStandard()+ kuona kinachokubaliwa na mtandao kwa sasa. Kumbuka kwamba kikomo cha funguo tatu kinatumika tu kwa hati za kawaida (pia zinazojulikana kama "wazi") za saini nyingi, si kwa hati zilizofungwa katika muundo mwingine kama P2SH, P2WSH, au P2TR. Hati za saini nyingi za P2SH zimezuiliwa na sera na maafikiano hadi funguo 15, kuruhusu hadi saini nyingi ya 15-kati-ya-15. Tutajifunza kuhusu P2SH katika <<p2sh>>. Hati nyingine zote zimezuiliwa na maafikiano hadi funguo 20 kwa kila opcode ya +OP_CHECKMULTISIG+ au +OP_CHECKMULTISIGVERIFY+, ingawa hati moja inaweza kujumuisha nyingi ya opcode hizo.
+
+[role="less_space pagebreak-before"]
+[[multisig_bug]]
+==== Uajabu katika Utekelezaji wa CHECKMULTISIG
+
+Kuna ((("utekelezaji wa OP_CHECKMULTISIG", id="op-checkmultisig")))uajabu katika utekelezaji wa ++OP_CHECKMULTISIG++ unaohitaji suluhisho dogo. Wakati +OP_CHECKMULTISIG+ inatekelezwa, inapaswa kutumiwa vipengele _t_ + _k_ + 2 kwenye mrundikano kama vigawanyo. Hata hivyo, kutokana na uajabu huo, +OP_CHECKMULTISIG+ itatoa thamani ya ziada au thamani moja zaidi kuliko iliyotarajiwa.
+
+Hebu tuangalie hii kwa undani zaidi kwa kutumia mfano wa uthibitishaji wa awali:
+
+----
+<Sig B> <Sig C> 2 <Pubkey A> <Pubkey B> <Pubkey C> 3 OP_CHECKMULTISIG
+----
+
+Kwanza, +OP_CHECKMULTISIG+ inatoa kipengele cha juu, ambacho ni _k_ (katika mfano huu "3"). Kisha inatoa vipengele _k_, ambavyo ni funguo za umma zinazoweza kusaini; katika mfano huu, funguo za umma A, B, na C. Kisha inatoa kipengele kimoja, ambacho ni _t_, akidi (saini ngapi zinahitajika). Hapa _t_ = 2. Katika hatua hii, +OP_CHECKMULTISIG+ inapaswa kutoa vipengele vya mwisho _t_, ambavyo ni saini, na kuangalia kama ni halali. Hata hivyo, kwa bahati mbaya, uajabu katika utekelezaji husababisha +OP_CHECKMULTISIG+ kutoa kipengele kimoja zaidi (jumla ya _t_ + 1) kuliko inavyopaswa. Kipengele cha ziada kinaitwa ((("kipengele cha bandia cha mrundikano")))_kipengele cha bandia cha mrundikano_, na kinapuuzwa wakati wa kuangalia saini hivyo haina athari ya moja kwa moja kwenye +OP_CHECKMULTISIG+ yenyewe. Hata hivyo, kipengele cha bandia lazima kiwepo kwa sababu, ikiwa hakipo +OP_CHECKMULTISIG+ inapojaribu kutoa kwenye mrundikano tupu, itasababisha hitilafu ya mrundikano na kushindwa kwa hati (kuashiria muamala kama batili). Kwa sababu kipengele cha bandia kinapuuzwa, kinaweza kuwa chochote. Ikawa mila mapema kutumia +OP_0+, ambayo baadaye ikawa sheria ya sera ya usambazaji na hatimaye sheria ya maafikiano (na utekelezaji wa BIP147).
+
+Kwa sababu kutoa kipengele cha bandia ni sehemu ya sheria za maafikiano, lazima sasa iigwe milele. Kwa hivyo hati inapaswa kuonekana hivi:
+
+----
+OP_0 <Sig B> <Sig C> 2 <Pubkey A> <Pubkey B> <Pubkey C> 3 OP_CHECKMULTISIG
+----
+
+Kwa hivyo hati ya pembejeo inayotumiwa kweli kweli katika multisig si:
+
+----
+<Signature B> <Signature C>
+----
+
+bali ni:
+
+----
+OP_0 <Sig B> <Sig C>
+----
+
+Watu wengine wanaamini uajabu huu ulikuwa hitilafu katika msimbo wa asili wa Bitcoin, lakini maelezo mbadala yanayokubalika yapo. Kuthibitisha saini za _t_-kati-ya-_k_ kunaweza kuhitaji shughuli nyingi zaidi za kuangalia saini kuliko _t_ au _k_. Hebu tuzingatie mfano rahisi wa 1-kati-ya-5, na hati ifuatayo iliyounganishwa:
+
+----
+<dummy> <Sig4> 1 <key0> <key1> <key2> <key3> <key4> 5 OP_CHECKMULTISIG
+----
+
+Saini inakaguliwa kwanza dhidi ya +key0+, kisha +key1+, na kisha funguo nyingine kabla ya hatimaye kulinganishwa na +key4+ inayolingana nayo. Hiyo inamaanisha shughuli tano za kuangalia saini lazima zitekelezwe ingawa kuna saini moja tu. Njia moja ya kuondoa ziada hii ingekuwa kutoa +OP_CHECKMULTISIG+ ramani inayoonyesha saini iliyotolewa inayolingana na funguo gani ya umma, kuruhusu shughuli ya +OP_CHECKMULTISIG+ kutekeleza tu shughuli _t_ hasa za kuangalia saini. Inawezekana kwamba msanidi wa asili wa Bitcoin aliongeza kipengele cha ziada (ambacho sasa tunakiita kipengele cha bandia cha mrundikano) katika toleo la asili la Bitcoin ili waweze kuongeza kipengele cha kuruhusu ramani kupitishwa katika uma laini wa baadaye. Hata hivyo, kipengele hicho hakikutekelezwa kamwe, na uboreshaji wa BIP147 kwa sheria za maafikiano mnamo 2017 unafanya iwe haiwezekani kuongeza kipengele hicho katika siku zijazo.
+
+Msanidi wa asili wa Bitcoin peke yake angeweza kutuambia kama kipengele cha bandia cha mrundikano kilikuwa matokeo ya hitilafu au mpango wa uboreshaji wa siku zijazo. Katika kitabu hiki, tunaita tu uajabu.
+
+Kuanzia sasa, ukiona hati ya multisig, unapaswa kutarajia kuona +OP_0+ ya ziada mwanzoni, ambayo madhumuni yake pekee ni kama suluhisho kwa uajabu katika sheria za ((("saini nyingi za hati", startref="script-multisignature")))((("hati za saini nyingi", startref="multi-script")))((("utekelezaji wa OP_CHECKMULTISIG", startref="op-checkmultisig")))maafikiano.
+
+[[p2sh]]
+=== Lipa kwa Heshi ya Hati
+
+Kulipa ((("hati", "P2SH (lipa kwa heshi ya hati)", id="script-p2sh")))((("anwani", "P2SH (lipa kwa heshi ya hati)", id="address-p2sh-ch7")))((("P2SH (lipa kwa heshi ya hati)", id="p2sh-ch7")))kwa heshi ya hati (P2SH) ilianzishwa mnamo 2012 kama aina mpya yenye nguvu ya shughuli ambayo hurahisisha sana matumizi ya hati ngumu. Kuelezea haja ya P2SH, hebu tuangalie mfano wa vitendo.
+
+Mohammed ni muagizaji wa vifaa vya elektroniki aliyepo Dubai. Kampuni ya Mohammed inatumia sana kipengele cha saini nyingi cha Bitcoin kwa akaunti zake za biashara. Hati za saini nyingi ni moja ya matumizi ya kawaida zaidi ya uwezo wa hati wa kina wa Bitcoin na ni kipengele chenye nguvu sana. Kampuni ya Mohammed inatumia hati ya saini nyingi kwa malipo yote ya wateja. Malipo yoyote yaliyofanywa na wateja yamefungwa kwa njia inayohitaji angalau saini mbili kuachiwa. Mohammed, washirika wake watatu, na wakili wao kila mmoja anaweza kutoa saini moja. Mpango wa saini nyingi kama huo hutoa udhibiti wa utawala wa kampuni na kulinda dhidi ya wizi, ubadhirifu, au kupoteza.
+
+Hati inayosababishwa ni ndefu sana na inaonekana hivi:
+
+----
+2 <Mohammed's Public Key> <Partner1 Public Key> <Partner2 Public Key>
+<Partner3 Public Key> <Attorney Public Key> 5 OP_CHECKMULTISIG
+----
+
+Ingawa hati za saini nyingi ni kipengele chenye nguvu, ni kizito kutumia. Hati iliyotangulia ikizingatiwa, Mohammed angehitaji kuwasiliana na hati hii kwa kila mteja kabla ya malipo. Kila mteja angehitaji kutumia programu maalum ya mkoba wa Bitcoin yenye uwezo wa kuunda hati za muamala za kawaida. Zaidi ya hayo, muamala unaosababishwa ungekuwa karibu mara tano mkubwa kuliko muamala rahisi wa malipo, kwa sababu hati hii ina funguo za umma ndefu sana. Mzigo wa data hiyo ya ziada ungebebwa na mteja kwa njia ya ada za ziada za muamala. Hatimaye, hati kubwa ya muamala kama hii ingebebwa katika seti ya UTXO katika kila nodi kamili, hadi itumike. Masuala yote haya yanafanya matumizi ya hati ngumu za matokeo kuwa magumu katika vitendo.
+
+P2SH ilitengenezwa kutatua matatizo haya ya vitendo na kufanya matumizi ya hati ngumu kuwa rahisi kama malipo kwa anwani ya Bitcoin ya funguo moja. Kwa malipo ya P2SH, hati ngumu inabadilishwa na ahadi, muhtasari wa heshi ya kriptografia. Muamala unaojaribu kutumia UTXO unapowasilishwa baadaye, lazima uwe na hati inayolingana na ahadi pamoja na data inayotimiza hati. Kwa maneno rahisi, P2SH inamaanisha "lipa kwa hati inayolingana na heshi hii, hati ambayo itawasilishwa baadaye wakati tokeo hili linapotumika."
+
+Katika miamala ya P2SH, hati inayobadilishwa na heshi ((("hati za uokoaji")))inaitwa _hati ya uokoaji_ kwa sababu inawasilishwa kwa mfumo wakati wa uokoaji badala ya kama hati ya tokeo. <<without_p2sh>> inaonyesha hati bila P2SH na <<with_p2sh>> inaonyesha hati ile ile iliyofichwa na P2SH.
+
+++++
+<table id="without_p2sh">
+<caption>Hati ngumu bila P2SH</caption>
+<tbody>
+<tr>
+<td><p>Hati ya tokeo</p></td>
+<td><p>2 PubKey1 PubKey2 PubKey3 PubKey4 PubKey5 5 OP_CHECKMULTISIG</p></td>
+</tr>
+<tr>
+<td><p>Hati ya pembejeo</p></td>
+<td><p>Sig1 Sig2</p></td>
+</tr>
+</tbody>
+</table>
+<table id="with_p2sh">
+<caption>Hati ngumu kama P2SH</caption>
+<tbody>
+<tr>
+<td><p>Hati ya uokoaji</p></td>
+<td><p>2 PubKey1 PubKey2 PubKey3 PubKey4 PubKey5 5 OP_CHECKMULTISIG</p></td>
+</tr>
+<tr>
+<td><p>Hati ya tokeo</p></td>
+<td><p>OP_HASH160 &lt;20-byte hash of redeem script&gt; OP_EQUAL</p></td>
+</tr>
+<tr>
+<td><p>Hati ya pembejeo</p></td>
+<td><p>Sig1 Sig2 &lt;redeem script&gt;</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Kama unavyoweza kuona kutoka kwa jedwali, na P2SH, hati ngumu inayoelezea masharti ya kutumia tokeo (hati ya uokoaji) haiwasilishwi katika hati ya tokeo. Badala yake, heshi yake tu ipo katika hati ya tokeo, na hati ya uokoaji yenyewe inawasilishwa baadaye kama sehemu ya hati ya pembejeo tokeo linapotumika. Hii hubadilisha mzigo wa ada na ugumu kutoka kwa mtumia hadi kwa mpokeaji wa muamala.
+
+Hebu tuangalie kampuni ya Mohammed, hati ngumu ya saini nyingi, na hati za P2SH zinazosababishwa.
+
+Kwanza, hati ya saini nyingi ambayo kampuni ya Mohammed inatumia kwa malipo yote yanayoingia kutoka kwa wateja:
+
+----
+2 <Mohammed's Public Key> <Partner1 Public Key> <Partner2 Public Key>
+<Partner3 Public Key> <Attorney Public Key> 5 OP_CHECKMULTISIG
+----
+
+Hati hii yote badala yake inaweza kuwakilishwa na heshi ya kriptografia ya baiti 20 kwa kwanza kutumia algorithimu ya heshi ya SHA256 na kisha kutumia algorithimu ya RIPEMD-160 kwenye matokeo. Kwa mfano, kuanza na heshi ya hati ya uokoaji ya Mohammed:
+
+----
+54c557e07dde5bb6cb791c7a540e0a4796f5e97e
+----
+
+Muamala wa P2SH hufunga tokeo kwa heshi hii badala ya hati ya uokoaji ndefu zaidi, kwa kutumia kiolezo maalum cha hati ya tokeo:
+
+----
+OP_HASH160 54c557e07dde5bb6cb791c7a540e0a4796f5e97e OP_EQUAL
+----
+
+ambayo, kama unavyoweza kuona, ni fupi zaidi. Badala ya "lipa kwa hati hii ya saini nyingi ya funguo 5," muamala sawa wa P2SH ni "lipa kwa hati yenye heshi hii." Mteja anayefanya malipo kwa kampuni ya Mohammed anahitaji tu kujumuisha hati hii fupi zaidi ya tokeo katika malipo yake. Mohammed na washirika wake wanapotaka kutumia UTXO hii, lazima wawasilishe hati ya asili ya uokoaji (ile ambayo heshi yake ilifunga UTXO) na saini zinazohitajika kuifungua, hivi:
+
+----
+<Sig1> <Sig2> <2 PK1 PK2 PK3 PK4 PK5 5 OP_CHECKMULTISIG>
+----
+
+Hati hizo mbili zinachanganywa katika hatua mbili. Kwanza, hati ya uokoaji inakaguliwa dhidi ya hati ya tokeo kuhakikisha heshi zinalingana:
+
+----
+<2 PK1 PK2 PK3 PK4 PK5 5 OP_CHECKMULTISIG> OP_HASH160 <script hash> OP_EQUAL
+----
+
+Heshi ya hati ya uokoaji ikilingana, hati ya uokoaji inatekelezwa:
+
+----
+<Sig1> <Sig2> 2 <PK1> <PK2> <PK3> <PK4> <PK5> 5 OP_CHECKMULTISIG
+----
+
+==== Anwani za P2SH
+
+Sehemu nyingine muhimu ya kipengele cha P2SH ni uwezo wa kufisha heshi ya hati kama anwani, kama inavyofafanuliwa katika BIP13. Anwani za P2SH ni ufichaji wa base58check wa heshi ya baiti 20 ya hati, kama vile anwani za Bitcoin ni ufichaji wa base58check wa heshi ya baiti 20 ya funguo ya umma. Anwani za P2SH zinatumia kiambatisho cha toleo "5," kinachosababisha anwani zilizofichwa na base58check zinazoanza na "3."
+
+Kwa mfano, hati ngumu ya Mohammed, ikiheshiwa na kufichwa kwa base58check kama anwani ya P2SH, inakuwa +39RF6JqABiHdYHkfChV6USGMe6Nsr66Gzw+.
+
+Sasa, Mohammed anaweza kutoa "anwani" hii kwa wateja wake, na wanaweza kutumia karibu mkoba wowote wa Bitcoin kufanya malipo rahisi, kama anwani nyingine yoyote ya Bitcoin. Kiambatisho cha 3 kinawapa kidokezo kwamba hii ni aina maalum ya anwani, moja inayolingana na hati badala ya funguo ya umma, lakini vinginevyo inafanya kazi kwa njia ile ile kabisa kama malipo kwa anwani nyingine yoyote ya Bitcoin.
+
+Anwani za P2SH huficha ugumu wote ili mtu anayefanya malipo asione hati.
+
+==== Faida za P2SH
+
+Kipengele cha P2SH hutoa faida zifuatazo ikilinganishwa na matumizi ya moja kwa moja ya hati ngumu katika matokeo:
+
+- Kufanana na anwani za asili za zamani kunamaanisha mtumaji na mkoba wa mtumaji hawahitaji uhandisi ngumu kutekeleza P2SH.
+
+- P2SH hubadilisha mzigo wa uhifadhi wa data kwa hati ndefu kutoka kwa tokeo (ambalo zaidi ya kuhifadhiwa kwenye blockchain lipo katika seti ya UTXO) hadi kwa pembejeo (iliyohifadhiwa kwenye blockchain tu).
+
+- P2SH hubadilisha mzigo wa uhifadhi wa data kwa hati ndefu kutoka sasa (malipo) hadi wakati ujao (inapotumika).
+
+- P2SH hubadilisha gharama ya ada ya muamala ya hati ndefu kutoka kwa mtumaji hadi kwa mpokeaji, ambaye anapaswa kujumuisha hati ndefu ya uokoaji kuitumia.
+
+==== Hati ya Uokoaji na Uthibitishaji
+
+Huwezi ((("hati za uokoaji", "kuthibitisha")))((("kuthibitisha", "hati za uokoaji")))kuweka P2SH ndani ya hati ya uokoaji ya P2SH kwa sababu maelezo ya P2SH si ya kujirudia. Pia, ingawa kwa kiufundi inawezekana kujumuisha +OP_RETURN+ (ona <<op_return>>) katika hati ya uokoaji, kwa kuwa hakuna kitu katika sheria kinachokuzuia kufanya hivyo, haina matumizi ya vitendo kwa sababu kutekeleza +OP_RETURN+ wakati wa uthibitishaji kutasababisha muamala kuashiriwa kama batili.
+
+Kumbuka kwamba kwa sababu hati ya uokoaji haiwasilishwi kwenye mtandao hadi unajaribu kutumia tokeo la P2SH, ukiunda tokeo na heshi ya hati ya uokoaji batili, hutaweza kulitumia. Muamala wa matumizi, unaojumuisha hati ya uokoaji, hautakubaliwa kwa sababu ni hati batili. Hii inaunda hatari kwa sababu unaweza kutuma bitcoin kwa anwani ya P2SH ambayo haiwezi kutumika baadaye.
+
+[WARNING]
+====
+Hati za matokeo za P2SH zina heshi ya hati ya uokoaji, ambayo haitoi vidokezo vyovyote kuhusu maudhui ya hati ya uokoaji. Tokeo la P2SH litazingatiwa halali na kukubaliwa hata kama hati ya uokoaji ni batili. Unaweza kupokea bitcoin kwa bahati mbaya kwa njia ambayo haiwezi baadaye ((("hati", "P2SH (lipa kwa heshi ya hati)", startref="script-p2sh")))((("P2SH (lipa kwa heshi ya hati)", startref="p2sh-ch7")))((("anwani", "P2SH (lipa kwa heshi ya hati)", startref="address-p2sh-ch7")))kutumika.
+====
+
+[[op_return]]
+=== Tokeo la Kurekodi Data (OP_RETURN)
+
+Blockchain ((("hati", "OP_RETURN", id="script-op-return")))((("hati za OP_RETURN", id="op-return")))((("data zisizo za malipo", id="nonpayment-data")))((("blockchain", "data zisizo za malipo katika", id="blockchain-nonpayment")))((("hati za tokeo", "OP_RETURN", id="output-script-op-return")))iliyosambazwa na ya muda maalum ya Bitcoin ina matumizi yanayowezekana zaidi ya malipo. Watengenezaji wengi wamejaribu kutumia lugha ya hati ya muamala kunufaika na usalama na ustahimilivu wa mfumo kwa programu kama vile huduma za uthibitisho wa kidijitali. Majaribio ya awali ya kutumia lugha ya hati ya Bitcoin kwa madhumuni haya yalihusisha kuunda matokeo ya muamala ambayo yalirekodi data kwenye blockchain; kwa mfano, kurekodi ahadi kwa faili kwa njia ambayo mtu yeyote angeweza kuthibitisha uhalisi wa faili hilo katika tarehe maalum kwa kurejelea muamala huo.
+
+[role="less_space pagebreak-before"]
+Matumizi ya blockchain ya Bitcoin kuhifadhi data isiyohusiana na malipo ya Bitcoin ni suala lenye utata. Watu wengi wanaona matumizi kama hayo kuwa mabaya na wanataka kuyazuia. Wengine wanaona hilo kama onyesho la uwezo wa nguvu wa teknolojia ya blockchain na wanataka kuhimiza majaribio kama hayo. Wale wanaopinga kujumuishwa kwa data zisizo za malipo wanadai kwamba inawabebeshea mizigo wanaoendesha nodi kamili za Bitcoin kwa gharama ya kuhifadhi kwenye diski kwa data ambayo blockchain haikukusudiwa kubeba. Zaidi ya hayo, miamala kama hiyo inaweza kuunda UTXO ambazo haziwezi kutumika, ikitumia anwani ya zamani ya Bitcoin kama sehemu ya bure ya baiti 20. Kwa sababu anwani inatumika kwa data, hailingani na funguo ya siri na UTXO inayotokana _haiwezi kamwe_ kutumika; ni malipo ya uongo. Miamala hii ambayo haiwezi kamwe kutumika kwa hivyo haitoratwi kamwe kutoka kwa seti ya UTXO na husababisha ukubwa wa hifadhidata ya UTXO kuongezeka daima, au "kuvimba."
+
+Mwafaka ulifikiwa
+ambao unaruhusu hati ya tokeo inayoanza na +OP_RETURN+ kuongeza data zisizo za malipo kwenye tokeo la muamala. Hata hivyo, tofauti na matumizi ya UTXO za "uongo", opereta +OP_RETURN+ huunda tokeo ambalo _linaweza kuthibitishwa kama lisiloweza kutumika_, ambalo halikuhitajiki kuhifadhiwa katika seti ya UTXO. Matokeo ya +OP_RETURN+ yanarekodishwa kwenye blockchain, kwa hivyo yanachukua nafasi ya diski na kuchangia ongezeko la ukubwa wa blockchain, lakini hayahifadhiwi katika seti ya UTXO na kwa hivyo hayavimbishwi nodi kamili kwa gharama ya shughuli za hifadhidata za gharama zaidi.
+
+Hati za +OP_RETURN+ zinaonekana hivi:
+
+----
+OP_RETURN <data>
+----
+
+Sehemu ya data
+mara nyingi inawakilisha heshi, kama vile matokeo
+kutoka kwa algoriti ya SHA256 (baiti 32). Programu fulani huweka kiambishi awali mbele ya data kusaidia kutambua programu. Kwa mfano, huduma ya uthibitisho wa kidijitali ya https://proofofexistence.com[Proof of Existence] hutumia kiambishi awali cha baiti 8 +DOCPROOF+, ambayo imewekwa kwa ASCII kama +44 4f 43 50 52 4f 4f 46+ kwa hexadecimali.
+
+Kumbuka kwamba hakuna hati ya pembejeo inayolingana na
++OP_RETURN+ ambayo ingeweza kutumika "kutumia" tokeo la +OP_RETURN+. Lengo zima la tokeo la +OP_RETURN+ ni kwamba huwezi kutumia pesa zilizofungwa katika tokeo hilo, na kwa hivyo halikuhitajiki kushikiliwa katika seti ya UTXO kama linaloweza kutumika: matokeo ya +OP_RETURN+ ni _yanayoweza kuthibitishwa kama yasiyoweza kutumika_. Matokeo ya +OP_RETURN+
+kwa kawaida yana kiasi cha sifuri kwa sababu bitcoini yoyote
+iliyopangiwa tokeo kama hilo imepotea kabisa milele. Ikiwa tokeo la +OP_RETURN+ linarejelewa kama pembejeo katika muamala, injini ya uthibitishaji wa hati itasimamisha utekelezaji wa hati ya uthibitishaji na kutia alama muamala kama batili. Utekelezaji wa +OP_RETURN+ kimsingi husababisha hati "KURUDI" na +UONGO+ na kusimama. Kwa hivyo, ukirejelea kwa bahati tokeo la +OP_RETURN+ kama pembejeo katika muamala, muamala huo((("hati", "OP_RETURN", startref="script-op-return")))((("hati za OP_RETURN", startref="op-return")))((("data zisizo za malipo", startref="nonpayment-data")))((("blockchain", "data zisizo za malipo katika", startref="blockchain-nonpayment")))((("hati za tokeo", "OP_RETURN", startref="output-script-op-return"))) ni batili.
+
+[[lock_time_limitations]]
+==== Vizuizi vya Muda wa Kufunga wa Muamala
+
+Matumizi ya ((("miamala", "vizuizi vya muda", "mapungufu ya")))((("vizuizi vya muda", "mapungufu ya")))((("muda wa kufunga", "mapungufu ya")))((("hati", "vizuizi vya muda", "mapungufu ya")))muda wa kufunga inaruhusu mtumia kuzuia muamala usijumuishwe katika bloku hadi urefu maalum wa bloku, lakini haizuii kutumia fedha katika muamala mwingine mapema zaidi ya hapo. Hebu tueleze hilo kwa mfano ufuatao.
+
+Alice anasaini muamala unaotumia moja ya matokeo yake kwenda kwa anwani ya Bob na kuweka muda wa kufunga wa muamala miezi 3 katika siku zijazo. Alice anamtumia Bob muamala huo kushikilia. Kwa muamala huu Alice na Bob wanajua kwamba:
+
+* Bob hawezi kupeleka muamala kukomboa fedha hadi miezi 3 imepita.
+* Bob anaweza kupeleka muamala baada ya miezi 3.
+
+Hata hivyo:
+
+* Alice anaweza kuunda muamala unaokinzana, ukitumia pembejeo hizo hizo bila muda wa kufunga. Kwa hivyo, Alice anaweza kutumia UTXO ile ile kabla ya miezi 3 kupita.
+* Bob hana dhamana kwamba Alice hatafanya hivyo.
+
+Ni muhimu kuelewa mapungufu ya muda wa kufunga wa muamala. Dhamana pekee ni kwamba Bob hataweza kukomboa muamala uliosainwa mapema kabla ya miezi 3 kupita. Hakuna dhamana kwamba Bob atapata fedha. Njia moja ya kuhakikisha kwamba Bob atapokea fedha lakini hawezi kuzitumia hadi miezi 3 imepita ni kuweka kizuizi cha muda maalum kwenye UTXO yenyewe kama sehemu ya hati, badala ya kwenye muamala. Hii inafanikiwa kwa aina inayofuata ya muda wa kufunga, inayoitwa Angalia Thibitisha Muda wa Kufunga.
+
+==== Angalia Thibitisha Muda wa Kufunga (OP_CLTV)
+
+Mnamo ((("miamala", "vizuizi vya muda", "kuthibitisha", id="transaction-timelock-op-cltv")))((("vizuizi vya muda", "kuthibitisha", id="timelock-op-cltv")))((("muda wa kufunga", "kuthibitisha", id="lock-time-op-cltv")))((("opereta ya hati ya OP_CLTV", id="op-cltv")))((("kuthibitisha", "muda wa kufunga", id="verify-lock-time")))((("hati", "vizuizi vya muda", "kuthibitisha", id="script-timelock-verify")))Desemba 2015, aina mpya ya
+muda wa kufunga ilianzishwa katika Bitcoin kama uboreshaji wa uma laini. Kulingana na
+maelezo katika BIP65, opereta mpya ya hati inayoitwa
++OP_CHECKLOCKTIMEVERIFY+ (+OP_CLTV+) iliongezwa kwenye lugha ya hati.
++OP_CLTV+ ni muda wa kufunga kwa kila tokeo badala ya muda wa kufunga kwa kila muamala,
+kama ilivyo kwa muda wa kufunga. Hii inaruhusu kubadilika zaidi
+katika jinsi vizuizi vya muda vinavyotumika.
+
+Kwa maneno rahisi, kwa kujitolea kwa opcode ya +OP_CLTV+ katika
+tokeo, tokeo hilo linazuiwa ili liweze tu kutumika baada ya
+muda maalum kupita.
+
++OP_CLTV+ haibadilishi muda wa kufunga, bali inazuia UTXO maalum
+ili ziweze tu kutumika katika muamala wa baadaye wenye
+muda wa kufunga uliowekwa kwa thamani kubwa au sawa.
+
+[role="less_space pagebreak-before"]
+Opcode ya +OP_CLTV+ inachukua parameter moja kama pembejeo, iliyoonyeshwa kama nambari katika
+muundo sawa na muda wa kufunga (urefu wa bloku au wakati wa Unix epoch).
+Kama inavyoonyeshwa na kiambishi tamati +VERIFY+, +OP_CLTV+ ni aina ya opcode
+inayosimamisha utekelezaji wa hati ikiwa matokeo ni +UONGO+. Ikiwa
+inasababisha +KWELI+, utekelezaji unaendelea.
+
+Ili kutumia +OP_CLTV+, unaiingiza katika hati ya uokoaji ya
+tokeo katika muamala unaounda tokeo. Kwa
+mfano, ikiwa Alice analipa Bob, anaweza kawaida kukubali malipo kwenda
+hati ya P2SH ifuatayo:
+
+----
+<funguo ya umma ya Bob> OP_CHECKSIG
+----
+
+Kuifunga kwa wakati, tuseme miezi 3 kutoka sasa, hati yake ya P2SH badala yake itakuwa:
+
+----
+<funguo ya umma ya Bob> OP_CHECKSIGVERIFY <sasa + miezi 3> OP_CHECKLOCKTIMEVERIFY
+----
+
+ambapo +<sasa {plus} miezi 3>+ ni urefu wa bloku au thamani ya wakati inakadiriwa
+miezi 3 kutoka wakati muamala unapochimbwa: urefu wa bloku wa sasa
+{plus} 12,960 (bloku) au wakati wa Unix epoch wa sasa {plus} 7,760,000
+(sekunde).
+
+Bob anapojaribu kutumia UTXO hii, anaunda muamala
+unaoirejelea UTXO kama pembejeo. Anatumia saini yake na funguo ya umma katika
+hati ya pembejeo ya pembejeo hiyo na kuweka muda wa kufunga wa muamala
+kuwa sawa au kubwa kuliko muda wa kufunga katika +OP_CHECKLOCKTIMEVERIFY+
+Alice aliyoweka. Bob kisha anapeleka muamala kwenye mtandao wa Bitcoin.
+
+Muamala wa Bob unatathminiwa kama ifuatavyo. Ikiwa parameter ya +OP_CHECKLOCKTIMEVERIFY+
+Alice aliyoweka ni ndogo au sawa na muda wa kufunga wa muamala unaotumia,
+utekelezaji wa hati unaendelea (unafanya kana kwamba _hakuna
+operesheni_ au opcode ya +OP_NOP+ iliitekelezwa). Vinginevyo, utekelezaji wa hati
+unasimama na muamala unaonwa kama batili.
+
+Zaidi ya hayo, BIP65 inaeleza kwamba +OP_CHECKLOCKTIMEVERIFY+ inashindwa na
+kusimamisha utekelezaji ikiwa moja ya mambo yafuatayo yatatokea:
+
+* Mrundikano uko tupu.
+* Kitu cha juu kwenye mrundikano ni chini ya 0.
+* Aina ya muda wa kufunga (urefu dhidi ya alama ya wakati) ya kitu cha juu cha mrundikano na sehemu ya muda wa kufunga hazifanani.
+* Kitu cha juu cha mrundikano ni kikubwa kuliko sehemu ya muda wa kufunga wa muamala.
+* Sehemu ya mfululizo wa pembejeo ni 0xffffffff.
+
+[role="less_space pagebreak-before"]
+[[timelock_conflicts]]
+.Migongano ya Vizuizi vya Muda
+****
++OP_CLTV+ na ((("miamala", "vizuizi vya muda", "migongano")))((("vizuizi vya muda", "migongano")))((("muda wa kufunga", "migongano")))((("hati", "vizuizi vya muda", "migongano")))muda wa kufunga hutumia muundo sawa kuelezea vizuizi vya muda, aidha
+urefu wa bloku au wakati uliopita kwa sekunde tangu Unix epoch.
+Muhimu sana, inapotumika pamoja, muundo wa muda wa kufunga lazima ulingane
+na ule wa +OP_CLTV+ katika matokeo—lazima yote mawili yarejelee aidha
+urefu wa bloku au wakati kwa sekunde.
+
+Hii inamaanisha kwamba hati haiwezi kamwe kuwa halali ikiwa lazima itekeleze
+simu mbili tofauti za +OP_CLTV+, moja inayotumia urefu na nyingine inayotumia
+wakati. Inaweza kuwa rahisi kufanya kosa hili unapoandika hati za hali ya juu, kwa hivyo hakikisha kujaribu hati zako kwa kina kwenye mtandao wa majaribio au
+tumia zana iliyoundwa kuzuia tatizo hili, kama mkusanyiko wa Miniscript.
+
+Matokeo ya ziada ni kwamba aina moja tu ya +OP_CLTV+ inaweza kutumika
+katika hati yoyote ya muamala. Ikiwa hati ya pembejeo moja inatumia aina ya urefu na hati tofauti ya pembejeo nyingine inatumia aina ya wakati, hakuna njia ya kuunda muamala halali
+unaotumia pembejeo zote mbili.
+****
+
+Baada ya utekelezaji, ikiwa +OP_CLTV+ inatimizwa, parameter iliyotangulia
+inabaki kama kitu cha juu kwenye mrundikano na inaweza kuhitajika
+kuondolewa, kwa +OP_DROP+, kwa utekelezaji sahihi wa opcode za hati zinazofuata. Utaona mara nyingi +OP_CHECKLOCKTIMEVERIFY+ ikifuatwa na +OP_DROP+ katika
+hati kwa sababu hii. +OP_CLTV+, kama +OP_CSV+ (ona <<op_csv>>)
+ni tofauti na opcode nyingine za +CHECKVERIFY+ kwa kuacha vitu kwenye mrundikano
+kwa sababu uma laini zilizovizungumzia zilibadilisha opcode zilizopo ambazo
+hazikuacha vitu vya mrundikano, na tabia ya opcode hizo za awali
+zisizofanya chochote (NOP) lazima ihifadhiwe.
+
+Kwa kutumia muda wa kufunga pamoja na +OP_CLTV+, hali iliyoelezwa katika
+<<lock_time_limitations>> inabadilika. Alice anapeleka muamala wake
+mara moja, akichangia fedha kwenye funguo ya Bob. Alice hawezi tena kutumia
+pesa hizo, lakini Bob hawezi kuzitumia kabla ya muda wa kufunga wa miezi 3
+kuisha.
+
+Kwa kuanzisha utendaji wa vizuizi vya muda moja kwa moja ndani ya lugha ya hati,
++OP_CLTV+ inaruhusu tutengeneze hati ngumu za kuvutia sana.
+
+Kiwango((("miamala", "vizuizi vya muda", "kuthibitisha", startref="transaction-timelock-op-cltv")))((("vizuizi vya muda", "kuthibitisha", startref="timelock-op-cltv")))((("muda wa kufunga", "kuthibitisha", startref="lock-time-op-cltv")))((("opereta ya hati ya OP_CLTV", startref="op-cltv")))((("kuthibitisha", "muda wa kufunga", startref="verify-lock-time")))((("hati", "vizuizi vya muda", "kuthibitisha", startref="script-timelock-verify"))) kinafafanuliwa katika
+https://oreil.ly/YmJGD[BIP65
+(OP_CHECKLOCKTIMEVERIFY)].
+
+[[op_csv]]
+==== Vizuizi vya Muda vya Jamaa
+
+Muda wa kufunga((("vizuizi vya muda kabisa")))((("miamala", "vizuizi vya muda", "vya jamaa", id="transaction-timelock-relative")))((("vizuizi vya muda", "vya jamaa", id="timelock-relative")))((("muda wa kufunga", "vya jamaa", id="locktime-relative")))((("hati", "vizuizi vya muda", "vya jamaa", id="script-timelock-relative")))((("vizuizi vya muda vya jamaa", id="relative-timelock2"))) na +OP_CLTV+ vyote viwili ni
+_vizuizi vya muda kabisa_ kwa kuwa vinabainisha hatua kabisa ya wakati. Vipengele viwili vifuatavyo vya kizuizi vya muda tutakavyochunguza ni _vizuizi vya muda vya jamaa_ kwa kuwa vinabainisha, kama sharti la kutumia tokeo, wakati uliopita tangu uthibitishaji wa tokeo kwenye blockchain.
+
+[role="less_space pagebreak-before"]
+Vizuizi vya muda vya jamaa ni muhimu kwa sababu vinaruhusu
+kuweka kizuizi cha wakati
+kwenye muamala mmoja unaotegemea wakati uliopita tangu
+uthibitishaji wa muamala wa awali. Kwa maneno mengine, saa haianza kuhesabu hadi UTXO imerekodishwa kwenye blockchain.
+Utendaji huu ni muhimu sana katika njia za hali za pande mbili
+na Mitandao ya Lightning (LN), kama tutakavyoona katika <<state_channels>>.
+
+Vizuizi vya muda vya jamaa, kama vizuizi vya muda kabisa, vinatekelezwa kwa
+kipengele cha kiwango cha muamala na opcode ya kiwango cha hati. Kizuizi cha muda cha jamaa cha kiwango cha muamala kinatekelezwa kama kanuni ya makubaliano
+kwenye thamani ya +mfululizo+, sehemu ya muamala inayowekwa katika kila
+pembejeo ya muamala. Vizuizi vya muda vya jamaa vya kiwango cha hati vinatekelezwa kwa
+opcode ya +OP_CHECKSEQUENCEVERIFY+ (+OP_CSV+).
+
+Vizuizi vya muda vya jamaa
+vinatekelezwa kulingana na maelezo katika
+https://oreil.ly/ZuANb[BIP68,
+Muda wa Kufunga wa Jamaa Ukitumia Nambari za Mfululizo Zilizotekelezwa kwa Makubaliano] na
+https://oreil.ly/dLA2r[BIP112,
+OP_CHECKSEQUENCEVERIFY].
+
+BIP68 na BIP112 zilianzishwa mnamo Mei 2016 kama uboreshaji wa uma laini kwenye
+kanuni za makubaliano.
+
+==== Vizuizi vya Muda vya Jamaa na OP_CSV
+
+Kama ((("opcode ya hati ya OP_CSV", id="op-csv")))vile +OP_CLTV+
+na muda wa kufunga, kuna opcode ya hati kwa vizuizi vya muda vya jamaa ambayo
+inatumia thamani ya mfululizo katika hati. Opcode hiyo ni
++OP_CHECKSEQUENCEVERIFY+, kwa kawaida inajulikana kama +OP_CSV+ kwa ufupi.
+
+Opcode ya +OP_CSV+ inapotathiminiwa katika hati ya UTXO inaruhusu
+kutumia tu katika muamala ambao thamani ya mfululizo wa pembejeo yake ni kubwa
+au sawa na parameter ya +OP_CSV+. Kimsingi, hii inazuia
+kutumia UTXO hadi idadi fulani ya bloku au sekunde zimepita
+kulingana na wakati UTXO ilipochimbwa.
+
+Kama ilivyo na CLTV, thamani katika +OP_CSV+ lazima ilingane na muundo katika
+thamani ya mfululizo inayolingana. Ikiwa +OP_CSV+ inabainishwa kwa suala la
+bloku, basi mfululizo pia lazima ufanye hivyo. Ikiwa +OP_CSV+ inabainishwa kwa suala la
+sekunde, basi mfululizo pia lazima ufanye hivyo.
+
+[WARNING]
+====
+Hati inayotekeleza opcode nyingi za +OP_CSV+ lazima itumie aina moja tu,
+aidha inayotegemea wakati au inayotegemea urefu. Kuchanganya aina
+kutazalisha hati batili ambayo haiwezi kamwe kutumika, tatizo lile lile tuliloliona
+na +OP_CLTV+ katika <<timelock_conflicts>>. Hata hivyo, +OP_CSV+ inaruhusu
+pembejeo yoyote mbili halali kujumuishwa katika muamala ule ule, kwa hivyo tatizo
+la mwingiliano kati ya pembejeo ambalo hutokea na +OP_CLTV+ haliathiri +OP_CSV+.
+====
+
+[role="less_space pagebreak-before"]
+Vizuizi vya muda vya jamaa na +OP_CSV+ ni muhimu sana unapoundwa miamala kadhaa
+(iliyounganishwa) inayoundwa na kusainwa lakini isiyopelekwa—
+yaani, inashikiliwa nje ya blockchain (_nje ya mnyororo_). Muamala wa mtoto hauwezi kutumika hadi
+muamala wa mzazi umepelekwa, kuchimbwa, na kukomaa kwa wakati
+ulioainishwa katika kizuizi cha muda cha jamaa. Mfano mmoja wa matumizi haya unaonyeshwa katika <<state_channels>> na <<lightning_network>>.
+
++OP_CSV+ inafafanuliwa((("miamala", "vizuizi vya muda", "vya jamaa", startref="transaction-timelock-relative")))((("vizuizi vya muda", "vya jamaa", startref="timelock-relative")))((("muda wa kufunga", "vya jamaa", startref="locktime-relative")))((("hati", "vizuizi vya muda", "vya jamaa", startref="script-timelock-relative")))((("opcode ya hati ya OP_CSV", startref="op-csv")))((("vizuizi vya muda vya jamaa", startref="relative-timelock2"))) kwa kina katika
+https://oreil.ly/z_Obw[BIP112,
+CHECKSEQUENCEVERIFY].
+
+=== Hati zenye Udhibiti wa Mtiririko (Vifungu vya Masharti)
+
+Moja ((("hati", "udhibiti wa mtiririko", id="script-flow")))((("udhibiti wa mtiririko katika hati", id="flow-control-script")))((("vifungu vya masharti katika hati", id="conditional-clause-script")))ya
+vipengele vyenye nguvu zaidi vya Bitcoin Script ni udhibiti wa mtiririko, pia unajulikana kama
+vifungu vya masharti. Labda unajua udhibiti wa mtiririko katika
+lugha mbalimbali za programu ambazo hutumia muundo wa +KAMA...BASI...VINGINEVYO+.
+Vifungu vya masharti vya Bitcoin vinaonekana tofauti kidogo lakini kimsingi ni
+muundo ule ule.
+
+Katika kiwango cha msingi, opcode za masharti za Bitcoin zinaturuhusu kuunda
+hati yenye njia mbili za kufunguliwa, inayotegemea matokeo ya
++KWELI+/+UONGO+ ya tathmini ya hali ya kimantiki. Kwa mfano,
+ikiwa x ni +KWELI+, njia ya msimbo inayotekelezwa ni A na njia ya msimbo ya +VINGINEVYO+ ni B.
+
+Zaidi ya hayo, maneno ya masharti ya Bitcoin yanaweza "kuingizwa"
+bila kikomo, kumaanisha kwamba kifungu cha masharti kinaweza kuwa na kingine
+ndani yake, ambacho kina kingine, n.k. Udhibiti wa mtiririko wa Bitcoin Script unaweza
+kutumika kuunda hati ngumu sana zenye mamia
+ya njia zinazowezekana za utekelezaji. Hakuna kikomo cha kuingiza, lakini
+kanuni za makubaliano zinaweka kikomo cha ukubwa wa juu wa hati kwa baiti.
+
+Bitcoin inatekeleza udhibiti wa mtiririko ukitumia opcode za +OP_IF+, +OP_ELSE+, +OP_ENDIF+, na
++OP_NOTIF+. Zaidi ya hayo, maneno ya masharti yanaweza kuwa na waendeshaji wa boolean kama vile +OP_BOOLAND+, +OP_BOOLOR+, na +OP_NOT+.
+
+Kuangalia kwanza, unaweza kukuta hati za udhibiti wa mtiririko za Bitcoin
+kuchanganya. Hiyo ni kwa sababu Bitcoin Script ni lugha ya mrundikano. Kwa njia ile ile
+kwamba +1 {plus} 1+ inaonekana "kwa nyuma" inapoonyeshwa kama +1 1 OP_ADD+, vifungu vya
+udhibiti wa mtiririko katika Bitcoin pia vinaonekana "kwa nyuma."
+
+Katika lugha nyingi za programu za jadi (za utaratibu), udhibiti wa mtiririko
+unaonekana hivi:
+
+.Pseudokodi ya udhibiti wa mtiririko katika lugha nyingi za programu
+----
+if (hali):
+  msimbo wa kutekeleza hali ni kweli
+else:
+  msimbo wa kutekeleza hali ni uongo
+endif
+msimbo wa kutekeleza katika hali zote mbili
+----
+
+Katika lugha inayotegemea mrundikano kama Bitcoin Script, hali ya kimantiki
+inakuja kabla ya +IF+, ambayo inafanya ionekane "kwa nyuma":
+
+[role="less_space pagebreak-before"]
+.Udhibiti wa mtiririko wa Bitcoin Script
+----
+hali
+IF
+  msimbo wa kutekeleza hali ni kweli
+OP_ELSE
+  msimbo wa kutekeleza hali ni uongo
+OP_ENDIF
+msimbo wa kutekeleza katika hali zote mbili
+----
+
+Unaposoma Bitcoin Script, kumbuka kwamba hali inayotathiminiwa
+inakuja _kabla_ ya opcode ya +IF+.
+
+==== Vifungu vya Masharti na Opcode za VERIFY
+
+Aina nyingine
+ya ((("opcode za VERIFY")))((("vifungu vya ulinzi katika hati")))masharti katika Bitcoin Script ni opcode yoyote inayomalizika na
++VERIFY+. Kiambishi tamati +VERIFY+ kinamaanisha kwamba ikiwa hali iliyotathiminiwa si
++KWELI+, utekelezaji wa hati unakoma mara moja na muamala
+unaonwa kama batili.
+
+Tofauti na kifungu cha +IF+, ambacho kinatoa njia mbadala za
+utekelezaji, kiambishi tamati +VERIFY+ hufanya kama _kifungu cha ulinzi_,
+kinachoendelea tu ikiwa masharti ya awali yametimizwa.
+
+Kwa mfano, hati ifuatayo inahitaji saini ya Bob na picha ya awali (siri) inayozalisha heshi maalum. Masharti yote mawili lazima yatimizwe kufungua:
+
+.Hati yenye kifungu cha ulinzi cha +OP_EQUALVERIFY+.
+----
+OP_HASH160 <heshi inayotarajiwa> OP_EQUALVERIFY <Funguo ya Umma ya Bob> OP_CHECKSIG
+----
+
+Kutumia hili, Bob lazima awasilishe
+picha ya awali halali na saini:
+
+.Kutimiza hati hapo juu
+----
+<Saini ya Bob> <picha ya awali ya heshi>
+----
+
+Bila kuwasilisha picha ya awali, Bob hawezi kufika sehemu ya
+hati inayokagua saini yake.
+
+Hati hii inaweza kuandikwa kwa +OP_IF+ badala yake:
+
+.Hati yenye kifungu cha ulinzi cha +IF+
+----
+OP_HASH160 <heshi inayotarajiwa> OP_EQUAL
+OP_IF
+   <Funguo ya Umma ya Bob> OP_CHECKSIG
+OP_ENDIF
+----
+
+Data ya uthibitishaji ya Bob ni sawa:
+
+.Kutimiza hati hapo juu
+----
+<Saini ya Bob> <picha ya awali ya heshi>
+----
+
+Hati yenye +OP_IF+ hufanya kitu kile kile kama kutumia opcode yenye kiambishi tamati cha
++VERIFY+; zote mbili hufanya kama vifungu vya ulinzi. Hata hivyo, muundo wa
++VERIFY+ una ufanisi zaidi, ukitumia opcode mbili chache.
+
+Kwa hivyo, lini tunatumia +VERIFY+ na lini tunatumia +OP_IF+? Ikiwa tunachojaribu kufanya ni
+kuambatanisha masharti ya awali (kifungu cha ulinzi), basi +VERIFY+
+ni bora. Hata hivyo, ikiwa tunataka kuwa na njia zaidi ya moja za utekelezaji
+(udhibiti wa mtiririko), basi tunahitaji kifungu cha udhibiti wa mtiririko wa +OP_IF...OP_ELSE+.
+
+==== Kutumia Udhibiti wa Mtiririko katika Hati
+
+Matumizi ya kawaida sana ya udhibiti wa mtiririko katika Bitcoin Script ni kuunda
+hati inayotoa njia nyingi za utekelezaji, kila moja ni njia tofauti
+ya kukomboa UTXO.
+
+Hebu tuangalie mfano rahisi ambapo
+tuna wasaini wawili, Alice na Bob, na mmoja wao anaweza kukomboa.
+Kwa multisig, hii ingeonyeshwa kama hati ya multisig ya 1-kati-ya-2. Kwa
+madhumuni ya maonyesho, tutafanya kitu kile kile kwa kifungu cha +OP_IF+:
+
+----
+OP_IF
+ <Funguo ya Umma ya Alice>
+OP_ELSE
+ <Funguo ya Umma ya Bob>
+OP_ENDIF
+OP_CHECKSIG
+----
+
+Kuangalia hati hii ya uokoaji, unaweza kujiuliza: "Hali iko wapi?
+Hakuna kitu kinachotangulia kifungu cha +IF+!"
+
+Hali si sehemu ya hati. Badala yake, hali
+itatoewa wakati wa matumizi, kuruhusu Alice na Bob
+"kuchagua" njia ya utekelezaji wanayotaka:
+
+.Alice anatimiza hati hapo juu:
+----
+<Saini ya Alice> OP_TRUE
+----
+
++OP_TRUE+ mwishoni hutumika kama hali (+KWELI+) ambayo itafanya
+kifungu cha +OP_IF+ kutekeleza njia ya kwanza ya uokoaji. Hali hii
+huweka funguo ya umma kwenye mrundikano ambayo Alice ana saini yake.
+Opcode ya +OP_TRUE+, pia inajulikana kama +OP_1+, itaweka
+nambari 1 kwenye mrundikano.
+
+Bob anapotaka kukomboa hili, angelazimika kuchagua njia ya pili ya utekelezaji
+katika +OP_IF+ kwa kutoa thamani ya +UONGO+. Opcode ya +OP_FALSE+, pia
+inajulikana kama +OP_0+, hupeleka safu wima tupu ya baiti kwenye mrundikano:
+
+----
+<Saini ya Bob> OP_FALSE
+----
+
+Hati ya pembejeo ya Bob husababisha kifungu cha +OP_IF+
+kutekeleza hati ya pili (+OP_ELSE+), ambayo inahitaji saini ya Bob.
+
+Kwa kuwa vifungu vya +OP_IF+ vinaweza kuingizwa, tunaweza kuunda "mzingwe" wa njia za
+utekelezaji. Hati ya pembejeo inaweza kutoa "ramani" inayochagua njia
+inayotekelezwa:
+
+----
+OP_IF
+  hati ndogo A
+OP_ELSE
+  OP_IF
+    hati ndogo B
+  OP_ELSE
+    hati ndogo C
+  OP_ENDIF
+OP_ENDIF
+----
+
+Katika hali hii, kuna njia tatu za utekelezaji (+hati ndogo A+, +hati ndogo
+B+, na +hati ndogo C+). Hati ya pembejeo inatoa njia kwa namna ya
+mfululizo wa thamani za +KWELI+ au +UONGO+. Kuchagua njia +hati ndogo B+, kwa
+mfano, hati ya pembejeo lazima imalizike na +OP_1 OP_0+ (+KWELI+, +UONGO+). Thamani hizi
+zitapelekwa kwenye mrundikano ili thamani ya pili (+UONGO+)
+imalizike juu ya mrundikano. Kifungu cha nje cha +OP_IF+ huondoa thamani ya +UONGO+
+na kutekeleza kifungu cha kwanza cha +OP_ELSE+. Kisha thamani ya +KWELI+ inahamia
+juu ya mrundikano na kutathiminiwa na +OP_IF+ ya ndani (iliyoingizwa),
+inayochagua njia ya utekelezaji ya +B+.
+
+Ukitumia muundo huu, tunaweza kuunda hati za uokoaji zenye makumi au mamia
+ya njia za utekelezaji, kila moja ikitoa njia tofauti ya kukomboa UTXO. Kutumia,
+tunaunda hati ya pembejeo inayosafiri kupitia njia ya utekelezaji kwa kuweka thamani sahihi za +KWELI+ na +UONGO+ kwenye mrundikano
+katika kila hatua ya udhibiti wa mtiririko((("hati", "udhibiti wa mtiririko", startref="script-flow")))((("udhibiti wa mtiririko katika hati", startref="flow-control-script")))((("vifungu vya masharti katika hati", startref="conditional-clause-script"))).
+
+=== Mfano wa Hati Ngumu
+
+Katika ((("hati", "mifano ya", id="script-example-complex")))sehemu hii tunaunganisha dhana nyingi
+kutoka sura hii katika mfano mmoja.
+
+Mohammed, mmiliki wa kampuni huko Dubai, anaendesha biashara ya
+uagizaji/usafirishaji; anataka
+kuunda akaunti ya mtaji ya kampuni yenye kanuni za kubadilika. Mpango anaouunda unahitaji viwango tofauti vya idhini kulingana na vizuizi vya muda. Washiriki katika mpango wa multisig ni Mohammed, washirika wake wawili Saeed na Zaira, na wakili wa kampuni yao. Washirika watatu hufanya maamuzi kulingana na kanuni ya wengi, kwa hivyo wawili kati ya watatu lazima wakubaliane. Hata hivyo, katika kesi ya tatizo na funguo zao, wanataka
+wakili wao aweze kurejesha fedha kwa saini moja ya washirika watatu. Hatimaye, ikiwa washirika wote hawapatikani au wamezimwa kwa muda, wanataka wakili aweze kusimamia
+akaunti moja kwa moja baada ya kupata ufikiaji wa rekodi za muamala wa akaunti ya mtaji.
+
+<<variable_timelock_multisig>> ni hati ya uokoaji ambayo Mohammed anabuni kufikia hili (nambari za mstari zimewekwa awali).
+
+[[variable_timelock_multisig]]
+.Multisig inayobadilika na kizuizi cha muda
+====
+----
+01  OP_IF
+02    OP_IF
+03      2
+04    OP_ELSE
+05      <siku 30> OP_CHECKSEQUENCEVERIFY OP_DROP
+06      <Funguo ya Umma ya Wakili> OP_CHECKSIGVERIFY
+07      1
+08    OP_ENDIF
+09    <Funguo ya Umma ya Mohammed> <Funguo ya Umma ya Saeed> <Funguo ya Umma ya Zaira> 3 OP_CHECKMULTISIG
+10  OP_ELSE
+11    <siku 90> OP_CHECKSEQUENCEVERIFY OP_DROP
+12    <Funguo ya Umma ya Wakili> OP_CHECKSIG
+13  OP_ENDIF
+----
+====
+
+Hati ya Mohammed inatekeleza njia tatu za utekelezaji ukitumia vifungu vya udhibiti wa mtiririko wa +OP_IF...OP_ELSE+ vilivyoingizwa.
+
+Katika njia ya kwanza ya utekelezaji, hati hii inafanya kazi kama multisig rahisi ya 2-kati-ya-3
+na washirika watatu. Njia hii ya utekelezaji inajumuisha mistari
+3 na 9. Mstari wa 3 huweka kura ya multisig kuwa +2+ (2-kati-ya-3). Njia
+hii ya utekelezaji inaweza kuchaguliwa kwa kuweka +OP_TRUE OP_TRUE+ mwishoni mwa
+hati ya pembejeo:
+
+.Data ya matumizi kwa njia ya kwanza ya utekelezaji (multisig ya 2-kati-ya-3)
+----
+OP_0 <Saini ya Mohammed> <Saini ya Zaira> OP_TRUE OP_TRUE
+----
+
+[TIP]
+====
++OP_0+ mwanzoni mwa hati hii ya pembejeo ni kwa sababu ya uajabu katika
++OP_CHECKMULTISIG+ ambao huondoa thamani ya ziada kutoka kwa mrundikano. Thamani ya ziada
+inapuuzwa na +OP_CHECKMULTISIG+, lakini lazima iwepo au hati
+inashindwa. Kupeleka safu wima tupu ya baiti kwa +OP_0+ ni suluhisho la uajabu huo, kama
+ilivyoelezwa katika <<multisig_bug>>.
+====
+
+Njia ya pili ya utekelezaji inaweza kutumika tu baada ya siku 30 kupita
+tangu kuundwa kwa UTXO. Wakati huo, inahitaji saini
+ya wakili na mmoja wa washirika watatu (multisig ya 1-kati-ya-3).
+Hii inafanikiwa na mstari wa 7, ambao huweka kura ya multisig kuwa
++1+. Kuchagua njia hii ya utekelezaji, hati ya pembejeo ingemalizika na
++OP_FALSE OP_TRUE+:
+
+.Data ya matumizi kwa njia ya pili ya utekelezaji (Wakili + 1-kati-ya-3)
+----
+OP_0 <Saini ya Saeed> <Saini ya Wakili> OP_FALSE OP_TRUE
+----
+
+[TIP]
+====
+Kwa nini +OP_FALSE OP_TRUE+? Je, si hiyo kwa nyuma? +UONGO+ hupelekwa kwenye
+mrundikano, na +KWELI+ hupelekwa juu yake.
++KWELI+ kwa hivyo inaondolewa _kwanza_ na opcode ya kwanza ya +OP_IF+.
+====
+
+Hatimaye, njia ya tatu ya utekelezaji inaruhusu wakili kutumia
+fedha peke yake, lakini tu baada ya siku 90. Kuchagua njia hii ya utekelezaji, hati ya pembejeo lazima imalizike na +OP_FALSE+:
+
+.Hati ya pembejeo kwa njia ya tatu ya utekelezaji (Wakili peke yake)
+----
+<Saini ya Wakili> OP_FALSE
+----
+
+Jaribu kutekeleza hati kwenye karatasi kuona jinsi inavyofanya kazi kwenye mrundikano.
+
+==== Mifano ya Matokeo na Miamala ya Shahidi Iliyotenganishwa
+
+Hebu tuangalie ((("hati", "shahidi iliyotenganishwa", id="script-segwit")))((("shahidi iliyotenganishwa (segwit)", "hati na", id="segwit-script")))baadhi ya miamala yetu ya mfano na kuona jinsi inavyobadilika na shahidi iliyotenganishwa. Kwanza tutaangalia jinsi malipo ya P2PKH yanavyoweza kukamilika kama programu ya shahidi iliyotenganishwa. Kisha, tutaangalia sawa ya shahidi iliyotenganishwa kwa hati za P2SH. Hatimaye, tutaangalia jinsi programu zote mbili za shahidi zilizotangulia zinavyoweza kuwekwa ndani ya hati ya P2SH.
+
+[[p2wpkh]]
+===== Lipa kwa Heshi ya Funguo ya Umma ya Shahidi (P2WPKH)
+
+Hebu tuanze ((("hati", "shahidi iliyotenganishwa", "P2WPKH", id="script-segwit-p2wpkh")))((("shahidi iliyotenganishwa (segwit)", "hati na", "P2WPKH", id="segwit-script-p2wpkh")))((("P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", id="p2wpkh-ch7")))((("hati za tokeo", "P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", id="output-script-p2wpkh")))((("anwani", "P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", id="address-p2wpkh")))kwa kuangalia mfano wa hati ya tokeo ya P2PKH:
+
+.Mfano wa hati ya tokeo ya P2PKH
+----
+OP_DUP OP_HASH160 ab68025513c3dbd2f7b92a94e0581f5d50f654e7
+OP_EQUALVERIFY OP_CHECKSIG
+----
+
+Kwa shahidi iliyotenganishwa, Alice angeunda
+hati ya P2WPKH. Ikiwa hati hiyo inajitolea
+kwa funguo ile ile ya umma, ingeonekana hivi:
+
+.Mfano wa hati ya tokeo ya P2WPKH
+----
+0 ab68025513c3dbd2f7b92a94e0581f5d50f654e7
+----
+
+Kama unavyoona, hati ya tokeo ya P2WPKH ni rahisi zaidi
+kuliko sawa yake ya P2PKH. Inajumuisha thamani mbili zinazopelekwa
+kwenye mrundikano wa tathmini wa hati. Kwa mteja wa zamani wa Bitcoin (asiyejua segwit), vipele viwili vingeonekana kama tokeo ambalo mtu yeyote anaweza kutumia. Kwa mteja mpya anayejua segwit, nambari ya kwanza (0)
+inatambulika kama nambari ya toleo (the _toleo la shahidi_) na
+sehemu ya pili (baiti 20) ni
+_programu ya shahidi_. Programu ya shahidi ya baiti 20 ni heshi tu ya
+funguo ya umma, kama ilivyo katika hati ya P2PKH.
+
+Sasa, hebu tuangalie muamala unaolingana ambao Bob anatumia kutumia
+tokeo hili. Kwa hati ya asili, muamala wa matumizi
+ungehitaji kujumuisha saini ndani ya pembejeo ya muamala:
+
+.Muamala uliochanganuliwa unaoonyesha tokeo la P2PKH linalotumika na saini
+----
+[...]
+"vin" : [
+  "txid": "abcdef12345...",
+  "vout": 0,
+  "scriptSig": "<scriptSig ya Bob>",
+]
+[...]
+----
+
+Hata hivyo, kutumia tokeo la P2WPKH, muamala hauna
+saini kwenye pembejeo hiyo. Badala yake, muamala wa Bob una hati ya pembejeo tupu na unajumuisha muundo wa shahidi:
+
+.Muamala uliochanganuliwa unaoonyesha tokeo la P2WPKH linalotumika na muundo wa shahidi
+----
+[...]
+"vin" : [
+  "txid": "abcdef12345...",
+  "vout": 0,
+  "scriptSig": "",
+]
+[...]
+"witness": "<muundo wa shahidi wa Bob>"
+[...]
+----
+
+===== Ujenzi wa P2WPKH na Pochi
+
+Ni muhimu sana((("pochi", "P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)"))) kutambua kwamba programu za shahidi za P2WPKH zinapaswa tu kuundwa na mpokeaji na si kubadilishwa na mtumia kutoka kwa funguo ya umma inayojulikana, hati ya P2PKH, au anwani. Mtumia hana njia ya kujua kama pochi ya mpokeaji ina uwezo wa kuunda miamala ya segwit na kutumia matokeo ya P2WPKH.
+
+Zaidi ya hayo, matokeo ya P2WPKH lazima yaundwe kutoka kwa heshi ya funguo ya umma _iliyosinyamishwa_. Funguo za umma zisizosinyamishwa si za kawaida katika segwit na zinaweza kuzuiwa wazi na uma laini wa siku zijazo. Ikiwa heshi iliyotumika katika P2WPKH ilitoka kwa funguo ya umma isiyosinyamishwa, inaweza kuwa haiwezi kutumika na unaweza kupoteza fedha. Matokeo ya P2WPKH yanapaswa kuundwa na pochi ya mlipwaji kwa kupata funguo ya umma iliyosinyamishwa kutoka kwa funguo yao ya siri.
+
+[WARNING]
+====
+P2WPKH inapaswa kuundwa na mpokeaji kwa kubadilisha funguo ya umma iliyosinyamishwa kuwa heshi ya P2WPKH. Mtumia wala mtu mwingine yeyote asibadilishe hati ya P2PKH, anwani ya Bitcoin, au funguo ya umma isiyosinyamishwa kuwa hati ya shahidi ya P2WPKH. Kwa ujumla, mtumia anapaswa tu kutuma kwa mpokeaji kwa njia ambayo mpokeaji alionyesha.
+====
+
+[[p2wsh]]
+===== Lipa kwa Heshi ya Hati ya Shahidi (P2WSH)
+
+Aina ((("hati", "shahidi iliyotenganishwa", "P2WSH", id="script-segwit-p2wsh")))((("shahidi iliyotenganishwa (segwit)", "hati na", "P2WSH", id="segwit-script-p2wsh")))((("P2WSH (lipa kwa heshi ya hati ya shahidi)", id="p2wsh-ch7")))((("hati za tokeo", "P2WSH (lipa kwa heshi ya hati ya shahidi)", id="output-script-p2wsh")))((("anwani", "P2WSH (lipa kwa heshi ya hati ya shahidi)", id="address-p2wsh")))ya pili
+ya programu ya shahidi ya segwit v0 inalingana na hati ya P2SH. Tuliona aina hii ya hati katika <<p2sh>>. Katika mfano huo, P2SH ilitumiwa na kampuni ya Mohammed kuonyesha hati ya multisaini. Malipo kwa kampuni ya Mohammed yaliandikwa kwa hati kama hii:
+
+.Mfano wa hati ya tokeo ya P2SH
+----
+OP_HASH160 54c557e07dde5bb6cb791c7a540e0a4796f5e97e OP_EQUAL
+----
+
+Hati hii ya P2SH inarejelea heshi ya _hati ya uokoaji_ inayobainisha mahitaji ya multisaini ya 2-kati-ya-3 kutumia fedha. Kutumia tokeo hili, kampuni ya Mohammed ingewasilisha hati ya uokoaji (ambayo heshi yake inalingana na heshi ya hati katika tokeo la P2SH) na saini zinazohitajika kutimiza hati hiyo ya uokoaji, zote ndani ya pembejeo ya muamala:
+
+.Muamala uliochanganuliwa unaoonyesha tokeo la P2SH linalotumika
+----
+[...]
+"vin" : [
+  "txid": "abcdef12345...",
+  "vout": 0,
+  "scriptSig": "<SainiA> <SainiB> <2 FungA FungB FungC FungD FungE 5 OP_CHECKMULTISIG>",
+]
+----
+
+Sasa, hebu tuangalie jinsi mfano huu wote unavyoboreshwa hadi segwit v0. Ikiwa wateja wa Mohammed walikuwa wakitumia pochi inayolingana na segwit, wangefanya malipo, na kuunda tokeo la P2WSH ambalo lingeonekana hivi:
+
+.Mfano wa hati ya tokeo ya P2WSH
+----
+0 a9b7b38d972cabc7961dbfbcb841ad4508d133c47ba87457b4a0e8aae86dbb89
+----
+
+Tena, kama ilivyo na mfano wa P2WPKH, unaweza kuona kwamba hati sawa ya shahidi iliyotenganishwa ni rahisi zaidi na inapunguza mzigo wa kiolezo unaopatikana katika hati za P2SH. Badala yake, hati ya tokeo ya shahidi iliyotenganishwa inajumuisha thamani mbili zilizopelekwa kwenye mrundikano: toleo la shahidi (0) na heshi ya SHA256 ya baiti 32 ya hati ya shahidi (programu ya shahidi).
+
+[TIP]
+====
+Wakati P2SH inatumia heshi ya baiti 20 ya +RIPEMD160(SHA256(hati))+, programu ya shahidi ya P2WSH inatumia heshi ya baiti 32 ya +SHA256(hati)+. Tofauti hii katika uchaguzi wa algoriti ya heshi ni ya makusudi ili kutoa usalama mkubwa zaidi kwa P2WSH katika matumizi fulani (usalama wa biti 128 katika P2WSH dhidi ya usalama wa biti 80 katika P2SH). Kwa maelezo, angalia <<p2sh_collision_attacks>>.
+====
+
+Kampuni ya Mohammed inaweza kutumia tokeo la P2WSH kwa kuwasilisha hati sahihi ya shahidi na saini za kutosha kuitimiza. Hati ya shahidi na saini zingewekwa kama sehemu ya muundo wa shahidi. Hakuna data itakayowekwa katika hati ya pembejeo kwa sababu hii ni programu ya asili ya shahidi, ambayo haitumii sehemu ya zamani ya hati ya pembejeo:
+
+.Muamala uliochanganuliwa unaoonyesha tokeo la P2WSH linalotumika na muundo wa shahidi
+----
+[...]
+"vin" : [
+  "txid": "abcdef12345...",
+  "vout": 0,
+  "scriptSig": "",
+]
+[...]
+"witness": "<SainiA> <SainiB> <2 FungA FungB FungC FungD FungE 5 OP_CHECKMULTISIG>"
+[...]
+----
+
+===== Kutofautisha Kati ya P2WPKH na P2WSH
+
+Katika ((("hati", "shahidi iliyotenganishwa", "P2WPKH", startref="script-segwit-p2wpkh")))((("shahidi iliyotenganishwa (segwit)", "hati na", "P2WPKH", startref="segwit-script-p2wpkh")))((("P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", startref="p2wpkh-ch7")))((("hati za tokeo", "P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", startref="output-script-p2wpkh")))((("anwani", "P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", startref="address-p2wpkh")))sehemu mbili zilizotangulia, tulionyesha aina mbili za programu za shahidi: <<p2wpkh>> na <<p2wsh>>. Aina zote mbili za programu za shahidi zinajumuisha nambari ile ile ya toleo ikifuatwa na msukumo wa data. Zinaonekana sawa sana, lakini zinatambulika tofauti kabisa: moja inatambulika kama heshi ya funguo ya umma, ambayo inatimizwa na saini na nyingine kama heshi ya hati, ambayo inatimizwa na hati ya shahidi. Tofauti muhimu kati yao ni urefu wa programu ya shahidi:
+
+- Programu ya shahidi katika P2WPKH ni baiti 20.
+- Programu ya shahidi katika P2WSH ni baiti 32.
+
+Hii ndiyo tofauti moja inayoruhusu nodi kamili kutofautisha kati ya
+aina mbili za programu za shahidi. Kwa kuangalia urefu wa heshi,
+nodi inaweza kubainisha ni aina gani ya programu ya shahidi, P2WPKH ((("P2WSH (lipa kwa heshi ya hati ya shahidi)", startref="p2wsh-ch7")))((("hati za tokeo", "P2WSH (lipa kwa heshi ya hati ya shahidi)", startref="output-script-p2wsh")))((("anwani", "P2WSH (lipa kwa heshi ya hati ya shahidi)", startref="address-p2wsh")))((("hati", "shahidi iliyotenganishwa", "P2WSH", startref="script-segwit-p2wsh")))((("shahidi iliyotenganishwa (segwit)", "hati na", "P2WSH", startref="segwit-script-p2wsh")))au P2WSH.
+
+==== Kuboresha hadi Shahidi Iliyotenganishwa
+
+Kama ((("hati", "shahidi iliyotenganishwa", "kuboresha hadi", id="script-segwit-upgrade")))((("shahidi iliyotenganishwa (segwit)", "hati na", "kuboresha hadi", id="segwit-script-upgrade")))((("kuboresha hadi shahidi iliyotenganishwa", id="upgrade-segwit")))tunavyoona kutoka kwa mifano iliyotangulia, kuboresha hadi shahidi
+iliyotenganishwa ni mchakato wa hatua mbili. Kwanza, pochi lazima ziunde
+matokeo ya aina ya segwit. Kisha, matokeo haya yanaweza kutumika na pochi zinazojua jinsi ya kuunda miamala ya shahidi iliyotenganishwa. Katika mifano, pochi ya Alice inaweza kuunda matokeo yanayolipa
+hati za tokeo za shahidi iliyotenganishwa. Pochi ya Bob pia inajua segwit na inaweza
+kutumia matokeo hayo.
+
+Shahidi iliyotenganishwa ilitekelezwa kama
+uboreshaji unaooana nyuma, ambapo _wateja wa zamani na wapya wanaweza kuishi pamoja_.
+Watengenezaji wa pochi waliboresha programu za pochi kwa uhuru kuongeza
+uwezo wa segwit. P2PKH ya zamani na
+P2SH zinaendelea kufanya kazi kwa pochi [.keep-together]#ambazo hazikuboreshwa#. Hiyo inaacha hali mbili muhimu, ambazo zinashughulikiwa katika sehemu inayofuata:
+
+- Uwezo wa pochi ya mtumia isiyojua segwit kufanya
+  malipo kwa pochi ya mpokeaji ambayo inaweza kushughulikia miamala ya segwit.
+
+- Uwezo wa pochi ya mtumia inayojua segwit kutambua na
+  kutofautisha kati ya wapokeaji wanaojua segwit na wale wasioijua,
+  kupitia _anwani_ zao.
+
+===== Kuweka Shahidi Iliyotenganishwa Ndani ya P2SH
+
+Hebu tudhani,((("shahidi iliyotenganishwa iliyowekwa ndani")))((("P2SH (lipa kwa heshi ya hati)", "shahidi iliyotenganishwa iliyowekwa ndani"))) kwa mfano, kwamba pochi ya Alice haijaboreshwa hadi
+segwit, lakini pochi ya Bob imeboreshwa na inaweza kushughulikia miamala ya segwit.
+Alice na Bob wanaweza kutumia matokeo ya zamani yasiyokuwa segwit. Lakini Bob
+angetaka kutumia segwit kupunguza ada za muamala, akinufaika na
+gharama iliyopunguzwa ya muundo wa shahidi.
+
+Katika kesi hii, pochi ya Bob inaweza kuunda anwani ya P2SH inayojumuisha
+hati ya segwit ndani yake. Pochi ya Alice inaweza kufanya malipo kwake bila
+ujuzi wowote wa segwit.
+Pochi ya Bob kisha inaweza kutumia malipo haya na muamala wa segwit,
+ikinufaika na segwit na kupunguza ada za muamala.
+
+Aina zote mbili za hati za shahidi, P2WPKH na P2WSH, zinaweza kuwekwa ndani ya
+anwani ya P2SH. Ya kwanza inaitwa P2WPKH iliyowekwa ndani, na ya pili inaitwa
+P2WSH iliyowekwa ndani.
+
+===== Lipa kwa Heshi ya Funguo ya Umma ya Shahidi Iliyowekwa Ndani
+
+Aina ((("P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", "kuweka ndani", id="p2wpkh-nest")))((("kuweka ndani", "P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", id="nest-p2wpkh-ch7")))((("anwani", "P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", "kuweka ndani", id="address-p2wpkh-nest")))ya kwanza ya hati ya tokeo tutakayochunguza ni P2WPKH iliyowekwa ndani. Hii ni programu ya shahidi ya lipa kwa heshi ya funguo ya umma ya shahidi, iliyowekwa ndani ya hati ya lipa kwa heshi ya hati, ili pochi isiyojua segwit iweze kulipa hati ya tokeo.
+
+Pochi ya Bob inaunda programu ya shahidi ya P2WPKH na funguo ya umma ya Bob.
+Programu hii ya shahidi kisha inajumuishwa kwa heshi na heshi inayotokana inabadilishwa kuwa
+hati ya P2SH. Hati ya P2SH inabadilishwa kuwa anwani ya Bitcoin, moja
+inayoanza na "3," kama tulivyoona katika <<p2sh>>.
+
+Pochi ya Bob inaanza na toleo la shahidi la P2WPKH na programu ya shahidi tuliyoona awali:
+
+.Toleo la shahidi la P2WPKH na programu ya shahidi ya Bob
+----
+0 ab68025513c3dbd2f7b92a94e0581f5d50f654e7
+----
+
+Data inajumuisha toleo la shahidi na heshi ya baiti 20 ya funguo ya umma ya Bob.
+
+Pochi ya Bob kisha inajumuisha data, kwanza kwa SHA256, kisha kwa RIPEMD-160, ikizalisha heshi nyingine ya baiti 20. Ijayo, heshi ya hati ya uokoaji inabadilishwa kuwa anwani ya Bitcoin. Hatimaye, pochi ya Alice inaweza kufanya malipo kwa
++37Lx99uaGn5avKBxiW26HjedQE3LrDCZru+, kama inavyofanya kwa anwani nyingine yoyote ya Bitcoin.
+
+Kumlipa Bob, pochi ya Alice ingefunga tokeo na hati ya P2SH:
+----
+OP_HASH160 3e0547268b3b19288b3adef9719ec8659f4b2b0b OP_EQUAL
+----
+
+Ingawa pochi ya Alice haina msaada wa segwit, malipo inayounda yanaweza kutumika na Bob kwa muamala wa segwit.((("P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", "kuweka ndani", startref="p2wpkh-nest")))((("kuweka ndani", "P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", startref="nest-p2wpkh-ch7")))((("anwani", "P2WPKH (lipa kwa heshi ya funguo ya umma ya shahidi)", "kuweka ndani", startref="address-p2wpkh-nest")))
+
+===== Lipa kwa Heshi ya Hati ya Shahidi Iliyowekwa Ndani
+
+Vivyo ((("P2WSH (lipa kwa heshi ya hati ya shahidi)", "kuweka ndani", id="p2wsh-nest")))((("kuweka ndani", "P2WSH (lipa kwa heshi ya hati ya shahidi)", id="nest-p2wsh-ch7")))((("anwani", "P2WSH (lipa kwa heshi ya hati ya shahidi)", "kuweka ndani", id="address-p2wsh-nest")))hivyo, programu ya shahidi ya P2WSH kwa hati ya multisaini au hati nyingine ngumu inaweza kuwekwa ndani ya hati ya P2SH na anwani, ikifanya iwezekane kwa pochi yoyote kufanya malipo yanayolingana na segwit.
+
+Kama tulivyoona katika <<p2wsh>>, kampuni ya Mohammed inatumia malipo ya shahidi iliyotenganishwa kwa hati za multisaini. Kuifanya iwezekane kwa mteja yeyote kumlipa kampuni yake, bila kujali kama pochi zao zimeboreshwa kwa segwit, pochi ya Mohammed inaweza kuweka programu ya shahidi ya P2WSH ndani ya hati ya P2SH.
+
+Kwanza, pochi ya Mohammed inajumuisha hati ya shahidi kwa SHA256 (mara moja tu), ikizalisha heshi:
+
+----
+9592d601848d04b172905e0ddb0adde59f1590f1e553ffc81ddc4b0ed927dd73
+----
+
+Ijayo, hati ya shahidi iliyojumuishwa inabadilishwa kuwa programu ya shahidi ya P2WSH yenye kiambishi awali cha toleo:
+
+----
+0 9592d601848d04b172905e0ddb0adde59f1590f1e553ffc81ddc4b0ed927dd73
+----
+
+Kisha, programu ya shahidi yenyewe inajumuishwa kwa SHA256 na RIPEMD-160,
+ikizalisha heshi mpya ya baiti 20:
+
+----
+86762607e8fe87c0c37740cddee880988b9455b2
+----
+
+Ijayo, pochi inaunda anwani ya Bitcoin ya P2SH kutoka kwa heshi hii:
+
+.Anwani ya Bitcoin ya P2SH
+----
+3Dwz1MXhM6EfFoJChHCxh1jWHb8GQqRenG
+----
+
+Sasa, wateja wa Mohammed wanaweza kufanya malipo kwa anwani hii hata kama hawatumii segwit. Kutuma malipo kwa Mohammed, pochi ingefunga tokeo na hati ifuatayo ya P2SH:
+
+.Hati ya P2SH inayotumika kufunga malipo kwa multisaini ya Mohammed
+----
+OP_HASH160 86762607e8fe87c0c37740cddee880988b9455b2 OP_EQUAL
+----
+
+Kampuni ya Mohammed kisha inaweza kuunda miamala ya segwit kutumia malipo haya, ikinufaika na vipengele vya segwit ikiwa ni pamoja na((("hati", "mifano ya", startref="script-example-complex")))((("hati", "shahidi iliyotenganishwa", startref="script-segwit")))((("shahidi iliyotenganishwa (segwit)", "hati na", startref="segwit-script")))((("hati", "shahidi iliyotenganishwa", "kuboresha hadi", startref="script-segwit-upgrade")))((("shahidi iliyotenganishwa (segwit)", "hati na", "kuboresha hadi", startref="segwit-script-upgrade")))((("kuboresha hadi shahidi iliyotenganishwa", startref="upgrade-segwit")))((("P2WSH (lipa kwa heshi ya hati ya shahidi)", "kuweka ndani", startref="p2wsh-nest")))((("kuweka ndani", "P2WSH (lipa kwa heshi ya hati ya shahidi)", startref="nest-p2wsh-ch7")))((("anwani", "P2WSH (lipa kwa heshi ya hati ya shahidi)", "kuweka ndani", startref="address-p2wsh-nest"))) ada za chini za muamala.
+
+[[mast]]
+=== Miti ya Hati Mbadala Iliyomerklizwa (MAST)
+
+Ukitumia +OP_IF+, unaweza ((("hati", "MAST", id="script-mast")))((("MAST (miti ya hati mbadala iliyomerklizwa)", id="mast-ch7")))((("miti ya merkle", "MAST", id="merkle-tree-mast")))kuidhinisha masharti mengi tofauti ya matumizi, lakini mbinu hii ina vipengele kadhaa visivyopendeza:
+
+Uzito (gharama)::
+Kila sharti unalodongeza huongeza ukubwa wa
+  hati, kuongeza uzito wa muamala na kiasi cha ada
+  kinachohitajika kulipwa kutumia bitcoini zilizohifadhiwa na
+  hati hiyo.
+
+Ukubwa mdogo::
+Hata kama uko tayari kulipa kwa masharti ya ziada,
+  kuna kikomo cha idadi ya juu unayoweza kuweka katika hati. Kwa
+  mfano, hati ya zamani imezuiwa hadi baiti 10,000, ikizuia
+  kwa vitendo matawi machache ya masharti. Hata kama
+  ungeweza kuunda hati kubwa kama bloku nzima, bado
+  ingeweza tu kujumuisha matawi ya muhimu karibu 20,000. Hiyo ni mengi kwa malipo rahisi lakini ndogo ikilinganishwa na baadhi ya matumizi yanayofikirika ya Bitcoin.
+
+Ukosefu wa faragha::
+Kila sharti unalodongeza katika hati yako linakuwa
+  maarifa ya umma unapoitumia bitcoini zilizohifadhiwa na hati hiyo.
+  Kwa mfano, wakili wa Mohammed na washirika wake wa biashara wataweza
+  kuona hati nzima katika <<variable_timelock_multisig>> wakati wowote
+  mtu anapotumia kutoka humo. Hiyo inamaanisha wakili wao, hata kama hakuhitajika kusaini, ataweza kufuatilia miamala yao yote.
+
+Hata hivyo, Bitcoin tayari inatumia muundo wa data unaojulikana kama mti wa merkle
+ambao unaruhusu kuthibitisha kipengele ni mwanachama wa seti bila
+kuhitaji kutambua kila mwanachama mwingine wa seti.
+
+Tutajifunza zaidi kuhusu miti ya merkle katika <<merkle_trees>>, lakini
+taarifa muhimu ni kwamba wanachama wa seti ya data tunayotaka
+(k.m., masharti ya idhini ya urefu wowote) yanaweza kupitishwa kwenye kazi ya
+heshi kuunda ahadi fupi (inayoitwa _jani_ la mti wa merkle). Kila moja ya majani hayo kisha hupangwa na jani jingine
+na kujumuishwa tena, kuunda ahadi kwa majani, inayoitwa ahadi ya
+_tawi_. Ahadi kwa jozi ya matawi inaweza kuundwa
+kwa njia ile ile. Hatua hii inarudiwa kwa matawi hadi kiashiria kimoja kimebaki,
+kinachofaa kuitwa _mzizi wa merkle_. Ukitumia hati yetu ya mfano
+kutoka <<variable_timelock_multisig>>, tunaunda mti wa merkle kwa kila
+moja ya masharti matatu ya idhini katika <<diagram_mast1>>.
+
+[[diagram_mast1]]
+.MAST yenye hati ndogo tatu.
+image::images/mbc3_0705.png["A MAST with three sub-scripts"]
+
+Sasa tunaweza kuunda uthibitisho wa ushirika mfupi unaothibitisha sharti fulani la idhini ni mwanachama wa mti wa merkle bila
+kufichua maelezo yoyote kuhusu wanachama wengine wa mti wa merkle. Ona
+<<diagram_mast2>>, na kumbuka kwamba nodi zilizotiwa kivuli zinaweza
+kukokotolewa kutoka kwa data nyingine inayotolewa na mtumiaji, kwa hivyo hazihitajiki
+kubainishwa wakati wa matumizi.
+
+[[diagram_mast2]]
+.Uthibitisho wa ushirika wa MAST kwa moja ya hati ndogo.
+image::images/mbc3_0706.png["A MAST membership proof for one of the sub-scripts"]
+
+[role="less_space pagebreak-before"]
+Muhtasari wa heshi unaotumiwa kuunda ahadi una baiti 32 kila moja, kwa hivyo
+kuthibitisha kwamba matumizi ya <<diagram_mast2>> yameruhusiwa (ukitumia mti wa merkle na
+masharti fulani) na kuthibitishwa (ukitumia saini) kunatumia baiti 383. Kwa ulinganisho, matumizi yale yale bila mti wa merkle (yaani, kutoa masharti yote yanayowezekana ya idhini) yanatumia baiti 412.
+
+Kuokoa baiti 29 (7%) katika mfano huu haijumuishi kikamilifu
+akiba inayowezekana. Asili ya mti wa binary ya mti wa merkle
+inamaanisha kwamba unahitaji tu ahadi ya ziada ya baiti 32 kila wakati
+unapoongeza mara mbili idadi ya wanachama katika seti (katika kesi hii, masharti
+ya idhini). Katika mfano huu, na masharti matatu, tunahitaji kutumia ahadi
+tatu (moja yao ikiwa mzizi wa merkle, ambao utahitajika
+kujumuishwa katika data ya idhini); tunaweza pia kuwa na
+ahadi nne kwa gharama ile ile. Ahadi ya ziada ingetupa hadi
+masharti nane. Kwa ahadi 16 tu — baiti 512 za ahadi — tungeweza kuwa na
+masharti zaidi ya 32,000 ya idhini, zaidi ya kiasi kinachoweza kutumiwa kwa ufanisi
+katika bloku nzima ya miamala iliyojaa taarifa za +OP_IF+. Kwa ahadi 128
+(baiti 4,096), idadi ya masharti tunayoweza kuunda kwa nadharia
+inazidi sana idadi ya masharti ambayo kompyuta zote duniani
+zingeweza kuunda.
+
+Kawaida si kila sharti la idhini lina uwezekano sawa wa kutumika. Katika kesi yetu ya mfano, tunatarajia Mohammed na
+washirika wake kutumia pesa zao mara kwa mara; masharti
+yaliyochelewa kwa wakati yapo tu ikiwa kitu kitaenda vibaya. Tunaweza kupanga upya
+mti wetu na ujuzi huu kama inavyoonyeshwa katika <<diagram_mast3>>.
+
+[[diagram_mast3]]
+.MAST yenye hati inayotarajiwa zaidi katika nafasi bora.
+image::images/mbc3_0707.png["A MAST with the most-expected script in the best position"]
+
+[role="less_space pagebreak-before"]
+Sasa tunahitaji tu kutoa ahadi mbili kwa kesi ya kawaida (kuokoa baiti 32),
+ingawa bado tunahitaji ahadi tatu kwa kesi zisizo za kawaida.
+Ikiwa unajua (au unaweza kukisia) uwezekano wa
+kutumia masharti tofauti ya idhini, unaweza kutumia algoriti ya Huffman
+kuyaweka katika mti wenye ufanisi wa juu; angalia BIP341 kwa
+maelezo.
+
+Bila kujali jinsi mti unavyoundwa, tunaweza kuona katika mifano iliyotangulia
+kwamba tunafichua tu masharti halisi ya idhini yanayotumiwa. Masharti mengine yanabaki siri. Pia yanabaki siri ni idadi ya masharti: mti unaweza kuwa na sharti moja
+au masharti trilioni — hakuna njia kwa mtu anayeangalia tu data ya mnyororo kwa muamala mmoja kutambua.
+
+Isipokuwa kuongeza ugumu kidogo wa Bitcoin, hakuna
+hasara kubwa za MAST kwa Bitcoin na kulikuwa na mapendekezo mawili thabiti
+kwa hilo, BIP114 na BIP116, kabla mbinu iliyoboreshwa haikugundulika,
+ambayo tutaona katika <<taproot>>.
+
+.MAST Dhidi ya MAST
+****
+Wazo la awali((("miti ya sintaksia ya kufupisho (AST)")))((("AST (miti ya sintaksia ya kufupisho)"))) kwa kile tunachokijua sasa kama _MAST_ katika Bitcoin lilikuwa
+_miti ya sintaksia ya kufupisho iliyomerklizwa_. Katika mti wa sintaksia wa kufupisho (AST),
+kila sharti katika hati huunda tawi jipya, kama inavyoonyeshwa katika <<ast>>.
+
+[[ast]]
+.Mti wa sintaksia wa kufupisho (AST) kwa hati.
+image::images/mbc3_0708.png["An Abstract Syntax Tree (AST) for a script"]
+
+AST inatumika sana na programu zinazochambua na kuboresha msimbo kwa programu
+nyingine, kama vile makusanyiko. AST iliyomerklizwa ingejitolea kwa kila sehemu
+ya programu na kuwezesha vipengele vilivyoelezwa katika
+<<mast>>, lakini inggehitaji kufichua angalau muhtasari mmoja wa baiti 32 kwa
+kila sehemu tofauti ya programu, ambayo haitakuwa na ufanisi mkubwa wa nafasi kwenye blockchain kwa programu nyingi.
+
+Kile watu katika hali nyingi wanaita _MAST_ katika Bitcoin leo ni
+_miti ya hati mbadala iliyomerklizwa_, akronimu ya nyuma iliyoundwa na msanidi
+Anthony Towns. Mti wa hati mbadala ni seti ya hati, kila
+moja yao ikiwa kamili peke yake, ambapo moja tu inaweza kuchaguliwa — ikizifanya
+kuwa mbadala za kila mmoja, kama inavyoonyeshwa katika <<alt_script>>.
+
+[[alt_script]]
+.Mti wa hati mbadala.
+image::images/mbc3_0709.png["An alternative script tree"]
+
+Miti ya hati mbadala inahitaji tu kufichua muhtasari mmoja wa baiti 32 kwa
+kila kiwango cha kina kati ya hati iliyochaguliwa ya mtumia na mzizi wa
+mti. Kwa hati nyingi, hii ni matumizi yenye ufanisi zaidi ya nafasi
+kwenye((("hati", "MAST", startref="script-mast")))((("MAST (miti ya hati mbadala iliyomerklizwa)", startref="mast-ch7")))((("miti ya merkle", "MAST", startref="merkle-tree-mast"))) blockchain.
+****
+
+[[pay_to_contract]]
+=== Lipa kwa Mkataba (P2C)
+
+Kama ((("P2C (lipa kwa mkataba)", id="p2c")))((("marekebisho ya funguo", id="key-tweak")))((("kriptografia ya funguo ya umma", "marekebisho ya funguo", id="pub-key-tweak")))tulivyoona katika <<public_child_key_derivation>>, hisabati ya kriptografia ya mkondo wa duaradufu (ECC) inaruhusu Alice kutumia funguo ya siri kupata funguo ya umma anayompa Bob. Anaweza kuongeza thamani yoyote kwenye funguo hiyo ya umma kuunda funguo ya umma iliyotokana. Ikiwa atampa Alice thamani hiyo yoyote, anaweza
+kuiongeza kwenye funguo yake ya siri kupata funguo ya siri ya funguo ya umma iliyotokana. Kwa ufupi, Bob anaweza kuunda funguo za umma za mtoto ambazo Alice peke yake anaweza kuunda funguo za siri zinazolingana. Hii inafaa kwa uokoaji wa pochi ya HD ya BIP32, lakini pia inaweza kutumikia matumizi mengine.
+
+Hebu tufikiria Bob anataka kununua kitu kutoka kwa Alice lakini pia anataka
+kuweza kuthibitisha baadaye alicholipa ikiwa kutakuwa na mgogoro wowote. Alice
+na Bob wanakubaliana juu ya jina la kitu au huduma inayouzwa (k.m.,
+"kipindi cha podikasti cha Alice #123"), na kubadilisha maelezo hayo kuwa
+nambari kwa kuyajumuisha na kutafsiri muhtasari wa heshi kama nambari. Bob
+huongeza nambari hiyo kwenye funguo ya umma ya Alice na kumlipa. Mchakato unaitwa _urekebishaji wa funguo_, na nambari inajulikana kama _urekebisho_.
+
+Alice anaweza kutumia fedha kwa kurekebisha funguo yake ya siri ukitumia nambari ile ile (urekebisho).
+
+Baadaye, Bob anaweza kuthibitisha kwa mtu yeyote alichomlipa Alice kwa kufichua funguo yake ya msingi na maelezo waliyoyatumia. Mtu yeyote anaweza kuthibitisha kwamba funguo ya umma iliyolipwa inalingana na funguo ya msingi pamoja na ahadi ya heshi ya maelezo. Ikiwa Alice anakiri kwamba funguo hiyo ni yake, basi alipokea malipo. Ikiwa Alice alitumia fedha, hii inathibitisha zaidi kwamba alijua maelezo wakati aliposaini muamala wa matumizi kwa kuwa angeweza tu kuunda saini halali kwa funguo ya umma iliyorekebishwa ikiwa alijua urekebisho (maelezo).
+
+Ikiwa Alice wala Bob hawakuamua kufichua hadharani maelezo waliyoyatumia, malipo kati yao yanaonekana kama malipo mengine yoyote. Hakuna hasara ya faragha.
+
+Kwa kuwa P2C ni ya faragha kwa chaguo-msingi, hatuwezi kujua mara ngapi inatumika
+kwa madhumuni yake ya awali — kwa nadharia kila malipo yangeweza kuyatumia,
+ingawa tunachukulia hilo haliwezekani. Hata hivyo, P2C inatumika sana leo
+katika muundo tofauti kidogo, ambao tutauona((("P2C (lipa kwa mkataba)", startref="p2c")))((("marekebisho ya funguo", startref="key-tweak")))((("kriptografia ya funguo ya umma", "marekebisho ya funguo", startref="pub-key-tweak"))) katika <<taproot>>.
+
+[[scriptless_multisignatures_and_threshold_signatures]]
+=== Saini Nyingi Zisizo na Hati na Saini za Kizingiti
+
+Katika <<multisig>>, tuliangalia ((("saini nyingi zisizo na hati", id="scriptless-multi")))((("hati za multisaini", "zisizo na hati", id="multisignature-scriptless")))((("saini za kizingiti", id="threshold-signature")))((("kriptografia ya funguo ya umma", "saini nyingi zisizo na hati", id="pub-key-scriptless")))hati zinazohitaji saini kutoka kwa
+funguo nyingi. Hata hivyo, kuna njia nyingine ya kuhitaji ushirikiano kutoka kwa
+funguo nyingi, ambayo pia inaitwa kwa kuchanganya _multisaini_. Kutofautisha kati ya aina mbili katika sehemu hii, tutaita
+toleo linalohusisha opcode za mtindo wa `OP_CHECKSIG` _saini nyingi za hati_
+na toleo jingine _saini nyingi zisizo na hati_.
+
+Saini nyingi zisizo na hati zinahusisha kila mshiriki kuunda siri yake mwenyewe kwa njia ile ile wanayounda funguo ya siri. Tutaita ((("funguo za siri za sehemu")))((("funguo za siri", "za sehemu")))siri hii
+_funguo ya siri ya sehemu_, ingawa tunapaswa kukumbuka kwamba ina urefu ule ule
+kama funguo ya siri kamili ya kawaida. Kutoka kwa funguo ya siri ya sehemu, kila
+mshiriki hupata funguo ya umma ya sehemu ukitumia algoriti ile ile inayotumika
+kwa funguo za umma za kawaida tulizozielezea katika <<public_key_derivation>>. Kila
+mshiriki anashiriki funguo zao za umma za sehemu na washiriki wengine wote na kisha huunganisha funguo zote pamoja kuunda funguo ya umma ya multisaini isiyo na hati.
+
+Funguo hii iliyounganishwa inaonekana sawa na funguo nyingine yoyote ya umma ya Bitcoin. Mtu wa tatu hawezi kutofautisha kati ya funguo ya umma ya washiriki wengi na funguo ya kawaida iliyoundwa na mtumiaji mmoja.
+
+Kutumia bitcoini zilizohifadhiwa na funguo ya umma ya multisaini isiyo na hati, kila mshiriki huzalisha saini ya sehemu. Saini za sehemu
+kisha huunganishwa kuunda saini kamili ya kawaida. Kuna
+mbinu nyingi zinazojulikana za kuunda na kuunganisha saini za sehemu; tutaangalia mada hii zaidi katika <<c_signatures>>. Sawa na funguo za umma za saini nyingi zisizo na hati, saini zinazozalishwa na mchakato huu zinaonekana sawa na saini nyingine yoyote ya Bitcoin. Watu wa tatu hawawezi kubainisha kama saini iliundwa na mtu mmoja au
+watu milioni wanaoshirikiana na kila mmoja.
+
+Saini nyingi zisizo na hati ni ndogo zaidi na za faragha zaidi kuliko saini nyingi za hati. Kwa saini nyingi za hati, idadi ya baiti zilizowekwa katika muamala huongezeka kwa kila funguo na saini inayohusika. Kwa saini nyingi zisizo na hati, ukubwa ni wa kudumu — washiriki milioni kila mmoja akitoa funguo yake ya sehemu na saini ya sehemu huweka kiasi kile kile cha data katika muamala kama mtu binafsi anayetumia funguo moja na saini. Hadithi ni ile ile kwa faragha: kwa kuwa kila funguo mpya au saini huongeza data kwenye muamala, saini nyingi za hati zinafichua data kuhusu idadi ya funguo na saini zinazotumika — ambayo inaweza kuifanya iwe rahisi kujua miamala ipi iliundwa na kikundi gani cha washiriki. Hata hivyo, kwa kuwa kila saini nyingi isiyo na hati inaonekana kama kila saini nyingine isiyo na hati na kila saini moja, hakuna data inayopunguza faragha inayovuja.
+
+++++
+<p class="fix_tracking">
+Kuna hasara mbili za saini nyingi zisizo na hati. Ya kwanza ni
+kwamba algoriti zote zinazojulikana salama za kuzunda kwa Bitcoin zinahitaji mzunguko zaidi
+wa mwingiliano au usimamizi makini zaidi wa hali kuliko
+saini nyingi za hati. Hii inaweza kuwa changamoto katika hali ambapo
+saini zinazalishwa na vifaa vya kusaini karibu visivyo na hali na funguo zimesambazwa kimwili. Kwa mfano, ukihifadhi kifaa cha kusaini katika kisanduku cha akiba cha benki, ungehitaji
+kutembelea kisanduku hicho mara moja kuunda saini nyingi za hati lakini
+labda mara mbili au tatu kwa saini nyingi isiyo na hati.
+</p>
+++++
+
+Hasara nyingine ni kwamba kusaini kwa kizingiti hakufichui nani alisaini. Katika kusaini kwa kizingiti cha hati, Alice, Bob, na Carol wanakubaliana (kwa mfano) kwamba wawili wao wowote wakisaini kutakuwa kutosha kutumia fedha. Ikiwa Alice na Bob wanasaini, hii inahitaji kuweka saini kutoka kwa kila mmoja wao kwenye mnyororo, kuthibitisha kwa mtu yeyote anayejua funguo zao kwamba walisaini na Carol hakusaini. Katika kusaini kwa kizingiti isiyo na hati, saini kutoka kwa Alice na Bob haiwezi kutofautishwa na saini kati ya Alice na Carol au Bob na Carol. Hii ni ya manufaa kwa faragha, lakini inamaanisha kwamba, hata kama Carol anadai hakusaini, hawezi
+kuthibitisha kwamba hakusaini, ambayo inaweza kuwa vibaya kwa uwajibikaji na ukaguliaji.
+
+Kwa watumiaji wengi na matumizi mengi, ukubwa uliopunguzwa daima na faragha iliyoongezwa ya multisaini huzidi changamoto zake za mara kwa mara kwa
+kuunda na kukagua((("saini nyingi zisizo na hati", startref="scriptless-multi")))((("hati za multisaini", "zisizo na hati", startref="multisignature-scriptless")))((("saini za kizingiti", startref="threshold-signature")))((("kriptografia ya funguo ya umma", "saini nyingi zisizo na hati", startref="pub-key-scriptless"))) saini.
+
+[[taproot]]
+=== Taproot
+
+Sababu moja ((("hati", "MAST", "taproot", id="script-mast-taproot")))((("MAST (miti ya hati mbadala iliyomerklizwa)", "taproot", id="mast-taproot")))((("miti ya merkle", "MAST", "taproot", id="merkle-tree-mast-taproot")))((("taproot", id="taproot-ch7")))((("mikataba ya kuridhiana", "taproot", id="mutual-satisfaction-taproot")))watu wanaochagua kutumia Bitcoin ni kwamba inawezekana kuunda mikataba yenye matokeo yanayotarajiwa sana. Mikataba ya kisheria inayotekelezwa na mahakama inategemea kwa sehemu maamuzi ya majaji na wajumbe wa jury wanaohusika katika kesi. Kinyume chake, mikataba ya Bitcoin mara nyingi inahitaji vitendo vya washiriki wake lakini vinginevyo inatekelezwa na maelfu ya nodi kamili zote zinazoendesha msimbo unaofanana kifunctionally. Ikipewa mkataba ule ule na pembejeo ile ile, kila nodi kamili daima itazalisha matokeo yale yale. Kupotoka yoyote kungemanisha kwamba Bitcoin ilivunjika. Majaji na majury ya binadamu wanaweza kuwa na unyumbufu zaidi kuliko programu, lakini wakati unyumbufu huo haukutakiwa au unahitajika, utabirifu wa mikataba ya Bitcoin ni rasilimali kubwa.
+
+Ikiwa washiriki wote katika mkataba wanatambua kwamba matokeo yake yamekuwa yanayotabirika kabisa, hakuna haja ya kweli kwao
+kuendelea kutumia mkataba. Wangeweza tu kufanya chochote ambacho mkataba unawalazimu kufanya na kisha kumaliza mkataba. Katika jamii, hivi ndivyo mikataba mingi inavyomalizika: ikiwa pande zinazohusika zimeridhika, hawachukui kamwe mkataba mbele ya jaji au jury. Katika Bitcoin, inamaanisha kwamba mkataba wowote unaotumia nafasi kubwa ya bloku kukubaliana unapaswa pia kutoa kifungu kinachoruhusu kukubaliana badala yake kwa kuridhiana.
+
+Katika MAST na kwa saini nyingi zisizo na hati, kifungu cha kuridhiana
+ni rahisi kuunda. Tunafanya tu moja ya majani ya juu ya
+mti wa hati kuwa saini nyingi isiyo na hati kati ya pande zote zinazohusika.
+Tuliona tayari mkataba mgumu kati ya pande kadhaa na
+kifungu rahisi cha kuridhiana katika <<diagram_mast3>>. Tunaweza
+kuboresha hilo zaidi kwa kubadilisha kutoka saini nyingi za hati hadi saini nyingi zisizo na hati.
+
+Hiyo ina ufanisi na faragha ya kutosha. Ikiwa kifungu cha kuridhiana kinatumika, tunahitaji tu kutoa tawi moja la merkle na kila tunachofichua ni kwamba saini ilihusika (inaweza kuwa kutoka kwa mtu mmoja au inaweza kuwa kutoka kwa washiriki maelfu tofauti). Lakini wasanidi programu mwaka 2018 walitambua kwamba tunaweza kufanya vizuri zaidi ikiwa pia tutatumia lipa kwa mkataba.
+
+Katika maelezo yetu ya awali ya lipa kwa mkataba katika <<pay_to_contract>>,
+tulirekebishwa funguo ya umma kujitolea kwa maandishi ya makubaliano kati ya
+Alice na Bob. Badala yake tunaweza kujitolea kwa msimbo wa programu wa mkataba
+kwa kujitolea kwa mzizi wa MAST. Funguo ya umma tunayoirekebisha
+ni funguo ya kawaida ya umma ya Bitcoin, kumaanisha inaweza kuhitaji saini
+kutoka kwa mtu mmoja au inaweza kuhitaji saini kutoka kwa watu wengi
+(au inaweza kuundwa kwa njia maalum kuifanya isiwezekane
+kuunda saini kwa ajili yake). Hiyo inamaanisha tunaweza kutimiza mkataba
+ama kwa saini moja kutoka kwa pande zote zinazohusika au kwa
+kufichua tawi la MAST tunalotaka kutumia. Mti wa ahadi
+unaohusisha funguo ya umma na MAST unaonyeshwa katika <<diagram_taproot1>>.
+
+[[diagram_taproot1]]
+.Taproot yenye funguo ya umma inayojitolea kwa mzizi wa merkle.
+image::images/mbc3_0710.png["A taproot with the public key committing to a merkle root"]
+
+Hii inafanya kifungu cha kuridhiana ukitumia multisaini kuwa na ufanisi mkubwa sana na faragha kubwa sana. Ina faragha zaidi hata kuliko inavyoonekana kwa sababu muamala wowote ulioundwa na mtumiaji mmoja anayetaka kutimizwa na saini moja (au multisaini iliyoundwa na pochi nyingi tofauti anazozicontrol) unaonekana sawa kabisa kwenye mnyororo kama matumizi ya kuridhiana. Hakuna tofauti ya mnyororo katika kesi hii kati ya matumizi na washiriki milioni wanaohusika katika mkataba wa kipekee ngumu au mtumiaji mmoja tu akitumia bitcoini zake zilizohifadhiwa.
+
+Matumizi yanayowezekana ukitumia funguo tu, kama vile kwa saini moja au multisaini isiyo na hati, yanaitwa((("matumizi ya njia ya funguo")))((("matumizi ya njia ya hati"))) _matumizi ya njia ya funguo_. Wakati mti wa hati unatumiwa, huitwa _matumizi ya njia ya hati_.
+Kwa matumizi ya njia ya funguo, data inayowekwa kwenye mnyororo ni funguo ya umma (katika programu ya shahidi) na saini (kwenye mrundikano wa shahidi).
+
+Kwa matumizi ya njia ya hati, data ya mnyororo pia inajumuisha funguo ya umma, ambayo huwekwa katika programu ya shahidi na kuitwa _funguo ya tokeo ya taproot_
+katika muktadha huu. Muundo wa shahidi unajumuisha taarifa zifuatazo:
+
+* Nambari ya toleo.
+
+* Funguo ya msingi — funguo iliyokuwepo kabla ya kurekebisha na
+   mzizi wa merkle kuunda funguo ya tokeo ya taproot. Funguo hii ya msingi
+   inaitwa _funguo ya ndani ya taproot_.
+
+* Hati ya kutekeleza, inayoitwa _hati ya jani_.
+
+* Heshi moja ya baiti 32 kwa kila makutano katika mti wa merkle kando ya njia inayounganisha jani na mzizi wa merkle.
+
+* Data yoyote inayohitajika kutimiza hati (kama vile saini au picha za awali za heshi).
+
+Tunajua tu hasara moja iliyoelezwa muhimu ya taproot: mikataba ambao washiriki wake wanataka kutumia MAST lakini hawataki kifungu cha kuridhiana wanahitaji kujumuisha funguo ya ndani ya taproot kwenye blockchain, ikiongeza takriban baiti 33 za mzigo. Kwa kuzingatia kwamba karibu
+mikataba yote inatarajiwa kufaidika na kifungu cha kuridhiana,
+au kifungu kingine cha multisaini kinachotumia funguo ya umma ya kiwango cha juu, na
+watumiaji wote wanufaika na seti iliyoongezeka ya kutokuwa na jina ya matokeo yanayofanana na kila mmoja, mzigo huo wa nadra haukuonwa muhimu
+na watumiaji wengi walioshiriki katika uanzishaji wa taproot.
+
+Msaada wa taproot uliongezwa kwenye Bitcoin katika uma laini ambao((("hati", "MAST", "taproot", startref="script-mast-taproot")))((("MAST (miti ya hati mbadala iliyomerklizwa)", "taproot", startref="mast-taproot")))((("miti ya merkle", "MAST", "taproot", startref="merkle-tree-mast-taproot")))((("taproot", startref="taproot-ch7")))((("mikataba ya kuridhiana", "taproot", startref="mutual-satisfaction-taproot"))) ulianzishwa
+mwezi Novemba 2021.
+
+=== Tapscript
+
+Taproot ((("tapscript", id="tapscript")))((("mikataba ya kuridhiana", "tapscript", id="mutual-satisfaction-tapscript")))inawezesha MAST lakini tu na toleo tofauti kidogo la lugha ya Bitcoin Script kuliko lililotumika awali, toleo jipya likiitwa _tapscript_. Tofauti kuu ni pamoja na:
+
+[role="less_space pagebreak-before"]
+Mabadiliko ya saini nyingi za hati::
+  Opcode za zamani za +OP_CHECKMULTISIG+ na +OP_CHECKMULTISIGVERIFY+ zimeondolewa. Opcode hizo hazichanganyiki vizuri na moja ya mabadiliko mengine katika uma laini wa taproot, uwezo wa kutumia saini za schnorr na uthibitishaji wa kundi (angalia <<schnorr_signatures>>). Opcode mpya ya +OP_CHECKSIGADD+ imetolewa badala yake. Inapothibitisha saini kwa mafanikio, opcode hii mpya huongeza kihesabu kwa moja, kuifanya iwezekane kuhesabu kwa urahisi ni saini ngapi zilipita, ambazo zinaweza kulinganishwa dhidi ya idadi inayotakiwa ya saini zilizofanikiwa kutekeleza upya tabia ile ile kama +OP_CHECKMULTISIG+.
+
+Mabadiliko kwa saini zote::
+  Shughuli zote za ukaguzi wa saini katika tapscript hutumia algoriti ya saini ya schnorr kama ilivyobainishwa katika BIP340. Tutachunguza zaidi saini za schnorr katika <<c_signatures>>.
++
+Zaidi ya hayo, shughuli yoyote ya ukaguzi wa saini ambayo haitarajiwa
+  kufanikiwa lazima ilishwe thamani ya +OP_FALSE+ (pia inayoitwa +OP_0+)
+  badala ya saini halisi. Kutoa kitu kingine chochote kwa shughuli ya ukaguzi wa saini iliyoshindwa kutasababisha hati nzima kushindwa.
+  Hii pia husaidia kutumika kwa uthibitishaji wa kundi wa saini za schnorr.
+
+Opcode za ++OP_SUCCESSx++::
+  Opcode ambazo hazikuweza kutumika katika matoleo ya awali ya Script sasa
+  zimebainishwa upya kusababisha hati nzima kufanikiwa zinapotumiwa.
+  Hii inaruhusu uma laini wa siku zijazo kuzibainisha upya kama zisizofanikiwa chini ya
+  hali fulani, ambayo
+  ni kizuizi na kwa hivyo inawezekana kufanywa katika uma laini. (Kinyume chake, kubainisha operesheni isiyofanikiwa kama mafanikio inaweza tu
+  kufanywa katika uma mgumu, ambao ni njia ya uboreshaji ngumu zaidi.)
+
+Ingawa tumeangalia idhini na uthibitisho kwa kina katika
+sura hii, tuliachilia moja ya sehemu muhimu sana ya jinsi Bitcoin inavyothibitisha watumia: saini zake. Tutaangalia hilo((("tapscript", startref="tapscript")))((("mikataba ya kuridhiana", "tapscript", startref="mutual-satisfaction-tapscript"))) ijayo katika
+<<c_signatures>>.
+

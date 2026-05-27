@@ -1,0 +1,1436 @@
+//FIXME:reduce difficulty / we ramp up too quick Lesmes feedback
+[[ch05_wallets]]
+== Urejeshaji wa Mkoba
+
+Kuunda jozi za funguo za siri na za umma ni sehemu muhimu ya kuruhusu
+mikoba ya Bitcoin kupokea na kutumia bitcoins. Lakini kupoteza ufikiaji wa
+funguo ya siri kunaweza kufanya iwe vigumu kwa mtu yeyote kutumia bitcoins
+zilizopokelewa kwenye funguo ya umma inayolingana. Wasanidi wa mkoba na itifaki
+kwa miaka mingi wamefanya kazi kubuni mifumo inayoruhusu watumiaji
+kurejesha ufikiaji wa bitcoins zao baada ya tatizo bila kuathiri
+usalama nyakati nyingine.
+
+Katika((("wallets", "key generation", "independent", id="wallet-keygen-independent")))((("key generation", "independent", id="keygen-independent")))((("independent key generation", id="independent-keygen")))((("public key cryptography", "wallet recovery key generation", see="key generation"))) sura hii, tutachunguza baadhi ya mbinu tofauti zinazotumiwa na
+mikoba kuzuia upotezaji wa data kuwa upotezaji wa pesa.
+Baadhi ya suluhisho hazina hasara karibu na zinakubaliwa kwa umoja na
+mikoba ya kisasa. Tutapendekeza tu suluhisho hizo kama mazoea bora.
+Suluhisho nyingine zina faida na hasara, na
+kuwaongoza waandishi tofauti wa mkoba kufanya mabadilishano tofauti.
+Katika hali hizo, tutaelezea chaguzi mbalimbali zinazopatikana.
+
+=== Uzalishaji wa Funguo za Kujitegemea
+
+++++
+<p class="fix_tracking2">
+Mikoba ya pesa halisi hushikilia pesa hiyo,
+kwa hivyo si ajabu kwamba watu wengi wanaamini kimakosa kwamba
+mikoba ya Bitcoin ina bitcoins. Kwa kweli, kile ambacho watu wengi wanakiita
+mkoba wa Bitcoin—ambacho tunaita <em>hifadhidata ya mkoba</em> ili kutofautisha na
+programu za mkoba—kina funguo tu. Funguo hizo zinahusishwa
+na bitcoins zilizorekodiwa kwenye blockchain. Kwa kuthibitisha kwa nodi kamili za Bitcoin kwamba
+unadhibiti funguo, unaweza kutumia bitcoins zinazohusiana.
+</p>
+++++
+
+Hifadhidata za mikoba rahisi zina funguo za umma ambazo bitcoins
+zinapokelewa nazo na funguo za siri zinazoruhusu kuunda sahihi
+zinazohitajika kuidhini matumizi ya bitcoins hizo. Hifadhidata za mikoba mingine
+zinaweza kuwa na funguo za umma tu, au baadhi tu ya funguo za siri zinazohitajika
+kuidhini muamala wa kutumia. Programu zao za mkoba huzalisha
+sahihi zinazohitajika kwa kufanya kazi na zana za nje, kama vile
+vifaa vya kusaini vya maunzi au mikoba mingine katika mpango wa saini nyingi.
+
+Inawezekana kwa programu ya mkoba kuzalisha kwa kujitegemea kila moja ya
+funguo za mkoba ambazo baadaye inapanga kutumia, kama inavyoonyeshwa katika
+<<Type0_wallet>>. Programu zote za mapema za mkoba wa Bitcoin zilifanya
+hivi, lakini ilihitaji watumiaji kurudufi hifadhidata ya mkoba kila wakati walipozalisha
+na kusambaza funguo mpya, ambayo ingeweza kuwa mara nyingi kama kila wakati
+walipozalisha anwani mpya kupokea malipo mapya. Kushindwa
+kurudufi hifadhidata ya mkoba kwa wakati kungesababisha mtumiaji kupoteza ufikiaji
+wa fedha zozote zilizopokelewa kwenye funguo ambazo hazikurudufiwa.
+
+Kwa kila funguo iliyozalishwa kwa kujitegemea, mtumiaji angehitaji kurudufi
+takriban bytes 32, pamoja na ziada. Baadhi ya watumiaji na programu za mkoba zilijaribu
+kupunguza kiasi cha data iliyohitajika kurudufiwa
+kwa kutumia funguo moja tu. Ingawa hilo linaweza kuwa salama, kinapunguza sana
+faragha ya mtumiaji huyo na watu wote wanaofanya manunuzi nao.
+Watu waliothaminii faragha yao na ya marafiki zao
+waliunda jozi mpya za funguo kwa kila muamala, na kuzalisha hifadhidata za mkoba
+ambazo zingeweza kurudufiwa kwa uhalali kwa kutumia vyombo vya kidijitali tu.
+
+[[Type0_wallet]]
+[role="width-60"]
+.Uzalishaji wa funguo usio wa uhakika: mkusanyiko wa funguo zilizozalishwa kwa kujitegemea zilizohifadhiwa katika hifadhidata ya mkoba.
+image::images/mbc3_0501.png["Non-Deterministic Wallet"]
+
+Programu za kisasa za mkoba hazizalishi funguo kwa kujitegemea bali
+huzitoa kutoka mbegu moja ya nasibu kwa kutumia ((("wallets", "key generation", "independent", startref="wallet-keygen-independent")))((("key generation", "independent", startref="keygen-independent")))((("independent key generation", startref="independent-keygen")))algorithm ya kurudiwa (ya uhakika).
+
+==== Uzalishaji wa Funguo wa Uhakika
+
+Kazi ya hash((("wallets", "key generation", "deterministic", id="wallet-keygen-determine")))((("key generation", "deterministic", id="keygen-determine")))((("deterministic key generation", id="determine-keygen")))((("hash functions", "deterministic key generation", id="hash-determine"))) daima itazalisha matokeo yale yale ikipewa ingizo lile lile,
+lakini ingizo likibadilishwa hata kidogo, matokeo yatakuwa
+tofauti. Kama kazi inalindwa kwa kriptografia, hakuna mtu anayepaswa
+kuweza kutabiri matokeo mapya—hata wakijua ingizo jipya.
+
+Hii inatuwezesha kuchukua thamani moja ya nasibu na kuibadilisha kuwa
+idadi ya vitendo isio na kikomo ya thamani zinazoonekana nasibu. Muhimu zaidi,
+kutumia baadaye kazi ile ile ya hash na ((("seeds")))ingizo lile lile
+(kinachoitwa _mbegu_) kutazalisha thamani zile zile zinazoonekana nasibu:
+
+----
+# Kusanya entropi (nasibu)
+$ dd if=/dev/random count=1 status=none | sha256sum
+f1cc3bc03ef51cb43ee7844460fa5049e779e7425a6349c8e89dfbb0fd97bb73  -
+
+# Weka mbegu yetu kwenye thamani ya nasibu
+$ seed=f1cc3bc03ef51cb43ee7844460fa5049e779e7425a6349c8e89dfbb0fd97bb73
+
+# Zalisha thamani zinazotokana kwa uhakika
+$ for i in {0..2} ; do echo "$seed + $i" | sha256sum ; done
+50b18e0bd9508310b8f699bad425efdf67d668cb2462b909fdb6b9bd2437beb3  -
+a965dbcd901a9e3d66af11759e64a58d0ed5c6863e901dfda43adcd5f8c744f3  -
+19580c97eb9048599f069472744e51ab2213f687d4720b0efc5bb344d624c3aa  -
+----
+
+Thamani zinazotokana tukizitumia kama funguo zetu za siri, tunaweza baadaye kuzalisha
+funguo hizo hizo za siri kwa kutumia thamani yetu ya mbegu na
+algorithm tuliyotumia awali. Mtumiaji wa uzalishaji wa funguo wa uhakika anaweza
+kurudufi kila funguo katika mkoba wao kwa kurekodi tu mbegu yao na
+rejeleo la algorithm ya uhakika waliyotumia. Kwa mfano, hata
+kama Alice ana bitcoins milioni zilizopokelewa kwenye anwani milioni tofauti,
+kitu chote anachotakiwa kurudufi ili kurejesha ufikiaji wa
+bitcoins hizo baadaye ni:
+
+----
+f1cc 3bc0 3ef5 1cb4 3ee7 8444 60fa 5049
+e779 e742 5a63 49c8 e89d fbb0 fd97 bb73
+----
+
+Mchoro wa kimantiki wa uzalishaji wa msingi wa funguo za uhakika za mfuatano unaonyeshwa
+katika <<Type1_wallet>>. Hata hivyo, programu za kisasa za mkoba zina
+njia ya kuvutia zaidi ya kufikia hili inayoruhusu funguo za umma kutokana
+tofauti na funguo zao za siri zinazolingana, na kuifanya
+iwezekane kuhifadhi funguo za siri kwa usalama zaidi kuliko ((("wallets", "key generation", "deterministic", startref="wallet-keygen-determine")))((("key generation", "deterministic", startref="keygen-determine")))((("deterministic key generation", startref="determine-keygen")))((("hash functions", "deterministic key generation", startref="hash-determine")))funguo za umma.
+
+[[Type1_wallet]]
+[role="width-70"]
+.Uzalishaji wa funguo wa uhakika: mfuatano wa uhakika wa funguo zinazotokana na mbegu kwa hifadhidata ya mkoba.
+image::images/mbc3_0502.png["Deterministic Wallet"]
+
+
+[[public_child_key_derivation]]
+==== Utokano wa Funguo za Umma za Mtoto
+
+Katika <<public_key_derivation>>, tulijifunza((("wallets", "key generation", "public child key derivation", id="wallet-keygen-public-child")))((("key generation", "public child key derivation", id="keygen-public-child")))((("public child key derivation", id="public-child-derive")))((("child key pair derivation", id="child-key-pair"))) jinsi ya kuunda funguo ya umma kutoka funguo ya siri
+kwa kutumia kriptografia ya mzunguko wa mviringo (ECC). Ingawa operesheni kwenye
+mzunguko wa mviringo si za kawaida, zinafanana na operesheni za kuongeza,
+kutoa, na kuzidisha zinazotumiwa katika
+hesabu ya kawaida. Kwa maneno mengine, inawezekana kuongeza au kutoa kutoka
+funguo ya umma, au kuisidisha. Fikiria operesheni tuliyotumia katika
+<<public_key_derivation>> ya
+kuzalisha funguo ya umma (_K_) kutoka funguo ya siri (_k_) kwa kutumia pointi ya jenereta
+(_G_):
+
+[latexmath]
+++++
+\begin{equation}
+{K = k \times G}
+\end{equation}
+++++
+
+Inawezekana kuunda jozi ya funguo inayotokana, inayoitwa jozi ya funguo ya mtoto, kwa
+kuongeza tu thamani ile ile pande zote mbili za mlinganyo:
+
+////
+[latexmath]
+++++
+\begin{equation}
+K + (123 \times G) =\!\!\!= (k + 123) \times G
+\end{equation}
+++++
+////
+
+++++
+<div data-type="equation">
+<math xmlns="http://www.w3.org/1998/Math/MathML" alttext="upper K plus left-parenthesis 123 times upper G right-parenthesis equals equals left-parenthesis k plus 123 right-parenthesis times upper G" display="block">
+  <mrow>
+    <mi>K</mi>
+    <mo>+</mo>
+    <mo>(</mo>
+    <mn>123</mn>
+    <mo>×</mo>
+    <mi>G</mi>
+    <mo>)</mo>
+    <mo>==</mo>
+    <mo>(</mo>
+    <mi>k</mi>
+    <mo>+</mo>
+    <mn>123</mn>
+    <mo>)</mo>
+    <mo>×</mo>
+    <mi>G</mi>
+  </mrow>
+</math>
+</div>
+++++
+
+[TIP]
+====
+Katika mlinganyo katika kitabu hiki, tunatumia ishara moja ya usawa kwa
+operesheni kama _K_ = _k_ × _G_ ambapo thamani ya kigeuzi inahesabiwa.
+Tunatumia ishara mbili za usawa kuonyesha pande zote mbili za
+mlinganyo ni sawa, au kwamba operesheni inapaswa kurudisha uongo (si
+kweli) kama pande hizo mbili si sawa.
+====
+
+Matokeo ya kuvutia ya hili ni kwamba kuongeza 123 kwenye funguo ya umma
+kunaweza kufanywa kwa kutumia habari za umma kabisa. Kwa mfano, Alice
+huzalisha funguo ya umma _K_ na kumpa Bob. Bob hajui
+funguo ya siri, lakini anajua mara kwa mara ya ulimwengu _G_, kwa hivyo anaweza kuongeza thamani yoyote
+kwenye funguo ya umma kuzalisha funguo ya umma ya mtoto inayotokana. Kama
+kisha akimwambia Alice thamani aliyoiongeza kwenye funguo ya umma, anaweza kuongeza
+thamani ile ile kwenye funguo ya siri, kuzalisha funguo ya siri ya mtoto inayotokana
+ambayo inalingana na funguo ya umma ya mtoto ambayo Bob aliunda.
+
+Kwa maneno mengine, inawezekana kuunda funguo za umma za mtoto hata kama
+hujui chochote kuhusu funguo ya siri ya mzazi. Thamani inayoongezwa kwenye
+funguo ya umma inajulikana kama ((("key tweaks")))_marekebisho ya funguo._ Kama algorithm ya uhakika
+inatumika kuzalisha marekebisho ya funguo, basi inawezekana kwa mtu ambaye
+hajui funguo ya siri kuunda mfululizo usio na kikomo wa vitendo wa
+funguo za umma za mtoto kutoka funguo moja ya umma ya mzazi. Mtu
+anayedhibiti funguo ya siri ya mzazi anaweza kisha kutumia marekebisho yale yale ya funguo
+kuunda funguo zote za siri za mtoto zinazolingana.
+
+Mbinu hii hutumika sana kutenganisha misingi ya programu ya mkoba
+(ambazo hazihitaji funguo za siri) kutoka operesheni za kusaini
+(ambazo zinahitaji funguo za siri). Kwa mfano, msingi wa Alice
+husambaza funguo zake za umma kwa watu wanaotaka kumlipa. Baadaye, wakati
+anataka kutumia pesa zilizopokelewa, anaweza kutoa marekebisho ya funguo
+aliyotumia((("hardware signing devices"))) kwa _kifaa cha kusaini cha maunzi_ (ambacho wakati mwingine huitwa kwa mkanganyiko
+_mkoba wa maunzi_) ambacho huhifadhi kwa usalama funguo yake ya asili ya siri. Kisainiaji
+cha maunzi hutumia marekebisho kutoa funguo za siri za mtoto zinazohitajika
+na kuzitumia kusaini miamala, kurudisha miamala iliyosainiwa
+kwenye msingi ulio na usalama mdogo kwa utangazaji kwenye mtandao
+wa Bitcoin.
+
+Utokano wa funguo za umma za mtoto unaweza kuzalisha mfululizo wa laini wa funguo
+sawa na <<Type1_wallet>> iliyoonekana awali, lakini programu za kisasa za mkoba
+hutumia ujanja zaidi mmoja kutoa mti wa funguo badala ya
+mfululizo mmoja, kama inavyoelezwa katika((("wallets", "key generation", "public child key derivation", startref="wallet-keygen-public-child")))((("key generation", "public child key derivation", startref="keygen-public-child")))((("public child key derivation", startref="public-child-derive")))((("child key pair derivation", startref="child-key-pair"))) sehemu inayofuata.
+
+[[hd_wallets]]
+==== Uzalishaji wa Funguo wa Mfuatano wa Daraja (HD) (BIP32)
+
+Kila ((("wallets", "key generation", "HD (hierarchical deterministic)")))((("key generation", "HD (hierarchical deterministic)")))((("HD (hierarchical deterministic) key generation")))((("BIP32 HD (hierarchical deterministic) key generation", primary-sortas="BIP032")))mkoba wa kisasa wa Bitcoin unaojulikana kwetu hutumia uzalishaji
+wa funguo wa mfuatano wa daraja (HD) kwa chaguo-msingi. Kiwango hiki, kilichofafanuliwa katika
+BIP32, kinatumia uzalishaji wa funguo wa uhakika na utokano wa hiari wa funguo za umma za mtoto
+na algorithm inayozalisha mti wa funguo.
+Katika mti huu, funguo yoyote inaweza kuwa mzazi wa mfululizo wa funguo za mtoto, na
+yoyote ya funguo hizo za mtoto inaweza kuwa mzazi wa mfululizo mwingine wa
+funguo za mtoto (wajukuu wa funguo ya asili). Hakuna kikomo cha kiholela
+kwa kina cha mti. Muundo huu wa mti unaonyeshwa katika
+<<Type2_wallet>>.
+
+[[Type2_wallet]]
+.Mkoba wa HD: mti wa funguo uliozalishwa kutoka mbegu moja.
+image::images/mbc3_0503.png["HD wallet"]
+
+Muundo wa mti unaweza kutumika kuelezea maana ya ziada ya
+kiutaratibu, kama vile wakati tawi maalum la funguo ndogo linatumika kupokea
+malipo yanayoingia na tawi tofauti linatumika kupokea
+mabadiliko kutoka malipo yanayotoka. Matawi ya funguo pia yanaweza kutumika
+katika mazingira ya shirika, ukitenga matawi tofauti kwa idara,
+tanzu, kazi maalum, au makundi ya uhasibu.
+
+Tutachunguza kwa undani mikoba ya HD katika <<hd_wallet_details>>.
+
+==== Mbegu na Misimbo ya Urejeshaji
+
+Mikoba ya HD ((("wallets", "recovery codes", id="wallet-recovery2")))((("recovery codes", id="recovery-code2")))ni utaratibu wenye nguvu sana wa kusimamia funguo nyingi
+zilizotokana na mbegu moja. Kama hifadhidata yako ya mkoba
+itafisidiwa au kupotezwa, unaweza kuzalisha upya funguo zote za siri
+za mkoba wako kwa kutumia ((("seeds")))mbegu yako ya asili. Lakini, kama mtu mwingine anapata
+mbegu yako, anaweza pia kuzalisha funguo zote za siri, na kumruhusu
+kuiba bitcoins zote kutoka mkoba wa saini moja na kupunguza
+usalama wa bitcoins katika mikoba ya saini nyingi. Katika sehemu hii, tutaangalia
+_misimbo_ kadhaa ya _urejeshaji_, ambayo inakusudiwa kufanya rudufu
+kuwa rahisi na salama zaidi.
+
+Ingawa mbegu ni nambari kubwa za nasibu, kawaida bits 128 hadi 256, misimbo mingi
+ya urejeshaji hutumia maneno ya lugha ya binadamu. Sehemu kubwa ya motisha
+ya kutumia maneno ilikuwa kufanya msimbo wa urejeshaji uwe rahisi kukumbuka. Kwa
+mfano, fikiria msimbo wa urejeshaji uliosimbwa kwa kutumia hexadecimal na
+maneno katika <<hex_seed_vs_recovery_words>>.
+
+[[hex_seed_vs_recovery_words]]
+.Mbegu iliyosimbwa katika hex na katika maneno ya Kiingereza
+====
+----
+Iliyosimbwa kwa Hex:
+0C1E 24E5 9177 79D2 97E1 4D45 F14E 1A1A
+
+Iliyosimbwa kwa maneno:
+army van defense carry jealous true
+garbage claim echo media make crunch
+----
+====
+
+Kunaweza kuwa na hali ambapo ((("memorizing recovery codes")))kukumbuka msimbo wa urejeshaji ni kipengele chenye nguvu,
+kama vile wakati huwezi kusafirisha vitu vya kimwili
+(kama msimbo wa urejeshaji ulioandikwa kwenye karatasi) bila kukamatwa au
+kukaguliwa na upande wa nje ambao unaweza kuiba bitcoins zako. Hata hivyo,
+mara nyingi, kutegemea kumbukumbu peke yake ni hatari:
+
+- Ukisahau msimbo wako wa urejeshaji na kupoteza ufikiaji wa
+  hifadhidata yako ya asili ya mkoba, bitcoins zako zinapotea kwako milele.
+
+- Ukifa au kupata jeraha kali, na warithi wako hawana ufikiaji
+  wa hifadhidata yako ya asili ya mkoba, hawataweza kurithi
+  bitcoins zako.
+
+- Kama mtu akifikiri una msimbo wa urejeshaji uliokumbukwa ambao utawapa
+  ufikiaji wa bitcoins, wanaweza kujaribu kukushinikiza
+  kufunua msimbo huo. Wakati wa uandishi huu, mchangiaji wa Bitcoin Jameson
+  Lopp ame
+  https://oreil.ly/aw5XM[hati] mashambulizi zaidi ya 100 ya kimwili dhidi ya wamiliki wanaoshukiwa wa bitcoin na
+  mali nyingine za kidijitali, ikijumuisha vifo angalau vitatu na matukio mengi
+  ambapo mtu aliteswa, kushikiliwa mateka, au familia yake ilitishwa.
+
+[TIP]
+====
+Hata kama unatumia aina ya msimbo wa urejeshaji uliobuniwa kwa ukariri rahisi,
+tunakuhamasisha sana kufikiria kuuandika.
+====
+
+Aina ((("wallets", "recovery codes", "types of", id="wallet-recovery-type")))((("recovery codes", "types of", id="recovery-code-type")))kadhaa tofauti za misimbo ya urejeshaji zinatumika sana wakati wa
+uandishi huu:
+
+BIP39::
+  Njia ((("BIP39 recovery codes", primary-sortas="BIP039")))maarufu zaidi ya kuzalisha misimbo ya urejeshaji kwa
+  muongo mmoja uliopita, BIP39 inahusisha kuzalisha mfululizo wa nasibu wa bytes,
+  kuiongezea checksum, na kusimba data katika mfululizo wa maneno 12 hadi
+  24 (ambayo yanaweza kubinafsishwa kwa lugha ya asili ya mtumiaji). Maneno
+  (pamoja na nenosiri la hiari) yanaendeshwa kupitia _kazi ya kunyoosha ufunguo_,
+  na matokeo hutumika kama mbegu. Misimbo ya urejeshaji ya BIP39 ina
+  mapungufu kadhaa, ambayo mipango ya baadaye inajaribu kushughulikia.
+
+Electrum v2::
+  Inayotumiwa katika((("Electrum v2 recovery codes"))) mkoba wa Electrum (toleo 2.0 na zaidi), msimbo huu wa urejeshaji
+  unaotegemea maneno una faida kadhaa kuliko BIP39. Haitegemei orodha ya
+  maneno ya ulimwengu ambayo lazima itekelezwe na kila toleo la kila
+  programu inayooana, pamoja na misimbo yake ya urejeshaji ikijumuisha nambari ya toleo ambayo
+  inaboresha uaminifu na ufanisi. Kama BIP39, inasaidia nenosiri la hiari
+  (ambalo Electrum huliita _upanuzi wa mbegu_) na hutumia kazi ile ile
+  ya kunyoosha ufunguo.
+
+Aezeed::
+  Inayotumiwa katika ((("Aezeed recovery codes")))mkoba wa LND, hii ni msimbo mwingine wa urejeshaji
+  unaotegemea maneno ambao unatoa maboresho kuliko BIP39. Unajumuisha nambari mbili za toleo:
+  moja ya ndani ambayo inaondoa masuala kadhaa ya kuboresha programu za mkoba
+  (kama nambari ya toleo ya Electrum v2); nyingine ya nambari ya toleo ni
+  ya nje, ambayo inaweza kuongezwa kubadilisha mali za kriptografia za msingi
+  za msimbo wa urejeshaji. Pia inajumuisha _siku ya kuzaliwa ya mkoba_
+  katika msimbo wa urejeshaji, rejeleo la tarehe wakati mtumiaji aliunda
+  hifadhidata ya mkoba. Hii inaruhusu mchakato wa urejeshaji kupata fedha zote
+  zinazohusiana na mkoba bila kuskanisha blockchain nzima,
+  ambayo ni muhimu hasa kwa wateja wepesi wanaozingatia faragha.
+  Inajumuisha msaada wa kubadilisha nenosiri au kubadilisha mambo mengine
+  ya msimbo wa urejeshaji bila kuhitaji kuhamisha fedha kwenye
+  mbegu mpya—mtumiaji anahitaji tu kurudufi msimbo mpya wa urejeshaji. Hasara
+  moja ikilinganishwa na Electrum v2 ni kwamba, kama BIP39, inategemea
+  rudufu na programu ya urejeshaji kusaidia orodha ile ile ya maneno.
+
+[role="less_space pagebreak-before"]
+Muun::
+  Inayotumiwa katika ((("Muun recovery codes")))mkoba wa Muun, ambao kwa chaguo-msingi unahitaji miamala ya matumizi
+  isainiwe na funguo nyingi, hii ni msimbo usio na maneno ambao
+  lazima uambatane na habari za ziada (ambazo Muun kwa sasa
+  hutoa katika PDF). Msimbo huu wa urejeshaji hauhusiani na mbegu na
+  badala yake hutumika kusimbua funguo za siri [.keep-together]#zilizomo# katika PDF.
+  Ingawa hii ni ngumu ikilinganishwa na misimbo ya urejeshaji ya BIP39, Electrum v2, na
+  Aezeed, inatoa msaada kwa teknolojia mpya na
+  viwango vinavyokuwa vya kawaida zaidi katika mikoba mipya, kama vile
+  msaada wa Mtandao wa Umeme (LN), maelezo ya hati ya matokeo, na miniscript.
+
+SLIP39::
+  Mrithi ((("SLIP39 recovery codes")))wa BIP39 ukiwa na baadhi ya waandishi wale wale, SLIP39 inaruhusu
+  mbegu moja kusambazwa kwa kutumia misimbo mingi ya urejeshaji ambayo inaweza
+  kuhifadhiwa mahali tofauti (au na watu tofauti). Unapounda
+  misimbo ya urejeshaji, unaweza kubainisha ni mingapi itakayohitajika
+  kurejesha mbegu. Kwa mfano, unaunda misimbo mitano ya urejeshaji lakini
+  unahitaji mitatu tu yao kurejesha mbegu. SLIP39 inatoa
+  msaada kwa nenosiri la hiari, inategemea orodha ya maneno ya ulimwengu, na
+  haitoi moja kwa moja upambanuzi wa toleo.
+
+[NOTE]
+====
+Mfumo mpya((("Codex32 recovery codes"))) wa kusambaza misimbo ya urejeshaji wenye mfanano na SLIP39
+ulipendekeza wakati wa uandishi wa kitabu hiki. Codex32 inaruhusu kuunda
+na kuthibitisha misimbo ya urejeshaji bila chochote isipokuwa maelekezo yaliyochapishwa,
+mkasi, kisu cha usahihi, vifungo vya shaba, na kalamu—pamoja na faragha
+na masaa machache ya muda wa ziada. Vinginevyo, wale wanaoamini kompyuta wanaweza kuunda misimbo ya urejeshaji
+mara moja kwa kutumia programu kwenye kifaa cha kidijitali. Unaweza kuunda hadi misimbo 31
+ya urejeshaji kuhifadhiwa mahali tofauti, ukibainisha ni mingapi
+itakayohitajika kurejesha mbegu. Kama pendekezo jipya,
+maelezo kuhusu Codex32 yanaweza kubadilika kwa kiasi kikubwa kabla kitabu hiki
+kuchapishwa, kwa hivyo tunahimiza ((("wallets", "recovery codes", "types of", startref="wallet-recovery-type")))((("recovery codes", "types of", startref="recovery-code-type")))wasomaji wanaopenda misimbo ya urejeshaji ya
+usambazaji kuchunguza https://oreil.ly/Xx_Zq[hali yake ya sasa].
+====
+
+.Manenosiri ya Msimbo wa Urejeshaji
+****
+Mipango ya BIP39, ((("wallets", "recovery codes", "passphrases", id="wallet-recovery-passphrase")))((("recovery codes", "passphrases", id="recovery-code-passphrase")))((("passphrases (for recovery codes)", id="passphrase")))Electrum v2, Aezeed, na SLIP39 inaweza kutumika na
+nenosiri la hiari. Kama mahali pekee unapohifadhi nenosiri hili ni
+kumbukumbu yako, ina faida na hasara sawa na kukumbuka
+msimbo wako wa urejeshaji. Hata hivyo, kuna seti zaidi ya mabadilishano
+maalum kwa jinsi nenosiri linavyotumiwa na msimbo wa urejeshaji.
+
+Mipango mitatu (BIP39, Electrum v2, na SLIP39) haijumuishi nenosiri la hiari katika
+checksum wanayotumia kujilinda dhidi ya makosa ya kuingiza data. Kila
+nenosiri (ikijumuisha kutotumia nenosiri) litasababisha kuzalisha
+mbegu kwa mti wa BIP32 wa funguo, lakini hayatakuwa miti ile ile.
+Manenosiri tofauti yatasababisha funguo tofauti. Hilo linaweza kuwa
+chanya au hasi, kulingana na mtazamo wako:
+
+- Kwa upande wa chanya, kama mtu anapata msimbo wako wa urejeshaji (lakini si nenosiri lako),
+  ataona mti halali wa BIP32 wa funguo.
+  Kama ulijiandaa kwa hali hiyo na ukatuma baadhi ya bitcoins kwenye mti
+  usio na nenosiri, wataiba pesa hizo. Ingawa kuibiwa baadhi ya
+  bitcoins zako kwa kawaida ni jambo baya, pia linaweza kukupa
+  onyo kwamba msimbo wako wa urejeshaji umefichukiwa,
+  kukuruhusu kuchunguza na kuchukua hatua za kurekebisha.
+  Uwezo wa kuunda manenosiri mengi kwa msimbo ule ule wa urejeshaji
+  ambayo yote yanaonekana halali ni aina ya _ukanushaji unaowezekana_.
+
+- Kwa upande wa hasi, kama unashinikizwa kumpa mshambuliaji
+  msimbo wa urejeshaji (na au bila nenosiri) na hauzalishi kiasi cha
+  bitcoins wanachokitegemea, wanaweza kuendelea kukushinikiza hadi
+  uwape nenosiri tofauti lenye ufikiaji wa bitcoins zaidi.
+  Kubuni kwa ukanushaji unaowezekana inamaanisha hakuna njia ya kuthibitisha kwa
+  mshambuliaji kwamba umefunua habari zako zote, kwa hivyo wanaweza
+  kuendelea kukushinikiza hata baada ya kuwapa bitcoins zako zote.
+
+- Hasi ya ziada ni kupunguzwa kwa ugunduzaji wa makosa. Kama
+  ukiingiza nenosiri kidogo tofauti unaporejesha kutoka rudufu,
+  mkoba wako hauwezi kukuonya kuhusu kosa. Kama ulikuwa ukitegemea
+  salio, utajua kuna tatizo wakati programu ya mkoba
+  itaonyeshe salio la sifuri kwa mti wa funguo uliozalishwa upya.
+  Hata hivyo, watumiaji wanaoanza wanaweza kufikiri pesa zao zimepotea milele na kufanya
+  kitu kipuuzi, kama kukata tamaa na kutupa msimbo wao wa urejeshaji.
+  Au, kama ulikuwa ukitegemea kweli salio la sifuri, unaweza kutumia
+  programu ya mkoba kwa miaka baada ya kosa lako hadi wakati ujao
+  unapoirejesha na nenosiri sahihi na kuona salio la sifuri.
+  Isipokuwa ukiweza kujua makosa ya uandishi uliyofanya awali, fedha zako
+  zimepotea.
+
+Tofauti na mipango mingine, mpango wa usimbaji wa mbegu wa Aezeed
+huthibitisha nenosiri lake la hiari na kutoa kosa kama
+unatoa thamani isiyo sahihi. Hii inaondoa ukanushaji unaowezekana, inaongeza
+ugunduzaji wa makosa, na inafanya iwezekane kuthibitisha kwamba nenosiri limegunduliwa.
+
+Watumiaji na wasanidi wengi hawakubaliani kuhusu njia ipi ni bora, wengine
+wanaunga mkono kwa nguvu ukanushaji unaowezekana na wengine wakipendelea
+usalama ulioongezeka ambao ugunduzaji wa makosa hutoa kwa watumiaji wanaoanza na wale walio chini ya
+shinikizo. Tunashuku mjadala utaendelea mradi misimbo ya urejeshaji itaendelea kutumiwa ((("wallets", "recovery codes", startref="wallet-recovery2")))((("recovery codes", startref="recovery-code2")))((("passphrases (for recovery codes)", startref="passphrase")))((("wallets", "recovery codes", "passphrases", startref="wallet-recovery-passphrase")))((("recovery codes", "passphrases", startref="recovery-code-passphrase")))sana.
+****
+
+==== Kurudufi Data Isiyo ya Funguo
+
+Data ((("wallets", "nonkey data, backing up", id="wallet-nonkey-backups")))((("nonkey data, backing up", id="nonkey-backups")))((("backing up", "nonkey data", id="backup-nonkey")))muhimu zaidi katika hifadhidata ya mkoba ni funguo zake za siri. Ukipoteza
+ufikiaji wa funguo za siri, unapoteza uwezo wa kutumia
+bitcoins zako. Utokano wa funguo wa uhakika na misimbo ya urejeshaji hutoa
+suluhisho thabiti la kutosha la kurudufi na kurejesha funguo zako na
+bitcoins wanazozibaidi. Hata hivyo, ni muhimu kuzingatia kwamba
+hifadhidata nyingi za mkoba huhifadhi zaidi ya
+funguo tu—pia huhifadhi habari zilizotolewa na mtumiaji kuhusu kila
+muamala waliotuma au kupokea.
+
+Kwa mfano, Bob anapounda anwani mpya kama sehemu ya kutuma ankara
+kwa Alice, ((("labels, backing up", id="label-backup")))anaongeza _lebo_ kwenye anwani anayozalisha
+ili aweze kutofautisha malipo yake
+na malipo mengine anayopokea. Alice anapomlipa anwani ya Bob, analebo
+muamala kama kumlipa Bob kwa sababu ile ile. Mikoba mingine
+pia huongeza habari nyingine muhimu kwenye miamala, kama vile kiwango cha ubadilishaji wa sasa,
+ambacho kinaweza kuwa muhimu kwa kuhesabu kodi katika baadhi ya
+maeneo. Lebo hizi huhifadhiwa kabisa ndani ya mikoba yao wenyewe—si
+kushirikiwa na mtandao—kulinda faragha yao
+na kuweka data ya kibinafsi isiyo ya lazima nje ya blockchain. Kwa
+mfano, angalia <<alice_tx_labels>>.
+
+++++
+<table id="alice_tx_labels">
+<caption>Historia ya miamala ya Alice kila muamala ukiwa na lebo</caption>
+<thead>
+<tr>
+<th>Tarehe</th>
+<th>Lebo</th>
+<th>BTC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>2023-01-01</p></td>
+<td><p>Alinunua bitcoins kutoka Joe</p></td>
+<td><p>+0.00100</p></td>
+</tr>
+<tr>
+<td><p>2023-01-02</p></td>
+<td><p>Alimlipa Bob kwa podcast</p></td>
+<td><p>−0.00075</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Hata hivyo, kwa sababu lebo za anwani na muamala huhifadhiwa tu katika
+hifadhidata ya mkoba ya kila mtumiaji na kwa sababu si za uhakika, haziwezi
+kurejeshwa kwa kutumia msimbo wa urejeshaji peke yake. Kama urejeshaji pekee ni
+unaotegemea mbegu, basi mtumiaji ataona orodha tu ya nyakati za takriban
+za muamala na kiasi cha bitcoin. Hii inaweza kufanya iwe ngumu sana
+kujua jinsi ulivyotumia pesa zako hapo awali. Fikiria kupitiapitia taarifa
+ya benki au kadi ya mkopo kutoka mwaka uliopita ambayo ilikuwa na tarehe na
+kiasi cha kila muamala kilichoorodheshwa lakini ingizo tupu kwa sehemu ya
+"maelezo."
+
+Mikoba inapaswa kutoa kwa watumiaji wao njia rahisi ya kurudufi
+data ya lebo. Hilo linaonekana wazi, lakini kuna idadi ya
+programu za mkoba zinazotumiwa sana ambazo hufanya iwe rahisi kuunda na kutumia
+misimbo ya urejeshaji lakini hazitoi njia ya kurudufi au kurejesha data ya
+lebo.
+
+Zaidi ya hayo, inaweza kuwa muhimu kwa programu za mkoba kutoa
+muundo uliowekwa kiwango wa kusafirisha lebo ili ziweze kutumika katika programu
+nyingine (k.m., programu ya uhasibu). Kiwango kwa muundo huo
+kinapendekeza katika BIP329.
+
+Programu za mkoba zinazotekeleza itifaki za ziada zaidi ya msaada wa msingi wa
+Bitcoin zinaweza pia kuhitaji au kutaka kuhifadhi data nyingine. Kwa mfano,
+kufikia 2023, idadi inayoongezeka ya programu zimeongeza msaada wa
+kutuma na kupokea miamala kupitia Mtandao wa Umeme (LN).
+Ingawa itifaki ya LN hutoa njia ya kurejesha
+fedha wakati wa upotezaji wa data, inayoitwa _rudufu za kituo cha tuli_, haiwezi
+kuhakikisha matokeo. Kama nodi ambayo mkoba wako unaungana nayo inatambua
+umepoteza data, inaweza kuwa na uwezo wa kuiba bitcoins kutoka kwako. Kama
+inapoteza hifadhidata yake ya mkoba wakati ule ule unapopoteza hifadhidata yako, na
+hakuna yenu mwenye rudufu ya kutosha, nyote mtapoteza fedha.
+
+Tena, hii inamaanisha watumiaji na programu za mkoba zinahitaji kufanya zaidi ya kurudufi tu
+msimbo wa urejeshaji.
+
+Suluhisho moja linalotekelezwa na programu chache za mkoba ni kuunda mara kwa mara
+na kiotomatiki rudufu kamili za hifadhidata zao za mkoba
+zilizosimbwa na moja ya funguo zinazotokana na mbegu yao. Funguo za Bitcoin lazima
+zisiwe na uwezekano wa kukisiwa na algorithm za usimbaji wa kisasa zinachukuliwa kuwa salama sana,
+kwa hivyo hakuna mtu anayepaswa kuweza kufungua rudufu iliyosimbwa isipokuwa
+mtu anayeweza kuzalisha mbegu. Hii inafanya iwe salama kuhifadhi rudufu kwenye
+kompyuta zisizo na uaminifu kama huduma za kupanga kwenye wingu au hata
+marika ya mtandao wa nasibu.
+
+Baadaye, hifadhidata ya asili ya mkoba ikipoteza, mtumiaji anaweza kuingiza msimbo wao
+wa urejeshaji kwenye programu ya mkoba kurejesha mbegu yao. Programu
+inaweza kisha kupata faili ya hivi karibuni ya rudufu, kuzalisha upya ufunguo wa
+usimbaji, kusimbua rudufu, na kurejesha lebo zote za mtumiaji
+na data ya ziada ((("wallets", "nonkey data, backing up", startref="wallet-nonkey-backups")))((("nonkey data, backing up", startref="nonkey-backups")))((("backing up", "nonkey data", startref="backup-nonkey")))ya itifaki.
+
+==== Kurudufi Njia za Utokano wa Funguo
+
+Katika ((("wallets", "key generation", "backing up derivation paths", id="wallet-keygen-backups")))((("key generation", "backing up derivation paths", id="keygen-backups")))((("backing up", "key derivation paths", id="backup-key-derive")))mti wa BIP32 wa funguo, kuna takriban funguo nne bilioni za kiwango cha kwanza;
+kila moja ya funguo hizo inaweza kuwa na watoto wake wanne bilioni, na watoto
+hao kila mmoja anaweza kuwa na watoto wanne bilioni wao wenyewe,
+na kadhalika. Haiwezekani kwa programu ya mkoba kuzalisha
+hata sehemu ndogo ya kila funguo inayowezekana katika mti wa BIP32, ambayo inamaanisha
+kwamba kurejesha kutoka upotezaji wa data kunahitaji kujua zaidi ya
+msimbo wa urejeshaji peke yake, algorithm ya kupata mbegu yako (k.m., BIP39), na
+algorithm ya utokano wa funguo wa uhakika
+(k.m., BIP32)—pia kunahitaji kujua ni njia zipi katika mti wa funguo
+programu yako ya mkoba ilitumia kuzalisha funguo maalum ilizosambaza.
+
+Suluhisho mbili za tatizo hili zimepitishwa. Ya kwanza ni kutumia
+njia za kiwango. Kila wakati kunapokuwa na mabadiliko yanayohusiana na anwani
+ambazo programu za mkoba zingeweza kutaka kuzalisha, mtu huunda BIP
+inayofafanua njia ya utokano wa funguo ya kutumia. Kwa mfano, BIP44 inafafanua
+`m/44'/0'/0'` kama njia ya kutumia kwa funguo katika hati za P2PKH (anwani
+ya zamani). Programu ya mkoba inayotekeleza kiwango hiki hutumia
+funguo katika njia hiyo wakati inapoanzishwa kwanza na baada ya
+urejeshaji kutoka msimbo wa urejeshaji. Tunaita((("implicit paths", id="implicit-path"))) suluhisho hili _njia
+fiche_. Njia kadhaa fiche maarufu zilizofafanuliwa na BIPs zinaonyeshwa katika <<bip_implicit_paths>>.
+
+++++
+<table id="bip_implicit_paths">
+<caption>Njia fiche za hati zilizofafanuliwa na BIPs mbalimbali</caption>
+<thead>
+<tr>
+<th>Kiwango</th>
+<th>Hati</th>
+<th>Njia ya BIP32</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>BIP44</p></td>
+<td><p>P2PKH</p></td>
+<td><p><code>m/44'/0'/0'</code></p></td>
+</tr>
+<tr>
+<td><p>BIP49</p></td>
+<td><p>Nested P2WPKH</p></td>
+<td><p><code>m/49'/1'/0'</code></p></td>
+</tr>
+<tr>
+<td><p>BIP84</p></td>
+<td><p>P2WPKH</p></td>
+<td><p><code>m/84'/0'/0'</code></p></td>
+</tr>
+<tr>
+<td><p>BIP86</p></td>
+<td><p>P2TR Single-key</p></td>
+<td><p><code>m/86'/0'/0'</code></p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+[role="less_space pagebreak-before"]
+Suluhisho la pili ni kurudufi habari za njia pamoja na msimbo wa urejeshaji,
+ikionyesha wazi ni njia ipi inatumika na hati zipi. Tunaita((("explicit paths", id="explicit-path")))
+hii _njia wazi_.
+
+Faida ya njia fiche ni kwamba watumiaji hawahitaji kuweka kumbukumbu
+ya ni njia zipi wanazotumia. Mtumiaji akiingiza msimbo wao wa urejeshaji kwenye
+programu ile ile ya mkoba waliyoitumia awali, ya toleo lile lile au
+juu zaidi, itazalisha upya moja kwa moja funguo za njia zile zile
+zilizotumika awali.
+
+Hasara ya hati fiche ni ukosefu wao wa kubadilika. Msimbo wa urejeshaji
+ukiingizwa, programu ya mkoba lazima izalishe funguo
+za kila njia inayosaidia na lazima iskanishe blockchain kwa
+miamala inayohusisha funguo hizo, vinginevyo inaweza kutopata miamala yote ya
+mtumiaji. Hii ni upotevu katika mikoba inayosaidia vipengele vingi kila kimoja na njia
+yake kama mtumiaji alijaribu tu baadhi ya vipengele hivyo.
+
+Kwa misimbo ya urejeshaji ya njia fiche ambayo haijumuishi nambari ya toleo,
+kama BIP39 na SLIP39, toleo jipya la programu ya mkoba linaloacha msaada
+wa njia ya zamani haliwezi kuonya watumiaji wakati wa mchakato wa urejeshaji kwamba baadhi
+ya fedha zao hazingeweza kupatikana. Tatizo lile lile hutokea kwa upande mwingine kama
+mtumiaji akiingiza msimbo wao wa urejeshaji kwenye programu ya zamani: haitapata
+njia mpya ambazo mtumiaji angeweza kupokea fedha. Misimbo ya urejeshaji
+inayojumuisha habari za toleo, kama Electrum v2 na Aezeed, inaweza
+kugundua kwamba mtumiaji anaingiza msimbo wa urejeshaji wa zamani au mpya na
+kuwaelekeza kwa rasilimali zinazofaa.
+
+Matokeo ya mwisho ya njia fiche ni kwamba zinaweza kujumuisha tu
+habari ambazo ni za ulimwengu wote (kama njia iliyowekwa kiwango) au
+zinazotokana na mbegu (kama funguo). Habari muhimu zisizo za uhakika
+ambazo ni maalum kwa mtumiaji fulani haziwezi kurejeshwa kwa kutumia
+msimbo wa urejeshaji. Kwa mfano, Alice, Bob, na Carol wanapokea fedha ambazo
+zinaweza kutumika tu na sahihi kutoka wawili kati ya watatu wao. Ingawa
+Alice anahitaji tu sahihi ya Bob au ya Carol kutumia, anahitaji
+funguo za umma za wote watatu ili kupata fedha zao za pamoja kwenye
+blockchain. Hii inamaanisha kila mmoja wao lazima arudufi funguo za umma za
+wote watatu wao. Kadiri saini nyingi na hati nyingine za hali ya juu zinavyokuwa
+za kawaida zaidi kwenye Bitcoin, ukosefu wa kubadilika wa njia fiche unakuwa muhimu zaidi.
+
+Faida ya njia wazi ni kwamba zinaweza kuelezea hasa ni
+funguo zipi zinapaswa kutumika na hati zipi. Hakuna haja ya kusaidia
+hati zilizopitwa na wakati, hakuna matatizo ya uendanifu wa nyuma au mbele,
+na habari yoyote ya ziada (kama funguo za umma za watumiaji wengine) inaweza
+kujumuishwa moja kwa moja. Hasara yao ni kwamba zinahitaji watumiaji kurudufi
+habari za ziada pamoja na msimbo wao wa urejeshaji. Habari za
+ziada kwa kawaida haziwezi kuathiri usalama wa mtumiaji, kwa hivyo
+haihitaji ulinzi mkubwa kama msimbo wa urejeshaji, ingawa inaweza
+kupunguza faragha yao na inahitaji ulinzi fulani.
+
+[role="less_space pagebreak-before"]
+Karibu programu zote za mkoba zinazotumia njia wazi wakati wa
+uandishi huu hutumia kiwango cha _maelezo ya hati ya matokeo_ (kinachoitwa
+_maelezo_ kwa ufupi) kama kilivyobainishwa katika BIPs 380, 381, 382, 383, 384,
+385, 386, na 389. Maelezo
+huelezea hati na funguo (au njia za funguo) za kutumia nazo.
+Maelezo machache ya mfano yanaonyeshwa katika <<sample_descriptors>>.
+
+++++
+<table id="sample_descriptors">
+<caption>Maelezo ya mfano kutoka nyaraka za Bitcoin Core (yaliyofupishwa)</caption>
+<thead>
+<tr>
+<th>Maelezo</th>
+<th>Ufafanuzi</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>pkh(02c6…​9ee5)</code></p></td>
+<td><p>Hati ya P2PKH kwa funguo ya umma iliyotolewa</p></td>
+</tr>
+<tr>
+<td><p><code>sh(multi(2,022f…​2a01,03ac…​ccbe))</code></p></td>
+<td><p>Saini nyingi ya P2SH inayohitaji sahihi mbili zinazolingana na funguo hizi mbili</p></td>
+</tr>
+<tr>
+<td><p><code>pkh([d34db33f/44'/0'/0']xpub6ERA…​RcEL/1/*)</code></p></td>
+<td><p>Hati za P2PKH kwa BIP32 <code>d34db33f</code> yenye funguo ya umma iliyopanuliwa (xpub) kwenye njia <code>M/44'/0'/0'</code>, ambayo ni <code>xpub6ERA…​RcEL</code>, kwa kutumia funguo kwenye <code>M/1/*</code> ya xpub hiyo</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Imekuwa mwenendo kwa muda mrefu kwa programu za mkoba zilizoundwa kwa
+hati za saini moja tu kutumia njia fiche. Programu za mkoba
+zilizoundwa kwa saini nyingi au hati nyingine za hali ya juu zinaongeza
+msaada wa njia wazi kwa kutumia maelezo. Programu zinazofanya vyote
+kawaida zitaendana na viwango vya njia fiche na pia zitoa ((("wallets", "key generation", "backing up derivation paths", startref="wallet-keygen-backups")))((("key generation", "backing up derivation paths", startref="keygen-backups")))((("backing up", "key derivation paths", startref="backup-key-derive")))((("implicit paths", startref="implicit-path")))((("explicit paths", startref="explicit-path")))maelezo.
+
+=== Mfumo wa Teknolojia ya Mkoba kwa Undani
+
+Wasanidi wa mikoba ya kisasa wanaweza kuchagua kutoka kwa teknolojia mbalimbali tofauti
+kusaidia watumiaji kuunda na kutumia rudufu—na suluhisho mpya
+zinaonekana kila mwaka. Badala ya kwenda kwa undani kuhusu kila moja ya
+chaguzi zilizoelezwa mapema katika sura hii, tutazingatia sehemu iliyobaki
+ya sura hii kwenye mfumo wa teknolojia tunafikiri unatumiwa sana
+katika mikoba kufikia mapema 2023:
+
+- Misimbo ya urejeshaji ya BIP39
+- Utokano wa funguo wa HD wa BIP32
+- Njia fiche za mtindo wa BIP44
+
+Viwango hivi vyote vimekuwepo tangu 2014 au awali, na
+hutapata shida kupata rasilimali za ziada za kuvitumia.
+Hata hivyo, kama unahisi ujasiri, tunakuhimiza kuchunguza viwango vya kisasa zaidi
+ambavyo vinaweza kutoa vipengele vya ziada au usalama.
+
+[[recovery_code_words]]
+==== Misimbo ya Urejeshaji ya BIP39
+
+Misimbo ((("wallets", "recovery codes", id="wallet-recovery-bip39")))((("recovery codes", id="recovery-code-bip39")))((("BIP39 recovery codes", primary-sortas="BIP039", id="bip39-recovery")))ya urejeshaji ya BIP39 ni
+mfululizo wa maneno unaowakilisha (usimba) nambari ya nasibu inayotumiwa kama mbegu
+kutoa mkoba wa uhakika. Mfululizo wa maneno unatosha
+kuunda upya mbegu na kutoka hapo, kuunda upya funguo zote
+zinazotokana. Programu ya mkoba inayotekeleza mikoba ya uhakika
+na msimbo wa urejeshaji wa BIP39 itaonyesha mtumiaji mfululizo wa maneno 12 hadi 24 wakati
+wa kuunda mkoba kwanza. Mfululizo huo wa maneno ndio rudufu ya mkoba na
+unaweza kutumika kurejesha na kuunda upya funguo zote katika mkoba ule ule au
+programu yoyote inayooana ya mkoba. Misimbo ya urejeshaji hufanya iwe rahisi
+kwa watumiaji kurudufi kwa sababu ni rahisi kusoma na kunakili
+kwa usahihi.
+
+[TIP]
+====
+Misimbo ya urejeshaji ((("brainwallets")))mara nyingi huchanganywa na
+"mikoba ya akili." Si sawa. Tofauti kuu ni kwamba
+mkoba wa akili una maneno yaliyochaguliwa na mtumiaji, wakati misimbo ya urejeshaji
+inazalishwa kiholela na mkoba na kuwasilishwa kwa mtumiaji. Tofauti hii
+muhimu hufanya misimbo ya urejeshaji kuwa salama zaidi kwa sababu
+binadamu ni vyanzo duni sana vya nasibu.
+====
+
+Kumbuka kwamba BIP39 ni utekelezaji mmoja wa kiwango cha msimbo wa urejeshaji.
+BIP39 ilipendekeza na kampuni nyuma ya mkoba wa maunzi wa Trezor na
+inaendana na programu nyingi nyingine za mkoba, ingawa si zote.
+
+BIP39 inafafanua uundaji wa msimbo wa urejeshaji na mbegu, ambao
+tunauelezea hapa katika hatua tisa. Kwa uwazi, mchakato umegawanywa katika sehemu
+mbili: hatua 1 hadi 6 zinaonyeshwa katika <<generating_recovery_words>> na
+hatua 7 hadi 9 zinaonyeshwa katika <<recovery_to_seed>>.
+
+[[generating_recovery_words]]
+===== Kuzalisha msimbo wa urejeshaji
+
+Misimbo ((("wallets", "recovery codes", "generating", id="wallet-recovery-bip39-generate")))((("recovery codes", "generating", id="recovery-code-bip39-generate")))((("BIP39 recovery codes", "generating", primary-sortas="BIP039", id="bip39-recovery-generate")))((("entropy", "recovery code generation", id="entropy-recovery-generate")))ya urejeshaji huzalishwa kiotomatiki na programu ya mkoba kwa kutumia
+mchakato uliowekwa kiwango uliofafanuliwa katika BIP39. Mkoba huanza kutoka chanzo
+cha entropi, huongeza checksum, na kisha huweka ramani ya entropi kwenye orodha ya maneno:
+
+1. Unda mfululizo wa nasibu (entropi) wa bits 128 hadi 256.
+
+2. Unda checksum ya mfululizo wa nasibu kwa kuchukua bits za kwanza
+(urefu wa entropi/32) za hash yake ya SHA256.
+
+3. Ongeza checksum mwishoni mwa mfululizo wa nasibu.
+
+4. Gawanya matokeo katika sehemu za urefu wa bits 11.
+
+5. Weka ramani ya kila thamani ya bits 11 kwenye neno kutoka kamusi iliyopangwa mapema ya
+maneno 2,048.
+
+6. Msimbo wa urejeshaji ni mfululizo wa maneno.
+
+<<generating_entropy_and_encoding>> inaonyesha jinsi entropi inavyotumiwa
+kuzalisha msimbo wa urejeshaji wa BIP39.
+
+[[generating_entropy_and_encoding]]
+.Kuzalisha entropi na kuisimba kama msimbo wa urejeshaji.
+image::images/mbc3_0504.png["Generating entropy and encoding as a recovery code"]
+
+<<table_4-5>> inaonyesha uhusiano kati ya ukubwa wa data ya entropi
+na urefu wa msimbo wa urejeshaji katika ((("wallets", "recovery codes", "generating", startref="wallet-recovery-bip39-generate")))((("recovery codes", "generating", startref="recovery-code-bip39-generate")))((("BIP39 recovery codes", "generating", primary-sortas="BIP039", startref="bip39-recovery-generate")))((("entropy", "recovery code generation", startref="entropy-recovery-generate")))maneno.
+
+++++
+<table id="table_4-5">
+<caption>BIP39: entropi na urefu wa maneno</caption>
+<thead>
+<tr>
+<th>Entropi (bits)</th>
+<th>Checksum (bits)</th>
+<th>Entropi <strong>+</strong> checksum (bits)</th>
+<th>Maneno ya msimbo wa urejeshaji</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>128</p></td>
+<td><p>4</p></td>
+<td><p>132</p></td>
+<td><p>12</p></td>
+</tr>
+<tr>
+<td><p>160</p></td>
+<td><p>5</p></td>
+<td><p>165</p></td>
+<td><p>15</p></td>
+</tr>
+<tr>
+<td><p>192</p></td>
+<td><p>6</p></td>
+<td><p>198</p></td>
+<td><p>18</p></td>
+</tr>
+<tr>
+<td><p>224</p></td>
+<td><p>7</p></td>
+<td><p>231</p></td>
+<td><p>21</p></td>
+</tr>
+<tr>
+<td><p>256</p></td>
+<td><p>8</p></td>
+<td><p>264</p></td>
+<td><p>24</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+[role="less_space pagebreak-before"]
+[[recovery_to_seed]]
+===== Kutoka msimbo wa urejeshaji hadi mbegu
+
+Msimbo ((("wallets", "recovery codes", "seed generation", id="wallet-recovery-bip39-seed")))((("recovery codes", "seed generation", id="recovery-code-bip39-seed")))((("BIP39 recovery codes", "seed generation", primary-sortas="BIP039", id="bip39-recovery-seed")))((("entropy", "seed generation", id="entropy-seed-generate")))((("seeds", "generating", id="seed-generate")))((("key-stretching functions", id="key-stretch")))wa urejeshaji
+unawakilisha entropi yenye urefu wa bits 128 hadi 256. Entropi kisha
+inatumika kutoa mbegu ndefu zaidi (bits 512) kwa kutumia
+https://oreil.ly/6lwbd[kazi ya kunyoosha ufunguo ya PBKDF2]. Mbegu inayozalishwa kisha inatumika kujenga
+mkoba wa uhakika na kutoa funguo zake.
+
+Kazi ya kunyoosha ufunguo inachukua vigezo viwili:
+entropi na((("salt"))) _chumvi_. Madhumuni ya chumvi katika kazi ya
+kunyoosha ufunguo ni kufanya iwe vigumu kujenga jedwali la utafutaji
+linalowezesha shambulio la nguvu. Katika kiwango cha BIP39, chumvi ina
+madhumuni mengine—inaruhusu kuanzishwa kwa nenosiri
+linalotumiwa kama kipengele cha ziada cha usalama kulinda mbegu, kama tutakavyoelezea
+kwa undani zaidi katika <<recovery_passphrase>>.
+
+[TIP]
+====
+Kazi ya kunyoosha ufunguo, yenye raundi 2,048 za kuhash, hufanya iwe
+ngumu kidogo zaidi kushambulia kwa nguvu msimbo wa urejeshaji kwa kutumia programu.
+Maunzi ya madhumuni maalum hayaathiriki kwa kiasi kikubwa. Kwa mshambuliaji
+anayehitaji kukisia msimbo wote wa urejeshaji wa mtumiaji, urefu wa msimbo
+(bits 128 kwa kiwango cha chini) hutoa usalama zaidi ya kutosha. Lakini kwa
+hali ambapo mshambuliaji anaweza kujua sehemu ndogo ya msimbo wa mtumiaji,
+kunyoosha ufunguo huongeza usalama fulani kwa kupunguza kasi ya mshambuliaji
+kuangalia mchanganyiko tofauti wa msimbo wa urejeshaji. Vigezo vya BIP39
+vilizingatiwa kuwa dhaifu kwa viwango vya kisasa hata wakati ilipochapishwa kwanza
+karibu muongo mmoja uliopita, ingawa hiyo labda ni matokeo ya kubuniwa
+kwa uendanifu na vifaa vya kusaini cha maunzi vyenye CPU za nguvu ndogo.
+Baadhi ya mbadala za BIP39 hutumia vigezo vya nguvu zaidi vya kunyoosha ufunguo,
+kama raundi 32,768 za kuhash za Aezeed kwa kutumia algorithm ya Scrypt ngumu zaidi,
+ingawa huenda zisiwe rahisi sana kuendesha kwenye vifaa vya kusaini cha maunzi.
+====
+
+Mchakato ulioelezwa katika hatua 7 hadi 9 unaendelea kutoka mchakato
+ulioelezwa awali katika <<generating_recovery_words>>:
+
+++++
+<ol start="7">
+  <li>Kigezo cha kwanza cha kazi ya kunyoosha ufunguo ya PBKDF2 ni
+  <em>entropi</em> inayozalishwa kutoka hatua ya 6.</li>
+
+  <li>Kigezo cha pili cha kazi ya kunyoosha ufunguo ya PBKDF2 ni
+  <em>chumvi</em>. Chumvi imeundwa na mfuatano wa mara kwa mara
+  "<code>mnemonic</code>" ukiunganishwa na mfuatano wa hiari wa nenosiri uliotolewa na mtumiaji.</li>
+
+  <li>PBKDF2 hunyoosha msimbo wa urejeshaji na vigezo vya chumvi kwa kutumia raundi 2,048
+  za kuhash na algorithm ya HMAC-SHA512, ikizalisha thamani ya bits 512 kama matokeo yake ya mwisho.
+  Thamani hiyo ya bits 512 ndiyo mbegu.</li>
+</ol>
+++++
+
+<<fig_5_7>> inaonyesha jinsi msimbo wa urejeshaji unavyotumiwa kuzalisha mbegu.
+
+[[fig_5_7]]
+.Kutoka msimbo wa urejeshaji hadi mbegu.
+image::images/mbc3_0505.png["From recovery code to seed"]
+
+Jedwali pass:[<a data-type="xref" href="#bip39_128_no_pass"
+data-xrefstyle="select: labelnumber">#bip39_128_no_pass</a>],
+pass:[<a data-type="xref" href="#bip39_128_w_pass"
+data-xrefstyle="select: labelnumber">#bip39_128_w_pass</a>], na
+pass:[<a data-type="xref" href="#bip39_256_no_pass"
+data-xrefstyle="select: labelnumber">#bip39_256_no_pass</a>] zinaonyesha
+mifano ya misimbo ya urejeshaji na mbegu ((("key-stretching functions", startref="key-stretch")))wanazozalisha.
+
+++++
+<table id="bip39_128_no_pass">
+<caption>Msimbo wa urejeshaji wa BIP39 wa entropi ya bits 128, bila nenosiri, mbegu inayotokana</caption>
+<tbody>
+<tr>
+<td><p><strong>Ingizo la entropi (bits 128)</strong></p></td>
+<td><p><code>0c1e24e5917779d297e14d45f14e1a1a</code></p></td>
+</tr>
+<tr>
+<td><p><strong>Msimbo wa Urejeshaji (maneno 12)</strong></p></td>
+<td><p><code>army van defense carry jealous true garbage claim echo media make crunch</code></p></td>
+</tr>
+<tr>
+<td><p><strong>Nenosiri</strong></p></td>
+<td><p>(hakuna)</p></td>
+</tr>
+<tr>
+<td><p><strong>Mbegu (bits 512)</strong></p></td>
+<td><p><code>5b56c417303faa3fcba7e57400e120a0ca83ec5a4fc9ffba757fbe63fbd77a89a1a3be4</code>
+<code>c67196f57c39a88b76373733891bfaba16ed27a813ceed498804c0570</code></p></td>
+</tr>
+</tbody>
+</table>
+
+<table id="bip39_128_w_pass" class="pagebreak-before less_space">
+<caption>Msimbo wa urejeshaji wa BIP39 wa entropi ya bits 128, na nenosiri, mbegu inayotokana</caption>
+<tbody>
+<tr>
+<td><p><strong>Ingizo la entropi (bits 128)</strong></p></td>
+<td><p><code>0c1e24e5917779d297e14d45f14e1a1a</code></p></td>
+</tr>
+<tr>
+<td><p><strong>Msimbo wa Urejeshaji (maneno 12)</strong></p></td>
+<td><p><code>army van defense carry jealous true garbage claim echo media make crunch</code></p></td>
+</tr>
+<tr>
+<td><p><strong>Nenosiri</strong></p></td>
+<td><p>SuperDuperSecret</p></td>
+</tr>
+<tr>
+<td><p><strong>Mbegu (bits 512)</strong></p></td>
+<td><p><code>3b5df16df2157104cfdd22830162a5e170c0161653e3afe6c88defeefb0818c793dbb28</code>
+<code>ab3ab091897d0715861dc8a18358f80b79d49acf64142ae57037d1d54</code></p></td>
+</tr>
+</tbody>
+</table>
+<table id="bip39_256_no_pass">
+<caption>Msimbo wa urejeshaji wa BIP39 wa entropi ya bits 256, bila nenosiri, mbegu inayotokana</caption>
+<tbody>
+<tr>
+<td><p><strong>Ingizo la entropi (bits 256)</strong></p></td>
+<td><p><code>2041546864449caff939d32d574753fe684d3c947c3346713dd8423e74abcf8c</code></p></td>
+</tr>
+<tr>
+<td><p><strong>Msimbo wa Urejeshaji (maneno 24)</strong></p></td>
+<td><p><code>cake apple borrow silk endorse fitness top denial coil riot stay wolf
+luggage oxygen faint major edit measure invite love trap field dilemma oblige</code></p></td>
+</tr>
+<tr>
+<td><p><strong>Nenosiri</strong></p></td>
+<td><p>(hakuna)</p></td>
+</tr>
+<tr>
+<td><p><strong>Mbegu (bits 512)</strong></p></td>
+<td><p><code>3269bce2674acbd188d4f120072b13b088a0ecf87c6e4cae41657a0bb78f5315b33b3</code>
+<code>a04356e53d062e55f1e0deaa082df8d487381379df848a6ad7e98798404</code></p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+.Unahitaji Entropi Ngapi?
+****
+BIP32 inaruhusu mbegu kuwa bits 128 hadi 512. BIP39 inakubali bits 128
+hadi 256 za entropi; Electrum v2 inakubali bits 132 za entropi; Aezeed
+inakubali bits 128 za entropi; SLIP39 inakubali bits 128 au 256.
+Tofauti katika nambari hizi hufanya iwe si wazi kiasi gani cha entropi kinahitajika
+kwa usalama. Tutajaribu kufafanua hilo.
+
+Funguo za siri zilizopanuliwa za BIP32 zina ufunguo wa bits 256 na msimbo wa mnyororo wa bits 256,
+jumla ya bits 512. Hii inamaanisha kuna kiwango cha juu cha funguo tofauti 2^512^
+za siri zilizopanuliwa. Ukianza na zaidi ya bits 512 za entropi,
+bado utapata funguo iliyopanuliwa ya siri yenye bits 512 za entropi—kwa hivyo
+hakuna maana ya kutumia zaidi ya bits 512 hata kama viwango vyovyote vilivyotajwa viliruhusu hivyo.
+
+Hata hivyo, ingawa kuna funguo tofauti 2^512^ za siri zilizopanuliwa,
+kuna tu (kidogo chini ya) funguo za kawaida 2^256^ za siri—na funguo hizo
+za siri ndizo zinazolinda bitcoins zako kwa kweli. Hii inamaanisha, ukitumia
+zaidi ya bits 256 za entropi kwa mbegu yako, bado unapata funguo za siri
+zenye bits 256 tu za entropi. Huenda itakuwa na itifaki za Bitcoin
+za baadaye ambapo entropi ya ziada katika funguo zilizopanuliwa
+hutoa usalama wa ziada, lakini hiyo si hali ya sasa.
+
+Nguvu ya usalama ya funguo ya umma ya Bitcoin ni bits 128. Mshambuliaji
+mwenye kompyuta ya kawaida (aina pekee inayoweza kutumika kwa shambulio
+la vitendo wakati wa uandishi huu) angehitaji kutekeleza operesheni takriban 2^128^
+kwenye mzunguko wa mviringo wa Bitcoin ili kupata funguo ya siri
+ya funguo ya umma ya mtumiaji mwingine. Maana ya nguvu ya usalama ya
+bits 128 ni kwamba hakuna faida dhahiri ya kutumia zaidi ya bits 128
+za entropi (ingawa unahitaji kuhakikisha funguo zako za siri zilizalishwa
+zinachaguliwa kwa usawa kutoka ndani ya safu nzima ya funguo za siri za 2^256^).
+
+Kuna faida moja ya ziada ya entropi kubwa zaidi: kama asilimia iliyowekwa
+ya msimbo wako wa urejeshaji (lakini si msimbo wote) ionekana na mshambuliaji,
+entropi kubwa zaidi, itakuwa ngumu zaidi kwao kujua sehemu
+ya msimbo wasiyoiona. Kwa mfano, kama mshambuliaji anaona nusu ya msimbo wa
+bits 128 (bits 64), inawezekana kwamba wataweza kushambulia kwa nguvu
+bits 64 zilizobaki. Wakiona nusu ya msimbo wa bits 256 (bits 128),
+haiwezekani kwamba wanaweza kushambulia nusu nyingine kwa nguvu. Hatupendelei
+kutegemea ulinzi huu—ama weka misimbo yako ya urejeshaji salama sana
+au tumia njia kama SLIP39 inayokuruhusu kusambaza msimbo wako wa urejeshaji
+katika maeneo mengi bila kutegemea usalama wa msimbo wowote binafsi.
+
+Kufikia 2023, mikoba mingi ya kisasa huzalisha bits 128 za entropi kwa misimbo yao ya urejeshaji
+(au thamani karibu na bits 128, kama((("wallets", "recovery codes", "seed generation", startref="wallet-recovery-bip39-seed")))((("recovery codes", "seed generation", startref="recovery-code-bip39-seed")))((("BIP39 recovery codes", "seed generation", primary-sortas="BIP039", startref="bip39-recovery-seed")))((("entropy", "seed generation", startref="entropy-seed-generate")))((("seeds", "generating", startref="seed-generate"))) bits 132 za Electrum v2).
+****
+
+[[recovery_passphrase]]
+===== Nenosiri la hiari katika BIP39
+
+Kiwango ((("wallets", "recovery codes", "passphrases", id="wallet-recovery-bip39-passphrase")))((("recovery codes", "passphrases", id="recovery-code-bip39-passphrase")))((("BIP39 recovery codes", "passphrases", primary-sortas="BIP039", id="bip39-recovery-passphrase")))((("passphrases (for recovery codes)", id="passphrase-optional")))cha BIP39 kinaruhusu matumizi ya nenosiri la hiari
+katika utokano wa mbegu. Kama hakuna nenosiri linalotumika, msimbo wa
+urejeshaji hunyoshwa na chumvi inayoundwa na mfuatano wa mara kwa mara
++"mnemonic"+, ukizalisha mbegu maalum ya bits 512 kutoka kwa msimbo wowote wa urejeshaji.
+Kama nenosiri linatumika, kazi ya kunyoosha huzalisha mbegu _tofauti_
+kutoka msimbo ule ule wa urejeshaji. Kwa kweli, kwa msimbo mmoja wa urejeshaji, kila
+nenosiri linalowezekana husababisha mbegu tofauti. Kimsingi, hakuna
+nenosiri "baya." Manenosiri yote ni halali na yote husababisha
+mbegu tofauti, na kuunda seti kubwa ya mikoba inayowezekana isiyoanzishwa.
+Seti ya mikoba inayowezekana ni kubwa sana (2^512^) kwamba hakuna
+uwezekano wa vitendo wa kushambulia kwa nguvu au kukisia kwa bahati mbaya moja
+inayotumiwa.
+
+[TIP]
+====
+Hakuna manenosiri "mabaya" katika BIP39. Kila nenosiri husababisha
+mkoba fulani, ambao isipokuwa ulitumiwa awali utakuwa tupu.
+====
+
+Nenosiri la hiari huunda vipengele viwili muhimu:
+
+- Kipengele cha pili (kitu kilichokumbukwa) kinachofanya msimbo wa urejeshaji kuwa bure
+  peke yake, kulinda misimbo ya urejeshaji dhidi ya kufichukiwa na mwizi wa kawaida. Kwa
+  ulinzi dhidi ya mwizi mwenye ujuzi wa teknolojia, utahitaji kutumia nenosiri
+  kali sana.
+
+- Aina ya ukanushaji unaowezekana au "mkoba wa shinikizo," ambapo
+  nenosiri lililochaguliwa husababisha mkoba wenye kiasi kidogo cha fedha unaotumiwa
+  kukengeua mshambuliaji kutoka mkoba "halisi" wenye wingi
+  wa fedha.
+
+Ni muhimu kutambua kwamba matumizi ya nenosiri pia yanaanzisha hatari ya kupoteza:
+
+* Kama mmiliki wa mkoba amepoteza uwezo au amekufa na hakuna mtu mwingine anayejua nenosiri, mbegu haina thamani na fedha zote zilizohifadhiwa katika mkoba zinapotea milele.
+
+* Kwa upande mwingine, kama mmiliki anarudufi nenosiri mahali pale pale na mbegu, inaondoa madhumuni ya kipengele((("wallets", "recovery codes", startref="wallet-recovery-bip39")))((("recovery codes", startref="recovery-code-bip39")))((("BIP39 recovery codes", primary-sortas="BIP039", startref="bip39-recovery")))((("wallets", "recovery codes", "passphrases", startref="wallet-recovery-bip39-passphrase")))((("recovery codes", "passphrases", startref="recovery-code-bip39-passphrase")))((("BIP39 recovery codes", "passphrases", primary-sortas="BIP039", startref="bip39-recovery-passphrase")))((("passphrases (for recovery codes)", startref="passphrase-optional"))) cha pili.
+
+++++
+<p class="fix_tracking2">
+Ingawa manenosiri ni muhimu sana, yanapaswa kutumika tu kwa
+mchanganyiko na mchakato uliopangwa kwa makini wa kurudufi na urejeshaji,
+ukizingatia uwezekano wa kumsalia mmiliki na kuruhusu familia yake
+kurejesha mali ya cryptocurrency.
+</p>
+++++
+
+[[hd_wallet_details]]
+==== Kuunda Mkoba wa HD kutoka Mbegu
+
+Mikoba ya HD ((("wallets", "key generation", "HD (hierarchical deterministic)", id="wallet-keygen-hd")))((("key generation", "HD (hierarchical deterministic)", id="keygen-hd")))((("HD (hierarchical deterministic) key generation", id="hd-keygen")))((("BIP32 HD (hierarchical deterministic) key generation", primary-sortas="BIP032", id="bip32")))((("seeds", "HD wallet creation", id="seed-hdwallet")))huundwa kutoka ((("root seeds")))_mbegu moja ya mzizi_, ambayo ni
+nambari ya nasibu ya bits 128, 256, au 512. Kwa kawaida zaidi, mbegu hii
+huzalishwa au kusimbuliwa kutoka msimbo wa urejeshaji kama ilivyoelezwa kwa undani katika sehemu iliyopita.
+
+Kila funguo katika mkoba wa HD inatokana na uhakika kutoka mbegu hii ya mzizi,
+ambayo hufanya iwezekane kuunda upya mkoba wote wa HD kutoka
+mbegu hiyo katika mkoba wowote unaooana wa HD. Hii hufanya iwe rahisi kurudufi,
+kurejesha, kusafirisha, na kuagiza mikoba ya HD yenye funguo maelfu au hata
+mamilioni kwa kuhamisha tu msimbo wa urejeshaji ambao mbegu ya mzizi
+inatokana nazo. Mchakato wa kuunda funguo za bwana na msimbo wa mnyororo wa bwana kwa mkoba wa HD
+unaonyeshwa katika <<HDWalletFromSeed>>.
+
+[[HDWalletFromSeed]]
+.Kuunda funguo za bwana na msimbo wa mnyororo kutoka mbegu ya mzizi.
+image::images/mbc3_0506.png["HDWalletFromRootSeed"]
+
+Mbegu ya mzizi huingizwa kwenye algorithm ya HMAC-SHA512 na hash inayotokana
+inatumika kuunda _funguo ya siri ya bwana_ (_m_) na _msimbo wa mnyororo wa bwana_
+(_c_).
+
+Funguo ya siri ya bwana (_m_) kisha huzalisha funguo ya umma ya bwana inayolingana
+(_M_) kwa kutumia mchakato wa kawaida wa kuzidisha mzunguko wa mviringo _m_ × _G_
+tulioona katika <<public_key_derivation>>.
+
+Msimbo wa mnyororo wa bwana (_c_) hutumika kuanzisha entropi katika kazi ambayo
+huunda funguo za mtoto kutoka funguo za mzazi, kama tutakavyoona katika sehemu inayofuata.
+
+===== Utokano wa funguo ya siri ya mtoto
+
+Mikoba ya HD ((("key generation", "HD (hierarchical deterministic)", "private child key derivation", id="keygen-hd-private-child")))((("HD (hierarchical deterministic) key generation", "private child key derivation", id="hd-keygen-private-child")))((("private child key derivation", id="private-child")))((("child key pair derivation", "private keys", id="child-key-pair-private")))hutumia kazi ya _utokano wa funguo ya mtoto_ (CKD)
+kutoa funguo za mtoto kutoka funguo za mzazi.
+
+Kazi za utokano wa funguo ya mtoto zinategemea kazi ya hash ya mwelekeo mmoja
+ambayo [.keep-together]#inachanganya:#
+
+* Funguo ya siri au umma ya mzazi (funguo isiyosongwa)
+* Mbegu inayoitwa msimbo wa mnyororo (bits 256)
+* Nambari ya faharasa (bits 32)
+
+Msimbo wa mnyororo hutumika kuanzisha data ya nasibu ya uhakika katika
+mchakato, ili kujua faharasa na funguo ya mtoto haikutosha
+kutoa funguo nyingine za mtoto. Kujua funguo ya mtoto hakufanyi iwezekane
+kupata ndugu zake isipokuwa uwe na msimbo wa mnyororo pia. Mbegu ya awali ya
+msimbo wa mnyororo (kwenye mzizi wa mti) hufanywa kutoka mbegu, wakati
+misimbo ya mnyororo ya mtoto inayofuata hutokana na kila msimbo wa mnyororo wa mzazi.
+
+Vitu hivi vitatu (funguo ya mzazi, msimbo wa mnyororo, na faharasa) vinachanganywa
+na kuhashiwa kuzalisha funguo za watoto, kama ifuatavyo.
+
+Funguo ya umma ya mzazi, msimbo wa mnyororo, na nambari ya faharasa vinachanganywa
+na kuhashiwa na algorithm ya HMAC-SHA512 kuzalisha hash ya bits 512. Hash hii
+ya bits 512 hugawanywa katika nusu mbili za bits 256. Nusu ya kulia ya bits 256
+za matokeo ya hash huwa msimbo wa mnyororo wa mtoto. Nusu ya kushoto ya bits 256
+za hash huongezwa kwenye funguo ya siri ya mzazi kuzalisha
+funguo ya siri ya mtoto. Katika <<CKDpriv>>, tunaona hili likionyeshwa na
+faharasa imewekwa kuwa 0 kuzalisha mtoto wa "sifuri" (wa kwanza kwa faharasa) wa
+mzazi.
+
+[[CKDpriv]]
+.Kupanua funguo ya siri ya mzazi kuunda funguo ya siri ya mtoto.
+image::images/mbc3_0507.png["ChildPrivateDerivation"]
+
+Kubadilisha faharasa kunatuwezesha kupanua mzazi na kuunda watoto wengine
+katika mfululizo (k.m., Mtoto 0, Mtoto 1, Mtoto 2, n.k.). Kila
+funguo ya mzazi inaweza kuwa na watoto 2,147,483,647 (2^31^) (2^31^ ni nusu ya
+safu nzima ya 2^32^ inayopatikana kwa sababu nusu nyingine imehifadhiwa kwa
+aina maalum ya utokano tutakayozungumza baadaye katika sura hii).
+
+Kurudia mchakato kiwango kimoja chini ya mti, kila mtoto anaweza kwa upande wake
+kuwa mzazi na kuunda watoto wake wenyewe, katika idadi isiyo na kikomo ya
+vizazi.
+
+===== Kutumia funguo za mtoto zilizotokana
+
+Funguo za siri za mtoto hazitofautiani na funguo za si za uhakika (nasibu).
+Kwa sababu kazi ya utokano ni kazi ya mwelekeo mmoja, funguo ya mtoto
+haiwezi kutumika kupata funguo ya mzazi. Funguo ya mtoto pia haiwezi
+kutumika kupata ndugu zake yoyote. Kama una mtoto wa n^th^, huwezi kupata
+ndugu zake, kama mtoto wa n–1 au mtoto wa n+1, au watoto
+wengine wowote wanaoo sehemu ya mfululizo. Ni funguo ya mzazi na
+msimbo wa mnyororo peke yao wanaoweza kutoa watoto wote. Bila msimbo wa mnyororo wa mtoto,
+funguo ya mtoto haiwezi kutumika kutoa wajukuu pia. Unahitaji
+funguo ya siri ya mtoto na msimbo wa mnyororo wa mtoto kuanza tawi jipya
+na kutoa wajukuu.
+
+Kwa hivyo funguo ya siri ya mtoto inaweza kutumika kwa nini peke yake? Inaweza kutumika
+kuunda funguo ya umma na anwani ya Bitcoin. Kisha, inaweza kutumika kusaini
+miamala kutumia chochote kilicholipwa kwenye anwani hiyo.
+
+[TIP]
+====
+Funguo ya siri ya mtoto, funguo ya umma inayolingana, na anwani ya Bitcoin
+hazitofautiani na funguo na anwani zilizoundwa
+kiholela. Ukweli kwamba ni sehemu ya mfululizo hauonekani
+nje ya kazi ya mkoba wa HD iliyoziunda. Zikisha kuundwa, zinafanya kazi hasa((("key generation", "HD (hierarchical deterministic)", "private child key derivation", startref="keygen-hd-private-child")))((("HD (hierarchical deterministic) key generation", "private child key derivation", startref="hd-keygen-private-child")))((("private child key derivation", startref="private-child")))((("child key pair derivation", "private keys", startref="child-key-pair-private"))) kama funguo "za kawaida."
+====
+
+===== Funguo zilizopanuliwa
+
+Kama ((("key generation", "HD (hierarchical deterministic)", "extended keys", id="keygen-hd-extend")))((("HD (hierarchical deterministic) key generation", "extended keys", "explained", id="hd-keygen-extend")))((("extended keys", "explained", id="extend-key")))tulivyoona awali, kazi ya utokano wa funguo inaweza kutumika kuunda
+watoto katika kiwango chochote cha mti, kulingana na ingizo tatu: funguo,
+msimbo wa mnyororo, na faharasa ya mtoto unaoombwa. Viungo viwili muhimu
+ni funguo na msimbo wa mnyororo, na vikiunganishwa huitwa
+_funguo iliyopanuliwa_. Neno "funguo iliyopanuliwa" lingeweza pia kufikiwa kama
+"funguo inayoweza kupanuliwa" kwa sababu funguo kama hiyo inaweza kutumika kutoa watoto.
+
+Funguo zilizopanuliwa huhifadhiwa na kuwakilishwa kwa urahisi kama muunganiko wa
+funguo na msimbo wa mnyororo. Kuna
+aina mbili za funguo zilizopanuliwa. Funguo ya siri iliyopanuliwa ni
+mchanganyiko wa funguo ya siri na msimbo wa mnyororo na inaweza kutumika kutoa
+funguo za siri za mtoto (na kutoka kwake, funguo za umma za mtoto). Funguo ya
+umma iliyopanuliwa ni funguo ya umma na msimbo wa mnyororo, ambayo inaweza kutumika kuunda
+funguo za umma za mtoto (_za umma tu_), kama ilivyoelezwa katika
+<<public_key_derivation>>.
+
+Fikiria funguo iliyopanuliwa kama mzizi wa tawi katika muundo wa mti
+wa mkoba wa HD. Na mzizi wa tawi, unaweza kutoa tawi lililobaki. Funguo ya siri iliyopanuliwa inaweza kuunda tawi kamili,
+wakati funguo ya umma iliyopanuliwa inaweza _tu_ kuunda tawi la funguo za umma.
+
+Funguo zilizopanuliwa husimbwa kwa kutumia base58check, kurahisisha kusafirisha na kuagiza
+kati ya mikoba tofauti inayooana na BIP32. Usimbaji wa base58check
+kwa funguo zilizopanuliwa hutumia nambari maalum ya toleo inayosababisha
+kiambishi awali "xprv" na "xpub" zinaposimbwa katika herufi za base58 ili
+kuzifanya zitambulike kwa urahisi. Kwa sababu funguo iliyopanuliwa ina bytes nyingi zaidi
+kuliko anwani za kawaida, pia ni ndefu zaidi kuliko mifuatano mingine ya base58check
+tuliyoona awali.
+
+Hapa ni mfano wa funguo ya _siri_ iliyopanuliwa, iliyosimbwa katika base58check:
+
+----
+xprv9tyUQV64JT5qs3RSTJkXCWKMyUgoQp7F3hA1xzG6ZGu6u6Q9VMNjGr67Lctvy5P8oyaYAL9CA
+WrUE9i6GoNMKUga5biW6Hx4tws2six3b9c
+----
+
+Hapa ni funguo ya _umma_ iliyopanuliwa inayolingana, iliyosimbwa katika base58check:
+
+----
+xpub67xpozcx8pe95XVuZLHXZeG6XWXHpGq6Qv5cmNfi7cS5mtjJ2tgypeQbBs2UAR6KECeeMVKZBP
+LrtJunSDMstweyLXhRgPxdp14sk9tJPW9
+----
+
+[role="less_space pagebreak-before"]
+[[public__child_key_derivation]]
+===== Utokano wa funguo ya umma ya mtoto
+
+Kama ((("key generation", "HD (hierarchical deterministic)", "public child key derivation", id="keygen-hd-public-child")))((("HD (hierarchical deterministic) key generation", "public child key derivation", id="hd-keygen-public-child")))((("public child key derivation", id="public-child")))((("child key pair derivation", "public keys", id="child-key-pair-public")))ilivyotajwa awali, sifa muhimu sana ya mikoba ya HD ni
+uwezo wa kutoa funguo za umma za mtoto kutoka funguo za umma za mzazi _bila_
+kuwa na funguo za siri. Hii inatupa njia mbili za kutoa funguo ya umma ya mtoto:
+ama kutoka funguo ya siri ya mtoto au moja kwa moja kutoka funguo ya umma ya mzazi.
+
+Funguo ya umma iliyopanuliwa inaweza kutumika, kwa hivyo, kutoa funguo zote za _umma_
+(na funguo za umma peke yake) katika tawi hilo la muundo wa mkoba wa HD.
+
+Mkato huu unaweza kutumika kuunda
+utekelezaji wa funguo za umma peke yake ambapo seva au programu ina nakala ya funguo ya umma iliyopanuliwa
+na hakuna funguo za siri kabisa. Aina hiyo ya utekelezaji inaweza
+kuzalisha idadi isiyo na kikomo ya funguo za umma na anwani za Bitcoin lakini
+haiwezi kutumia pesa yoyote iliyotumwa kwenye anwani hizo. Wakati huo huo, kwenye
+seva nyingine, yenye usalama zaidi, funguo ya siri iliyopanuliwa inaweza kutoa funguo zote
+za siri zinazolingana kusaini miamala na kutumia pesa.
+
+Matumizi moja ya kawaida ya suluhisho hili ni kusakinisha funguo ya umma iliyopanuliwa
+kwenye seva ya wavuti inayohudumia programu ya biashara ya mtandaoni. Seva ya wavuti
+inaweza kutumia kazi ya utokano wa funguo ya umma kuunda anwani mpya ya Bitcoin
+kwa kila muamala (k.m., kwa mkokoteni wa ununuzi wa mteja). Seva ya wavuti
+haitakuwa na funguo za siri zozote ambazo zingeweza kuibiwa.
+Bila mikoba ya HD, njia pekee ya kufanya hivi ni kuzalisha
+maelfu ya anwani za Bitcoin kwenye seva tofauti salama na kisha
+kuzipakia awali kwenye seva ya biashara ya mtandaoni. Mbinu hiyo ni ngumu na
+inahitaji matengenezo ya mara kwa mara kuhakikisha seva ya biashara ya mtandaoni
+haifikii kikomo cha funguo.
+
+.Angalia Pengo
+****
+Funguo ya umma iliyopanuliwa ((("gap limit", id="gap-limit")))inaweza kuzalisha takriban funguo nne bilioni za moja kwa moja
+za mtoto, zaidi sana kuliko duka au programu yoyote itakayohitaji.
+Hata hivyo, ingechukua pia wakati mwingi kwa programu ya mkoba
+kuzalisha funguo nne bilioni zote na kuskanisha blockchain kwa
+miamala inayohusisha funguo hizo. Kwa sababu hiyo, mikoba mingi huzalisha
+funguo chache tu kwa wakati mmoja, huskanisha malipo yanayohusisha funguo hizo,
+na huzalisha funguo za ziada katika mfululizo kadiri funguo za awali zinavyotumiwa.
+Kwa mfano, mkoba wa Alice huzalisha funguo 100. Unapoona malipo
+kwenye funguo ya kwanza, huzalisha funguo ya 101.
+
+Wakati mwingine programu ya mkoba itasambaza funguo kwa mtu ambaye
+baadaye anaamua kutolipa, na kuunda pengo katika mnyororo wa funguo. Hilo ni sawa
+mradi mkoba umezalisha tayari funguo baada ya pengo ili upate
+malipo ya baadaye na uendelee kuzalisha funguo zaidi. Idadi ya juu zaidi
+ya funguo zisizotumika mfululizo ambazo zinaweza kushindwa kupokea malipo
+bila kusababisha matatizo inaitwa _kikomo cha pengo_.
+
+Programu ya mkoba ikisambaza funguo zote hadi kikomo chake cha pengo
+na hakuna moja ya funguo hizo iliyopokea malipo, ina chaguzi tatu kuhusu jinsi ya
+kushughulikia maombi ya baadaye ya funguo mpya:
+
+[role="less_space pagebreak-before"]
+1. Inaweza kukataa maombi, ikizuia kupokea malipo yoyote ya zaidi.
+   Hii ni chaguo la wazi lisilo na kufurahisha, ingawa ni rahisi zaidi kutekeleza.
+
+2. Inaweza kuzalisha funguo mpya zaidi ya kikomo chake cha pengo. Hii inahakikisha kwamba
+   kila mtu anayoomba kulipa anapata funguo ya kipekee, kuzuia matumizi ya anwani upya
+   na kuboresha faragha. Hata hivyo, kama mkoba unahitaji
+   kurejeshwa kutoka msimbo wa urejeshaji, au kama mmiliki wa mkoba anatumia programu
+   nyingine iliyopakiwa na funguo ile ile ya umma iliyopanuliwa, mikoba hiyo mingine
+   haitaona malipo yoyote yaliyopokelewa baada ya pengo lililopanuliwa.
+
+3. Inaweza kusambaza funguo zilizosambazwa awali, kuhakikisha urejeshaji laini
+   lakini uwezekano wa kupunguza faragha ya mmiliki wa mkoba na
+   watu wanaofanya manunuzi nao.
+
+Mifumo ya chanzo wazi ya uzalishaji kwa wafanyabiashara wa mtandaoni, kama BTCPay
+Server, inajaribu kuepuka tatizo hili kwa kutumia kikomo kikubwa cha pengo na
+kupunguza kasi ambayo huzalisha ankara. Suluhisho nyingine zimependekezwa, kama vile
+kuomba mkoba wa mtumaji kuunda (lakini si kutangaza) muamala
+unaolipa anwani inayoweza kutumika upya kabla ya kupokea anwani mpya
+kwa muamala wa kweli. Hata hivyo, suluhisho hizi nyingine hazijatumika
+katika uzalishaji wakati wa uandishi huu.((("gap limit", startref="gap-limit")))
+****
+
+Matumizi mengine ya kawaida ya suluhisho hili ni kwa
+vifaa vya kuhifadhi baridi au vya kusaini vya maunzi. Katika hali hiyo, funguo ya siri iliyopanuliwa
+inaweza kuhifadhiwa kwenye mkoba wa karatasi au kifaa cha maunzi, wakati
+funguo ya umma iliyopanuliwa inaweza kuwekwa mtandaoni. Mtumiaji anaweza kuunda anwani za "kupokea" wakati wowote,
+wakati funguo za siri zikihifadhiwa salama nje ya mtandao. Kutumia fedha, mtumiaji anaweza kutumia funguo ya siri iliyopanuliwa
+kwenye programu ya mkoba ya nje ya mtandao au
+kifaa cha kusaini cha maunzi. <<CKDpub>> inaonyesha
+utaratibu wa kupanua funguo ya umma ya mzazi kutoa funguo za umma za mtoto. ((("wallets", "key generation", "HD (hierarchical deterministic)", startref="wallet-keygen-hd")))((("key generation", "HD (hierarchical deterministic)", startref="keygen-hd")))((("HD (hierarchical deterministic) key generation", startref="hd-keygen")))((("BIP32 HD (hierarchical deterministic) key generation", primary-sortas="BIP032", startref="bip32")))((("seeds", "HD wallet creation", startref="seed-hdwallet")))((("key generation", "HD (hierarchical deterministic)", "public child key derivation", startref="keygen-hd-public-child")))((("HD (hierarchical deterministic) key generation", "public child key derivation", startref="hd-keygen-public-child")))((("public child key derivation", startref="public-child")))((("child key pair derivation", "public keys", startref="child-key-pair-public")))
+
+[[CKDpub]]
+.Kupanua funguo ya umma ya mzazi kuunda funguo ya umma ya mtoto.
+image::images/mbc3_0508.png["ChildPublicDerivation"]
+
+==== Kutumia Funguo ya Umma Iliyopanuliwa kwenye Duka la Wavuti
+
+Tuangalie ((("key generation", "HD (hierarchical deterministic)", "extended keys", id="keygen-hd-extend-webstore")))((("HD (hierarchical deterministic) key generation", "extended keys", "web store example", id="hd-keygen-extend-webstore")))((("extended keys", "web store example", id="extend-key-webstore")))((("web store example (extended keys)", id="webstore-extend-key")))jinsi mikoba ya HD inavyotumiwa kwa kuangalia
+duka la wavuti la Gabriel.
+
+Gabriel kwanza alianzisha duka lake la wavuti kama hobby, kulingana na ukurasa rahisi wa WordPress uliopangishwa.
+Duka lake lilikuwa rahisi sana na kurasa chache tu na
+fomu ya agizo yenye anwani moja ya Bitcoin.
+
+Gabriel alitumia anwani ya kwanza ya Bitcoin iliyozalishwa na mkoba wake wa kawaida kama
+anwani kuu ya Bitcoin kwa duka lake. Wateja waliwasilisha agizo kwa kutumia fomu na
+kutuma malipo kwenye anwani ya Bitcoin iliyochapishwa ya Gabriel, na kusababisha barua pepe yenye maelezo ya agizo
+kwa Gabriel kushughulikia. Na maagizo machache tu kila wiki, mfumo huu
+ulifanya kazi vizuri, ingawa ulidhoofu faragha ya
+Gabriel, wateja wake, na watu aliowalipia.
+
+Hata hivyo, duka dogo la wavuti likafanikiwa sana na kuvutia maagizo mengi
+kutoka jamii ya eneo. Hivi karibuni, Gabriel alishindwa kushughulikia. Na maagizo yote
+yaliyolipa anwani ile ile, ikawa ngumu kulinganisha vizuri maagizo
+na miamala, hasa maagizo mengi ya kiasi kile kile yakifika karibu pamoja.
+
+Data pekee ya meta inayochaguliwa na mpokeaji wa muamala wa kawaida wa Bitcoin
+ni kiasi na anwani ya malipo. Hakuna sehemu ya mada
+au ujumbe inayoweza kutumika kushikilia nambari ya kipekee ya kitambulisho cha ankara.
+
+Mkoba wa HD wa Gabriel unatoa suluhisho bora zaidi kupitia uwezo wa
+kutoa funguo za umma za mtoto bila kujua funguo za siri. Gabriel anaweza
+kupakia funguo ya umma iliyopanuliwa (xpub) kwenye tovuti yake, ambayo inaweza kutumika
+kutoa anwani ya kipekee kwa kila agizo la mteja. Anwani ya kipekee
+huboresha mara moja faragha na pia humpa kila agizo kitambulisho cha kipekee
+kinachoweza kutumika kufuatilia ni ankara zipi zimelipwa.
+
+Kutumia mkoba wa HD kunaruhusu Gabriel kutumia fedha
+kutoka programu yake ya mkoba wa kibinafsi, lakini xpub iliyopakiwa kwenye tovuti inaweza tu
+kuzalisha anwani na kupokea fedha. Kipengele hiki cha mikoba ya HD ni
+kipengele kikubwa cha usalama. Tovuti ya Gabriel haina funguo za siri zozote na kwa hivyo uvamizi wowote wake unaweza kuiba tu fedha ambazo Gabriel angeziipokea
+katika siku zijazo, si fedha zozote alizoziipokea hapo awali.
+
+Kusafirisha xpub kutoka kifaa chake cha kusaini cha maunzi cha Trezor, Gabriel hutumia
+programu ya mkoba wa Trezor ya wavuti. Kifaa cha Trezor lazima kiunganishwe
+ili funguo za umma zisafirishwe. Kumbuka kwamba vifaa vingi vya kusaini
+havitasafirisha kamwe funguo za siri—hizo daima zinabaki kwenye kifaa.
+
+Gabriel hunakili xpub kwenye programu ya usindikaji wa malipo ya Bitcoin ya duka lake la wavuti,
+kama BTCPay Server ya chanzo wazi inayotumiwa sana.
+
+===== Utokano wa funguo ya mtoto iliyoimarishwa
+
+Uwezo ((("utokano wa funguo ya siri ya mtoto", "utokano ulioimarishwa", id="private-child-harden")))((("utokano wa jozi ya funguo ya mtoto", "utokano ulioimarishwa", id="child-key-pair-harden")))((("utokano wa funguo ya mtoto iliyoimarishwa", id="harden-child-key")))wa kutoa tawi la funguo za umma kutoka kwa xpub ni muhimu sana, lakini unakuja na hatari inayowezekana. Ufikiaji wa xpub haupatikani ufikiaji wa funguo za siri za mtoto. Hata hivyo, kwa sababu xpub ina msimbo wa mnyororo, ikiwa funguo ya siri ya mtoto inajulikana, au kwa namna fulani imevuja, inaweza kutumika pamoja na msimbo wa mnyororo kutoa funguo zingine zote za siri za mtoto. Funguo moja ya siri ya mtoto iliyovuja, pamoja na msimbo wa mnyororo wa mzazi, hugundua funguo zote za siri za watoto wote. Zaidi ya hayo, funguo ya siri ya mtoto pamoja na msimbo wa mnyororo wa mzazi inaweza kutumika kutoa funguo ya siri ya mzazi.
+
+Kukabiliana na hatari hii, mikoba ya HD hutoa kazi mbadala ya utokano inayoitwa _utokano ulioimarishwa_, ambao huvunja uhusiano kati ya funguo ya umma ya mzazi na msimbo wa mnyororo wa mtoto. Kazi ya utokano ulioimarishwa hutumia funguo ya siri ya mzazi kutoa msimbo wa mnyororo wa mtoto, badala ya funguo ya umma ya mzazi. Hii huunda "kizuizi" katika mfululizo wa mzazi/mtoto, na msimbo wa mnyororo ambao hauwezi kutumika kudhuru funguo ya siri ya mzazi au ndugu. Kazi ya utokano ulioimarishwa inaonekana karibu sawa na utokano wa kawaida wa funguo ya siri ya mtoto, isipokuwa funguo ya siri ya mzazi inatumika kama pembejeo kwa kazi ya hashi, badala ya funguo ya umma ya mzazi, kama inavyoonyeshwa kwenye mchoro katika <<CKDprime>>.
+
+[[CKDprime]]
+.Utokano ulioimarishwa wa funguo ya mtoto; huacha funguo ya umma ya mzazi.
+image::images/mbc3_0509.png["ChildHardPrivateDerivation"]
+
+
+Wakati kazi ya utokano wa siri ulioimarishwa inatumika, funguo ya siri ya mtoto inayosababishwa na msimbo wa mnyororo ni tofauti kabisa na itakayosababishwa na kazi ya kawaida ya utokano. "Tawi" linalosababishwa la funguo linaweza kutumika kuzalisha funguo za umma zilizopanuliwa ambazo haziko hatarini kwa sababu msimbo wa mnyororo wanaouwa hauwezi kutumika vibaya kugundua funguo za siri za ndugu au wazazi wao. Utokano ulioimarishwa kwa hivyo hutumika kuunda "pengo" katika mti juu ya kiwango ambapo funguo za umma zilizopanuliwa zinatumika.
+
+Kwa maneno rahisi, ikiwa unataka kutumia urahisi wa xpub kutoa matawi ya funguo za umma, bila kujiweka katika hatari ya msimbo wa mnyororo uliovuja, unapaswa kuutoa kutoka kwa mzazi aliyeimarishwa badala ya mzazi wa kawaida. Kama utendaji bora, watoto wa kiwango cha-1 wa funguo kuu daima hutolewa kupitia utokano ulioimarishwa kuzuia uvunjifu wa funguo kuu.
+
+===== Nambari za faharasa kwa utokano wa kawaida na ulioimarishwa
+
+Nambari ya ((("nambari za faharasa kwa utokano ulioimarishwa")))faharasa inayotumika katika kazi ya utokano ni nambari kamili ya biti 32. Ili kutofautisha kwa urahisi kati ya funguo zilizoundwa kupitia kazi ya kawaida ya utokano dhidi ya funguo zilizotolewa kupitia utokano ulioimarishwa, nambari hii ya faharasa imegawanywa katika masafa mawili. Nambari za faharasa kati ya 0 na 2^31^ &#x2013; 1 (0x0 hadi 0x7FFFFFFF) zinatumika _tu_ kwa utokano wa kawaida. Nambari za faharasa kati ya 2^31^ na 2^32^ &#x2013; 1 (0x80000000 hadi 0xFFFFFFFF) zinatumika _tu_ kwa utokano ulioimarishwa. Kwa hivyo, ikiwa nambari ya faharasa ni chini ya 2^31^, mtoto ni wa kawaida, wakati ikiwa nambari ya faharasa ni sawa au juu ya 2^31^, mtoto ameimarishwa.
+
+Ili kufanya nambari ya faharasa iwe rahisi kusoma na kuonyesha, nambari ya faharasa kwa watoto walioimarishwa inaonyeshwa ikianza kutoka sifuri, lakini na alama ya prime. Funguo ya kwanza ya mtoto wa kawaida kwa hivyo inaonyeshwa kama 0, wakati mtoto wa kwanza aliyeimarishwa (faharasa 0x80000000) inaonyeshwa kama 0++&#x27;++. Katika mlolongo basi, funguo ya pili iliyoimarishwa ingekuwa na faharasa 0x80000001 na ingeonyeshwa kama 1++&#x27;++, na kadhalika. Unapoona faharasa ya mkoba wa HD i++&#x27;++, hiyo inamaanisha 2^31^+i. Katika maandishi ya kawaida ya ASCII, alama ya prime inabadilishwa na apostrophe moja au herufi _h_. Kwa hali, kama vile katika maelezo ya hati ya hati za matokeo, ambapo maandishi yanaweza kutumika katika ganda au muktadha mwingine ambapo apostrophe moja ina maana maalum, kutumia herufi _h_ ((("utokano wa funguo ya siri ya mtoto", "utokano ulioimarishwa", startref="private-child-harden")))((("utokano wa jozi ya funguo ya mtoto", "utokano ulioimarishwa", startref="child-key-pair-harden")))((("utokano wa funguo ya mtoto iliyoimarishwa", startref="harden-child-key")))kunapendekezwa.
+
+===== Kitambulisho cha funguo ya mkoba wa HD (njia)
+
+Funguo ((("marejeo ya njia katika mikoba ya HD")))((("uzalishaji wa funguo", "HD (daraja la tabaka)", "marejeo ya njia")))((("uzalishaji wa funguo wa HD (daraja la tabaka)", "marejeo ya njia")))katika mkoba wa HD zinatambuliwa kwa kutumia mkataba wa kutaja "njia", na kila kiwango cha mti ukitenganishwa na herufi ya mshazari (/) (ona <<table_4-8>>). Funguo za siri zinazotolewa kutoka kwa funguo ya siri kuu zinaanza na "m." Funguo za umma zinazotolewa kutoka kwa funguo ya umma kuu zinaanza na "M." Kwa hivyo, funguo ya kwanza ya siri ya mtoto wa funguo ya siri kuu ni m/0. Funguo ya kwanza ya umma ya mtoto ni M/0. Mjukuu wa pili wa mtoto wa kwanza ni m/0/1, na kadhalika.
+
+"Ukoo" wa funguo husomwa kutoka kulia kwenda kushoto, hadi ufike funguo kuu iliyotolewa nayo. Kwa mfano, kitambulisho m/x/y/z kinaelezea funguo ambayo ni mtoto wa z wa funguo m/x/y, ambayo ni mtoto wa y wa funguo m/x, ambayo ni mtoto wa x wa m.
+
+++++
+<table id="table_4-8" class="pagebreak-before less_space">
+<caption>Mifano ya njia ya mkoba wa HD</caption>
+<thead>
+<tr>
+<th>Njia ya HD</th>
+<th>Funguo inayoelezewa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>m/0</p></td>
+<td><p>Funguo ya kwanza (0) ya siri ya mtoto kutoka kwa funguo ya siri kuu (m)</p></td>
+</tr>
+<tr>
+<td><p>m/0/0</p></td>
+<td><p>Funguo ya kwanza ya siri ya mjukuu kutoka kwa mtoto wa kwanza (m/0)</p></td>
+</tr>
+<tr>
+<td><p>m/0'/0</p></td>
+<td><p>Funguo ya kwanza ya kawaida ya siri ya mjukuu kutoka kwa mtoto wa kwanza <em>aliyeimarishwa</em> (m/0')</p></td>
+</tr>
+<tr>
+<td><p>m/1/0</p></td>
+<td><p>Funguo ya kwanza ya siri ya mjukuu kutoka kwa mtoto wa pili (m/1)</p></td>
+</tr>
+<tr>
+<td><p>M/23/17/0/0</p></td>
+<td><p>Funguo ya kwanza ya umma ya kizazi cha nne kutoka kwa kizazi cha tatu cha kwanza kutoka kwa mjukuu wa 18 kutoka kwa mtoto wa 24</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+===== Kuvinjari muundo wa mti wa mkoba wa HD
+
+Muundo ((("muundo wa mti katika mikoba ya HD", id="tree-hd-wallet")))((("uzalishaji wa funguo", "HD (daraja la tabaka)", "muundo wa mti", id="keygen-hd-tree")))((("uzalishaji wa funguo wa HD (daraja la tabaka)", "muundo wa mti", id="hd-keygen-tree")))wa mti wa mkoba wa HD hutoa kubadilika kubwa. Kila funguo iliyopanuliwa ya mzazi inaweza kuwa na watoto bilioni 4: watoto bilioni 2 wa kawaida na watoto bilioni 2 walioimarishwa. Kila mmoja wa watoto hao anaweza kuwa na watoto wengine bilioni 4, na kadhalika. Mti unaweza kuwa mrefu unavyotaka, na idadi isiyo na kikomo ya vizazi. Hata hivyo, na kubadilika huko kote, kunakuwa vigumu sana kuvinjari mti huu usio na kikomo. Ni vigumu hasa kuhamisha mikoba ya HD kati ya utekelezaji kwa sababu uwezekano wa kupanga ndani katika matawi na matawi madogo hauna mwisho.
+
+BIP mbili hutoa suluhisho kwa utata huu kwa kuunda viwango vilivyopendekezwa vya muundo wa miti ya mkoba wa HD. ((("muundo wa mti wa mkoba wa HD wa BIP43", primary-sortas="BIP043")))BIP43 inapendekeza matumizi ya faharasa ya mtoto wa kwanza aliyeimarishwa kama kitambulisho maalum kinachoashiria "kusudi" la muundo wa mti. Kulingana na BIP43, mkoba wa HD unapaswa kutumia tawi moja tu la kiwango-1 la mti, na nambari ya faharasa ikiitambulisha muundo na nafasi ya jina ya mti wote kwa kufafanua kusudi lake. Kwa mfano, mkoba wa HD unaotumia tawi m/i++&#x27;++/ peke yake unamaanisha kusudi maalum, na kusudi hilo kinatambuliwa na nambari ya faharasa "i."
+
+Ikiwa ni upanuzi wa maelezo hayo, ((("muundo wa mti wa mkoba wa HD wa BIP44", primary-sortas="BIP044", id="bip44")))BIP44 inapendekeza muundo wa akaunti nyingi kama nambari ya "kusudi" +44'+ chini ya BIP43. Mikoba yote ya HD inayofuata muundo wa BIP44 inatambuliwa na ukweli kwamba ilitumia tawi moja tu la mti: m/44++'++/.
+
+BIP44 inaelezea muundo kama unaojumuisha viwango vitano vilivyowekwa awali vya mti:
+
+-----
+m / purpose' / coin_type' / account' / change / address_index
+-----
+
+
+"Kusudi" cha kiwango cha kwanza daima huwekwa kwa ++44'++. "Aina_ya_sarafu" ya kiwango cha pili inabainisha aina ya sarafu ya cryptocurrency, ikiruhusu mikoba ya HD ya sarafu nyingi ambapo kila sarafu ina mti mdogo wake mwenyewe chini ya kiwango cha pili. Bitcoin ni m/44++&apos;++/0++&apos;++ na Bitcoin Testnet ni m/44++&apos;++/1++&apos;++.
+
+Kiwango cha tatu cha mti ni "akaunti," ambacho huruhusu watumiaji kugawanya mikoba yao katika akaunti ndogo za mantiki tofauti kwa madhumuni ya uhasibu au shirika. Kwa mfano, mkoba wa HD unaweza kuwa na "akaunti" mbili za Bitcoin: m/44++&#x27;++/0++&#x27;++/0++&#x27;++ na m/44++&#x27;++/0++&#x27;++/1++&#x27;++. Kila akaunti ni mzizi wa mti mdogo wake mwenyewe.
+
+Katika kiwango cha nne, "mabadiliko," mkoba wa HD una miti midogo miwili, moja kwa kuunda anwani za kupokea na nyingine kwa kuunda anwani za mabadiliko. Kumbuka kwamba wakati viwango vya awali vilitumia utokano ulioimarishwa, kiwango hiki kinatumia utokano wa kawaida. Hii ni kuruhusu kiwango hiki cha mti kusafirisha funguo za umma zilizopanuliwa kwa matumizi katika mazingira yasiyolindwa. Anwani zinazoweza kutumika hutolewa na mkoba wa HD kama watoto wa kiwango cha nne, hivyo kufanya kiwango cha tano cha mti "faharasa_ya_anwani." Kwa mfano, anwani ya tatu ya kupokea malipo katika akaunti ya msingi ingekuwa M/44++&#x27;++/0++&#x27;++/0++&#x27;++/0/2. <<table_4-9>> inaonyesha mifano mingine michache.
+
+++++
+<table id="table_4-9">
+<caption>Mifano ya muundo wa mkoba wa HD wa BIP44</caption>
+<thead>
+<tr>
+<th>Njia ya HD</th>
+<th>Funguo inayoelezewa</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>M/44<code>'</code>/0<code>'</code>/0<code>'</code>/0/2</p></td>
+<td><p>Funguo ya tatu ya umma ya kupokea kwa akaunti kuu ya Bitcoin</p></td>
+</tr>
+<tr>
+<td><p>M/44<code>'</code>/0<code>'</code>/3<code>'</code>/1/14</p></td>
+<td><p>Funguo ya kumi na tano ya umma ya anwani ya mabadiliko kwa akaunti ya nne ya Bitcoin</p></td>
+</tr>
+<tr>
+<td><p>m/44<code>'</code>/2<code>'</code>/0<code>'</code>/0/1</p></td>
+<td><p>Funguo ya pili ya siri katika akaunti kuu ya Litecoin, kwa kusaini miamala</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Watu ((("muundo wa mti wa mkoba wa HD wa BIP44", primary-sortas="BIP044", startref="bip44")))wengi huzingatia kulinda bitcoini zao dhidi ya wizi na mashambulizi mengine, lakini moja ya sababu kuu za kupoteza bitcoini—labda _sababu kuu_—ni kupoteza data. Ikiwa funguo na data nyingine muhimu zinazohitajika kutumia bitcoini zako zimepotea, bitcoini hizo hazitaweza kutumika milele. Hakuna anayeweza kuzipata tena kwa ajili yako. Katika sura hii, tulitazama mifumo ambayo programu za kisasa za mikoba zinatumia kukusaidia kuzuia kupoteza data hiyo. Kumbuka, hata hivyo, kwamba ni juu yako mwenyewe kutumia mifumo inayopatikana kufanya nakala rudufu nzuri na ((("uzalishaji wa funguo", "HD (daraja la tabaka)", "funguo zilizopanuliwa", startref="keygen-hd-extend-webstore")))((("uzalishaji wa funguo wa HD (daraja la tabaka)", "funguo zilizopanuliwa", "mfano wa duka la wavuti", startref="hd-keygen-extend-webstore")))((("funguo zilizopanuliwa", "mfano wa duka la wavuti", startref="extend-key-webstore")))((("mfano wa duka la wavuti (funguo zilizopanuliwa)", startref="webstore-extend-key")))((("muundo wa mti katika mikoba ya HD", startref="tree-hd-wallet")))((("uzalishaji wa funguo", "HD (daraja la tabaka)", "muundo wa mti", startref="keygen-hd-tree")))((("uzalishaji wa funguo wa HD (daraja la tabaka)", "muundo wa mti", startref="hd-keygen-tree")))kuzijaribu mara kwa mara.

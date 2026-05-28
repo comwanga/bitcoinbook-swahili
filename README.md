@@ -33,7 +33,7 @@ Tafsiri ya Kiswahili ya kitabu *Mastering Bitcoin: Programming the Open Blockcha
 
 ## Kuhusu Tafsiri
 
-- **Mfasiri:** comwanga (msaada wa AI)
+- **Mfasiri:** comwanga
 - **Chanzo:** [Mastering Bitcoin 3rd Edition](https://github.com/bitcoinbook/bitcoinbook) na Andreas M. Antonopoulos & David A. Harding
 - **Umbizo:** AsciiDoc — markup yote ya asili imehifadhiwa (index terms, cross-references, picha, hisabati, misimbo)
 - **Lugha:** Kiswahili sanifu

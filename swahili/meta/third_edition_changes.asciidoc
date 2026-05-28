@@ -1,45 +1,34 @@
-A particular focus in the third edition has been modernizing the 2017
-second edition text and the remaining 2014 first edition text.  In
-addition, many concepts that are relevant to contempory Bitcoin
-development in 2023 have been added:
+Lengo maalum katika toleo la tatu lilikuwa kisasa zaidi kwa maandishi ya toleo la pili la 2017 na maandishi yaliyobaki ya toleo la kwanza la 2014. Zaidi ya hayo, dhana nyingi zinazohusiana na maendeleo ya kisasa ya Bitcoin ya 2023 zimeongezwa:
 
 <<ch04_keys_addresses>>::
-  We rearranged the address info so that we work through everything in
-  historical order, adding a new section with P2PK (where "address" was "IP
-  address"), refreshed the previous P2PKH and P2SH sections, and then added new
-  sections for segwit/bech32 and taproot/bech32m.
+  Tulipanga upya habari za anwani ili tupitie kila kitu kwa mpangilio wa kihistoria, tukaongeza sehemu mpya kuhusu P2PK (ambapo "anwani" ilikuwa "anwani ya IP"), tukahuisha sehemu za awali za P2PKH na P2SH, kisha tukaongeza sehemu mpya za segwit/bech32 na taproot/bech32m.
 
-Old Chapters 6 and 7::
-  Text from previous versions of Chapter 6, "Transactions," and Chapter 7,
-  "Advanced Transactions," has been rearranged and expanded across four
-  new chapters:  pass:[<a data-type="xref" data-xrefstyle="chap-num-title" href="#c_transactions">#c_transactions</a>]  (the structure of transactions), pass:[<a data-type="xref" data-xrefstyle="chap-num-title" href="#c_authorization_authentication">#c_authorization_authentication</a>], pass:[<a data-type="xref" data-xrefstyle="chap-num-title" href="#c_signatures">#c_signatures</a>], and
-   pass:[<a data-type="xref" data-xrefstyle="chap-num-title" href="#tx_fees">#tx_fees</a>].
+Masura 6 na 7 ya Zamani::
+  Maandishi kutoka matoleo ya awali ya Sura ya 6, "Miamala," na Sura ya 7, "Miamala ya Hali ya Juu," yamepangwa upya na kupanuliwa katika sura nne mpya: pass:[<a data-type="xref" data-xrefstyle="chap-num-title" href="#c_transactions">#c_transactions</a>] (muundo wa miamala), pass:[<a data-type="xref" data-xrefstyle="chap-num-title" href="#c_authorization_authentication">#c_authorization_authentication</a>], pass:[<a data-type="xref" data-xrefstyle="chap-num-title" href="#c_signatures">#c_signatures</a>], na
+ pass:[<a data-type="xref" data-xrefstyle="chap-num-title" href="#tx_fees">#tx_fees</a>].
 
 <<c_transactions>>::
-  We added almost entirely new text describing the structure of a transaction.
+  Tuliongeza maandishi mapya karibu kabisa yanayoelezea muundo wa muamala.
 
 <<c_authorization_authentication>>::
-  We added new text about MAST, P2C, scriptless multisignatures, taproot, and
-  tapscript.
+  Tuliongeza maandishi mapya kuhusu MAST, P2C, saini nyingi zisizo na hati, taproot, na tapscript.
 
 <<c_signatures>>::
-  We revised the  ECDSA text and added new text about schnorr signatures,
-  multisignatures, and threshold signatures.
+  Tulihuisha maandishi ya ECDSA na tukaongeza maandishi mapya kuhusu saini za schnorr, saini nyingi, na saini za kizingiti.
 
 <<tx_fees>>::
-  We added almost entirely new text about fees, RBF and CPFP fee
-  bumping, transaction pinning, package relay, and CPFP carve-out.
+  Tuliongeza maandishi mapya karibu kabisa kuhusu ada, kupandisha ada kwa RBF na CPFP, upigaji pini wa muamala, upelekaji wa mkusanyiko, na sehemu zilizochongwa za CPFP.
 
 <<bitcoin_network_ch08>>::
-  We added text about compact block relay, added a significant update to bloom filters that better describes their privacy problems, and new text about compact block filters.
+  Tuliongeza maandishi kuhusu usambazaji wa vitalu vifupi, tukaongeza sasisha muhimu la vichujio vya bloom ambalo linaelezea vyema zaidi matatizo yao ya faragha, na maandishi mapya kuhusu vichujio vya vitalu vifupi.
 
 <<blockchain>>::
-  We added text about signet.
+  Tuliongeza maandishi kuhusu signet.
 
 <<mining>>::
-  We added text about BIP8 and speedy trial.
+  Tuliongeza maandishi kuhusu BIP8 na jaribio la haraka (speedy trial).
 
-Appendixes::
-  We removed library-specific appendixes. After the appendix containing the original whitepaper, we added a new appendix describing how the implementation and properties of Bitcoin differ from those proposed in the whitepaper.
+Viambatisho::
+  Tuliondoa viambatisho maalum vya maktaba. Baada ya kiambatisho chenye karatasi nyeupe ya asili, tuliongeza kiambatisho kipya kinachoelezea jinsi utekelezaji na sifa za Bitcoin zinavyotofautiana na zile zilizopendekeza katika karatasi nyeupe.
 
 //FIXME:text check edits history for additional changes

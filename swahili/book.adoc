@@ -5,7 +5,7 @@
 :toclevels: 2
 :numbered:
 :icons: font
-:imagesdir: ../bitcoinbook-third_edition_print1/images
+:imagesdir: ../bitcoinbook-third_edition_print1
 :source-highlighter: rouge
 :lang: sw
 

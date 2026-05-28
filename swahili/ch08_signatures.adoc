@@ -1,0 +1,451 @@
+[[c_signatures]]
+== Saini za Kidijitali
+
+Algoriti ((("saini za kidijitali", "algoriti ya saini ya schnorr")))((("algoriti ya saini ya schnorr")))((("saini za kidijitali", "ECDSA")))((("ECDSA (Algoriti ya Saini ya Kidijitali ya Mkondo wa Duaradufu)")))((("miamala", "saini", see="saini za kidijitali")))mbili za saini zinatumika sasa hivi
+katika Bitcoin, _algoriti ya saini ya schnorr_ na _Algoriti ya Saini ya Kidijitali ya Mkondo wa Duaradufu_ (_ECDSA_).
+Algoriti hizi zinatumika kwa saini za kidijitali kulingana na jozi za funguo za siri/za umma za mkondo wa duaradufu, kama ilivyoelezwa katika <<elliptic_curve>>.
+Zinatumika kutumia matokeo ya segwit v0 P2WPKH, matumizi ya njia ya funguo ya segwit v1 P2TR, na kwa kazi za hati +OP_CHECKSIG+, +OP_CHECKSIGVERIFY+, +OP_CHECKMULTISIG+, [.keep-together]#+OP_CHECKMULTISIGVERIFY+,# na +OP_CHECKSIGADD+.
+Wakati wowote moja ya hizo inatekelezwa, saini lazima itolewa.
+
+Saini ya kidijitali((("saini za kidijitali", "madhumuni ya"))) hutumikia
+madhumuni matatu katika Bitcoin. Kwanza, saini inathibitisha kwamba mdhibiti wa funguo ya siri, ambaye kwa maana inamaanisha mmiliki wa fedha, _ameridhia_ kutumia fedha hizo. Pili, uthibitisho wa idhini ni _usioweza kukanusha_ (kutokukanusha). Tatu, kwamba muamala ulioidhinishwa hauwezi kubadilishwa na watu wa tatu wasiothibitishwa — kwamba _uadilifu_ wake uko salama.
+
+[NOTE]
+====
+Kila pembejeo ya muamala na saini yoyote inayoweza kujumuishwa ni _huru kabisa_ na pembejeo au saini nyingine yoyote. Pande nyingi zinaweza kushirikiana kuunda miamala na kusaini pembejeo moja tu kila mmoja. Itifaki kadhaa hutumia ukweli huu kuunda miamala ya pande nyingi kwa faragha.
+====
+
+Katika sura hii tunaangalia jinsi saini za kidijitali zinavyofanya kazi na jinsi zinavyoweza kutoa uthibitisho wa udhibiti wa funguo ya siri bila kufichua funguo hiyo ya siri.
+
+[role="less_space pagebreak-before"]
+=== Jinsi Saini za Kidijitali Zinavyofanya Kazi
+
+Saini ya kidijitali
+inajumuisha sehemu mbili. Sehemu ya kwanza ni algoriti ya kuunda
+saini kwa ujumbe (muamala) ukitumia funguo ya siri (funguo ya kusaini). Sehemu ya pili ni algoriti
+inayoruhusu mtu yeyote kuthibitisha saini, ikiwa na pia ujumbe na funguo ya umma inayolingana.
+
+==== Kuunda Saini ya Kidijitali
+
+Katika matumizi ya Bitcoin((("saini za kidijitali", "kuunda"))) ya algoriti za saini za kidijitali, "ujumbe" unaosainiwa
+ni muamala, au kwa usahihi zaidi heshi ya sehemu maalum ndogo ya data katika muamala, ((("heshi ya ahadi")))inayoitwa _heshi ya ahadi_ (angalia
+<<sighash_types>>). Funguo ya kusaini ni funguo ya siri ya mtumiaji. Matokeo ni saini:
+
+[latexmath]
+++++
+\begin{equation}
+Sig = F_{sig}(F_{hash}(m), x)
+\end{equation}
+++++
+
+ambapo:
+
+* _x_ ni funguo ya siri ya kusaini
+* _m_ ni ujumbe wa kusaini, heshi ya ahadi (kama sehemu za muamala)
+* _F_~_hash_~ ni kazi ya heshi
+* _F_~_sig_~ ni algoriti ya kusaini
+* _Sig_ ni saini inayotokana
+
+Unaweza kupata maelezo zaidi kuhusu hisabati ya saini za schnorr na ECDSA katika <<schnorr_signatures>>
+na <<ecdsa_signatures>>.
+
+Katika saini zote za schnorr na ECDSA, kazi _F_~_sig_~ huzalisha saini +Sig+ inayoundwa na
+thamani mbili. Kuna tofauti kati ya thamani mbili katika
+algoriti tofauti, ambazo tutazichunguza baadaye. Baada ya thamani mbili kukokotolewa, zinaserialishwa katika mkondo wa baiti. Kwa saini za ECDSA, usimbaji hutumia mpango wa usimbaji wa kiwango cha kimataifa unaoitwa
+_Sheria za Usimbaji Uliobainishwa_, au _DER_. Kwa saini za schnorr, muundo rahisi zaidi wa userializaji unatumika.
+
+==== Kuthibitisha Saini
+
+Algoriti ya((("saini za kidijitali", "kuthibitisha")))((("kuthibitisha", "saini za kidijitali"))) uthibitishaji wa saini huchukua ujumbe (heshi ya sehemu za muamala na data inayohusiana), funguo ya umma ya msainiaji na saini, na kurudisha ++KWELI++ ikiwa saini ni halali kwa ujumbe huu na funguo ya umma.
+
+Kuthibitisha saini, mtu lazima awe na saini, muamala ulioserialishwa, data fulani kuhusu tokeo linalotumika, na funguo ya umma inayolingana na funguo ya siri iliyotumika kuunda saini. Kimsingi, uthibitishaji wa saini unamaanisha "Mdhibiti tu wa funguo ya siri iliyozalisha funguo hii ya umma angeweza kuunda saini hii kwenye muamala huu."
+
+[[sighash_types]]
+==== Aina za Heshi ya Saini (SIGHASH)
+
+Saini za kidijitali((("saini za kidijitali", "alama za SIGHASH", id="digital-signature-sighash")))((("alama za SIGHASH", id="sighash"))) zinatumika kwa ujumbe,
+ambao katika kesi ya Bitcoin, ni miamala yenyewe. Saini inathibitisha _ahadi_ ya msainiaji kwa data maalum ya muamala. Katika muundo rahisi zaidi, saini inatumika kwa karibu muamala wote, hivyo ikijitolea kwa pembejeo zote, matokeo yote, na sehemu nyingine za muamala. Hata hivyo, saini inaweza kujitolea tu kwa sehemu ndogo ya data katika muamala, ambayo ni muhimu kwa hali kadhaa kama tutakavyoona katika sehemu hii.
+
+Saini za Bitcoin zina njia ya kuonyesha ni sehemu ipi ya data ya muamala
+imejumuishwa katika heshi iliyosainiwa na funguo ya siri ukitumia alama ya +SIGHASH+. Alama ya +SIGHASH+ ni baiti moja
+inayoambatishwa kwenye saini. Kila saini ina alama ya +SIGHASH+ ya wazi au ya mstari,
+na alama inaweza kutofautiana kutoka pembejeo moja hadi nyingine. Muamala wenye
+pembejeo tatu zilizosainiwa unaweza kuwa na saini tatu zenye alama tofauti za +SIGHASH+, kila saini ikisaini (kujitolea) kwa sehemu tofauti za muamala.
+
+Kumbuka, kila pembejeo inaweza kuwa na saini moja au zaidi. Kwa
+hivyo, pembejeo inaweza kuwa na saini
+zenye alama tofauti za +SIGHASH+ zinazojitolea kwa sehemu tofauti za muamala. Kumbuka pia kwamba miamala ya Bitcoin inaweza kuwa na pembejeo kutoka kwa "wamiliki" tofauti, ambao wanaweza kusaini pembejeo moja tu katika muamala ulioundwa kwa sehemu, wakishirikiana na wengine kukusanya saini zote zinazohitajika kufanya muamala halali. Aina nyingi za alama za +SIGHASH+ zinamaanisha tu ikiwa unafikiria washiriki wengi wakishirikiana nje ya mtandao wa Bitcoin na kusasisha muamala uliosainiwa kwa sehemu.
+
+Kuna alama tatu za +SIGHASH+: +ALL+, +NONE+, na +SINGLE+, kama inavyoonyeshwa
+katika <<sighash_types_and_their>>.
+
+++++
+<table id="sighash_types_and_their">
+<caption>
+<span class="plain"><code>SIGHASH</code></span> aina na maana zake</caption>
+<thead>
+<tr>
+<th>Alama ya <code>SIGHASH</code></th>
+<th>Thamani</th>
+<th>Maelezo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>ALL</code></p></td>
+<td><p><code>0x01</code></p></td>
+<td><p>Saini inatumika kwa pembejeo zote na matokeo yote</p></td>
+</tr>
+<tr>
+<td><p><code>NONE</code></p></td>
+<td><p><code>0x02</code></p></td>
+<td><p>Saini inatumika kwa pembejeo zote, hakuna matokeo</p></td>
+</tr>
+<tr>
+<td><p><code>SINGLE</code></p></td>
+<td><p><code>0x03</code></p></td>
+<td><p>Saini inatumika kwa pembejeo zote lakini tokeo moja tu lenye nambari ile ile ya faharasa kama pembejeo iliyosainiwa</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Zaidi ya hayo, kuna alama ya kurekebisha, +SIGHASH_ANYONECANPAY+, ambayo inaweza
+kuunganishwa na kila moja ya alama zilizotangulia. +ANYONECANPAY+ inapowekwa, pembejeo moja tu inasainiwa, ikiacha zilizobaki (na nambari zao za mfululizo) wazi kwa marekebisho. +ANYONECANPAY+ ina thamani ya +0x80+ na inatumika kwa OR ya biti, na kusababisha alama zilizounganishwa kama inavyoonyeshwa katika <<sighash_types_with_modifiers>>.
+
+[role="less_space pagebreak-before"]
+++++
+<table id="sighash_types_with_modifiers">
+<caption>
+<span class="plain"><code>SIGHASH</code></span> aina zenye virekebishi na maana zake</caption>
+<thead>
+<tr>
+<th>Alama ya <code>SIGHASH</code></th>
+<th>Thamani</th>
+<th>Maelezo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p><code>ALL|ANYONECANPAY</code></p></td>
+<td><p><code>0x81</code></p></td>
+<td><p>Saini inatumika kwa pembejeo moja na matokeo yote</p></td>
+</tr>
+<tr>
+<td><p><code>NONE|ANYONECANPAY</code></p></td>
+<td><p><code>0x82</code></p></td>
+<td><p>Saini inatumika kwa pembejeo moja, hakuna matokeo</p></td>
+</tr>
+<tr>
+<td><p><code>SINGLE|ANYONECANPAY</code></p></td>
+<td><p><code>0x83</code></p></td>
+<td><p>Saini inatumika kwa pembejeo moja na tokeo lenye nambari ile ile ya faharasa</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Njia ambapo alama za +SIGHASH+ zinatumika wakati wa kusaini na kuthibitisha ni kwamba nakala ya muamala hufanywa na sehemu fulani ndani yake zinaachwa nje au kukatwa (kuwekwa urefu wa sifuri na kufutwa). Muamala unaotokana huserialishwa. Alama ya +SIGHASH+ imejumuishwa katika data ya muamala iliyoserialishwa na matokeo hujumuishwa. Muhtasari wa heshi yenyewe ndio "ujumbe" unaosainiwa. Kulingana na alama ya +SIGHASH+ inayotumika, sehemu tofauti za muamala hujumuishwa. Kwa kujumuisha alama ya +SIGHASH+ yenyewe, saini inajitolea pia kwa aina ya +SIGHASH+, kwa hivyo haiwezi kubadilishwa (k.m., na mchimbaji).
+
+Katika <<serialization_of_signatures_der>>, tutaona kwamba sehemu ya mwisho ya saini iliyowekwa kwa DER ilikuwa +01+, ambayo ni alama ya +SIGHASH_ALL+ kwa saini za ECDSA. Hii inafunga data ya muamala, kwa hivyo saini ya Alice inajitolea kwa hali ya pembejeo na matokeo yote. Hii ndiyo muundo wa kawaida zaidi wa saini.
+
+Hebu tuangalie baadhi ya aina nyingine za +SIGHASH+ na jinsi zinavyoweza kutumika kwa vitendo:
+
++ALL|ANYONECANPAY+ :: Muundo ((("ufadhili wa umati")))huu unaweza kutumika kufanya
+muamala wa mtindo wa "ufadhili wa umati." Mtu anayejaribu kukusanya
+fedha anaweza kuunda muamala wenye tokeo moja. Tokeo moja linalipa kiasi cha "lengo" kwa mfadhili. Muamala kama huo ni batili wazi, kwani haina pembejeo. Hata hivyo, wengine sasa wanaweza kuubadilisha kwa kuongeza pembejeo yao wenyewe kama mchango. Wanasaini pembejeo yao wenyewe kwa +ALL|ANYONECANPAY+. Isipokuwa pembejeo za kutosha kukusanywa kufikia thamani ya tokeo, muamala ni batili. Kila mchango ni "ahadi," ambayo haiwezi kukusanywa na mfadhili hadi kiasi chote cha lengo kimekusanywa. Kwa bahati mbaya, itifaki hii inaweza kupitishwa kwa mfadhili kuongeza pembejeo yake mwenyewe (au kutoka kwa mtu anayemkopesha fedha), kuwaruhusu kukusanya michango hata kama hawajafikia thamani iliyobainishwa.
+
++NONE+ :: Muundo huu unaweza kutumika kuunda "hundi ya mwenye nayo" au "hundi tupu" ya kiasi maalum. Inajitolea kwa pembejeo zote lakini inaruhusu matokeo kubadilishwa. Mtu yeyote anaweza kuandika anwani yake ya Bitcoin katika hati ya tokeo. Peke yake, hii inaruhusu mchimbaji yeyote kubadilisha mahali pa matokeo na kudai fedha kwa ajili yake, lakini ikiwa saini nyingine zinazohitajika katika muamala zinatumia +SIGHASH_ALL+ au aina nyingine inayojitolea kwa tokeo, inaruhusu watumia hao kubadilisha mahali pa matokeo bila kuruhusu watu wa tatu (kama wachimbaji) kurekebisha matokeo.
+
++NONE|ANYONECANPAY+ :: Muundo huu unaweza kutumika kuunda "mkusanyiko wa vumbi." Watumiaji walio na UTXO ndogo ndogo katika pochi zao hawawezi kuzitumia bila gharama ya ada kuzidi thamani ya UTXO; angalia <<uneconomical_outputs>>. Kwa aina hii ya saini, UTXO zisizo na uchumi zinaweza kuchangiwa ili mtu yeyote azikusanye na kuzitumia wakati wowote wanapotaka.
+
+Kuna mapendekezo kadhaa ya kurekebisha au kupanua mfumo wa +SIGHASH+. Pendekezo linalozungumzwa sana zaidi wakati wa kuandika huu ni ((("Alama za SIGHASH za BIP118")))BIP118, inayopendekeza kuongeza alama mbili mpya za sighash. Saini inayotumia +SIGHASH_ANYPREVOUT+ haitojitolea kwa sehemu ya nukta ya kutoka ya pembejeo, kuiruhusu kutumika kutumia tokeo lolote la awali kwa programu fulani ya shahidi. Kwa mfano, ikiwa Alice anapokea matokeo mawili kwa kiasi kile kile kwa programu ile ile ya shahidi (k.m., ikihitaji saini moja kutoka kwa pochi yake), saini ya +SIGHASH_ANYPREVOUT+ kwa kutumia moja ya matokeo hayo ingeweza kunakiliwa na kutumika kutumia tokeo jingine kwa mahali pale pale.
+
+Saini inayotumia +SIGHASH_ANYPREVOUTANYSCRIPT+ haitojitolea
+kwa nukta ya kutoka, kiasi, programu ya shahidi, au jani maalum katika mti wa merkle wa taproot (mti wa hati), ikiruhusu kutumia tokeo lolote la awali ambalo saini ingeweza kutimiza. Kwa mfano, ikiwa Alice alipokea matokeo mawili kwa kiasi tofauti na programu tofauti za shahidi (k.m., moja ikihitaji saini moja na nyingine ikihitaji saini yake pamoja na data nyingine), saini ya +SIGHASH_ANYPREVOUTANYSCRIPT+ kwa kutumia moja ya matokeo hayo ingeweza kunakiliwa na kutumika kutumia tokeo jingine kwa mahali pale pale (mradi data ya ziada kwa tokeo la pili ilikuwa inajulikana).
+
+Matumizi yanayotarajiwa makuu ya opcode mbili za ++SIGHASH_ANYPREVOUT++ ni njia za malipo zilizoimarishwa, kama vile zile zinazotumiwa katika Mtandao wa Lightning (LN), ingawa matumizi mengine kadhaa yamefafanuliwa.
+
+[NOTE]
+====
+Hutaona mara nyingi alama za +SIGHASH+ zikitolewa kama chaguo katika programu ya pochi ya mtumiaji. Programu rahisi za pochi
+husaini kwa alama za [.keep-together]#+SIGHASH_ALL+#+. Programu za hali ya juu zaidi, kama vile nodi za LN, zinaweza kutumia alama mbadala za +SIGHASH+, lakini zinatumia itifaki ambazo zimekaguliwa kwa kina kuelewa athari za alama mbadala((("saini za kidijitali", "alama za SIGHASH", startref="digital-signature-sighash")))((("alama za SIGHASH", startref="sighash"))).
+====
+
+[[schnorr_signatures]]
+=== Saini za Schnorr
+
+Mwaka 1989, ((("saini za kidijitali", "algoriti ya saini ya schnorr", id="digital-sigs-schnorr")))((("algoriti ya saini ya schnorr", id="schnorr")))Claus Schnorr alichapisha karatasi inayoelezea algoriti ya saini ambayo imekuwa na jina lake. Algoriti si mahususi kwa kriptografia ya mkondo wa duaradufu (ECC) ambayo Bitcoin na programu nyingi nyingine hutumia, ingawa leo labda inahusishwa sana na ECC. Saini za schnorr zina sifa kadhaa nzuri:
+
+Usalama unaothibitishwa::
+  Uthibitisho wa ((("saini za kidijitali", "algoriti ya saini ya schnorr", "sifa za")))((("algoriti ya saini ya schnorr", "sifa za")))kihisabati wa usalama wa saini za schnorr unategemea tu ugumu wa kutatua Tatizo la Logariti Tofauti (DLP), hasa kwa mikondo ya duaradufu (EC) kwa Bitcoin, na uwezo wa kazi ya heshi (kama kazi ya SHA256 inayotumiwa katika Bitcoin) kuzalisha thamani zisizotabirika, inayoitwa mfano wa oracle wa nasibu (ROM). Algoriti nyingine za saini zina utegemezi wa ziada au zinahitaji funguo za umma au saini kubwa zaidi kwa usalama sawa na ECC-Schnorr (wakati tishio linafafanuliwa kama kompyuta za kawaida; algoriti nyingine zinaweza kutoa usalama wenye ufanisi zaidi dhidi ya kompyuta za quantum).
+
+Ulainifu::
+  Saini za schnorr zina kipengele ambacho wataalamu wa hisabati ((("ulainifu")))wanakiita _ulainifu_, unaotumika kwa kazi zenye sifa mbili maalum. Sifa ya kwanza ni kwamba kujumlisha pamoja vigeuzi viwili au zaidi na kisha kutekeleza kazi kwenye jumla hiyo kutazalisha thamani ile ile kama kutekeleza kazi kwenye kila moja ya vigeuzi kwa kujitegemea na kisha kujumlisha matokeo, k.m., _f(x_ + _y_ + _z)_ == _f(x)_ + _f(y)_ + _f(z)_; sifa hii ((("ujumlishaji")))inaitwa _ujumlishaji_. Sifa ya pili ni kwamba kuzidisha kigeuzio na kisha kutekeleza kazi kwenye zao hilo kutazalisha thamani ile ile kama kutekeleza kazi kwenye kigeuzio na kisha kukizidisha kwa kiwango kile kile, k.m., _f(a_ × _x)_ == _a_ × _f(x)_; sifa hii ((("usawa wa daraja la 1")))inaitwa _usawa wa daraja la 1_.
++
+Katika shughuli za kriptografia, kazi fulani zinaweza kuwa za siri (kama vile kazi zinazohusisha funguo za siri au nambari za kipekee za siri), kwa hivyo kuweza kupata matokeo yale yale iwe ukifanya operesheni ndani au nje ya kazi hufanya iwe rahisi kwa pande nyingi kuratibu na kushirikiana bila kushiriki siri zao. Tutaona baadhi ya manufaa maalum ya ulainifu katika saini za schnorr katika <<schnorr_multisignatures>> na <<schnorr_threshold_signatures>>.
+
+Uthibitishaji wa kundi::
+  Unapotumia ((("uthibitishaji wa kundi wa saini za kidijitali")))kwa njia fulani (ambayo Bitcoin hufanya), matokeo moja ya ulainifu wa schnorr ni kwamba ni rahisi kwa kiasi fulani kuthibitisha zaidi ya saini moja ya schnorr kwa wakati mmoja katika muda mfupi kuliko ingechukua kuthibitisha kila saini kwa kujitegemea. Saini nyingi zaidi zinazothibitishwa katika kundi, ndivyo ongezeko la kasi linavyokuwa kubwa zaidi. Kwa idadi ya kawaida ya saini katika bloku, inawezekana kuzithibitisha kwa kundi katika takriban nusu ya muda ambao ingechukua kuthibitisha kila saini kwa kujitegemea.
+
+Baadaye katika sura hii, tutaelezea algoriti ya saini ya schnorr kwa usahihi jinsi inavyotumika katika Bitcoin, lakini tutaanza na toleo lililorahisishwa na kuelekea itifaki halisi kwa hatua.
+
+[role="less_space pagebreak-before"]
+Alice ((("saini za kidijitali", "algoriti ya saini ya schnorr", "mifano ya matumizi")))((("algoriti ya saini ya schnorr", "mifano ya matumizi")))anaanza kwa kuchagua nambari kubwa ya nasibu (_x_), ambayo tunaiita _funguo yake ya siri_. Pia anajua hatua ya umma kwenye mkondo wa duaradufu wa Bitcoin inayoitwa Jenereta (_G_) (angalia <<public_key_derivation>>). Alice hutumia kuzidisha kwa EC kuzidisha _G_ na funguo yake ya siri _x_, ambapo katika kesi hii _x_ inaitwa _skala_ kwa sababu inaongeza _G_ kwa kiwango. Matokeo ni _xG_, ambayo tunaiita _funguo ya umma ya Alice_. Alice humpa Bob funguo yake ya umma. Ingawa Bob pia anajua _G_, DLP inazuia Bob kuweza kugawanya _xG_ kwa _G_ kupata funguo ya siri ya Alice.
+
+Wakati fulani baadaye, Bob anataka Alice ajitambulishe kwa kuthibitisha kwamba anajua skala _x_ kwa funguo ya umma (_xG_) ambayo Bob alipokea awali. Alice hawezi kumpa Bob _x_ moja kwa moja kwa sababu hiyo ingemruhusu kujitambulisha kama yeye kwa watu wengine, kwa hivyo anahitaji kuthibitisha ujuzi wake wa _x_ bila kumfichulia Bob _x_,((("uthibitisho wa ujuzi wa sifuri"))) unaoitwa _uthibitisho wa ujuzi wa sifuri_. Kwa hilo, tunaanza mchakato wa utambulisho wa schnorr:
+
+1. Alice anachagua nambari nyingine kubwa ya nasibu (_k_), ambayo tunaiita _nambari ya kipekee ya siri_. Tena anauitumia kama skala, akiizidisha na _G_ kuzalisha _kG_, ambayo tunaiita _nambari ya kipekee ya umma_. Humpa Bob nambari ya kipekee ya umma.
+
+2. Bob anachagua nambari kubwa ya nasibu yake mwenyewe, _e_, ambayo tunaiita _skala ya changamoto_. Tunasema "changamoto" kwa sababu inatumika kumwambia Alice athibitishe kwamba anajua funguo ya siri (_x_) kwa funguo ya umma (_xG_) aliyompa Bob awali; tunasema "skala" kwa sababu baadaye itatumika kuzidisha hatua ya EC.
+
+3. Alice sasa ana nambari (skala) _x_, _k_, na _e_. Anaziunganisha kuunda skala ya mwisho _s_ ukitumia fomula _s_ = _k_ + _ex_. Humpa Bob _s_.
+
+4. Bob sasa anajua skala _s_ na _e_, lakini si _x_ au _k_. Hata hivyo, Bob anajua _xG_ na _kG_, na anaweza kukokotoa mwenyewe _sG_ na _exG_. Hiyo inamaanisha anaweza kuangalia usawa wa toleo lililokuliwa la operesheni Alice aliyofanya: [.keep-together]#_sG_ == _kG_ + _exG_.# Ikiwa hiyo ni sawa, basi Bob anaweza kuwa na uhakika kwamba Alice alijua _x_ alipozalisha _s_.
+
+.Itifaki ya Utambulisho ya Schnorr yenye Nambari Kamili Badala ya Hatua
+****
+Inaweza kuwa rahisi zaidi kuelewa itifaki ya mwingiliano ya utambulisho ya schnorr ikiwa tutaunda urahisishaji usio na usalama kwa kubadilisha kila moja ya thamani zilizotangulia (ikiwa ni pamoja na _G_) kwa nambari kamili rahisi badala ya hatua kwenye mkondo wa duaradufu. Kwa mfano, tutatumia nambari za kwanza kuanzia 3:
+
+Usanidi: Alice anachagua _x_ = 3 kama funguo yake ya siri. Anaizidisha na jenereta _G_ = 5 kupata funguo yake ya umma _xG_ = 15. Humpa Bob 15.
+
+1. Alice anachagua nambari ya kipekee ya siri _k_ = 7 na kuzalisha nambari ya kipekee ya umma _kG_ = 35. Humpa Bob 35.
+
+2. Bob anachagua _e_ = 11 na kumpa Alice.
+
+3. Alice anazalisha _s_ = 40 = 7 + 11 × 3. Humpa Bob 40.
+
+4. Bob anapata _sG_ = 200 = 40 × 5 na _exG_ = 165 = 11 × 15. Kisha anathibitisha kwamba [.keep-together]#200 == 35 + 165.# Kumbuka kwamba hii ni operesheni ile ile ambayo Alice alifanya, lakini thamani zote zimepandishwa kwa kiwango cha 5 (thamani ya _G_).
+
+Bila shaka, hii ni mfano uliozidishwa. Ukifanya kazi na nambari kamili rahisi, tunaweza kugawanya mazao na jenereta _G_ kupata skala ya msingi, ambayo si salama. Ndiyo maana kipengele muhimu cha kriptografia ya mkondo wa duaradufu inayotumiwa katika Bitcoin ni kwamba kuzidisha ni rahisi lakini kugawanya kwa hatua kwenye mkondo si ya vitendo. Pia, kwa nambari ndogo hivyo, kupata thamani za msingi (au mbadala halali) kwa nguvu ya kubahatisha ni rahisi; nambari zinazotumiwa katika Bitcoin ni kubwa zaidi.
+****
+
+Hebu tuzungumze baadhi ya vipengele vya itifaki ya mwingiliano ya utambulisho ya schnorr vinavyoifanya kuwa salama:
+
+Nambari ya kipekee (k)::
+Katika hatua ya 1, ((("saini za kidijitali", "algoriti ya saini ya schnorr", "vipengele vya usalama")))((("algoriti ya saini ya schnorr", "vipengele vya usalama")))Alice anachagua nambari ambayo Bob haijui na hawezi kuikisia na humpa toleo lake lililokuliwa, _kG_. Wakati huo, Bob tayari ana funguo yake ya umma (_xG_), ambayo ni toleo lililokuliwa la _x_, funguo yake ya siri. Hiyo inamaanisha Bob anapofanya kazi kwenye equation ya mwisho (_sG_ = _kG_ + _exG_), kuna vigeuzi viwili vya kujitegemea ambavyo Bob haijui (_x_ na _k_). Inawezekana kutumia aljebra rahisi kutatua equation yenye kigeuzio kimoja kisichojulikana lakini si vigeuzi viwili vya kujitegemea visivyojulikana, kwa hivyo uwepo wa nambari ya kipekee ya Alice unazuia Bob kuweza kupata funguo yake ya siri. Ni muhimu kukumbuka kwamba ulinzi huu unategemea nambari za kipekee kuwa haziwezi kukisiwa kwa njia yoyote. Ikiwa kuna kitu chochote kinachoweza kutabiriwa kuhusu nambari ya kipekee ya Alice, Bob anaweza kuutumia kupata funguo ya siri ya Alice. Angalia <<nonce_warning>> kwa maelezo zaidi.
+
+Skala ya changamoto (e)::
+Bob anasubiri kupokea nambari ya kipekee ya umma ya Alice na kisha anaendelea katika hatua ya 2 kumpa nambari (skala ya changamoto) ambayo Alice hakuijua awali na hakuweza kuikisia. Ni muhimu kwamba Bob ampe skala ya changamoto tu baada ya kupokea ahadi yake ya nambari ya kipekee ya umma. Fikiria kingeweza kutokea ikiwa mtu ambaye hakujua _x_ alitaka kujidhihirisha kama Alice, na Bob kwa bahati alimpa skala ya changamoto _e_ kabla hawajamwambia nambari ya kipekee ya umma _kG_. Hii inaruhusu mhalifu kubadilisha vigezo kwenye pande zote mbili za equation ambayo Bob atatumia kwa uthibitishaji, _sG_ == _kG_ + _exG_; hasa, wanaweza kubadilisha _sG_ na _kG_. Fikiria muundo rahisi wa usemi huo: _x_ = _y_ + _a_. Ukiweza kubadilisha _x_ na _y_, unaweza kuondoa _a_ ukitumia _x_++'++ = (_x_ – _a_) + _a_. Thamani yoyote unayochagua kwa _x_ itakidhi equation. Kwa equation halisi mhalifu huchagua nambari ya nasibu kwa _s_, huzalisha _sG_, na kisha hutumia ufutaji wa EC kuchagua _kG_ unaosawa _kG_ = _sG_ – _exG_. Humpa Bob _kG_ yake iliyokokotolewa na baadaye _sG_ yake ya nasibu, na Bob anafikiri hiyo ni halali kwa sababu [.keep-together]#_sG_ == (_sG_ – _exG_)# + _exG_. Hii inaelezea kwa nini mpangilio wa operesheni katika itifaki ni muhimu: Bob lazima ampe Alice tu skala ya changamoto baada ya Alice kujitolea kwa nambari yake ya kipekee ya umma.
+
+++++
+<p class="fix_tracking">
+Itifaki ya mwingiliano ya utambulisho inayoelezwa hapa inafanana na sehemu ya maelezo ya awali ya Claus Schnorr, lakini inakosa vipengele viwili muhimu tunazovihitaji kwa mtandao wa Bitcoin usio na kati. Ya kwanza ni kwamba inategemea Bob kusubiri Alice kujitolea kwa nambari yake ya kipekee ya umma na kisha Bob kumpa skala ya nasibu ya changamoto. Katika Bitcoin, mtumia wa kila muamala anahitaji kuthibitishwa na maelfu ya nodi kamili za Bitcoin — ikiwa ni pamoja na nodi za baadaye ambazo bado hazijaanzishwa lakini waendeshaji wake siku moja watataka kuhakikisha bitcoini wanazopokea zilitoka katika mnyororo wa uhamishaji ambapo kila muamala ulikuwa halali. Nodi yoyote ya Bitcoin ambayo haiwezi kuwasiliana na Alice, leo au katika siku zijazo, haitaweza kuthibitisha muamala wake na itakuwa katika kutokubaliana na kila nodi nyingine iliyouthibitisha. Hiyo si inayokubalika kwa mfumo wa makubaliano kama Bitcoin. Ili Bitcoin ifanye kazi, tunahitaji itifaki ambayo haihitaji mwingiliano kati ya Alice na kila nodi inayotaka kumthibitisha.
+</p>
+++++
+
+Mbinu rahisi, inayojulikana kama mabadiliko ya Fiat-Shamir baada ya waguzi wake, inaweza kubadilisha itifaki ya mwingiliano ya utambulisho ya schnorr kuwa mpango wa saini ya kidijitali usio wa mwingiliano. Kumbuka umuhimu wa hatua za 1 na 2 — ikiwa ni pamoja na kwamba lazima zifanywe kwa mpangilio. Alice lazima ajitolee kwa nambari ya kipekee isiyotabirika; Bob lazima ampe Alice skala isiyotabirika ya changamoto tu baada ya kupokea ahadi yake. Kumbuka pia sifa za kazi salama za heshi za kriptografia tulizotumia mahali pengine katika kitabu hiki: daima itazalisha matokeo sawa yanapopewa pembejeo sawa lakini itazalisha thamani isiyoweza kutofautishwa na data ya nasibu yanapopewa pembejeo tofauti.
+
+Hii inaruhusu Alice kuchagua nambari yake ya kipekee ya siri, kupata nambari yake ya kipekee ya umma, na kisha kujumuisha nambari ya kipekee ya umma kupata skala ya changamoto. Kwa sababu Alice hawezi kutabiri matokeo ya kazi ya heshi (changamoto), na kwa sababu daima ni ile ile kwa pembejeo ile ile (nambari ya kipekee), hii inahakikisha kwamba Alice anapata changamoto ya nasibu ingawa anachagua nambari ya kipekee na kuijumuisha mwenyewe. Hatuihitaji tena mwingiliano kutoka kwa Bob. Anaweza tu kuchapisha nambari yake ya kipekee ya umma _kG_ na skala _s_, na kila moja ya maelfu ya nodi kamili (za zamani na za baadaye) inaweza kujumuisha _kG_ kuzalisha _e_, kutumia hiyo kuzalisha _exG_, na kisha kuthibitisha _sG_ == _kG_ + _exG_. Ikiandikwa wazi, equation ya uthibitishaji inakuwa [.keep-together]#_sG_ == _kG_ + _heshi_(_kG_) × _xG_.#
+
+Tunahitaji kitu kimoja zaidi kumaliza kubadilisha itifaki ya mwingiliano ya utambulisho ya schnorr kuwa itifaki ya saini ya kidijitali inayofaa kwa Bitcoin. Hatutaki tu Alice athibitishe kwamba anajua funguo yake ya siri; pia tunataka kumpa uwezo wa kujitolea kwa ujumbe. Hasa, tunataka ajitolee kwa data inayohusiana na muamala wa Bitcoin anataka kutuma. Kwa mabadiliko ya Fiat-Shamir yaliyowekwa, tayari tuna ahadi, kwa hivyo tunaweza tu kuwa nayo pia ijitolee kwa ujumbe. Badala ya _heshi_(_kG_), sasa pia tunajitolea kwa ujumbe _m_ ukitumia _heshi_(_kG_ || _m_), ambapo || inasimama kwa muunganiko.
+
+Sasa tumebainisha toleo la itifaki ya saini ya schnorr, lakini kuna kitu kimoja zaidi tunahitaji kufanya kushughulikia wasiwasi maalum wa Bitcoin. Katika utoaji wa funguo la BIP32, kama ilivyoelezwa katika <<public_child_key_derivation>>, algoriti ya utoaji usio wa kuimarishwa huchukua funguo ya umma na kuiongezea thamani isiyosiri kuzalisha funguo ya umma iliyotokana. Hiyo inamaanisha pia inawezekana kuongeza thamani hiyo isiyosiri kwa saini halali kwa funguo moja kuzalisha saini kwa funguo inayohusiana. Saini hiyo inayohusiana ni halali lakini haikuidhinishwa na mtu anayemiliki funguo ya siri, ambayo ni kushindwa kubwa kwa usalama. Kulinda utoaji usio wa kuimarishwa wa BIP32 na pia kusaidia itifaki kadhaa ambazo watu walitaka kuunda juu ya saini za schnorr, toleo la Bitcoin la saini za schnorr, linaloitwa _saini za schnorr za BIP340 kwa secp256k1_, pia linajitolea kwa funguo ya umma inayotumika pamoja na nambari ya kipekee ya umma na ujumbe. Hiyo inafanya ahadi kamili _heshi_(_kG_ || _xG_ || _m_).
+
+Sasa kwa kuwa tumeelezea kila sehemu ya algoriti ya saini ya schnorr ya BIP340 na kueleza inachofanya kwa ajili yetu, tunaweza kubainisha itifaki. Kuzidisha kwa nambari kamili kunafanywa _modulo p_, ikionyesha kwamba matokeo ya operesheni yanagawanywa na nambari _p_ (kama ilivyobainishwa katika kiwango cha secp256k1) na mabaki hutumika. Nambari _p_ ni kubwa sana, lakini kama ingekuwa 3 na matokeo ya operesheni ilikuwa 5, nambari halisi tunayoitumia ingekuwa 2 (yaani, 5 kugawanywa na 3 ina mabaki ya 2).
+
+Usanidi: Alice anachagua nambari kubwa ya nasibu (_x_) kama funguo yake ya siri (ama moja kwa moja au kwa kutumia itifaki kama BIP32 kuzalisha kwa ubainishaji funguo ya siri kutoka kwa thamani kubwa ya mbegu ya nasibu). Anatumia vigezo vilivyobainishwa katika secp256k1 (angalia <<elliptic_curve>>) kuzidisha jenereta _G_ kwa skala yake _x_, ikizalisha _xG_ (funguo yake ya umma). Humpa funguo yake ya umma kwa kila mtu atakayethibitisha baadaye miamala yake ya Bitcoin (k.m., kwa kuwa _xG_ imejumuishwa katika tokeo la muamala). Anapokuwa tayari kutumia, anaanza kuzalisha saini yake:
+
+1. Alice anachagua nambari ya kipekee ya siri kubwa ya nasibu _k_ na kupata nambari ya kipekee ya umma _kG_.
+
+2. Anachagua ujumbe wake _m_ (k.m., data ya muamala) na kuzalisha skala ya changamoto _e_ = _heshi_(_kG_ || _xG_ || _m_).
+
+3. Anazalisha skala _s_ = _k_ + _ex_. Thamani mbili _kG_ na _s_ ndizo saini yake. Humpa saini hii kwa kila mtu anayetaka kuthibitisha saini hiyo; pia anahitaji kuhakikisha kila mtu anapokea ujumbe wake _m_. Katika Bitcoin, hii hufanywa kwa kujumuisha saini yake katika muundo wa shahidi wa muamala wake wa matumizi na kisha kupeleka muamala huo kwa nodi kamili.
+
+4. Wathibitishaji (k.m., nodi kamili) hutumia _s_ kupata _sG_ na kisha kuthibitisha kwamba _sG_ == _kG_ + _heshi_(_kG_ || _xG_ || _m_) × _xG_. Ikiwa equation ni halali, Alice alithibitisha kwamba anajua funguo yake ya siri _x_ (bila kuifichua) na alijitolea kwa ujumbe _m_ (unaojumuisha data ya muamala).
+
+==== Userializaji wa Saini za Schnorr
+
+Saini ya schnorr ((("saini za kidijitali", "algoriti ya saini ya schnorr", "userializaji")))((("algoriti ya saini ya schnorr", "userializaji")))((("userializaji", "wa algoriti ya saini ya schnorr", secondary-sortas="schnorr")))inajumuisha thamani mbili, _kG_ na _s_. Thamani _kG_ ni hatua kwenye mkondo wa duaradufu wa Bitcoin (inayoitwa secp256k1) na kawaida ingewakilishwa na kuratibu mbili za baiti 32, k.m., (_x_, _y_). Hata hivyo, kuratibu ya _x_ peke yake inahitajika, kwa hivyo thamani hiyo peke yake ndiyo inayojumuishwa. Unapoona _kG_ katika saini za schnorr za Bitcoin, kumbuka kwamba ni kuratibu ya _x_ tu ya hatua hiyo.
+
+Thamani _s_ ni skala (nambari inayokusudiwa kuzidisha nambari nyingine). Kwa mkondo wa secp256k1 wa Bitcoin, haiwezi kamwe kuwa na urefu zaidi ya baiti 32.
+
+Ingawa _kG_ na _s_ zote wakati mwingine zinaweza kuwa thamani zinazoweza kuwakilishwa kwa baiti chache kuliko 32, ni nadra kwamba zingekuwa ndogo zaidi ya baiti 32, kwa hivyo zinaserialishwa kama thamani mbili za baiti 32 (yaani, thamani ndogo kuliko baiti 32 zina sifuri zinazoongoza). Zinaserialishwa kwa mpangilio wa _kG_ kisha _s_, ikizalisha baiti 64 hasa.
+
+Uma laini wa taproot, pia unaoitwa segwit v1, ulianzisha saini za schnorr katika Bitcoin na ndiyo njia pekee zinazotumiwa katika Bitcoin kwa wakati wa kuandika huu. Zinapotumiwa kwa matumizi ya njia ya funguo ya taproot au ya njia ya hati, saini ya schnorr ya baiti 64 inachukuliwa kutumia heshi ya saini (sighash) chaguo-msingi ambayo ni +SIGHASH_ALL+. Ikiwa sighash mbadala inatumika, au ikiwa mtumia anataka kupoteza nafasi kubainisha wazi +SIGHASH_ALL+, baiti moja ya ziada huambatishwa kwenye saini inayobainisha heshi ya saini, ikifanya saini iwe baiti 65.
+
+Kama tutakavyoona, baiti 64 au 65 ni na ufanisi zaidi kuliko userializaji unaotumiwa kwa saini za ECDSA ulioelezwa katika <<serialization_of_signatures_der>>.
+
+[[schnorr_multisignatures]]
+==== Saini Nyingi Zisizo na Hati za Msingi wa Schnorr
+
+Katika ((("saini za kidijitali", "algoriti ya saini ya schnorr", "saini nyingi zisizo na hati", id="digital-sigs-schnorr-multisig")))((("algoriti ya saini ya schnorr", "saini nyingi zisizo na hati", id="schnorr-multisig")))((("saini nyingi zisizo na hati", "katika algoriti ya saini ya schnorr", secondary-sortas="schnorr", id="scriptless-multi-schnorr")))((("hati za multisaini", "katika algoriti ya saini ya schnorr", secondary-sortas="schnorr", id="multi-script-schnorr")))itifaki ya saini moja ya schnorr iliyoelezwa katika <<schnorr_signatures>>, Alice hutumia saini (_kG_, _s_) kuthibitisha hadharani ujuzi wake wa funguo yake ya siri, ambayo katika kesi hii tutaiita _y_. Fikiria ikiwa Bob pia ana funguo ya siri (_z_) na yuko tayari kushirikiana na Alice kuthibitisha kwamba pamoja wanajua _x_ = _y_ + _z_ bila mmoja wao kumfichulia mwingine au mtu mwingine yeyote funguo yao ya siri. Hebu tupitie tena itifaki ya saini ya schnorr ya BIP340.
+
+[WARNING]
+====
+Itifaki rahisi tunayokaribia kuelezea si salama kwa sababu tutakazozielezea hivi karibuni. Tuiitumia tu kuonyesha mfumo wa saini nyingi za schnorr kabla ya kuelezea itifaki zinazohusiana ambazo zinaaminiwa kuwa salama.
+====
+
+Alice na Bob wanahitaji kupata funguo ya umma kwa _x_, ambayo ni _xG_. Kwa kuwa inawezekana kutumia operesheni za mkondo wa duaradufu kuongeza hatua mbili za EC pamoja, wanaanza kwa Alice kupata _yG_ na Bob kupata _zG_. Kisha wanazijumlisha pamoja kuunda [.keep-together]#_xG_ = _yG_ + _zG_.# Hatua _xG_ ni ((("funguo za umma zilizounganishwa")))((("funguo za umma", "zilizounganishwa")))_funguo yao ya umma iliyounganishwa_. Kuunda saini, wanaanza itifaki rahisi ya saini nyingi:
+
+1. Kila mmoja kwa kujitegemea anachagua nambari kubwa ya nasibu ya kipekee ya siri, _a_ kwa Alice na _b_ kwa Bob. Pia kwa kujitegemea wanapata nambari ya kipekee ya umma inayolingana _aG_ na _bG_. Pamoja, wanazalisha nambari ya kipekee ya umma iliyounganishwa _kG_ = _aG_ + _bG_.
+
+2. Wanakubaliana juu ya ujumbe wa kusaini, _m_ (k.m., muamala), na kila mmoja huzalisha nakala ya skala ya changamoto: _e_ = _heshi_(_kG_ || _xG_ || _m_).
+
+3. Alice huzalisha skala _q_ = _a_ + _ey_. Bob huzalisha skala _r_ = _b_ + _ez_. Wanaongeza skala pamoja kuzalisha _s_ = _q_ + _r_. Saini yao ni thamani mbili _kG_ [.keep-together]#na _s_.#
+
+4. Wathibitishaji hukagua funguo yao ya umma na saini ukitumia equation ya kawaida: [.keep-together]#_sG_ ==# _kG_ + _heshi_(_kG_ || _xG_ || _m_) × _xG_.
+
+Alice na Bob wamethibitisha kwamba wanajua jumla ya funguo zao za siri bila mmoja wao kumfichulia mwingine au mtu mwingine yeyote funguo yake ya siri. Itifaki inaweza kupanuliwa kwa washiriki wowote (k.m., watu milioni wangeweza kuthibitisha wanajua jumla ya funguo zao milioni tofauti).
+
+Itifaki iliyotangulia ina matatizo kadhaa ya usalama. Inayoonekana zaidi ni kwamba upande mmoja unaweza kujua funguo za umma za pande nyingine kabla ya kujitolea kwa funguo yake ya umma. Kwa mfano, Alice huzalisha funguo yake ya umma _yG_ kwa uaminifu na kuishiriki na Bob. Bob huzalisha funguo yake ya umma ukitumia _zG_ – _yG_. Funguo zao mbili zinapochanganywa [.keep-together]#(_yG_ + _zG_ – _yG_),# maneno chanya na hasi ya _yG_ yanafutana kwa hivyo funguo ya umma inawakilisha tu funguo ya siri ya _z_ (yaani, funguo ya siri ya Bob). Sasa Bob anaweza kuunda saini halali bila msaada wowote kutoka kwa Alice. Hii ((("mashambulizi ya kufuta funguo")))inaitwa _shambulio la kufuta funguo_.
+
+Kuna njia mbalimbali za kutatua shambulio la kufuta funguo. Mpango rahisi zaidi ungekuwa kuhitaji kila mshiriki ajitolee kwa sehemu yake ya funguo ya umma kabla ya kushiriki chochote kuhusu funguo hiyo na washiriki wengine wote. Kwa mfano, Alice na Bob kila mmoja hujumuisha funguo zao za umma na kushiriki muhtasari wao na kila mmoja. Wakati wote wana muhtasari wa mwenzake, wanaweza kushiriki funguo zao. Kwa kujitegemea wanakagua kwamba funguo ya mwenzake inajumuishwa hadi kwenye muhtasari uliotolewa awali na kisha kuendelea na itifaki kwa kawaida. Hii inazuia yeyote wao kuchagua funguo ya umma ambayo inafuta funguo za washiriki wengine. Hata hivyo, ni rahisi kushindwa kutekeleza mpango huu kwa usahihi, kama vile kuutumia kwa njia ya kiasili na utoaji wa funguo ya umma wa BIP32 usio wa kuimarishwa. Zaidi ya hayo, huongeza hatua ya ziada ya mawasiliano kati ya washiriki, ambayo inaweza kuwa isiyopendeza katika hali nyingi. Mipango ya ugumu zaidi imependekezwa inayoshughulikia mapungufu haya.
+
+Pamoja na shambulio la kufuta funguo, kuna mashambulizi mengi yanayowezekana dhidi ya ((("mashambulizi ya nambari ya kipekee")))nambari za kipekee. Kumbuka kwamba madhumuni ya nambari ya kipekee ni kuzuia mtu yeyote kuweza kutumia ujuzi wao wa thamani nyingine katika equation ya uthibitishaji wa saini kutatua funguo yako ya siri, kubainisha thamani yake. Kutimiza hilo kwa ufanisi, lazima utumie nambari tofauti ya kipekee kila wakati unasaini ujumbe tofauti au ubadilishe vigezo vingine vya saini. Nambari tofauti za kipekee lazima zisiwe na uhusiano wowote. Kwa saini nyingi, kila mshiriki lazima afuate sheria hizi au inaweza kudhoofu usalama wa washiriki wengine. Zaidi ya hayo, kufutana na mashambulizi mengine yanahitaji kuzuiwa. Itifaki tofauti zinazotimiza malengo haya hufanya biashara tofauti, kwa hivyo hakuna itifaki moja ya saini nyingi ya kupendekeza katika hali zote. Badala yake, tutaandika tatu kutoka kwa familia ya itifaki za MuSig:
+
+MuSig::
+  Pia inaitwa _MuSig1_, itifaki hii((("itifaki ya MuSig"))) inahitaji mzunguko mitatu ya mawasiliano wakati wa mchakato wa kusaini, ikifanya ifanane na mchakato tulioelezea tu. Faida kubwa zaidi ya MuSig1 ni urahisi wake.
+
+MuSig2::
+  Hii inahitaji tu ((("itifaki ya MuSig2")))mzunguko miwili ya mawasiliano na wakati mwingine inaruhusu mzunguko mmoja kuunganishwa na ubadilishanaji wa funguo. Hii inaweza kuharakisha sana kusaini kwa itifaki fulani, kama vile jinsi saini nyingi zisizo na hati zinavyopangwa kutumika katika LN. MuSig2 inabainishwa katika BIP327 (itifaki pekee ya saini nyingi zisizo na hati ambayo ina BIP kwa wakati wa kuandika huu).
+
+MuSig-DN::
+  DN inasimama ((("itifaki ya MuSig-DN")))((("mashambulizi ya kipindi kilichorudiwa")))kwa Nambari ya Kipekee ya Ubainishaji, inayoondoa kama wasiwasi tatizo linaloitwa _shambulio la kipindi kilichorudiwa_. Haiwezi kuunganishwa na ubadilishanaji wa funguo na ni ngumu zaidi kwa kiasi kikubwa kutekeleza kuliko MuSig au MuSig2.
+
+Kwa programu nyingi, MuSig2 ni itifaki bora zaidi ya saini nyingi inayopatikana wakati((("saini za kidijitali", "algoriti ya saini ya schnorr", "saini nyingi zisizo na hati", startref="digital-sigs-schnorr-multisig")))((("algoriti ya saini ya schnorr", "saini nyingi zisizo na hati", startref="schnorr-multisig")))((("saini nyingi zisizo na hati", "katika algoriti ya saini ya schnorr", secondary-sortas="schnorr", startref="scriptless-multi-schnorr")))((("hati za multisaini", "katika algoriti ya saini ya schnorr", secondary-sortas="schnorr", startref="multi-script-schnorr"))) wa kuandika huu.
+
+[[schnorr_threshold_signatures]]
+==== Saini za Kizingiti Zisizo na Hati za Msingi wa Schnorr
+
+Itifaki za ((("saini za kidijitali", "algoriti ya saini ya schnorr", "saini za kizingiti zisizo na hati", id="digital-sigs-schnorr-threshold")))((("algoriti ya saini ya schnorr", "saini za kizingiti zisizo na hati", id="schnorr-threshold")))((("saini za kizingiti zisizo na hati", id="scriptless-threshold-schnorr")))((("saini za kizingiti", "katika algoriti ya saini ya schnorr", secondary-sortas="schnorr", id="threshold-schnorr")))saini nyingi zisizo na hati hufanya kazi tu kwa kusaini _k_-kati-ya-_k_. Kila mtu mwenye funguo ya umma ya sehemu inayokuwa sehemu ya funguo ya umma iliyounganishwa lazima achangie saini ya sehemu na nambari ya kipekee ya sehemu kwa saini ya mwisho. Wakati mwingine, hata hivyo, washiriki wanataka kuruhusu sehemu yao kusaini, kama vile _t_-kati-ya-_k_ ambapo idadi ya kizingiti (_t_) ya washiriki inaweza kusaini kwa funguo iliyoundwa na washiriki _k_. Aina hiyo ya saini inaitwa _saini ya kizingiti_.
+
+Tuliona saini za kizingiti za msingi wa hati katika <<multisig>>. Lakini kama saini nyingi zisizo na hati zinavyookoa nafasi na kuongeza faragha ikilinganishwa na saini nyingi za hati, _saini za kizingiti zisizo na hati_ zinaokoa nafasi na kuongeza faragha ikilinganishwa na _saini za kizingiti za hati_. Kwa mtu yeyote asiyehusika katika kusaini, _saini ya kizingiti isiyo na hati_ inaonekana kama saini nyingine yoyote ambayo ingeweza kuundwa na mtumiaji wa saini moja au kupitia itifaki ya saini nyingi isiyo na hati.
+
+Mbinu mbalimbali zinajulikana kwa kuzalisha saini za kizingiti zisizo na hati, rahisi zaidi ikiwa marekebisho madogo ya jinsi tulivyounda saini nyingi zisizo na hati awali. Itifaki hii pia inategemea ushirikiano wa siri unaoweza kuthibitishwa (ambao wenyewe unategemea ushirikiano salama wa siri).
+
+Ushirikiano wa msingi wa siri unaweza kufanya kazi kupitia mgawanyiko rahisi. Alice ana nambari ya siri ambayo anagawanya katika sehemu tatu za urefu sawa na kushiriki na Bob, Carol, na Dan. Hao watatu wanaweza kuchanganya nambari za sehemu walizopokea (zinazoitwa _hisa_) kwa mpangilio sahihi kuunda upya siri ya Alice. Mpango wa hali ya juu zaidi ungejumuisha Alice kuongeza taarifa za ziada kwa kila hisa, inayoitwa msimbo wa marekebisho, unaoruhusu yoyote wawili wao kurejesha nambari. Mpango huu si salama kwa sababu kila hisa humpa mwenye wake ujuzi wa sehemu wa siri ya Alice, ikifanya iwe rahisi zaidi kwa mshiriki kukisia siri ya Alice kuliko mtu asiyeshiriki ambaye hana hisa.
+
+Mpango salama wa ushirikiano wa siri huzuia washiriki kujifunza chochote kuhusu siri isipokuwa wanachanganya idadi ya kizingiti ya hisa. Kwa mfano, Alice anaweza kuchagua kizingiti cha 2 ikiwa anataka yoyote wawili kati ya Bob, Carol, na Dan kuweza kuunda upya siri yake. Algoriti ya ushirikiano salama wa siri inayojulikana zaidi ni _Mpango wa Ushirikiano wa Siri wa Shamir_, kwa kawaida inafupishwa SSSS na hupewa jina la mugunduzi wake, mmoja wa wagundua wale wale wa mabadiliko ya Fiat-Shamir tuliyoona katika <<schnorr_signatures>>.
+
+Katika itifaki fulani za kriptografia, kama vile mipango ya saini ya kizingiti isiyo na hati tunayokuelekea, ni muhimu sana kwa Bob, Carol, na Dan kujua kwamba Alice alifuata upande wake wa itifaki kwa usahihi. Wanahitaji kujua kwamba hisa zote anazozunda zinatoka kwa siri ile ile, kwamba alitumia thamani ya kizingiti anayodai, na kwamba alimpa kila mmoja wao hisa tofauti. Itifaki inayoweza kutimiza hilo lote, na bado kuwa mpango salama wa ushirikiano wa siri, ni _mpango wa ushirikiano wa siri unaoweza kuthibitishwa_.
+
+Kuona jinsi saini nyingi na ushirikiano wa siri unaoweza kuthibitishwa unavyofanya kazi kwa Alice, Bob, na Carol, fikiria kila mmoja wao anataka kupokea fedha ambazo zinaweza kutumika na yoyote wawili wao. Wanashirikiana kama ilivyoelezwa katika <<schnorr_multisignatures>> kuzalisha funguo ya kawaida ya umma ya saini nyingi kukubali fedha (k-kati-ya-k). Kisha kila mshiriki hupata hisa mbili za siri kutoka kwa funguo yake ya siri ya sehemu — moja kwa kila mmoja wa washiriki wengine wawili. Hisa hizi huruhusu yoyote wawili wao kuunda upya funguo ya siri ya sehemu ya asili kwa saini nyingi. Kila mshiriki husambaza moja ya hisa zake kwa washiriki wengine wawili, na kusababisha kila mshiriki kuhifadhi funguo yao ya siri ya sehemu na hisa moja kwa kila mshiriki mwingine. Baadaye, kila mshiriki huthibitisha uhalisi na upekee wa hisa walizopokea ikilinganishwa na hisa zilizopewa washiriki wengine.
+
+Baadaye, wakati (kwa mfano) Alice na Bob wanataka kuzalisha saini ya kizingiti isiyo na hati bila ushiriki wa Carol, wanabadilishana hisa mbili wanazo kwa Carol. Hii inawawezesha kuunda upya funguo ya siri ya sehemu ya Carol. Alice na Bob pia wana funguo zao za siri, kuwaruhusu kuunda saini nyingi isiyo na hati yenye funguo zote tatu zinazohitajika.
+
+Kwa maneno mengine, mpango wa saini ya kizingiti isiyo na hati ulioelezwa ni ule ule kama mpango wa saini nyingi isiyo na hati isipokuwa kwamba idadi ya kizingiti ya washiriki wana uwezo wa kuunda upya funguo za siri za sehemu za washiriki wengine wowote ambao hawawezi au hawataki kusaini.
+
+Hii inaonyesha mambo machache ya kutambua unapofikiria itifaki ya saini ya kizingiti isiyo na hati:
+
+Hakuna uwajibikaji::
+Kwa sababu Alice na Bob wanaunda upya funguo ya siri ya sehemu ya Carol, hakuweza kuwa na tofauti ya kimsingi kati ya saini nyingi isiyo na hati iliyozalishwa na mchakato ambao ulimuhusu Carol na ule ambao haukumhusu. Hata kama Alice, Bob, au Carol wanadai hawakusaini, hakuna njia ya dhamana kwao kuthibitisha hawakusaidia kuzalisha saini. Ikiwa ni muhimu kujua ni wanachama gani wa kikundi walisaini, utalazimika kutumia hati.
+
+Mashambulizi ya udhibiti::
+Fikiria Bob anamwambia Alice kwamba Carol hapatikani, kwa hivyo wanashirikiana kuunda upya funguo ya siri ya sehemu ya Carol. Kisha Bob anamwambia Carol kwamba Alice hapatikani, kwa hivyo wanashirikiana kuunda upya funguo ya siri ya sehemu ya Alice. Sasa Bob ana funguo yake ya siri ya sehemu pamoja na funguo za Alice na Carol, kumuruhusu kutumia fedha mwenyewe bila ushiriki wao. Shambulio hili linaweza kushughulikiwa ikiwa washiriki wote wanakubaliana kuwasiliana tu ukitumia mpango unaoruhusu yeyote mmoja wao kuona ujumbe wote wa wengine (k.m., ikiwa Bob anamwambia Alice kwamba Carol hapatikani, Carol anaweza kuona ujumbe huo kabla hajaanza kushirikiana na Bob). Ufumbuzi mwingine, labda wa nguvu zaidi, kwa tatizo hili ulikuwa ukifanyiwa utafiti wakati wa kuandika huu.
+
+Hakuna itifaki ya saini ya kizingiti isiyo na hati ambayo imependekezwa kama BIP bado, ingawa utafiti mkubwa katika mada hiyo umefanywa na wachangiaji wengi wa Bitcoin na tunatarajia ufumbuzi uliopitia ukaguzi wa wenzao utapatikana baada ya kuchapishwa kwa((("saini za kidijitali", "algoriti ya saini ya schnorr", startref="digital-sigs-schnorr")))((("algoriti ya saini ya schnorr", startref="schnorr")))((("saini za kidijitali", "algoriti ya saini ya schnorr", "saini za kizingiti zisizo na hati", startref="digital-sigs-schnorr-threshold")))((("algoriti ya saini ya schnorr", "saini za kizingiti zisizo na hati", startref="schnorr-threshold")))((("saini za kizingiti zisizo na hati", startref="scriptless-threshold-schnorr")))((("saini za kizingiti", "katika algoriti ya saini ya schnorr", secondary-sortas="schnorr", startref="threshold-schnorr"))) kitabu hiki.
+
+[[ecdsa_signatures]]
+=== Saini za ECDSA
+
+Kwa bahati mbaya ((("saini za kidijitali", "ECDSA", id="digital-signature-ecdsa")))((("ECDSA (Algoriti ya Saini ya Kidijitali ya Mkondo wa Duaradufu)", id="ecdsa")))kwa maendeleo ya baadaye ya Bitcoin na programu nyingi nyingine, Claus Schnorr alipiga hati miliki algoriti aliyoigundua na kuzuia matumizi yake katika viwango vya wazi na programu ya chanzo huria kwa karibu miongo miwili. Wataalamu wa kriptografia mwanzoni mwa miaka ya 1990 ambao walilazimishwa wasitumie mpango wa saini ya schnorr walikuza muundo mbadala unaoitwa _Algoriti ya Saini ya Kidijitali_ (DSA), na toleo lililokusudiwa kwa mikondo ya duaradufu linaloitwa ECDSA.
+
+Mpango wa ECDSA na vigezo vilivyowekwa kwa kawaida kwa mikondo iliyopendekezwa inayoweza kutumika navyo vilitekelezwa sana katika maktaba za kriptografia wakati maendeleo ya Bitcoin yalipoanza mwaka 2007. Hiyo bila shaka ilikuwa sababu kwa nini ECDSA ilikuwa itifaki pekee ya saini ya kidijitali ambayo Bitcoin ilisaidia kutoka toleo lake la kwanza la kutolewa hadi uanzishaji wa uma laini wa taproot mwaka 2021. ECDSA inasaidia leo kwa miamala yote isiyokuwa ya taproot. Baadhi ya tofauti ikilinganishwa na saini za schnorr ni pamoja na:
+
+Ngumu zaidi::
+  Kama tutakavyoona, ECDSA inahitaji operesheni nyingi zaidi kuunda au kuthibitisha saini kuliko itifaki ya saini ya schnorr. Si ngumu zaidi kwa kiasi kikubwa kutoka kwa mtazamo wa utekelezaji, lakini ugumu huo wa ziada unafanya ECDSA kuwa na unyumbufu mdogo, utendaji mdogo, na ni ngumu zaidi kuthibitisha kuwa salama.
+
+Usalama mdogo unaothibitishwa::
+  Itifaki ya mwingiliano ya utambulisho ya saini ya schnorr inategemea tu nguvu ya Tatizo la Logariti Tofauti la Mkondo wa Duaradufu (ECDLP). Itifaki ya uthibitishaji isio wa mwingiliano inayotumiwa katika Bitcoin pia inategemea mfano wa oracle wa nasibu (ROM). Hata hivyo, ugumu wa ziada wa ECDSA umezuia uthibitisho kamili wa usalama wake kuchapishwa (kwa kadri ya ujuzi wetu). Sisi si wataalamu wa kuthibitisha algoriti za kriptografia, lakini baada ya miaka 30 inaonekana ni vigumu kwamba ECDSA itathibitishwa kuhitaji tu mawazo yale yale mawili kama schnorr.
+
+Si ya mstari::
+  Saini za ECDSA haziwezi kuunganishwa kwa urahisi kuunda saini nyingi zisizo na hati au kutumika katika programu za hali ya juu zinazohusiana, kama vile vibadala vya saini vya pande nyingi. Kuna njia za kuzunguka tatizo hili, lakini zinahusisha ugumu wa ziada ambao hupunguza kwa kiasi kikubwa kasi ya operesheni na ambao, katika hali fulani, umesababisha programu kumwaga bila kukusudia funguo za siri.
+
+==== Algoriti ya ECDSA
+
+Hebu tuangalie hisabati ya ECDSA. Saini huundwa na kazi ya kihisabati _F_~_sig_~ inayozalisha saini inayoundwa na thamani mbili. Katika ECDSA, thamani hizo mbili ni _R_ na _s_.
+
+Algoriti ya saini kwanza huzalisha nambari ya kipekee ya siri (_k_) na kupata kutoka kwake nambari ya kipekee ya umma (_K_). Thamani ya _R_ ya saini ya kidijitali ni kisha kuratibu ya _x_ ya nambari ya kipekee _K_.
+
+Kutoka hapo, algoriti hukokotoa thamani ya _s_ ya saini. Kama tulivyofanya na saini za schnorr, operesheni zinazohusisha nambari kamili ni modulo p:
+
+[latexmath]
+++++
+\begin{equation}
+s = k^{-1} (Hash(m) + x \times R)
+\end{equation}
+++++
+
+ambapo:
+
+* _k_ ni nambari ya kipekee ya siri
+* _R_ ni kuratibu ya _x_ ya nambari ya kipekee ya umma
+* _x_ ni funguo ya siri ya Alice
+* _m_ ni ujumbe (data ya muamala)
+
+Uthibitishaji ni kinyume cha kazi ya kuzalisha saini, ukitumia thamani za _R_, _s_ na funguo ya umma kukokotoa thamani _K_, ambayo ni hatua kwenye mkondo wa duaradufu (nambari ya kipekee ya umma iliyotumiwa katika kuunda saini):
+
+[latexmath]
+++++
+\begin{equation}
+K = s^{-1} \times Hash(m) \times G + s^{-1} \times R \times X
+\end{equation}
+++++
+
+ambapo:
+
+- _R_ na _s_ ni thamani za saini
+- _X_ ni funguo ya umma ya Alice
+- _m_ ni ujumbe (data ya muamala iliyosainiwa)
+- _G_ ni hatua ya jenereta ya mkondo wa duaradufu
+
+Ikiwa kuratibu ya _x_ ya hatua _K_ iliyokokotolewa ni sawa na _R_, basi mthibitishaji anaweza kuhitimisha kwamba saini ni halali.
+
+[TIP]
+====
+ECDSA ni kipande cha hisabati chenye ugumu wa kutosha; maelezo kamili ni nje ya wigo wa kitabu hiki. Miongozo mingi mizuri mtandaoni inakupeleka hatua kwa hatua: tafuta "ECDSA explained."
+====
+
+[[serialization_of_signatures_der]]
+==== Userializaji wa Saini za ECDSA (DER)
+
+Hebu ((("userializaji", "saini za ECDSA")))tuangalie saini ifuatayo iliyowekwa kwa DER:
+
+----
+3045022100884d142d86652a3f47ba4746ec719bbfbd040a570b1deccbb6498c75c4ae24cb02204
+b9f039ff08df09cbe9f6addac960298cad530a863ea8f53982c09db8f6e381301
+----
+
+Saini hiyo ni mkondo wa baiti ulioserialishwa wa thamani za _R_ na _s_ zilizozalishwa na msainiaji kuthibitisha udhibiti wa funguo ya siri iliyoidhinishwa kutumia tokeo. Muundo wa userializaji unajumuisha vipengele tisa kama ifuatavyo:
+
+* +0x30+, ikionyesha mwanzo wa mfululizo wa DER
+* +0x45+, urefu wa mfululizo (baiti 69)
+  * +0x02+, thamani ya nambari kamili inafuata
+  * +0x21+, urefu wa nambari kamili (baiti 33)
+  * +R+, ++00884d142d86652a3f47ba4746ec719bbfbd040a570b1deccbb6498c75c4ae24cb++
+  * +0x02+, nambari kamili nyingine inafuata
+  * +0x20+, urefu wa nambari kamili (baiti 32)
+  * +S+, ++4b9f039ff08df09cbe9f6addac960298cad530a863ea8f53982c09db8f6e3813++
+* Kiambishi tamati (+0x01+) ikionyesha aina ya heshi((("saini za kidijitali", "ECDSA", startref="digital-signature-ecdsa")))((("ECDSA (Algoriti ya Saini ya Kidijitali ya Mkondo wa Duaradufu)", startref="ecdsa"))) iliyotumiwa (+SIGHASH_ALL+)
+
+[[nonce_warning]]
+=== Umuhimu wa Nasibu katika Saini
+
+Kama ((("saini za kidijitali", "nasibu, umuhimu wa", id="digital-signature-random")))((("nasibu, umuhimu katika saini za kidijitali", id="random-digital-signature")))tulivyoona katika <<schnorr_signatures>> na <<ecdsa_signatures>>, algoriti ya kuzalisha saini hutumia nambari ya nasibu _k_ kama msingi wa jozi ya nambari ya kipekee ya siri/ya umma. Thamani ya _k_ si muhimu, _mradi tu ni ya nasibu_. Ikiwa saini kutoka kwa funguo ile ile ya siri zinatumia nambari ya kipekee ya siri _k_ na ujumbe tofauti (miamala), basi _funguo ya siri_ ya kusaini inaweza kukokotolewa na mtu yeyote. Kutumia tena thamani ile ile ya _k_ katika algoriti ya saini husababisha kufichuliwa kwa funguo ya siri!
+
+[WARNING]
+====
+Ikiwa thamani ile ile ya _k_
+inatumika katika algoriti ya kusaini kwenye miamala miwili tofauti, funguo ya siri inaweza kukokotolewa na kufichuliwa kwa ulimwengu!
+====
+
+Hii si uwezekano wa nadharia tu. Tumeona tatizo hili kusababisha kufichuliwa kwa funguo za siri katika utekelezaji kadhaa tofauti wa algoriti za kusaini miamala katika Bitcoin. Watu wameibiwa fedha kwa sababu ya kutumia tena bila kukusudia thamani ya _k_. Sababu ya kawaida zaidi ya kutumia tena thamani ya _k_ ni jenereta ya nambari za nasibu iliyoanzishwa vibaya.
+
+Kuepuka udhaifu huu, mazoea bora ya tasnia ni kutozalisha _k_ na jenereta ya nambari za nasibu iliyoanzishwa kwa uingizaji wa nasibu peke yake, bali kutumia mchakato ulioanzishwa kwa sehemu na data ya muamala yenyewe pamoja na funguo ya siri inayotumiwa kusaini. Hii inahakikisha kwamba kila muamala huzalisha _k_ tofauti. Algoriti ya kiwango cha tasnia kwa uanzishaji wa ubainishaji wa _k_ kwa ECDSA imebainishwa katika https://oreil.ly/yuabl[RFC6979], iliyochapishwa na Kikosi Kazi cha Uhandisi wa Mtandao. Kwa saini za schnorr, BIP340 inapendekeza algoriti ya chaguo-msingi ya kusaini.
+
+BIP340 na RFC6979 zinaweza kuzalisha _k_ kwa ubainishaji kamili, kumaanisha data ile ile ya muamala daima itazalisha _k_ ile ile. Pochi nyingi hufanya hivi kwa sababu inafanya iwe rahisi kuandika majaribio kuthibitisha kwamba msimbo wao wa kusaini wa usalama muhimu unazalisha thamani za _k_ kwa usahihi. BIP340 na RFC6979 zote pia zinaruhusu kujumuisha data ya ziada katika hesabu. Ikiwa data hiyo ni uingizaji wa nasibu, basi _k_ tofauti itazalishwa hata kama data ile ile ya muamala inasainiwa. Hii inaweza kuongeza ulinzi dhidi ya mashambulizi ya njia ya upande na ya kuingiza hitilafu.
+
+Ukitekeleza algoriti ya kusaini miamala katika Bitcoin, _lazima_ utumie BIP340, RFC6979, au algoriti inayofanana kuhakikisha unazalisha _k_ tofauti kwa kila((("saini za kidijitali", "nasibu, umuhimu wa", startref="digital-signature-random")))((("nasibu, umuhimu katika saini za kidijitali", startref="random-digital-signature"))) muamala.
+
+=== Algoriti Mpya ya Kusaini ya Shahidi Iliyotenganishwa
+
+Saini katika ((("saini za kidijitali", "shahidi iliyotenganishwa na")))((("shahidi iliyotenganishwa (segwit)", "saini za kidijitali na")))((("heshi ya ahadi")))miamala ya Bitcoin zinatumika kwenye _heshi ya ahadi_, ambayo hukokotolewa kutoka kwa data ya muamala, ikifunga sehemu maalum za data ikionyesha ahadi ya msainiaji kwa thamani hizo. Kwa mfano, katika saini rahisi ya aina ya +SIGHASH_ALL+, heshi ya ahadi inajumuisha pembejeo na matokeo yote.
+
+Kwa bahati mbaya, jinsi heshi za ahadi za zamani zilivyokokotolewa ilianzisha uwezekano kwamba nodi inayothibitisha saini inaweza kulazimishwa kufanya idadi kubwa ya hesabu za heshi. Hasa, operesheni za heshi huongezeka takriban kwa mraba kulingana na idadi ya pembejeo katika muamala. Mshambuliaji angeweza kwa hivyo kuunda muamala wenye operesheni nyingi sana za saini, na kusababisha mtandao wote wa Bitcoin kuhitaji kufanya operesheni mamia au maelfu ya heshi kuthibitisha muamala.
+
+Segwit iliwakilisha fursa ya kushughulikia tatizo hili kwa kubadilisha jinsi heshi ya ahadi inavyokokotolewa. Kwa programu za shahidi za segwit toleo 0, uthibitishaji wa saini hutokea ukitumia algoriti iliyoimarishwa ya heshi ya ahadi kama ilivyobainishwa katika BIP143.
+
+Algoriti mpya inaruhusu idadi ya operesheni za heshi kuongezeka kwa kasi ya wastani zaidi O(n) kulingana na idadi ya operesheni za saini, ikipunguza fursa ya kuunda mashambulizi ya kukataa huduma na miamala ya ugumu kupita kiasi.
+
+Katika sura hii, tulijifunza kuhusu saini za schnorr na ECDSA kwa Bitcoin. Hii inaelezea jinsi nodi kamili zinavyothibitisha miamala kuhakikisha kwamba mtu anayedhibiti funguo ambayo bitcoini zilipokelewa peke yake anaweza kuzitumia. Pia tulichunguza programu kadhaa za hali ya juu za saini, kama vile saini nyingi zisizo na hati na saini za kizingiti zisizo na hati ambazo zinaweza kutumika kuboresha ufanisi na faragha ya Bitcoin. Katika sura chache zilizopita, tulijifunza jinsi ya kuunda miamala, jinsi ya kuipatia usalama kwa idhini na uthibitisho, na jinsi ya kuisaini. Sasa tutajifunza jinsi ya kuhimiza wachimbaji kuithibitisha kwa kuongeza ada kwa miamala tunayounda.

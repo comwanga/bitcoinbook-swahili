@@ -1,0 +1,239 @@
+[[tx_fees]]
+== Ada za Miamala
+
+++++
+<p class="fix_tracking">
+Saini ya kidijitali tuliyoona Alice kuunda katika <a data-type="xref" href="#c_signatures">#c_signatures</a> inathibitisha tu kwamba anajua funguo yake ya siri na kwamba alijitolea kwa muamala unaolipa Bob. Anaweza kuunda saini nyingine inayojitolea badala yake kwa muamala unaolipa Carol — muamala unaotumia tokeo lile lile (bitcoini) alilotumia kumlipa Bob. Miamala hiyo miwili sasa ni <em>miamala inayokinzana</em> kwa sababu muamala mmoja tu unaotumia tokeo fulani unaweza kujumuishwa katika blockchain halali yenye uthibitisho mwingi zaidi wa kazi — blockchain ambayo nodi kamili hutumia kubainisha ni funguo zipi zinadhibiti ni bitcoini zipi.
+</p>
+++++
+
+Kujilinda((("miamala inayokinzana")))((("miamala", "migongano katika"))) dhidi ya miamala inayokinzana, itakuwa ni jambo la busara kwa Bob kusubiri hadi muamala kutoka kwa Alice ujumuishwe katika blockchain hadi kina cha kutosha kabla ya kuchukulia pesa alizopokea kama zake za kutumia (angalia <<confirmations>>). Kwa muamala wa Alice kujumuishwa katika blockchain, lazima ujumuishwe katika _bloku_ ya miamala. Kuna idadi ndogo ya((("bloku", "miamala katika")))((("miamala", "katika bloku", secondary-sortas="bloku"))) bloku zinazozalishwa katika kipindi fulani cha muda, na kila bloku ina nafasi ndogo tu. Mchimbaji peke yake anayeunda bloku hiyo ndiye anayechagua ni miamala ipi ya kujumuisha. Wachimbaji wanaweza kuchagua miamala kwa vigezo vyovyote wanayotaka, ikiwa ni pamoja na kukataa kujumuisha miamala yoyote kabisa.
+
+++++
+<div data-type="note">
+<p class="fix_tracking"> Tunaposema "miamala" katika sura hii, tunamaanisha kila muamala katika bloku isipokuwa muamala wa kwanza. Muamala wa kwanza katika bloku ni <em>muamala wa coinbase</em>, ulioelezwa katika <a data-type="xref" href="#coinbase_transactions">#coinbase_transactions</a>, ambao unamruhusu mchimbaji wa bloku kukusanya tuzo yake ya kuzalisha bloku. Tofauti na miamala mingine, muamala wa coinbase hautumii tokeo la muamala uliotangulia na pia ni ubaguzi kwa sheria kadhaa nyingine zinazotumika kwa miamala mingine. Miamala ya coinbase hailipii ada za miamala, haihitaji kupandisha ada, haiko chini ya upigaji pini wa muamala, na kwa kiasi kikubwa haivutii katika mjadala ufuatao kuhusu ada — kwa hivyo tutaipuuza katika sura hii.
+</p>
+</div>
+++++
+
+Kigezo ambacho wachimbaji karibu wote hutumia kuchagua ni miamala ipi ya kujumuisha katika bloku zao ni kuongeza mapato yao. Bitcoin iliundwa mahususi kukidhi hili kwa kutoa utaratibu unaoruhusu muamala kumpa mchimbaji anayeujumuisha katika bloku pesa. Tunaita utaratibu huo _ada za miamala_, ingawa si ada kwa maana ya kawaida ya neno hilo. Si kiasi kilichowekwa na itifaki au na mchimbaji yeyote maalum — ni zaidi kama zabuni katika mnada. Bidhaa inayonunuliwa ni sehemu ya nafasi ndogo katika bloku ambayo muamala utachukua. Wachimbaji huchagua mkusanyiko wa miamala ambao zabuni zake zitawaruhusu kupata mapato makubwa zaidi.
+
+Katika sura hii, tutachunguza vipengele mbalimbali vya zabuni hizo — ada za miamala — na jinsi zinavyoathiri uundaji na usimamizi wa miamala ya Bitcoin.
+
+=== Nani Analipa Ada ya Muamala?
+
+Mifumo ((("ada za miamala", "wajibu wa", id="fees-responsibility")))((("malipo", "ada za miamala", see="ada za miamala")))((("ada", see="ada za miamala")))mingi ya malipo inahusisha aina fulani ya ada kwa kuwasiliana, lakini mara nyingi ada hii imefichwa kwa wanunuzi wa kawaida. Kwa mfano, mfanyabiashara anaweza kutangaza kitu kile kile kwa bei ile ile iwe ukilipa kwa pesa taslimu au kadi ya mkopo ingawa msindikaji wao wa malipo anaweza kuwatozea ada kubwa zaidi kwa miamala ya mkopo kuliko benki yao inavyowatozia kwa amana za pesa taslimu.
+
+Katika Bitcoin, kila matumizi ya bitcoini lazima ithibitishwe (kawaida kwa saini), kwa hivyo si rahisi kwa muamala kulipa ada bila ruhusa ya mtumia. Inawezekana kwa mpokeaji wa muamala kulipa ada katika muamala tofauti — na tutaona hilo likitumika baadaye — lakini ikiwa tunataka muamala mmoja kulipa ada yake mwenyewe, ada hiyo inahitaji kuwa kitu kilichokubaliana na mtumia. Haiwezi kufichwa.
+
+Miamala ya Bitcoin imeundwa ili isichukue nafasi ya ziada katika muamala kwa mtumia kujitolea kwa ada inayolipa. Hiyo inamaanisha kwamba, ingawa inawezekana kulipa ada katika muamala tofauti, ni ya ufanisi zaidi (na kwa hivyo ya bei nafuu zaidi) kulipa ada katika muamala mmoja.
+
+Katika Bitcoin, ada ni zabuni na kiasi kinachopewa huchangia kubainisha muda itakaochukua muamala kuthibitishwa. Watumia na wapokeaji wa malipo wote kwa kawaida wana nia ya kuthibitishwa haraka, kwa hivyo kawaida kuruhusu watumia peke yao kuchagua ada wakati mwingine kunaweza kuwa tatizo; tutaangalia suluhisho la tatizo hilo katika <<cpfp>>. Hata hivyo, katika mtiririko wa kawaida wa malipo mengi, pande zenye hamu kubwa zaidi ya kuona muamala uthibitishwa haraka — yaani, pande ambazo zingekuwa tayari zaidi kulipa ada kubwa zaidi — ni watumia.
+
+Kwa sababu hizo, za kiufundi na za vitendo, ni desturi katika Bitcoin kwa watumia kulipa ada za miamala. Kuna ubaguzi, kama vile kwa wafanyabiashara wanaokubali miamala isiyothibitishwa na katika itifaki ambazo hazipeleki mara moja [.keep-together]#miamala# baada ya kusainiwa (inazuia mtumia kuweza kuchagua ada inayofaa kwa soko la sasa). Tutachunguza ubaguzi huo((("ada za miamala", "wajibu wa", startref="fees-responsibility"))) baadaye.
+
+=== Ada na Viwango vya Ada
+
+Kila ((("ada za miamala", "viwango vya ada", id="fees-rates")))((("viwango vya ada", id="fee-rate")))muamala hulipa ada moja peke yake — haijalishi muamala ni mkubwa kiasi gani. Hata hivyo, kadri miamala inavyokuwa mikubwa zaidi, ndivyo wachimbaji watakaoweza kuipanga katika bloku unavyopungua. Kwa sababu hiyo, wachimbaji hutathmini miamala kwa njia ile ile unayoweza kulinganisha ununuzi kati ya bidhaa kadhaa zinazofanana sokoni: wanagawanya bei kwa kiasi.
+
+Kama unavyoweza kugawanya gharama ya mifuko kadhaa tofauti ya mchele kwa uzito wa kila mfuko kupata bei ya chini zaidi kwa uzito (biashara bora), wachimbaji hugawanya ada ya muamala kwa ukubwa wake (pia inayoitwa uzito wake) kupata ada kubwa zaidi kwa uzito (mapato zaidi). Katika Bitcoin, tunatumia neno _kiwango cha ada_ kwa ukubwa wa muamala ukigawanywa na uzito. Kwa sababu ya mabadiliko katika Bitcoin kwa miaka, kiwango cha ada kinaweza kuelezwa kwa vitengo tofauti:
+
+- BTC/Baiti (kitengo cha zamani kinachotumiwa mara chache)
+- BTC/Kilobaiti (kitengo cha zamani kinachotumiwa mara chache)
+- BTC/Vbaiti (hutumiwa mara chache)
+- BTC/Kilo-vbaiti (hutumiwa hasa katika Bitcoin Core)
+- Satoshi/Vbaiti (inayotumiwa sana leo)
+- Satoshi/Uzito (pia hutumiwa sana leo)
+
+Tunapendekeza ama vitengo vya sat/vbaiti au sat/uzito kwa kuonyesha viwango vya ada.
+
+[WARNING]
+====
+Kuwa makini ((("ada zinazopita kiasi")))((("ada nyingi kupita kiasi")))((("ada za miamala", "kulipa kupita kiasi")))((("kulipa ada za miamala kupita kiasi")))kukubali uingizaji wa viwango vya ada. Ikiwa mtumiaji anakopi na kubandika kiwango cha ada kilichochapishwa katika kizidishio kimoja kwenye sehemu inayotumia kizidishio tofauti, anaweza kulipa ada mara 1,000 zaidi. Ikiwa badala yake wanabadilisha nambari ya juu, kwa nadharia wanaweza kulipa mara 100,000,000 zaidi. Pochi zinapaswa kuifanya iwe ngumu kwa mtumiaji kulipa kiwango cha ada kinachopita kiasi na zinaweza kutaka kumwuliza mtumiaji kuthibitisha kiwango chochote cha ada ambacho hakikuzalishwa na pochi yenyewe ukitumia chanzo cha data kinachoaminika.
+
+Ada inayopita kiasi, pia inayoitwa _ada ya kipuuzi_, ni kiwango chochote cha ada ambacho ni kikubwa zaidi kwa kiasi kikubwa kuliko kiasi ambacho wakadiriaji wa ada wa sasa wanatarajia ni cha lazima kupata muamala uthibitishwa katika bloku inayofuata. Kumbuka kwamba pochi hazipaswi kuzuia kabisa watumiaji kuchagua kiwango cha ada kinachopita kiasi — zinapaswa tu kuifanya kutumia kiwango kama hicho iwe ngumu kufanya kwa bahati. Kuna sababu halali kwa watumiaji kulipa ada nyingi kupita kiasi katika hali za nadra.
+====
+
+=== Kukadiri Viwango Vinavyofaa vya Ada
+
+Tumeanzisha ((("kukadiri viwango vya ada", id="estimate-fee-rate")))kwamba unaweza kulipa kiwango cha chini cha ada ikiwa uko tayari kusubiri zaidi kwa muamala wako kuthibitishwa, isipokuwa kwamba kulipa kiwango cha ada cha chini sana kunaweza kusababisha muamala wako kutothibitishwa kamwe. Kwa sababu viwango vya ada ni zabuni katika mnada wazi wa nafasi ya bloku, haiwezekani kutabiri kwa usahihi ni kiwango gani cha ada unachohitaji kulipa kupata muamala wako uthibitishwe ifikapo wakati fulani. Hata hivyo, tunaweza kuzalisha makadirio ya takriban kulingana na viwango ambavyo miamala mingine imelipa hivi karibuni.
+
+Nodi kamili inaweza kurekodi vipande vitatu vya taarifa kuhusu kila muamala inayoona: wakati (urefu wa bloku) ilipopokea kwanza muamala huo, urefu wa bloku wakati muamala huo ulithibitishwa, na kiwango cha ada kilicholipwa na muamala huo. Kwa kukusanya pamoja miamala iliyofika katika urefu sawa, iliyothibitishwa katika urefu sawa, na iliyolipa ada sawa, tunaweza kukokotoa ni bloku ngapi ilichukua kuthibitisha miamala inayolipa kiwango fulani cha ada. Kisha tunaweza kudhani kwamba muamala unaolipa kiwango sawa cha ada sasa utachukua idadi sawa ya bloku kuthibitishwa. Bitcoin Core inajumuisha mkadiriaji wa kiwango cha ada unaotumia kanuni hizi, ambao unaweza kuombwa ukitumia RPC ya `estimatesmartfee` na parameter inayobainisha ni bloku ngapi uko tayari kusubiri kabla muamala haujawezekana sana kuthibitishwa (kwa mfano, bloku 144 ni takriban siku 1):
+
+----
+$ bitcoin-cli -named estimatesmartfee conf_target=144
+{
+  "feerate": 0.00006570,
+  "blocks": 144
+}
+----
+
+Huduma nyingi za mtandaoni pia hutoa ukadiriaji wa ada kama API. Kwa orodha ya sasa, angalia https://oreil.ly/TB6IN.
+
+Kama ilivyotajwa, ukadiriaji wa kiwango cha ada hauwezi kamwe kuwa kamili. Tatizo moja la kawaida ni kwamba mahitaji ya kimsingi yanaweza kubadilika, kurekebisha usawa na ama kuongeza bei (ada) hadi viwango vipya au kuzipunguza kuelekea kiwango cha chini. Ikiwa viwango vya ada vitashuka, basi muamala ambao awali ulimlipa kiwango cha kawaida cha ada sasa unaweza kulipa kiwango cha ada cha juu na utathibitishwa mapema kuliko ilivyotarajiwa. Hakuna njia ya kupunguza kiwango cha ada kwenye muamala ambao tayari umetuma, kwa hivyo umezuiwa kulipa kiwango cha ada cha juu zaidi. Lakini wakati viwango vya ada vinapopanda, kuna haja ya njia za kuweza kuongeza viwango vya ada kwenye miamala hiyo, inayoitwa _kupandisha ada_. Kuna aina mbili zinazotumika sana za kupandisha ada katika Bitcoin, kubadilisha kwa ada (RBF) na mtoto analipa kwa mzazi((("viwango vya ada", startref="fee-rate")))((("ada za miamala", "viwango vya ada", startref="fees-rates"))) (CPFP).
+
+[[rbf]]
+=== Kupandisha Ada kwa Kubadilisha kwa Ada (RBF)
+
+Kuongeza ((("ada za miamala", "kupandisha ada", "RBF (kubadilisha kwa ada)", id="transaction-fees-bump-rbf")))((("kupandisha ada", "RBF (kubadilisha kwa ada)", id="fee-bump-rbf")))((("kupandisha ada kwa RBF (kubadilisha kwa ada)", id="rbf-ch9")))ada ya muamala ukitumia kupandisha ada kwa RBF, unaunda toleo linalokinzana la muamala unaolipa ada kubwa zaidi. Miamala miwili au zaidi inachukuliwa((("miamala inayokinzana")))((("miamala", "migongano katika"))) kuwa _miamala inayokinzana_ ikiwa moja tu yao inaweza kujumuishwa katika blockchain halali, ikilazimisha mchimbaji kuchagua moja tu yao. Migongano hutokea wakati miamala miwili au zaidi kila moja inajaribu kutumia moja ya UTXO zile zile, yaani, kila moja inajumuisha pembejeo ambayo ina nukta ya kutoka ile ile (marejeleo ya tokeo la muamala uliotangulia).
+
+Kuzuia mtu kutumia kipimo kikubwa cha bandwidth kwa kuunda idadi isiyopungukiwa ya miamala inayokinzana na kuipeleka kupitia mtandao wa nodi kamili za kupeleka tena, Bitcoin Core na nodi nyingine kamili zinazosaidia kubadilishwa kwa muamala zinahitaji kila muamala wa kubadilisha kulipa kiwango cha ada cha juu zaidi kuliko muamala unaobadilishwa. Bitcoin Core pia kwa sasa inahitaji muamala wa kubadilisha kulipa ada ya jumla ya juu zaidi kuliko muamala wa awali, lakini mahitaji haya yana athari zisizotakiwa na wasanidi wamekuwa wakitafuta njia za kuiondoa wakati wa kuandika huu.
+
+Bitcoin Core((("Bitcoin Core", "toleo la RBF", id="bitcoin-core-rbf"))) kwa sasa inasaidia toleo mbili za RBF:
+
+RBF ya kuhiari::
+  Muamala usiothibitishwa unaweza kuashiria kwa wachimbaji na nodi kamili kwamba muundaji wa muamala anataka kuruhusu kubadilishwa kwake na toleo la kiwango cha ada cha juu zaidi. Ishara hii na sheria za kuitumia zimebainishwa katika BIP125. Kufikia wakati wa kuandika huu, hii imewezeshwa kwa chaguo-msingi katika Bitcoin Core kwa miaka kadhaa.
+
+RBF kamili::
+  Muamala wowote usiothibitishwa unaweza kubadilishwa na toleo la kiwango cha ada cha juu zaidi. Kufikia wakati wa kuandika huu, hii inaweza kuwezeshwa kwa hiari katika Bitcoin Core (lakini imezimwa kwa chaguo-msingi).
+
+.Kwa Nini Kuna Toleo Mbili za RBF?
+****
+Sababu ya toleo mbili tofauti za RBF ni kwamba RBF kamili imekuwa na utata. Matoleo ya awali ya Bitcoin yaliruhusu kubadilishwa kwa muamala, lakini tabia hii ilizimwa kwa matoleo kadhaa. Wakati huo, mchimbaji au nodi kamili inayotumia programu inayoitwa sasa Bitcoin Core hangebadilisha toleo la kwanza la muamala usiothibitishwa walioupokea na toleo lolote tofauti. Wafanyabiashara wengine walianza kutarajia tabia hii: walidhani kwamba muamala wowote halali usiothibitishwa ulioulipia kiwango cha ada cha kutosha hatimaye ungekuwa muamala uliothibitishwa, kwa hivyo waliwapa bidhaa au huduma zao muda mfupi baada ya kupokea muamala kama huo usiothibitishwa.
+
+Hata hivyo, hakuna njia kwa itifaki ya Bitcoin kuhakikisha kwamba muamala wowote usiothibitishwa hatimaye utathibitishwa. Kama ilivyotajwa awali katika sura hii, kila mchimbaji huchagua mwenyewe ni miamala ipi atajaribu kuthibitisha — ikiwa ni pamoja na toleo gani la miamala hiyo. Bitcoin Core ni programu ya chanzo huria, kwa hivyo mtu yeyote mwenye nakala ya msimbo wake wa chanzo anaweza kuongeza (au kuondoa) ubadilishaji wa muamala. Hata kama Bitcoin Core haikuwa ya chanzo huria, Bitcoin ni itifaki wazi ambayo inaweza kutekelezwa upya kutoka mwanzo na msanidi wa uwezo wa kutosha, kuruhusu mtekelezaji upya kujumuisha au kutojumuisha ubadilishaji wa muamala.
+
+Ubadilishaji wa muamala unavunja dhana ya baadhi ya wafanyabiashara kwamba kila muamala usiothibitishwa wa busara hatimaye utathibitishwa. Toleo mbadala la muamala linaweza kulipa matokeo yale yale na asili, lakini halihitajiki kulipa lolote la matokeo hayo. Ikiwa toleo la kwanza la muamala usiothibitishwa linalipa mfanyabiashara, toleo la pili linaweza lisimlipiwe. Ikiwa mfanyabiashara alitoa bidhaa au huduma kulingana na toleo la kwanza, lakini toleo la pili linathibitishwa, basi mfanyabiashara hatapokea malipo kwa gharama zake.
+
+Wafanyabiashara wengine, na watu wanaowaunga mkono, waliomba kwamba ubadilishaji wa muamala usiwezeshwe tena katika Bitcoin Core. Watu wengine walionyesha kwamba ubadilishaji wa muamala hutoa faida, ikiwa ni pamoja na uwezo wa kupandisha ada ya miamala ambayo awali ilikuwa imelipa kiwango cha ada cha chini sana.
+
+Hatimaye, wasanidi wanaofanya kazi kwenye Bitcoin Core walitekeleza mwafaka: badala ya kuruhusu kila muamala usiothibitishwa kubadilishwa (RBF kamili), walipanga tu Bitcoin Core kuruhusu kubadilishwa kwa miamala iliyoashiria kwamba ilitaka kuruhusu kubadilishwa (RBF ya kuhiari). Wafanyabiashara wanaweza kukagua miamala wanayopokea kwa ishara ya kuhiari na kushughulikia miamala hiyo tofauti na ile isiyo na ishara.
+
+Hii haibadilishi wasiwasi wa kimsingi: mtu yeyote bado anaweza kubadilisha nakala yake ya Bitcoin Core, au kuunda utekelezaji upya, kuruhusu RBF kamili — na wasanidi wengine hata walifanya hivi, lakini inaonekana watu wachache walitumia programu yao.
+
+Baada ya miaka kadhaa, wasanidi wanaofanya kazi kwenye Bitcoin Core waliubadilisha kidogo mwafaka. Pamoja na kudumisha RBF ya kuhiari kwa chaguo-msingi, waliongeza chaguo linaloruhusu watumiaji kuwezeshwa RBF kamili. Ikiwa kiwango cha heshi cha uchimbaji cha kutosha na nodi kamili za kupeleka tena zitawezesha chaguo hili, itawezekana kwa muamala wowote usiothibitishwa hatimaye kubadilishwa na toleo linalolipa kiwango cha ada cha juu zaidi. Kufikia wakati wa kuandika huu, haijulikani wazi ikiwa hilo((("Bitcoin Core", "toleo la RBF", startref="bitcoin-core-rbf"))) limetokea au la.
+****
+
+Kama mtumiaji, ukipanga kutumia kupandisha ada kwa RBF, kwanza utahitaji kuchagua pochi inayoisaidia, kama vile moja ya pochi zilizoorodheshwa kama zenye "Msaada wa Kutuma" kwenye https://oreil.ly/IhMzx.
+
+Kama msanidi, ukipanga kutekeleza kupandisha ada kwa RBF, kwanza utahitaji kuamua kama utafanya RBF ya kuhiari au RBF kamili. Wakati wa kuandika huu, RBF ya kuhiari ndiyo njia pekee inayohakikishiwa kufanya kazi. Hata kama RBF kamili itakuwa ya kuaminika, kuna uwezekano wa miaka kadhaa ambapo ubadilishaji wa miamala ya kuhiari utathibitishwa haraka kidogo kuliko ubadilishaji wa RBF kamili. Ukichagua RBF ya kuhiari, pochi yako itahitaji kutekeleza uashiriaji uliobainishwa katika BIP125, ambao ni urekebishaji rahisi wa sehemu yoyote ya sehemu za mfululizo katika muamala (angalia <<sequence>>). Ukichagua RBF kamili, huhitaji kujumuisha uashiriaji wowote katika miamala yako. Kila kitu kingine kinachohusiana na RBF ni kile kile kwa mbinu zote mbili.
+
+Unapohitaji kupandisha ada ya muamala, utaunda tu muamala mpya unaotumia angalau moja ya UTXO zile zile kama muamala wa awali unaotaka kubadilisha. Uwezekano mkubwa utataka kudumisha matokeo yale yale katika muamala yanayolipa mpokeaji (au wapokeaji). Unaweza kulipa ada iliyoongezeka kwa kupunguza thamani ya tokeo lako la mabadiliko au kwa kuongeza pembejeo za ziada kwa muamala. Wasanidi wanapaswa kutoa watumiaji kiolesura cha kupandisha ada kinachofanya kazi hii yote kwa ajili yao na kuwauliza tu (au kupendekeza kwao) kiwango cha ada kinapaswa kuongezwa kwa kiasi gani.
+
+[WARNING]
+====
+Kuwa makini sana unapounda zaidi ya ubadilishaji mmoja wa muamala ule ule. Lazima uhakikishe kwamba toleo zote za miamala zinagongana na kila moja. Ikiwa hazigongani zote, inaweza kuwezekana kwa miamala kadhaa tofauti kuthibitishwa, na kukusababishia kulipa wapokeaji kupita kiasi. Kwa mfano:
+
+- Toleo 0 la muamala linajumuisha pembejeo _A_.
+- Toleo 1 la muamala linajumuisha pembejeo _A_ na _B_ (k.m., ulilazimika kuongeza pembejeo _B_ kulipa ada za ziada)
+- Toleo 2 la muamala linajumuisha pembejeo _B_ na _C_ (k.m., ulilazimika kuongeza pembejeo _C_ kulipa ada za ziada lakini _C_ ilikuwa kubwa kiasi kwamba huhitajiki tena pembejeo _A_).
+
+Katika hali hii, mchimbaji yeyote aliyehifadhi toleo 0 la muamala ataweza kuthibitisha yeye mwenyewe na toleo 2 la muamala. Ikiwa toleo zote mbili zinalipa wapokeaji wale wale, watalipwa mara mbili (na mchimbaji atapokea ada za miamala kutoka kwa miamala miwili tofauti).
+
+Njia rahisi ya kuepuka tatizo hili ni kuhakikisha muamala wa kubadilisha daima unajumuisha pembejeo zote zile zile kama toleo la awali la muamala.
+====
+
+Faida ya kupandisha ada kwa RBF juu ya aina nyingine za kupandisha ada ni kwamba inaweza kuwa na ufanisi mkubwa sana katika kutumia nafasi ya bloku. Mara nyingi, muamala wa kubadilisha una ukubwa sawa na muamala unaobadilisha. Hata ukiwa mkubwa zaidi, mara nyingi una ukubwa sawa na muamala ambao mtumiaji angeunda kama angelipa kiwango cha ada kilichoongezeka mara ya kwanza.
+
+Hasara ya kimsingi ya kupandisha ada kwa RBF ni kwamba kawaida inaweza kufanywa tu na muundaji wa muamala — mtu au watu waliohitajika kutoa saini au data nyingine ya uthibitishaji kwa muamala. Ubaguzi wa hili ni miamala iliyoundwa kuruhusu kuongezwa kwa pembejeo za ziada kwa kutumia alama za sighash (angalia <<sighash_types>>), lakini hilo lina changamoto zake. Kwa ujumla, ikiwa wewe ni mpokeaji wa muamala usiothibitishwa na unataka kuufanya uthibitishwe haraka zaidi (au kabisa), huwezi kutumia kupandisha ada kwa RBF; unahitaji njia nyingine.
+
+Kuna matatizo ya ziada ((("ada za miamala", "kupandisha ada", "RBF (kubadilisha kwa ada)", startref="transaction-fees-bump-rbf")))((("kupandisha ada", "RBF (kubadilisha kwa ada)", startref="fee-bump-rbf")))((("kupandisha ada kwa RBF (kubadilisha kwa ada)", startref="rbf-ch9")))na RBF ambayo tutachunguza katika <<transaction_pinning>>.
+
+[[cpfp]]
+=== Kupandisha Ada kwa Mtoto Analipa kwa Mzazi (CPFP)
+
+Mtu ((("ada za miamala", "kupandisha ada", "CPFP (mtoto analipa kwa mzazi)", id="transaction-fees-bump-cpfp")))((("kupandisha ada", "CPFP (mtoto analipa kwa mzazi)", id="fee-bump-cpfp")))((("kupandisha ada kwa CPFP (mtoto analipa kwa mzazi)", id="cpfp-ch9")))yeyote anayepokea tokeo la muamala usiothibitishwa anaweza kuhimiza wachimbaji kuthibitisha muamala huo kwa kutumia tokeo hilo. Muamala unaotaka kuthibitishwa unaitwa _muamala wa mzazi_. Muamala unaotumia tokeo la muamala wa mzazi unaitwa _muamala wa mtoto_.
+
+Kama tulivyojifunza katika <<outpoints>>, kila pembejeo katika muamala uliothibitishwa lazima irejelee tokeo lisilo na matumizi la muamala ambao unaonekana mapema zaidi katika blockchain (iwe mapema zaidi katika bloku ile ile au katika bloku ya awali). Hiyo inamaanisha mchimbaji anayetaka kuthibitisha muamala wa mtoto lazima pia ahakikishe kwamba muamala wake wa mzazi unathibitishwa. Ikiwa muamala wa mzazi bado haujathibitishwa lakini muamala wa mtoto unalipa ada ya kutosha, mchimbaji anaweza kuzingatia kama itakuwa ya faida kuthibitisha wote wawili katika bloku ile ile.
+
+Kutathmini faida ya uchimbaji wa muamala wa mzazi na wa mtoto wote wawili, mchimbaji huwaangalia kama _mkusanyiko wa miamala_ wenye ukubwa wa jumla na ada za jumla, ambapo ada zinaweza kugawanywa na ukubwa kukokotoa((("kiwango cha ada cha mkusanyiko"))) _kiwango cha ada cha mkusanyiko_. Mchimbaji anaweza kisha kupanga miamala yote ya moja moja na makusanyiko ya miamala anayoyajua kwa kiwango cha ada na kujumuisha zile za mapato makubwa zaidi katika bloku anayojaribu kuchimba, hadi ukubwa wa juu (uzito) unaoruhusiwa kujumuishwa katika bloku. Kupata makusanyiko zaidi ambayo yanaweza kuwa ya faida kuchimba, mchimbaji anaweza kutathmini makusanyiko katika vizazi vingi (k.m., muamala usiothibitishwa wa mzazi ukiunganishwa na mtoto wake na mjukuu wake). Hii ((("uchimbaji wa kiwango cha ada cha babu")))((("kupandisha ada kwa CPFP (mtoto analipa kwa mzazi)", "uchimbaji wa kiwango cha ada cha babu")))inaitwa _uchimbaji wa kiwango cha ada cha babu_.
+
+Bitcoin Core imetekeleza uchimbaji wa kiwango cha ada cha babu kwa miaka mingi, na inaaminiwa kwamba wachimbaji karibu wote wanautumia wakati wa kuandika huu. Hiyo inamaanisha ni ya vitendo kwa pochi kutumia kipengele hiki kupandisha ada ya muamala unaoingia kwa kutumia muamala wa mtoto kulipa kwa mzazi wake (CPFP).
+
+CPFP ina faida kadhaa juu ya RBF. Mtu yeyote anayepokea tokeo kutoka kwa muamala anaweza kutumia CPFP — hilo linajumuisha wapokeaji wa malipo na mtumia (ikiwa mtumia alijumuisha tokeo la mabadiliko). Pia haihitaji kubadilisha muamala wa awali, ambayo inaufanya usivuruge wafanyabiashara wengine kuliko RBF.
+
+Hasara ya msingi ya CPFP ikilinganishwa na RBF ni kwamba CPFP kwa kawaida hutumia nafasi zaidi ya bloku. Katika RBF, muamala wa kupandisha ada mara nyingi una ukubwa sawa na muamala unaobadilisha. Katika CPFP, kupandisha ada kunaongeza muamala mzima tofauti. Kutumia nafasi ya ziada ya bloku kunahitaji kulipa ada za ziada zaidi ya gharama ya kupandisha ada.
+
+Kuna changamoto kadhaa na CPFP, ambazo baadhi yake tutachunguza katika <<transaction_pinning>>. Tatizo moja jingine ambalo tunahitaji kutaja hasa ni tatizo la kiwango cha chini cha ada ya kupeleka, ambalo linashughulikiwa na((("ada za miamala", "kupandisha ada", "CPFP (mtoto analipa kwa mzazi)", startref="transaction-fees-bump-cpfp")))((("kupandisha ada", "CPFP (mtoto analipa kwa mzazi)", startref="fee-bump-cpfp")))((("kupandisha ada kwa CPFP (mtoto analipa kwa mzazi)", startref="cpfp-ch9"))) upelekaji wa mkusanyiko.
+
+=== Upelekaji wa Mkusanyiko
+
+Matoleo ya awali ((("ada za miamala", "upelekaji wa mkusanyiko", id="transaction-fee-package-relay")))((("upelekaji wa mkusanyiko", id="package-relay")))ya Bitcoin Core hayakuweka mipaka yoyote kwa idadi ya miamala isiyothibitishwa waliyoihifadhi kwa upelekaji wa baadaye na uchimbaji katika mempool zao (angalia <<mempool>>). Bila shaka, kompyuta zina mipaka ya kimwili, iwe ni kumbukumbu (RAM) au nafasi ya diski — haiwezekani kwa nodi kamili kuhifadhi idadi isiyopungukiwa ya miamala isiyothibitishwa. Matoleo ya baadaye ya Bitcoin Core yalipunguza ukubwa wa mempool kushikilia takriban miamala ya siku moja, ikihifadhi tu miamala au makusanyiko yenye kiwango cha ada cha juu zaidi.
+
+Hilo linafanya kazi vizuri sana kwa mambo mengi, lakini linaunda tatizo la utegemezi. Ili kukokotoa kiwango cha ada kwa mkusanyiko wa miamala, tunahitaji miamala ya mzazi na wa uzao wote — lakini ikiwa muamala wa mzazi haulipii kiwango cha ada cha kutosha, hautahifadhiwa katika mempool ya nodi. Ikiwa nodi inapokea muamala wa mtoto bila kuwa na ufikiaji wa mzazi wake, haiwezi kufanya chochote na muamala huo.
+
+Suluhisho la tatizo hili ni uwezo wa kupeleka miamala kama mkusanyiko, unaoitwa _upelekaji wa mkusanyiko_, kuruhusu nodi inayopokea kutathmini kiwango cha ada cha mkusanyiko wote kabla ya kufanya kazi kwenye muamala wowote wa mtu binafsi. Kufikia wakati wa kuandika huu, wasanidi wanaofanya kazi kwenye Bitcoin Core wamepiga hatua kubwa katika kutekeleza upelekaji wa mkusanyiko, na toleo dogo la awali linaweza kupatikana ifikapo kuchapishwa kwa kitabu hiki.
+
+Upelekaji wa mkusanyiko ni muhimu hasa kwa itifaki zinazotegemea miamala iliyosainiwa mapema yenye muda maalum, kama vile Mtandao wa Lightning (LN). Katika hali za kutoshirikiana, miamala iliyosainiwa mapema mingine haiwezi kupandishwa ada ukitumia RBF, ikiilazimisha kutegemea CPFP. Katika itifaki hizo, miamala mingine pia inaweza kuundwa muda mrefu kabla ya kuhitajika kupelekwa, ikifanya iwe vigumu kiutendo kukadiri kiwango cha ada kinachofaa. Ikiwa muamala uliosainwa mapema unalipa kiwango cha ada chini ya kiasi kinachohitajika kuingia katika mempool ya nodi, hakuna njia ya kuupandishia ada na mtoto. Ikiwa hilo linazuia muamala kuthibitishwa kwa wakati, mtumiaji mwaminifu anaweza kupoteza pesa. Upelekaji wa mkusanyiko ni suluhisho la tatizo hili muhimu.
+
+[[transaction_pinning]]
+=== Upigaji Pini wa Muamala
+
+++++
+<p class="fix_tracking">
+Ingawa kupandisha ada kwa RBF na CPFP vinafanya kazi katika hali za msingi tulizozielezea, kuna sheria zinazohusiana na mbinu zote mbili ambazo zimeundwa kuzuia mashambulizi ya kukataa huduma kwenye wachimbaji na nodi kamili za kupeleka tena. Athari mbaya ya sheria hizo ni kwamba wakati mwingine zinaweza kuzuia mtu kutoweza kutumia kupandisha ada. Kuifanya iwe vigumu au haiwezekani kupandisha ada ya muamala inaitwa <em>upigaji pini wa muamala</em>.</p>
+++++
+
+Moja ((("ada za miamala", "kupandisha ada", "upigaji pini wa muamala", id="transaction-fee-bump-pin")))((("kupandisha ada", "upigaji pini wa muamala", id="fee-bump-pin")))((("upigaji pini wa muamala", id="transaction-pin")))((("kupandisha ada kwa RBF (kubadilisha kwa ada)", "upigaji pini wa muamala", id="rbf-pin")))((("kupandisha ada kwa CPFP (mtoto analipa kwa mzazi)", "upigaji pini wa muamala", id="cpfp-pin")))ya wasiwasi wakubwa wa kukataa huduma inazunguka athari za mahusiano ya miamala. Wakati wowote tokeo la muamala linatumiwa, kitambulisho cha muamala huo (txid) kinarejelewa na muamala wa mtoto. Hata hivyo, muamala unapobadilishwa, ubadilishaji una txid tofauti. Ikiwa muamala huo wa kubadilisha unathibitishwa, hakuna wa uzao wake unaoweza kujumuishwa katika blockchain ile ile. Inawezekana kuunda upya na kusaini tena miamala ya uzao, lakini hilo halikuhakikishiwa kutokea. Hii ina maana zinazohusiana lakini zinazotofautiana kwa RBF na CPFP:
+
+- Katika muktadha wa RBF, Bitcoin Core ikipokea muamala wa kubadilisha, inafanya mambo kuwa rahisi kwa kusahau muamala wa awali na miamala yote ya uzao iliyokutegemea asili. Kuhakikisha ni ya faida zaidi kwa wachimbaji kukubali ubadilishaji, Bitcoin Core inakubali tu muamala wa kubadilisha ikiwa unalipa ada kubwa zaidi kuliko miamala yote itakayosahauliwa.
++
+Hasara ya mbinu hii ni kwamba Alice anaweza kuunda muamala mdogo unaolipa Bob. Bob anaweza kisha kutumia tokeo lake kuunda muamala mkubwa wa mtoto. Ikiwa Alice anataka kisha kubadilisha muamala wake wa awali, anahitaji kulipa ada kubwa zaidi kuliko yeye na Bob wote wawili walivyolipa awali. Kwa mfano, ikiwa muamala wa awali wa Alice ulikuwa takriban vbaiti 100 na muamala wa Bob ulikuwa takriban vbaiti 100,000, na wote wawili walitumia kiwango kile kile cha ada, Alice sasa anahitaji kulipa zaidi ya mara 1,000 ya kiasi alicholipa awali ili kupandisha ada ya muamala wake kwa RBF.
+
+- Katika muktadha wa CPFP, wakati wowote nodi inazingatia kujumuisha mkusanyiko katika bloku, lazima iondoe miamala katika mkusanyiko huo kutoka kwa mkusanyiko mwingine wowote unaotaka kuzingatia kwa bloku ile ile. Kwa mfano, ikiwa muamala wa mtoto unalipa kwa mababu 25, na kila mmoja wa mababu hao ana watoto 25 wengine, basi kujumuisha mkusanyiko katika bloku kunahitaji kusasisha takriban makusanyiko 625 (25^2^). Vivyo hivyo, ikiwa muamala wenye wazao 25 unaondolewa kutoka kwa mempool ya nodi (kama vile kwa kujumuishwa katika bloku), na kila mmoja wa wazao hao ana mababu 25 wengine, makusanyiko mengine 625 yanahitaji kusasishwa. Kila wakati tunapoongeza mara mbili parameter yetu (k.m., kutoka 25 hadi 50), tunaongeza mara nne kiasi cha kazi ambacho nodi yetu inahitaji kufanya.
++
+Zaidi ya hayo, muamala na wazao wake wote si muhimu kuhifadhi katika mempool kwa muda mrefu ikiwa toleo mbadala la muamala huo linachimbwa — hakuna miamala hiyo inayoweza kuthibitishwa isipokuwa kuna upangaji upya wa nadra wa blockchain. Bitcoin Core itaondoa kutoka kwa mempool yake kila muamala ambao hauwezi tena kuthibitishwa kwenye blockchain ya sasa. Katika hali mbaya zaidi, hilo linaweza kupoteza kiasi kikubwa cha bandwidth ya nodi yako na labda linatumika kuzuia miamala kuenea kwa usahihi.
++
+Kuzuia matatizo haya, na matatizo mengine yanayohusiana, Bitcoin Core hupunguza muamala wa mzazi kuwa na kiwango cha juu cha mababu 25 au wazao katika mempool yake na hupunguza ukubwa wa jumla wa miamala yote hiyo hadi vbaiti 100,000. Hasara ya mbinu hii ni kwamba watumiaji wanazuiwa kuunda kupandisha ada kwa CPFP ikiwa muamala tayari una wazao wengi sana (au ikiwa yeye na wazao wake ni wakubwa sana).
+
+Upigaji pini wa muamala unaweza kutokea kwa bahati, lakini pia unawakilisha udhaifu mkubwa kwa itifaki za wakati maalum za pande nyingi kama vile LN. Ikiwa mwenzako anaweza kuzuia moja ya miamala yako kuthibitishwa ifikapo tarehe ya mwisho, anaweza kuiba pesa kutoka kwako.
+
+Wasanidi wa itifaki wamekuwa wakifanya kazi kupunguza matatizo ya upigaji pini wa muamala kwa miaka kadhaa. Suluhisho moja la sehemu limeelezwa katika <<cpfp_carve_out>>. Suluhisho kadhaa nyingine zimependekezwa, na angalau suluhisho moja linatengenezwa kikamilifu((("ada za miamala", "kupandisha ada", "upigaji pini wa muamala", startref="transaction-fee-bump-pin")))((("kupandisha ada", "upigaji pini wa muamala", startref="fee-bump-pin")))((("upigaji pini wa muamala", startref="transaction-pin")))((("kupandisha ada kwa RBF (kubadilisha kwa ada)", "upigaji pini wa muamala", startref="rbf-pin")))((("kupandisha ada kwa CPFP (mtoto analipa kwa mzazi)", "upigaji pini wa muamala", startref="cpfp-pin")))((("ada za miamala", "kupandisha ada", "sehemu zilizochongwa za CPFP", id="transaction-fee-bump-carveout")))((("kupandisha ada", "sehemu zilizochongwa za CPFP", id="fee-bump-carveout")))((("sehemu zilizochongwa (CPFP)", id="carveout")))((("kupandisha ada kwa CPFP (mtoto analipa kwa mzazi)", "sehemu zilizochongwa", id="cpfp-carveout"))) wakati wa kuandika huu&mdash;https://oreil.ly/300dv[nanga za muda mfupi].
+
+[[cpfp_carve_out]]
+=== Sehemu Zilizochongwa za CPFP na Matokeo ya Nanga
+
+++++
+<p class="fix_tracking2">
+Mwaka 2018, wasanidi wanaofanya kazi kwenye LN walikuwa na tatizo. Itifaki yao inatumia miamala inayohitaji saini kutoka kwa pande mbili tofauti. Pande zote hazitaki kumwamini mwingine, kwa hivyo wanasaini miamala katika hatua ya itifaki wakati amana haihitajiki, kuruhusu yeyote wao kupeleka moja ya miamala hiyo wakati wa baadaye wakati upande mwingine unaweza kutotaka (au kushindwa) kutimiza wajibu wake. Tatizo la mbinu hii ni kwamba miamala inaweza kuhitajika kupelekwa wakati usiojulikana, mbali sana katika siku zijazo, zaidi ya uwezo wowote wa busara wa kukadiri kiwango cha ada kinachofaa kwa miamala.</p>
+++++
+
+Kwa nadharia, wasanidi wangeweza kuunda miamala yao kuruhusu kupandisha ada kwa RBF (ukitumia alama maalum za sighash) au CPFP, lakini itifaki zote mbili ziko wazi kwa upigaji pini wa muamala. Kwa kuzingatia kwamba miamala inayohusika ina muda maalum, kuruhusu mwenzako kutumia upigaji pini wa muamala kuchelewesha uthibitishaji wa muamala kunaweza kwa urahisi kusababisha udanganyifu unaoweza kurudiwa ambao pande mbaya zingeweza kutumia kuiba pesa kutoka kwa pande za uaminifu.
+
+Msanidi wa LN Matt Corallo alipendekeza suluhisho: mpa sheria za kupandisha ada kwa CPFP ubaguzi maalum, unaoitwa _sehemu iliyochongwa ya CPFP_. Sheria za kawaida za CPFP zinakataza kujumuisha uzao wa ziada ikiwa ungepelekea muamala wa mzazi kuwa na wazao 26 au zaidi au ikiwa ungepelekea mzazi na wazao wake wote kuzidi vbaiti 100,000 kwa ukubwa. Chini ya sheria za sehemu iliyochongwa ya CPFP, muamala mmoja wa ziada hadi vbaiti 1,000 kwa ukubwa unaweza kuongezwa kwa mkusanyiko hata kama ungezidi mipaka mingine mradi tu ni mtoto wa moja kwa moja wa muamala usiothibitishwa bila mababu wasiothibitishwa.
+
+++++
+<p class="fix_tracking">
+Kwa mfano, Bob na Mallory wote wawili wanasaini pamoja muamala wenye matokeo mawili, moja kwa kila mmoja wao. Mallory anapeleka muamala huo na kutumia tokeo lake kuambatanisha ama miamala 25 ya mtoto au idadi ndogo zaidi ya miamala ya mtoto inayofikia vbaiti 100,000 kwa ukubwa. Bila sehemu iliyochongwa, Bob asingekuwa na uwezo wa kuambatanisha muamala mwingine wa mtoto kwa tokeo lake kwa kupandisha ada kwa CPFP. Na sehemu iliyochongwa, anaweza kutumia moja ya matokeo mawili katika muamala, ile inayomilikiwa naye, mradi muamala wake wa mtoto una chini ya vbaiti 1,000 kwa ukubwa (ambayo inapaswa kuwa nafasi ya kutosha).</p>
+++++
+
+Haiwezekani kutumia sehemu iliyochongwa ya CPFP zaidi ya mara moja, kwa hivyo inafanya kazi tu kwa itifaki za pande mbili. Kumekuwa na mapendekezo ya kupanua hilo kwa itifaki zinazohusisha washiriki zaidi, lakini haijawahi kuwa na mahitaji mengi ya hilo na wasanidi wanazingatia kujenga suluhisho za jumla zaidi kwa mashambulizi ya upigaji pini wa muamala.
+
+Kufikia wakati wa kuandika huu, utekelezaji mwingi maarufu wa LN hutumia kiolezo cha muamala kinachoitwa _matokeo ya nanga_, ambacho kimeundwa kutumika((("matokeo ya nanga (CPFP)")))((("ada za miamala", "kupandisha ada", "sehemu zilizochongwa za CPFP", startref="transaction-fee-bump-carveout")))((("kupandisha ada", "sehemu zilizochongwa za CPFP", startref="fee-bump-carveout")))((("sehemu zilizochongwa (CPFP)", startref="carveout")))((("kupandisha ada kwa CPFP (mtoto analipa kwa mzazi)", "sehemu zilizochongwa", startref="cpfp-carveout"))) na sehemu iliyochongwa ya CPFP.
+
+=== Kuongeza Ada kwa Miamala
+
+Muundo wa ((("ada za miamala", "matokeo ya mabadiliko na")))((("tokeo la mabadiliko", "ada za miamala na")))((("matokeo", "ada za miamala na")))((("pembejeo", "ada za miamala na")))data wa miamala hauna sehemu ya ada. Badala yake, ada zinamaanishwa kama tofauti kati ya jumla ya pembejeo na jumla ya matokeo. Kiasi chochote cha ziada kinachobaki baada ya matokeo yote kukatwa kutoka kwa pembejeo zote ni ada inayokusanywa na wachimbaji:
+
+[latexmath]
+++++
+\begin{equation}
+{Ada = Jumla(Pembejeo) - Jumla(Matokeo)}
+\end{equation}
+++++
+
+Hii ni kipengele cha kuchanganya kidogo cha miamala na pointi muhimu ya kuelewa kwa sababu ikiwa unauunda miamala yako mwenyewe, lazima uhakikishe hujumuishi bila kukusudia ada kubwa sana kwa kutumia pembejeo kidogo. Hiyo inamaanisha kwamba lazima uzingatie pembejeo zote, ikihitajika, kwa kuunda mabadiliko, au utamalizia kuwapa wachimbaji tip kubwa sana!
+
+Kwa mfano, ukitumia UTXO ya bitcoini 20 kufanya malipo ya bitcoini 1, lazima ujumuishe tokeo la mabadiliko la bitcoini 19 kurudi kwa pochi yako. Vinginevyo, "mabaki" ya bitcoini 19 yatahesabika kama ada ya muamala na kukusanywa na mchimbaji anayechimba muamala wako katika bloku. Ingawa utapata kipaumbele cha usindikaji na kumfurahisha sana mchimbaji, hii labda si ulichokusudia.
+
+[WARNING]
+====
+Ukisahau kuongeza tokeo la mabadiliko katika muamala ulioundwa kwa mkono, utalipa mabadiliko kama ada ya muamala. "Weka mabadiliko!" labda si ulichokusudia.
+====
+
+[[fee_sniping]]
+=== Ulinzi wa Kuzuia Uwindaji wa Ada kwa Muda wa Kufunga
+
+Uwindaji wa ada ((("ada za miamala", "uwindaji wa ada", id="transaction-fee-sniping")))((("uwindaji wa ada", id="fee-snipe")))((("vizuizi vya muda", "uwindaji wa ada na", id="timelock-fee-snipe")))((("muda wa kufunga", "uwindaji wa ada na", id="lock-time-fee-snipe")))ni hali ya shambulio la nadharia ambapo wachimbaji wanaojaribu kuandika upya bloku za zamani "wanawindaji" miamala yenye ada kubwa zaidi kutoka kwa bloku za baadaye kuongeza [.keep-together]#faida# zao.
+
+Kwa mfano, tuseme bloku ya juu zaidi inayopo ni bloku #100,000. Badala ya kujaribu kuchimba bloku #100,001 kupanua mnyororo, wachimbaji wengine wanajaribu kuchimba upya #100,000. Wachimbaji hawa wanaweza kuchagua kujumuisha muamala wowote halali (ambao bado haujachimbwa) katika bloku yao ya mgombeaji #100,000. Hawahitajiki kuchimba upya bloku na miamala ile ile. Kwa kweli, wana motisha ya kuchagua miamala yenye faida zaidi (ada kubwa zaidi kwa kB) kujumuisha katika bloku yao. Wanaweza kujumuisha miamala yoyote iliyokuwa katika bloku "ya zamani" #100,000, pamoja na miamala yoyote kutoka kwa mempool ya sasa. Kimsingi wana chaguo la kuvuta miamala kutoka "sasa" hadi "zamani" iliyoandikwa upya wanapounda upya bloku #100,000.
+
+Leo, shambulio hili si la faida sana kwa sababu zawadi ya bloku ni kubwa zaidi sana kuliko ada za jumla kwa kila bloku. Lakini wakati fulani katika siku zijazo, ada za miamala zitakuwa sehemu kubwa zaidi ya tuzo (au hata tuzo yote). Wakati huo, hali hii itakuwa haiwezekani kuepukwa.
+
+Pochi kadhaa huzuia uwindaji wa ada kwa kuunda miamala yenye muda wa kufunga unaozuia miamala hiyo kujumuishwa katika bloku inayofuata au bloku yoyote ya baadaye. Katika hali yetu, pochi yetu ingweka muda wa kufunga kuwa 100,001 kwenye muamala wowote inaounda. Chini ya hali za kawaida, muda huu wa kufunga hauna athari&#x2014;miamala ingeweza kujumuishwa katika bloku #100,001 tu hata hivyo; ni bloku inayofuata.
+
+Lakini chini ya shambulio la upangaji upya, wachimbaji hasingekuwa na uwezo wa kuvuta miamala yenye ada kubwa kutoka kwa mempool kwa sababu miamala yote hiyo ingekuwa na muda wa kufunga hadi bloku #100,001. Wanaweza tu kuchimba upya #100,000 na miamala yoyote iliyokuwa halali wakati huo, kimsingi bila kupata ada mpya.
+
+Hii haizuii kabisa uwindaji wa ada, lakini inaufanya usiwe na faida katika hali fulani na inaweza kusaidia kuhifadhi utulivu wa mtandao wa Bitcoin kadri zawadi ya bloku inavyoporomoka. Tunapendekeza pochi zote zitekeleze kuzuia uwindaji wa ada inapobadilika matumizi mengine ya pochi ya sehemu ya muda wa kufunga.
+
+Bitcoin inavyoendelea kukomaa, na kadri zawadi inavyoendelea kupungua, ada zinakuwa muhimu zaidi na zaidi kwa watumiaji wa Bitcoin, iwe katika matumizi yao ya kila siku ya kupata miamala ithibitishwe haraka na kutoa motisha kwa wachimbaji kuendelea kulinda miamala ya Bitcoin na uthibitisho mpya wa kazi.

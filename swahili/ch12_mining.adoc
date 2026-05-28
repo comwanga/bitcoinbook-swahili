@@ -1,0 +1,1135 @@
+[[mining]]
+== Uchimbaji na Makubaliano
+
+Neno ((("mining", "purpose of")))«uchimbaji» ni la kupotosha kidogo. Kwa kufanana na uchimbaji wa madini ya thamani, linaelekeza umakini wetu kwenye thawabu ya uchimbaji—bitcoini mpya zinazoundwa katika kila kitalu. Ingawa uchimbaji unahamasishwa na thawabu hiyo, lengo kuu la uchimbaji si thawabu au uzalishaji wa bitcoini mpya. Ukiangalia uchimbaji kama mchakato wa kuunda bitcoini pekee, unakosea kwa kuchukulia njia (vivutio) kama lengo la mchakato. Uchimbaji ni mfumo unaounga mkono chumba cha usuluhishi cha desentralizesheni, ambapo miamala inadhihirishwa na kusuluhishwa. Uchimbaji ni moja ya uvumbuzi unaofanya Bitcoin kuwa maalum—mfumo wa makubaliano wa desentralizesheni ambao ndio msingi wa pesa za kidijitali za rika hadi rika.
+
+Uchimbaji _hulinda mfumo wa Bitcoin_ na kuwezesha
+_makubaliano ya mtandao mzima bila mamlaka kuu_.
+Thawabu ya bitcoini mpya zilizotengenezwa na
+ada za miamala ni mpango wa vivutio unaowianisha vitendo vya
+wachimbaji na usalama wa mtandao, huku ukitekeleza
+ugavi wa fedha kwa wakati mmoja.
+
+[TIP]
+====
+
+Uchimbaji
+ni moja ya mifumo ambayo kwayo _usalama wa makubaliano_ ya Bitcoin _unagawanywa_.
+====
+
+Wachimbaji ((("mining", "operational overview", id="mining-overview")))wanarekodi miamala mipya kwenye mnyororo wa vitalu wa kimataifa. Kitalu
+kipya, chenye miamala iliyotokea tangu kitalu cha mwisho, _huchimbwa_
+kila dakika 10 kwa wastani, na hivyo kuongeza miamala hiyo
+kwenye mnyororo wa vitalu. Miamala inayokuwa sehemu ya kitalu
+na kuongezwa kwenye mnyororo wa vitalu inachukuliwa kuwa _iliyothibitishwa_,
+ambayo inaruhusu wamiliki wapya wa bitcoini kujua kwamba juhudi
+isiyoweza kurudishwa ilitumika kulinda bitcoini walizopokea katika miamala hiyo.
+
+Zaidi ya hayo, miamala kwenye mnyororo wa vitalu ina _utaratibu wa topologia_
+uliofafanuliwa na nafasi yake kwenye mnyororo wa vitalu. Muamala mmoja uko
+mapema kuliko mwingine ikiwa unaonekana kwenye kitalu cha mapema au ikiwa unaonekana
+mapema zaidi kwenye kitalu kimoja. Katika itifaki ya Bitcoin, muamala ni
+halali tu ikiwa unatumia matokeo ya miamala iliyoonekana
+mapema zaidi kwenye mnyororo wa vitalu (iwe ni mapema zaidi kwenye kitalu kimoja au
+kwenye kitalu cha awali), na tu ikiwa hakuna muamala wa awali
+uliotumia matokeo yale yale. Ndani ya mnyororo mmoja wa vitalu, utekelezaji wa
+utaratibu wa topologia unahakikisha kwamba hakuna miamala miwili halali inayoweza kutumia pato
+moja, na kutatua tatizo la _matumizi maradufu_.
+
+Katika baadhi ya itifaki zilizojengwa juu ya Bitcoin, utaratibu wa topologia wa
+miamala ya Bitcoin pia hutumiwa kuanzisha mlolongo wa matukio;
+tutajadili wazo hilo zaidi katika <<single_use_seals>>.
+
+Wachimbaji((("bitcoins", "mining", "incentives")))((("mining", "incentives")))((("incentives"))) wanapokea aina mbili za thawabu kwa
+malipo ya usalama unaotolewa na uchimbaji: bitcoini mpya zinazoundwa na kila
+kitalu kipya (zinazojulikana kama _ruzuku_), na ada za miamala kutoka kwa miamala yote iliyojumuishwa
+kwenye kitalu. Ili kupata thawabu hii, wachimbaji wanashindana kutatua changamoto
+inayotegemea algoriti ya heshi ya kriptografia. Suluhisho la tatizo,
+linaloitwa uthibitisho wa kazi, limejumuishwa kwenye kitalu kipya na linathibitisha kwamba mchimbaji alitumia juhudi kubwa za kompyuta. Ushindani wa kutatua algoriti ya uthibitisho wa kazi ili kupata thawabu na haki ya kurekodi miamala kwenye
+mnyororo wa vitalu ndio msingi wa mfano wa usalama wa Bitcoin.
+
+Ugavi wa fedha wa Bitcoin unaundwa katika mchakato unaofanana na jinsi
+benki kuu inavyotoa pesa mpya kwa kuchapisha noti za benki. Kiwango cha juu
+cha bitcoini mpya zinazoundwa ambazo mchimbaji anaweza kuongeza kwenye kitalu hupungua
+takriban kila miaka minne (au hasa kila vitalu 210,000). Ilianza
+saa 50 za bitcoini kwa kila kitalu mnamo Januari 2009 na kupungukiwa hadi 25
+za bitcoini kwa kila kitalu mnamo Novemba 2012. Ilipungukiwa tena hadi 12.5 bitcoini
+mnamo Julai 2016, na tena hadi 6.25 mnamo Mei 2020. Kulingana na formula hii, thawabu za uchimbaji zinapungua
+kwa kielelezo hadi takriban mwaka 2140, wakati bitcoini zote
+zitakapokuwa zimetolewa. Baada ya 2140, hakuna bitcoini mpya
+itakayotolewa.
+
+Wachimbaji wa Bitcoin ((("transaction fees")))pia wanapata ada kutoka kwa miamala. Kila muamala unaweza
+kujumuisha ada ya muamala kwa namna ya ziada ya bitcoini kati ya
+ingizo za muamala na matokeo. Mchimbaji wa bitcoin anayeshinda anapata
+«kubakisha chenji» kwenye miamala iliyojumuishwa kwenye kitalu kinachoshinda.
+Leo, ada kwa kawaida zinawakilisha asilimia ndogo tu ya
+mapato ya mchimbaji, huku wengi wakitoka kwenye bitcoini mpya zilizotengenezwa. Hata hivyo, kadri
+thawabu inavyopungua baada ya muda na idadi ya miamala kwa kila kitalu inavyoongezeka, sehemu kubwa zaidi ya mapato ya uchimbaji itatoka
+kutoka kwa ada. Polepole, thawabu ya uchimbaji itadhibitiwa na ada za miamala,
+ambazo zitakuwa kivutio kikuu kwa wachimbaji. Baada ya 2140, kiwango cha bitcoini mpya katika kila kitalu kitashuka hadi sifuri na uchimbaji
+utahamasishwa na ada za miamala pekee.
+
+Katika sura hii, kwanza tutachunguza uchimbaji kama mfumo wa ugavi wa fedha
+na kisha kuangalia kazi muhimu zaidi ya uchimbaji: mfumo wa makubaliano
+wa desentralizesheni unaounga mkono usalama wa Bitcoin.
+
+Ili kuelewa uchimbaji na makubaliano, tutafuatilia muamala wa Alice
+unapopokewa na kuongezwa kwenye kitalu na vifaa vya uchimbaji vya Jing. Kisha
+tutafuata kitalu kinapochimbwa, kuongezwa kwenye mnyororo wa vitalu, na
+kukubaliwa na mtandao wa Bitcoin kupitia mchakato wa ((("mining", "operational overview", startref="mining-overview")))makubaliano yanayoibuka.
+
+=== Uchumi wa Bitcoin na Uundaji wa Sarafu
+
+Bitcoini ((("bitcoins", "mining", "currency creation", id="bitcoin-mining-create")))((("mining", "currency creation", id="mining-create")))((("currency creation", id="currency-create")))((("Bitcoin", "economics of", id="bitcoin-economics")))((("economics of Bitcoin", id="economics")))zinatengenezwa wakati wa uundaji wa kila kitalu kwa
+kiwango kisicho na mabadiliko na kinachopungua. Kila kitalu, kinachoundwa kwa wastani kila dakika 10,
+kina bitcoini mpya kabisa, zilizoundwa kutoka kwa hewa. Kila
+vitalu 210,000, au takriban kila miaka minne, kiwango cha utoaji wa sarafu
+kinapunguzwa kwa asilimia 50. Kwa miaka minne ya kwanza ya uendeshaji wa
+mtandao, kila kitalu kilikuwa na bitcoini 50 mpya.
+
+Mgawanyo wa kwanza ulitokea kwenye kitalu cha 210,000. Mgawanyo unaofuata unaotarajiwa
+baada ya uchapishaji wa kitabu hiki utatokea kwenye kitalu cha 840,000, ambao
+utaundwa labda mnamo Aprili au Mei 2024.
+Kiwango cha bitcoini mpya kinapungua
+kwa kielelezo zaidi ya mgawanyo 32 wa _nusu_ hizi hadi kitalu 6,720,000 (kilichochimbwa
+takriban mwaka 2137), ambapo kinafikia kiwango cha chini cha sarafu
+cha satoshi 1. Hatimaye, baada ya vitalu milioni 6.93, takriban mwaka 2140,
+takriban satoshi 2,099,999,997,690,000, au karibu bitcoin milioni 21,
+zitakuwa zimetolewa. Baada ya hapo, vitalu havitakuwa na bitcoini mpya, na
+wachimbaji watalipwa kupitia ada za miamala pekee.
+<<bitcoin_money_supply>> inaonyesha jumla ya bitcoini zinazozunguka kwa wakati,
+kadri utoaji wa sarafu unavyopungua.
+
+[[bitcoin_money_supply]]
+.Ugavi wa sarafu ya bitcoin kwa wakati kulingana na kiwango cha utoaji kinachopungua kijiometri.
+image::images/mbc3_1201.png["BitcoinMoneySupply"]
+
+[NOTE]
+====
+Idadi ya juu ya bitcoini zilizochimbwa ni _kikomo cha juu_ cha thawabu zinazowezekana za
+uchimbaji kwa Bitcoin. Kwa vitendo, mchimbaji anaweza kwa makusudi kuchimba
+kitalu chenye thawabu ndogo kuliko ile kamili. Vitalu kama hivyo vimechimbwa tayari na zaidi vinaweza kuchimbwa baadaye, na kusababisha utoaji wa jumla wa chini zaidi wa sarafu.
+====
+
+Katika msimbo wa <<max_money>>, tunahesabu jumla ya kiasi cha
+bitcoin itakayotolewa.
+
+[[max_money]]
+.Hati ya kuhesabu jumla ya bitcoin itakayotolewa
+====
+[source, python]
+----
+include::code/max_money.py[]
+----
+====
+
+<<max_money_run>> inaonyesha matokeo yanayotolewa baada ya kuendesha hati hii.
+
+[[max_money_run]]
+.Kuendesha hati ya max_money.py
+====
+[source,bash]
+----
+$ python max_money.py
+Total BTC to ever be created: 2099999997690000 Satoshis
+----
+====
+
+Utoaji uliokoma na unaopungua huunda ugavi wa fedha uliowekwa ambao
+unazuia mfumuko wa bei. Tofauti na sarafu ya fiat, ambayo inaweza kuchapishwa kwa
+idadi isiyo na ukomo na benki kuu, hakuna mtu mmoja aliye na uwezo
+wa kupanua ugavi wa ((("bitcoins", "mining", "currency creation", startref="bitcoin-mining-create")))((("mining", "currency creation", startref="mining-create")))((("currency creation", startref="currency-create")))bitcoin.
+
+.Pesa za Kupungua kwa Thamani
+****
+Matokeo ((("deflation", id="deflation")))((("inflation", id="inflation")))muhimu zaidi na yanayojadiliwa ya
+utoaji wa fedha uliowekwa na unaopungua ni kwamba sarafu huwa na tabia ya kuwa
+_kupungua kwa thamani_ (deflationary) kwa asili. Kupungua kwa bei ni jambo la kuongezeka kwa thamani kutokana na kutofautiana kwa ugavi na mahitaji ambayo huinua thamani (na kiwango cha kubadilishana) cha sarafu. Kupungua kwa bei ni kinyume cha mfumuko wa bei; kunamaanisha kwamba pesa zina nguvu zaidi ya ununuzi kwa muda.
+
+Wasomi wengi wa uchumi wanasema kwamba uchumi wa kupungua kwa bei ni maafa ambayo
+yanapaswa kuepukwa kwa gharama yoyote. Hii ni kwa sababu katika kipindi cha kupungua kwa bei haraka, watu huwa wanabakisha pesa badala ya kuzitumia, wakitumaini kwamba bei zitashuka. Jambo kama hilo lilitokea wakati wa «Muongo Uliopotea» wa Japan, ambapo kuporomoka kwa mahitaji kabisa kulisukuma sarafu kwenye msukosuko wa kupungua kwa bei.
+
+Wataalamu wa Bitcoin wanasema kwamba kupungua kwa bei si kizuri wala kibaya kwa asili. Badala yake, kupungua kwa bei kunaunganishwa na kuporomoka kwa mahitaji kwa sababu hiyo ndiyo mfano wazi zaidi wa kupungua kwa bei tunaoujua. Katika sarafu ya fiat yenye uwezekano wa uchapishaji usio na kikomo, ni ngumu sana kuingia kwenye msukosuko wa kupungua kwa bei isipokuwa kama kuna kuporomoka kabisa kwa mahitaji na kutokuwa tayari kuchapisha pesa. Kupungua kwa bei katika Bitcoin hakusababishwi na kuporomoka kwa mahitaji, bali na ugavi uliosemwa.
+
+Kipengele chanya cha kupungua kwa bei, bila shaka, ni kwamba ni kinyume cha mfumuko wa bei. Mfumuko wa bei husababisha uharibifu wa polepole lakini usioweza kuepukika wa sarafu, na kusababisha aina ya kodi ya siri inayoadhibu wawekaji akiba ili kuokoa wadaiwa (ikiwa ni pamoja na wadaiwa wakubwa zaidi, serikali wenyewe). Sarafu chini ya udhibiti wa serikali zinateseka kutokana na hatari ya kimaadili ya utoaji wa madeni rahisi ambayo yanaweza kufutwa baadaye kwa uharibifu kwa gharama ya wawekaji akiba.
+
+Bado haijulikani kama kipengele cha kupungua kwa bei cha sarafu ni tatizo wakati hakisababishwi na kupungua kwa haraka kwa uchumi, au ni faida kwa sababu ulinzi dhidi ya mfumuko wa bei na uharibifu unazidi hatari za kupungua kwa bei.((("Bitcoin", "economics of", startref="bitcoin-economics")))((("economics of Bitcoin", startref="economics")))((("deflation", startref="deflation")))((("inflation", startref="inflation")))
+****
+
+=== Makubaliano ya Desentralizesheni
+
+Katika ((("mining", "decentralized consensus", id="mining-consensus")))((("decentralized consensus", id="decentral-consensus")))((("emergent consensus", id="emergent-consensus")))((("consensus", see="decentralized consensus")))sura iliyopita tuliangalia
+mnyororo wa vitalu—orodha ya kimataifa ya miamala yote, ambayo
+kila mtu kwenye mtandao wa Bitcoin anakubali kama rekodi rasmi ya
+uhamishaji wa umiliki.
+
+Lakini jinsi gani kila mtu kwenye mtandao anaweza kukubaliana kuhusu «ukweli» mmoja wa ulimwenguni wote kuhusu ni nani anamiliki nini, bila kulazimika kumwamini mtu yeyote? Mifumo yote ya malipo ya kawaida inategemea mfano wa uaminifu wenye mamlaka kuu inayotoa huduma ya usuluhishi—kimsingi kuthibitisha na kusuluhisha miamala yote. Bitcoin haina mamlaka kuu, lakini kwa njia fulani kila nodi kamili ina nakala kamili ya mnyororo wa vitalu wa umma ambao inaweza kuuamini kama rekodi rasmi. Mnyororo wa vitalu hauundwi na mamlaka kuu bali unakusanywa kwa kujitegemea na kila nodi kwenye mtandao. Kwa njia fulani, kila nodi kwenye mtandao, ikifanya kazi kwa habari inayopitishwa kupitia miunganiko ya mtandao isiyolindwa, inaweza kufikia hitimisho moja na kukusanya nakala ya mnyororo wa vitalu sawa na wa wengine wote. Sura hii inachunguza mchakato ambao mtandao wa Bitcoin hufikia makubaliano ya kimataifa bila mamlaka kuu.
+
+Moja ya uvumbuzi wa Satoshi Nakamoto ni mfumo wa desentralizesheni wa _makubaliano yanayoibuka_. Yanayoibuka kwa sababu makubaliano hayapatikani kwa uwazi—hakuna uchaguzi au wakati uliowekwa ambapo makubaliano hutokea. Badala yake, makubaliano ni kitu kinachojitokeza kinachotokana na mwingiliano usio na mfululizo wa maelfu ya nodi huru, zote zikifuata sheria rahisi. Mali zote za Bitcoin, ikiwa ni pamoja na sarafu, miamala, malipo, na mfano wa usalama ambao haitegemei mamlaka kuu au uaminifu, zinatokana na uvumbuzi huu.
+
+Makubaliano ya desentralizesheni ya Bitcoin yanaibuka kutoka kwa mwingiliano wa michakato minne inayotokea kwa kujitegemea kwenye nodi kote mtandaoni:
+
+- Uthibitisho wa kujitegemea wa kila muamala, na kila nodi kamili,
+  kulingana na orodha kamili ya vigezo
+
+- Ukusanyaji wa kujitegemea wa miamala hiyo kwenye vitalu vipya na
+  nodi za uchimbaji, pamoja na uthibitisho wa hesabu kupitia algoriti ya uthibitisho wa kazi
+
+- Uthibitisho wa kujitegemea wa vitalu vipya na kila nodi na ukusanyaji
+  kwenye mnyororo
+
+- Uchaguzi wa kujitegemea, na kila nodi, wa mnyororo wenye hesabu nyingi zaidi zinazodhibitiwa kulingana na uthibitisho wa kazi
+
+Katika sehemu chache zijazo, tutachunguza michakato hii na jinsi inavyoingiliana kuunda kipengele kinachojitokeza cha makubaliano ya mtandao mzima ambayo huruhusu nodi yoyote ya Bitcoin kukusanya nakala yake ya mnyororo wa vitalu rasmi, unaoaminika, wa umma, wa kimataifa.((("mining", "decentralized consensus", startref="mining-consensus")))((("decentralized consensus", startref="decentral-consensus")))((("emergent consensus", startref="emergent-consensus")))
+
+[[tx_verification]]
+=== Uthibitisho Huru wa Miamala
+
+Katika
+<<c_transactions>>, tuliona ((("mining", "independent transaction verification", id="mining-verify")))((("transactions", "independent verification", id="transaction-verify")))((("independent transaction verification", id="independent-transaction-verify")))((("verifying", "transactions", id="verify-transaction")))((("nodes", "transaction verification", id="node-verify")))jinsi programu za pochi zinavyounda miamala kwa kukusanya UTXOs, kutoa data sahihi ya uthibitisho, na kisha kuunda matokeo mapya yaliyopewa mmiliki mpya. Muamala unaotokana na hilo unaweza kutumwa kwa nodi jirani kwenye mtandao wa Bitcoin ili upitishwe mtandao mzima wa Bitcoin.
+
+Hata hivyo, kabla ya kupitisha miamala kwa majirani zake, kila nodi ya Bitcoin inayopokea muamala kwanza itathibitisha muamala huo. Hii inahakikisha kwamba miamala halali pekee ndiyo inayopitishwa mtandaoni, huku miamala batili ikitupwa kwenye nodi ya kwanza inayoikutana nayo.
+
+Kila nodi inathibitisha kila muamala dhidi ya orodha ndefu ya vigezo:
+
+- Sintaksia ya muamala na muundo wa data lazima uwe sahihi.
+
+- Orodha zote za ingizo wala za matokeo haziwezi kuwa tupu.
+
+- Uzito wa muamala lazima uwe mdogo vya kutosha kuuwezesha kufaa kwenye kitalu.
+
+- Kila thamani ya matokeo, pamoja na jumla, lazima iwe ndani ya mbalimbali ya thamani inayoruhusiwa (sifuri au zaidi, lakini isizidi bitcoin milioni 21).
+
+- Wakati wa kufuli ni sawa na +INT_MAX+, au wakati wa kufuli na thamani za mlolongo
+  zinakidhiwa kulingana na sheria za wakati wa kufuli na BIP68.
+
+- Idadi ya uendeshaji wa saini (SIGOPS) iliyomo kwenye
+  muamala ni chini ya kikomo cha uendeshaji wa saini.
+
+- Matokeo yanayotumiwa yanafanana na matokeo kwenye mempool au matokeo yasiyotumiwa kwenye kitalu kwenye tawi kuu.
+
+- Kwa kila ingizo, ikiwa muamala wa matokeo uliyorejelewa ni matokeo ya coinbase, lazima uwe na angalau uthibitisho wa +COINBASE_MATURITY+ (100). Wakati wowote wa kufuli wa kabisa au wa uhusiano lazima pia ukidhiwe. Nodi zinaweza kupitisha miamala kitalu kimoja kabla hazijakomaa kwani zitakomaa ikiwa zitajumuishwa kwenye kitalu kinachofuata.
+
+- Katika hali ambapo jumla ya thamani za ingizo ni ndogo kuliko jumla ya thamani za matokeo, muamala unakataliwa.
+
+- Hati za kila ingizo lazima zithibitishwe dhidi ya
+  hati za matokeo zinazofanana.
+
+Kumbuka kwamba masharti hubadilika kwa wakati, ili kuongeza vipengele vipya au
+kushughulikia aina mpya za mashambulizi ya kunyima huduma.
+
+Kwa kuthibitisha kwa kujitegemea kila muamala unapopokelewa na kabla
+ya kuupitisha, kila nodi hujenga hifadhidata ya miamala halali (lakini isiyothibitishwa)
+inayojulikana ((("mining", "independent transaction verification", startref="mining-verify")))((("transactions", "independent verification", startref="transaction-verify")))((("independent transaction verification", startref="independent-transaction-verify")))((("verifying", "transactions", startref="verify-transaction")))((("nodes", "transaction verification", startref="node-verify")))((("memory pool")))kama _hifadhi ya kumbukumbu_ au _mempool_.
+
+=== Nodi za Uchimbaji
+
+Baadhi ya((("mining", "miner nodes, purpose of", id="mining-nodes-purpose")))((("nodes", "miner nodes", "purpose of", id="nodes-miner-purpose"))) nodi kwenye mtandao wa Bitcoin ni nodi maalum zinazoitwa _wachimbaji_. Jing ni mchimbaji wa Bitcoin; anapata bitcoin kwa kuendesha «rig ya uchimbaji», ambayo ni mfumo maalum wa vifaa vya kompyuta ulioundwa kuchimba bitcoin. Vifaa maalum vya uchimbaji vya Jing vimeunganishwa na seva inayoendeshea nodi kamili. Kama kila nodi kamili nyingine, nodi ya Jing inapokea na kupitisha miamala isiyothibitishwa kwenye mtandao wa Bitcoin. Nodi ya Jing, hata hivyo, pia inakusanya miamala hiyo kwenye vitalu vipya.
+
+Tufuatilie vitalu vilivyoundwa wakati Alice alifanya ununuzi kutoka kwa Bob (ona <<spending_bitcoin>>). Kwa madhumuni ya kuonyesha dhana katika sura hii, tuchukulie kwamba kitalu chenye muamala wa Alice kilichimbwa na mfumo wa uchimbaji wa Jing na tufuate muamala wa Alice unavyokuwa sehemu ya kitalu kipya hiki.
+
+Nodi ya uchimbaji ya Jing inadumisha nakala ya ndani ya mnyororo wa vitalu. Kufikia wakati Alice ananunua kitu, nodi ya Jing imejiunga na mnyororo wa vitalu wenye uthibitisho wa kazi zaidi. Nodi ya Jing inasikia miamala, ikijaribu kuchimba kitalu kipya na pia ikisikiliza vitalu vilivyogunduliwa na nodi nyingine. Wakati nodi ya Jing inachimba, inapokea kitalu kipya kupitia mtandao wa Bitcoin. Kuwasili kwa kitalu hiki kunaashiria mwisho wa utafutaji wa kitalu hicho na mwanzo wa utafutaji wa kuunda kitalu kinachofuata.
+
+Wakati wa dakika kadhaa zilizopita, huku nodi ya Jing ikitafuta suluhisho la kitalu kilichotangulia, ilikuwa pia inakusanya miamala kwa ajili ya kitalu kinachofuata. Sasa imekusanya miamala elfu kadhaa kwenye hifadhi yake ya kumbukumbu. Baada ya kupokea kitalu kipya na kukithibitisha, nodi ya Jing itakilinganisha pia na miamala yote kwenye hifadhi ya kumbukumbu na kuondoa yoyote iliyojumuishwa kwenye kitalu hicho. Miamala yoyote inayobaki kwenye hifadhi ya kumbukumbu haijathibitishwa na inangojea kurekodwa kwenye kitalu kipya.
+
+Nodi ya Jing mara moja inaunda kitalu kipya cha sehemu, mgombea wa kitalu kinachofuata. Kitalu hiki ((("candidate blocks")))((("blocks", "candidate blocks")))kinaitwa _kitalu mgombea_ kwa sababu bado si kitalu halali, kwani hakina uthibitisho wa kazi uliohalali. Kitalu kinakuwa halali tu ikiwa mchimbaji anafanikiwa kupata suluhisho kulingana na algoriti ya uthibitisho wa kazi.
+
+Nodi ya Jing inapokusanya miamala yote kutoka kwenye hifadhi ya kumbukumbu, kitalu kipya mgombea kina miamala elfu kadhaa ambazo kila moja inalipa ada za miamala atakazojaribu ((("mining", "miner nodes, purpose of", startref="mining-nodes-purpose")))((("nodes", "miner nodes", "purpose of", startref="nodes-miner-purpose")))kudai.
+
+==== Muamala wa Coinbase
+
+Muamala ((("bitcoins", "mining", "coinbase transactions", id="bitcoin-mining-coinbase")))((("mining", "coinbase transactions", id="mining-coinbase")))((("nodes", "miner nodes", "coinbase transactions", id="nodes-miner-coinbase")))((("coinbase transactions", id="coinbase")))((("transactions", "coinbase", id="transaction-coinbase")))wa kwanza katika kitalu chochote ni muamala maalum, unaoitwa _muamala wa coinbase_. Muamala huu unajengwa na nodi ya Jing na unalipa _thawabu_ yake kwa juhudi za uchimbaji.
+
+Nodi ya Jing inaunda muamala wa coinbase kama malipo kwa pochi yake mwenyewe. Jumla ya
+kiasi cha thawabu ambayo Jing anakusanya kwa kuchimba kitalu ni jumla ya
+ruzuku ya kitalu (bitcoini 6.25 mpya mnamo 2023) na ada za miamala kutoka kwa miamala yote iliyojumuishwa kwenye kitalu.
+
+Tofauti na miamala ya kawaida, muamala wa coinbase haula (kutumia) UTXOs kama ingizo. Badala yake, una ingizo moja pekee, linaloitwa _ingizo la coinbase_, ambalo lina thawabu ya kitalu kwa njia ya moja kwa moja. Muamala wa coinbase lazima uwe na angalau matokeo moja na unaweza kuwa na matokeo mengi kadri ya kujaza kwenye kitalu. Ni kawaida kwa miamala ya coinbase mnamo 2023 kuwa na matokeo mawili: moja wao ni matokeo ya thamani-sifuri inayotumia +OP_RETURN+ kufunga kwa mashahidi wote kwa miamala ya segregated witness (segwit) kwenye kitalu. Matokeo mengine yanalipa mchimbaji thawabu yao.
+
+==== Thawabu ya Coinbase na Ada
+
+Ili kuunda((("rewards", id="reward-coinbase")))((("transaction fees", "in coinbase transactions", secondary-sortas="coinbase transactions", id="transaction-fee-coinbase"))) muamala wa coinbase, nodi ya Jing kwanza inahesabu jumla ya kiasi cha ada za miamala:
+
+[latexmath]
+++++
+\begin{equation}
+Total\:Fees = Sum(Inputs) - Sum(Outputs)
+\end{equation}
+++++
+
+
+Kisha, nodi ya Jing inahesabu thawabu sahihi kwa kitalu kipya. Thawabu
+inakokotolewa kulingana na urefu wa kitalu, ikianza saa 50 za bitcoin
+kwa kila kitalu na kupunguzwa kwa nusu kila vitalu 210,000.
+
+Hesabu inaweza kuonekana katika kazi +GetBlockSubsidy+ kwenye mteja
+wa Bitcoin Core, kama inavyoonyeshwa kwenye <<getblocksubsidy_source>>.
+
+[[getblocksubsidy_source]]
+.Kuhesabu thawabu ya kitalu&#x2014;Kazi [.plain]#+GetBlockSubsidy+,# Mteja wa Bitcoin Core, [.plain]#main.cpp#
+====
+[role="c_less_space"]
+[source, cpp]
+----
+CAmount GetBlockSubsidy(int nHeight, const Consensus::Params& consensusParams)
+{
+    int halvings = nHeight / consensusParams.nSubsidyHalvingInterval;
+    // Force block reward to zero when right shift is undefined.
+    if (halvings >= 64)
+        return 0;
+
+    CAmount nSubsidy = 50 * COIN;
+    // Subsidy is cut in half every 210,000 blocks.
+    nSubsidy >>= halvings;
+    return nSubsidy;
+}
+----
+====
+
+Ruzuku ya awali inakokotolewa kwa satoshi kwa kuzidisha 50 na
+mara kwa mara ya +COIN+ (satoshi 100,000,000). Hii inaweka thawabu ya awali
+(+nSubsidy+) kwa satoshi bilioni 5.
+
+Kisha, kazi inakokotoa idadi ya +halvings+
+zilizotokea kwa kugawanya urefu wa kitalu wa sasa na muda wa mgawanyo
+(+SubsidyHalvingInterval+).
+
+Kisha, kazi inatumia opereta ya kuhamisha-kulia-kwa-binary kugawanya thawabu
+[.keep-together]#(+nSubsidy+)# kwa mbili kwa kila mzunguko wa mgawanyo. Katika hali ya
+kitalu 277,316, hii ingehamisha kwa binary-kulia thawabu ya satoshi bilioni 5
+mara moja (mgawanyo mmoja) na kusababisha satoshi bilioni 2.5, au bitcoini 25. Baada ya mgawanyo wa 33, ruzuku itapunguzwa hadi sifuri. Opereta ya kuhamisha-kwa-binary inatumika kwa sababu ni bora zaidi kuliko mgawano mwingi wa kurudiwa. Ili kuepuka hitilafu inayowezekana, opereta ya kuhamisha inakimbiwa baada ya mgawanyo 63, na ruzuku imewekwa sawa na 0.
+
+Hatimaye, thawabu ya coinbase (+nSubsidy+) inaongezwa kwa ada za miamala
+(+nFees+), na jumla inarudishwa.
+
+[TIP]
+====
+Ikiwa nodi ya uchimbaji ya Jing inaandika muamala wa coinbase, nini kinazuia Jing
+«kujitunuzia» bitcoini 100 au 1,000? Jibu ni kwamba thawabu iliyopanda itasababisha kitalu kuchukuliwa kama batili na kila mtu mwingine, kuharibu umeme wa Jing uliotumiwa kwa PoW. Jing
+anapata kutumia thawabu tu ikiwa kitalu kimekubaliwa na ((("rewards", startref="reward-coinbase")))((("transaction fees", "in coinbase transactions", secondary-sortas="coinbase transactions", startref="transaction-fee-coinbase")))kila mtu.
+====
+
+==== Muundo wa Muamala wa Coinbase
+
+Kwa hesabu hizi,
+nodi ya Jing kisha inaunda muamala wa coinbase kulipa yeye mwenyewe
+thawabu ya kitalu.
+
+Muamala wa coinbase
+una muundo maalum. Badala ya ingizo la muamala linalobainisha UTXO
+iliyotangulia kutumia, una ingizo la «coinbase». Tulichunguza
+ingizo za miamala katika <<inputs>>. Tulinganishe ingizo la muamala la kawaida na ingizo la muamala wa coinbase. <<table_8-1>> inaonyesha
+muundo wa muamala wa kawaida, huku <<table_8-2>> ikionyesha
+muundo wa ingizo la muamala wa ((("inputs", "coinbase versus regular transactions")))coinbase.
+
+++++
+<table id="table_8-1">
+<caption>The structure of a "normal" transaction input</caption>
+<thead>
+<tr>
+<th>Size</th>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>32 bytes</p></td>
+<td><p>Transaction Hash</p></td>
+<td><p>Pointer to the transaction containing the UTXO to be spent</p></td>
+</tr>
+<tr>
+<td><p>4 bytes</p></td>
+<td><p>Output Index</p></td>
+<td><p>The index number of the UTXO to be spent, first one is 0</p></td>
+</tr>
+<tr>
+<td><p>1–9 bytes (compactSize)</p></td>
+<td><p>Script Size</p></td>
+<td><p>Script length in bytes, to follow</p></td>
+</tr>
+<tr>
+<td><p>Variable</p></td>
+<td><p>Input Script</p></td>
+<td><p>A script that fulfills the conditions of the UTXO output script</p></td>
+</tr>
+<tr>
+<td><p>4 bytes</p></td>
+<td><p>Sequence Number</p></td>
+<td><p>Multipurpose field used for BIP68 timelocks and transaction replacement signaling</p></td>
+</tr>
+</tbody>
+</table>
+<table id="table_8-2">
+<caption>The structure of a coinbase transaction input</caption>
+<thead>
+<tr>
+<th>Size</th>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>32 bytes</p></td>
+<td><p>Transaction Hash</p></td>
+<td><p>All bits are zero: Not a transaction hash reference</p></td>
+</tr>
+<tr>
+<td><p>4 bytes</p></td>
+<td><p>Output Index</p></td>
+<td><p>All bits are ones: 0xFFFFFFFF</p></td>
+</tr>
+<tr>
+<td><p>1 byte</p></td>
+<td><p>Coinbase Data Size</p></td>
+<td><p>Length of the coinbase data, from 2 to 100 bytes</p></td>
+</tr>
+<tr>
+<td><p>Variable</p></td>
+<td><p>Coinbase Data</p></td>
+<td><p>Arbitrary data used for extra nonce and mining tags; in v2 blocks, must begin with block height</p></td>
+</tr>
+<tr>
+<td><p>4 bytes</p></td>
+<td><p>Sequence Number</p></td>
+<td><p>Set to 0xFFFFFFFF</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Katika muamala wa coinbase, sehemu mbili za kwanza zimewekwa kwa thamani ambazo haziwakilishi rejeleo la UTXO. Badala ya «heshi ya muamala», sehemu ya kwanza imejazwa na bytes 32 zilizowekwa sifuri zote. «Fahirisi ya matokeo» imejazwa na bytes 4 zilizowekwa 0xFF (255 ya desimali) zote. Hati ya ingizo inabadilishwa na data ya coinbase, sehemu ya data inayotumiwa na wachimbaji, kama tutakavyoona baadaye.
+
+[[duplicate_transactions]]
+==== Data ya Coinbase
+
+Miamala ((("coinbase data")))ya coinbase haina sehemu ya hati ya ingizo. Badala yake,
+sehemu hii inabadilishwa na data ya coinbase, ambayo lazima iwe kati ya bytes 2 na 100. Isipokuwa kwa bytes chache za kwanza, sehemu iliyobaki ya data ya coinbase inaweza kutumiwa na wachimbaji kwa njia yoyote wanayotaka; ni data ya kubuni.
+
+Katika kitalu cha asili, kwa mfano, Satoshi Nakamoto aliongeza maandishi «The Times 03/Jan/2009 Chancellor on brink of second bailout for banks» kwenye data ya coinbase, akiitumia kama uthibitisho wa tarehe ya mapema zaidi ambapo kitalu hiki kingeweza kuundwa na kupeleka ujumbe. Kwa sasa, wachimbaji mara nyingi hutumia data ya coinbase kujumuisha thamani za nonce za ziada na mifuatano inayotambua dimbwi la uchimbaji.
+
+[role="less_space pagebreak-before"]
+Bytes chache za kwanza za coinbase zilikuwa za kubuni, lakini hiyo si hivyo tena. Kulingana na BIP34, vitalu vya toleo-2 (vitalu vyenye sehemu ya toleo iliyowekwa sawa na 2 au zaidi) lazima viwe na urefu wa kitalu kama uendeshaji wa «kusukuma» wa hati mwanzoni mwa sehemu ya ((("bitcoins", "mining", "coinbase transactions", startref="bitcoin-mining-coinbase")))((("mining", "coinbase transactions", startref="mining-coinbase")))((("nodes", "miner nodes", "coinbase transactions", startref="nodes-miner-coinbase")))((("coinbase transactions", startref="coinbase")))((("transactions", "coinbase", startref="transaction-coinbase")))coinbase.
+
+=== Kuunda Kichwa cha Kitalu
+
+Ili
+kuunda ((("mining", "constructing block header", id="mining-blockheader")))((("nodes", "miner nodes", "constructing block header", id="nodes-miner-blockheader")))((("block header", "constructing", id="block-header-construct")))kichwa cha kitalu, nodi ya uchimbaji inahitaji kujaza sehemu sita,
+kama ilivyoorodheshwa kwenye <<block_header_structure_ch10>>.
+
+++++
+<table id="block_header_structure_ch10">
+<caption>The structure of the block header</caption>
+<thead>
+<tr>
+<th>Size</th>
+<th>Field</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>4 bytes</p></td>
+<td><p>Version</p></td>
+<td><p>A multipurpose bitfield</p></td>
+</tr>
+<tr>
+<td><p>32 bytes</p></td>
+<td><p>Previous Block Hash</p></td>
+<td><p>A reference to the hash of the previous (parent) block in the chain</p></td>
+</tr>
+<tr>
+<td><p>32 bytes</p></td>
+<td><p>Merkle Root</p></td>
+<td><p>A hash that is the root of the merkle tree of this block's transactions</p></td>
+</tr>
+<tr>
+<td><p>4 bytes</p></td>
+<td><p>Timestamp</p></td>
+<td><p>The approximate creation time of this block (seconds from Unix Epoch)</p></td>
+</tr>
+<tr>
+<td><p>4 bytes</p></td>
+<td><p>Target</p></td>
+<td><p>The proof-of-work algorithm target for this block</p></td>
+</tr>
+<tr>
+<td><p>4 bytes</p></td>
+<td><p>Nonce</p></td>
+<td><p>A counter used for the proof-of-work algorithm</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Sehemu ya toleo awali ilikuwa sehemu ya nambari kamili na ilitumika katika uboreshaji tatu wa mtandao wa Bitcoin, ule uliofafanuliwa katika BIPs 34, 66, na 65. Kila wakati, nambari ya toleo iliongezwa. Uboreshaji wa baadaye ulifafanua sehemu ya toleo kama sehemu ya vipande, inayoitwa _versionbits_, ikiruhusu hadi uboreshaji 29 kuendelea wakati mmoja; ona <<bip9>> kwa maelezo. Baadaye zaidi, wachimbaji walianza kutumia baadhi ya versionbits kama sehemu ya nonce ya msaidizi.
+
+[TIP]
+====
+Uboreshaji wa itifaki uliofafanuliwa katika BIPs 34, 66, na 65 ulitokea kwa utaratibu huo, na BIP66 (DER kali) ukitokea kabla ya BIP65 (+OP_CHECKTIMELOCKVERIFY+), hivyo wasanidi programu wa Bitcoin mara nyingi huwaorodhesha kwa utaratibu huo badala ya kupangwa kwa nambari.
+====
+
+Leo, sehemu ya versionbits haina maana isipokuwa kama kuna jaribio la kuboresha itifaki ya makubaliano inayoendelea, ambapo utahitaji kusoma nyaraka zake ili kujua jinsi inavyotumia versionbits.
+
+Kisha, nodi ya uchimbaji inahitaji kuongeza «Heshi ya Kitalu Kilichotangulia» (pia inajulikana kama [.keep-together]#+prevhash+).# Hiyo ni heshi ya kichwa cha kitalu cha kitalu kilichotangulia kilichopokelewa kutoka kwa mtandao, ambacho nodi ya Jing imekikubali na kukichagua kama _mzazi_ wa kitalu chake mgombea.
+
+[TIP]
+====
+Kwa kuchagua kitalu maalum cha _mzazi_, kilichoashiriwa na sehemu ya Heshi ya Kitalu Kilichotangulia kwenye kichwa cha kitalu mgombea, Jing anafunga nguvu yake ya uchimbaji ili kupanua mnyororo unaoishia kwenye kitalu hiyo maalum.
+====
+
+Hatua
+inayofuata ni kufunga kwa miamala yote kwa kutumia miti ya merkle. Kila
+muamala unaorodheshwa ukitumia kitambulisho chake cha muamala shahidi (_wtxid_)
+kwa utaratibu wa topografia, na bytes 32 za 0x00 zikisimama kwa wtxid ya
+muamala wa kwanza (coinbase). Kama tulivyoona katika <<merkle_trees>>,
+wtxid ya mwisho inafanywa heshi yake yenyewe ikiwa kuna idadi isiyo ya jozi ya wtxids,
+na kuunda nodi ambazo kila moja ina heshi ya muamala mmoja. Heshi za
+miamala zinaweza kuchanganywa, kwa jozi, na kuunda kila kiwango cha
+mti, hadi miamala yote imefupishwa kwenye nodi moja kwenye
+«mzizi» wa mti. Mzizi wa mti wa merkle unafupisha miamala yote
+kwenye thamani moja ya bytes 32, ambayo ni _heshi ya mzizi wa shahidi_.
+
+Heshi ya mzizi wa shahidi inaongezwa kwenye matokeo ya muamala wa coinbase.
+Hatua hii inaweza kurukwa ikiwa hakuna muamala wowote kwenye kitalu unaohitajika
+kuwa na muundo wa shahidi. Kila muamala (ikiwa ni pamoja na
+muamala wa coinbase) kisha unaorodheshwa ukitumia kitambulisho chake cha muamala
+(txid) na kutumika kuunda mti wa pili wa merkle, ambapo mzizi wake
+unakuwa mzizi wa merkle, ambao kichwa cha kitalu kinafunga kwake.
+
+Nodi ya uchimbaji ya Jing kisha itaongeza muhuri wa wakati wa bytes 4, uliosimbwa kama muhuri wa wakati wa Unix «epoch», ambao unategemea idadi ya sekunde zilizopita tangu Januari 1, 1970, saa sita usiku ya UTC/GMT.
+
+Nodi ya Jing kisha inajaza lengo la nBits, ambalo lazima liwekwe kwa uwakilishi wa muhtasari wa PoW unaohitajika ili kuufanya kuwa kitalu halali. Lengo linahifadhiwa kwenye kitalu kama kipimo cha «bits ya lengo», ambacho ni usimbuaji wa mantissa-exponent wa lengo. Usimbuaji una exponent ya byte 1, ukifuatiwa na mantissa (mgawo) wa bytes 3. Kwenye kitalu 277,316, kwa mfano, thamani ya bits za lengo ni +0x1903a30c+. Sehemu ya kwanza +0x19+ ni exponent ya hexadecimal, huku sehemu inayofuata, +0x03a30c+, ikiwa mgawo. Dhana ya lengo inafasiriwa katika <<target>> na uwakilishi wa «bits za lengo» unafasiriwa katika <<target_bits>>.
+
+Sehemu ya mwisho ni nonce, ambayo inawekwa sawa na sifuri.
+
+Baada ya sehemu nyingine zote kujazwa, kichwa cha kitalu mgombea kimekamilika sasa na
+mchakato wa uchimbaji unaweza kuanza. Lengo sasa ni kupata kichwa
+kinachosababisha heshi ambayo ni ndogo kuliko lengo.
+Nodi ya uchimbaji itahitaji kujaribu mabadiliko ya mabilioni au trilioni ya
+kichwa kabla toleo halijajaliwa kwa ((("mining", "constructing block header", startref="mining-blockheader")))((("nodes", "miner nodes", "constructing block header", startref="nodes-miner-blockheader")))((("block header", "constructing", startref="block-header-construct")))mahitaji.
+
+[role="less_space pagebreak-before"]
+=== Kuchimba Kitalu
+
+Sasa
+kwamba ((("candidate blocks", "mining", id="candidate-mine")))((("blocks", "candidate blocks", "mining", id="block-candidate-mine")))((("mining", "candidate blocks", id="mining-candidate")))kitalu mgombea kimejengwa na nodi ya Jing, ni wakati
+wa rig ya uchimbaji ya vifaa vya Jing «kuchimba» kitalu—kupata suluhisho
+kwa algoriti ya uthibitisho wa kazi inayofanya kitalu kuwa halali. Katika
+kitabu hiki chote tumestudy kazi za heshi za kriptografia kama zilivyotumiwa katika
+nyanja mbalimbali za mfumo wa Bitcoin. Kazi ya heshi SHA256 ndiyo
+kazi inayotumiwa katika mchakato wa uchimbaji wa Bitcoin.
+
+Kwa maneno rahisi zaidi, uchimbaji ni
+mchakato wa kufanya heshi ya kichwa cha kitalu mgombea mara kwa mara, ukibadilisha kigezo kimoja, hadi heshi inayotokana inafanana na lengo maalum. Matokeo ya kazi ya heshi hayawezi kubainishwa mapema, wala mfumo hauwezi kuundwa ambao utazalisha thamani maalum ya heshi. Kipengele hiki cha kazi za heshi kinamaanisha kwamba njia pekee ya kuzalisha matokeo ya heshi yanayofanana na lengo maalum ni kujaribu tena na tena, ukibadilisha ingizo hadi matokeo ya heshi yanayotakiwa yanaonekana kwa bahati.
+
+==== Algoriti ya Uthibitisho wa Kazi
+
+Algoriti ya heshi ((("mining", "proof-of-work algorithm", id="mining-proof")))((("hash functions", "proof-of-work algorithm", id="hash-proof")))((("proof-of-work algorithm", id="proof-mining")))inachukua ingizo la data ya urefu wowote na kuzalisha matokeo ya urefu uliowekwa, unaoitwa _muhtasari_. Muhtasari ni ahadi ya kidijitali kwa ingizo. Kwa ingizo lolote maalum, muhtasari unaotokana utakuwa sawa kila wakati na unaweza kuhesabika na kuthibitishwa kwa urahisi na mtu yeyote anayetekeleza algoriti ile ile ya heshi. Kipengele muhimu cha algoriti ya heshi ya kriptografia ni kwamba haiwezekani kwa hesabu kupata ingizo mbili tofauti zinazozalisha muhtasari ule ule (inayojulikana kama _mgongano_). Kama matokeo ya hili, pia ni vigumu sana kuchagua ingizo kwa namna ya kuzalisha muhtasari unaotakiwa, isipokuwa kwa kujaribu ingizo za nasibu.
+
+Na ((("SHA256 hash function")))SHA256, matokeo yana urefu wa bits 256 kila wakati, bila kujali ukubwa wa ingizo. Kwa mfano, tutahesabu heshi ya SHA256 ya msemo, «Hello, World!»:
+
+----
+$ echo "Hello, world!" | sha256sum
+d9014c4624844aa5bac314773d6b689ad467fa4e1d1a50a1b8a99d5a95f72ff5  -
+----
+
+Matokeo haya
+ya bits 256 (yaliyowakilishwa kwa hex) ni _heshi_ au _muhtasari_ wa msemo na inategemea kila sehemu ya msemo. Kuongeza herufi moja, alama ya uakifishaji, au tabia nyingine yoyote kutazalisha heshi tofauti.
+
+Kigezo kinachotumiwa katika hali kama hii kinaitwa _nonce_.
+Nonce inatumika kubadilisha matokeo ya kazi ya kriptografia—katika hali hii kubadilisha matokeo ya ahadi ya SHA256 kwa msemo.
+
+Ili kufanya changamoto kutoka kwa algoriti hii, tuweke lengo: pata
+msemo unaozalisha heshi ya hexadecimal inayoanza na sifuri.
+Kwa bahati nzuri, hii si ngumu, kama inavyoonyeshwa kwenye <<sha256_example_generator_output2>>.
+
+[[sha256_example_generator_output2]]
+.Utekelezaji rahisi wa uthibitisho wa kazi
+====
+----
+$ for nonce in $( seq 100 ) ; do echo "Hello, world! $nonce" | sha256sum ; done
+3194835d60e85bf7f728f3e3f4e4e1f5c752398cbcc5c45e048e4dbcae6be782  -
+bfa474bbe2d9626f578d7d8c3acc1b604ec4a7052b188453565a3c77df41b79e  -
+[...]
+f75a100821c34c84395403afd1a8135f685ca69ccf4168e61a90e50f47552f61  -
+09cb91f8250df04a3db8bd98f47c7cecb712c99835f4123e8ea51460ccbec314  -
+----
+====
+
+Msemo «Hello, World! 32» unazalisha heshi inayofuata, ambayo inakidhi vigezo vyetu:
++09cb91f8250df04a3db8bd98f47c7cecb712c99835f4123e8ea51460ccbec314+. Ilichukua majaribio 32 kuipata. Kwa suala la uwezekano, ikiwa matokeo ya kazi ya heshi yanagawanywa sawasawa, tungetegemea kupata matokeo yenye 0 kama kiambishi awali cha hexadecimal mara moja kila heshi 16 (moja kati ya tarakimu 16 za hexadecimal 0 hadi F). Kwa maneno ya nambari, hiyo inamaanisha kupata thamani ya heshi ambayo ni ndogo kuliko +0x1000000000000000000000000000000000000000000000000000000000000000+. Tunaita kizingiti hiki _lengo_, na lengo ni kupata heshi ambayo kwa nambari ni ndogo kuliko lengo. Ikiwa tunapunguza lengo, kazi ya kupata heshi ambayo ni ndogo kuliko lengo inakuwa ngumu zaidi na zaidi.
+
+++++
+<p class="fix_tracking3">
+To give a simple analogy, imagine a game where players throw a pair of
+dice repeatedly, trying to throw less than a specified target. In the
+first round, the target is 12. Unless you throw double-6, you win. In
+the next round the target is 11. Players must throw 10 or less to win,
+again an easy task. Let's say a few rounds later the target is down to
+5. Now, more than half the dice throws will exceed the target and
+therefore be invalid. It takes more dice throws to win
+the lower the target gets. Eventually, when the target is 3 (the minimum
+possible), only one throw out of every 36, or about 3% of them, will produce a
+winning result.
+</p>
+++++
+
+Kutoka mtazamo wa mwangalizi anayejua kwamba lengo la mchezo wa dadu ni 3, ikiwa mtu amefanikiwa kutupa kwa ushindi, inaweza kudhaniwa kwamba walijaribu, kwa wastani, kutupa 36. Kwa maneno mengine, mtu anaweza kukadiri kiasi cha kazi inayohitajika kufanikiwa kutoka kwa ugumu unaowekwa na lengo. Wakati algoriti inategemea kazi ya kipindupindu kama SHA256, ingizo lenyewe linaunda _uthibitisho_ kwamba kiasi fulani cha _kazi_ kilifanywa kuzalisha matokeo chini ya lengo. Hivyo, _uthibitisho wa kazi_.
+
+[TIP]
+====
+Ingawa kila jaribio linazalisha matokeo ya nasibu, uwezekano wa matokeo yoyote yanayowezekana unaweza kuhesabika mapema. Kwa hivyo, matokeo ya ugumu maalum yanaunda uthibitisho wa kiasi maalum cha kazi.
+====
+
+Katika <<sha256_example_generator_output2>>, «nonce» inayoshinda ni 32, na
+matokeo haya yanaweza kuthibitishwa na mtu yeyote kwa kujitegemea. Mtu yeyote anaweza kuongeza nambari 32 kama kiambishi kikosi kwenye msemo «Hello, world!» na kuhesabu
+heshi, akithibitisha kwamba ni ndogo kuliko lengo:
+
+----
+$ echo "Hello, world! 32" | sha256sum
+09cb91f8250df04a3db8bd98f47c7cecb712c99835f4123e8ea51460ccbec314  -
+----
+
+++++
+<p class="fix_tracking3">
+Although it only takes one hash computation to verify, it took
+us 32 hash computations to find a nonce that worked. If we had a lower
+target (higher difficulty), it would take many more hash computations to
+find a suitable nonce, but only one hash computation for anyone to
+verify. And by knowing the target, anyone can estimate the
+difficulty using statistics and therefore know roughly how much work was needed
+to find such a nonce.
+</p>
+++++
+
+[TIP]
+====
+PoW lazima izalishe heshi ambayo ni _ndogo kuliko_ lengo. Lengo kubwa zaidi kunamaanisha ni rahisi zaidi kupata heshi ambayo iko chini ya lengo. Lengo ndogo zaidi kunamaanisha ni ngumu zaidi kupata heshi chini ya lengo. Lengo na ugumu vinahusiana kwa kinyume.
+====
+
+++++
+<p class="fix_tracking3">
+Bitcoin's PoW is very similar to the challenge
+shown in <a data-type="xref" href="#sha256_example_generator_output2">#sha256_example_generator_output2</a>. The miner constructs a
+candidate block filled with transactions. Next, the miner calculates the
+hash of this block's header and sees if it is smaller than the current
+<em>target</em>. If the hash is not less than the target, the miner will modify
+the nonce (usually just incrementing it by one) and try again. At the
+current difficulty in the Bitcoin network, miners have to try
+a huge number of times before finding a nonce that results in a low
+enough block header hash.
+</p>
+++++
+
+[[target_bits]]
+==== Uwakilishi wa Lengo
+
+Block headers ((("mining", "proof-of-work algorithm", startref="mining-proof")))((("hash functions", "proof-of-work algorithm", startref="hash-proof")))((("proof-of-work algorithm", startref="proof-mining")))((("mining", "target representation", id="mining-target")))((("targets", "representation of", id="target-represent")))((("proof-of-work algorithm", "target representation", id="proof-target")))zina lengo katika notation inayoitwa «bits za lengo»
+au «bits» tu, ambayo kwenye kitalu 277,316 ina thamani ya
++0x1903a30c+. Notation hii inawakilisha lengo la uthibitisho wa kazi katika umbizo la mgawo/exponent, na tarakimu mbili za kwanza za hexadecimal kwa exponent na tarakimu sita za hex zinazofuata kama mgawo. Kwenye kitalu hiki, kwa hivyo, exponent ni +0x19+ na mgawo ni +0x03a30c+.
+
+Formula ya kuhesabu lengo la ugumu kutoka kwa uwakilishi huu ni:
+
+++++
+<ul class="simplelist">
+  <li>target = coefficient × 2<sup>(8 × (exponent – 3))</sup></li>
+</ul>
+++++
+
+Ukitumia formula hiyo, na thamani ya bits za ugumu ya 0x1903a30c, tunapata:
+
+++++
+<ul class="simplelist">
+  <li>target = 0x03a30c × 2<sup>0x08 × (0x19 – 0x03)</sup></li>
+</ul>
+++++
+
+ambayo ni:
+
+++++
+<ul class="simplelist">
+  <li>22,829,202,948,393,929,850,749,706,076,701,368,331,072,452,018,388,575,715,328</li>
+</ul>
+++++
+
+Au, kwa hexadecimal:
+
+++++
+<ul class="simplelist">
+  <li>0x0000000000000003A30C00000000000000000000000000000000000000000000</li>
+</ul>
+++++
+
+Hii inamaanisha kwamba kitalu halali kwa urefu 277,316 ni kile chenye heshi ya kichwa cha kitalu ndogo kuliko lengo. Kwa binary nambari hiyo lazima iwe na bits zaidi ya 60 zinazoongoza zilizowekwa sifuri. Kwa kiwango hiki cha ugumu, mchimbaji mmoja anayeshughulikia trilioni 1 za heshi kwa sekunde (teraheshi 1 kwa sekunde au TH/sec 1) angepata suluhisho mara moja tu kila vitalu 8,496 au mara moja kila siku 59, ((("mining", "target representation", startref="mining-target")))((("targets", "representation of", startref="target-represent")))((("proof-of-work algorithm", "target representation", startref="proof-target")))kwa wastani.
+
+[[target]]
+==== Kurekebisha Lengo ili Kurekebisha Ugumu
+
+Kama tulivyoona, ((("mining", "adjusting difficulty", id="mining-difficulty")))((("targets", "adjusting difficulty", id="target-difficulty")))((("proof-of-work algorithm", "adjusting difficulty", id="proof-difficulty")))((("difficulty", "adjusting", id="difficulty-adjust")))lengo linabainisha ugumu na
+kwa hivyo huathiri muda inayochukua kupata suluhisho la
+algoriti ya uthibitisho wa kazi. Hii inasababisha maswali dhahiri: Kwa nini
+ugumu unaweza kurekebika, ni nani anayeurekebisha, na jinsi gani?
+
+Vitalu vya Bitcoin vinazalishwa kila dakika 10, kwa wastani. Hii ni mapigo ya moyo ya Bitcoin na inaunga mkono mara kwa mara ya utoaji wa sarafu na kasi ya usuluhishi wa miamala. Lazima ibaki thabiti si kwa muda mfupi tu, bali kwa kipindi cha miongo mingi. Katika muda huu, inatarajiwa kwamba nguvu ya kompyuta itaendelea kuongezeka kwa kasi. Zaidi ya hayo, idadi ya washiriki katika uchimbaji na kompyuta wanazotumia pia itabadilika kila wakati. Ili kuweka wakati wa uzalishaji wa vitalu saa 10 za dakika, ugumu wa uchimbaji lazima urekebishwe kuzingatia mabadiliko haya. Kwa kweli, lengo la uthibitisho wa kazi ni kigezo kinachobadilika mara kwa mara kinachokalibishwa mara kwa mara ili kukidhi lengo la muda wa vitalu wa dakika 10. Kwa maneno rahisi, lengo linawekwa ili nguvu ya uchimbaji ya sasa itasababisha muda wa vitalu wa dakika 10.
+
+Jinsi gani, basi, marekebisho kama hayo yanafanywa katika mtandao wa desentralizesheni kabisa? Urekebisho wa lengo hutokea moja kwa moja na kwenye kila nodi kwa kujitegemea. Kila vitalu 2,016, nodi zote zinakadiria upya lengo la PoW. Uwiano kati ya muda wa kweli na muda unaotakiwa wa dakika 10 kwa kila kitalu huhesabika na marekebisho yanayofaa (juu au chini) yanafanywa kwa lengo. Kwa maneno rahisi: Ikiwa mtandao unapata vitalu haraka kuliko kila dakika 10, ugumu huongezeka (lengo hupungua). Ikiwa ugunduzi wa vitalu ni polepole kuliko inavyotarajiwa, ugumu hupungua (lengo huongezeka).
+
+Mlinganifu unaweza kufupishwa kama:
+
+
+----
+New Target = Old Target * (20,160 minutes / Actual Time of Last 2015 Blocks)
+----
+
+[NOTE]
+====
+Ingawa ukalibishaji wa lengo hutokea kila vitalu 2,016, kwa sababu ya hitilafu ya kuhamia-moja kwenye programu ya asili ya Bitcoin, inategemea muda wa jumla wa vitalu 2,015 vilivyotangulia (si 2,016 kama inavyopaswa kuwa), na kusababisha upendeleo wa ukalibishaji upya kuelekea ugumu mkubwa zaidi kwa asilimia 0.05.
+====
+
+<<retarget_code>> inaonyesha msimbo unaotumika kwenye mteja wa Bitcoin Core.
+
+[[retarget_code]]
+.Kurekebisha lengo la uthibitisho wa kazi: [.plain]#++CalculateNextWorkRequired()++# katika [.plain]#pow.cpp#
+====
+[source,cpp]
+----
+
+   // Limit adjustment step
+    int64_t nActualTimespan = pindexLast->GetBlockTime() - nFirstBlockTime;
+    LogPrintf("  nActualTimespan = %d  before bounds\n", nActualTimespan);
+    if (nActualTimespan < params.nPowTargetTimespan/4)
+        nActualTimespan = params.nPowTargetTimespan/4;
+    if (nActualTimespan > params.nPowTargetTimespan*4)
+        nActualTimespan = params.nPowTargetTimespan*4;
+
+    // Retarget
+    const arith_uint256 bnPowLimit = UintToArith256(params.powLimit);
+    arith_uint256 bnNew;
+    arith_uint256 bnOld;
+    bnNew.SetCompact(pindexLast->nBits);
+    bnOld = bnNew;
+    bnNew *= nActualTimespan;
+    bnNew /= params.nPowTargetTimespan;
+
+    if (bnNew > bnPowLimit)
+        bnNew = bnPowLimit;
+
+----
+====
+
+Vigezo +Interval+ (vitalu 2,016) na +TargetTimespan+ (wiki mbili kama sekunde 1,209,600) vinafafanuliwa katika _chainparams.cpp_.
+
+Ili kuepuka mabadiliko makubwa ya ugumu, marekebisho ya ukalibishaji upya lazima yawe chini ya sababu nne (4) kwa kila mzunguko. Ikiwa marekebisho ya lengo yanayohitajika ni makubwa kuliko sababu nne, yatarekebishwa kwa sababu ya 4 na si zaidi. Marekebisho yoyote zaidi yatafanywa katika kipindi kinachofuata cha ukalibishaji upya kwa sababu usawa utaendelea kupitia vitalu 2,016 vinavyofuata. Kwa hivyo, tofauti kubwa kati ya nguvu ya hashing na ugumu zinaweza kuchukua mzunguko kadhaa wa vitalu 2,016 kusawazishwa.
+
+Kumbuka kwamba lengo haliathiriwi na idadi ya miamala au thamani ya miamala. Hii inamaanisha kwamba kiasi cha nguvu ya hashing na kwa hivyo umeme unaotumika kulinda bitcoin pia hauhusiani kabisa na idadi ya miamala. Bitcoin inaweza kupanuka na kubaki salama bila ongezeko lolote la nguvu ya hashing kutoka kiwango cha leo. Ongezeko la nguvu ya hashing linawakilisha nguvu za soko kadri wachimbaji wapya wanavyoingia sokoni. Mradi nguvu ya kutosha ya hashing iko chini ya udhibiti wa wachimbaji wanaofanya kazi kwa uaminifu kwa kutafuta thawabu, inatosha kuzuia mashambulizi ya «kuchukua» na kwa hivyo inatosha kulinda bitcoin.
+
+Ugumu wa uchimbaji unaunganishwa kwa karibu na gharama ya umeme na kiwango cha kubadilishana cha bitcoin dhidi ya sarafu inayotumiwa kulipa umeme. Mifumo ya uchimbaji ya utendaji wa juu ina ufanisi kadri inavyowezekana kwa kizazi cha sasa cha utengenezaji wa silicon, ikibadilisha umeme kuwa hesabu ya hashing kwa kiwango cha juu zaidi kinachowezekana. Ushawishi mkuu kwenye soko la uchimbaji ni bei ya kilowati-saa moja ya umeme kwa bitcoin kwa sababu hiyo ndiyo inayobainisha faida ya uchimbaji na kwa hivyo vivutio vya kuingia au kutoka kwenye ((("mining", "adjusting difficulty", startref="mining-difficulty")))((("targets", "adjusting difficulty", startref="target-difficulty")))((("proof-of-work algorithm", "adjusting difficulty", startref="proof-difficulty")))((("difficulty", "adjusting", startref="difficulty-adjust")))soko la uchimbaji.
+
+[[mtp]]
+=== Wakati wa Kati wa Nyakati (MTP)
+
+Katika Bitcoin ((("decentralized consensus", "timestamps and", id="decentral-consensus-timestamp")))((("consensus rules", "timestamps and", id="consensus-timestamp")))((("timestamps", id="timestamp")))((("median time past (MTP)", id="median-time-past")))((("MTP (median time past)", id="mtp-median")))((("mining", "timestamps", id="mining-timestamps")))kuna tofauti ndogo lakini muhimu sana kati ya wakati wa ukuta na wakati wa makubaliano. Bitcoin ni mtandao wa desentralizesheni, ambayo inamaanisha kwamba kila mshiriki ana mtazamo wake wa wakati. Matukio kwenye mtandao hayatokei mara moja kila mahali. Ucheleweshaji wa mtandao lazima uzingatiwe katika mtazamo wa kila nodi. Hatimaye kila kitu kinasawazishwa ili kuunda mnyororo wa vitalu wa pamoja. Bitcoin hufikia makubaliano kila dakika 10 kuhusu hali ya mnyororo wa vitalu kama ulivyokuwepo _hapo nyuma_.
+
+++++
+<p class="fix_tracking">
+The timestamps set in block headers are set by the miners. There is a
+certain degree of latitude allowed by the consensus rules to account for
+differences in clock accuracy between decentralized nodes. However, this
+creates an unfortunate incentive for miners to lie about the time in a
+block.  For example, if a miner sets their time in the future, they can
+lower difficulty, allowing them to mine more blocks and claim some of
+the block subsidy reserved for future miners.  If they can set their
+times in the past for some blocks, they can use the current time for
+some other blocks, and so again make it look like there's a long time
+between blocks for the purpose of manipulating difficulty.
+</p>
+++++
+
+Ili kuzuia udanganyifu, Bitcoin ina sheria mbili za makubaliano. Ya kwanza ni kwamba hakuna nodi itakayokubali kitalu chochote chenye wakati zaidi ya masaa mawili baadaye. Ya pili ni kwamba hakuna nodi itakayokubali kitalu chenye wakati sawa na au chini ya wastani wa wakati wa vitalu 11 vya mwisho, unaoitwa _wakati wa kati wa nyakati_ (MTP).
+
+Kama sehemu ya uanzishaji wa timelocks za uhusiano za BIP68, kulikuwa pia na mabadiliko katika jinsi «wakati» unavyohesabiwa kwa timelocks (zote za kabisa na za uhusiano) katika miamala. Hapo awali, mchimbaji angeweza kujumuisha muamala wowote kwenye kitalu chenye timelock sawa na au chini ya wakati wa kitalu. Hiyo ilihamasisha wachimbaji kutumia wakati wa hivi karibuni walioudhani kuwa uwezekano (karibu masaa mawili baadaye) ili miamala zaidi iwe na sifa ya kujumuishwa kwenye kitalu lao.
+
+Ili kuondoa kivutio cha kudanganya na kuimarisha usalama wa timelocks, BIP113 ilipendekezwa na kuanzishwa wakati mmoja na BIPs za timelocks za uhusiano. MTP ikawa wakati wa makubaliano unaotumika kwa mahesabu yote ya timelock. Kwa kuchukua nukta ya kati kutoka saa mbili takriban zilizopita, ushawishi wa muhuri wa wakati wa kitalu chochote mmoja hupunguzwa. Kwa kujumuisha vitalu 11, hakuna mchimbaji mmoja anayeweza kuathiri muhuri wa wakati ili kupata ada kutoka kwa miamala yenye timelock ambayo bado haijakomaa.
+
+MTP inabadilisha utekelezaji wa mahesabu ya wakati kwa
+wakati wa kufuli, +CLTV+, mlolongo, na +CSV+. Wakati wa makubaliano
+uliohesabiwa na MTP kawaida uko saa moja takriban nyuma
+ya wakati wa saa ya ukuta. Ukiunda miamala ya timelock, unapaswa kuzingatia
+hili unapokadiri thamani inayotakiwa ya kusimba kwenye wakati wa kufuli, mlolongo, +CLTV+, na +CSV+.
+
+=== Kuchimba Kitalu kwa Mafanikio
+
+++++
+<p class="fix_tracking">
+As
+we saw earlier, Jing's node has constructed a candidate block and
+prepared it for mining. Jing has several hardware mining rigs with
+application-specific integrated circuits, where hundreds of thousands of
+integrated circuits run Bitcoin's double SHA256 algorithm in parallel at incredible
+speeds. Many of these specialized machines are connected to his mining
+node over USB or a local area network. Next, the mining node running on
+Jing's desktop transmits the block header to his mining hardware, which
+starts testing trillions of variations of the header per second. Because
+the nonce is only
+32 bits, after exhausting all the nonce possibilities (about 4 billion),
+the mining hardware changes the block header (adjusting the coinbase
+extra nonce space, versionbits, or timestamp) and resets the nonce counter, testing
+new combinations.</p>
+++++
+
+Takriban dakika 11 baada ya kuanza kuchimba kitalu fulani, moja ya
+mashine za uchimbaji za vifaa inapata suluhisho na kulituma tena kwenye
+nodi ya uchimbaji.
+
+Mara moja, nodi ya uchimbaji ya Jing inatuma kitalu kwa wenzake wote.
+Wanaipokea, kuithibitisha, na kisha kupitisha kitalu kipya. Kitalu kinapoenea
+mtandaoni, kila nodi kinaongeza kwenye nakala yake ya
+mnyororo wa vitalu, ukipanuka hadi urefu mpya. Nodi za uchimbaji zinapopokelewa na kuthibitisha kitalu, zinakatiza juhudi zao za kupata
+kitalu kwa urefu ule ule na mara moja zinaanza kuhesabu kitalu kinachofuata
+kwenye mnyororo, kwa kutumia kitalu cha Jing kama «mzazi». Kwa kujenga juu
+ya kitalu cha Jing kilichogunduliwa hivi karibuni, wachimbaji wengine kwa msingi
+wanatumia nguvu yao ya uchimbaji kuunga mkono kitalu cha Jing na mnyororo ((("candidate blocks", "mining", startref="candidate-mine")))((("blocks", "candidate blocks", "mining", startref="block-candidate-mine")))((("mining", "candidate blocks", startref="mining-candidate")))unaopanuka.
+
+Katika sehemu inayofuata, tutaangalia mchakato ambao kila nodi inatumia
+kuthibitisha kitalu na kuchagua mnyororo wenye kazi zaidi, na kuunda makubaliano
+yanayounda mnyororo wa vitalu wa desentralizesheni.
+
+=== Kuthibitisha Kitalu Kipya
+
+Hatua ya tatu ((("mining", "validating blocks", id="mining-validate")))((("blocks", "validating", id="block-validate")))((("validating", "blocks", id="validate-block")))((("decentralized consensus", "validating blocks", id="decentral-consensus-validate")))((("nodes", "validating blocks", id="nodes-validate")))katika mfumo wa makubaliano wa Bitcoin ni uthibitisho wa kujitegemea wa kila kitalu kipya na kila nodi kwenye mtandao. Kitalu kilichotatuliwa kipya kinaposogea kwenye mtandao, kila nodi inafanya mfululizo wa majaribio ili kukithibitisha. Uthibitisho wa kujitegemea pia unahakikisha kwamba vitalu vinavyofuata sheria za makubaliano pekee ndivyo vinavyojumuishwa kwenye mnyororo wa vitalu, hivyo kuwastahilishia wachimbaji wao thawabu. Vitalu vinavyokiuka sheria vinakataliwa na si tu vinawaondolea wachimbaji wao thawabu, bali pia vinabazimisha juhudi zilizotumika kupata suluhisho la uthibitisho wa kazi, na hivyo kuwalazimisha wachimbaji hao gharama zote za kuunda kitalu bila kuwapa thawabu yoyote.
+
+Nodi inapopokea kitalu kipya, itathibitisha kitalu kwa kukiangalia dhidi ya orodha ndefu ya vigezo ambavyo vyote lazima vikidhi; vinginevyo, kitalu kinakataliwa. Vigezo hivi vinaweza kuonekana kwenye mteja wa Bitcoin Core katika kazi +CheckBlock+ na +CheckBlockHeader+ na vinajumuisha:
+
+- Muundo wa data ya kitalu ni halali kisintaksia.
+
+- Heshi ya kichwa cha kitalu ni ndogo kuliko lengo (inatekeleza uthibitisho wa kazi).
+
+- Muhuri wa wakati wa kitalu uko kati ya MTP na masaa mawili baadaye (ukiwezesha makosa ya wakati).
+
+- Uzito wa kitalu uko ndani ya mipaka inayokubalika.
+
+- Muamala wa kwanza (na wa kwanza tu) ni muamala wa coinbase.
+
+- Miamala yote ndani ya kitalu ni halali kwa kutumia orodha ya ukaguzi wa miamala iliyojadiliwa katika <<tx_verification>>.
+
+Uthibitisho wa kujitegemea wa kila kitalu kipya na kila nodi kwenye mtandao unahakikisha kwamba wachimbaji hawawezi kudanganya. Katika sehemu zilizotangulia tuliona jinsi wachimbaji wanavyoandika muamala unaowastahilisha bitcoin mpya zilizoundwa ndani ya kitalu na kudai ada za miamala. Kwa nini wachimbaji hawaandiki muamala wa bitcoin elfu badala ya thawabu sahihi? Kwa sababu kila nodi inathibitisha vitalu kulingana na sheria zile zile. Muamala wa coinbase usio halali ungeweza kuufanya kitalu kizima kuwa batili, ambayo ingesababisha kitalu kukataliwa na kwa hivyo muamala huo haukuwahi kuwa sehemu ya mnyororo wa vitalu. Wachimbaji lazima waunde kitalu, kulingana na sheria zinazoshirikiwa ambazo nodi zote hufuata, na kukichimba kwa suluhisho sahihi la PoW. Ili kufanya hivyo, wanatumia umeme mwingi katika uchimbaji, na wakidanganya, umeme na juhudi vyote vinapoteza. Hii ndiyo maana uthibitisho wa kujitegemea ni sehemu muhimu ya ((("mining", "validating blocks", startref="mining-validate")))((("blocks", "validating", startref="block-validate")))((("validating", "blocks", startref="validate-block")))((("decentralized consensus", "validating blocks", startref="decentral-consensus-validate")))((("nodes", "validating blocks", startref="nodes-validate")))makubaliano ya desentralizesheni.
+
+[[forks]]
+=== Kukusanya na Kuchagua Minyororo ya Vitalu
+
+Sehemu ya mwisho ((("mining", "assembling blockchain", id="mining-assemble")))((("blockchain", "assembling", id="blockchain-assemble")))((("decentralized consensus", "assembling blockchain", id="decentral-consensus-assemble")))katika mfumo wa makubaliano wa desentralizesheni wa Bitcoin ni ukusanyaji wa vitalu kwenye minyororo na uchaguzi wa mnyororo wenye uthibitisho wa kazi zaidi.
+
+_Mnyororo bora wa vitalu_ ni mnyororo wowote halali wa vitalu wenye PoW ya jumla zaidi inayohusiana nao. Mnyororo bora unaweza pia kuwa na matawi yenye vitalu ambavyo ni «ndugu» wa vitalu kwenye mnyororo bora. Vitalu hivi ni halali lakini si sehemu ya mnyororo bora. Vinahifadhiwa kwa rejeleo la baadaye kwa sababu mmoja wa minyororo hiyo ya pili baadaye inaweza kuwa ya msingi. Vitalu ndugu vinapotokea, kwa kawaida ni matokeo ya uchimbaji wa vitalu tofauti karibu wakati mmoja kwenye urefu ule ule.
+
+Kitalu kipya kinapopokelewa, nodi itajaribu kukiongeza kwenye mnyororo wa vitalu uliopo. Nodi itaangalia sehemu ya «heshi ya kitalu kilichotangulia» ya kitalu, ambayo ni rejeleo la mzazi wa kitalu. Kisha, nodi itajaribu kupata mzazi huo kwenye mnyororo wa vitalu uliopo. Mara nyingi, mzazi atakuwa «ncha» ya mnyororo bora, kumaanisha kwamba kitalu kipya kinapanua mnyororo bora.
+
+Wakati mwingine kitalu kipya hakipanui mnyororo bora. Katika hali hiyo, nodi itaunganisha kichwa cha kitalu kipya kwenye mnyororo wa pili na kisha kulinganisha kazi ya mnyororo wa pili na mnyororo bora wa awali. Ikiwa mnyororo wa pili sasa ni mnyororo bora, nodi itapanga upya mtazamo wake wa miamala iliyothibitishwa na UTXOs zinazopatikana. Ikiwa nodi ni mchimbaji, sasa itaunda kitalu mgombea kinachopanua mnyororo huu mpya, wenye uthibitisho wa kazi zaidi.
+
+Kwa kuchagua mnyororo halali wenye kazi ya jumla zaidi, nodi zote hatimaye zinafikia makubaliano ya mtandao mzima. Tofauti za muda kati ya minyororo zinatatuliwa hatimaye kadri kazi zaidi inavyoongezwa, ikipanua moja ya minyororo inayowezekana.
+
+[TIP]
+====
+Matawi ya mnyororo wa vitalu ((("blockchain", "forks")))((("forks")))yaliyoelezwa katika sehemu hii yanaibuka kwa kawaida kama matokeo ya ucheleweshaji wa uwasilishaji kwenye mtandao wa kimataifa. Pia tutaangalia matawi yanayosababishwa kwa makusudi baadaye katika sura hii.
+====
+
+Matawi karibu kila wakati yanatatuliwa ndani ya kitalu kimoja. Inawezekana kwa tawi la bahati mbaya kupanuka hadi vitalu viwili ikiwa vitalu vyote viwili vinapatikana karibu wakati mmoja na wachimbaji kwenye «pande» tofauti za tawi la awali. Hata hivyo, uwezekano wa hilo kutokea ni mdogo.
+
+Muda wa vitalu wa dakika 10 wa Bitcoin ni maelewano ya muundo kati ya nyakati za uthibitisho wa haraka na uwezekano wa tawi. Muda mfupi wa vitalu ungefanya miamala ionekane kusuluhishwa haraka lakini ingesababisha matawi ya mara kwa mara ya mnyororo wa vitalu, huku muda mrefu wa vitalu ukipunguza idadi ya matawi lakini kufanya usuluhishi uonekane polepole.
+
+[NOTE]
+====
+Ni ipi salama zaidi: muamala uliojumuishwa kwenye kitalu kimoja ambapo muda wa wastani kati ya vitalu ni dakika 10, au muamala uliojumuishwa kwenye kitalu chenye vitalu tisa vilivyojengwa juu yake ambapo muda wa wastani kati ya vitalu ni dakika moja? Jibu ni kwamba zina usalama sawa. Mchimbaji mbaya anayetaka kufanya matumizi maradufu ya muamala huo angehitaji kufanya kiasi cha kazi sawa na dakika 10 za kiwango cha jumla cha heshi ya mtandao ili kuunda mnyororo wenye uthibitisho wa kazi sawa.
+
+Muda mfupi kati ya vitalu hauzalishi usuluhishi wa mapema. Faida yake pekee ni kutoa dhamana dhaifu kwa watu wanaokubali dhamana hizo. Kwa mfano, ikiwa uko tayari kukubali dakika tatu za wachimbaji kukubaliana kuhusu mnyororo bora wa vitalu kama usalama wa kutosha, ungependelea mfumo wenye vitalu vya dakika 1, ambapo ungeweza kusubiri vitalu vitatu, kuliko mfumo wenye vitalu vya dakika 10. Muda mfupi kati ya vitalu, kazi zaidi ya wachimbaji inapotezwa kwenye matawi ya bahati mbaya (pamoja na matatizo mengine), hivyo watu wengi wanapendelea vitalu vya dakika 10 vya Bitcoin kuliko vitalu vifupi.((("mining", "assembling blockchain", startref="mining-assemble")))((("blockchain", "assembling", startref="blockchain-assemble")))((("decentralized consensus", "assembling blockchain", startref="decentral-consensus-assemble")))
+====
+
+=== Uchimbaji na Bahati Nasibu ya Heshi
+
+Uchimbaji wa Bitcoin ((("mining", "competitiveness of", id="mining-competitive")))ni tasnia yenye ushindani mkubwa sana. Nguvu ya hashing imeongezeka kwa kielelezo kila mwaka wa uwepo wa Bitcoin. Baadhi ya miaka ukuaji ulionyesha mabadiliko kamili ya teknolojia, kama vile mwaka 2010 na 2011 wakati wachimbaji wengi walibadilika kutoka kutumia uchimbaji wa CPU hadi uchimbaji wa GPU na uchimbaji wa FPGA (field programmable gate array). Mnamo 2013, kuanzishwa kwa uchimbaji wa ASIC kulisababisha mwongozo mwingine mkubwa katika nguvu ya uchimbaji, kwa kuweka kazi ya double-SHA256 moja kwa moja kwenye chips za silicon zilizoundwa maalum kwa uchimbaji. Chips za kwanza kama hizo ziliweza kutoa nguvu zaidi ya uchimbaji katika sanduku moja kuliko mtandao mzima wa Bitcoin mnamo 2010.
+
+Wakati wa kuandika hiki, inaaminika kwamba hakuna mwongozo mkubwa zaidi uliobaki katika vifaa vya uchimbaji wa Bitcoin kwa sababu tasnia imefika mstari wa mbele wa((("Moore&#x27;s Law"))) Sheria ya Moore, ambayo inasema kwamba msongamano wa kompyuta utamaradufu takriban kila miezi 18. Hata hivyo, nguvu ya uchimbaji ya mtandao inaendelea kusonga mbele kwa kasi.
+
+[[extra_nonce]]
+==== Suluhisho la Nonce ya Ziada
+
+Tangu 2012, uchimbaji((("mining", "extra nonce solution", id="mining-nonce")))((("extra nonce solution", id="extra-nonce"))) umebadilika ili kutatua kikwazo cha kimsingi katika muundo wa kichwa cha kitalu. Siku za mwanzo za Bitcoin, mchimbaji angeweza kupata kitalu kwa kuzunguka nonce mpaka heshi inayotokana ilikuwa chini ya lengo. Ugumu ulipozidi, wachimbaji mara nyingi walizunguka thamani zote bilioni 4 za nonce bila kupata kitalu. Hata hivyo, hili lilitatuliwa kwa urahisi kwa kusasisha muhuri wa wakati wa kitalu kuzingatia muda uliokwisha. Kwa sababu muhuri wa wakati ni sehemu ya kichwa, mabadiliko yangeruhusu wachimbaji kuzunguka tena thamani za nonce na matokeo tofauti. Vifaa vya uchimbaji vilipozidi 4 GH/sec, hata hivyo, njia hii ilikuwa ngumu zaidi na zaidi kwa sababu thamani za nonce zilichoshwa kwa chini ya sekunde. Vifaa vya uchimbaji vya ASIC vilipoanza kuzidi kiwango cha heshi cha TH/sec, programu ya uchimbaji ilihitaji nafasi zaidi kwa thamani za nonce ili kupata vitalu halali. Muhuri wa wakati ungeweza kupanuliwa kidogo, lakini kuuhamisha mbali sana katika siku zijazo kungesababisha kitalu kuwa batili. Chanzo kipya cha tofauti kilihitajika katika kichwa cha kitalu.
+
+Suluhisho moja lililotekelezwa sana lilikuwa kutumia muamala wa coinbase kama chanzo cha thamani za nonce za ziada. Kwa sababu hati ya coinbase inaweza kuhifadhi kati ya bytes 2 na 100 za data, wachimbaji walianza kutumia nafasi hiyo kama nafasi ya nonce ya ziada, ikiwaruhusu kuchunguza mbalimbali kubwa zaidi ya thamani za kichwa cha kitalu kupata vitalu halali. Muamala wa coinbase umejumuishwa kwenye mti wa merkle, ambayo inamaanisha kwamba mabadiliko yoyote kwenye hati ya coinbase husababisha mzizi wa merkle kubadilika. Bytes nane za nonce ya ziada, pamoja na bytes 4 za nonce «ya kawaida», huruhusu wachimbaji kuchunguza uwezekano wa jumla wa 2^96^ (8 ukifuatiwa na sifuri 28) _kwa sekunde_ bila kulazimika kubadilisha muhuri wa wakati.
+
+Suluhisho jingine linalotumika sana leo ni kutumia bits 16 hadi za sehemu ya versionbits ya kichwa cha kitalu kwa uchimbaji, kama ilivyoelezwa katika BIP320. Ikiwa kila kipande cha vifaa vya uchimbaji kina muamala wake wa coinbase, hii inaruhusu kipande kimoja cha vifaa vya uchimbaji kutekeleza hadi 281 TH/s kwa kufanya mabadiliko kwenye kichwa cha kitalu pekee. Hii inaweka vifaa vya uchimbaji na itifaki rahisi zaidi kuliko kuongeza nonce ya ziada kwenye muamala wa coinbase kila heshi bilioni 4, ambayo inahitaji kuhesabu upya tawi lote la kushoto la mti wa merkle hadi ((("mining", "extra nonce solution", startref="mining-nonce")))((("extra nonce solution", startref="extra-nonce")))mzizini.
+
+[[mining_pools]]
+==== Madimbwi ya Uchimbaji
+
+Katika ((("mining", "mining pools", id="mining-mining-pools")))((("mining pools", id="mining-pools")))mazingira haya ya ushindani mkali, wachimbaji binafsi wanaofanya kazi peke yao (pia wanajulikana kama wachimbaji wa solo) hawana nafasi. Uwezekano wa kupata kitalu ili kufidia gharama zao za umeme na vifaa ni mdogo sana kwamba unawakilisha bahati nasibu, kama kucheza bahati nasibu. Hata mfumo wa uchimbaji wa ASIC wa haraka zaidi wa watumiaji hauwezi kushindana na shughuli za kibiashara zinazoupa mifumo hii kwa makumi ya maelfu katika maghala makubwa karibu na vituo vya umeme. Wachimbaji wengi sasa wanashirikiana kuunda madimbwi ya uchimbaji, wakiunganisha nguvu yao ya hashing na kushiriki thawabu kati ya washiriki maelfu. Kwa kushiriki kwenye dimbwi, wachimbaji wanapata sehemu ndogo ya thawabu ya jumla, lakini kwa kawaida hulipwa kila siku, kupunguza kutokuwa na uhakika.
+
+Tuangalie mfano maalum. Tuchukulie kwamba mchimbaji amenunua vifaa vya uchimbaji vyenye kiwango cha jumla cha hashing cha asilimia 0.0001% ya kiwango cha jumla cha heshi ya mtandao wa sasa. Ikiwa ugumu wa itifaki hauk­abadiliki kamwe, mchimbaji huyo atapata kitalu kipya takriban mara moja kila miaka 20. Hiyo ni muda mrefu unaowezekana wa kusubiri kulipwa. Hata hivyo, ikiwa mchimbaji huyo anafanya kazi pamoja katika dimbwi la uchimbaji na wachimbaji wengine ambao kiwango chao cha hashi kinajumlika ni asilimia 1 ya kiwango cha jumla cha heshi ya mtandao, watapata wastani wa zaidi ya kitalu kimoja kwa siku. Mchimbaji huyo atapokea sehemu yao tu ya thawabu (pungufu ya ada yoyote inayotozwa na dimbwi), kwa hivyo watapokea kiasi kidogo kwa siku. Wakichimba kila siku kwa miaka 20, wangepata kiasi sawa (bila kuhesabu ada za dimbwi) kama wasingepata kitalu cha wastani peke yao. Tofauti ya kimsingi pekee ni mara kwa mara ya malipo wanayopokea.
+
+Madimbwi ya uchimbaji yanawasiliana wachimbaji mamia au maelfu kwa kutumia itifaki maalum za uchimbaji wa dimbwi. Wachimbaji binafsi husanidi vifaa vyao vya uchimbaji kuunganika na seva ya dimbwi, baada ya kuunda akaunti na dimbwi. Vifaa vyao vya uchimbaji hubaki vimeunganika na seva ya dimbwi wakati wa uchimbaji, ikisawazisha juhudi zao na wachimbaji wengine. Hivyo, wachimbaji wa dimbwi wanashiriki juhudi za kuchimba kitalu na kisha kushiriki thawabu.
+
+Vitalu vilivyofanikiwa hulipa thawabu kwa anwani ya Bitcoin ya dimbwi badala ya kwa wachimbaji binafsi. Seva ya dimbwi itafanya malipo mara kwa mara kwenye anwani za Bitcoin za wachimbaji mara sehemu yao ya thawabu inapofikia kizingiti fulani. Kwa kawaida, seva ya dimbwi inatozwa asilimia ya ada ya thawabu kwa kutoa huduma ya uchimbaji wa dimbwi.
+
+Wachimbaji wanaoshiriki kwenye dimbwi wanagawanya kazi ya kutafuta suluhisho la kitalu mgombea, wakipata «hisa» kwa mchango wao wa uchimbaji. Dimbwi la uchimbaji huweka lengo kubwa zaidi (ugumu mdogo) kwa kupata hisa, kwa kawaida zaidi ya mara 1,000 rahisi kuliko lengo la mtandao wa Bitcoin. Mtu yeyote kwenye dimbwi anapomaliza uchimbaji wa kitalu, thawabu hupatikana na dimbwi na kisha kushirikiwa na wachimbaji wote kwa uwiano wa idadi ya hisa walizochangia kwa juhudi.
+
+Madimbwi mengi yako wazi kwa mchimbaji yeyote, mkubwa au mdogo, mtaalamu au hobbyist. Dimbwi kwa hivyo litakuwa na washiriki wengine wenye mashine moja ndogo ya uchimbaji, na wengine wenye ghala imejaa vifaa vya hali ya juu vya uchimbaji. Wengine watakuwa wakichimba kwa kilowati chache za kumi za umeme, wengine watakuwa wakiendesha kituo cha data kinachochukua megawati za nguvu. Jinsi gani dimbwi la uchimbaji linapima michango ya mtu binafsi, ili kusambaza thawabu kwa haki, bila uwezekano wa udanganyifu? Jibu ni kutumia algoriti ya uthibitisho wa kazi ya Bitcoin kupima mchango wa kila mchimbaji wa dimbwi, lakini kuwekwa kwa ugumu mdogo ili hata wachimbaji wadogo zaidi wa dimbwi washinde hisa mara nyingi za kutosha kuifanya kuwa na thamani kuchangia kwenye dimbwi. Kwa kuweka ugumu mdogo kwa kupata hisa, dimbwi linapima kiasi cha kazi kilichofanywa na kila mchimbaji. Kila wakati mchimbaji wa dimbwi anapata heshi ya kichwa cha kitalu ambayo ni ndogo kuliko lengo la dimbwi, anathibitisha amefanya kazi ya hashing kupata matokeo hayo. Kichwa hicho kimunganisha hatimaye kwenye muamala wa coinbase na kinaweza kutumika kuthibitisha kwamba mchimbaji alitumia muamala wa coinbase ambao ungelipa thawabu ya kitalu kwa dimbwi. Kila mchimbaji wa dimbwi anapewa templeti ya muamala wa coinbase tofauti kidogo ili kila mmoja wao afanye heshi za vichwa tofauti vya vitalu mgombea, kuepusha kurudiwa kwa juhudi.
+
+Kazi ya kupata hisa inachangia, kwa njia inayoweza kupimika kisera, kwa juhudi za jumla za kupata heshi ndogo kuliko lengo la mtandao wa Bitcoin. Wachimbaji maelfu wanaojaribu kupata heshi za thamani ndogo hatimaye watapata moja ndogo ya kutosha kukidhi lengo la mtandao wa Bitcoin.
+
+Turudi kwenye mfano wa mchezo wa dadu. Ikiwa wachezaji wa dadu wanaotupa dadu kwa lengo la kutupa chini ya nne (ugumu wa jumla wa mtandao), dimbwi litaweka lengo rahisi zaidi, likiihesabu mara ngapi wachezaji wa dimbwi waliweza kutupa chini ya nane. Wachezaji wa dimbwi wanapotupa chini ya nane (lengo la hisa ya dimbwi), wanapata hisa, lakini hawashindi mchezo kwa sababu hawafikii lengo la mchezo (chini ya nne). Wachezaji wa dimbwi watafikia lengo rahisi la dimbwi mara nyingi zaidi, wakiwapata hisa mara kwa mara, hata hawafanikiwa kufikia lengo gumu zaidi la kushinda mchezo. Mara kwa mara, mmoja wa wachezaji wa dimbwi atatupa dadu jumuishi chini ya nne na dimbwi litashinda. Kisha, mapato yanaweza kusambazwa kwa wachezaji wa dimbwi kulingana na hisa walizopata. Ingawa lengo la nane au chini haikushinda, ilikuwa njia ya haki ya kupima utupaji wa dadu kwa wachezaji, na mara kwa mara huzalisha utupaji wa chini ya nne.
+
+Vivyo hivyo, dimbwi la uchimbaji litaweka lengo la dimbwi (la juu na rahisi zaidi) ambalo litahakikisha kwamba mchimbaji binafsi wa dimbwi mara nyingi anapata hisa kwa kupata heshi za kichwa cha kitalu ambazo ni ndogo kuliko lengo la dimbwi. Mara kwa mara, mojawapo ya majaribio haya itazalisha heshi ya kichwa cha kitalu ambayo ni ndogo kuliko lengo la mtandao wa Bitcoin, na kuifanya kuwa kitalu halali na dimbwi zima linashinda.
+
+===== Madimbwi Yanayosimamiwa
+
+Madimbwi((("managed pools", id="manage-pool"))) mengi ya uchimbaji ni «yanayosimamiwa», ikimaanisha kwamba kuna kampuni au mtu binafsi anayoendesha seva ya dimbwi. Mmiliki wa seva ya dimbwi anaitwa _mwendeshaji wa dimbwi_, na wanatozwa wachimbaji wa dimbwi asilimia ya ada ya mapato.
+
+Seva ya dimbwi inaendesha programu maalum na itifaki ya uchimbaji wa dimbwi inayoratibu shughuli za wachimbaji wa dimbwi. Seva ya dimbwi pia imeunganishwa na nodi moja au zaidi za Bitcoin kamili. Hii inaruhusu seva ya dimbwi kuthibitisha vitalu na miamala kwa niaba ya wachimbaji wa dimbwi, ikiwapunguzia mzigo wa kuendesha nodi kamili. Kwa wachimbaji wengine, uwezo wa kuchimba bila kuendesha nodi kamili ni faida nyingine ya kujiunga na dimbwi linalosimamiwa.
+
+Wachimbaji wa dimbwi wanaunganika kwenye seva ya dimbwi kwa kutumia itifaki ya uchimbaji((("Stratum"))) kama Stratum (toleo 1 au toleo 2). Stratum v1 inaunda _templeti_ za vitalu zenye templeti ya kichwa cha kitalu mgombea. Seva ya dimbwi inaunda kitalu mgombea kwa kukusanya miamala, kuongeza muamala wa coinbase (wenye nafasi ya nonce ya ziada), kuhesabu mzizi wa merkle, na kuunganika na heshi ya kitalu kilichotangulia. Kichwa cha kitalu mgombea kisha kinatumwa kwa kila mchimbaji wa dimbwi kama templeti. Kila mchimbaji wa dimbwi kisha huchimba kwa kutumia templeti ya kitalu, kwenye lengo kubwa zaidi (rahisi) kuliko lengo la mtandao wa Bitcoin, na kutuma matokeo yoyote yaliyofanikiwa tena kwenye seva ya dimbwi kupata hisa.
+
+Stratum v2 kwa hiari huruhusu wachimbaji binafsi kwenye dimbwi kuchagua miamala gani inayoonekana katika vitalu vyao wenyewe, ambayo wanaweza kuchagua kwa kutumia nodi yao kamili.
+
+===== Dimbwi la Uchimbaji la Rika hadi Rika (P2Pool)
+
+Madimbwi yanayosimamiwa ((("P2Pool (peer-to-peer mining pool)", id="p2pool")))yanayotumia Stratum v1 yanaunda uwezekano wa udanganyifu na mwendeshaji wa dimbwi, ambaye angeweza kuelekeza juhudi za dimbwi kufanya miamala ya matumizi maradufu au kubatilisha vitalu (ona <<consensus_attacks>>). Zaidi ya hayo, seva za dimbwi zilizosentralizeshwa zinawakilisha hatua moja ya kushindwa. Seva ya dimbwi ikiwa imeshuka au imepigwa polepole na shambulio la kunyima huduma, wachimbaji wa dimbwi hawawezi kuchimba. Mnamo 2011, ili kutatua masuala haya ya usentralizesheni, njia mpya ya uchimbaji wa dimbwi ilipendekezwa na kutekelezwa: P2Pool, dimbwi la uchimbaji la rika hadi rika bila mwendeshaji mkuu.
+
+P2Pool inafanya kazi kwa kugawanya kazi za seva ya dimbwi, ikitekeleza mfumo unaofanana na mnyororo wa vitalu unaoitwa((("share chains"))) _mnyororo wa hisa_. Mnyororo wa hisa ni mnyororo wa vitalu unaofanya kazi kwa ugumu mdogo kuliko mnyororo wa vitalu wa Bitcoin. Mnyororo wa hisa huruhusu wachimbaji wa dimbwi kushirikiana katika dimbwi la desentralizesheni kwa kuchimba hisa kwenye mnyororo wa hisa kwa kiwango cha kitalu cha hisa kimoja kila sekunde 30. Kila kitalu kwenye mnyororo wa hisa kinaandika thawabu ya hisa inayofaa kwa wachimbaji wa dimbwi wanaochangia kazi, ikibeba hisa mbele kutoka kwa kitalu cha hisa kilichotangulia. Kitalu kimoja cha hisa kinapofikia pia lengo la mtandao wa Bitcoin, kinaenezwa na kujumuishwa kwenye mnyororo wa vitalu wa Bitcoin, kuwatuza wachimbaji wote wa dimbwi waliofanya michango kwa hisa zote zilizotangulia kitalu cha hisa kinachoshinda. Kimsingi, badala ya seva ya dimbwi kufuatilia hisa na thawabu za wachimbaji wa dimbwi, mnyororo wa hisa unaruhusu wachimbaji wote wa dimbwi kufuatilia hisa zote kwa kutumia mfumo wa makubaliano wa desentralizesheni kama mfumo wa makubaliano wa mnyororo wa vitalu wa Bitcoin.
+
+Uchimbaji wa P2Pool ni ngumu zaidi kuliko uchimbaji wa dimbwi kwa sababu unahitaji kwamba wachimbaji wa dimbwi waendeshe kompyuta maalum yenye nafasi ya kutosha ya diski, kumbukumbu, na upana wa bendi wa mtandao ili kusaidia nodi kamili ya Bitcoin na programu ya nodi ya P2Pool. Wachimbaji wa P2Pool wanaunganisha vifaa vyao vya uchimbaji kwenye nodi yao ya ndani ya P2Pool, ambayo inafanana na kazi za seva ya dimbwi kwa kutuma templeti za vitalu kwenye vifaa vya uchimbaji. Kwenye P2Pool, wachimbaji binafsi wa dimbwi wanaunda vitalu vyao mgombea, wakikusanya miamala kama wachimbaji wa solo, lakini kisha wanachimba kwa ushirikiano kwenye mnyororo wa hisa. P2Pool ni njia ya mseto yenye faida ya malipo ya kina zaidi kuliko uchimbaji wa solo, lakini bila kutoa udhibiti mwingi sana kwa mwendeshaji wa dimbwi kama madimbwi yanayosimamiwa.
+
+Ingawa P2Pool inapunguza mkusanyiko wa nguvu na waendeshaji wa madimbwi ya uchimbaji, inawezekana kuwa hatarini kwa mashambulizi ya 51% dhidi ya mnyororo wa hisa wenyewe. Kupitishwa kwa P2Pool kwa kiwango kikubwa zaidi hakutatuii tatizo la shambulio la 51% kwa Bitcoin yenyewe. Badala yake, P2Pool inafanya Bitcoin kuwa imara zaidi kwa ujumla, kama sehemu ya mfumo wa uchimbaji wenye utofauti. Wakati wa kuandika hiki, P2Pool imepungukiwa matumizi, lakini itifaki mpya kama Stratum v2 zinaweza kuruhusu wachimbaji binafsi kuchagua miamala wanayoijumuisha kwenye ((("mining", "competitiveness of", startref="mining-competitive")))((("mining", "mining pools", startref="mining-mining-pools")))((("mining pools", startref="mining-pools")))((("P2Pool (peer-to-peer mining pool)", startref="p2pool")))vitalu vyao.
+
+[[consensus_attacks]]
+=== Mashambulizi ya Kiwango cha Heshi
+
+Mfumo ((("decentralized consensus", "hashrate attacks", id="decentral-consensus-hashrate")))((("mining", "hashrate attacks", id="mining-hashrate")))((("hashrate attacks", id="hashrate")))((("forks", "hashrate attacks", id="fork-hashrate")))wa makubaliano wa Bitcoin ni, angalau kwa nadharia, hatarini kwa shambulio na wachimbaji (au madimbwi) wanaojaribu kutumia nguvu yao ya hashing kwa madhumuni ya uaminifu mbaya au ya uharibifu. Kama tulivyoona, mfumo wa makubaliano unategemea kuwa na idadi kubwa ya wachimbaji wanaofanya kazi kwa uaminifu kwa maslahi yao wenyewe. Hata hivyo, ikiwa mchimbaji au kikundi cha wachimbaji kinaweza kufikia sehemu kubwa ya nguvu ya uchimbaji, wanaweza kushambulia mfumo wa makubaliano ili kutatiza usalama na upatikanaji wa mtandao wa Bitcoin.
+
+Ni muhimu kutambua kwamba mashambulizi ya kiwango cha heshi yana athari kubwa zaidi kwa makubaliano ya siku zijazo. Miamala iliyothibitishwa kwenye mnyororo bora wa vitalu inakuwa ngumu zaidi na zaidi kubadilishwa kadri muda unavyopita. Ingawa kwa nadharia tawi linaweza kufanywa kwa kina chochote, kwa vitendo, nguvu ya kompyuta inayohitajika kulazimisha tawi la kina sana ni kubwa mno, na kuifanya vitalu vya zamani kuwa vigumu sana kubadilisha. Mashambulizi ya kiwango cha heshi pia hayaathiri usalama wa funguo za kibinafsi na algoriti za saini.
+
+Hali moja ya shambulio dhidi ya mfumo wa makubaliano inaitwa ((("majority attacks", id="majority-attack")))((("51% attacks", id="attack-51")))((("double-spend attacks", id="double-spend")))_shambulio la wengi_ au _shambulio la 51%_. Katika hali hii, kikundi cha wachimbaji, kinachomiliki idadi kubwa ya nguvu ya hashing ya jumla ya mtandao (kama 51%), wanashirikiana kushambulia Bitcoin. Kwa uwezo wa kuchimba idadi kubwa ya vitalu, wachimbaji wanaoshambulia wanaweza kusababisha «matawi» ya makusudi kwenye mnyororo wa vitalu na kufanya miamala ya matumizi maradufu au kutekeleza mashambulizi ya kunyima huduma dhidi ya miamala au anwani maalum. Shambulio la tawi/matumizi maradufu ni pale ambapo mshambuliaji husababisha vitalu vilivyothibitishwa awali kubatilishwa kwa kutawi chini yao na kuungana tena kwenye mnyororo mbadala. Kwa nguvu ya kutosha, mshambuliaji anaweza kubatilisha vitalu sita au zaidi mfululizo, na kusababisha miamala iliyochukuliwa kuwa isiyoweza kubadilishwa (uthibitisho sita) kubatilishwa. Kumbuka kwamba matumizi maradufu yanaweza kufanywa tu kwenye miamala ya mshambuliaji mwenyewe, ambayo mshambuliaji anaweza kuzalisha saini halali. Kutumia maradufu miamala ya mtu mwenyewe kunaweza kulipa ikiwa kubatilisha muamala kunamruhusu mshambuliaji kupata malipo ya ubadilishaji au bidhaa isiyoweza kurudishwa bila kulipa.
+
+Tuchunguze mfano wa vitendo wa shambulio la 51%. Katika sura ya kwanza, tuliangalia muamala kati ya Alice na Bob. Bob, muuzaji, yuko tayari kukubali malipo bila kusubiri uthibitisho (uchimbaji kwenye kitalu) kwa sababu hatari ya matumizi maradufu kwa bidhaa ndogo ni ndogo ikilinganishwa na urahisi wa huduma ya haraka kwa wateja. Hii inafanana na mazoea ya maduka ya kahawa yanayokubali malipo ya kadi ya mkopo bila saini kwa kiasi chini ya $25, kwa sababu hatari ya kurudisha malipo ya kadi ya mkopo ni ndogo huku gharama ya kuchelewa muamala kupata saini ni kubwa zaidi kwa kulinganisha. Kwa kulinganisha, kuuza bidhaa ya bei ya juu zaidi kwa bitcoini inahatarisha shambulio la matumizi maradufu, ambapo mnunuzi anasambaza muamala unaokinzana unaotumia moja ya ingizo sawa (UTXOs) na kufuta malipo kwa mfanyabiashara. Shambulio la 51% linaruhusu washambuliaji kufanya miamala yao ya matumizi maradufu kwenye mnyororo mpya, na hivyo kuondoa muamala unaofanana kwenye mnyororo wa zamani.
+
+Katika mfano wetu, mshambuliaji mbaya Mallory anakwenda kwenye jumba la sanaa la Carol na kununua seti ya michoro nzuri inayomchora Satoshi Nakamoto kama Prometheus. Carol anauza michoro kwa $250,000 katika bitcoini kwa Mallory. Badala ya kusubiri uthibitisho sita au zaidi kwenye muamala, Carol anafunga na kumkabidhi Mallory michoro baada ya uthibitisho mmoja tu. Mallory anafanya kazi na msaidizi, Paul, ambaye anaendesha dimbwi kubwa la uchimbaji, na msaidizi anazindua shambulio mara muamala wa Mallory unapojumuishwa kwenye kitalu. Paul anaelekeza dimbwi la uchimbaji kuchimba upya urefu wa kitalu sawa na ule wa kitalu chenye muamala wa Mallory, akibadilisha malipo ya Mallory kwa Carol na muamala unaofanya matumizi maradufu ya ingizo sawa na malipo ya Mallory. Muamala wa matumizi maradufu unatumia UTXO ile ile na kuirudisha kwa pochi ya Mallory badala ya kulipa Carol, kimsingi kuruhusu Mallory kubakisha bitcoini. Paul kisha anaelekeza dimbwi la uchimbaji kuchimba kitalu cha ziada, ili kuufanya mnyororo wenye muamala wa matumizi maradufu kuwa mrefu zaidi kuliko mnyororo wa asili (na kusababisha tawi chini ya kitalu chenye muamala wa Mallory). Tawi la mnyororo wa vitalu linaposuluhishwa kwa niaba ya mnyororo mpya (mrefu zaidi), muamala wa matumizi maradufu unabadilisha malipo ya asili kwa Carol. Carol sasa amekosa michoro mitatu na pia hana malipo. Katika shughuli zote hizi, washiriki wa dimbwi la uchimbaji la Paul wanaweza kubaki bila kujua majaribio ya matumizi maradufu kwa sababu wanachimba kwa wachimbaji wa otomatiki na hawawezi kufuatilia kila muamala au kitalu.
+
+Ili kulinda dhidi ya aina hii ya shambulio, mfanyabiashara anayeuza bidhaa za bei ya juu lazima asubiri angalau uthibitisho sita kabla ya kutoa bidhaa kwa mnunuzi. Kusubiri zaidi ya uthibitisho sita wakati mwingine kunaweza kustahili. Vinginevyo, mfanyabiashara anapaswa kutumia akaunti ya multisaini ya escrow, tena akisubiri uthibitisho kadhaa baada ya akaunti ya escrow kujazwa. Uthibitisho zaidi unavyopita, ndivyo inavyokuwa vigumu zaidi kubatilisha muamala kwa kupanga upya mnyororo wa vitalu. Kwa bidhaa za bei ya juu, malipo kwa bitcoin bado yatakuwa rahisi na ya ufanisi hata kama mnunuzi analazimika kusubiri saa 24 kwa uwasilishaji, ambayo ingelingana na takriban uthibitisho 144.
+
+Zaidi ya shambulio la matumizi maradufu, hali nyingine ya shambulio la makubaliano ni kunyima huduma kwa washiriki maalum (anwani maalum za Bitcoin). Mshambuliaji mwenye idadi kubwa ya nguvu ya uchimbaji anaweza kuzuia miamala. Ikiwa imejumuishwa kwenye kitalu kilichochimbwa na mchimbaji mwingine, mshambuliaji anaweza kwa makusudi kutawi na kuchimba upya kitalu hicho, tena ukiondoa miamala maalum. Aina hii ya shambulio inaweza kusababisha kunyima huduma kwa muda mrefu dhidi ya anwani maalum au seti ya anwani kwa muda ambao mshambuliaji anadhibiti idadi kubwa ya nguvu ya uchimbaji.
+
+Licha ya jina lake, ((("majority attacks", startref="majority-attack")))((("51% attacks", startref="attack-51")))((("double-spend attacks", startref="double-spend")))hali ya shambulio la 51% haihitaji kweli 51% ya nguvu ya hashing. Kwa kweli, shambulio kama hilo linaweza kujaribiwa kwa asilimia ndogo zaidi ya nguvu ya hashing. Kizingiti cha 51% ni kiwango ambacho shambulio kama hilo karibu kuhakikishiwa kufanikiwa. Shambulio la kiwango cha heshi kimsingi ni mchezo wa kamba kwa kila kitalu kinachofuata, na kikundi «chenye nguvu zaidi» kina uwezekano mkubwa zaidi wa kushinda. Kwa nguvu ndogo ya hashing, uwezekano wa kufanikiwa umepunguzwa kwa sababu wachimbaji wengine wanadhibiti uzalishaji wa baadhi ya vitalu na nguvu yao ya uchimbaji «ya uaminifu». Njia moja ya kuangalia ni kwamba nguvu zaidi ya hashing mshambuliaji anavyo, tawi ndefu zaidi anaweza kuunda kwa makusudi, vitalu vingi zaidi vilivyopita hivi karibuni anaweza kubatilisha, au vitalu vingi zaidi vya siku zijazo anaweza kudhibiti. Vikundi vya utafiti wa usalama vimetumia mifano ya takwimu kudai kwamba aina mbalimbali za mashambulizi ya kiwango cha heshi zinawezekana na nguvu ndogo kama asilimia 30 ya nguvu ya hashing.
+
+Usentralizesheni wa udhibiti ((("mining pools")))unaosababishwa na madimbwi ya uchimbaji umeiletea hatari ya mashambulizi ya kwa faida na mwendeshaji wa dimbwi la uchimbaji. Mwendeshaji wa dimbwi katika dimbwi linalosimamiwa anadhibiti ujenzi wa vitalu mgombea na pia anadhibiti miamala gani inayojumuishwa. Hii inampa mwendeshaji wa dimbwi uwezo wa kuondoa miamala au kuanzisha miamala ya matumizi maradufu. Ikiwa matumizi mabaya ya nguvu kama hayo yanafanywa kwa njia ndogo na ya hila, mwendeshaji wa dimbwi anaweza kuwezekana kupata faida kutoka kwa shambulio la kiwango cha heshi bila kugundulika.
+
+Hata hivyo, si washambuliaji wote watakuwa na motisha ya faida. Hali moja inayowezekana ya shambulio ni pale mshambuliaji anakusudia kutatiza mtandao wa Bitcoin bila uwezekano wa kupata faida kutoka kwa tatizo hilo. Shambulio baya lenye lengo la kulemaza Bitcoin lingehitaji uwekezaji mkubwa na mipango ya siri lakini ingewezekana kuzinduliwa na mshambuliaji mwenye rasilimali nyingi, labda anayefadhiliwa na serikali. Vinginevyo, mshambuliaji mwenye rasilimali nyingi angeweza kushambulia Bitcoin kwa wakati mmoja kwa kukusanya vifaa vya uchimbaji, kudhibiti waendeshaji wa madimbwi, na kushambulia madimbwi mengine kwa mashambulizi ya kunyima huduma. Hali hizi zote kwa nadharia zinawezekana.
+
+Bila shaka, shambulio kubwa la kiwango cha heshi lingepunguza imani katika Bitcoin kwa muda mfupi, labda kusababisha kupungua kwa bei kwa kiasi kikubwa. Hata hivyo, mtandao na programu ya Bitcoin zinaendelea kubadilika, kwa hivyo mashambulizi yangepigana na hatua za kukabiliana na hali na ((("decentralized consensus", "hashrate attacks", startref="decentral-consensus-hashrate")))((("mining", "hashrate attacks", startref="mining-hashrate")))((("hashrate attacks", startref="hashrate")))((("forks", "hashrate attacks", startref="fork-hashrate")))jamii ya Bitcoin.
+
+[[consensus_changes]]
+=== Kubadilisha Sheria za Makubaliano
+
+Sheria ((("consensus rules")))za makubaliano zinabainisha uhalali wa miamala na vitalu. Sheria hizi ndizo msingi wa ushirikiano kati ya nodi zote za Bitcoin na zinawajibika kwa mwelekeo wa mitazamo yote ya ndani kwenye mnyororo mmoja thabiti wa vitalu katika mtandao mzima.
+
+Ingawa sheria za makubaliano hazibadiliki kwa muda mfupi na lazima ziwe thabiti kwa nodi zote, si za kubaki bila mabadiliko kwa muda mrefu. Ili kubadilika na kuendeleza mfumo wa Bitcoin, sheria zinaweza kubadilika mara kwa mara ili kukidhi vipengele vipya, maboresho, au utatuzi wa hitilafu. Tofauti na maendeleo ya programu ya kawaida, hata hivyo, uboreshaji wa mfumo wa makubaliano ni mgumu zaidi na unahitaji uratibu kati ya washiriki wote.
+
+[[hard_forks]]
+==== Matawi Magumu
+
+Katika <<forks>> tuliangalia ((("consensus rules", "hard forks", "explained", id="consensus-hard-fork")))((("forks", "hard forks", "explained", id="forks-hard")))((("hard forks", "explained", id="hard-forks-ch12")))jinsi mtandao wa Bitcoin unavyoweza kutofautiana kwa muda mfupi, huku sehemu mbili za mtandao zikifuata matawi mawili tofauti ya mnyororo wa vitalu kwa muda mfupi. Tuliona jinsi mchakato huu unavyotokea kwa kawaida, kama sehemu ya uendeshaji wa kawaida wa mtandao na jinsi mtandao unavyoungana kwenye mnyororo wa vitalu wa pamoja baada ya vitalu moja au zaidi kuchimbwa.
+
+Kuna hali nyingine ambapo mtandao unaweza kutofautiana kufuata minyororo miwili: mabadiliko katika sheria za makubaliano. Aina hii ya tawi inaitwa _tawi gumu_, kwa sababu baada ya tawi, mtandao unaweza kutokuungana kwenye mnyororo mmoja. Badala yake, minyororo miwili inaweza kubadilika kwa kujitegemea. Matawi magumu hutokea wakati sehemu ya mtandao inafanya kazi chini ya seti tofauti ya sheria za makubaliano kuliko sehemu nyingine ya mtandao. Hii inaweza kutokea kwa sababu ya hitilafu au kwa sababu ya mabadiliko ya makusudi katika utekelezaji wa sheria za makubaliano.
+
+Matawi magumu yanaweza kutumika kubadilisha sheria za makubaliano, lakini yanahitaji uratibu kati ya washiriki wote kwenye mfumo. Nodi zozote ambazo haziboresha kwenye sheria mpya za makubaliano haziwezi kushiriki katika mfumo wa makubaliano na zinalazimishwa kwenye mnyororo tofauti wakati wa tawi gumu. Hivyo, mabadiliko yaliyoanzishwa na tawi gumu yanaweza kuchukuliwa kama yasiyokuwa «yanayoendana na siku zijazo», kwamba mifumo isiyoboreshwa haiwezi tena kushughulikia vitalu kwa sababu ya sheria mpya za makubaliano.
+
+Tuchunguze mitambo ya tawi gumu kwa mfano maalum.
+
+<<blockchainwithforks>> inaonyesha mnyororo wa vitalu wenye matawi mawili. Kwenye urefu wa kitalu 4, tawi la kitalu kimoja hutokea. Hii ni aina ya tawi la hiari tuliloliona katika <<forks>>. Kwa uchimbaji wa kitalu 5, mtandao unaungana kwenye mnyororo mmoja na tawi linatatuliwa.
+
+[[blockchainwithforks]]
+.Mnyororo wa vitalu wenye matawi.
+image::images/mbc3_1202.png[A blockchain with forks]
+
+Baadaye, hata hivyo, kwenye urefu wa kitalu 6, utekelezaji mpya wa mteja unatoka na mabadiliko katika sheria za makubaliano. Kuanzia kwenye urefu wa kitalu 7, wachimbaji wanaoendesha utekelezaji huu mpya watakubali aina mpya ya bitcoin; tuiite «foocoin». Mara baada ya hapo, nodi inayoendesha utekelezaji mpya inaunda muamala wenye foocoin na mchimbaji mwenye programu iliyosasishwa huchimba kitalu 7b chenye muamala huu.
+
+Nodi yoyote au mchimbaji ambaye hajaboiresha programu ili kuthibitisha foocoin sasa hawezi kushughulikia kitalu 7b. Kutoka mtazamo wao, muamala wenye foocoin na kitalu 7b kilichokuwa na muamala huo ni batili kwa sababu wanayatathmini kulingana na sheria za zamani za makubaliano. Nodi hizi zitakataa muamala na kitalu na hazitavipitisha. Wachimbaji wowote wanaotumia sheria za zamani hawatakubali kitalu 7b na wataendelea kuchimba kitalu mgombea ambacho mzazi wake ni kitalu 6. Kwa kweli, wachimbaji wanaotumia sheria za zamani wanaweza hata wasipokee kitalu 7b ikiwa nodi zote walizoungana nazo pia zinafuata sheria za zamani na kwa hivyo hazipitishi kitalu. Hatimaye, wataweza kuchimba kitalu 7a, ambacho ni halali chini ya sheria za zamani na haina miamala yoyote yenye foocoins.
+
+Minyororo miwili inaendelea kutofautiana kutoka sehemu hii. Wachimbaji kwenye mnyororo «b» wataendelea kukubali na kuchimba miamala yenye foocoins, huku wachimbaji kwenye mnyororo «a» wakiendelea kupuuza miamala hii. Hata kama kitalu 8b haina miamala yoyote ya foocoin, wachimbaji kwenye mnyororo «a» hawawezi kukishughulikia. Kwao kinaonekana kuwa kitalu batili, kwani mzazi wake «7b» haukutambuliwa kama ((("consensus rules", "hard forks", "explained", startref="consensus-hard-fork")))((("forks", "hard forks", "explained", startref="forks-hard")))((("hard forks", "explained", startref="hard-forks-ch12")))kitalu halali.
+
+===== Matawi Magumu: Programu, Mtandao, Uchimbaji, na Mnyororo
+
+Kwa ((("software forks", id="software-fork")))((("network forks", id="network-fork")))((("mining forks", id="mining-fork")))((("chain forks", id="chain-fork")))((("consensus rules", "hard forks", "types of", id="consensus-hard-fork-type")))((("forks", "hard forks", "types of", id="forks-hard-type")))((("hard forks", "types of", id="hard-forks-type")))wasanidi programu, neno «tawi» lina maana nyingine, na kuongeza mkanganyiko kwa neno «tawi gumu». Katika programu ya chanzo wazi, tawi hutokea wakati kikundi cha wasanidi programu wanachagua kufuata ramani tofauti ya programu na kuanza utekelezaji unaokinzana wa mradi wa chanzo wazi. Tayari tumejadili hali mbili ambazo zitasababisha tawi gumu: hitilafu kwenye sheria za makubaliano na mabadiliko ya makusudi ya sheria za makubaliano. Katika kesi ya mabadiliko ya makusudi ya sheria za makubaliano, tawi la programu linatangulia tawi gumu. Hata hivyo, kwa aina hii ya tawi gumu kutokea, utekelezaji mpya wa programu ya sheria za makubaliano lazima utengenezwe, upitishwe, na uzinduliwe.
+
+Mifano ya matawi ya programu ambayo imejaribu kubadilisha sheria za makubaliano inajumuisha Bitcoin XT na Bitcoin Classic. Hata hivyo, hakuna programu hizo zilizosababisha tawi gumu. Ingawa tawi la programu ni sharti muhimu, si kwa yenyewe la kutosha kwa tawi gumu kutokea. Kwa tawi gumu kutokea, utekelezaji unaokinzana lazima upitishwe na sheria mpya zianzishwe, na wachimbaji, pochi, na nodi za kati. Kinyume chake, kuna utekelezaji mwingi mbadala wa Bitcoin Core, na hata matawi ya programu, ambayo hayabadilishi sheria za makubaliano na bila hitilafu, yanaweza kuishi pamoja kwenye mtandao na kuingiliana bila kusababisha tawi gumu.
+
+Sheria za makubaliano zinaweza kutofautiana kwa njia dhahiri na wazi, katika uthibitisho wa miamala au vitalu. Sheria pia zinaweza kutofautiana kwa njia za hila zaidi, katika utekelezaji wa sheria za makubaliano zinapotumiwa kwa hati za Bitcoin au primitifu za kriptografia kama saini za kidijitali. Hatimaye, sheria za makubaliano zinaweza kutofautiana kwa njia zisizotarajiwa kwa sababu ya vikwazo vya makubaliano vilivyofichwa vinavyowekwa na mipaka ya mfumo au maelezo ya utekelezaji. Mfano wa hili wa mwisho ulionekana kwenye tawi gumu lisilotarajiwa wakati wa uboreshaji wa Bitcoin Core 0.7 hadi 0.8, ambao ulisababishwa na kikwazo katika utekelezaji wa Berkeley DB uliotumiwa kuhifadhi vitalu.
+
+Kwa dhana, tunaweza kufikiria tawi gumu kama linalounda katika hatua nne: tawi la programu, tawi la mtandao, tawi la uchimbaji, na tawi la mnyororo. Mchakato huanza wakati utekelezaji mbadala wa mteja, wenye sheria za makubaliano zilizobadilishwa, unaundwa na wasanidi programu.
+
+Utekelezaji huu uliotawiwa unaposambazwa kwenye mtandao, asilimia fulani ya wachimbaji, watumiaji wa pochi, na nodi za kati wanaweza kupitisha na kuendesha utekelezaji huu. Kwanza, mtandao utatawi. Nodi zinazotegemea utekelezaji wa asili wa sheria za makubaliano zitakataa miamala na vitalu vyovyote vilivyoundwa chini ya sheria mpya. Zaidi ya hayo, nodi zinazofuata sheria za asili za makubaliano zinaweza kujikata kutoka kwa nodi zozote zinazozitumia miamala na vitalu hivi batili. Kwa sababu hiyo, mtandao unaweza kugawanyika kuwa miwili: nodi za zamani zitabaki zimeunganika na nodi za zamani tu na nodi mpya zitaunganika na nodi mpya tu. Kitalu kimoja kinachotegemea sheria mpya kitaenea mtandaoni na kusababisha mgawanyiko kwenye mitandao miwili.
+
+Wachimbaji wapya wanaweza kuchimba juu ya kitalu kipya, huku wachimbaji wa zamani wakichimba mnyororo tofauti kulingana na sheria za zamani. Mtandao uliogawanyika utaifanya hali kwamba wachimbaji wanaofanya kazi chini ya sheria tofauti za makubaliano hawatawezekana kupokea vitalu vya kila mmoja, kwani wameunganika kwenye mitandao ((("software forks", startref="software-fork")))((("network forks", startref="network-fork")))((("mining forks", startref="mining-fork")))((("chain forks", startref="chain-fork")))((("consensus rules", "hard forks", "types of", startref="consensus-hard-fork-type")))((("forks", "hard forks", "types of", startref="forks-hard-type")))((("hard forks", "types of", startref="hard-forks-type")))miwili tofauti.
+
+===== Wachimbaji Wanaotofautiana na Ugumu
+
+Wachimbaji ((("consensus rules", "hard forks", "difficulty and", id="consensus-hard-fork-difficult")))((("forks", "hard forks", "difficulty and", id="forks-hard-difficult")))((("hard forks", "difficulty and", id="hard-forks-difficult")))((("difficulty", "hard forks and", id="difficulty-hardfork")))wanapotofautiana kuchimba minyororo miwili tofauti, nguvu ya hashing inagawanyika kati ya minyororo. Nguvu ya uchimbaji inaweza kugawanywa kwa uwiano wowote kati ya minyororo miwili. Sheria mpya zinaweza kufuatwa na wachache, au na idadi kubwa ya nguvu ya uchimbaji.
+
+Tuchukuee, kwa mfano, mgawanyo wa 80%–20%, na idadi kubwa ya nguvu ya uchimbaji ikitumia sheria mpya za makubaliano. Pia tuchukuee kwamba tawi linatokea mara baada ya kipindi cha ukalibishaji upya.
+
+Minyororo miwili kila moja itarithi ugumu kutoka kwa kipindi cha ukalibishaji upya. Sheria mpya za makubaliano zingekuwa na nguvu ya uchimbaji iliyokuwa inapatikana awali ya asilimia 80 iliyojitolea kwao. Kutoka mtazamo wa mnyororo huu, nguvu ya uchimbaji imeshuka ghafla kwa asilimia 20 ikilinganishwa na kipindi kilichotangulia. Vitalu vitapatikana kwa wastani kila dakika 12.5, ikiwakilisha kupungua kwa asilimia 20 kwa nguvu ya uchimbaji inayopatikana kupanua mnyororo huu. Kiwango hiki cha utoaji wa vitalu kitaendelea (pasipo mabadiliko yoyote katika nguvu ya hashing) hadi vitalu 2,016 vichimbwe, ambayo itachukua takriban dakika 25,200 (kwa kiwango cha dakika 12.5 kwa kila kitalu), au siku 17.5. Baada ya siku 17.5, ukalibishaji upya utatokea na ugumu utarekebishwa (kupunguzwa kwa asilimia 20) kuzalisha tena vitalu vya dakika 10, kulingana na kiasi kilichopunguzwa cha nguvu ya hashing kwenye mnyororo huu.
+
+Mnyororo wa wachache, unaochimba chini ya sheria za zamani kwa nguvu ya uchimbaji ya asilimia 20 tu, utakabili kazi ngumu zaidi sana. Kwenye mnyororo huu, vitalu sasa vitachimbwa kila dakika 50 kwa wastani. Ugumu hautarekebishwa kwa vitalu 2,016, ambavyo vitachukua dakika 100,800, au takriban wiki 10 kuchimba. Ukichukulia uwezo uliowekwa kwa kila kitalu, hii pia itasababisha kupunguzwa kwa uwezo wa miamala kwa sababu ya sababu ya 5, kwani kuna vitalu vichache kwa saa vinapopatikana kurekodi miamala.
+
+===== Matawi Magumu Yanayopingana
+
+Hii ((("consensus rules", "hard forks", "contentious forks")))((("forks", "hard forks", "contentious forks")))((("hard forks", "contentious forks")))((("contentious hard forks")))ni mwanzo wa maendeleo ya programu ya makubaliano ya desentralizesheni. Kama vile uvumbuzi mwingine katika maendeleo ulivyobadilisha mbinu na bidhaa za programu na kuunda mbinu mpya, zana mpya, na jamii mpya wake, maendeleo ya programu ya makubaliano pia yanawakilisha mpaka mpya katika sayansi ya kompyuta. Kutoka kwa mijadala, majaribio, na mapito ya maendeleo ya Bitcoin, tutaona zana mpya za maendeleo, mazoea, mbinu, na jamii zinazoibuka.
+
+Matawi magumu yanachukuliwa kama hatarishi kwa sababu yanamlazimisha wachache kuboresha au kubaki kwenye mnyororo wa wachache. Hatari ya kugawanya mfumo mzima kwenye mifumo miwili inayokinzana inachukuliwa na wengi kama hatari isiyokubalika. Kwa sababu hiyo, wasanidi programu wengi wanasita kutumia utaratibu wa tawi gumu kutekeleza maboresho kwenye sheria za makubaliano, isipokuwa kama kuna msaada wa karibu-wa-kawaida kutoka kwa mtandao mzima. Mapendekezo yoyote ya tawi gumu ambayo hayana msaada wa karibu-wa-kawaida yanachukuliwa kuwa na mzozo sana kujaribu bila kuhatarisha mgawanyiko wa mfumo.
+
+Tayari tumeona kuibuka kwa mbinu mpya za kushughulikia hatari za matawi magumu. Katika sehemu inayofuata, tutaangalia matawi laini na mbinu za kuashiria na uanzishaji wa marekebisho ya makubaliano.
+
+==== Matawi Laini
+
+Si mabadiliko ((("consensus rules", "soft forks", "explained", id="consensus-soft-explain")))((("forks", "soft forks", "explained", id="fork-soft-explain")))((("soft forks", "explained", id="soft-fork-explain")))yote ya sheria za makubaliano yanayosababisha tawi gumu. Mabadiliko ya makubaliano tu ambayo hayaendani na siku zijazo ndiyo yanayosababisha tawi. Ikiwa mabadiliko yanatekelezwa kwa njia ambayo mteja ambaye hajaboireshwa bado anaona muamala au kitalu kama halali chini ya sheria za awali, mabadiliko yanaweza kutokea bila tawi.
+
+Neno _tawi laini_ lilianzishwa kutofautisha njia hii ya uboreshaji kutoka kwa «tawi gumu». Kwa vitendo, tawi laini si tawi kabisa. Tawi laini ni mabadiliko yanayoendana na siku zijazo kwa sheria za makubaliano ambayo inaruhusu wateja ambao hawajaboireshwa kuendelea kufanya kazi katika makubaliano na sheria mpya.
+
+Kipengele kimoja cha matawi laini ambacho si dhahiri mara moja ni kwamba uboreshaji wa tawi laini unaweza kutumika tu kuzuia sheria za makubaliano, si kuzipanua. Ili kuendana na siku zijazo, miamala na vitalu vilivyoundwa chini ya sheria mpya lazima viwe halali chini ya sheria za zamani pia, lakini si kinyume chake. Sheria mpya zinaweza tu kupunguza kinachokuwa halali; vinginevyo, zitachochea tawi gumu zinapokataliwa chini ya sheria za zamani.
+
+Matawi laini yanaweza kutekelezwa kwa njia kadhaa—neno haliainishi njia maalum, bali seti ya njia ambazo zote zina kitu kimoja sawa: hazihitaji nodi zote kuboresha au kulazimisha nodi ambazo hazijaboireshwa kutoka kwa makubaliano.
+
+Matawi laini mawili yametekelezwa
+katika Bitcoin, kulingana na utafsiri upya ((("NOP opcodes")))((("OP_NOP opcodes")))wa opcodes za NOP. Hati ya Bitcoin ilikuwa na opcodes 10 zilizohifadhiwa kwa matumizi ya baadaye, NOP1 hadi NOP10. Chini ya sheria za makubaliano, uwepo wa opcodes hizi kwenye hati unatafsiriwa kama opereta wa null-potent, ikimaanisha hawana athari. Utekelezaji unaendelea baada ya opcode ya NOP kana kwamba haikuwepo.
+
+Tawi laini kwa hivyo linaweza kubadilisha semantiki ya msimbo wa NOP ili kumpa maana mpya. Kwa mfano, BIP65 (+CHECKLOCKTIMEVERIFY+) ilitafsiri upya opcode ya NOP2. Wateja wanaotekeleza BIP65 wanatafsiri NOP2 kama +OP_CHECKLOCKTIMEVERIFY+ na kuweka sheria ya makubaliano ya wakati wa kufuli wa kabisa kwenye UTXOs zenye opcode hii katika hati zao za kufuli. Mabadiliko haya ni tawi laini kwa sababu muamala ulio halali chini ya BIP65 pia ni halali kwenye mteja wowote ambaye hatekelezi (hajui) BIP65. Kwa wateja wa zamani, hati ina msimbo wa NOP, ambao ((("consensus rules", "soft forks", "explained", startref="consensus-soft-explain")))((("forks", "soft forks", "explained", startref="fork-soft-explain")))((("soft forks", "explained", startref="soft-fork-explain")))unapuuzwa.
+
+===== Ukosoaji wa Matawi Laini
+
+Matawi laini ((("consensus rules", "soft forks", "criticisms of", id="consensus-soft-critic")))((("forks", "soft forks", "criticisms of", id="fork-soft-critic")))((("soft forks", "criticisms of", id="soft-fork-critic")))yanayotegemea opcodes za NOP ni ya kawaida bila mzozo. Opcodes za NOP ziliwekwa katika Hati ya Bitcoin kwa lengo wazi la kuruhusu uboreshaji usiotatanisha.
+
+Hata hivyo, wasanidi programu wengi wana wasiwasi kwamba njia nyingine za uboreshaji wa tawi laini zinafanya maelewano yasiyokubalika. Ukosoaji wa kawaida wa mabadiliko ya tawi laini unajumuisha:
+
+Deni la kiufundi:: Kwa sababu matawi laini ni magumu zaidi kiufundi kuliko uboreshaji wa tawi gumu, yanaanzisha ((("technical debt")))_deni la kiufundi_, neno linalomaanisha kuongeza gharama ya siku zijazo ya matengenezo ya msimbo kwa sababu ya maelewano ya muundo yaliyofanywa hapo awali. Ugumu wa msimbo huongeza uwezekano wa hitilafu na udhaifu wa usalama.
+
+Kupumzishwa kwa uthibitisho:: Wateja ambao hawajaboireshwa wanaona miamala kama halali bila kutathimini sheria za makubaliano zilizobadilishwa. Kwa kweli, wateja ambao hawajaboireshwa hawathibitishi kwa kutumia mbalimbali kamili ya sheria za makubaliano, kwani wanakosa sheria mpya. Hii inatumika kwa uboreshaji wa kulingana na NOP, pamoja na uboreshaji mwingine wa tawi laini.
+
+Uboreshaji usioweza kurudishwa:: Kwa sababu matawi laini yanaunda miamala yenye vikwazo vya ziada vya makubaliano, yanakuwa maboresho yasiyoweza kurudishwa kwa vitendo. Kama uboreshaji wa tawi laini ungepaswa kurudishwa baada ya kuanzishwa, miamala yoyote iliyoundwa chini ya sheria mpya ingeweza kusababisha kupotea kwa fedha chini ya sheria za zamani. Kwa mfano, ikiwa muamala wa CLTV unatathminiwa chini ya sheria za zamani, hakuna kikwazo cha timelock na unaweza kutumiwa wakati wowote. Kwa hivyo, wakosoaji wanasema kwamba tawi laini lililoshindwa ambalo lingelazimika kurudishwa kwa sababu ya hitilafu lingekaribia kuhakika kusababisha kupotea kwa fedha.
+
+[[softforksignaling]]
+===== Uashirio wa Tawi Laini kwa Toleo la Kitalu
+
+Kwa kuwa matawi laini yanaruhusu wateja ambao hawajaboireshwa kuendelea kufanya kazi ndani ya makubaliano, mfumo mmoja wa «kuanzisha» tawi laini ni kupitia wachimbaji kuashiria kwamba wako tayari na wana nia ya kutekeleza sheria mpya za makubaliano. Ikiwa wachimbaji wote wanatekeleza sheria mpya, hakuna hatari ya nodi ambazo hazijaboireshwa kukubali kitalu ambacho nodi zilizosasishwa zingekataa. Mfumo huu ulianzishwa na BIP34.
+
+===== BIP34: Uashirio na Uanzishaji
+
+BIP34 ilitumia ((("consensus rules", "soft forks", "BIP34 signaling/activation", tertiary-sortas="BIP034", id="consensus-soft-bip34")))((("forks", "soft forks", "BIP34 signaling/activation", tertiary-sortas="BIP034", id="fork-soft-bip34")))((("soft forks", "BIP34 signaling/activation", secondary-sortas="BIP034", id="soft-fork-bip34")))((("signaling", "BIP34", secondary-sortas="BIP034", id="signal-bip34")))((("activation (soft forks)", "BIP34", secondary-sortas="BIP034", id="activation-bip34")))((("BIP34 signaling/activation", primary-sortas="BIP034", id="bip34")))sehemu ya toleo la kitalu kuruhusu wachimbaji kuashiria utayari kwa mabadiliko maalum ya sheria za makubaliano. Kabla ya BIP34, toleo la kitalu liliwekwa sawa na «1» kwa _mkataba_ usiotekelezwa na _makubaliano_.
+
+BIP34 ilifafanua mabadiliko ya sheria za makubaliano ambayo yalihitaji sehemu ya coinbase (ingizo) ya muamala wa coinbase kuwa na urefu wa kitalu. Kabla ya BIP34, coinbase ingeweza kuwa na data ya kubuni yoyote ambayo wachimbaji walichagua kujumuisha. Baada ya uanzishaji wa BIP34, vitalu halali vililazimika kuwa na urefu maalum wa kitalu mwanzoni mwa coinbase na kutambuliwa kwa nambari ya toleo la kitalu sawa au zaidi ya «2».
+
+Ili kuashiria utayari wao wa kutekeleza sheria za BIP34, wachimbaji waliweka toleo la kitalu sawa na «2», badala ya «1». Hii haikufanya vitalu vya toleo «1» kuwa batili mara moja. Mara ilipowezeshwa, vitalu vya toleo «1» vingekuwa batili na vitalu vyote vya toleo «2» vinggehitajika kuwa na urefu wa kitalu katika coinbase ili kuwa halali.
+
+BIP34 ilifafanua mfumo wa uanzishaji wa hatua mbili kulingana na dirisha la vitalu 1,000 linalozunguka. Mchimbaji angeashiria utayari wao wa kujitegemea kwa BIP34 kwa kuunda vitalu vyenye «2» kama nambari ya toleo. Kwa usahihi, vitalu hivi bado havikuhitajika kufuata sheria mpya ya makubaliano ya kujumuisha urefu wa kitalu kwenye muamala wa coinbase kwa sababu sheria za makubaliano hazikuanzishwa bado. Sheria za makubaliano zilianzishwa katika hatua mbili:
+
+- Ikiwa 75% (750 kati ya vitalu 1,000 vya hivi karibuni zaidi) vimewekwa alama na toleo «2», basi vitalu vya toleo «2» lazima viwe na urefu wa kitalu kwenye muamala wa coinbase au vinakataliwa kama batili. Vitalu vya toleo «1» bado vinakubaliwa na mtandao na havihitaji kuwa na urefu wa kitalu. Sheria za zamani na mpya za makubaliano zinaishi pamoja wakati huu.
+
+- Vitalu 95% (950 kati ya vitalu 1,000 vya hivi karibuni zaidi) vikiwa toleo «2», vitalu vya toleo «1» havichukuliwi tena kama halali. Vitalu vya toleo «2» ni halali tu ikiwa vina urefu wa kitalu katika coinbase (kama ilivyo kwa kizingiti kilichotangulia). Baada ya hapo, vitalu vyote lazima vizingatie sheria mpya za makubaliano, na vitalu vyote halali lazima viwe na urefu wa kitalu kwenye muamala wa coinbase.
+
+Baada ya uashirio na uanzishaji ulofanikiva chini ya sheria za BIP34, mfumo huu ulitumika mara mbili zaidi kuanzisha matawi laini:
+
+- https://oreil.ly/Xes2l[BIP66]
+  Usimbuaji kali wa DER wa Saini ulianzishwa na uashirio wa mtindo wa BIP34 na toleo la kitalu «3».
+
+- https://oreil.ly/pk8tz[BIP65]
+  +CHECKLOCKTIMEVERIFY+ ilianzishwa na uashirio wa mtindo wa BIP34 na toleo la kitalu «4».
+
+Baada ya uanzishaji wa BIP65, mfumo wa uashirio na uanzishaji wa BIP34 ulistaafu na kubadilishwa na ((("consensus rules", "soft forks", "BIP34 signaling/activation", tertiary-sortas="BIP034", startref="consensus-soft-bip34")))((("forks", "soft forks", "BIP34 signaling/activation", tertiary-sortas="BIP034", startref="fork-soft-bip34")))((("soft forks", "BIP34 signaling/activation", secondary-sortas="BIP034", startref="soft-fork-bip34")))((("signaling", "BIP34", secondary-sortas="BIP034", startref="signal-bip34")))((("activation (soft forks)", "BIP34", secondary-sortas="BIP034", startref="activation-bip34")))((("BIP34 signaling/activation", primary-sortas="BIP034", startref="bip34")))mfumo wa uashirio wa BIP9 ulioelezwa baadaye.
+
+[role="less_space pagebreak-before"]
+[[bip9]]
+===== BIP9: Uashirio na Uanzishaji
+
+Mfumo ((("consensus rules", "soft forks", "BIP9 signaling/activation", tertiary-sortas="BIP009", id="consensus-soft-bip9")))((("forks", "soft forks", "BIP9 signaling/activation", tertiary-sortas="BIP009", id="fork-soft-bip9")))((("soft forks", "BIP9 signaling/activation", secondary-sortas="BIP009", id="soft-fork-bip9")))((("signaling", "BIP9", secondary-sortas="BIP009", id="signal-bip9")))((("activation (soft forks)", "BIP9", secondary-sortas="BIP009", id="activation-bip9")))((("BIP9 signaling/activation", primary-sortas="BIP009", id="bip9-ch12")))uliotoumika na BIP34, BIP66, na BIP65 ulifanikiwa katika kuanzisha matawi laini matatu. Hata hivyo, uliondolewa kwa sababu ulikuwa na vikwazo kadhaa:
+
+- Kwa kutumia thamani ya nambari kamili ya toleo la kitalu, tawi laini moja tu lingeweza kuanzishwa wakati mmoja, kwa hivyo lilihitaji uratibu kati ya mapendekezo ya tawi laini na makubaliano kuhusu upendelezi wao na mfuatano.
+
+- Zaidi ya hayo, kwa sababu toleo la kitalu liliongezwa, mfumo haukutoa njia rahisi ya kukataa mabadiliko na kisha kupendekeza mengine. Ikiwa wateja wa zamani bado walikuwa wakiendesha, wangeweza kukosea uashirio kwa mabadiliko mapya kama uashirio kwa mabadiliko yaliyokataliwa awali.
+
+- Kila mabadiliko mapya yalikuwa yakipunguza kwa kudumu toleo za vitalu zinazopatikana kwa mabadiliko ya baadaye.
+
+BIP9 ilipendekezwa kushinda changamoto hizi na kuboresha kiwango na urahisi wa kutekeleza mabadiliko ya baadaye.
+
+BIP9 inatafsiri toleo la kitalu kama sehemu ya vipande badala ya nambari kamili. Kwa sababu toleo la kitalu awali lilitumika kama nambari kamili kwa matoleo 1 hadi 4, bits 29 tu zimebaki zinazopatikana kutumika kama sehemu ya vipande. Hii inawacha bits 29 ambazo zinaweza kutumika kuashiria utayari kwa kujitegemea na wakati mmoja kwenye mapendekezo 29 tofauti.
+
+BIP9 pia inaweka muda wa juu kwa uashirio na uanzishaji. Kwa njia hii wachimbaji hawahitajiki kuashiria milele. Ikiwa pendekezo haliwezeshwi ndani ya kipindi cha +TIMEOUT+ (kilichofafanuliwa kwenye pendekezo), pendekezo linachukuliwa kukataliwa. Pendekezo linaweza kuwasilishwa tena kwa uashirio na bit tofauti, ukihuisha kipindi cha uanzishaji.
+
+Zaidi ya hayo, baada ya +TIMEOUT+ kupita na kipengele kuanzishwa au kukataliwa, bit ya uashirio inaweza kutumika tena kwa kipengele kingine bila mkanganyiko. Kwa hivyo, mabadiliko hadi 29 yanaweza kuashiriwa sambamba. Baada ya +TIMEOUT+, bits zinaweza «kurejeshwa» kupendekeza mabadiliko mapya.
+
+[NOTE]
+====
+Ingawa bits za uashirio zinaweza kutumika tena au kurejeshwa, mradi kipindi cha kupiga kura hakiingiliani, waandishi wa BIP9 wanapendekeza kwamba bits zirejeshwe tu inapohitajika; tabia isiyotarajiwa inaweza kutokea kwa sababu ya hitilafu katika programu ya zamani. Kwa muhtasari, hatupaswi kutarajia kutumika tena hadi bits zote 29 zimetumika mara moja.
+====
+
+Mabadiliko yanayopendekezwa yanatambuliwa na muundo wa data unaoweka sehemu zifuatazo:
+
+jina:: Maelezo mafupi yanayotumika kutofautisha kati ya mapendekezo. Mara nyingi BIP inayoelezea pendekezo, kama «bipN», ambapo N ni nambari ya BIP.
+
+bit:: 0 hadi 28, bit katika toleo la kitalu ambalo wachimbaji hutumia kuashiria idhini kwa pendekezo hili.
+
+wakati wa kuanza:: Wakati (kulingana na MTP) ambapo uashirio unaanza baada ya hapo thamani ya bit inatafsiriwa kama uashirio wa utayari kwa pendekezo.
+
+wakati wa kumaliza:: Wakati (kulingana na MTP) baada ya hapo mabadiliko yanachukuliwa kukataliwa ikiwa hayajafika kizingiti cha uanzishaji.
+
+Tofauti na BIP34, BIP9 inahesabu uashirio wa uanzishaji katika muda mzima wa vipindi kulingana na kipindi cha ukalibishaji upya wa ugumu wa vitalu 2,016. Kwa kila kipindi cha ukalibishaji upya, ikiwa jumla ya vitalu vinavyoashiria pendekezo inazidi 95% (1,916 ya 2,016), pendekezo litaanzishwa kipindi kimoja cha ukalibishaji upya baadaye.
+
+BIP9 inatoa mchoro wa hali ya pendekezo kuonyesha hatua mbalimbali na mabadiliko ya pendekezo, kama inavyoonyeshwa katika <<bip9states>>.
+
+
+[[bip9states]]
+.Mchoro wa mabadiliko ya hali ya BIP9.
+image::images/mbc3_1203.png[BIP9 Proposal State Transition Diagram]
+
+
+Mapendekezo yanaanza katika hali ya +DEFINED+ mara vigezo vyao vinakuwa vinafahamika (vilivyofafanuliwa) katika programu ya Bitcoin. Kwa vitalu vyenye MTP baada ya wakati wa kuanza, hali ya pendekezo inabadilika hadi +STARTED+. Ikiwa kizingiti cha kupiga kura kinazidiwa ndani ya kipindi cha ukalibishaji upya na muda wa kukamilika haujazidiwa, hali ya pendekezo inabadilika hadi +LOCKED_IN+. Kipindi kimoja cha ukalibishaji upya baadaye, pendekezo linakuwa +ACTIVE+. Mapendekezo yanabaki katika hali ya +ACTIVE+ milele mara yanapofikia hali hiyo. Ikiwa muda wa kukamilika unapita kabla ya kizingiti cha kupiga kura kufikiwa, hali ya pendekezo inabadilika hadi +FAILED+, ikiashiria pendekezo lililokataliwa. Mapendekezo ya +FAILED+ yanabaki katika hali hiyo milele.
+
+BIP9 kwanza ilitekelezwa kwa uanzishaji wa +CHECKSEQUENCEVERIFY+ na BIPs zinazohusiana (68, 112, 113). Pendekezo liitwalo «csv» liliwezeshwa kwa mafanikio mnamo Julai 2016.
+
+Kiwango ((("consensus rules", "soft forks", "BIP9 signaling/activation", tertiary-sortas="BIP009", startref="consensus-soft-bip9")))((("forks", "soft forks", "BIP9 signaling/activation", tertiary-sortas="BIP009", startref="fork-soft-bip9")))((("soft forks", "BIP9 signaling/activation", secondary-sortas="BIP009", startref="soft-fork-bip9")))((("signaling", "BIP9", secondary-sortas="BIP009", startref="signal-bip9")))((("activation (soft forks)", "BIP9", secondary-sortas="BIP009", startref="activation-bip9")))((("BIP9 signaling/activation", primary-sortas="BIP009", startref="bip9-ch12")))kinafafanuliwa katika
+https://oreil.ly/FoCsz[BIP9
+(Bits ya toleo yenye muda na ucheleweshaji)].
+
+===== BIP8: Kufungwa kwa Lazima na Uanzishaji wa Mapema
+
+Baada ((("consensus rules", "soft forks", "BIP8 mandatory lock-in", tertiary-sortas="BIP008", id="consensus-soft-bip8")))((("forks", "soft forks", "BIP8 mandatory lock-in", tertiary-sortas="BIP008", id="fork-soft-bip8")))((("soft forks", "BIP8 mandatory lock-in", secondary-sortas="BIP008", id="soft-fork-bip8")))((("activation (soft forks)", "BIP8", secondary-sortas="BIP008", id="activate-soft-fork-bip8")))((("BIP8 mandatory lock-in", primary-sortas="BIP008", id="bip8")))((("mandatory lock-in", id="mandatory-lockin")))((("lock-in, mandatory", id="lockin-mandatory")))((("segregated witness (segwit)", id="segwit-bip8")))ya BIP9 kutumika kwa mafanikio kwa tawi laini ya CSV, utekelezaji unaofuata wa mabadiliko ya makubaliano ya tawi laini pia ulijaribu kuitumia kwa uanzishaji unaotekelezwa na wachimbaji. Hata hivyo, baadhi ya watu walipinga pendekezo hilo la tawi laini, linaloitwa _segwit_, na wachimbaji wachache sana waliashiria utayari wa kutekeleza segwit kwa miezi kadhaa.
+
+Baadaye iligunduliwa kwamba baadhi ya wachimbaji, hasa wachimbaji wanaohusiana na wapinzani, wangeweza kutumia vifaa ambavyo viliwapa faida ya siri juu ya wachimbaji wengine wakitumia kipengele kilichoitwa _covert ASICBoost_. Bila kukusudia, segwit ilizuia uwezo wa kutumia covert ASICBoost—segwit ilipowezeshwa, wachimbaji waliitumia wangepoteza faida yao ya siri.
+
+Baada ya jamii kugundua mgongano huu wa maslahi, baadhi ya watumiaji waliamua kutaka kutumia nguvu yao ya kutokukubali vitalu kutoka kwa wachimbaji isipokuwa vitalu hivyo vilizingatia sheria fulani. Sheria ambazo watumiaji hatimaye walitaka zilikuwa sheria mpya zilizoongezwa na segwit, lakini watumiaji walitaka kuongeza juhudi zao kwa kuchukua fursa ya idadi kubwa ya nodi zilizopanga kutekeleza sheria za segwit ikiwa wachimbaji wa kutosha waliashiria utayari kwa hiyo. Msanidi programu asiyejulikana alipendekeza BIP148, ((("BIP148 activation of segwit")))ambayo ilihitaji nodi yoyote inayoitekeleza kukataa vitalu vyote ambavyo havikuashiria kwa segwit kuanzia tarehe fulani na kuendelea hadi segwit ilipowezeshwa.
+
+Ingawa idadi ndogo tu ya watumiaji kweli waliendesha msimbo wa BIP148, watumiaji wengine wengi walionekana kukubaliana na hisia na wangeweza kuwa tayari kujitolea kwa BIP148. Siku chache kabla ya BIP148 kuanza kutumika, wachimbaji karibu wote walianza kuashiria utayari wao wa kutekeleza sheria za segwit. Segwit iliifikia kizingiti chake cha kufungwa takriban wiki mbili baadaye na ikawezeshwa takriban wiki mbili baadaye.
+
+Watumiaji wengi walikuja kuamini kwamba ilikuwa kasoro katika BIP9 kwamba wachimbaji wangeweza kuzuia jaribio la uanzishaji lisiwe la mafanikio kwa kutokuashiria kwa mwaka mmoja. Walitaka mfumo ambao ungehakikisha tawi laini linawezeshwa kwa urefu maalum wa kitalu lakini pia uliruhusu wachimbaji kuashiria wako tayari kulifunga mapema.
+
+Njia iliyotengenezwa kwa hiyo ilikuwa BIP8, ambayo inafanana na BIP9 isipokuwa kwamba inafafanua kipindi cha +MUST_SIGNAL+ ambapo wachimbaji lazima waashirie kwamba wako tayari kutekeleza pendekezo la tawi laini.
+
+Programu ilichapishwa iliyotumia BIP8 kujaribu kuwezeshwa kwa pendekezo la taproot mnamo 2021, na kulikuwa na ushahidi kwamba angalau idadi ndogo ya watumiaji walikimbia programu hiyo. Baadhi ya watumiaji hao pia wanasema kwamba nia yao ya kutumia BIP8 kulazimisha wachimbaji kuwezeshwa taproot ndiyo sababu ilipowezeshwa hatimaye. Wanasema kwamba kama taproot isingaliwezeshwa haraka, watumiaji wengine pia wangeanza kuendesha BIP8. Kwa bahati mbaya, hakuna njia ya kuthibitisha kingetokea nini, na kwa hivyo hatuwezi kusema kwa uhakika BIP8 ilichangia kiasi gani kwa uanzishaji wa ((("consensus rules", "soft forks", "BIP8 mandatory lock-in", tertiary-sortas="BIP008", startref="consensus-soft-bip8")))((("forks", "soft forks", "BIP8 mandatory lock-in", tertiary-sortas="BIP008", startref="fork-soft-bip8")))((("soft forks", "BIP8 mandatory lock-in", secondary-sortas="BIP008", startref="soft-fork-bip8")))((("activation (soft forks)", "BIP8", secondary-sortas="BIP008", startref="activate-soft-fork-bip8")))((("BIP8 mandatory lock-in", primary-sortas="BIP008", startref="bip8")))((("mandatory lock-in", startref="mandatory-lockin")))((("lock-in, mandatory", startref="lockin-mandatory")))((("segregated witness (segwit)", startref="segwit-bip8")))taproot.
+
+===== Jaribio la Haraka: Shindwa Haraka au Fanikiwa Hatimaye
+
+Ingawa ((("consensus rules", "soft forks", "speedy trial activation", id="consensus-soft-speed")))((("forks", "soft forks", "speedy trial activation", id="fork-soft-speed")))((("soft forks", "speedy trial activation", id="soft-fork-speed")))((("speedy trial activation", id="speed-trial")))((("activation (soft forks)", "speedy trial", id="activation-speed")))BIP9 yenyewe haikuonekana kusababisha uanzishaji wa segwit licha ya msaada mkubwa wa pendekezo, wasanidi programu wengi wa itifaki hawakuwa wazi kwamba BIP9 yenyewe ilikuwa kushindwa. Kama ilivyotajwa, kushindwa kwa wachimbaji kuashiria awali msaada kwa segwit kungeweza kuwa kwa kiasi kikubwa ni matokeo ya mgongano wa maslahi wa mara moja ambao haungehusu siku zijazo. Kwa wengine, ilionekana kuwa na thamani kujaribu BIP9 tena. Wengine walipingana na walitaka kutumia BIP8.
+
+Baada ya miezi ya mijadala kati ya wale waliokuwa na nia zaidi katika mawazo maalum ya uanzishaji, maelewano yalipendekeza ili kuwezeshwa kwa taproot. Toleo lililobadilishwa la BIP9 lilipendekeza ambalo lingewapa wachimbaji muda mfupi sana wa kuashiria nia yao ya kutekeleza sheria za taproot. Ikiwa uashirio haukufanikiwa, mfumo tofauti wa uanzishaji ungeweza kutumika (au, pengine, wazo lingeweza kuachwa). Ikiwa uashirio ulifanikiwa, utekelezaji ungeanza takriban miezi sita baadaye kwenye urefu maalum wa kitalu. Mfumo huu uliitwa _jaribio la haraka_ na mmoja wa watu waliousaidia kukuza.
+
+Uanzishaji wa jaribio la haraka ulijaribiwa, wachimbaji haraka waliashiria nia yao ya kutekeleza sheria za taproot, na taproot iliwezeshwa kwa mafanikio takriban miezi sita baadaye. Kwa waunga mkono wa jaribio la haraka, ilikuwa mafanikio wazi. Wengine bado walikuwa na huzuni kwamba BIP8 haikutumika.
+
+Haijulikani kama jaribio la haraka litatumika tena kwa jaribio la siku zijazo la kuwezeshwa kwa tawi laini.
+
+==== Maendeleo ya Programu ya Makubaliano
+
+Programu ya makubaliano ((("consensus rules", "software development")))((("software development for consensus rules")))((("forks", "consensus rule software development")))inaendelea kubadilika, na kuna mjadala mkubwa kuhusu mifumo mbalimbali ya kubadilisha sheria za makubaliano. Kwa asili yake, Bitcoin inaweka kiwango cha juu sana kwa uratibu na makubaliano kwa mabadiliko. Kama mfumo wa desentralizesheni, hauna «mamlaka» inayoweza kulazimisha mapenzi yake kwa washiriki wa mtandao. Nguvu inagawanywa kati ya makundi mengi kama wachimbaji, wasanidi programu wa itifaki, wasanidi programu wa pochi, masoko ya kubadilishana, wafanyabiashara, na watumiaji wa mwisho. Maamuzi hayawezi kufanywa kwa upande mmoja na makundi yoyote kati ya haya. Kwa mfano, ingawa wachimbaji wanaweza kuzuia miamala kwa wengi (51%), wanazuiwa na ridhaa ya makundi mengine. Wakifanya kwa upande mmoja, washiriki wengine wanaweza kukataa kukubali vitalu vyao, wakibakisha shughuli za uchumi kwenye mnyororo wa wachache. Bila shughuli za uchumi (miamala, wafanyabiashara, pochi, masoko ya kubadilishana), wachimbaji watakuwa wakichimba sarafu isiyo na thamani yenye vitalu tupu. Mgawanyiko huu wa nguvu unamaanisha kwamba washiriki wote lazima waratibu, au mabadiliko hayawezi kufanywa. Hali ya sasa ni hali thabiti ya mfumo huu na mabadiliko machache tu yanawezekana ikiwa kuna makubaliano madhubuti ya idadi kubwa sana. Kizingiti cha 95% kwa matawi laini kinaonyesha ukweli huu.
+
+Ni muhimu kutambua kwamba hakuna suluhisho kamili kwa maendeleo ya makubaliano. Matawi magumu na matawi laini yanajumuisha maelewano. Kwa aina fulani za mabadiliko, matawi laini yanaweza kuwa chaguo bora; kwa wengine, matawi magumu yanaweza kuwa chaguo bora. Hakuna chaguo kamili; yote yana hatari. Kipengele kimoja cha kudumu cha maendeleo ya programu ya makubaliano ni kwamba mabadiliko ni magumu na makubaliano yanabidi maelewano.
+
+Wengine wanaona hii kama udhaifu wa mifumo ya makubaliano. Kwa muda, unaweza kuona hii kama nguvu kuu ya mfumo.
+
+Katika hatua hii kwenye kitabu, tumemaliza kuzungumza kuhusu mfumo wa Bitcoin yenyewe. Kilichobaki ni programu, zana, na itifaki zingine zilizojengwa juu ya Bitcoin.

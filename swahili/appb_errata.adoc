@@ -1,0 +1,227 @@
+[appendix]
+== Makosa katika Karatasi Nyeupe ya Bitcoin
+
+Kiambatisho((("Bitcoin whitepaper", "errata", id="bitcoin-whitepaper-errata")))((("whitepaper (Bitcoin)", "errata", id="whitepaper-errata"))) hiki kina maelezo ya matatizo yanayojulikana katika karatasi ya Satoshi Nakamoto, "Bitcoin: Mfumo wa Pesa za Kielektroniki wa Mtu-hadi-Mtu," pamoja na maelezo kuhusu mabadiliko ya istilahi na jinsi utekelezaji wa Bitcoin unavyotofautiana na ule ulioelezwa katika karatasi.
+
+Hati hii ilichapishwa kwanza na mwandishi mwenza wa kitabu hiki mwaka 2016; inazalishwa hapa pamoja na masasisho. Majina ya
+sehemu katika makosa haya yanafanana na majina ya
+sehemu katika karatasi ya asili ya Nakamoto.
+
+=== Muhtasari
+
+____
+"Mnyororo mrefu si tu hutumikia kama uthibitisho wa mfuatano wa matukio
+yaliyoshuhudiwa, bali uthibitisho kwamba ulikuja kutoka kwa kundi kubwa zaidi la nguvu za CPU."
+____
+
+* *Maelezo ya utekelezaji:* Kama kila kiungo katika mnyororo (kinachojulikana kama "vitalu"
+katika Bitcoin) kilijengwa kwa kutumia kiasi sawa cha _uthibitisho wa kazi_ (PoW), mnyororo
+mrefu zaidi ungekuwa ule unaounga mkono na kundi kubwa zaidi la
+nguvu za kompyuta. Hata hivyo, Bitcoin ilitekelezwa kwa njia ambayo
+kiasi cha PoW kinaweza kutofautiana kati ya vitalu, kwa hivyo ikawa muhimu si
+kuangalia "mnyororo mrefu zaidi" bali "mnyororo unaoonyesha
+PoW nyingi zaidi"; hii mara nyingi inafupishwa kama "mnyororo wenye kazi nyingi zaidi."
++
+https://oreil.ly/XYZzx[Mabadiliko]
+kutoka kuangalia mnyororo mrefu zaidi hadi kuangalia mnyororo wenye kazi nyingi zaidi
+yalitokea Julai 2010, muda mrefu baada ya kutolewa kwa Bitcoin kwanza:
++
+[source,diff]
+----
+-    if (pindexNew->nHeight > nBestHeight)
++    if (pindexNew->bnChainWork > bnBestChainWork)
+----
+
+[role="less_space pagebreak-before"]
+* *Mabadiliko ya istilahi:* CPU za jumla zilitumika kuzalisha PoW kwa vitalu vya awali vya Bitcoin, lakini uzalishaji wa PoW leo hufanywa zaidi na Mzunguko Maalum wa Uunganishaji wa Programu (ASIC), kwa hivyo badala ya kusema "nguvu ya CPU" labda ni sahihi zaidi kusema "nguvu ya kompyuta" au, kwa urahisi, "kiwango cha hash" kwa heshi inayotumiwa katika kuzalisha PoW.
+
+____
+"Maadamu wingi wa nguvu za CPU unasimamiwa na nodi ambazo hazishirikiani kushambulia mtandao, zitazalisha mnyororo mrefu zaidi na kuwapigia wapinzani kasi."
+____
+
+* *Mabadiliko ya istilahi:* Neno "nodi" leo linatumika kumaanisha
+nodi kamili za uthibitishaji, ambazo ni programu zinazotekeleza sheria zote za
+mfumo. Programu (na vifaa) vinavyopanua mnyororo leo
+huitwa "wachimbaji" kulingana na mfano wa Nakamoto wa wachimbaji wa dhahabu katika sehemu
+6 ya karatasi. Nakamoto alitegemea kwamba wachimbaji wote wawe nodi lakini
+programu aliyotoa haikuhitaji nodi zote kuwa wachimbaji. Katika
+programu ya asili, kipengele rahisi cha menyu katika GUI ya nodi kiliruhusu kubadilisha
+kazi ya uchimbaji kuwasha au kuzima.
++
+Leo hali ni kwamba idadi kubwa ya nodi si
+wachimbaji na kwamba watu wengi wanaomiliki vifaa vya uchimbaji hawavitumii
+na nodi zao wenyewe (hata wale wanaochimba na nodi zao wenyewe
+mara nyingi huchimba kwa muda mfupi juu ya vitalu vilivyogunduliwa hivi karibuni
+bila kuhakikisha kwamba nodi yao inachukulia kitalu kipya kuwa halali). Sehemu za awali
+za karatasi ambazo "nodi" hutumiwa zaidi bila marekebisho
+zinahusu uchimbaji ukitumia nodi kamili ya uthibitishaji; sehemu za baadaye
+za karatasi ambazo zinahusu "nodi za mtandao" zinahusu zaidi kile ambacho nodi zinaweza kufanya
+hata kama hazichimai.
+* *Ugunduzi baada ya kuchapishwa:* Kitalu kipya kinapotengenezwa, mchimbaji
+anayetengeneza kitalu hicho anaweza kuanza kufanyia kazi msururu wake mara moja lakini
+wachimbaji wengine wote hawajui kitalu kipya na hawawezi kuanza kufanyia kazi
+hadi kimesambaa kwenye
+mtandao kwao. Hii inawapa wachimbaji wanaozalisha vitalu vingi faida juu ya
+wachimbaji wanaozalisha vitalu vichache, na hii inaweza kunyonywa katika kinachojulikana
+kama _shambulio la uchimbaji wa siri_ kuruhusu mshambuliaji mwenye karibu
+asilimia 30 ya kiwango cha hash cha jumla cha mtandao kufanya wachimbaji wengine kupata faida ndogo,
+labda kuwaelekeza kufuata sera ya mchimbaji mshambuliaji. Kwa hivyo
+badala ya kusema "wingi wa nguvu za CPU unasimamiwa na nodi ambazo
+hazishirikiani kushambulia mtandao," labda ni sahihi zaidi
+kusema "maadamu nodi zinazoshirikiana kushambulia mtandao zinadhibiti chini
+ya karibu asilimia 30 ya mtandao."
+
+=== Miamala
+
+____
+"Tunafafanua((("transactions", "errata in Bitcoin whitepaper", id="transaction-errata"))) sarafu ya kielektroniki kama mnyororo wa saini za kidijitali. Kila
+mmiliki huhamisha sarafu kwa mwingine kwa kusaini kidijitali heshi ya
+muamala uliotangulia na ufunguo wa umma wa mmiliki anayefuata na kuongeza
+hizi mwishoni mwa sarafu."
+____
+
+* *Maelezo ya utekelezaji:* Bitcoin inatekeleza toleo la jumla zaidi la
+mfumo huu ambapo saini za kidijitali hazitumiwi moja kwa moja bali "usemi
+wa kudeterminisitiki" unatumika badala yake. Kama vile saini inayolingana na
+ufunguo wa umma unaojulikana inaweza kutumika kuwezesha malipo, data
+inayotimiza usemi unaojulikana pia inaweza kuwezesha malipo.
+Kwa ujumla, usemi ambao lazima utimizwe katika Bitcoin ili
+kutumia sarafu hujulikana kama "uzito." Uzito karibu wote
+katika Bitcoin hadi sasa unahitaji kutoa angalau saini moja. Kwa hivyo badala
+ya kusema "mnyororo wa saini za kidijitali," ni sahihi zaidi kusema
+"mnyororo wa uzito." Kwa sababu miamala mara nyingi ina zaidi
+ya ingizo moja na zaidi ya tokeo moja, muundo si wa mnyororo sana; ni sahihi zaidi kuuelezea kama grafu ya acyclic((("transactions", "errata in Bitcoin whitepaper", startref="transaction-errata"))) inayoelekezwa
+(DAG).
+
+=== Uthibitisho wa Kazi
+
+____
+"...tunatekeleza((("proof-of-work algorithm", "errata in Bitcoin whitepaper", id="proof-errata"))) uthibitisho wa kazi kwa kuongeza nonce katika kitalu
+hadi thamani inapatikana inayompa heshi ya kitalu sifuri zinazohitajika
+za bit."
+____
+
+* *Maelezo ya utekelezaji:* Utekelezaji wa Hashcash wa Adam Back unahitaji
+kupata heshi yenye idadi inayohitajika ya sifuri za bit za mwanzo. Bitcoin
+huchukulia heshi kama nambari kamili na kuhitaji iwe chini ya
+nambari kamili maalum, ambayo kwa ufanisi inaruhusu idadi ya sehemu za biti
+kubainishwa.
+
+____
+"Uthibitisho wa kazi ni kimsingi kura moja-kwa-CPU-moja."
+____
+
+* *Kumbuka muhimu:* Kura hapa si kuhusu sheria za mfumo bali
+tu juu ya mpangilio wa miamala ili kutoa
+uhakika kwamba "sarafu ya kielektroniki" haiwezi kutumiwa maradufu kwa urahisi.
+Hii inafafanuliwa kwa undani zaidi katika sehemu ya 11 ya karatasi ambapo
+inasema, "Tunazingatia hali ya mshambuliaji anayojaribu kuzalisha
+mnyororo mbadala haraka zaidi kuliko mnyororo wa uaminifu. Hata kama hii
+inafikiwa, haifungui mfumo kwa mabadiliko ya kiholela,
+kama vile kuunda thamani kutoka hewani au kuchukua pesa ambazo
+hazikumilikiwa na mshambuliaji. Nodi hazitakubali muamala batili
+kama malipo, na nodi za uaminifu hazitakubali kamwe kitalu
+chenye miamala hiyo."
+
+____
+"...ugumu wa uthibitisho wa kazi unatambuliwa na wastani wa mwendo unaolengo
+idadi ya wastani ya vitalu kwa saa."
+____
+
+* *Maelezo ya utekelezaji:* Wastani wa mwendo haututumiwi. Badala yake, kila
+kitalu cha 2,016 kina wakati wake wa kuzalishwa ulioripotiwa ukilinganishwa na
+wakati wa kuzalishwa wa kitalu cha mapema, na tofauti kati yao
+inatumika kuhesabu wastani unaotumiwa kwa marekebisho.
++
+Zaidi ya hayo, wastani uliotekelezwa katika Bitcoin unalenga idadi ya wastani ya
+vitalu kwa wiki mbili (si kwa saa kama inavyoweza kudokezwa na maandishi).
+Sheria nyingine zilizotekelezwa zinaweza kupunguza marekebisho zaidi, kama vile sheria
+kwamba marekebisho hayawezi kuongeza kasi ya uzalishaji wa vitalu kwa zaidi ya
+asilimia 300 kwa kipindi, wala kuipunguza kwa zaidi ya asilimia((("proof-of-work algorithm", "errata in Bitcoin whitepaper", startref="proof-errata"))) 75.
+
+=== Kudai Nafasi ya Diski
+
+____
+"Muamala((("disk space, reclaiming")))((("reclaiming disk space")))((("blocks", "reclaiming disk space"))) wa hivi karibuni zaidi katika sarafu ukiwa umezikwa chini ya vitalu vya kutosha, miamala iliyotumiwa kabla yake inaweza kutupwa ili kuokoa nafasi ya diski."
+____
+
+* *Ugunduzi unaowezekana baada ya kuchapishwa:* Ingawa muundo wa mti wa Merkle
+ulioelezwa katika sehemu hii unaweza kuthibitisha kwamba muamala ulijumuishwa
+katika kitalu fulani, kwa sasa hakuna njia katika Bitcoin kuthibitisha
+kwamba muamala haujatumika isipokuwa kuchakata data yote inayofuata
+katika blockchain. Hii inamaanisha njia iliyoelezwa hapa haiwezi
+kutumika kwa ujumla kwa kudai nafasi ya diski kati ya nodi zote, kwani nodi zote
+mpya zitahitaji kuchakata miamala yote.
+
+=== Uthibitishaji Rahisi wa Malipo
+
+____
+"Mkakati((("payment verification", "errata in Bitcoin whitepaper")))((("verifying", "payment", "errata in Bitcoin whitepaper"))) mmoja wa kujikinga dhidi ya hili ungekuwa kukubali arifa kutoka
+kwa nodi za mtandao zinapogunduliwa kitalu batili, na kumsukuma
+programu ya mtumiaji kupakua kitalu kamili na miamala iliyotahadharishwa ili kuthibitisha
+kutofautiana."
+____
+
+* *Kumbuka Muhimu:* Ingawa programu imetolewa inayotekeleza
+baadhi ya sehemu za sehemu hii na kuita hivyo Uthibitishaji Rahisi wa Malipo
+(SPV), hakuna programu hizi kwa sasa inayokubali arifa kutoka
+kwa nodi za mtandao (nodi kamili za uthibitishaji) vitalu batili vinapogundulika.
+Hii imeweka bitcoini katika pochi kinachojulikana kama SPV katika hatari
+hapo awali.
+
+=== Faragha
+
+____
+"Uunganisho((("privacy", "errata in Bitcoin whitepaper"))) bado hauwezi kuepukika na miamala ya maingizo mengi, ambayo
+lazima ifyatue kwamba maingizo yao yalimiliikiwa na mmiliki mmoja."
+____
+
+* *Uvumbuzi baada ya kuchapishwa:* Si wazi kwamba maingizo tofauti
+katika muamala mmoja yana mmiliki mmoja ikiwa wamiliki mara nyingi wanachanganya maingizo yao na
+maingizo yanayomilikiwa na wamiliki wengine. Kwa mfano, hakuna tofauti ya umma
+kati ya Alice na Bob kila mmoja akichangia moja ya maingizo yao
+kuelekea kumlipa Charlie na Dan na kati ya Alice tu
+akichangia maingizo mawili yake kuelekea kumlipa Charlie na Dan.
++
+Mbinu hii inajulikana leo kama
+https://oreil.ly/UBEJX[CoinJoin], na programu inayoitekeleza
+imekuwa ikitumika tangu 2015.
+
+=== Hesabu
+
+____
+"Mpokeaji((("calculations", "errata in Bitcoin whitepaper"))) anazalisha jozi mpya ya ufunguo na kumpa mtumaji ufunguo wa umma
+muda mfupi kabla ya kusaini. Hii inazuia mtumaji kuandaa
+mnyororo wa vitalu mapema kwa kufanya kazi juu yake kwa kuendelea hadi ana
+bahati ya kupanda mbele ya kutosha, kisha kutekeleza muamala
+wakati huo."
+____
+
+* *Ugunduzi baada ya kuchapishwa:* Hakuna kitu kuhusu mpokeaji kuzalisha
+ufunguo wa umma muda mfupi kabla ya msainiaji kusaini muamala kinachomzuia
+msainiaji kuandaa mnyororo wa vitalu mapema. Mtumiaji wa mapema wa Bitcoin Hal Finney aligundua shambulio hili na
+https://oreil.ly/kg_Xe[kulifafanua]: "Dhani mshambuliaji anazalisha vitalu mara kwa mara. Katika kila
+kitalu anachozalisha, anajumuisha uhamishaji kutoka anwani A hadi anwani B,
+ambazo zote mbili anadhibiti.
++
+"Kukudanganya, anapozalisha kitalu, haisambazi. Badala yake, anakimbia kwenda dukani lako na kufanya malipo kwa anwani yako
+C na anwani yake A. Unasubiri sekunde chache, husikii chochote, na
+unahamisha bidhaa. Anasambaza kitalu chake sasa, na muamala wake
+utakuwa na kipaumbele juu ya wako."
++
+Shambulio hufanya kazi kwa idadi yoyote ya uthibitisho, na wakati mwingine huitwa
+Shambulio la Finney.
+
+'''''
+
+*Kanusho:* Mwandishi wa hati hii hakuwa mtu wa kwanza kutambua
+matatizo yoyote yaliyoelezwa hapa—ameyakusanya tu
+katika hati moja.
+
+*Leseni:* Hati hii ya makosa imetolewa chini ya
+https://oreil.ly/xZeBR[CC0] 1.0 Toleo
+la Kudumu la Kikoa cha Umma
+
+Kwa masasisho yaliyofanywa ((("Bitcoin whitepaper", "errata", startref="bitcoin-whitepaper-errata")))((("whitepaper (Bitcoin)", "errata", startref="whitepaper-errata")))baada ya kuchapishwa kwa kitabu hiki, tafadhali angalia
+https://oreil.ly/ygExa[Hati
+ya Asili].

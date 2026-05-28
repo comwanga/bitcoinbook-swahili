@@ -1,0 +1,464 @@
+[[satoshi_whitepaper]]
+[appendix]
+== Karatasi Nyeupe ya Bitcoin [.keep-together]#na Satoshi Nakamoto#
+
+
+[NOTE]
+====
+Hii ni((("Bitcoin whitepaper", "original version", id="bitcoin-whitepaper-original")))((("whitepaper (Bitcoin)", "original version", id="whitepaper-original")))((("Nakamoto, Satoshi"))) karatasi nyeupe ya asili, iliyorudiwa kwa ukamilifu wake kamili kama ilivyochapishwa na Satoshi Nakamoto mnamo Oktoba 2008.
+====
+
+=== Bitcoin - Mfumo wa Pesa za Kielektroniki wa Mtu-hadi-Mtu
+
+Satoshi Nakamoto
+
+_satoshin@gmx.com_
+
+pass:[<a href="https://bitcoin.org/en/" class="orm:hideurl"><em>www.bitcoin.org</em></a>]
+
+*Muhtasari.* Toleo la pesa za kielektroniki la mtu-hadi-mtu tu lingeruhusu malipo ya mtandaoni kupelekwa moja kwa moja kutoka kwa mtu mmoja hadi kwa mwingine bila kupitia taasisi ya fedha. Saini za kidijitali hutoa sehemu ya suluhisho, lakini faida kuu hupotea ikiwa bado inahitajika mhusika wa tatu wa kuaminiwa ili kuzuia matumizi maradufu. Tunapendekeza suluhisho la tatizo la matumizi maradufu kwa kutumia mtandao wa mtu-hadi-mtu. Mtandao unapigia muhuri wa wakati miamala kwa kuihashi ndani ya mnyororo unaoendelea wa uthibitisho wa kazi wa msingi wa heshi, na kuunda rekodi ambayo haiwezi kubadilishwa bila kufanya upya uthibitisho wa kazi. Mnyororo mrefu zaidi si tu hutumikia kama uthibitisho wa mfuatano wa matukio yaliyoshuhudiwa, bali uthibitisho kwamba ulikuja kutoka kwa kundi kubwa zaidi la nguvu za CPU. Maadamu wingi wa nguvu za CPU unasimamiwa na nodi ambazo hazishirikiani kushambulia mtandao, zitazalisha mnyororo mrefu zaidi na kuwapigia wapinzani kasi. Mtandao wenyewe unahitaji muundo mdogo. Ujumbe husambazwa kwa misingi ya juhudi bora, na nodi zinaweza kuondoka na kujiunga tena kwenye mtandao wakati wowote, zikipokea mnyororo mrefu zaidi wa uthibitisho wa kazi kama uthibitisho wa kilichotokea wakati ziliokuwa zimekwenda.
+
+==== Utangulizi
+Biashara kwenye Mtandao imekuwa ikitegemea karibu kabisa taasisi za fedha zinazotoa huduma kama wahusika wa tatu wa kuaminiwa kuchakata malipo ya kielektroniki. Ingawa mfumo unafanya kazi vizuri kwa miamala mingi, bado unaugua udhaifu wa asili wa mfano wa msingi wa uaminifu. Miamala isiyoweza kurudishwa kabisa haiwezekani kweli, kwani taasisi za fedha haziwezi kuepuka kupatanisha migogoro. Gharama ya upatanishi huongeza gharama za muamala, inapunguza kiwango cha chini cha ukubwa wa muamala unaofaa na kukata fursa za miamala midogo ya kawaida, na kuna gharama pana zaidi katika kupoteza uwezo wa kufanya malipo yasiyoweza kurudishwa kwa huduma zisizoweza kurudishwa. Kwa uwezekano wa kurudishwa, haja ya uaminifu inasambaa. Wafanyabiashara lazima wawe macho kuhusu wateja wao, wakiwasumbua kwa habari zaidi kuliko wangehitaji vinginevyo. Asilimia fulani ya udanganyifu inakubaliwa kama isiyoepukika. Gharama hizi na wasiwasi wa malipo vinaweza kuepukwa kibinafsi kwa kutumia sarafu ya kimwili, lakini hakuna utaratibu uliopo wa kufanya malipo kupitia njia ya mawasiliano bila mhusika wa kuaminiwa.
+
+Kinachohitajika ni mfumo wa malipo ya kielektroniki kulingana na uthibitisho wa kriptografia badala ya uaminifu, kuruhusu pande mbili zozote zenye nia ya kufanya biashara moja kwa moja bila haja ya mhusika wa tatu wa kuaminiwa. Miamala ambayo ni vigumu kuihesabu kuirudisha ingelinda wauzaji dhidi ya udanganyifu, na taratibu za kawaida za amana zingeweza kutekelezwa kwa urahisi kulinda wanunuzi. Katika karatasi hii, tunapendekeza suluhisho la tatizo la matumizi maradufu kwa kutumia seva ya muhuri wa wakati wa mtandao wa mtu-hadi-mtu iliyosambazwa kuzalisha uthibitisho wa hesabu wa mpangilio wa wakati wa miamala. Mfumo ni salama maadamu nodi za uaminifu kwa pamoja zinadhibiti nguvu zaidi za CPU kuliko kikundi chochote cha nodi za mshambuliaji kinachoshirikiana.
+
+==== Miamala
+Tunafafanua((("transactions", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper", id="transaction-whitepaper"))) sarafu ya kielektroniki kama mnyororo wa saini za kidijitali. Kila mmiliki huhamisha sarafu kwa mwingine kwa kusaini kidijitali heshi ya muamala uliotangulia na ufunguo wa umma wa mmiliki anayefuata na kuongeza hizi mwishoni mwa sarafu. Mlipwa anaweza kuthibitisha saini ili kuthibitisha mnyororo wa umiliki.
+
+image::images/mbc3_0401.png["Transactions"]
+
+Tatizo bila shaka ni kwamba mlipwa hawezi kuthibitisha kwamba mmoja wa wamiliki hakutumia sarafu maradufu. Suluhisho la kawaida ni kuanzisha mamlaka ya kati ya kuaminiwa, au mnada, inayoangalia kila muamala kwa matumizi maradufu. Baada ya kila muamala, sarafu lazima irudishwe kwa mnada ili kutoa sarafu mpya, na sarafu tu zilizotolewa moja kwa moja kutoka kwa mnada zinaaminiwa kuwa hazijatumika maradufu. Tatizo na suluhisho hili ni kwamba hatima ya mfumo mzima wa pesa inategemea kampuni inayoendesha mnada, kila muamala ukipita kwao, kama benki tu.
+
+Tunahitaji njia ya mlipwa kujua kwamba wamiliki wa awali hawakusaini miamala yoyote ya mapema. Kwa madhumuni yetu, muamala wa mapema zaidi ndio unaohesabiwa, kwa hivyo hatujali majaribio ya baadaye ya kutumia maradufu. Njia pekee ya kuthibitisha kutokuwepo kwa muamala ni kuwa na habari ya miamala yote. Katika mfano wa msingi wa mnada, mnada alikuwa na habari ya miamala yote na aliamulia ni ipi ilifika kwanza. Kufanikisha hili bila mhusika wa kuaminiwa, miamala lazima itangazwe hadharani [1], na tunahitaji mfumo wa washiriki kukubaliana juu ya historia moja ya mpangilio ambao walipokewa. Mlipwa anahitaji uthibitisho kwamba wakati wa kila muamala, wingi wa nodi ulikubaliana kwamba ilikuwa ya((("transactions", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper", startref="transaction-whitepaper"))) kwanza kupokewa.
+
+==== Seva ya Muhuri wa Wakati
+Suluhisho((("timestamp servers"))) tunalolipendekeza linaanza na seva ya muhuri wa wakati. Seva ya muhuri wa wakati inafanya kazi kwa kuchukua heshi ya kizuizi cha vitu vya kupigwa muhuri wa wakati na kuchapisha heshi kwa upana, kama vile katika gazeti au ujumbe wa Usenet [2-5]. Muhuri wa wakati unathibitisha kwamba data lazima ilikuwepo wakati huo, dhahiri, ili kuingia kwenye heshi. Kila muhuri wa wakati unajumuisha muhuri wa wakati uliotangulia katika heshi yake, ukiunda mnyororo, na kila muhuri wa wakati wa ziada ukiimarisha ule uliotangulia.
+
+image::images/mbc3_aain02.png["timestamp server"]
+
+==== Uthibitisho wa Kazi
+Kutekeleza((("proof-of-work algorithm", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper"))) seva ya muhuri wa wakati iliyosambazwa kwa msingi wa mtu-hadi-mtu, tutahitaji kutumia mfumo wa uthibitisho wa kazi unaofanana na Hashcash ya Adam Back [6], badala ya gazeti au ujumbe wa Usenet. Uthibitisho wa kazi unahusisha kutafuta thamani ambayo inapoheshiwa, kama vile na SHA-256, heshi inaanza na idadi ya biti sifuri. Kazi ya wastani inayohitajika ni ya kielelezo katika idadi ya biti sifuri zinazohitajika na inaweza kuthibitishwa kwa kutekeleza heshi moja. Kwa mtandao wetu wa muhuri wa wakati, tunatekeleza uthibitisho wa kazi kwa kuongeza nonce katika kitalu hadi thamani inapatikana inayompa heshi ya kitalu biti sifuri zinazohitajika. Nguvu za CPU zikishatumiwa kufanya itimize uthibitisho wa kazi, kitalu hakiwezi kubadilishwa bila kufanya kazi upya. Vitalu vinavyofuata vikiunganishwa baadaye, kazi ya kubadilisha kitalu itajumuisha kufanya upya vitalu vyote vilivyofuata.
+
+image::images/mbc3_aain03.png["pow"]
+
+Uthibitisho wa kazi pia hutatua tatizo la kuamua uwakilishi katika kufanya maamuzi ya wingi. Ikiwa wingi ungemsingiwa juu ya kura moja-kwa-anwani-ya-IP-moja, ingechukuliwa na mtu yeyote anayeweza kutenga anwani nyingi za IP. Uthibitisho wa kazi kimsingi ni kura moja-kwa-CPU-moja. Uamuzi wa wingi unawakilishwa na mnyororo mrefu zaidi, ambao una juhudi kubwa zaidi za uthibitisho wa kazi zilizowekeza ndani yake. Ikiwa wingi wa nguvu za CPU unasimamiwa na nodi za uaminifu, mnyororo wa uaminifu utakua haraka zaidi na kupita minyororo yoyote inayoshindana. Kuibadilisha vitalu vya zamani, mshambuliaji angelazimika kufanya upya uthibitisho wa kazi wa kitalu na vitalu vyote vilivyofuata kisha kupata na kuzidi kazi ya nodi za uaminifu. Tutaonyesha baadaye kwamba uwezekano wa mshambuliaji polepole kupata faida hupungua kwa kielelezo vitalu vinavyofuata vinapoongezwa.
+
+Kulipa fidia kwa kuongezeka kwa kasi ya vifaa na kutofautiana kwa nia ya kuendesha nodi kwa muda, ugumu wa uthibitisho wa kazi unatambuliwa na wastani wa mwendo unaolengo idadi ya wastani ya vitalu kwa saa. Vikizalishwa haraka sana, ugumu huongezeka.
+
+==== Mtandao
+
+Hatua((("nodes", "in Bitcoin", secondary-sortas="Bitcoin whitepaper")))((("Bitcoin network", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper"))) za kuendesha mtandao ni kama ifuatavyo:
+
+1. Miamala mipya husambazwa kwa nodi zote.
+2. Kila nodi hukusanya miamala mipya katika kitalu.
+3. Kila nodi hufanya kazi kupata uthibitisho wa kazi mgumu kwa kitalu chake.
+4. Nodi inapopata uthibitisho wa kazi, husambaza kitalu kwa nodi zote.
+5. Nodi hukubali kitalu tu ikiwa miamala yote ndani yake ni halali na bado haijatumika.
+6. Nodi huonyesha ukubaliaji wao wa kitalu kwa kufanya kazi kuunda kitalu kinachofuata katika mnyororo, wakitumia heshi ya kitalu kilichokubaliwa kama heshi iliyotangulia.
+
+Nodi daima huzingatia mnyororo mrefu zaidi kuwa sahihi na zitaendelea kufanya kazi kuupanua. Nodi mbili zikisambaza matoleo tofauti ya kitalu kinachofuata kwa wakati mmoja, baadhi ya nodi zinaweza kupokea moja au nyingine kwanza. Katika hali hiyo, hufanya kazi kwenye ile waliyoipokea kwanza, lakini huhifadhi tawi lingine ikiwa litakuwa refu zaidi. Mgogoro utatatuliwa uthibitisho wa kazi unaofuata unapopatikana na tawi moja kuwa refu zaidi; nodi zilizokuwa zikifanya kazi kwenye tawi lingine zitabadilika kwa ile ndefu zaidi.
+
+Matangazo ya miamala mipya hayahitajiki lazima kufikia nodi zote. Maadamu yanafikia nodi nyingi, yataingia kwenye kitalu hivi karibuni. Matangazo ya vitalu pia huvumilia ujumbe ulioachwa. Nodi isipopokea kitalu, itaomba unapopokea kitalu kinachofuata na kugundua imekosa kimoja.
+
+==== Motisha
+Kwa((("incentives", id="incentive-whitepaper"))) mkataba, muamala wa kwanza katika kitalu ni muamala maalum unaoanzisha sarafu mpya inayomilikiwa na mwundaji wa kitalu. Hii huongeza motisha kwa nodi kusaidia mtandao, na hutoa njia ya kusambaza awali sarafu katika mzunguko, kwani hakuna mamlaka ya kati kutoa sarafu. Ongezeko thabiti la kiasi mara kwa mara cha sarafu mpya ni sawa na wachimbaji wa dhahabu wanaotumia rasilimali kuongeza dhahabu katika mzunguko. Katika kesi yetu, ni wakati wa CPU na umeme unaotumika.
+
+Motisha pia inaweza kufadhiliwa kwa ada za muamala. Ikiwa thamani ya tokeo la muamala ni chini ya thamani ya ingizo lake, tofauti ni ada ya muamala inayoongezwa kwenye thamani ya motisha ya kitalu chenye muamala. Idadi iliyopangwa awali ya sarafu ikishaingizwa katika mzunguko, motisha inaweza kubadilika kabisa hadi ada za muamala na kuwa huru kabisa na mfumuko wa bei.
+
+Motisha inaweza kusaidia kuhimiza nodi kubaki za uaminifu. Ikiwa mshambuliaji mwenye tamaa anaweza kukusanya nguvu zaidi za CPU kuliko nodi zote za uaminifu, angelazimika kuchagua kati ya kuzitumia kudanganya watu kwa kuiba malipo yake, au kuzitumia kuzalisha sarafu mpya. Anapaswa kukuta inafaa zaidi kufuata sheria, sheria kama vile zinazopendelea kupata sarafu zaidi mpya kuliko kila mtu mwingine kwa pamoja, kuliko kudhoofisha mfumo na uhalali wa utajiri wake((("incentives", startref="incentive-whitepaper"))) mwenyewe.
+
+==== Kudai Nafasi ya Diski
+
+++++
+<p>Muamala((("disk space", "reclaiming")))((("reclaiming", "disk space")))((("blocks", "reclaiming disk space"))) wa hivi karibuni zaidi katika sarafu ukiwa umezikwa chini ya vitalu vya kutosha, miamala iliyotumiwa kabla yake inaweza kutupwa ili kuokoa nafasi ya diski. Ili kuwezesha hili bila kuvunja heshi ya kitalu, miamala huheshiwa katika Mti wa Merkle <a href="#ref_seven">[7]</a> <a href="#ref_two">[2]</a> <a href="#ref_five">[5]</a>, na mzizi tu ukijumuishwa katika heshi ya kitalu. Vitalu vya zamani kisha vinaweza kubana kwa kukata matawi ya mti. Heshi za ndani hazihitaji kuhifadhiwa.</p>
+++++
+
+image::images/mbc3_aain04.png["disk"]
+
+Kichwa cha kitalu chenye miamala hakuna kingekuwa takriban baiti 80. Tukichukulia vitalu vinazalishwa kila dakika 10, +80 baiti * 6 * 24 * 365 = 4.2MB+ kwa mwaka. Mifumo ya kompyuta ikiwa inauzwa kwa kawaida na RAM ya 2GB kuanzia 2008, na Sheria ya Moore ikitabiria ukuaji wa sasa wa 1.2GB kwa mwaka, hifadhi haitakuwa tatizo hata kama vichwa vya vitalu lazima vihifadhiwe kwenye kumbukumbu.
+
+==== Uthibitishaji Rahisi wa Malipo
+Inawezekana((("payment verification", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper", id="payment-verify")))((("verifying", "payment", "in Bitcoin whitepaper", tertiary-sortas="Bitcoin whitepaper", id="verify-payment"))) kuthibitisha malipo bila kuendesha nodi kamili ya mtandao. Mtumiaji anahitaji tu kuhifadhi nakala ya vichwa vya vitalu vya mnyororo mrefu zaidi wa uthibitisho wa kazi, ambavyo anaweza kupata kwa kuuliza nodi za mtandao hadi atakaporidhika ana mnyororo mrefu zaidi, na kupata tawi la Merkle linaloiunganisha muamala na kitalu kilichopigwa muhuri wake wa wakati. Hawezi kuangalia muamala mwenyewe, lakini kwa kuuunganisha na mahali katika mnyororo, anaweza kuona kwamba nodi ya mtandao imeupokelea, na vitalu vilivyoongezwa baadaye zaidi vinathibitisha mtandao umeupokelea.
+
+image::images/mbc3_aain05.png["spv"]
+
+Uthibitishaji huu ni wa kuaminika maadamu nodi za uaminifu zinadhibiti mtandao, lakini una udhaifu zaidi ikiwa mtandao umepitishwa nguvu na mshambuliaji. Ingawa nodi za mtandao zinaweza kuthibitisha miamala wenyewe, njia rahisi inaweza kudanganywa na miamala bandia ya mshambuliaji maadamu mshambuliaji anaweza kuendelea kupitisha nguvu mtandao. Mkakati mmoja wa kujikinga dhidi ya hili ungekuwa kukubali arifa kutoka kwa nodi za mtandao zinapogunduliwa kitalu batili, na kumsukuma programu ya mtumiaji kupakua kitalu kamili na miamala iliyotahadharishwa ili kuthibitisha kutofautiana. Biashara zinazopokea malipo mara kwa mara bado zitapenda kuendesha nodi zao wenyewe kwa usalama huru zaidi na uthibitishaji wa((("payment verification", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper", startref="payment-verify")))((("verifying", "payment", "in Bitcoin whitepaper", tertiary-sortas="Bitcoin whitepaper", startref="verify-payment"))) haraka zaidi.
+
+==== Kuchanganya na Kugawanya Thamani
+Ingawa((("transactions", "inputs", "in Bitcoin whitepaper", tertiary-sortas="Bitcoin whitepaper")))((("transactions", "outputs", "in Bitcoin whitepaper", tertiary-sortas="Bitcoin whitepaper")))((("inputs", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper")))((("outputs", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper"))) ingaliwezekana kushughulikia sarafu mmoja mmoja, ingekuwa gumu kufanya muamala tofauti kwa kila senti katika uhamishaji. Kuruhusu thamani kugawanywa na kuchanganywa, miamala ina maingizo mengi na matokeo mengi. Kawaida kutakuwa na ingizo moja kutoka muamala mkubwa zaidi wa awali au maingizo mengi yanayochanganya kiasi kidogo, na matokeo mawili zaidi: moja kwa malipo, na moja ikirejesha mabadiliko, ikiwa yapo, kwa mtumaji.
+
+image::images/mbc3_aain06.png["combining-splitting"]
+
+Inastahili kutambua kwamba msururu wa fan-out, ambapo muamala unategemea miamala kadhaa, na miamala hiyo inategemea mingi zaidi, si tatizo hapa. Haijawahi kuwepo haja ya kutoa nakala kamili ya kujitegemea ya historia ya muamala.
+
+==== Faragha
+Mfano wa((("privacy", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper"))) benki wa jadi hufikia kiwango cha faragha kwa kupunguza ufikiaji wa habari kwa wahusika wanaohusika na mhusika wa tatu wa kuaminiwa. Ulazima wa kutangaza miamala yote hadharani unazuia njia hii, lakini faragha bado inaweza kudumishwa kwa kuvunja mtiririko wa habari mahali pengine: kwa kufanya funguo za umma zisiwe za kutambulika. Umma unaweza kuona kwamba mtu anayetuma kiasi kwa mtu mwingine, lakini bila habari inayounganisha muamala na mtu yeyote. Hii ni sawa na kiwango cha habari inayotolewa na masoko ya hisa, ambapo wakati na ukubwa wa biashara za mtu binafsi, "mkanda", hufanywa kuwa wa umma, lakini bila kusema wahusika walikuwa nani.
+
+image::images/mbc3_aain07.png["privacy"]
+
+Kama ukuta wa ziada wa moto, jozi mpya ya ufunguo inapaswa kutumika kwa kila muamala ili kuzuia kuunganishwa na mmiliki wa pamoja. Baadhi ya uunganishaji bado hauwezi kuepukika na miamala ya maingizo mengi, ambayo lazima ifyatue kwamba maingizo yao yalimilikiwa na mmiliki mmoja. Hatari ni kwamba ikiwa mmiliki wa ufunguo atafunuliwa, uunganishaji unaweza kufunua miamala mingine iliyomilikiwa na mmiliki mmoja.
+
+==== Hesabu
+Tunazingatia((("calculations", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper", id="calculate-whitepaper"))) hali ya mshambuliaji anayojaribu kuzalisha mnyororo mbadala haraka zaidi kuliko mnyororo wa uaminifu. Hata kama hii inafikiwa, haifungui mfumo kwa mabadiliko ya kiholela, kama vile kuunda thamani kutoka hewani au kuchukua pesa ambazo hazikumilikiwa na mshambuliaji. Nodi hazitakubali muamala batili kama malipo, na nodi za uaminifu hazitakubali kamwe kitalu chenye miamala hiyo. Mshambuliaji anaweza tu kujaribu kubadilisha moja ya miamala yake mwenyewe ili kurejesha pesa aliyotumia hivi karibuni.
+
+Mbio kati ya mnyororo wa uaminifu na mnyororo wa mshambuliaji inaweza kuelezwa kama ((("Binomial Random Walk")))Kutembea kwa Nasibu kwa Binomial. Tukio la mafanikio ni mnyororo wa uaminifu kupanuliwa kwa kitalu kimoja, ukiongeza faida yake kwa +1, na tukio la kushindwa ni mnyororo wa mshambuliaji kupanuliwa kwa kitalu kimoja, ukipunguza pengo kwa -1.
+
+++++
+<p>Uwezekano wa mshambuliaji kupata faida kutoka nakisi iliyopewa ni sawa na tatizo la ((("Gambler&#x27;s Ruin problem")))Uharibifu wa Kamari. Dhani mchezaji mwenye mkopo usio na kikomo anaanza kwenye nakisi na kucheza mara nyingi bila kikomo wa majaribio kujaribu kufikia usawa. Tunaweza kuhesabu uwezekano kwamba atafikia usawa wakati wowote, au kwamba mshambuliaji atawahi kupata faida na mnyororo wa uaminifu, kama ifuatavyo <a href="#ref_eight">[8]</a>:</p>
+++++
+
+p = uwezekano nodi ya uaminifu inapata kitalu kinachofuata
+
+q = uwezekano mshambuliaji anapata kitalu kinachofuata
+
+q~z~ = uwezekano mshambuliaji atawahi kupata faida kutoka vitalu z nyuma
+
+
+++++
+<div data-type="equation">
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML" >
+  <mstyle mathsize="1.2000em">
+    <msub>
+      <mi>q</mi>
+      <mi>z</mi>
+    </msub>
+    <mo>=</mo>
+    <mrow>
+      <mo fence="true" form="prefix">{</mo>
+      <mtable columnalign="center center">
+        <mtr>
+          <mtd>
+            <mn>1</mn>
+          </mtd>
+          <mtd>
+            <mrow>
+              <mtext>if</mtext>
+              <mspace width="0.2778em"></mspace>
+              <mi>p</mi>
+              <mo>≤</mo>
+              <mi>q</mi>
+            </mrow>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd>
+            <mrow>
+              <mo form="prefix" stretchy="false">(</mo>
+              <mi>q</mi>
+              <mo lspace="0em" rspace="0em">⁄</mo>
+              <mi>p</mi>
+              <msup>
+                <mo form="postfix" stretchy="false">)</mo>
+                <mi>z</mi>
+              </msup>
+            </mrow>
+          </mtd>
+          <mtd>
+            <mrow>
+              <mtext>if</mtext>
+              <mspace width="0.2778em"></mspace>
+              <mi>p</mi>
+              <mo>&gt;</mo>
+              <mi>q</mi>
+            </mrow>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo fence="true" form="postfix">}</mo>
+    </mrow>
+  </mstyle>
+</math>
+</div>
+++++
+
+Tukichukulia p > q, uwezekano hupungua kwa kielelezo idadi ya vitalu mshambuliaji anapaswa kupata faida nazo inavyoongezeka. Na odds dhidi yake, akifanikiwa kufikia mbele mapema, nafasi zake zinakuwa ndogo sana anapozidi kubaki nyuma.
+
+Sasa tunazingatia muda mrefu kiasi gani mpokeaji wa muamala mpya anahitaji kusubiri kabla ya kuwa na uhakika wa kutosha kwamba mtumaji hawezi kubadilisha muamala. Tunachukulia kwamba mtumaji ni mshambuliaji anayetaka kumfanya mpokeaji aamini alimlipia kwa muda, kisha kubadilisha ili kulipa kwa mwenyewe baada ya muda fulani kupita. Mpokeaji ataoneshwa arifa hiyo inapotokea, lakini mtumaji anatumai itakuwa imechelewa sana.
+
+Mpokeaji huzalisha jozi mpya ya ufunguo na kumpa mtumaji ufunguo wa umma muda mfupi kabla ya kusaini. Hii inazuia mtumaji kuandaa mnyororo wa vitalu mapema kwa kufanya kazi juu yake kwa kuendelea hadi ana bahati ya kupanda mbele ya kutosha, kisha kutekeleza muamala wakati huo. Muamala ukishapelekwa, mtumaji mwenye udanganyifu huanza kufanya kazi kwa siri kwenye mnyororo sambamba wenye toleo mbadala la muamala wake.
+
+Mpokeaji husubiri hadi muamala uongezwe kwenye kitalu na vitalu z vimefungwa baadaye. Hajui kiasi halisi cha maendeleo ambayo mshambuliaji amefanya, lakini tukichukulia vitalu vya uaminifu vilichukua muda wa wastani ulioterajiwa kwa kila kitalu, maendeleo yanayowezekana ya mshambuliaji yatakuwa usambazaji wa Poisson wenye thamani inayotarajiwa ya:
+
+++++
+<div data-type="equation">
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML" >
+  <mstyle mathsize="1.2000em">
+    <mi>λ</mi>
+    <mo>=</mo>
+    <mi>z</mi>
+    <mfrac>
+      <mi>q</mi>
+      <mi>p</mi>
+    </mfrac>
+  </mstyle>
+</math>
+</div>
+++++
+
+Kupata uwezekano kwamba mshambuliaji bado anaweza kupata faida sasa, tunazidisha msongamano wa Poisson kwa kiasi chochote cha maendeleo aliyoyafanya na uwezekano kwamba angeweza kupata faida kutoka hapo:
+
+++++
+<div data-type="equation">
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML" >
+  <mstyle mathsize="1.2000em">
+    <mrow>
+      <munderover>
+        <mo movablelimits="false">∑</mo>
+        <mrow>
+          <mi>k</mi>
+          <mo>=</mo>
+          <mn>0</mn>
+        </mrow>
+        <mi>∞</mi>
+      </munderover>
+    </mrow>
+    <mfrac>
+      <mrow>
+        <msup>
+          <mi>λ</mi>
+          <mi>k</mi>
+        </msup>
+        <msup>
+          <mi>e</mi>
+          <mrow>
+            <mo>−</mo>
+            <mi>λ</mi>
+          </mrow>
+        </msup>
+      </mrow>
+      <mrow>
+        <mi>k</mi>
+        <mo form="postfix" stretchy="false">!</mo>
+      </mrow>
+    </mfrac>
+    <mo>⋅</mo>
+    <mrow>
+      <mo fence="true" form="prefix">{</mo>
+      <mtable columnalign="center center">
+        <mtr>
+          <mtd>
+            <mrow>
+              <mo form="prefix" stretchy="false">(</mo>
+              <mi>q</mi>
+              <mo lspace="0em" rspace="0em">⁄</mo>
+              <mi>p</mi>
+              <msup>
+                <mo form="postfix" stretchy="false">)</mo>
+                <mrow>
+                  <mo form="prefix" stretchy="false">(</mo>
+                  <mi>z</mi>
+                  <mo>−</mo>
+                  <mi>k</mi>
+                  <mo form="postfix" stretchy="false">)</mo>
+                </mrow>
+              </msup>
+            </mrow>
+          </mtd>
+          <mtd>
+            <mrow>
+              <mtext>if</mtext>
+              <mspace width="0.2778em"></mspace>
+              <mi>k</mi>
+              <mo>≤</mo>
+              <mi>z</mi>
+            </mrow>
+          </mtd>
+        </mtr>
+        <mtr>
+          <mtd>
+            <mn>1</mn>
+          </mtd>
+          <mtd>
+            <mrow>
+              <mtext>if</mtext>
+              <mspace width="0.2778em"></mspace>
+              <mi>k</mi>
+              <mo>&gt;</mo>
+              <mi>z</mi>
+            </mrow>
+          </mtd>
+        </mtr>
+      </mtable>
+      <mo fence="true" form="postfix">}</mo>
+    </mrow>
+  </mstyle>
+</math>
+</div>
+++++
+
+Kupanga upya ili kuepuka kujumlisha mkia usio na kikomo wa usambazaji...
+
+++++
+<div data-type="equation">
+<math display="block" xmlns="http://www.w3.org/1998/Math/MathML" >
+  <mstyle mathsize="1.2000em">
+    <mn>1</mn>
+    <mo>−</mo>
+    <mrow>
+      <munderover>
+        <mo movablelimits="false">∑</mo>
+        <mrow>
+          <mi>k</mi>
+          <mo>=</mo>
+          <mn>0</mn>
+        </mrow>
+        <mi>z</mi>
+      </munderover>
+    </mrow>
+    <mfrac>
+      <mrow>
+        <msup>
+          <mi>λ</mi>
+          <mi>k</mi>
+        </msup>
+        <msup>
+          <mi>e</mi>
+          <mrow>
+            <mo>−</mo>
+            <mi>λ</mi>
+          </mrow>
+        </msup>
+      </mrow>
+      <mrow>
+        <mi>k</mi>
+        <mo form="postfix" stretchy="false">!</mo>
+      </mrow>
+    </mfrac>
+    <mrow>
+      <mo fence="true" form="prefix">(</mo>
+      <mn>1</mn>
+      <mo>−</mo>
+      <mo form="prefix" stretchy="false">(</mo>
+      <mi>q</mi>
+      <mo lspace="0em" rspace="0em">⁄</mo>
+      <mi>p</mi>
+      <msup>
+        <mo form="postfix" stretchy="false">)</mo>
+        <mrow>
+          <mo form="prefix" stretchy="false">(</mo>
+          <mi>z</mi>
+          <mo>−</mo>
+          <mi>k</mi>
+          <mo form="postfix" stretchy="false">)</mo>
+        </mrow>
+      </msup>
+      <mo fence="true" form="postfix">)</mo>
+    </mrow>
+  </mstyle>
+</math>
+</div>
+++++
+
+Kubadilisha hadi msimbo wa C...
+
+[source,c]
+----
+#include <math.h>
+double AttackerSuccessProbability(double q, int z)
+{
+    double p = 1.0 - q;
+    double lambda = z * (q / p);
+    double sum = 1.0;
+    int i, k;
+    for (k = 0; k <= z; k++)
+    {
+        double poisson = exp(-lambda);
+        for (i = 1; i <= k; i++)
+            poisson *= lambda / i;
+        sum -= poisson * (1 - pow(q / p, z - k));
+    }
+    return sum;
+}
+----
+
+Kuendesha baadhi ya matokeo, tunaweza kuona uwezekano ukishuka kwa kielelezo na z.
+----
+q=0.1
+z=0 P=1.0000000
+z=1 P=0.2045873
+z=2 P=0.0509779
+z=3 P=0.0131722
+z=4 P=0.0034552
+z=5 P=0.0009137
+z=6 P=0.0002428
+z=7 P=0.0000647
+z=8 P=0.0000173
+z=9 P=0.0000046
+z=10 P=0.0000012
+----
+----
+q=0.3
+z=0 P=1.0000000
+z=5 P=0.1773523
+z=10 P=0.0416605
+z=15 P=0.0101008
+z=20 P=0.0024804
+z=25 P=0.0006132
+z=30 P=0.0001522
+z=35 P=0.0000379
+z=40 P=0.0000095
+z=45 P=0.0000024
+z=50 P=0.0000006
+----
+Kutatua kwa P chini ya 0.1%...
+----
+P < 0.001
+q=0.10 z=5
+q=0.15 z=8
+q=0.20 z=11
+q=0.25 z=15
+q=0.30 z=24
+q=0.35 z=41
+q=0.40 z=89
+q=0.45 z=340
+----
+
+==== Hitimisho
+Tumependekeza((("calculations", "in Bitcoin whitepaper", secondary-sortas="Bitcoin whitepaper", startref="calculate-whitepaper"))) mfumo wa miamala ya kielektroniki bila kutegemea uaminifu. Tulianza na mfumo wa kawaida wa sarafu zilizoundwa kutoka saini za kidijitali, ambao hutoa udhibiti mkubwa wa umiliki, lakini hauna ukamilifu bila njia ya kuzuia matumizi maradufu. Kutatua hili, tulipendekeza mtandao wa mtu-hadi-mtu ukitumia uthibitisho wa kazi kurekodi historia ya umma ya miamala ambayo haraka inakuwa haiwezekani kihesabu kwa mshambuliaji kuibadilisha ikiwa nodi za uaminifu zinadhibiti wingi wa nguvu za CPU. Mtandao ni thabiti katika urahisi wake usio na muundo. Nodi hufanya kazi zote kwa wakati mmoja na uratibu kidogo. Hazihitaji kutambuliwa, kwani ujumbe haupelekwi mahali maalum na unahitaji tu kufikishwa kwa misingi ya juhudi bora. Nodi zinaweza kuondoka na kujiunga tena kwenye mtandao wakati wowote, zikipokea mnyororo wa uthibitisho wa kazi kama uthibitisho wa kilichotokea wakati ziliokuwa zimekwenda. Zinapiga kura kwa nguvu zao za CPU, zikionyesha ukubaliaji wao wa vitalu halali kwa kufanya kazi kuuvipanua na kukataa vitalu batili kwa kukataa kufanya kazi juu yake. Sheria yoyote inayohitajika na motisha zinaweza kulazimishwa kwa utaratibu huu wa makubaliano.
+
+==== Marejeo
+++++
+<p>
+<span id="ref_one">[1]</span> W. Dai, "b-money," <a href="http://www.weidai.com/bmoney.txt"><em>http://www.weidai.com/bmoney.txt</em></a>, 1998.
+</p>
+<p>
+<span id="ref_two">[2]</span> H. Massias, X.S. Avila, and J.-J. Quisquater, "Design of a secure timestamping service with minimal trust requirements," In 20th Symposium on Information Theory in the Benelux, May 1999.
+</p>
+<p>
+<span id="ref_three">[3]</span> S. Haber, W.S. Stornetta, "How to time-stamp a digital document," In Journal of Cryptology, vol 3, no 2, pages 99-111, 1991.
+</p>
+
+<p>
+<span id="ref_four">[4]</span> D. Bayer, S. Haber, W.S. Stornetta, "Improving the efficiency and reliability of digital time-stamping," In Sequences II: Methods in Communication, Security and Computer Science, pages 329-334, 1993.
+</p>
+
+<p>
+<span id="ref_five">[5]</span> S. Haber, W.S. Stornetta, "Secure names for bit-strings," In Proceedings of the 4th ACM Conference on Computer and Communications Security, pages 28-35, April 1997.
+</p>
+
+<p>
+<span id="ref_six">[6]</span> A. Back, "Hashcash - a denial of service counter-measure," <a href="http://www.hashcash.org/papers/hashcash.pdf"><em>http://www.hashcash.org/papers/hashcash.pdf</em></a>, 2002.
+</p>
+
+<p>
+<span id="ref_seven">[7]</span> R.C. Merkle, "Protocols for public key cryptosystems," In Proc. 1980 Symposium on Security and Privacy, IEEE Computer Society, pages 122-133, April 1980.
+</p>
+
+<p>
+<span id="ref_eight">[8]</span> W. Feller, "An introduction to probability theory and its applications," 1957.
+</p>
+++++
+
+=== Leseni
+
+Karatasi nyeupe hii ilichapishwa mnamo Oktoba 2008 na Satoshi Nakamoto. Baadaye (2009) iliongezwa kama hati ya usaidizi kwa programu ya bitcoin na inabeba leseni ile ile ya MIT. Imezalishwa katika kitabu hiki, bila marekebisho mengine ya umbizo, chini ya masharti ya leseni ya MIT:
+
+Leseni ya MIT (MIT)
+Hakimiliki (c) 2008 Satoshi Nakamoto
+
+Ruhusa inatolewa bila malipo, kwa mtu yeyote anayepata nakala ya programu hii na faili zinazohusiana za hati ("Programu"), kushughulikia Programu bila kikwazo, ikiwa ni pamoja na bila kikwazo haki za kutumia, kunakili, kubadilisha, kuunganisha, kuchapisha, kusambaza, kupewa leseni ndogo, na/au kuuza nakala za Programu, na kuruhusu watu ambao Programu imetolewa kwao kufanya hivyo, chini ya masharti yafuatayo:
+
+Ilani ya hakimiliki iliyo hapo juu na ilani ya ruhusa hii lazima ijumuishwe katika nakala zote au sehemu kubwa za Programu.
+
+PROGRAMU INATOLEWA "KAMA ILIVYO," BILA DHAMANA YA AINA YOYOTE, WAZI AU ILIYODOKEZWA, IKIWA NI PAMOJA NA LAKINI SILO KIKWAZO DHAMANA ZA BIASHARA, MWAFAKA KWA MADHUMUNI MAALUM NA KUTOKUKIUKA. KWA HALI YOYOTE WAANDISHI AU WAMILIKI WA HAKIMILIKI HAWATAWAJIBIKA KWA MADAI YOYOTE, MATATIZO AU DHIMA NYINGINE, IWAPO KATIKA HATUA YA MKATABA, KOSA AU VINGINEVYO, KUTOKANA AU KUHUSIANA NA PROGRAMU AU MATUMIZI MENGINE YA PROGRAMU((("Bitcoin whitepaper", "original version", startref="bitcoin-whitepaper-original")))((("whitepaper (Bitcoin)", "original version", startref="whitepaper-original"))) AU MIAMALA KATIKA PROGRAMU.

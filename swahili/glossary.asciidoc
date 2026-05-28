@@ -1,6 +1,6 @@
 // TRANSLATION METADATA
 // source: glossary.asciidoc
-// translator: AI-assisted bootstrap
+// translator: comwanga
 // date: 2026-05-26
 // status: draft
 // glossary-version: 1.0

@@ -1,0 +1,512 @@
+[[ch12]]
+== Programu za Safu ya Pili
+
+Sasa tujengewe uelewa wetu wa mfumo wa msingi wa Bitcoin (safu ya _kwanza_) kwa kuuangalia kama jukwaa kwa programu zingine, au _safu za pili_. Katika sura hii tutaangalia vipengele vinavyotolewa na Bitcoin kama jukwaa la programu. Tutazingatia _primitifu_ za ujenzi wa programu, ambazo zinaunda vizuizi vya msingi vya programu yoyote ya mnyororo wa vitalu. Tutaangalia programu kadhaa muhimu zinazotumia primitifu hizi, kama vile uthibitisho wa upande wa mteja, njia za malipo, na njia za malipo zilizopangwa (Lightning Network).
+
+=== Vizuizi vya Ujenzi (Primitifu)
+
+Ukifanya ((("Bitcoin", "as application platform", "primitives, list of", secondary-sortas="application platform", id="bitcoin-app-platform-primitive")))((("application platform, Bitcoin as", "primitives, list of", id="app-platform-primitive")))((("primitives", id="primitive-list")))((("building blocks", id="build-block")))kazi kwa usahihi na kwa muda mrefu, mfumo wa Bitcoin unatoa dhamana fulani, ambazo zinaweza kutumika kama vizuizi vya ujenzi wa programu. Hizi zinajumuisha:
+
+Kutokuwa na Matumizi Maradufu:: Dhamana ya kimsingi zaidi ya algoriti ya makubaliano ya desentralizesheni ya Bitcoin inahakikisha kwamba hakuna UTXO inayoweza kutumiwa mara mbili katika mnyororo mmoja halali wa vitalu.
+
+Kutobadilika:: Muamala ukirekodiwa kwenye mnyororo wa vitalu na kazi ya kutosha kuongezwa na vitalu vinavyofuata, data ya muamala inakuwa haiwezekani kubadilishwa kwa vitendo. Kutobadilika kunahakikishwa na nishati, kwani kuandika upya mnyororo wa vitalu kunahitaji kutumia nishati kuzalisha PoW. Nishati inayohitajika na kwa hivyo kiwango cha kutobadilika kinaongezeka na kiasi cha kazi kilichowekwa juu ya kitalu chenye muamala.
+
+[role="less_space pagebreak-before"]
+Upande Wowote:: Mtandao wa Bitcoin wa desentralizesheni unapitisha miamala halali bila kujali asili ya miamala hiyo. Hii inamaanisha kwamba mtu yeyote anaweza kuunda muamala halali wenye ada za kutosha na kuamini wataweza kutuma muamala huo na kuuingiza kwenye mnyororo wa vitalu wakati wowote.
+
+Muhuri wa Wakati Salama:: Sheria za makubaliano zinakataa kitalu chochote ambacho muhuri wake wa wakati uko mbali sana katika siku zijazo na hujaribu kuzuia vitalu vyenye muhuri wa wakati mbali sana nyuma. Hii inahakikisha kwamba muhuri wa wakati kwenye vitalu unaweza kuaminiwa kwa kiasi fulani. Muhuri wa wakati kwenye kitalu unaashiria rejeleo ya kutotumika-kabla kwa ingizo za miamala yote iliyojumuishwa.
+
+Idhini:: Saini za kidijitali, zilizothibitishwa kwenye mtandao wa desentralizesheni, zinatoa dhamana za idhini. Hati zinazojumuisha mahitaji ya saini ya kidijitali haziwezi kutekelezwa bila idhini ya mmiliki wa funguo ya kibinafsi inayoashiriwa kwenye hati.
+
+Uweza wa Ukaguzi:: Miamala yote ni ya umma na inaweza kukaguliwa. Miamala na vitalu vyote vinaweza kuunganishwa tena kwa mnyororo usiovunjika hadi kitalu cha asili.
+
+Uhasibu:: Katika muamala wowote (isipokuwa muamala wa coinbase) thamani ya ingizo ni sawa na thamani ya matokeo pamoja na ada. Haiwezekani kuunda au kuharibu thamani ya bitcoin kwenye muamala. Matokeo hayawezi kuzidi ingizo.
+
+Kutokwisha:: Muamala halali haupwi. Ikiwa ni halali leo, utakuwa halali katika siku zijazo za karibu, mradi ingizo zinabaki zisizotumika na sheria za makubaliano hazibadiliki.
+
+Uadilifu:: Matokeo ya muamala wa Bitcoin yaliyosainiwa na +SIGHASH_ALL+ au sehemu za muamala zilizosainiwa na aina nyingine ya +SIGHASH+ haziwezi kubadilishwa bila kubatilisha saini, na hivyo kubatilisha muamala wenyewe.
+
+Utomivu wa Muamala:: Miamala ya Bitcoin ni ya utomivu. Ama ni halali na kuthibitishwa (kuchimbwa) au la. Miamala ya sehemu haiwezi kuchimbwa, na hakuna hali ya kati kwa muamala. Wakati wowote muamala ama umechimbwa au la.
+
+Vitengo Tofauti (Visivyogawanyika) vya Thamani:: Matokeo ya muamala ni vitengo tofauti na visivyogawanyika vya thamani. Vinaweza kutumika au visitumike, kwa ukamilifu. Haviwezi kugawanywa au kutumika kwa sehemu.
+
+Kura ya Udhibiti:: Vikwazo vya multisaini katika hati vinaweka kura ya idhini, iliyofafanuliwa mapema katika mpango wa multisaini. Mahitaji yanatekelezwa na sheria za makubaliano.
+
+Timelock/Kuzeeka:: Kifungu chochote cha hati chenye timelock ya uhusiano au ya kabisa kinaweza kutekelezwa tu baada ya umri wake kuzidi wakati maalum.
+
+Unakiliwaji:: Hifadhi ya desentralizesheni ya mnyororo wa vitalu inahakikisha kwamba muamala unapochimbwa, baada ya uthibitisho wa kutosha, unanakilishwa kwenye mtandao wote na unakuwa wa kudumu na ustahimilivu kwa kupoteza nguvu, kupoteza data, n.k.
+
+Ulinzi wa Udanganyifu:: Muamala unaweza tu kutumia matokeo yaliyopo, yaliyothibitishwa. Haiwezekani kuunda au kuunda thamani bandia.
+
+Uthabiti:: Katika hali ya kutokuwepo kwa mgawanyiko wa wachimbaji, vitalu vilivyorekodiwa kwenye mnyororo wa vitalu vina uwezekano wa upangaji upya au kutokubaliana unaopungua kwa kielelezo, kulingana na kina ambayo yanarekodwa. Vikirekodiwa kwa kina, hesabu na nishati inayohitajika kubadilisha inafanya mabadiliko kuwa haiwezekani kwa vitendo.
+
+Kurekodi Hali ya Nje:: Muamala unaweza kufunga thamani ya data, kupitia +OP_RETURN+ au malipo kwa mkataba, inayowakilisha mabadiliko ya hali katika mashine ya hali ya nje.
+
+Utoaji Unaotarajiwa:: Bitcoin chini ya milioni 21 zitatolewa kwa kiwango kinachotarajiwa.
+
+Orodha ya vizuizi vya ujenzi si kamili, na zaidi zinaongezwa na kila kipengele kipya kinachoanzishwa ((("Bitcoin", "as application platform", "primitives, list of", secondary-sortas="application platform", startref="bitcoin-app-platform-primitive")))((("application platform, Bitcoin as", "primitives, list of", startref="app-platform-primitive")))((("primitives", startref="primitive-list")))((("building blocks", startref="build-block")))kwenye Bitcoin.
+
+=== Programu kutoka kwa Vizuizi vya Ujenzi
+
+Vizuizi ((("Bitcoin", "as application platform", "example applications", secondary-sortas="application platform", id="bitcoin-app-platform-example")))((("application platform, Bitcoin as", "example applications", id="app-platform-example")))vya ujenzi vinavyotolewa na Bitcoin ni vipengele vya jukwaa la uaminifu ambavyo vinaweza kutumika kutunga programu. Hapa kuna mifano michache ya programu ambazo zipo leo na vizuizi vya ujenzi wanaovitumia:
+
+Uthibitisho wa Uwepo (Notari ya Kidijitali):: Kutobadilika + Muhuri wa Wakati + Udumu. Muamala kwenye mnyororo wa vitalu unaweza kufunga thamani, ukithibitisha kwamba kipande cha data kilikuwepo wakati uliporekodiwa (Muhuri wa Wakati). Ahadi haiwezi kubadilishwa baada ya ukweli (Kutobadilika), na uthibitisho utahifadhiwa kwa kudumu (Udumu).
+
+Kickstarter (Lighthouse):: Uthabiti + Utomivu + Uadilifu. Ukisaini ingizo moja na matokeo (Uadilifu) ya muamala wa kukusanya fedha, wengine wanaweza kuchangia kukusanya fedha lakini haiwezi kutumika (Utomivu) hadi lengo (kiasi cha matokeo) limefadhiliwa (Uthabiti).
+
+Njia za Malipo:: Kura ya Udhibiti + Timelock + Kutokuwa na Matumizi Maradufu + Kutokwisha + Upinzani wa Udhibiti + Idhini. Multisig ya 2-kati-ya-2 (Kura) yenye timelock (Timelock) inayotumiwa kama muamala wa «usuluhishi» wa njia ya malipo inaweza kushikiliwa (Kutokwisha) na kutumika wakati wowote (Upinzani wa Udhibiti) na chama chochote (Idhini). Pande mbili zinaweza kisha kuunda miamala ya ahadi inayobadilisha (Kutokuwa na Matumizi Maradufu) usuluhishi kwenye timelock ((("Bitcoin", "as application platform", "example applications", secondary-sortas="application platform", startref="bitcoin-app-platform-example")))((("application platform, Bitcoin as", "example applications", startref="app-platform-example")))fupi zaidi (Timelock).
+
+=== Sarafu Zenye Rangi
+
+Programu ya kwanza
+ya mnyororo wa vitalu ((("Bitcoin", "as application platform", "colored coins application", secondary-sortas="application platform", id="bitcoin-app-platform-color")))((("application platform, Bitcoin as", "colored coins application", id="app-platform-color")))((("colored coins application", id="color-coin")))tutakayoijadili ni _sarafu zenye rangi_.
+
+Sarafu zenye rangi zinamaanisha seti ya teknolojia zinazofanana zinazotumia miamala ya Bitcoin kurekodi uundaji, umiliki, na uhamishaji wa mali za nje isipokuwa bitcoin. Kwa «nje» tunamaanisha mali ambazo hazihifadhiwi moja kwa moja kwenye mnyororo wa vitalu wa Bitcoin, tofauti na bitcoin yenyewe, ambayo ni mali ya ndani ya mnyororo wa vitalu.
+
+Sarafu zenye rangi zinatumika kufuatilia mali za kidijitali pamoja na mali za kimwili zinazoshikiliwa na wahusika wa tatu na kuzungushwa kupitia vyeti vya umiliki vinavyohusiana na sarafu zenye rangi. Sarafu zenye rangi za mali za kidijitali zinaweza kuwakilisha mali zisizo na mkono kama vile cheti cha hisa, leseni, mali ya mtandao (vitu vya mchezo), au karibu aina yoyote ya miliki ya akili iliyoidhinishwa (alama za biashara, haki miliki, n.k.). Sarafu zenye rangi za mali za mkono zinaweza kuwakilisha vyeti vya umiliki vya bidhaa (dhahabu, fedha, mafuta), hati za ardhi, magari, mashua, ndege, n.k.
+
+Neno linatokana na wazo la «kupaka rangi» au kuweka alama kwa kiasi cha kinadharia cha bitcoin, kwa mfano, satoshi moja, kuwakilisha kitu kingine zaidi ya kiasi cha bitcoin chenyewe. Kwa mfano, fikiria kuweka muhuri kwenye noti ya $1 yenye ujumbe ukisema, «hii ni cheti cha hisa cha ACME» au «noti hii inaweza kubadilishwa kwa oz 1 ya fedha» na kisha kufanya biashara ya noti ya $1 kama cheti cha umiliki cha mali hii nyingine. Utekelezaji wa kwanza wa sarafu zenye rangi, ulioitwa _Enhanced Padded-Order-Based Coloring_ au _EPOBC_, ulipewa mali za nje kwa matokeo ya 1-satoshi. Kwa njia hii, ilikuwa «sarafu yenye rangi» halisi, kwani kila mali iliongezwa kama sifa (rangi) ya satoshi moja.
+
+Utekelezaji wa hivi karibuni zaidi wa sarafu zenye rangi unatumia mifumo mingine kuambatanisha metadata na muamala, pamoja na hifadhi za data za nje zinazounganisha metadata na mali maalum. Mifumo mitatu kuu inayotumiwa wakati wa kuandika hiki ni muhuri wa matumizi-moja, malipo kwa mkataba, na uthibitisho wa upande wa mteja.
+
+[[single_use_seals]]
+==== Muhuri wa Matumizi-Moja
+
+Muhuri wa matumizi-moja ((("colored coins application", "single-use seals")))((("single-use seals")))unaasili katika usalama wa kimwili. Mtu anayepeleka bidhaa kupitia wahusika wa tatu anahitaji njia ya kugundua ubadilishaji, kwa hivyo analinda kifurushi chake kwa mfumo maalum ambao utaharibiwa wazi ikiwa kifurushi kitafunguliwa. Ikiwa kifurushi kinafika huku muhuri ukiwa sawa, mtumaji na mpokeaji wanaweza kuwa na uhakika kwamba kifurushi hakikufunguliwa wakati wa usafirishaji.
+
+Katika muktadha wa sarafu zenye rangi, muhuri wa matumizi-moja unamaanisha muundo wa data ambao unaweza kuunganishwa na muundo mwingine wa data mara moja tu. Katika Bitcoin, ufafanuzi huu ((("UTXOs (unspent transaction outputs)")))unatimizwa na matokeo ya miamala yasiyotumika (UTXOs). UTXO inaweza kutumika mara moja tu ndani ya mnyororo wa vitalu halali, na mchakato wa kuzitumia unaziunganisha na data kwenye muamala wa kutumia.
+
+Hii inatoa sehemu ya msingi wa uhamishaji wa kisasa wa sarafu zenye rangi. Sarafu moja au zaidi zenye rangi zinapokelewa kwenye UTXO. UTXO hiyo inapotumika, muamala wa kutumia lazima ueleze jinsi sarafu zenye rangi zitakavyotumika. Hilo linaturudisha kwa malipo kwa mkataba (P2C).
+
+[[p2c_for_colored_coins]]
+==== Malipo kwa Mkataba (P2C)
+
+Tulisoma ((("colored coins application", "P2C (pay to contract)", id="color-coin-p2c")))((("P2C (pay to contract)", id="p2c-color-coin")))awali kuhusu P2C katika <<pay_to_contract>>, ambapo ikawa sehemu ya msingi wa uboreshaji wa taproot wa sheria za makubaliano za Bitcoin. Kwa ukumbusho mfupi, P2C inaruhusu mtumia (Bob) na mpokeaji (Alice) kukubaliana kuhusu data fulani, kama mkataba, na kisha((("key tweaks"))) kubadilisha funguo ya umma ya Alice ili ifunge kwa mkataba. Wakati wowote, Bob anaweza kufunua funguo ya msingi ya Alice na badiliko lililotumika kufunga kwa mkataba, akithibitisha kwamba alipokea fedha. Alice akitumia fedha, hiyo inathibitisha kikamilifu kwamba alijua kuhusu mkataba, kwani njia pekee angeweza kutumia fedha zilizopokelewa kwa funguo iliyobadilishwa ya P2C ni kwa kujua badiliko (mkataba).
+
+Sifa yenye nguvu ya funguo zilizobadilishwa za P2C ni kwamba zinaonekana kama funguo nyingine za umma kwa kila mtu isipokuwa Alice na Bob, isipokuwa wachague kufunua mkataba uliotumiwa kubadilisha funguo. Hakuna kinachofunuliwa hadharani kuhusu mkataba—hata kwamba mkataba kati yao upo.
+
+Mkataba wa P2C unaweza kuwa mrefu na wa kina bila kikomo, masharti yanaweza kuandikwa kwa lugha yoyote, na unaweza kurejelea chochote washiriki wanaotaka kwa sababu mkataba hauthithibitishwi na nodi kamili na funguo ya umma yenye ahadi pekee ndiyo inayochapishwa kwenye mnyororo wa vitalu.
+
+Katika muktadha wa sarafu zenye rangi, Bob anaweza kufungua muhuri wa matumizi-moja wenye sarafu zake zenye rangi kwa kutumia UTXO inayohusiana. Katika muamala unaotumia UTXO hiyo, anaweza kufunga kwa mkataba unaoashiria masharti ambayo mmiliki (au wamiliki) wanaofuata wa sarafu zenye rangi lazima watimize ili zaidi kutumia sarafu. Mmiliki mpya hahitaji kuwa Alice, ingawa Alice ndiye anayepokea UTXO ambayo Bob anatumia na Alice amebadilisha funguo yake ya umma na masharti ya mkataba.
+
+Kwa sababu nodi kamili hazithithibishi (na haziwezi) kwamba mkataba unafuatwa kwa usahihi, tunahitaji kujua ni nani anayewajibika kwa uthibitisho. Hilo ((("colored coins application", "P2C (pay to contract)", startref="color-coin-p2c")))((("P2C (pay to contract)", startref="p2c-color-coin")))linaturudisha kwa _uthibitisho wa upande wa mteja._
+
+==== Uthibitisho wa Upande wa Mteja
+
+Bob alikuwa ((("colored coins application", "client-side validation")))((("client-side validation")))((("validating", "with client-side validation", secondary-sortas="client-side validation")))na sarafu fulani zenye rangi zilizounganishwa na UTXO. Alitumia UTXO hiyo kwa njia ambayo ilifunga kwa mkataba unaoashiria jinsi mpokeaji (au wapokeaji) wanaofuata wa sarafu zenye rangi watathibitisha umiliki wao wa sarafu ili zaidi kuzitumia.
+
+Kwa vitendo, mkataba wa P2C wa Bob kwa uwezekano ulifunga tu kwa kitambulisho kimoja au zaidi cha kipekee cha UTXOs ambazo zitatumika kama muhuri wa matumizi-moja kwa kuamua sarafu zenye rangi zitakapotumika baadaye. Kwa mfano, mkataba wa Bob ungeweza kuashiria kwamba UTXO ambayo Alice alipokea kwenye funguo yake ya umma iliyobadilishwa ya P2C sasa inadhibiti nusu ya sarafu zake zenye rangi, huku nusu nyingine ya sarafu zake zenye rangi sasa ikipewa UTXO tofauti ambayo ingeweza kuwa haihusiani na muamala kati ya Alice na Bob. Hii inatoa faragha kubwa dhidi ya ufuatiliaji wa mnyororo wa vitalu.
+
+Alice anapoamua baadaye kutumia sarafu zake zenye rangi kwa Dan, kwanza anahitaji kuthibitishia Dan kwamba anadhibiti sarafu zenye rangi. Alice anaweza kufanya hivyo kwa kufunulia Dan funguo yake ya msingi ya P2C na masharti ya mkataba wa P2C yaliyochaguliwa na Bob. Alice pia anafunulia Dan UTXO ambayo Bob alitumia kama muhuri wa matumizi-moja na habari yoyote ambayo Bob alimpa kuhusu wamiliki wa awali wa sarafu zenye rangi. Kwa muhtasari, Alice anampa Dan historia kamili ya kila uhamishaji wa awali wa sarafu zenye rangi, na kila hatua imefungwa kwenye mnyororo wa vitalu wa Bitcoin (lakini bila kuhifadhi data yoyote maalum kwenye mnyororo—funguo za umma tu za kawaida). Historia hiyo inafanana sana na historia ya miamala ya kawaida ya Bitcoin ambayo tunaita mnyororo wa vitalu, lakini historia yenye rangi ni isiyoonekana kabisa kwa watumiaji wengine wa mnyororo wa vitalu.
+
+Dan anathibitisha historia hii kwa programu yake, inayoitwa _uthibitisho wa upande wa mteja_. Kwa kumbuka, Dan anahitaji tu kupokea na kuthibitisha sehemu za historia zinazohusiana na sarafu zenye rangi anazotaka kupokea. Hahitaji habari kuhusu kilichotokea kwa sarafu zenye rangi za watu wengine—kwa mfano, hatahitaji kujua kilichotokea kwa nusu nyingine ya sarafu za Bob, zile ambazo Bob hakumhamishia Alice. Hii inasaidia kuimarisha faragha ya itifaki ya sarafu zenye rangi.
+
+Sasa baada ya kujifunza kuhusu muhuri wa matumizi-moja, malipo kwa mkataba, na uthibitisho wa upande wa mteja, tunaweza kuangalia itifaki mbili kuu zinazozitumia wakati wa kuandika hiki, RGB na Taproot Assets.
+
+==== RGB
+
+Wasanidi programu ((("colored coins application", "RGB protocol", id="color-coin-rgb")))((("RGB protocol", id="rgb")))wa itifaki ya RGB walifuatwa mawazo mengi yanayotumiwa katika itifaki za kisasa za sarafu zenye rangi zinazotegemea Bitcoin. Mahitaji ya msingi ya muundo wa RGB ilikuwa kufanya itifaki iendane na njia za malipo za nje ya mnyororo wa vitalu (ona <<state_channels>>), kama zile zinazotumika kwenye Lightning Network (LN). Hilo linafanikiwa katika kila safu ya itifaki ya RGB:
+
+Muhuri wa matumizi-moja::
+Kuunda njia ya malipo, Bob anapewa sarafu zake zenye rangi
+  kwenye UTXO inayohitaji saini kutoka kwake na Alice
+  kutumia. Udhibiti wao wa pamoja juu ya UTXO hiyo unafanya kama muhuri wa matumizi-moja kwa uhamishaji wa siku zijazo.
+
+Malipo kwa mkataba (P2C)::
+Alice na Bob sasa wanaweza kusaini toleo nyingi za
+  mkataba wa P2C. Mfumo wa utekelezaji wa njia ya malipo ya msingi
+  unahakikisha kwamba pande zote mbili zinahamasishwa kuchapisha toleo la hivi karibuni tu la mkataba kwenye mnyororo wa vitalu.
+
+Uthibitisho wa upande wa mteja::
+Kuhakikisha kwamba wala Alice wala Bob hahitaji
+  kuamini kila mmoja, wote wawili wanaangalia uhamishaji wote wa awali wa sarafu zenye rangi tena hadi uundaji wao kuhakikisha sheria zote za mkataba zilifuatwa kwa usahihi.
+
+Wasanidi programu wa RGB wameelezea matumizi mengine ya itifaki yao, kama vile kuunda tokeni za utambulisho ambazo zinaweza kusasishwa mara kwa mara kulinda dhidi ya kuhatariwa kwa funguo ya kibinafsi.
+
+Kwa habari zaidi, ((("colored coins application", "RGB protocol", startref="color-coin-rgb")))((("RGB protocol", startref="rgb")))ona https://rgb.tech[nyaraka za RGB].
+
+==== Taproot Assets
+
+Awali ((("colored coins application", "Taproot Assets", id="color-coin-taproot")))((("Taproot Assets", id="taproot-assets")))ikiitwa Taro, Taproot Assets ni itifaki ya sarafu zenye rangi inayoathiriwa sana na RGB. Ikilinganishwa na RGB, Taproot Assets inatumia fomu ya mikataba ya P2C inayofanana sana na toleo linalotumika na taproot kuwezesha utendakazi wa MAST (ona <<mast>>). Faida inayodaiwa ya Taproot Assets juu ya RGB ni kwamba kufanana kwake na itifaki ya taproot inayotumiwa sana kunaifanya iwe rahisi zaidi kwa pochi na programu nyingine kutekeleza. Hasara moja ni kwamba inaweza kuwa si nyumbadilifu kama itifaki ya RGB, hasa linapokuja kutekeleza vipengele visivyo mali kama vile tokeni za utambulisho.
+
+[NOTE]
+====
+_Taproot_ ni sehemu ya itifaki ya Bitcoin. _Taproot Assets_ si hivyo, licha ya jina linalofanana. RGB na Taproot Assets zote ni itifaki zilizojengwa juu ya itifaki ya Bitcoin. Mali pekee inayosaidiwa na asili na Bitcoin ni bitcoin.
+====
+
+Zaidi ya RGB, Taproot Assets imeundwa kuendana na LN. Changamoto moja ya kupitisha mali zisizo za bitcoin
+kwenye LN ni kwamba kuna njia mbili za kukamilisha
+kutuma, kila moja yenye seti tofauti ya maelewano:
+
+Upitishaji wa asili::
+  Kila ((("native forwarding")))hop kwenye njia kati ya mtumaji na mpokeaji lazima ajue
+  kuhusu mali maalum (aina ya sarafu yenye rangi) na iwe na
+  salio la kutosha la hiyo kusaidia kupitisha malipo.
+
+Upitishaji uliobadilishwa::
+  Hop karibu na mtumaji na ((("translated forwarding")))hop karibu na mpokeaji lazima wajue
+  kuhusu mali maalum na kuwa na salio la kutosha la hiyo kusaidia kupitisha malipo, lakini kila hop nyingine tu inahitaji kusaidia kupitisha malipo ya bitcoin [.keep-together]#tu.#
+
+Upitishaji wa asili ni rahisi zaidi kwa dhana lakini kimsingi unahitaji mtandao tofauti wa aina ya Lightning kwa kila mali. Upitishaji uliobadilishwa unaruhusu kujenga juu ya uchumi wa kiwango cha LN ya Bitcoin, lakini unaweza kuwa hatarini kwa tatizo linaloitwa((("free American call option"))) _chaguo la wito la huru la Marekani_, ambapo mpokeaji anaweza kuchaguliwa kukubali au kukataa malipo fulani kulingana na mabadiliko ya hivi karibuni ya kiwango cha ubadilishaji ili kutoa pesa kutoka kwa hop karibu nao. Ingawa hakuna suluhisho kamili linalofahamika kwa chaguo la wito la huru la Marekani, kunaweza kuwa na suluhisho za vitendo zinazopunguza madhara yake.
+
+Taproot Assets na RGB zote zinaweza kisera kusaidia upitishaji wa asili na uliobadilishwa. Taproot Assets imeundwa hasa kuzunguka upitishaji uliobadilishwa, huku RGB ikiwa na mapendekezo ya kutekeleza wote wawili.
+
+Kwa habari zaidi, ona
+https://oreil.ly/Ef4hb[nyaraka za Taproot
+Asset]. Zaidi ya hayo, wasanidi programu wa Taproot Asset wanafanya kazi kwenye BIPs ambazo zinaweza kupatikana baada ya kitabu hiki ((("Bitcoin", "as application platform", "colored coins application", secondary-sortas="application platform", startref="bitcoin-app-platform-color")))((("application platform, Bitcoin as", "colored coins application", startref="app-platform-color")))((("colored coins application", startref="color-coin")))((("colored coins application", "Taproot Assets", startref="color-coin-taproot")))((("Taproot Assets", startref="taproot-assets")))kuchapishwa.
+
+[[state_channels]]
+=== Njia za Malipo na Njia za Hali
+
+_Njia za malipo_ ni ((("Bitcoin", "as application platform", "payment channels", secondary-sortas="application platform", id="bitcoin-app-platform-payment")))((("application platform, Bitcoin as", "payment channels", id="app-platform-payment")))((("payment channels", id="payment-channel")))mfumo usio na uaminifu wa kubadilishana miamala ya Bitcoin kati ya pande mbili nje ya mnyororo wa vitalu wa Bitcoin. Miamala hii, ambayo ingekuwa halali ikiwa kusuluhishwa kwenye mnyororo wa vitalu wa Bitcoin, inashikiliwa nje ya mnyororo badala yake, ikingojea usuluhishi wa mwisho wa kundi. Kwa sababu miamala haikusuluhishwa, inaweza kubadilishwa bila ucheleweshaji wa kawaida wa usuluhishi, kuruhusu mtiririko mkubwa sana wa miamala, ucheleweshaji mdogo, na ugawanyo wa kina.
+
+Kwa kweli, neno _njia_ ni mfano wa kimaandishi. Njia za hali ni vitendo vya mtandao vinavyowakilishwa na kubadilishana hali kati ya pande mbili nje ya mnyororo wa vitalu. Hakuna «njia» kwa namna halisi, na mfumo wa msingi wa usafirishaji wa data si njia. Tunatumia neno _njia_ kuwakilisha uhusiano na hali iliyoshirikiwa kati ya pande mbili nje ya mnyororo wa vitalu.
+
+Ili kuelezea zaidi dhana hii, fikiria mkondo wa TCP. Kutoka mtazamo wa itifaki za kiwango cha juu, ni «soketi» inayounganisha programu mbili kupitia mtandao. Lakini ukiangalia trafiki ya mtandao, mkondo wa TCP ni njia ya mtandao tu juu ya pakiti za IP. Kila mwisho wa mkondo wa TCP unaorodhesha na kukusanya pakiti za IP kuunda udanganyifu wa mkondo wa baiti. Chini yake, ni pakiti zote zisizounganika. Vivyo hivyo, njia ya malipo ni mfululizo tu wa miamala. Ikiwa imeorodheshwa na kuunganika ipasavyo, zinaunda wajibu unaoweza kukombolewa ambao unaweza kuamini hata kama huamini upande mwingine wa njia.
+
+Katika sehemu hii tutaangalia aina mbalimbali za njia za malipo. Kwanza, tutachunguza mifumo inayotumika kujenga njia ya malipo ya upande mmoja (ya mwelekeo mmoja) kwa huduma ya micromalipo ya kupimwa, kama vile video inayotiririka. Kisha, tutapanua mfumo huu na kuanzisha njia za malipo za pande mbili. Hatimaye, tutaangalia jinsi njia za pande mbili zinavyoweza kuunganishwa mwisho hadi mwisho kuunda njia za vipimo vingi kwenye mtandao wa kupanga njia, ulipendekezwa kwanza chini ya jina _Lightning Network_.
+
+Njia za malipo ni sehemu ya dhana pana ya _njia ya hali_, inayowakilisha mabadiliko ya hali nje ya mnyororo wa vitalu, yaliyolindwa na usuluhishi wa hatimaye kwenye mnyororo wa vitalu. Njia ya malipo ni njia ya hali ambapo hali inayobadilishwa ni salio la sarafu ya mtandao.
+
+==== Njia za Hali—Dhana za Msingi na Istilahi
+
+Njia ya hali ((("payment channels", "state channels", id="payment-channel-state")))((("state channels", id="state-channel-terminology")))((("transactions", "state channels", id="transaction-state")))inaanzishwa kati ya pande mbili kupitia muamala unaofunga hali iliyoshirikiwa kwenye mnyororo wa vitalu. Hii inaitwa ((("funding transactions")))_muamala wa ufadhili_. Muamala huu mmoja lazima utumwe kwenye mtandao na uchimbwe ili kuanzisha njia. Katika mfano wa njia ya malipo, hali iliyofungwa ni salio la awali (kwa sarafu) la njia.
+
+Pande mbili kisha zinabadilishana miamala iliyosainiwa, ((("commitment transactions")))inayoitwa _miamala ya ahadi_, inayobadilisha hali ya awali. Miamala hii ni halali kwamba _ingeweza_ kuwasilishwa kwa usuluhishi na chama chochote, lakini badala yake inashikiliwa nje ya mnyororo na kila chama inakingoja kufungwa kwa njia. Masasisho ya hali yanaweza kuundwa kwa haraka kadri kila chama kinavyoweza kuunda, kusaini, na kutuma muamala kwa chama kingine. Kwa vitendo hii inamaanisha kwamba miamala mingi ya kumi kwa sekunde inaweza kubadilishana.
+
+Ukibadilishana miamala ya ahadi pande mbili pia hukatisha tamaa matumizi ya hali zilizotangulia, hivyo muamala wa hivi karibuni zaidi wa ahadi daima ndio bora zaidi wa kukombolewa. Hii inakatisha tamaa chama chochote kudanganya kwa kufunga njia upande mmoja na hali ya awali ambayo ni nzuri zaidi kwao kuliko hali ya sasa. Tutachunguza mifumo mbalimbali inayoweza kutumika kukatisha tamaa uchapishaji wa hali zilizotangulia katika sehemu ziliyobaki za sura hii.
+
+Hatimaye, njia inaweza kufungwa ama kwa ushirikiano, kwa ((("settlement transactions")))kuwasilisha _muamala wa mwisho wa usuluhishi_ kwenye mnyororo wa vitalu, au kwa upande mmoja, na chama chochote kikiwasilisha muamala wa hivi karibuni wa ahadi kwenye mnyororo wa vitalu. Chaguo la kufunga kwa upande mmoja linahitajika kwa sababu moja ya pande inaweza kukata muunganiko bila kutarajia. Muamala wa usuluhishi unawakilisha hali ya mwisho ya njia na kusuluhishwa kwenye mnyororo wa vitalu.
+
+Katika maisha yote ya njia, miamala miwili tu inahitaji kuwasilishwa kwa uchimbaji kwenye mnyororo wa vitalu: miamala ya ufadhili na usuluhishi. Kati ya hali hizi mbili, pande mbili zinaweza kubadilishana miamala yoyote ya ahadi ambayo haionekani na mtu mwingine wala kuwasilishwa kwenye mnyororo wa vitalu.
+
+<<payment_channel>> inaonyesha njia ya malipo kati ya Bob na Alice, ikionyesha ufadhili, ahadi, na ((("payment channels", "state channels", startref="payment-channel-state")))((("state channels", startref="state-channel-terminology")))((("transactions", "state channels", startref="transaction-state")))miamala ya usuluhishi.
+
+[[payment_channel]]
+.Njia ya malipo kati ya Bob na Alice, ikionyesha miamala ya ufadhili, ahadi, na usuluhishi.
+image::images/mbc3_1401.png["A payment channel between Bob and Alice, showing the funding, commitment, and settlement transactions"]
+
+==== Mfano Rahisi wa Njia ya Malipo
+
+Ili
+kuelezea ((("payment channels", "example of", id="payment-channel-example")))njia za hali, tunaanza na mfano rahisi sana. Tunaonyesha njia ya upande mmoja, ikimaanisha thamani inaelekea upande mmoja tu. Pia tutaanza na dhana ya naïve kwamba hakuna anayejaribu kudanganya ili mambo yawe rahisi. Mara baada ya kuelezea wazo la msingi la njia, tutaangalia kinachohitajika kuifanya kuwa bila uaminifu ili chama chochote _kisiweze_ kudanganya, hata kama wanajaribu.
+
+Kwa mfano huu tutachukulia washiriki wawili: Emma na Fabian. Fabian anatoa huduma ya video inayotiririka ambayo inalipiwa kwa sekunde kwa kutumia njia ya micromalipo. Fabian anatozwa 0.01 millibit (0.00001 BTC) kwa kila sekunde ya video, sawa na millibits 36 (0.036 BTC) kwa kila saa ya video. Emma ni mtumiaji anayenunua huduma hii ya video inayotiririka kutoka kwa Fabian. <<emma_fabian_streaming_video>> inaonyesha Emma akinunua huduma ya video inayotiririka kutoka kwa Fabian kwa kutumia njia ya malipo.
+
+[[emma_fabian_streaming_video]]
+.Emma ananunua video inayotiririka kutoka kwa Fabian na njia ya malipo, akilipa kwa kila sekunde ya video.
+image::images/mbc3_1402.png["Emma purchases streaming video from Fabian with a payment channel, paying for each second of video"]
+
+Katika mfano huu, Fabian na Emma wanatumia programu maalum inayoshughulikia njia ya malipo na video inayotiririka. Emma anaendesha programu kwenye kivinjari chake; Fabian anaiendesha kwenye seva. Programu inajumuisha utendaji wa msingi wa pochi ya Bitcoin na inaweza kuunda na kusaini miamala ya Bitcoin. Dhana na neno «njia ya malipo» zimefichwa kabisa kutoka kwa watumiaji. Wanaona ni video inayolipwa kwa sekunde.
+
+Ili kuanzisha njia ya malipo, Emma na Fabian wanaanzisha anwani ya multisaini ya 2-kati-ya-2, kila mmoja akishikilia funguo moja. Kutoka mtazamo wa Emma, programu kwenye kivinjari chake inaonyesha msimbo wa QR na anwani, na kumuomba kuwasilisha «amana» kwa hadi saa 1 ya video. Anwani kisha inafadhiliwa na Emma. Muamala wa Emma, unaolipa kwa anwani ya multisaini, ni muamala wa ufadhili au wa nanga kwa njia ya malipo.
+
+Kwa mfano huu, tuseme Emma anafadhili njia na millibits 36 (0.036 BTC). Hii itamruhusu Emma kutumia _hadi_ saa 1 ya video inayotiririka. Muamala wa ufadhili katika kesi hii unaweka kiasi cha juu ambacho kinaweza kusafirishwa katika njia hii, ukiweka _uwezo wa njia_.
+
+Muamala wa ufadhili unatumia ingizo moja au zaidi kutoka kwa pochi ya Emma, ukitoa fedha. Unaunda matokeo moja yenye kiasi cha millibits 36 kinacholipwa kwa anwani ya multisaini ya 2-kati-ya-2 inayodhibitiwa pamoja kati ya Emma na Fabian. Unaweza kuwa na matokeo ya ziada kwa chenji iliyorudishwa kwa pochi ya Emma.
+
+Baada ya muamala wa ufadhili kuthibitishwa hadi kina cha kutosha, Emma anaweza kuanza kutiririshia video. Programu ya Emma inaunda na kusaini muamala wa ahadi unaobadilisha salio la njia ili kutoa 0.01 millibit kwa anwani ya Fabian na kurudisha millibits 35.99 tena kwa Emma. Muamala uliosainiwa na Emma unatumia matokeo ya millibits 36 yaliyoundwa na muamala wa ufadhili na kuunda matokeo mawili: moja kwa urudishaji wake, nyingine kwa malipo ya Fabian. Muamala umesainiwa kwa sehemu tu—unahitaji saini mbili (2-kati-ya-2), lakini una saini ya Emma pekee. Seva ya Fabian inapoipokea muamala huu, inaongeza saini ya pili (kwa ingizo la 2-kati-ya-2) na kuirudisha kwa Emma pamoja na sekunde 1 ya thamani ya video. Sasa pande zote mbili zina muamala wa ahadi uliosainishwa kikamilifu ambao chochote kinaweza kuukomboa, ukiwakilisha salio sahihi la hivi karibuni la njia. Wala chama kinatuma muamala huu kwenye mtandao.
+
+Katika raundi inayofuata, programu ya Emma inaunda na kusaini muamala mwingine wa ahadi (ahadi #2) unaotumia matokeo yale yale ya 2-kati-ya-2 kutoka kwa muamala wa ufadhili. Muamala wa pili wa ahadi unaoweka matokeo moja ya 0.02 millibits kwa anwani ya Fabian na matokeo moja ya 35.98 millibits tena kwa anwani ya Emma. Muamala mpya huu ni malipo ya sekunde mbili za jumla ya video. Programu ya Fabian inasaini na kurudisha muamala wa pili wa ahadi, pamoja na sekunde nyingine ya video.
+
+Kwa njia hii, programu ya Emma inaendelea kutuma miamala ya ahadi kwenye seva ya Fabian kwa kubadilishana na video inayotiririka. Salio la njia polepole linakusanyika kwa niaba ya Fabian kadri Emma anavyotumia sekunde zaidi za video. Tuseme Emma anatazama sekunde 600 (dakika 10) za video, akiunda na kusaini miamala 600 ya ahadi. Muamala wa mwisho wa ahadi (#600) utakuwa na matokeo mawili, ukigawanya salio la njia, millibits 6 kwa Fabian na millibits 30 kwa Emma.
+
+Hatimaye, Emma anabonyeza «Simama» kuacha video inayotiririka. Fabian au Emma sasa wanaweza kutuma muamala wa hali ya mwisho kwa usuluhishi. Muamala huu wa mwisho ni _muamala wa usuluhishi_ na unalipa Fabian kwa video yote Emma aliyotumia, ukiurejesha salio la muamala wa ufadhili kwa Emma.
+
+<<video_payment_channel>> inaonyesha njia kati ya Emma na Fabian na miamala ya ahadi inayosasisha salio la njia.
+
+Mwishoni, miamala miwili tu imerekodiwa kwenye mnyororo wa vitalu: muamala wa ufadhili ulianzisha njia na muamala wa usuluhishi uliogawanya salio la mwisho kwa usahihi kati ya ((("payment channels", "example of", startref="payment-channel-example")))washiriki wawili.
+
+[[video_payment_channel]]
+.Njia ya malipo ya Emma na Fabian, ikionyesha miamala ya ahadi inayosasisha salio la njia.
+image::images/mbc3_1403.png["Emma's payment channel with Fabian, showing the commitment transactions that update the balance of the channel"]
+
+==== Kuunda Njia Zisizo na Uaminifu
+
+Njia ((("payment channels", "trustless channels", id="payment-channel-trustless")))((("trustless channels", id="trustless-channel")))((("timelocks", "trustless channels", id="timelock-trustless")))((("commitment transactions", "trustless channels", id="commit-trustless")))tuliyoielezea tu inafanya kazi, lakini tu ikiwa pande zote mbili zikishirikiana, bila kushindwa wowote au majaribio ya kudanganya. Tuangalie baadhi ya hali zinazovunja njia hii na tuone kinachohitajika kuzirekebisha:
+
+[role="less_space pagebreak-before"]
+- Muamala wa ufadhili ukitokea, Emma anahitaji saini ya Fabian kupata pesa yoyote tena. Fabian akitoweka, fedha za Emma zimefungwa katika 2-kati-ya-2 na kupotezwa kwa vitendo. Njia hii, kama ilivyoundwa, inasababisha kupoteza fedha ikiwa moja ya pande itaondoka kabla ya kuwepo angalau muamala mmoja wa ahadi uliosainiwa na pande zote mbili.
+
+- Wakati njia inafanya kazi, Emma anaweza kuchukua muamala wowote wa ahadi ambao Fabian amekosaini na kutuma mmoja kwenye mnyororo wa vitalu. Kwa nini kulipa sekunde 600 za video ikiwa anaweza kutuma muamala wa ahadi #1 na kulipa sekunde 1 tu ya video? Njia inashindwa kwa sababu Emma anaweza kudanganya kwa kusambaza ahadi ya awali inayomfaa.
+
+Matatizo yote mawili yanaweza kutatuliwa na timelocks—tuangalie jinsi tungeweza kutumia timelocks za kiwango cha muamala.
+
+Emma hawezi kuhatarisha kufadhili 2-kati-ya-2 isipokuwa ana urudishaji ulioahidiwa. Ili kutatua tatizo hili, Emma anaunda muamala wa ufadhili na wa urudishaji wakati mmoja. Anasaini muamala wa ufadhili lakini hauwasilishi kwa mtu yeyote. Emma anatuma tu muamala wa urudishaji kwa Fabian na kupata saini yake.
+
+Muamala wa urudishaji unafanya kama muamala wa kwanza wa ahadi, na timelock yake huanzisha mipaka ya juu ya maisha ya njia. Katika kesi hii, Emma angeweza kuweka wakati wa kufuli kwa siku 30 au vitalu 4,320 baadaye. Miamala yote inayofuata ya ahadi lazima iwe na timelock fupi zaidi ili iweze kukombolewa kabla ya muamala wa urudishaji.
+
+Sasa Emma ana muamala wa urudishaji uliosainishwa kikamilifu, anaweza kwa uhakika kutuma muamala wa ufadhili uliosainiwa akijua kwamba hatimaye, baada ya timelock kumalizika, anaweza kukomboa muamala wa urudishaji hata Fabian akitoweka.
+
+Kila muamala wa ahadi ambao pande zinabadilishana wakati wa maisha ya njia utafungiwa kwa wakati baadaye. Lakini ucheleweshaji utakuwa mfupi kidogo kwa kila ahadi, hivyo ahadi ya hivi karibuni zaidi inaweza kukombolewa kabla ya ahadi ya awali ambayo inabatilisha. Kwa sababu ya wakati wa kufuli, wala chama kinaweza kupitisha kwa mafanikio miamala yoyote ya ahadi hadi timelock yao imalizike. Kila kitu kikifanya vizuri, watashirikiana na kufunga njia kwa fadhili na muamala wa usuluhishi, na kuifanya kuwa si lazima kutuma muamala wa ahadi wa kati. Ikiwa la, muamala wa hivi karibuni zaidi wa ahadi unaweza kupitishwa kusuluhisha akaunti na kubatilisha miamala yote ya awali ya ahadi.
+
+Kwa mfano, ikiwa muamala wa ahadi #1 umefungwa kwa vitalu 4,320 baadaye, basi muamala wa ahadi #2 umefungwa kwa vitalu 4,319 baadaye. Muamala wa ahadi #600 unaweza kutumiwa vitalu 600 kabla ya muamala wa ahadi #1 kuwa halali.
+
+<<timelocked_commitments>> inaonyesha kila muamala wa ahadi ukiweka timelock fupi zaidi, kuruhusu kutumiwa kabla ya ahadi zilizotangulia kuwa halali.
+
+[[timelocked_commitments]]
+.Kila ahadi inaweka timelock fupi zaidi, kuiruhusu kutumiwa kabla ya ahadi zilizotangulia kuwa halali.
+image::images/mbc3_1404.png["Each commitment sets a shorter timelock, allowing it to be spent before the previous commitments become valid"]
+
+Kila muamala unaofuata wa ahadi lazima uwe na timelock fupi zaidi ili uweze kusambazwa kabla ya watangulizi wake na kabla ya muamala wa urudishaji. Uwezo wa kusambaza ahadi mapema zaidi unahakikisha itaweza kutumia matokeo ya ufadhili na kukatia muamala mwingine wowote wa ahadi usikombolewa kwa kutumia matokeo. Dhamana zinazotolewa na mnyororo wa vitalu wa Bitcoin, kuzuia matumizi maradufu na kutekeleza timelocks, zinawezesha kwa vitendo kila muamala wa ahadi kubatilisha watangulizi wake.
+
+Njia za hali zinatumia timelocks kutekeleza mikataba ya akili kwa kipimo cha wakati. Katika mfano huu tuliona jinsi kipimo cha wakati kinavyohakikisha kwamba muamala wa hivi karibuni zaidi wa ahadi unakuwa halali kabla ya ahadi yoyote ya mapema zaidi. Hivyo, muamala wa hivi karibuni zaidi wa ahadi unaweza kutumwa, ukitumia ingizo na kubatilisha miamala ya awali ya ahadi. Utekelezaji wa mikataba ya akili kwa timelocks za kabisa unawalinda dhidi ya udanganyifu na moja ya pande. Utekelezaji huu hauhitaji zaidi ya wakati wa kufuli wa kabisa wa kiwango cha muamala. Ijayo, tutaona jinsi timelocks za kiwango cha hati, +CHECKLOCKTIMEVERIFY+ na +CHECKSEQUENCEVERIFY+, zinavyoweza kutumika kuunda njia za hali zenye kubadilika zaidi, za manufaa, na za kisasa zaidi.
+
+Timelocks si njia pekee ya kubatilisha miamala ya awali ya ahadi. Katika sehemu zifuatazo tutaona jinsi funguo ya ubatilishaji inavyoweza kutumika kufikia matokeo sawa. Timelocks ni za ufanisi, lakini zina hasara mbili tofauti. Kwa kuanzisha timelock ya juu zaidi njia inapofunguliwa kwanza, zinapunguza maisha ya njia. Vibaya zaidi, zinalazimisha utekelezaji wa njia kusawazisha kati ya kuruhusu njia zenye muda mrefu na kulazimisha mshiriki mmoja kusubiri muda mrefu sana kwa urudishaji kwa sababu ya kufunga mapema. Kwa mfano, ukiruhusu njia kukaa wazi kwa siku 30 kwa kuweka timelock ya urudishaji kwa siku 30, moja ya pande ikiondoka mara moja, upande mwingine lazima usubirie siku 30 kwa urudishaji. Mwisho ukiwa mbali zaidi, urudishaji ukiwa mbali zaidi.
+
+Tatizo la pili ni kwamba kwa sababu kila muamala unaofuata wa ahadi lazima upunguze timelock, kuna kikomo wazi cha idadi ya miamala ya ahadi ambayo inaweza kubadilishana kati ya pande. Kwa mfano, njia ya siku 30, ikiweka timelock ya vitalu 4,320 baadaye, inaweza kusaidia miamala 4,320 ya kati ya ahadi kabla haijafungwa. Kuna hatari katika kuweka muda wa ahadi ya timelock kwa kitalu 1. Kwa kuweka muda wa timelock kati ya miamala ya ahadi kwa kitalu 1, msanidi programu anaunda mzigo mkubwa sana kwa washiriki wa njia ambao wanalazimika kuwa macho, kubaki mtandaoni na kutazama, na kuwa tayari kutuma muamala sahihi wa ahadi wakati wowote.
+
+Katika mfano uliotangulia wa njia ya mwelekeo mmoja, ni rahisi kuondoa timelock ya kila-ahadi. Baada ya Emma kupokea saini kwenye muamala wa urudishaji uliofungwa wa wakati kutoka kwa Fabian, hakuna timelocks zilizowekwa kwenye miamala ya ahadi. Badala yake, Emma anatuma saini yake kwenye kila muamala wa ahadi kwa Fabian lakini Fabian hamtumii saini zake zozote kwenye miamala ya ahadi. Hii inamaanisha Fabian pekee ana saini zote mbili kwa muamala wa ahadi, kwa hivyo yeye pekee ndiye anayeweza kusambaza moja ya ahadi hizo. Emma anapomaliza kutiririshia video, Fabian daima atapendelea kusambaza muamala unaomlipia zaidi—ambao utakuwa hali ya hivi karibuni. Ujenzi huu unaitwa njia ya malipo ya mtindo wa Spillman, iliyoelezwa na kutekelezwa kwanza mnamo 2013, ingawa ni salama tu kutumia na miamala ya shahidi (segwit), ambayo haikuwa inapatikana hadi 2017.
+
+Sasa tunapoelewa jinsi timelocks zinavyoweza kutumika kubatilisha ahadi za awali, tunaweza kuona tofauti kati ya kufunga njia kwa ushirikiano na kuifunga kwa upande mmoja kwa kusambaza muamala wa ahadi. Miamala yote ya ahadi katika mfano wetu wa awali ilifungwa kwa wakati, kwa hivyo kusambaza muamala wa ahadi daima kutajumuisha kusubiri hadi timelock imalizike. Lakini pande zote mbili zikiwa na makubaliano kuhusu salio la mwisho ni nini na wakijua kwamba wote wawili wanashikilia miamala ya ahadi ambayo hatimaye itafanya salio hilo kuwa ukweli, wanaweza kuunda muamala wa usuluhishi bila timelock unaowakilisha salio lile lile. Katika kufunga kwa ushirikiano, chama chochote kinachukua muamala wa hivi karibuni zaidi wa ahadi na kuunda muamala wa usuluhishi ambao ni sawa kwa kila njia isipokuwa kwamba haujazo timelock. Pande zote mbili zinaweza kusaini muamala huu wa usuluhishi wakijua hakuna njia ya kudanganya na kupata salio nzuri zaidi. Kwa kusaini kwa ushirikiano na kutuma muamala wa usuluhishi, wanaweza kufunga njia na kukomboa salio lao mara moja. Hali mbaya zaidi, moja ya pande inaweza kuwa mbishi, kukataa kushirikiana, na kulazimisha chame kingine kufanya kufunga kwa upande mmoja na muamala wa hivi karibuni zaidi wa ahadi. Wakifanya hivyo, wanalazimika pia kusubiri fedha ((("payment channels", "trustless channels", startref="payment-channel-trustless")))((("trustless channels", startref="trustless-channel")))((("timelocks", "trustless channels", startref="timelock-trustless")))((("commitment transactions", "trustless channels", startref="commit-trustless")))zao.
+
+[role="less_space pagebreak-before"]
+==== Ahadi za Ubatilishaji za Asymmetric
+
+Njia nyingine((("payment channels", "asymmetric revocable commitments", id="payment-channel-revoke")))((("asymmetric revocable commitments", id="asymmetric-revoke-commit")))((("commitment transactions", "asymmetric revocable commitments", id="commit-revoke")))((("revocable commitments", id="revoke-commit"))) ya kushughulikia hali za ahadi zilizotangulia ni kuzibatilisha waziwazi. Hata hivyo, hii si rahisi kufikia. Sifa kuu ya Bitcoin ni kwamba mara tu muamala unapokuwa halali, unabaki halali na hauisha. Njia pekee ya kufuta muamala ni kupata muamala unaokinzana kuthibitishwa. Ndiyo maana tulitumia timelocks katika mfano rahisi wa njia ya malipo kuhakikisha kwamba ahadi za hivi karibuni zaidi zingeweza kutumiwa kabla ahadi za zamani hazijawa halali. Hata hivyo, kupanga ahadi kwa wakati kunaunda vikwazo vingi ambavyo vinafanya njia za malipo kuwa ngumu kutumia.
+
+Ingawa muamala hauwezi kufutwa, unaweza kuundwa kwa njia inayofanya kuutumia kuwe kusikotarajiwa. Jinsi tunavyofanya hivyo ni kwa kumpa kila chama _funguo ya ubatilishaji_ ambayo inaweza kutumika kumkaripiwa chama kingine ikiwa watajaribu kudanganya. Utaratibu huu wa kubatilisha miamala ya awali ya ahadi ulipendekeza kwanza kama sehemu ya LN.
+
+Kuelezea funguo za ubatilishaji, tutaunda njia ya malipo ngumu zaidi kati ya ubadilishaji mbili zinazoendesha Hitesh na Irene. Hitesh na Irene wanaendesha ubadilishaji wa Bitcoin nchini India na USA, mtawalia. Wateja wa ubadilishaji wa India wa Hitesh mara nyingi wanatuma malipo kwa wateja wa ubadilishaji wa USA wa Irene na kinyume chake. Kwa sasa, miamala hii hutokea kwenye blockchain ya Bitcoin, lakini hii inamaanisha kulipa ada na kusubiri vitalu kadhaa kwa uthibitisho. Kuweka njia ya malipo kati ya ubadilishaji kutapunguza kwa kiasi kikubwa gharama na kuongeza kasi ya mtiririko wa muamala.
+
+Hitesh na Irene wanaanzisha njia kwa kuunda kwa ushirikiano muamala wa ufadhili, kila mmoja akifadhili njia kwa bitcoin 5. Kabla ya kusaini muamala wa ufadhili, lazima wasaini seti ya kwanza ya ahadi (inayoitwa _urudishaji_) ambayo inagawanya salio la awali la bitcoin 5 kwa Hitesh na bitcoin 5 kwa Irene. Muamala wa ufadhili unafunga hali ya njia katika multisig ya 2-kati-ya-2, kama vile katika mfano wa njia rahisi.
+
+Muamala wa ufadhili unaweza kuwa na ingizo moja au zaidi kutoka kwa Hitesh (jumla ya bitcoin 5 au zaidi), na ingizo moja au zaidi kutoka kwa Irene (jumla ya bitcoin 5 au zaidi). Maingizo lazima yazidi kidogo uwezo wa njia ili kufunika ada za muamala. Muamala una matokeo moja ambayo inafunga jumla ya bitcoin 10 kwa anwani ya multisig ya 2-kati-ya-2 inayodhibitiwa na Hitesh na Irene wote wawili. Muamala wa ufadhili unaweza pia kuwa na matokeo moja au zaidi kurudisha mabadiliko kwa Hitesh na Irene ikiwa maingizo yao yalizidi mchango wao ulioikusudiwa wa njia. Huu ni muamala mmoja wenye maingizo yaliyotolewa na kusainiwa na pande mbili. Lazima uundwe kwa ushirikiano na kusainiwa na kila chama kabla ya kupitishwa.
+
+Sasa, badala ya kuunda muamala mmoja wa ahadi ambao pande zote mbili zinasaini, Hitesh na Irene wanaunda miamala miwili tofauti ya ahadi ambayo ni _asymmetric_.
+
+[role="less_space pagebreak-before"]
+Hitesh ana muamala wa ahadi wenye matokeo mawili. Matokeo ya kwanza yanalipa Irene bitcoin 5 anazodaiwa _mara moja_. Matokeo ya pili yanalipa Hitesh bitcoin 5 anazodaiwa, lakini tu baada ya timelock ya vitalu 1,000. Matokeo ya muamala yanaonekana kama hivi:
+
+----
+Input: 2-of-2 funding output, signed by Irene
+
+Output 0 <5 bitcoins>:
+    <Irene's Public Key> CHECKSIG
+
+Output 1 <5 bitcoins>:
+    <1000 blocks>
+    CHECKSEQUENCEVERIFY
+    DROP
+    <Hitesh's Public Key> CHECKSIG
+----
+
+Irene ana muamala tofauti wa ahadi wenye matokeo mawili. Matokeo ya kwanza yanalipa Hitesh bitcoin 5 anazodaiwa mara moja. Matokeo ya pili yanalipa Irene bitcoin 5 anazodaiwa lakini tu baada ya timelock ya vitalu 1,000. Muamala wa ahadi ambao Irene anashikilia (uliosainiwa na Hitesh) unaonekana kama hivi:
+
+----
+Input: 2-of-2 funding output, signed by Hitesh
+
+Output 0 <5 bitcoins>:
+    <Hitesh's Public Key> CHECKSIG
+
+Output 1 <5 bitcoins>:
+    <1000 blocks>
+    CHECKSEQUENCEVERIFY
+    DROP
+    <Irene's Public Key> CHECKSIG
+----
+
+Kwa njia hii, kila chama kina muamala wa ahadi, ukitumia matokeo ya ufadhili ya 2-kati-ya-2. Ingizo hili linasainiwa na chama _kingine_. Wakati wowote chama kinachoshikilia muamala kinaweza pia kusaini (kukamilisha 2-kati-ya-2) na kupitisha. Hata hivyo, wakisambaza muamala wa ahadi, hulipa chama kingine mara moja, ilhali lazima wasubiri timelock kumalizike. Kwa kuwa na ucheleweshaji katika ukombolaji wa matokeo moja, tunaweka kila chama hasara kidogo wanapoamua kusambaza muamala wa ahadi kwa upande mmoja. Lakini ucheleweshaji wa wakati peke yake hautoshi kuhimiza mwenendo wa haki.
+
+<<asymmetric_commitments>> inaonyesha miamala miwili ya ahadi ya asymmetric, ambapo matokeo yanayolipa mshikiliaji wa ahadi yamecheleweshwa.
+
+[[asymmetric_commitments]]
+.Miamala miwili ya ahadi ya asymmetric yenye malipo yaliyocheleweshwa kwa chama kinachoshikilia muamala.
+image::images/mbc3_1405.png["Two asymmetric commitment transactions with delayed payment for the party holding the transaction"]
+
+Sasa tunawasilisha kipengele cha mwisho cha mpango huu: funguo ya ubatilishaji inayozuia mdanganyifu kusambaza ahadi iliyoisha muda wake. Funguo ya ubatilishaji inakuruhusu chama kilichodhulumwa kumwadhibu mdanganyifu kwa kuchukua salio lote la njia.
+
+Funguo ya ubatilishaji imetengenezwa kwa siri mbili, kila nusu ikitengenezwa kwa kujitegemea na kila mshiriki wa njia. Inafanana na multisig ya 2-kati-ya-2, lakini imeundwa kwa kutumia hesabu ya mkondo wa duara, ili pande zote mbili zijue funguo ya umma ya ubatilishaji lakini kila chama kijue nusu tu ya funguo ya siri ya ubatilishaji.
+
+Katika kila raundi, pande zote mbili zinafunua nusu yao ya siri ya ubatilishaji kwa chama kingine, hivyo kumpa chama kingine (ambalo sasa kina nusu zote mbili) njia ya kudai matokeo ya adhabu ikiwa muamala huu uliobatilishwa utasambazwa wakati wowote.
+
+Kila mojawapo ya miamala ya ahadi ina matokeo "yaliyocheleweshwa." Hati ya ukombolaji kwa matokeo hayo inaruhusu chama kimoja kuikomboa baada ya vitalu 1,000, _au_ chama kingine kuikomboa ikiwa wana funguo ya ubatilishaji, wakiadhibu usambazaji wa ahadi iliyobatilishwa.
+
+Kwa hivyo Hitesh anapounda muamala wa ahadi kwa Irene kusaini, anafanya matokeo ya pili yalipe yeye mwenyewe baada ya vitalu 1,000 au kwa funguo ya umma ya ubatilishaji (ambayo yeye anajua nusu ya siri tu). Hitesh anaunda muamala huu. Atafunua nusu yake ya siri ya ubatilishaji kwa Irene tu atakapowa tayari kuhamia hali mpya ya njia na anataka kubatilisha ahadi hii.
+
+[role="less_space pagebreak-before"]
+Hati ya matokeo ya pili inaonekana kama hivi:
+
+----
+Output 0 <5 bitcoins>:
+    <Irene's Public Key> CHECKSIG
+
+Output 1 <5 bitcoins>:
+IF
+    # Revocation penalty output
+    <Revocation Public Key>
+ELSE
+    <1000 blocks>
+    CHECKSEQUENCEVERIFY
+    DROP
+    <Hitesh's Public Key>
+ENDIF
+CHECKSIG
+----
+
+Irene anaweza kusaini kwa ujasiri muamala huu kwa sababu ukisambazwa, utamlipa mara moja anachostahili. Hitesh anashikilia muamala lakini anajua kwamba ukisambazwa katika kufunga njia kwa upande mmoja, atalazimika kusubiri vitalu 1,000 kulipwa.
+
+Baada ya njia kuendelezwa hadi hali inayofuata, Hitesh lazima _abatilishe_ muamala huu wa ahadi kabla Irene hajatoa idhini ya kusaini miamala yoyote zaidi ya ahadi. Kufanya hivyo, anachohitajika ni kutuma nusu yake ya _funguo ya ubatilishaji_ kwa Irene. Mara Irene anapopata nusu zote mbili za funguo ya siri ya ubatilishaji kwa ahadi hii, anaweza kusaini ahadi ya siku zijazo kwa ujasiri. Anajua kwamba ikiwa Hitesh atajaribu kudanganya kwa kuchapisha ahadi ya awali, anaweza kutumia funguo ya ubatilishaji kukomboa matokeo yaliyocheleweshwa ya Hitesh. _Hitesh akidanganya, Irene anapata matokeo YOTE MAWILI_. Wakati huo huo, Hitesh ana nusu tu ya siri ya ubatilishaji kwa funguo hiyo ya umma ya ubatilishaji na hawezi kukomboa matokeo hadi vitalu 1,000. Irene ataweza kukomboa matokeo na kumwadhibu Hitesh kabla vitalu 1,000 havijapita.
+
+Itifaki ya ubatilishaji ni ya nchi mbili, kumaanisha katika kila raundi, kadri hali ya njia inavyoendelea, pande mbili zinabadilishana ahadi mpya, zinabadilishana siri za ubatilishaji kwa ahadi zilizotangulia, na kusaini miamala ya ahadi ya kila mmoja. Baada ya kukubali hali mpya, wanafanya hali ya awali kutowezekana kutumia kwa kumpa kila mmoja siri muhimu za ubatilishaji ili kuadhibu udanganyifu wowote.
+
+Tuchunguze mfano wa jinsi inavyofanya kazi. Mteja mmoja wa Irene anataka kutuma bitcoin 2 kwa mteja mmoja wa Hitesh. Ili kupitisha bitcoin 2 kupitia njia, Hitesh na Irene lazima waendelee hali ya njia ili ionyeshe salio jipya. Wataahidi hali mpya (nambari ya hali 2) ambapo bitcoin 10 za njia zimegawanywa, bitcoin 7 kwa Hitesh na bitcoin 3 kwa Irene. Ili kuendelea hali ya njia, wataunda kila mmoja miamala mipya ya ahadi inayoonyesha salio jipya la njia.
+
+[role="less_space pagebreak-before"]
+Kama awali, miamala hii ya ahadi ni asymmetric kwa hivyo muamala wa ahadi ambao kila chama kinashikilia unawalazimu kusubiri waukomboe. Muhimu zaidi, kabla ya kusaini miamala mipya ya ahadi, lazima kwanza wabadilishane funguo za ubatilishaji ili kubatilisha ahadi zozote zilizo zamani. Katika kesi hii maalum, maslahi ya Hitesh yanafanana na hali halisi ya njia kwa hivyo hana sababu ya kusambaza hali ya awali. Hata hivyo, kwa Irene, hali nambari 1 inamwachia salio kubwa zaidi kuliko hali ya 2. Irene anapompa Hitesh funguo ya ubatilishaji kwa muamala wake wa ahadi wa awali (hali nambari 1), anabatilisha kwa ufanisi uwezo wake wa kunufaika kwa kurudisha njia hadi hali ya awali kwa sababu kwa funguo ya ubatilishaji, Hitesh anaweza kukomboa matokeo yote mawili ya muamala wa awali wa ahadi bila kucheleweshwa. Kumaanisha ikiwa Irene atasambaza hali ya awali, Hitesh anaweza kutumia haki yake ya kuchukua matokeo yote.
+
+Muhimu, ubatilishaji hautokei kiotomatiki. Ingawa Hitesh ana uwezo wa kumwadhibu Irene kwa kudanganya, lazima atazame blockchain kwa makini kwa dalili za udanganyifu. Akiona muamala wa ahadi wa awali ukisambazwa, ana vitalu 1,000 kuchukua hatua na kutumia funguo ya ubatilishaji kuzuia udanganyifu wa Irene na kumwadhibu kwa kuchukua salio lote, bitcoin zote 10.
+
+Ahadi za ubatilishaji za asymmetric zenye vizuizi vya wakati vya jamaa (+CSV+) ni njia bora zaidi ya kutekeleza njia za malipo na uvumbuzi mkubwa sana katika teknolojia hii. Kwa muundo huu, njia inaweza kubaki wazi bila kikomo na inaweza kuwa na miamala ya ahadi ya kati ya mabilioni. Katika utekelezaji wa LN, hali ya ahadi inatambuliwa na faharasa ya biti 48, ikiruhusu zaidi ya trilioni 281 (2.8 × 10^14^) ya mabadiliko ya hali katika ((("payment channels", "asymmetric revocable commitments", startref="payment-channel-revoke")))((("asymmetric revocable commitments", startref="asymmetric-revoke-commit")))((("commitment transactions", "asymmetric revocable commitments", startref="commit-revoke")))((("revocable commitments", startref="revoke-commit")))njia yoyote moja.
+
+==== Mikataba ya Hash Time Lock (HTLC)
+
+Njia za((("payment channels", "HTLC (Hash Time Lock Contract)", id="payment-channel-htlc")))((("HTLC (Hash Time Lock Contract)", id="htlc")))((("Hash Time Lock Contract (HTLC)", id="hash-time-lock-contract"))) malipo zinaweza kuendelezwa zaidi kwa aina maalum ya mkataba wa akili ambao unaruhusu washiriki kuacha fedha kwa siri inayoweza kukombolewa, yenye muda wa kumalizika. Kipengele hiki kinaitwa _mkataba wa hash time lock_, au _HTLC_, na hutumika katika njia za malipo za pande mbili na za kuelekezwa.
+
+Kwanza tuelezee sehemu ya "hash" ya HTLC. Kuunda HTLC, mpokeaji wa malipo aliyekusudiwa kwanza ataunda siri _R_. Kisha watafahamu hash ya siri hii _H_:
+
+[latexmath]
+++++
+\begin{equation}
+H = Hash(R)
+\end{equation}
+++++
+
+Hii inazalisha hash _H_ ambayo inaweza kuingizwa katika hati ya matokeo. Yeyote anayejua siri anaweza kuitumia kukomboa matokeo. Siri _R_ pia inarejelewa kama _picha ya awali_ kwa kazi ya hash. Picha ya awali ni data inayotumiwa kama ingizo kwa kazi ya hash.
+
+[role="less_space pagebreak-before"]
+Sehemu ya pili ya HTLC ni kipengele cha "kufuli cha wakati." Ikiwa siri haifunuliwi, mlipaji wa HTLC anaweza kupata "urudishaji" baada ya muda fulani. Hii inafikiwa kwa kufuli cha wakati cha kabisa ukitumia +CHECKLOCKTIMEVERIFY+.
+
+Hati inayotekeleza HTLC inaweza kuonekana kama hivi:
+
+----
+IF
+    # Payment if you have the secret R
+    HASH160 <H> EQUALVERIFY
+    <Receiver Public Key> CHECKSIG
+ELSE
+    # Refund after timeout.
+    <lock time> CHECKLOCKTIMEVERIFY DROP
+    <Payer Public Key> CHECKSIG
+ENDIF
+----
+
+Yeyote anayejua siri _R_, ambayo inapohashiwa inasawiana na _H_, anaweza kukomboa matokeo haya kwa kutumia kipengele cha kwanza cha mtiririko wa +IF+.
+
+Siri haifunuliwi na HTLC ikidaiwa baada ya idadi fulani ya vitalu, mlipaji anaweza kudai urudishaji kwa kutumia kipengele cha pili katika mtiririko wa +IF+.
+
+Hii ni utekelezaji wa msingi wa HTLC. Aina hii ya HTLC inaweza kukombolewa na _mtu yeyote_ anayeshikilia siri _R_. HTLC inaweza kuchukua maumbo mengi tofauti yenye tofauti ndogo kwenye hati. Kwa mfano, kuongeza opereta wa +CHECKSIG+ na ufunguo wa umma katika kipengele cha kwanza huzuia ukombolaji wa hash kwa mpokeaji maalum, ambaye lazima pia ((("Bitcoin", "as application platform", "payment channels", secondary-sortas="application platform", startref="bitcoin-app-platform-payment")))((("application platform, Bitcoin as", "payment channels", startref="app-platform-payment")))((("payment channels", startref="payment-channel")))((("payment channels", "HTLC (Hash Time Lock Contract)", startref="payment-channel-htlc")))((("HTLC (Hash Time Lock Contract)", startref="htlc")))((("Hash Time Lock Contract (HTLC)", startref="hash-time-lock-contract")))ajue siri _R_.
+
+[[lightning_network]]
+=== Njia za Malipo Zilizoelekezwa (Lightning Network)
+
+((("LN", see="Lightning Network")))((("Bitcoin", "as application platform", "routed payment channels (Lightning Network)", secondary-sortas="application platform", id="bitcoin-app-platform-ln")))((("application platform, Bitcoin as", "routed payment channels (Lightning Network)", id="app-platform-ln")))((("payment channels", "Lightning Network", id="payment-channel-ln")))((("Lightning Network (LN)", id="lightning")))((("routed payment channels", see="Lightning Network")))Lightning Network (LN) ni mtandao wa njia za malipo za pande mbili zilizounganishwa mwisho hadi mwisho uliopendekezwa. Mtandao kama huu unaweza kuruhusu mshiriki yeyote kuelekeza malipo kutoka njia hadi njia bila kuamini wapatanishi wowote. LN ilikuwa https://oreil.ly/NM8LC[iliielezwa kwanza na Joseph Poon na Thadeus Dryja mnamo Februari 2015], ikijenga juu ya dhana ya njia za malipo kama ilivyopendekezwa na kufafanuliwa na wengine wengi.
+
+"Lightning Network" inarejelea muundo maalum wa mtandao wa njia za malipo ulioekezwa, ambao sasa umetekelezwa na timu angalau tano tofauti za chanzo wazi. Utekelezaji huru unasawazishwa na seti ya viwango vya uingiliano vilivyoelezwa katika https://oreil.ly/lIGIA[hifadhi ya _Basics of Lightning Technology (BOLT)_].
+
+[role="less_space pagebreak-before"]
+==== Mfano wa Msingi wa Lightning Network
+
+Tuchunguze((("payment channels", "Lightning Network", "example of", id="payment-channel-ln-example")))((("Lightning Network (LN)", "example of", id="lightning-example"))) jinsi inavyofanya kazi.
+
+Katika mfano huu, tuna washiriki watano: Alice, Bob, Carol, Diana, na Eric. Washiriki hawa watano wamefungua njia za malipo na kila mmoja, kwa jozi. Alice ana njia ya malipo na Bob. Bob ameunganishwa na Carol, Carol na Diana, na Diana na Eric. Kwa urahisi tuchukulie kwamba kila njia imefadhiliwa na bitcoin 2 na kila mshiriki, kwa jumla ya uwezo wa bitcoin 4 katika kila njia.
+
+<<lightning_network_fig>> inaonyesha washiriki watano katika LN, wameunganishwa na njia za malipo za pande mbili ambazo zinaweza kuunganishwa kufanya malipo kutoka Alice hadi Eric (tazama <<lightning_network>>).
+
+[[lightning_network_fig]]
+.Mfululizo wa njia za malipo za pande mbili zilizounganishwa kuunda LN ambayo inaweza kuelekeza malipo kutoka Alice hadi Eric.
+image::images/mbc3_1406.png["A series of bi-directional payment channels linked to form a Lightning Network"]
+
+Alice anataka kumlipa Eric bitcoin 1. Hata hivyo, Alice hana njia ya malipo inayounganika na Eric. Kuunda njia ya malipo kunahitaji muamala wa ufadhili, ambao lazima uthibitishwe kwenye blockchain ya Bitcoin. Alice hataki kufungua njia mpya ya malipo na kuahidi fedha zake zaidi. Je, kuna njia ya kumlipa Eric kwa njia isiyo ya moja kwa moja?
+
+<<ln_payment_process>> inaonyesha mchakato wa hatua kwa hatua wa kuelekeza malipo kutoka Alice hadi Eric, kupitia mfululizo wa ahadi za HTLC kwenye njia za malipo zinazounganisha washiriki.
+
+[[ln_payment_process]]
+.Uelekezi wa malipo hatua kwa hatua kupitia LN.
+image::images/mbc3_1407.png["Step-by-step payment routing through a Lightning Network"]
+
+Alice anaendesha nodi ya LN inayofuatilia njia yake ya malipo kwa Bob na ina uwezo wa kugundua njia kati ya njia za malipo. Nodi ya LN ya Alice pia ina uwezo wa kuunganika kupitia mtandao kwa nodi ya LN ya Eric. Nodi ya Eric inaunda siri +R+ kwa kutumia kizalishi cha nambari bila mpangilio. Nodi ya Eric haifunui siri hii kwa mtu yeyote. Badala yake, nodi ya Eric inahesabu hash +H+ ya siri +R+ na kupitisha hash hii kwa nodi ya Alice kwa njia ya ankara (tazama <<ln_payment_process>>, [.keep-together]#hatua ya 1).#
+
+Sasa nodi ya LN ya Alice inaunda njia kati ya nodi ya LN ya Alice na nodi ya LN ya Eric. Algoriti ya utafutaji wa njia itachunguzwa kwa undani zaidi baadaye, lakini kwa sasa tuchukulie kwamba nodi ya Alice inaweza kupata njia bora.
+
+Nodi ya Alice kisha inaunda HTLC, inayolipwa kwa hash +H+, yenye muda wa urudishaji wa vitalu 10 (kitalu cha sasa + 10), kwa kiasi cha bitcoin 1.003 (tazama <<ln_payment_process>>, hatua ya 2). Bitcoin 0.003 za ziada zitatumika fidia nodi za kati kwa ushiriki wao katika njia hii ya malipo. Alice anampa Bob HTLC hii, akipunguza usawa wake wa njia na Bob kwa bitcoin 1.003 na kuiahidi kwa HTLC. HTLC ina maana hii: _"Alice anaahidi bitcoin 1.003 za usawa wake wa njia kulipwa kwa Bob ikiwa Bob anajua siri, au kurudishwa kwa salio la Alice ikiwa vitalu 10 vitapita."_ Salio la njia kati ya Alice na Bob sasa linaonyeshwa na miamala ya ahadi yenye matokeo matatu: salio la bitcoin 2 kwa Bob, salio la bitcoin 0.997 kwa Alice, bitcoin 1.003 zilizoahidiwa katika HTLC ya Alice. Salio la Alice limepunguzwa kwa kiasi kilichoahidiwa kwa HTLC.
+
+Bob sasa ana ahadi kwamba akiweza kupata siri +R+ ndani ya vitalu 10 vinavyofuata, anaweza kudai bitcoin 1.003 zilizofungwa na Alice. Na ahadi hii mkononi, nodi ya Bob inaunda HTLC kwenye njia yake ya malipo na Carol. HTLC ya Bob inaahidi bitcoin 1.002 kwa hash +H+ kwa vitalu 9, ambayo Carol anaweza kukomboa akiwa na siri +R+ (tazama <<ln_payment_process>> hatua ya 3). Bob anajua kwamba Carol akidai HTLC yake, lazima atoe +R+. Akiwa na +R+ ndani ya siku tisa, anaweza kuitumia kudai HTLC ya Alice kwake. Pia anapata bitcoin 0.001 kwa kuahidi salio lake la njia kwa siku tisa. Carol akishindwa kudai HTLC yake na yeye akishindwa kudai HTLC ya Alice, kila kitu kitarudi kwa salio la awali la njia na hakuna atakayepoteza. Salio la njia kati ya Bob na Carol sasa ni: bitcoin 2 kwa Carol, bitcoin 0.998 kwa Bob, bitcoin 1.002 zilizoahidiwa na Bob kwa HTLC.
+
+Carol sasa ana ahadi kwamba akipata +R+ ndani ya vitalu tisa vinavyofuata, anaweza kudai bitcoin 1.002 zilizofungwa na Bob. Sasa anaweza kuunda ahadi ya HTLC kwenye njia yake na Diana. Anaahidi HTLC ya bitcoin 1.001 kwa hash +H+, kwa vitalu nane, ambayo Diana anaweza kukomboa akiwa na siri +R+ (tazama <<ln_payment_process>>, hatua ya 4). Kwa mtazamo wa Carol, ikifanikiwa ana faida ya bitcoin 0.001 na isipofanikiwa hapotezi chochote. HTLC yake kwa Diana inawezekana tu ikiwa +R+ itafunuliwa, wakati ambapo anaweza kudai HTLC kutoka kwa Bob. Salio la njia kati ya Carol na Diana sasa ni: bitcoin 2 kwa Diana, bitcoin 0.999 kwa Carol, bitcoin 1.001 zilizoahidiwa na Carol kwa HTLC.
+
+Hatimaye, Diana anaweza kumpa Eric HTLC, akiahidi bitcoin 1 kwa vitalu saba kwa hash +H+ (tazama <<ln_payment_process>>, hatua ya 5). Salio la njia kati ya Diana na Eric sasa ni: bitcoin 2 kwa Eric, bitcoin 1 kwa Diana, bitcoin 1 zilizoahidiwa na Diana kwa HTLC.
+
+Hata hivyo, katika kituo hiki cha njia, Eric _ana_ siri +R+. Kwa hivyo anaweza kudai HTLC iliyotolewa na Diana. Anatuma +R+ kwa Diana na kudai bitcoin 1, akiongeza kwenye salio lake la njia (tazama <<ln_payment_process>>, hatua ya 6). Salio la njia sasa ni: bitcoin 1 kwa Diana, bitcoin 3 kwa Eric.
+
+Sasa Diana ana siri +R+. Kwa hivyo sasa anaweza kudai HTLC kutoka kwa Carol. Diana anapeleka +R+ kwa Carol na kuongeza bitcoin 1.001 kwa salio lake la njia (tazama <<ln_payment_process>>, hatua ya 7). Sasa salio la njia kati ya Carol na Diana ni: bitcoin 0.999 kwa Carol, bitcoin 3.001 kwa Diana. Diana amepata "faida" ya 0.001 kwa kushiriki katika njia hii ya malipo.
+
+Ikirejesha kupitia njia, siri +R+ inaruhusu kila mshiriki kudai HTLC zinazotarajiwa. Carol anadai bitcoin 1.002 kutoka kwa Bob, akiweka salio kwenye njia yao kuwa: bitcoin 0.998 kwa Bob, bitcoin 3.002 kwa Carol (tazama <<ln_payment_process>>, hatua ya 8). Hatimaye, Bob anadai HTLC kutoka kwa Alice (tazama <<ln_payment_process>>, hatua ya 9). Salio lao la njia linasasishwa kuwa: bitcoin 0.997 kwa Alice, bitcoin 3.003 kwa Bob.
+
+Alice amelipa Eric bitcoin 1 bila kufungua njia kwa Eric. Hakuna mojawapo ya wahusika wa kati katika njia ya malipo walipaswa kuamini kila mmoja. Kwa ahadi ya muda mfupi ya fedha zao kwenye njia wanaweza kupata ada ndogo, na hatari pekee ikiwa ucheleweshaji mdogo wa urudishaji ikiwa njia ilifungwa au malipo yaliyoelekezwa ((("payment channels", "Lightning Network", "example of", startref="payment-channel-ln-example")))((("Lightning Network (LN)", "example of", startref="lightning-example")))yalishindwa.
+
+==== Usafirishaji wa Lightning Network na Utafutaji wa Njia
+
+Mawasiliano((("payment channels", "Lightning Network", "pathfinding", id="payment-channel-ln-path")))((("Lightning Network (LN)", "pathfinding", id="lightning-path")))((("pathfinding in Lightning Network", id="path-lightning"))) yote kati ya nodi za LN yanasimbwa kwa hatua nodi hadi nodi. Zaidi ya hayo, nodi zina ufunguo wa umma wa muda mrefu ambao hutumia kama kitambulisho na kuthibitishana.
+
+Nodi inapotaka kutuma malipo kwa nodi nyingine, lazima kwanza iunde _njia_ kupitia mtandao kwa kuunganisha njia za malipo zenye uwezo wa kutosha. Nodi hutangaza habari za uelekezaji, ikiwa ni pamoja na ni njia gani walizo wazi, kila njia ina uwezo wa kiasi gani, na ada gani wanayotozea kuelekeza malipo. Habari za uelekezaji zinaweza kushirikiwa kwa njia mbalimbali, na itifaki tofauti za utafutaji wa njia zimeibuka kadri teknolojia ya LN inavyoendelea. Utekelezaji wa sasa wa ugunduzi wa njia hutumia mfano wa P2P ambapo nodi zinaeneza matangazo ya njia kwa marika yao katika mfano wa "mafuriko", kama vile Bitcoin inavyoeneza miamala.
+
+++++
+<p class="fix_tracking3">
+Katika mfano wetu uliotangulia, nodi ya Alice hutumia moja ya taratibu hizi za ugunduzi wa njia kupata njia moja au zaidi zinazounganisha nodi yake na nodi ya Eric. Nodi ya Alice ikiisha kuunda njia, itaanzisha njia hiyo kupitia mtandao kwa kueneza mfululizo wa maagizo yaliyosimbwa na yaliyobandikwa kuunganisha kila moja ya njia za malipo zinazo karibu.
+</p>
+
+<p class="fix_tracking2">
+Muhimu zaidi, njia hii inajulikana na nodi ya Alice peke yake. Washiriki wengine wote katika njia ya malipo wanaona nodi jirani peke yake. Kwa mtazamo wa Carol, hii inaonekana kama malipo kutoka Bob hadi Diana. Carol hajui kwamba Bob kwa kweli anaeneza malipo kutoka Alice. Pia hajui kwamba Diana ataeneza malipo kwa Eric.</p>
+++++
+
+Hii ni kipengele muhimu cha LN kwa sababu inahakikisha faragha ya malipo na inafanya iwe vigumu kutumia ufuatiliaji, udhibiti, au orodha nyeusi. Lakini Alice anawezaje kuanzisha njia hii ya malipo bila kufunua chochote kwa nodi za kati?
+
+LN inatekeleza itifaki ya kuelekeza vitunguu kulingana na mpango unaoitwa https://oreil.ly/fuCiK[Sphinx]. Itifaki hii ya uelekezaji inahakikisha kwamba mtumaji wa malipo anaweza kuunda na kuwasiliana na njia kupitia LN ili:
+
+++++
+<ul>
+<li> Nodi za kati zinaweza kuthibitisha na kusimbua sehemu yao ya habari za njia na kupata kituo kinachofuata.</li>
+
+<li> Zaidi ya kituo kilichotangulia na kinachofuata, haziwezi kujifunza kuhusu nodi nyingine yoyote ambayo ni sehemu ya njia.</li>
+
+<li>Haziwezi kutambua urefu wa njia ya malipo au nafasi yao wenyewe katika njia hiyo.</li>
+
+<li>Kila sehemu ya njia imesimbwa kwa njia ambayo mshambuliaji wa kiwango cha mtandao hawezi kuhusisha pakiti kutoka sehemu tofauti za njia na kila mmoja.</li>
+
+<li><p class="fix_tracking3">Tofauti na Tor (itifaki ya kuficha utambulisho ya vitunguu kwenye mtandao wa intaneti), hakuna "nodi za kutoka" ambazo zinaweza kuwekwa chini ya ufuatiliaji. Malipo hayahitaji kupitishwa kwenye blockchain ya Bitcoin; nodi tu zinasasisha salio la njia.</p>
+  </li>
+  </ul>
+++++
+
+Kwa kutumia itifaki hii ya kuelekeza vitunguu, Alice anafunika kila kipengele cha njia katika safu ya usimbaji fiche, akianza na mwisho na kufanya kazi nyuma. Anasimba ujumbe kwa Eric kwa ufunguo wa umma wa Eric. Ujumbe huu unafunikwa katika ujumbe uliofichwa kwa Diana, ukimtambua Eric kama mpokeaji anayefuata. Ujumbe kwa Diana unafunikwa katika ujumbe uliofichwa kwa ufunguo wa umma wa Carol na kumtambua Diana kama mpokeaji anayefuata. Ujumbe kwa Carol umefichwa kwa ufunguo wa Bob. Hivyo, Alice ameunda "vitunguu" hivi vya ujumbe vilivyofichwa vya tabaka nyingi. Anamtumia Bob, ambaye anaweza tu kusimbua na kufungua safu ya nje. Ndani, Bob anapata ujumbe unaoelekezwa kwa Carol ambao anaweza kumtumia Carol lakini hawezi kuusimbua mwenyewe. Ukifuata njia, ujumbe unapitishwa, kusimbulishwa, kupitishwa, n.k., hadi kwa Eric. Kila mshiriki anajua tu nodi iliyotangulia na inayofuata katika kila kituo.
+
+Kila kipengele cha njia kina habari kuhusu HTLC ambayo lazima ienezwe hadi kituo kinachofuata, kiasi kinachotumwa, ada ya kujumuisha, na muda wa kumalizika wa kufuli cha CLTV (katika vitalu) cha HTLC. Habari za njia zinapoenea, nodi hufanya ahadi za HTLC mbele hadi kituo kinachofuata.
+
+Katika hatua hii, unaweza kushangaa jinsi inavyowezekana kwamba nodi hazijui urefu wa njia na nafasi yao katika njia hiyo. Baada ya yote, zinapokea ujumbe na kuupitisha hadi kituo kinachofuata. Je, haifupi, kuziruhusu kutoa urefu wa njia na nafasi yao? Kuzuia hili, ukubwa wa pakiti umewekwa na kujazwa kwa data bila mpangilio. Kila nodi inaona kituo kinachofuata na ujumbe uliofichwa wa urefu uliowekwa wa kupitisha. Mpokeaji wa mwisho peke yake anaona kwamba hakuna kituo kinachofuata. Kwa kila mtu mwingine inaonekana kama kuna ((("payment channels", "Lightning Network", "pathfinding", startref="payment-channel-ln-path")))((("Lightning Network (LN)", "pathfinding", startref="lightning-path")))((("pathfinding in Lightning Network", startref="path-lightning")))vituo zaidi kwenda.
+
+==== Faida za Lightning Network
+
+((("payment channels", "Lightning Network", "benefits of", id="payment-channel-ln-benefits")))((("Lightning Network (LN)", "benefits of", id="lightning-benefits")))LN ni teknolojia ya uelekezaji ya safu ya pili. Inaweza kutumika kwenye blockchain yoyote inayosaidia uwezo wa msingi, kama vile miamala ya multisaini, kufuli cha wakati, na mikataba ya msingi ya akili.
+
+LN imewekwa juu ya mtandao wa Bitcoin, ikimpa Bitcoin ongezeko kubwa la uwezo, faragha, undani, na kasi, bila kuathiri kanuni za uendeshaji wa kutokuamini bila wapatanishi:
+
+Faragha:: Malipo ya LN yana faragha zaidi sana kuliko malipo kwenye blockchain ya Bitcoin, kwani hayaonekani hadharani. Ingawa washiriki katika njia wanaweza kuona malipo yanayoenezwa kupitia njia zao, hawajui mtumaji au mpokeaji.
+
+Ubadilishaji:: LN inafanya iwe vigumu zaidi kutumia ufuatiliaji na orodha nyeusi kwenye Bitcoin, ikiongeza ubadilishaji wa sarafu.
+
+Kasi:: Miamala ya Bitcoin inayotumia LN inasuluhishwa kwa millisekunde, badala ya dakika au masaa, kwani HTLCs zinafutwa bila kuahidi miamala kwenye kitalu.
+
+Undani:: LN inaweza kuwezesha malipo angalau madogo kama kikomo cha "vumbi" cha Bitcoin, labda hata madogo zaidi.
+
+Uwezo:: LN inaongeza uwezo wa mfumo wa Bitcoin kwa maagizo kadhaa ya ukubwa. Kikomo cha juu cha idadi ya malipo kwa sekunde ambayo yanaweza kuelekezwa kupitia Lightning Network inategemea tu uwezo na kasi ya kila nodi.
+
+Uendeshaji Bila Kuamini:: LN inatumia miamala ya Bitcoin kati ya nodi zinazofanya kazi kama marika bila kuamini kila mmoja. Hivyo, LN inachukua kanuni za mfumo wa Bitcoin, huku ikipanua vigezo vyake vya uendeshaji ((("Bitcoin", "as application platform", "routed payment channels (Lightning Network)", secondary-sortas="application platform", startref="bitcoin-app-platform-ln")))((("application platform, Bitcoin as", "routed payment channels (Lightning Network)", startref="app-platform-ln")))((("payment channels", "Lightning Network", startref="payment-channel-ln")))((("Lightning Network (LN)", startref="lightning")))((("payment channels", "Lightning Network", "benefits of", startref="payment-channel-ln-benefits")))((("Lightning Network (LN)", "benefits of", startref="lightning-benefits")))kwa kiasi kikubwa.
+
+Tumechunguza tu baadhi ya programu zinazoibuka ambazo zinaweza kujengwa kwa kutumia blockchain ya Bitcoin kama jukwaa la kuamini. Programu hizi zinapanua wigo wa Bitcoin zaidi ya malipo.
+
+Sasa umefika mwisho wa kitabu hiki, utafanya nini na maarifa uliyopata? Mamilioni ya watu, labda mabilioni, wanajua jina "Bitcoin," lakini asilimia ndogo yao wanajua kwa undani jinsi Bitcoin inavyofanya kazi kama unavyojua wewe sasa hivi. Maarifa hayo yana thamani. Thamani zaidi ni watu, kama wewe mwenyewe, ambao wana nia ya kina kuhusu Bitcoin kiasi kwamba wako tayari kusoma kurasa mia kadhaa kuhusu hiyo.
+
+Ikiwa bado hujaanza kufanya hivyo, tafadhali fikiria kuchangia Bitcoin kwa njia fulani. Unaweza kuendesha nodi kamili kuthibitisha malipo ya Bitcoin unayopokea, kuunda programu zinazofanya iwe rahisi kwa watu wengine kutumia Bitcoin, au kusaidia kuelimisha watu wengine kuhusu Bitcoin na uwezekano wake. Hata unaweza kuchukua hatua adimu ya kuchangia programu za chanzo wazi za miundombinu ya Bitcoin, kama vile Bitcoin Core, ukifanya kazi kwa makini na idadi ndogo ya watu wenye akili ya ajabu kuunda zana ambazo hakuna mtu atakayewahi kulipa lakini ambazo mabilioni wanaweza kutegemea siku moja.
+
+Chochote safari yako ya Bitcoin, tunakushukuru kwa kufanya _Mastering Bitcoin_ kuwa sehemu [.keep-together]#yake.#

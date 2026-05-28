@@ -68,12 +68,6 @@ Toleo la hivi karibuni la PDF linapatikana kwenye [Releases](../../releases).
 
 ---
 
-## Kujenga PDF
-
-Unahitaji [Docker](https://www.docker.com/) au Ruby + asciidoctor-pdf.
-
----
-
 ## Kuchangia
 
 Ukitaka kusaidia kuboresha tafsiri:

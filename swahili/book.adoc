@@ -8,6 +8,11 @@
 :imagesdir: ../bitcoinbook-third_edition_print1
 :source-highlighter: rouge
 :lang: sw
+:appendix-caption: Kiambatisho
+:chapter-label: Sura
+:part-label: Sehemu
+:preface-title: Utangulizi
+:front-cover-image: image:{docdir}/images/cover_swahili.png[fit=fill]
 
 Na Andreas M. Antonopoulos na David A. Harding. +
 Tafsiri ya Kiswahili na comwanga.

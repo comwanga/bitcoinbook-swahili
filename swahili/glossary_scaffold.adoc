@@ -1,7 +1,7 @@
 // TRANSLATION METADATA
 // source: glossary.asciidoc
-// translator:
-// date:
+// translator: comwanga
+// date: 2026-05-28
 // status: draft
 // glossary-version: 1.0
 
@@ -9,31 +9,31 @@
 
 [[term-51-attacks]]
 51% attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya asilimia 51
 
 [[term-absolute-timelocks]]
 absolute timelocks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kufunga kwa wakati kamili
 
 [[term-abstract-syntax-trees-ast]]
 abstract syntax trees (ast)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miti ya kisintaksia muhtasari (AST)
 
 [[term-absurd-fees]]
 absurd fees::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ada za kipuuzi
 
 [[term-acquiring-bitcoins]]
 acquiring bitcoins::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kupata bitcoini
 
 [[term-activation-soft-forks]]
 activation (soft forks)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uanzishaji (matawi laini)
 
 [[term-additivity]]
 additivity::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uongezekaji
 
 [[term-address]]
 address::
@@ -41,75 +41,75 @@ address::
 
 [[term-addresses]]
 addresses::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] anwani (wingi)
 
 [[term-aezeed-recovery-codes]]
 aezeed recovery codes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misimbo ya kurejesha ya aezeed
 
 [[term-aggregated-public-keys]]
 aggregated public keys::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] funguo za umma zilizounganishwa
 
 [[term-alertnotify-option-bitcoind-option]]
 alertnotify option (bitcoind option)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chaguo la alertnotify (chaguo la bitcoind)
 
 [[term-amount-field-transaction-outputs]]
 amount field (transaction outputs)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] sehemu ya kiasi (matokeo ya muamala)
 
 [[term-ancestor-fee-rate-mining]]
 ancestor fee rate mining::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uchimbaji wa kiwango cha ada ya babu
 
 [[term-anchor-outputs-cpfp]]
 anchor outputs (cpfp)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matokeo ya nanga (CPFP)
 
 [[term-api-access]]
 api access::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ufikiaji wa API
 
 [[term-application-platform-bitcoin-as]]
 application platform, bitcoin as::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] jukwaa la programu, bitcoin kama
 
 [[term-archival-full-nodes]]
 archival full nodes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] nodi kamili za kumbukumbu
 
 [[term-ast-abstract-syntax-trees]]
 ast (abstract syntax trees)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] AST (miti ya kisintaksia muhtasari)
 
 [[term-asymmetric-cryptography]]
 asymmetric cryptography::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usimbaji fiche usilinganifu
 
 [[term-asymmetric-revocable-commitments]]
 asymmetric revocable commitments::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ahadi zinazoweza kufutwa zisizolingana
 
 [[term-authentication]]
 authentication::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uthibitisho wa utambulisho
 
 [[term-authentication-path]]
 authentication path::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] njia ya uthibitisho
 
 [[term-authorization]]
 authorization::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] idhini
 
 [[term-backing-up]]
 backing up::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuhifadhi nakala
 
 [[term-balanced-merkle-trees]]
 balanced merkle trees::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miti ya merkle yenye usawa
 
 [[term-base58]]
 base58::
@@ -117,19 +117,19 @@ base58::
 
 [[term-base58check-encoding]]
 base58check encoding::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usimbaji wa base58check
 
 [[term-base64-encoding]]
 base64 encoding::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usimbaji wa base64
 
 [[term-batch-verification-of-digital-signatures]]
 batch verification of digital signatures::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ukaguzi wa kundi la saini za kidijitali
 
 [[term-bcoin]]
 bcoin::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] bcoin
 
 [[term-bech32]]
 bech32::
@@ -137,23 +137,23 @@ bech32::
 
 [[term-bech32-addresses]]
 bech32 addresses::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] anwani za bech32
 
 [[term-bech32m-addresses]]
 bech32m addresses::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] anwani za bech32m
 
 [[term-best-practices-security]]
 best practices, security::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mbinu bora, usalama
 
 [[term-binary-hash-trees]]
 binary hash trees::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miti ya hashi ya binary
 
 [[term-binomial-random-walk]]
 binomial random walk::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mwendo wa nasibu wa binomial
 
 [[term-bip]]
 BIP::
@@ -161,47 +161,47 @@ BIP::
 
 [[term-bip118-sighash-flags]]
 bip118 sighash flags::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] bendera za sighash za BIP118
 
 [[term-bip144-extended-serialization-format]]
 bip144 extended serialization format::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] umbizo la serialization la BIP144
 
 [[term-bip148-activation-of-segwit]]
 bip148 activation of segwit::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uanzishaji wa SegWit wa BIP148
 
 [[term-bip32-hd-hierarchical-deterministic-key-generation]]
 bip32 hd (hierarchical deterministic) key generation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uzalishaji wa funguo wa BIP32 HD (kihierarki deterministic)
 
 [[term-bip34-signaling-activation]]
 bip34 signaling/activation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ishara/uanzishaji wa BIP34
 
 [[term-bip39-recovery-codes]]
 bip39 recovery codes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misimbo ya kurejesha ya BIP39
 
 [[term-bip43-hd-wallet-tree-structure]]
 bip43 hd wallet tree structure::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] muundo wa mti wa mkoba wa HD wa BIP43
 
 [[term-bip44-hd-wallet-tree-structure]]
 bip44 hd wallet tree structure::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] muundo wa mti wa mkoba wa HD wa BIP44
 
 [[term-bip8-mandatory-lock-in]]
 bip8 mandatory lock-in::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kufungwa kwa lazima kwa BIP8
 
 [[term-bip9-signaling-activation]]
 bip9 signaling/activation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ishara/uanzishaji wa BIP9
 
 [[term-bips-bitcoin-improvement-proposals]]
 bips (bitcoin improvement proposals)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] BIPs (mapendekezo ya uboreshaji wa bitcoin)
 
 [[term-bitcoin]]
 bitcoin::
@@ -209,39 +209,39 @@ bitcoin::
 
 [[term-bitcoin-core]]
 bitcoin core::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] Bitcoin Core
 
 [[term-bitcoin-improvement-proposals]]
 bitcoin improvement proposals::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mapendekezo ya uboreshaji wa bitcoin
 
 [[term-bitcoin-network]]
 bitcoin network::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mtandao wa bitcoin
 
 [[term-bitcoin-relay-network]]
 bitcoin relay network::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mtandao wa ureletaji wa bitcoin
 
 [[term-bitcoin-whitepaper]]
 bitcoin whitepaper::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] karatasi nyeupe ya bitcoin
 
 [[term-bitcoin-s]]
 bitcoin-s::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] bitcoin-s
 
 [[term-bitcoinj]]
 bitcoinj::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] bitcoinj
 
 [[term-bitcoins]]
 bitcoins::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:transliterated] bitcoini (wingi)
 
 [[term-bitcore]]
 bitcore::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] bitcore
 
 [[term-block]]
 block::
@@ -253,11 +253,11 @@ block header::
 
 [[term-block-header-hash]]
 block header hash::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hashi ya kichwa cha kizuizi
 
 [[term-block-height]]
 block height::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] urefu wa kizuizi
 
 [[term-block-reward]]
 block reward::
@@ -265,11 +265,11 @@ block reward::
 
 [[term-block-subsidy]]
 block subsidy::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ruzuku ya kizuizi
 
 [[term-block-finding-races]]
 block-finding races::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashindano ya kupata vizuizi
 
 [[term-blockchain]]
 blockchain::
@@ -277,63 +277,63 @@ blockchain::
 
 [[term-blockchain-explorers]]
 blockchain explorers::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vichunguzi vya mlolongo wa vizuizi
 
 [[term-blocks]]
 blocks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vizuizi (wingi)
 
 [[term-blocksonly-option-bitcoind-option]]
 blocksonly option (bitcoind option)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chaguo la vizuizi tu (chaguo la bitcoind)
 
 [[term-bloom-filters]]
 bloom filters::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vichujio vya bloom
 
 [[term-brainwallets]]
 brainwallets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mikoba ya akilini
 
 [[term-btcd]]
 btcd::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] btcd
 
 [[term-building-blocks]]
 building blocks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vipande vya msingi
 
 [[term-byzantine-generals-x27-problem]]
 byzantine generals&#x27; problem::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] tatizo la majenerali wa Byzantine
 
 [[term-c-toolkits]]
 c# toolkits::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vifaa vya C#
 
 [[term-c-c-toolkits]]
 c/c++ toolkits::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vifaa vya C/C++
 
 [[term-calculations]]
 calculations::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mahesabu
 
 [[term-candidate-blocks]]
 candidate blocks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vizuizi vya wagombea
 
 [[term-carve-outs-cpfp]]
 carve outs (cpfp)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] sehemu zilizochongwa (CPFP)
 
 [[term-chain-forks]]
 chain forks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matawi ya mnyororo
 
 [[term-challenge-script]]
 challenge script::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hati ya changamoto
 
 [[term-change-output]]
 change output::
@@ -341,7 +341,7 @@ change output::
 
 [[term-changeless-transactions]]
 changeless transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala bila chenji
 
 [[term-channel]]
 channel::
@@ -353,43 +353,43 @@ checksum::
 
 [[term-checksums]]
 checksums::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ukaguzi wa jumla (wingi)
 
 [[term-child-blocks]]
 child blocks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vizuizi vya watoto
 
 [[term-child-key-pair-derivation]]
 child key pair derivation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] utokaji wa jozi ya ufunguo wa mtoto
 
 [[term-choosing]]
 choosing::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuchagua
 
 [[term-circular-dependencies]]
 circular dependencies::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] utegemezi wa mzunguko
 
 [[term-clearing-transactions]]
 clearing transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala ya usafishaji
 
 [[term-client-side-validation]]
 client-side validation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uthibitishaji upande wa mteja
 
 [[term-clients]]
 clients::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] wateja
 
 [[term-codex32-recovery-codes]]
 codex32 recovery codes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misimbo ya kurejesha ya codex32
 
 [[term-coin-selection-in-transactions]]
 coin selection in transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uchaguzi wa sarafu katika miamala
 
 [[term-coinbase]]
 coinbase::
@@ -397,75 +397,75 @@ coinbase::
 
 [[term-coinbase-data]]
 coinbase data::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] data ya coinbase
 
 [[term-coinbase-transactions]]
 coinbase transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala ya coinbase
 
 [[term-cold-storage]]
 cold storage::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uhifadhi baridi
 
 [[term-collision-attacks]]
 collision attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya mgongano
 
 [[term-colored-coins-application]]
 colored coins application::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] programu ya sarafu zenye rangi
 
 [[term-command-line-interface-bitcoin-core]]
 command-line interface (bitcoin core)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kiolesura cha mstari wa amri (bitcoin core)
 
 [[term-commitment-hash]]
 commitment hash::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hashi ya ahadi
 
 [[term-commitment-transactions]]
 commitment transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala ya ahadi
 
 [[term-commitments]]
 commitments::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ahadi
 
 [[term-compact-block-filters]]
 compact block filters::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vichujio vya vizuizi vifupi
 
 [[term-compact-block-relay]]
 compact block relay::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ureletaji wa vizuizi vifupi
 
 [[term-compactsize-unsigned-integers]]
 compactsize  unsigned integers::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] nambari nzima zisizoandikwa za ukubwa mfupi
 
 [[term-compiling-bitcoin-core-from-source-code]]
 compiling bitcoin core from source code::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kukusanya bitcoin core kutoka kwa msimbo wa chanzo
 
 [[term-compressed-private-keys]]
 compressed private keys::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] funguo za siri zilizosindikwa
 
 [[term-compressed-public-keys]]
 compressed public keys::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] funguo za umma zilizosindikwa
 
 [[term-conditional-clauses-in-scripts]]
 conditional clauses in scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vipengele vya masharti katika hati
 
 [[term-conf-option-bitcoind-option]]
 conf option (bitcoind option)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chaguo la conf (chaguo la bitcoind)
 
 [[term-configuring]]
 configuring::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usanidi
 
 [[term-confirmation]]
 confirmation::
@@ -473,27 +473,27 @@ confirmation::
 
 [[term-confirmations]]
 confirmations::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uthibitisho (wingi)
 
 [[term-conflicting-transactions]]
 conflicting transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala inayopingana
 
 [[term-consensus]]
 consensus::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] makubaliano
 
 [[term-consensus-rules]]
 consensus rules::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] sheria za makubaliano
 
 [[term-consolidation-transactions]]
 consolidation transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala ya muunganiko
 
 [[term-contentious-hard-forks]]
 contentious hard forks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matawi magumu yanayogombana
 
 [[term-cpfp]]
 CPFP::
@@ -501,11 +501,11 @@ CPFP::
 
 [[term-cpfp-child-pays-for-parent-fee-bumping]]
 cpfp (child pays for parent) fee bumping::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kupandisha ada ya CPFP (mtoto analipa kwa mzazi)
 
 [[term-crowdfunding]]
 crowdfunding::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ukusanyaji wa fedha za umma
 
 [[term-cryptography]]
 cryptography::
@@ -513,27 +513,27 @@ cryptography::
 
 [[term-currency-creation]]
 currency creation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uundaji wa sarafu
 
 [[term-currency-exchanges]]
 currency exchanges::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ubadilishaji wa sarafu
 
 [[term-current-price-of-bitcoins]]
 current price of bitcoins::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] bei ya sasa ya bitcoini
 
 [[term-custom-signets]]
 custom signets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] signets maalum
 
 [[term-datadir-option-bitcoind-option]]
 datadir option (bitcoind option)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chaguo la datadir (chaguo la bitcoind)
 
 [[term-dbcache-option-bitcoind-option]]
 dbcache option (bitcoind option)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chaguo la dbcache (chaguo la bitcoind)
 
 [[term-decentralized]]
 decentralized::
@@ -541,19 +541,19 @@ decentralized::
 
 [[term-decentralized-consensus]]
 decentralized consensus::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] makubaliano yaliyosambazwa
 
 [[term-decoding]]
 decoding::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kusimbuliwa
 
 [[term-default-signet]]
 default signet::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] signet ya msingi
 
 [[term-deflation]]
 deflation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mfumuko wa bei kushuka
 
 [[term-derivation-path]]
 derivation path::
@@ -561,11 +561,11 @@ derivation path::
 
 [[term-desktop-wallets]]
 desktop wallets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mikoba ya kompyuta
 
 [[term-deterministic-key-generation]]
 deterministic key generation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uzalishaji wa funguo unaodhibitiwa
 
 [[term-difficulty]]
 difficulty::
@@ -573,11 +573,11 @@ difficulty::
 
 [[term-digests]]
 digests::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] muhtasari wa hashi
 
 [[term-digital-currencies-history-of]]
 digital currencies, history of::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] historia ya sarafu za kidijitali
 
 [[term-digital-currency]]
 digital currency::
@@ -585,43 +585,43 @@ digital currency::
 
 [[term-digital-signatures]]
 digital signatures::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] saini za kidijitali
 
 [[term-disk-space]]
 disk space::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] nafasi ya diski
 
 [[term-disk-space-reclaiming]]
 disk space, reclaiming::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kurudisha nafasi ya diski
 
 [[term-display-byte-order]]
 display byte order::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mpangilio wa baiti ya onyesho
 
 [[term-distributed-computing-problem]]
 distributed computing problem::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] tatizo la kompyuta zilizosambazwa
 
 [[term-dns-seeds]]
 dns seeds::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mbegu za DNS
 
 [[term-double-spending]]
 double spending::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kutumia mara mbili
 
 [[term-double-spend-attacks]]
 double-spend attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya kutumia mara mbili
 
 [[term-downloading-multiple-block-filters]]
 downloading multiple block filters::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kupakua vichujio vingi vya vizuizi
 
 [[term-dummy-stack-element]]
 dummy stack element::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kipengele cha bandia cha steki
 
 [[term-dust]]
 dust::
@@ -629,7 +629,7 @@ dust::
 
 [[term-dust-policies]]
 dust policies::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] sera za vumbi
 
 [[term-ecdsa]]
 ECDSA::
@@ -637,15 +637,15 @@ ECDSA::
 
 [[term-ecdsa-elliptic-curve-digital-signature-algorithm]]
 ecdsa (elliptic curve digital signature algorithm)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ECDSA (algoriti ya saini ya kidijitali ya mkondo wa duaradufu)
 
 [[term-economics-of-bitcoin]]
 economics of bitcoin::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uchumi wa bitcoin
 
 [[term-electrum-v2-recovery-codes]]
 electrum v2 recovery codes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misimbo ya kurejesha ya Electrum v2
 
 [[term-elliptic-curve]]
 elliptic curve::
@@ -653,27 +653,27 @@ elliptic curve::
 
 [[term-elliptic-curve-cryptography-ecc]]
 elliptic curve cryptography (ecc)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usimbaji fiche wa mkondo wa duaradufu (ECC)
 
 [[term-elliptic-curve-multiplication]]
 elliptic curve multiplication::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuzidisha kwa mkondo wa duaradufu
 
 [[term-embedded-segregated-witness]]
 embedded segregated witness::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] shahidi aliyetenganishwa aliyepachikwa
 
 [[term-emergent-consensus]]
 emergent consensus::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] makubaliano yanayojitokeza
 
 [[term-encoding]]
 encoding::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usimbaji
 
 [[term-encryption]]
 encryption::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usimbaji fiche
 
 [[term-entropy]]
 entropy::
@@ -681,55 +681,55 @@ entropy::
 
 [[term-estate-planning]]
 estate planning::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mipango ya mirathi
 
 [[term-estimating-fee-rates]]
 estimating fee rates::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kukadiriwa viwango vya ada
 
 [[term-excessive-fees]]
 excessive fees::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ada nyingi kupita kiasi
 
 [[term-exchange-rate]]
 exchange rate::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kiwango cha ubadilishaji
 
 [[term-executables-bitcoin-core-building]]
 executables (bitcoin core), building::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] faili zinazotekelezwa (bitcoin core), kujenga
 
 [[term-explicit-paths]]
 explicit paths::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] njia wazi
 
 [[term-exploring]]
 exploring::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuchunguza
 
 [[term-extended-keys]]
 extended keys::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] funguo zilizopanuliwa
 
 [[term-extended-serialization-format]]
 extended serialization format::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] umbizo la serialization la upanuliwa
 
 [[term-extra-nonce-solution]]
 extra nonce solution::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] suluhisho la nonce ya ziada
 
 [[term-false-positives]]
 false positives::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matokeo ya uongo
 
 [[term-fast-internet-bitcoin-relay-engine-fibre]]
 fast internet bitcoin relay engine (fibre)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] injini ya haraka ya ureletaji wa bitcoin mtandaoni (FIBRE)
 
 [[term-fec-forward-error-correction]]
 fec (forward error correction)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] FEC (usahihishaji wa makosa ya mbele)
 
 [[term-fee]]
 fee::
@@ -737,27 +737,27 @@ fee::
 
 [[term-fee-bumping]]
 fee bumping::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kupandisha ada
 
 [[term-fee-rates]]
 fee rates::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] viwango vya ada
 
 [[term-fee-sniping]]
 fee sniping::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uwindaji wa ada
 
 [[term-fees]]
 fees::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ada (wingi)
 
 [[term-fibre-fast-internet-bitcoin-relay-engine]]
 fibre (fast internet bitcoin relay engine)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] FIBRE (injini ya haraka ya ureletaji wa bitcoin mtandaoni)
 
 [[term-flow-control-in-scripts]]
 flow control in scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] udhibiti wa mtiririko katika hati
 
 [[term-fork]]
 fork::
@@ -765,19 +765,19 @@ fork::
 
 [[term-forks]]
 forks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matawi (wingi)
 
 [[term-forward-error-correction-fec]]
 forward error correction (fec)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usahihishaji wa makosa ya mbele (FEC)
 
 [[term-fractional-values-of-bitcoins]]
 fractional values of bitcoins::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] thamani za sehemu za bitcoini
 
 [[term-free-american-call-option]]
 free american call option::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chaguo la wito la Amerika huru
 
 [[term-full-node]]
 full node::
@@ -785,27 +785,27 @@ full node::
 
 [[term-full-nodes]]
 full nodes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] nodi kamili (wingi)
 
 [[term-funding-transactions]]
 funding transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala ya ufadhili
 
 [[term-gambler-x27-s-ruin-problem]]
 gambler&#x27;s ruin problem::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] tatizo la uharibifu wa mchezaji kamari
 
 [[term-gap-limit]]
 gap limit::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kikomo cha pengo
 
 [[term-gcs-golomb-rice-coded-sets]]
 gcs (golomb-rice coded sets)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] GCS (makundi ya msimbo wa golomb-rice)
 
 [[term-generation-transactions]]
 generation transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala ya uzalishaji
 
 [[term-genesis-block]]
 genesis block::
@@ -813,15 +813,15 @@ genesis block::
 
 [[term-go-toolkits]]
 go toolkits::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vifaa vya Go
 
 [[term-gossiping]]
 gossiping::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kusambaza habari
 
 [[term-guard-clauses-in-scripts]]
 guard clauses in scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vipengele vya ulinzi katika hati
 
 [[term-halving]]
 halving::
@@ -833,15 +833,15 @@ hard fork::
 
 [[term-hard-forks]]
 hard forks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matawi magumu (wingi)
 
 [[term-hardened-child-key-derivation]]
 hardened child key derivation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] utokaji wa ufunguo wa mtoto ulioimarishwa
 
 [[term-hardware-signing-devices]]
 hardware signing devices::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vifaa vya saini vya maunzi
 
 [[term-hash]]
 hash::
@@ -849,23 +849,23 @@ hash::
 
 [[term-hash-functions]]
 hash functions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vitendo vya hashi
 
 [[term-hash-time-lock-contract-htlc]]
 hash time lock contract (htlc)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mkataba wa kufunga kwa wakati wa hashi (HTLC)
 
 [[term-hash160]]
 hash160::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] hash160
 
 [[term-hashrate-attacks]]
 hashrate attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya kiwango cha hashi
 
 [[term-hd-hierarchical-deterministic-key-generation]]
 hd (hierarchical deterministic) key generation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uzalishaji wa funguo wa HD (kihierarki deterministic)
 
 [[term-hd-wallet]]
 HD wallet::
@@ -873,51 +873,51 @@ HD wallet::
 
 [[term-help-command-bitcoin-core]]
 help command (bitcoin core)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] amri ya msaada (bitcoin core)
 
 [[term-high-bandwidth-mode-compact-block-relay]]
 high-bandwidth mode (compact block relay)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hali ya kipimo data kikubwa (ureletaji wa vizuizi vifupi)
 
 [[term-high-frequency-transactions]]
 high-frequency transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala ya mara kwa mara nyingi
 
 [[term-history]]
 history::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] historia
 
 [[term-homogeneity-of-degree-1]]
 homogeneity of degree 1::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usawa wa kiwango cha 1
 
 [[term-htlc-hash-time-lock-contract]]
 htlc (hash time lock contract)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] HTLC (mkataba wa kufunga kwa wakati wa hashi)
 
 [[term-implicit-paths]]
 implicit paths::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] njia zilizofichwa
 
 [[term-incentives]]
 incentives::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vivutio
 
 [[term-independent-key-generation]]
 independent key generation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uzalishaji wa funguo huru
 
 [[term-independent-transaction-verification]]
 independent transaction verification::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uthibitishaji wa muamala huru
 
 [[term-index-numbers-for-hardened-derivation]]
 index numbers for hardened derivation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] nambari za faharasa za utokaji ulioimarishwa
 
 [[term-inflation]]
 inflation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mfumuko wa bei
 
 [[term-input]]
 input::
@@ -925,39 +925,39 @@ input::
 
 [[term-input-scripts]]
 input scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hati za ingizo
 
 [[term-inputs]]
 inputs::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] maingizo (wingi)
 
 [[term-internal-byte-order]]
 internal byte order::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mpangilio wa ndani wa baiti
 
 [[term-invoices]]
 invoices::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ankara
 
 [[term-ip-addresses-for-bitcoin-payments]]
 ip addresses for bitcoin payments::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] anwani za IP kwa malipo ya bitcoin
 
 [[term-java-toolkits]]
 java toolkits::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vifaa vya Java
 
 [[term-javascript-toolkits]]
 javascript toolkits::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vifaa vya JavaScript
 
 [[term-key-cancellation-attacks]]
 key cancellation attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya kufuta ufunguo
 
 [[term-key-generation]]
 key generation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uzalishaji wa funguo
 
 [[term-key-pair]]
 key pair::
@@ -965,31 +965,31 @@ key pair::
 
 [[term-key-pairs]]
 key pairs::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] jozi za funguo (wingi)
 
 [[term-key-tweaks]]
 key tweaks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] marekebisho ya funguo
 
 [[term-key-stretching-functions]]
 key-stretching functions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vitendo vya kunyoosha ufunguo
 
 [[term-keypath-spending]]
 keypath spending::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matumizi ya njia ya ufunguo
 
 [[term-keys-control-of]]
 keys, control of::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] funguo, udhibiti wa
 
 [[term-labels-backing-up]]
 labels, backing up::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] lebo, kuhifadhi nakala
 
 [[term-legacy-serialization]]
 legacy serialization::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] serialization ya zamani
 
 [[term-lightning-network]]
 lightning network::
@@ -997,31 +997,31 @@ lightning network::
 
 [[term-lightning-network-ln]]
 lightning network (ln)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] Lightning Network (LN)
 
 [[term-lightweight-clients]]
 lightweight clients::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] wateja wepesi
 
 [[term-linearity]]
 linearity::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] unyoofu
 
 [[term-linking-blocks-in-blockchain]]
 linking blocks in blockchain::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuunganisha vizuizi katika mlolongo
 
 [[term-ln]]
 ln::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] LN
 
 [[term-lock-time]]
 lock time::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] wakati wa kufunga
 
 [[term-lock-in-mandatory]]
 lock-in, mandatory::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kufungwa kwa lazima
 
 [[term-locktime]]
 locktime::
@@ -1029,55 +1029,55 @@ locktime::
 
 [[term-lossless-encoding]]
 lossless encoding::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usimbaji bila kupoteza
 
 [[term-lossy-encoding]]
 lossy encoding::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usimbaji wenye kupoteza
 
 [[term-low-bandwidth-mode-compact-block-relay]]
 low-bandwidth mode (compact block relay)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hali ya kipimo data kidogo (ureletaji wa vizuizi vifupi)
 
 [[term-mainnet]]
 mainnet::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mtandao mkuu
 
 [[term-majority-attacks]]
 majority attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya wingi
 
 [[term-managed-pools]]
 managed pools::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] madimbwi yanayosimamiwa
 
 [[term-mandatory-lock-in]]
 mandatory lock-in::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kufungwa kwa lazima
 
 [[term-mast-merklized-alternative-script-trees]]
 mast (merklized alternative script trees)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] MAST (miti ya hati mbadala ya merkle)
 
 [[term-maturity-rule]]
 maturity rule::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] sheria ya ukomavu
 
 [[term-maxmempool-option-bitcoind-option]]
 maxmempool option (bitcoind option)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chaguo la maxmempool (chaguo la bitcoind)
 
 [[term-median-time-past-mtp]]
 median time past (mtp)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] wakati wa kati uliopita (MTP)
 
 [[term-memorizing-recovery-codes]]
 memorizing recovery codes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kukariri misimbo ya kurejesha
 
 [[term-memory-pool]]
 memory pool::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hifadhi ya kumbukumbu
 
 [[term-mempool]]
 mempool::
@@ -1085,7 +1085,7 @@ mempool::
 
 [[term-merkle-path]]
 merkle path::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] njia ya merkle
 
 [[term-merkle-root]]
 merkle root::
@@ -1097,11 +1097,11 @@ merkle tree::
 
 [[term-merkle-trees]]
 merkle trees::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miti ya merkle (wingi)
 
 [[term-millibitcoins]]
 millibitcoins::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:transliterated] millibitcoini
 
 [[term-miner]]
 miner::
@@ -1113,11 +1113,11 @@ mining::
 
 [[term-mining-forks]]
 mining forks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matawi ya uchimbaji
 
 [[term-mining-pools]]
 mining pools::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] madimbwi ya uchimbaji
 
 [[term-mnemonic]]
 mnemonic::
@@ -1125,23 +1125,23 @@ mnemonic::
 
 [[term-mnemonic-phrases]]
 mnemonic phrases::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misemo ya mnemoni
 
 [[term-mobile-wallets]]
 mobile wallets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mikoba ya simu
 
 [[term-moore-x27-s-law]]
 moore&#x27;s law::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] sheria ya Moore
 
 [[term-mtp-median-time-past]]
 mtp (median time past)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] MTP (wakati wa kati uliopita)
 
 [[term-multiple-block-filters-downloading]]
 multiple block filters, downloading::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kupakua vichujio vingi vya vizuizi
 
 [[term-multisig]]
 multisig::
@@ -1149,43 +1149,43 @@ multisig::
 
 [[term-multisignature-addresses]]
 multisignature addresses::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] anwani za saini nyingi
 
 [[term-multisignature-scripts]]
 multisignature scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hati za saini nyingi
 
 [[term-musig-protocol]]
 musig protocol::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] itifaki ya MuSig
 
 [[term-musig-dn-protocol]]
 musig-dn protocol::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] itifaki ya MuSig-DN
 
 [[term-musig2-protocol]]
 musig2 protocol::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] itifaki ya MuSig2
 
 [[term-mutual-satisfaction-contracts]]
 mutual satisfaction contracts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mikataba ya kuridhiana
 
 [[term-muun-recovery-codes]]
 muun recovery codes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misimbo ya kurejesha ya Muun
 
 [[term-nakamoto-satoshi]]
 nakamoto, satoshi::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] Nakamoto, Satoshi
 
 [[term-native-forwarding]]
 native forwarding::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] upelekaji wa asili
 
 [[term-nbitcoin]]
 nbitcoin::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] nbitcoin
 
 [[term-network]]
 network::
@@ -1193,15 +1193,15 @@ network::
 
 [[term-network-discovery]]
 network discovery::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ugunduzi wa mtandao
 
 [[term-network-forks]]
 network forks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matawi ya mtandao
 
 [[term-networks-bitcoin]]
 networks (bitcoin)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mitandao (bitcoin)
 
 [[term-node]]
 node::
@@ -1209,7 +1209,7 @@ node::
 
 [[term-nodes]]
 nodes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:transliterated] nodi (wingi)
 
 [[term-nonce]]
 nonce::
@@ -1217,47 +1217,47 @@ nonce::
 
 [[term-nonce-attacks]]
 nonce attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya nonce
 
 [[term-noncustodial-wallets]]
 noncustodial wallets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mikoba isiyohifadhiwa na wengine
 
 [[term-nonkey-data-backing-up]]
 nonkey data, backing up::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] data isiyo ya funguo, kuhifadhi nakala
 
 [[term-nonpayment-data]]
 nonpayment data::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] data isiyohusiana na malipo
 
 [[term-nop-opcodes]]
 nop opcodes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] opcode za NOP
 
 [[term-offchain-technology]]
 offchain technology::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] teknolojia nje ya mlolongo
 
 [[term-op-checkmultisig-execution]]
 op_checkmultisig execution::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] utekelezaji wa OP_CHECKMULTISIG
 
 [[term-op-cltv-script-operator]]
 op_cltv  script operator::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] opereta ya hati OP_CLTV
 
 [[term-op-csv-script-opcode]]
 op_csv script opcode::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] opcode ya hati OP_CSV
 
 [[term-op-nop-opcodes]]
 op_nop opcodes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] opcode za OP_NOP
 
 [[term-op-return-scripts]]
 op_return scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hati za OP_RETURN
 
 [[term-opcode]]
 opcode::
@@ -1269,15 +1269,15 @@ open source::
 
 [[term-opt-in-transaction-replacement]]
 opt-in transaction replacement::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ubadilishaji wa muamala wa hiari
 
 [[term-orphan-pools]]
 orphan pools::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] madimbwi ya yatima
 
 [[term-outpoint-field-transaction-inputs]]
 outpoint field (transaction inputs)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] sehemu ya mahali pa kutokea (maingizo ya muamala)
 
 [[term-output]]
 output::
@@ -1285,27 +1285,27 @@ output::
 
 [[term-output-indexes]]
 output indexes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] faharasa za matokeo
 
 [[term-output-scripts]]
 output scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hati za matokeo
 
 [[term-outputs]]
 outputs::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matokeo (wingi)
 
 [[term-overpaying-transaction-fees]]
 overpaying transaction fees::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kulipa ada nyingi za muamala
 
 [[term-p2c-pay-to-contract]]
 p2c (pay to contract)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] P2C (lipa kwa mkataba)
 
 [[term-p2pk-pay-to-public-key]]
 p2pk (pay to public key)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] P2PK (lipa kwa ufunguo wa umma)
 
 [[term-p2pkh]]
 P2PKH::
@@ -1313,11 +1313,11 @@ P2PKH::
 
 [[term-p2pkh-pay-to-public-key-hash]]
 p2pkh (pay to public key hash)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] P2PKH (lipa kwa hashi ya ufunguo wa umma)
 
 [[term-p2pool-peer-to-peer-mining-pool]]
 p2pool (peer-to-peer mining pool)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] P2Pool (dimbwi la uchimbaji la rika kwa rika)
 
 [[term-p2sh]]
 P2SH::
@@ -1325,7 +1325,7 @@ P2SH::
 
 [[term-p2sh-pay-to-script-hash]]
 p2sh (pay to script hash)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] P2SH (lipa kwa hashi ya hati)
 
 [[term-p2tr]]
 P2TR::
@@ -1337,7 +1337,7 @@ P2WPKH::
 
 [[term-p2wpkh-pay-to-witness-public-key-hash]]
 p2wpkh (pay to witness public key hash)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] P2WPKH (lipa kwa hashi ya ufunguo wa umma wa shahidi)
 
 [[term-p2wsh]]
 P2WSH::
@@ -1345,59 +1345,59 @@ P2WSH::
 
 [[term-p2wsh-pay-to-witness-script-hash]]
 p2wsh (pay to witness script hash)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] P2WSH (lipa kwa hashi ya hati ya shahidi)
 
 [[term-package-fee-rate]]
 package fee rate::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kiwango cha ada ya kifurushi
 
 [[term-package-relay]]
 package relay::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ureletaji wa kifurushi
 
 [[term-paper-wallets]]
 paper wallets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mikoba ya karatasi
 
 [[term-parent-blocks]]
 parent blocks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vizuizi vya mzazi
 
 [[term-partial-private-keys]]
 partial private keys::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] funguo za siri za sehemu
 
 [[term-partially-signed-bitcoin-transaction-psbt-format]]
 partially signed bitcoin transaction (psbt) format::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] umbizo la muamala wa bitcoin uliosainiwa kwa sehemu (PSBT)
 
 [[term-passphrases-for-recovery-codes]]
 passphrases (for recovery codes)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] maneno ya siri (kwa misimbo ya kurejesha)
 
 [[term-path-references-in-hd-wallets]]
 path references in hd wallets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] marejeo ya njia katika mikoba ya HD
 
 [[term-pathfinding-in-lightning-network]]
 pathfinding in lightning network::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] utafutaji wa njia katika Lightning Network
 
 [[term-payment-batching]]
 payment batching::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ukusanyiko wa malipo
 
 [[term-payment-channels]]
 payment channels::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] njia za malipo
 
 [[term-payment-verification]]
 payment verification::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uthibitishaji wa malipo
 
 [[term-payments]]
 payments::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] malipo
 
 [[term-peer-to-peer]]
 peer-to-peer::
@@ -1405,39 +1405,39 @@ peer-to-peer::
 
 [[term-peer-to-peer-networks-bitcoin-as]]
 peer-to-peer networks, bitcoin as::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mitandao ya rika kwa rika, bitcoin kama
 
 [[term-peers]]
 peers::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] marika (wingi)
 
 [[term-physical-bitcoin-storage]]
 physical bitcoin storage::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uhifadhi wa bitcoini wa kimwili
 
 [[term-preimage-attacks]]
 preimage attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya picha ya awali
 
 [[term-presigned-transactions]]
 presigned transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala iliyosainiwa mapema
 
 [[term-primitives]]
 primitives::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] msingi wa ujenzi
 
 [[term-privacy]]
 privacy::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] faragha
 
 [[term-private-block-relay]]
 private block relay::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ureletaji wa faragha wa vizuizi
 
 [[term-private-child-key-derivation]]
 private child key derivation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] utokaji wa ufunguo wa siri wa mtoto
 
 [[term-private-key]]
 private key::
@@ -1445,7 +1445,7 @@ private key::
 
 [[term-private-keys]]
 private keys::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] funguo za siri (wingi)
 
 [[term-proof-of-work]]
 proof of work::
@@ -1453,7 +1453,7 @@ proof of work::
 
 [[term-proof-of-work-algorithm]]
 proof-of-work algorithm::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] algoriti ya uthibitisho wa kazi
 
 [[term-protocol]]
 protocol::
@@ -1461,7 +1461,7 @@ protocol::
 
 [[term-prune-option-bitcoind-option]]
 prune option (bitcoind option)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chaguo la kupunguza (chaguo la bitcoind)
 
 [[term-psbt]]
 PSBT::
@@ -1469,11 +1469,11 @@ PSBT::
 
 [[term-psbt-partially-signed-bitcoin-transaction-format]]
 psbt (partially signed bitcoin transaction) format::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] umbizo la PSBT (muamala wa bitcoin uliosainiwa kwa sehemu)
 
 [[term-public-child-key-derivation]]
 public child key derivation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] utokaji wa ufunguo wa umma wa mtoto
 
 [[term-public-key]]
 public key::
@@ -1481,31 +1481,31 @@ public key::
 
 [[term-public-key-cryptography]]
 public key cryptography::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usimbaji fiche wa ufunguo wa umma
 
 [[term-public-keys]]
 public keys::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] funguo za umma (wingi)
 
 [[term-pycoin]]
 pycoin::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] pycoin
 
 [[term-python-toolkits]]
 python toolkits::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vifaa vya Python
 
 [[term-python-bitcoinlib]]
 python-bitcoinlib::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] python-bitcoinlib
 
 [[term-qr-codes]]
 qr codes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misimbo ya QR
 
 [[term-randomness-importance-in-digital-signatures]]
 randomness, importance in digital signatures::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] nasibu, umuhimu katika saini za kidijitali
 
 [[term-rbf]]
 RBF::
@@ -1513,107 +1513,107 @@ RBF::
 
 [[term-rbf-replace-by-fee-fee-bumping]]
 rbf (replace by fee) fee bumping::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kupandisha ada ya RBF (badilisha kwa ada)
 
 [[term-receiving-bitcoins]]
 receiving bitcoins::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kupokea bitcoini
 
 [[term-reclaiming]]
 reclaiming::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kurudisha
 
 [[term-reclaiming-disk-space]]
 reclaiming disk space::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kurudisha nafasi ya diski
 
 [[term-recovery-codes]]
 recovery codes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misimbo ya kurejesha
 
 [[term-redeem-scripts]]
 redeem scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hati za ukombozi
 
 [[term-regtest]]
 regtest::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] regtest
 
 [[term-relative-timelocks]]
 relative timelocks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kufunga kwa wakati wa jamaa
 
 [[term-release-candidates]]
 release candidates::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] wagombea wa toleo
 
 [[term-release-version-bitcoin-core-selecting]]
 release version (bitcoin core), selecting::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuchagua toleo (bitcoin core)
 
 [[term-repeated-session-attacks]]
 repeated session attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya vikao vya kurudiwa
 
 [[term-replace-by-fee-rbf]]
 replace by fee (rbf)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] badilisha kwa ada (RBF)
 
 [[term-revocable-commitments]]
 revocable commitments::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ahadi zinazoweza kufutwa
 
 [[term-rewards]]
 rewards::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] zawadi
 
 [[term-rgb-protocol]]
 rgb protocol::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] itifaki ya RGB
 
 [[term-ripemd-160-hash-function]]
 ripemd-160 hash function::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kitendo cha hashi cha RIPEMD-160
 
 [[term-risk-diversification]]
 risk diversification::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] utofauti wa hatari
 
 [[term-root-of-trust]]
 root of trust::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chanzo cha uaminifu
 
 [[term-root-seeds]]
 root seeds::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mbegu za msingi
 
 [[term-routed-payment-channels]]
 routed payment channels::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] njia za malipo zilizopanga njia
 
 [[term-running-nodes]]
 running nodes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuendesha nodi
 
 [[term-rust-toolkits]]
 rust toolkits::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vifaa vya Rust
 
 [[term-rust-bitcoin]]
 rust-bitcoin::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] rust-bitcoin
 
 [[term-salt]]
 salt::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chumvi ya kriptografia
 
 [[term-satoshis]]
 satoshis::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] satoshi
 
 [[term-scala-toolkits]]
 scala toolkits::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vifaa vya Scala
 
 [[term-schnorr-signature]]
 Schnorr signature::
@@ -1621,7 +1621,7 @@ Schnorr signature::
 
 [[term-schnorr-signature-algorithm]]
 schnorr signature algorithm::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] algoriti ya saini ya Schnorr
 
 [[term-script]]
 script::
@@ -1629,23 +1629,23 @@ script::
 
 [[term-script-programming-language]]
 script programming language::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] lugha ya uprogramu ya hati
 
 [[term-scripted-multisignatures]]
 scripted multisignatures::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] saini nyingi za hati
 
 [[term-scriptless-multisignatures]]
 scriptless multisignatures::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] saini nyingi zisizo na hati
 
 [[term-scriptless-threshold-signatures]]
 scriptless threshold signatures::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] saini za kizingiti zisizo na hati
 
 [[term-scriptpath-spending]]
 scriptpath spending::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matumizi ya njia ya hati
 
 [[term-scriptpubkey]]
 scriptPubKey::
@@ -1653,7 +1653,7 @@ scriptPubKey::
 
 [[term-scripts]]
 scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hati (wingi)
 
 [[term-scriptsig]]
 scriptSig::
@@ -1661,15 +1661,15 @@ scriptSig::
 
 [[term-second-preimage-attacks]]
 second preimage attacks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashambulio ya picha ya pili ya awali
 
 [[term-second-party-transaction-malleability]]
 second-party transaction malleability::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] unyumbufu wa muamala wa upande wa pili
 
 [[term-security]]
 security::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usalama
 
 [[term-seed-phrase]]
 seed phrase::
@@ -1677,15 +1677,15 @@ seed phrase::
 
 [[term-seed-phrases]]
 seed phrases::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misemo ya mbegu (wingi)
 
 [[term-seeds]]
 seeds::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mbegu (wingi)
 
 [[term-segregated-witness-segwit]]
 segregated witness (segwit)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] shahidi aliyetenganishwa (SegWit)
 
 [[term-segwit]]
 SegWit::
@@ -1693,31 +1693,31 @@ SegWit::
 
 [[term-selecting]]
 selecting::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuchagua
 
 [[term-sequence-field-transaction-inputs]]
 sequence field (transaction inputs)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] sehemu ya mlolongo (maingizo ya muamala)
 
 [[term-sequence-based-transaction-replacement]]
 sequence-based transaction replacement::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ubadilishaji wa muamala kulingana na mlolongo
 
 [[term-serialization]]
 serialization::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uorodheshaji wa mfululizo
 
 [[term-serialized-transactions]]
 serialized transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala iliyoorodheshwa kwa mfululizo
 
 [[term-settlement-transactions]]
 settlement transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala ya makubaliano ya malipo
 
 [[term-setup-transactions]]
 setup transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala ya kusanidi
 
 [[term-sha-256]]
 SHA-256::
@@ -1725,19 +1725,19 @@ SHA-256::
 
 [[term-sha256-hash-function]]
 sha256 hash function::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kitendo cha hashi cha SHA256
 
 [[term-share-chains]]
 share chains::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] minyororo ya hisa
 
 [[term-sighash-flags]]
 sighash flags::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] bendera za sighash
 
 [[term-signaling]]
 signaling::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kutoa ishara
 
 [[term-signature]]
 signature::
@@ -1745,23 +1745,23 @@ signature::
 
 [[term-signatures]]
 signatures::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] saini (wingi)
 
 [[term-signet]]
 signet::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] signet
 
 [[term-simplified-payment-verification-spv-clients]]
 simplified-payment-verification (spv) clients::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] wateja wa uthibitishaji wa malipo uliofupishwa (SPV)
 
 [[term-single-use-seals]]
 single-use seals::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mihuri ya matumizi moja
 
 [[term-slip39-recovery-codes]]
 slip39 recovery codes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] misimbo ya kurejesha ya SLIP39
 
 [[term-soft-fork]]
 soft fork::
@@ -1769,27 +1769,27 @@ soft fork::
 
 [[term-soft-forks]]
 soft forks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matawi laini (wingi)
 
 [[term-software-development-for-consensus-rules]]
 software development for consensus rules::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] maendeleo ya programu kwa sheria za makubaliano
 
 [[term-software-forks]]
 software forks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matawi ya programu
 
 [[term-source-code-compiling-bitcoin-core]]
 source code, compiling bitcoin core::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] msimbo wa chanzo, kukusanya bitcoin core
 
 [[term-speedy-trial-activation]]
 speedy trial activation::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uanzishaji wa jaribio la haraka
 
 [[term-spending-bitcoins]]
 spending bitcoins::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kutumia bitcoini
 
 [[term-spv]]
 SPV::
@@ -1797,43 +1797,43 @@ SPV::
 
 [[term-spv-simplified-payment-verification-clients]]
 spv (simplified-payment-verification) clients::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] wateja wa SPV (uthibitishaji wa malipo uliofupishwa)
 
 [[term-stack]]
 stack::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:transliterated] steki
 
 [[term-standard-transaction-outputs]]
 standard transaction outputs::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matokeo ya kawaida ya muamala
 
 [[term-state-channels]]
 state channels::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] njia za hali
 
 [[term-stateless-script-verification]]
 stateless script verification::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uthibitishaji wa hati bila hali
 
 [[term-status-information-bitcoin-core]]
 status information (bitcoin core)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] taarifa za hali (bitcoin core)
 
 [[term-storing-bitcoins]]
 storing bitcoins::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuhifadhi bitcoini
 
 [[term-stratum]]
 stratum::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] stratum
 
 [[term-survivability-of-bitcoin-access]]
 survivability (of bitcoin access)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uhai (wa ufikiaji wa bitcoin)
 
 [[term-syncing-blockchain]]
 syncing blockchain::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kusawazisha mlolongo wa vizuizi
 
 [[term-taproot]]
 Taproot::
@@ -1841,7 +1841,7 @@ Taproot::
 
 [[term-taproot-assets]]
 taproot assets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mali za Taproot
 
 [[term-tapscript]]
 Tapscript::
@@ -1853,31 +1853,31 @@ target::
 
 [[term-targets]]
 targets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] malengo (wingi)
 
 [[term-technical-debt]]
 technical debt::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] deni la kiufundi
 
 [[term-test-blockchains]]
 test blockchains::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] minyororo ya vizuizi ya majaribio
 
 [[term-testnet]]
 testnet::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] testnet
 
 [[term-third-party-api-clients]]
 third-party api clients::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] wateja wa API wa watu wengine
 
 [[term-third-party-transaction-malleability]]
 third-party transaction malleability::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] unyumbufu wa muamala wa watu wengine
 
 [[term-threshold-signatures]]
 threshold signatures::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] saini za kizingiti
 
 [[term-timelock]]
 timelock::
@@ -1885,7 +1885,7 @@ timelock::
 
 [[term-timelocks]]
 timelocks::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kufunga kwa wakati (wingi)
 
 [[term-timestamp]]
 timestamp::
@@ -1893,15 +1893,15 @@ timestamp::
 
 [[term-timestamp-servers]]
 timestamp servers::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] seva za muhuri wa wakati
 
 [[term-timestamps]]
 timestamps::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mihuri ya wakati (wingi)
 
 [[term-tor-transport]]
 tor transport::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] usafirishaji wa Tor
 
 [[term-transaction]]
 transaction::
@@ -1909,75 +1909,75 @@ transaction::
 
 [[term-transaction-chains]]
 transaction chains::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] minyororo ya miamala
 
 [[term-transaction-fees]]
 transaction fees::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] ada za muamala
 
 [[term-transaction-ids-txid]]
 transaction ids (txid)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vitambulisho vya muamala (txid)
 
 [[term-transaction-pinning]]
 transaction pinning::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] upigaji pini wa muamala
 
 [[term-transaction-scripts]]
 transaction scripts::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] hati za muamala
 
 [[term-transactions]]
 transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala (wingi)
 
 [[term-translated-forwarding]]
 translated forwarding::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] upelekaji uliofasiriwa
 
 [[term-tree-structure-in-hd-wallets]]
 tree structure in hd wallets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] muundo wa mti katika mikoba ya HD
 
 [[term-trustless-channels]]
 trustless channels::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] njia zisizohitaji uaminifu
 
 [[term-trustless-protocols]]
 trustless protocols::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] itifaki zisizohitaji uaminifu
 
 [[term-turing-complete]]
 turing complete::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kamili ya Turing
 
 [[term-txindex-option-bitcoind-option]]
 txindex option (bitcoind option)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] chaguo la txindex (chaguo la bitcoind)
 
 [[term-uncompressed-public-keys]]
 uncompressed public keys::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] funguo za umma zisizosindikwa
 
 [[term-unconfirmed-transactions]]
 unconfirmed transactions::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] miamala isiyothibitishwa
 
 [[term-uneconomical-outputs]]
 uneconomical outputs::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] matokeo yasiyofaa kiuchumi
 
 [[term-unsigned-integers]]
 unsigned integers::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] nambari nzima zisizoandikwa
 
 [[term-upgrading-to-segregated-witness]]
 upgrading to segregated witness::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kusasisha hadi SegWit
 
 [[term-utreexo]]
 utreexo::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] utreexo
 
 [[term-utxo]]
 UTXO::
@@ -1985,39 +1985,39 @@ UTXO::
 
 [[term-utxos-unspent-transaction-outputs]]
 utxos (unspent transaction outputs)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] UTXO (matokeo ya miamala ambayo hayajatumika)
 
 [[term-validating]]
 validating::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuthibitisha
 
 [[term-vanity-addresses]]
 vanity addresses::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] anwani za mapambo
 
 [[term-vanity-pools]]
 vanity pools::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] madimbwi ya mapambo
 
 [[term-vbytes]]
 vbytes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:preserved] vbytes
 
 [[term-verify-opcodes]]
 verify opcodes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] opcode za kuthibitisha
 
 [[term-verifying]]
 verifying::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] kuthibitisha
 
 [[term-version-of-transactions]]
 version (of transactions)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] toleo (la miamala)
 
 [[term-version-prefixes]]
 version prefixes::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] viambishi awali vya toleo
 
 [[term-wallet]]
 wallet::
@@ -2025,23 +2025,23 @@ wallet::
 
 [[term-wallets]]
 wallets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mikoba (wingi)
 
 [[term-web-store-example-extended-keys]]
 web store example (extended keys)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mfano wa duka la mtandaoni (funguo zilizopanuliwa)
 
 [[term-web-wallets]]
 web wallets::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mikoba ya mtandaoni
 
 [[term-weights-of-transactions]]
 weights (of transactions)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uzito (wa miamala)
 
 [[term-whitepaper-bitcoin]]
 whitepaper (bitcoin)::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] karatasi nyeupe (bitcoin)
 
 [[term-wif]]
 WIF::
@@ -2053,15 +2053,15 @@ witness::
 
 [[term-witness-items]]
 witness items::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] vipande vya shahidi
 
 [[term-witnesses]]
 witnesses::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] mashahidi (wingi)
 
 [[term-wrapper-libraries]]
 wrapper libraries::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] maktaba za kifuniko
 
 [[term-xpriv]]
 xpriv::
@@ -2073,4 +2073,4 @@ xpub::
 
 [[term-zero-knowledge-proof]]
 zero-knowledge proof::
-  [type:] [TAFSIRI INAHITAJIKA]
+  [type:translated] uthibitisho wa maarifa sifuri

@@ -23,22 +23,21 @@ miamala, mtandao, na ((("Bitcoin", "operational overview", id="bitcoin-operation
 
 ++++
 <p class="fix_tracking">
-The Bitcoin system consists of users with wallets containing keys,
-transactions that are propagated across the network, and miners who
-produce (through competitive computation) the consensus blockchain,
-which is the authoritative journal of all transactions.
+Mfumo wa Bitcoin unajumuisha watumiaji wenye pochi zenye funguo,
+miamala inayoenezwa kwenye mtandao, na wachimbaji wanaozalisha
+(kupitia hesabu za ushindani) blockchain ya makubaliano,
+ambayo ni kumbukumbu rasmi ya miamala yote.
 </p>
 
 <p class="fix_tracking2">
-Each example in this chapter is based
-on an actual transaction made on the Bitcoin network, simulating the
-interactions between several users by sending
-funds from one wallet to another. While tracking a transaction through
-the Bitcoin network to the blockchain, we will use a <em>blockchain
-explorer</em> site to visualize each step. A blockchain explorer is a web
-application that operates as a Bitcoin search engine, in that it allows
-you to search for addresses, transactions, and blocks and see the
-relationships and flows between them.
+Kila mfano katika sura hii unategemea muamala halisi uliofanywa
+kwenye mtandao wa Bitcoin, ukisimulate mwingiliano kati ya watumiaji
+kadhaa kwa kutuma fedha kutoka pochi moja hadi nyingine. Tukifuatilia
+muamala kupitia mtandao wa Bitcoin hadi kwenye blockchain, tutatumia
+tovuti ya <em>blockchain explorer</em> kuona kila hatua kwa macho.
+Blockchain explorer ni programu ya wavuti inayofanya kazi kama injini
+ya utafutaji wa Bitcoin — inaruhusu kutafuta anwani, miamala, na
+vitalu na kuona mahusiano na mtiririko kati yao.
 </p>
 ++++
 

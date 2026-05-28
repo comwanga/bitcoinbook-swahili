@@ -72,22 +72,6 @@ Toleo la hivi karibuni la PDF linapatikana kwenye [Releases](../../releases).
 
 Unahitaji [Docker](https://www.docker.com/) au Ruby + asciidoctor-pdf.
 
-### Kwa Docker
-
-```bash
-docker run --rm -v "$(pwd):/documents" asciidoctor/docker-asciidoctor \
-  asciidoctor-pdf -a imagesdir=/documents/bitcoinbook-third_edition_print1/images \
-  /documents/swahili/book.adoc -o /documents/kujua-bitcoin-swahili.pdf
-```
-
-### Kwa asciidoctor-pdf (Ruby)
-
-```bash
-gem install asciidoctor-pdf rouge
-asciidoctor-pdf -a imagesdir=./bitcoinbook-third_edition_print1/images \
-  swahili/book.adoc -o kujua-bitcoin-swahili.pdf
-```
-
 ---
 
 ## Kuchangia

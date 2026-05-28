@@ -1,0 +1,1238 @@
+[[bitcoin_network_ch08]]
+== Mtandao wa Bitcoin
+
+Bitcoin ((("Bitcoin", "as peer-to-peer network", secondary-sortas="peer-to-peer network", seealso="Bitcoin network")))((("peer-to-peer networks, Bitcoin as", seealso="Bitcoin network")))((("networks (Bitcoin)", see="Bitcoin network")))((("Bitcoin network")))imeundwa kama muundo wa mtandao wa rika kwa rika (P2P) juu
+ya intaneti. Neno rika kwa rika, au P2P, linamaanisha kwamba
+nodi kamili zinazoshiriki katika mtandao ni sawa kwa kila mmoja, kwamba
+zote zinaweza kufanya kazi zile zile, na kwamba hakuna nodi "maalum".
+Nodi za mtandao
+zinaungana katika mtandao wa nyavu yenye muundo "tambarare". Hakuna
+seva, hakuna huduma iliyosanidiwa katikati, na hakuna uongozi ndani ya mtandao.
+Nodi katika mtandao wa P2P hutoa na kutumia huduma wakati
+mmoja. Mitandao ya P2P
+ina ustahimilivu wa asili, imegatuliwa, na wazi. Mfano mkuu
+wa muundo wa mtandao wa P2P ulikuwa intaneti ya mapema yenyewe,
+ambapo nodi kwenye mtandao wa IP zilikuwa sawa. Muundo wa intaneti wa leo
+una mfumo zaidi wa kidaraja, lakini Itifaki ya Intaneti bado inabaki na kiini chake cha
+muundo tambarare. Zaidi ya Bitcoin na intaneti, programu kubwa zaidi na yenye mafanikio
+ya teknolojia za P2P ni ushiriki wa faili, na Napster kama
+mwanzilishi na BitTorrent kama mabadiliko ya hivi karibuni ya muundo.
+
+Muundo wa mtandao wa P2P wa Bitcoin ni zaidi ya chaguo la topiolojia.
+Bitcoin ni mfumo wa pesa za kidijitali wa P2P kwa muundo, na muundo wa
+mtandao ni onyesho na msingi wa tabia hiyo ya msingi.
+Ugatuzi wa udhibiti ni kanuni ya msingi ya muundo
+inayoweza kufikiwa na kudumishwa tu na mtandao wa makubaliano wa P2P
+tambarare na uliogatuliwa.
+
+Neno "mtandao wa Bitcoin" linamaanisha
+mkusanyiko wa nodi zinazoendesha itifaki ya P2P ya Bitcoin. Mbali na
+itifaki ya P2P ya Bitcoin, kuna itifaki nyingine ambazo
+hutumiwa kwa uchimbaji na wateja wepesi. Itifaki hizi za ziada
+hutolewa na seva za uelekezaji za lango ambazo zinafikia
+mtandao wa Bitcoin kwa kutumia itifaki ya P2P ya Bitcoin na kisha kupanua
+mtandao huo kwa nodi zinazoendesha itifaki nyingine. Kwa mfano, seva za Stratum
+huunganisha nodi za uchimbaji za Stratum kupitia itifaki ya Stratum kwenye mtandao mkuu
+wa Bitcoin na daraja la itifaki ya Stratum kwenye itifaki ya P2P ya Bitcoin.
+Tutaelezea baadhi ya itifaki zinazotumika zaidi katika sura hii mbali na itifaki ya msingi ya P2P ya Bitcoin.
+
+=== Aina za Nodi na Majukumu
+
+Ingawa((("Bitcoin network", "nodes", "types of")))((("nodes", "types of")))((("full nodes", "purpose of")))((("peers"))) nodi kamili (rika) katika mtandao wa P2P wa Bitcoin ni sawa kwa kila mmoja,
+zinaweza kuchukua majukumu tofauti kulingana na utendaji wanaouunga mkono.
+Nodi kamili ya Bitcoin huthibitisha vitalu na inaweza kuwa na kazi nyingine,
+kama vile uelekezaji, uchimbaji, na huduma za pochi.
+
+Baadhi ya nodi, zinazoitwa _nodi kamili za kumbukumbu_, pia ((("archival full nodes")))hudumisha
+nakala kamili na iliyosasishwa ya mnyororo wa vitalu.
+Nodi hizo zinaweza
+kutoa data kwa wateja wanaohifadhi
+sehemu ndogo tu ya mnyororo wa vitalu na kuthibitisha miamala kwa kiasi kwa kutumia njia
+((("SPV (simplified-payment-verification) clients")))((("lightweight clients")))inayoitwa _uthibitishaji rahisi wa malipo_, au SPV. Wateja hawa wanajulikana kama wateja wepesi.
+
+Wachimbaji hushindana kuunda vitalu vipya kwa
+kuendesha vifaa maalum kutatua algorithm ya uthibitisho wa kazi. Baadhi ya
+wachimbaji wanaendesha nodi kamili, wakithibitisha kila kitalu kwenye
+mnyororo wa vitalu, wakati wengine ni wateja wanaoshiriki katika uchimbaji wa kikundi
+na kutegemea seva ya kikundi kuwapa kazi.
+
+Pochi za watumiaji zinaweza kuunganika kwenye nodi kamili ya mtumiaji mwenyewe, kama inavyotokea wakati mwingine na
+wateja wa Bitcoin wa kompyuta ya mezani, lakini pochi nyingi za watumiaji, hasa
+zile zinazoendesha kwenye vifaa vyenye rasilimali chache kama vile simu mahiri, ni
+nodi wepesi.
+
+Mbali na aina kuu za nodi kwenye itifaki ya P2P ya Bitcoin, kuna
+seva na nodi zinazoendesha itifaki nyingine, kama vile itifaki maalum
+za kikundi cha uchimbaji na itifaki za upatikanaji wa wateja wepesi.
+
+=== Mtandao
+
+Kufikia((("Bitcoin network", "nodes", "number of")))((("nodes", "number of"))) wakati huu wa kuandika, mtandao mkuu wa Bitcoin,
+unaoendesha itifaki ya P2P ya Bitcoin, unajumuisha takriban nodi 10,000
+zinazosikiliza zinazoendesha matoleo mbalimbali ya Bitcoin Core na mamia chache
+ya nodi zinazoendesha utekelezaji mbalimbali mingine ya itifaki ya P2P ya Bitcoin
+kama BitcoinJ, btcd, na bcoin. Asilimia ndogo
+ya nodi kwenye mtandao wa P2P wa Bitcoin pia ni
+nodi za uchimbaji. Watu binafsi na makampuni mbalimbali yanaingiliana na mtandao wa
+Bitcoin kwa kuendesha nodi kamili za kumbukumbu,
+zenye nakala kamili za mnyororo wa vitalu na nodi ya mtandao, lakini bila
+kazi za uchimbaji au pochi. Nodi hizi hufanya kama vipanga njia vya ukingo wa mtandao,
+kuruhusu huduma mbalimbali nyingine (masoko ya kubadilishana, pochi, vichunguzi vya vitalu,
+usindikaji wa malipo ya wafanyabiashara) kujengwa juu yao.
+
+
+[role="less_space pagebreak-before"]
+=== Uwasilishaji wa Vitalu vya Muhtasari
+
+Mchimbaji((("Bitcoin network", "nodes", "compact block relay", id="bitcoin-network-node-compact-relay")))((("nodes", "compact block relay", id="node-compact-relay")))((("blocks", "compact block relay", id="block-compact-relay")))((("compact block relay", id="compact-block-relay")))((("mining", "blocks", "compact block relay", id="mining-block-compact-relay"))) anapopata kitalu kipya, anatangaza kwa mtandao wa Bitcoin
+(ambao ni pamoja na wachimbaji wengine). Mchimbaji aliyepata kitalu hicho anaweza kuanza
+kujenga juu yake mara moja; wachimbaji wengine wote ambao bado hawajajifunza
+kuhusu kitalu wataendelea kujenga juu ya kitalu cha awali
+mpaka wajifunze kuhusu hicho.
+
+Ikiwa, kabla ya kujifunza kuhusu kitalu kipya, moja ya wale
+wachimbaji wengine huunda kitalu, kitalu chao kitakuwa na ushindani na
+kitalu kipya cha mchimbaji wa kwanza. Moja tu ya vitalu itawahi kujumuishwa
+katika mnyororo wa vitalu unaotumiwa na nodi kamili zote, na wachimbaji hulipwa tu kwa
+vitalu vinavyokubaliwa kwa upana.
+
+Kitalu chochote chenye kitalu cha pili kilichojengwa juu yake kwanza kinashinda (isipokuwa
+kuna usawa mwingine wa karibu), ((("block-finding races")))kinachoitwa _mbio ya kupata kitalu_ na
+kinaonyeshwa katika <<mining_race>>.
+Mbio za kupata vitalu hutoa faida kwa wachimbaji wakubwa zaidi, kwa hivyo
+zinafanya kazi kinyume na ugatuzi wa msingi wa Bitcoin. Ili kuzuia
+mbio za kupata vitalu na kuruhusu wachimbaji wa ukubwa wowote kushiriki kwa usawa
+katika bahati nasibu ambayo ni uchimbaji wa Bitcoin, ni muhimu sana kupunguza
+muda kati ya mchimbaji mmoja kutangaza kitalu kipya na wachimbaji wengine
+kupokea kitalu hicho.
+
+[[mining_race]]
+.Matawi ya mnyororo wa vitalu yanayohitaji mbio za uchimbaji.
+image::images/mbc3_1001.png["Mining race"]
+
+Mnamo 2015, toleo jipya la Bitcoin Core liliongeza kipengele kinachoitwa
+_uwasilishaji wa vitalu vya muhtasari_ (kilichobainishwa katika BIP152) kinachokuruhusu kuhamisha vitalu vipya
+haraka zaidi na na upotevu mdogo wa bandwidth.
+
+Kwa msingi, nodi kamili zinazoruhusu miamala isiyothibitishwa pia huhifadhi
+miamala mingi ya hizo katika mabwawa yao ya kumbukumbu (angalia <<mempool>>). Baadhi ya
+miamala hiyo inapothibitishwa katika kitalu kipya, nodi
+haihitaji kupokea nakala ya pili ya miamala hiyo.
+
+Badala ya kupokea miamala isiyothibitishwa inayojirudia, vitalu vya muhtasari
+huruhusu rika kutuma badala yake kitambulisho kifupi cha baiti 6 kwa kila muamala.
+Nodi yako inapopokea kitalu cha muhtasari chenye vitambulisho kimoja au zaidi, inakagua
+bwawa lake la kumbukumbu la miamala hiyo na kuitumia ikipatikana.
+Kwa muamala wowote ambao haupatikani katika bwawa la kumbukumbu la nodi yako ya ndani,
+nodi yako inaweza kutuma ombi kwa rika kwa nakala.
+
+Kwa upande mwingine, ikiwa rika la mbali linaamini kwamba bwawa la kumbukumbu la nodi yako halina
+baadhi ya miamala inayoonekana katika kitalu, linaweza kujumuisha nakala ya
+miamala hiyo katika kitalu cha muhtasari. Kwa mfano, Bitcoin Core
+daima hutuma muamala wa coinbase ya kitalu.
+
+Ikiwa rika la mbali linakisia vizuri kuhusu miamala ambayo nodi yako
+ina katika bwawa lake la kumbukumbu, na ambayo haina, itatuma kitalu kwa ufanisi karibu
+sana na uwezekano wa kinadharia (kwa kitalu cha kawaida, itakuwa
+kati ya 97% na 99% ya ufanisi).
+
+[TIP]
+====
+Uwasilishaji wa vitalu vya muhtasari haufupishi saizi ya vitalu. Unazuia tu
+uhamishaji unaojirudia wa habari ambayo nodi tayari ina.
+Nodi isiyokuwa na habari kuhusu kitalu mwanzoni, kwa mfano nodi
+inapoanzishwa kwa mara ya kwanza, lazima ipokee nakala kamili za
+kila kitalu.
+====
+
+Kuna hali mbili ambazo Bitcoin Core inatekeleza kwa sasa kwa kutuma
+vitalu vya muhtasari, kinavyoonyeshwa katika <<bip152_illustration>>:
+
+Hali ya upitishaji mdogo wa data::
+  Nodi yako((("low-bandwidth mode (compact block relay)"))) inapoombwa rika litumie hali ya upitishaji mdogo wa data (chaguo-msingi),
+  rika hilo litamwambia nodi yako kitambulisho cha baiti 32 (hash ya kichwa cha kitalu) cha
+  kitalu kipya lakini haitatuma nodi yako maelezo yoyote kukihusu. Ikiwa nodi
+  yako itapata kitalu hicho kwanza kutoka chanzo kingine, hii huepuka
+  kutumia bandwidth yako zaidi kupata nakala inayojirudia ya kitalu hicho.
+  Ikiwa nodi yako inahitaji kitalu, itaomba kitalu cha muhtasari.
+
+Hali ya upitishaji mkubwa wa data::
+  Nodi yako((("high-bandwidth mode (compact block relay)"))) inapoomba rika litumie hali ya upitishaji mkubwa wa data, rika hilo
+  litatuma nodi yako kitalu cha muhtasari kwa kitalu kipya hata kabla ya kuwa
+  kimethibitisha kikamilifu kwamba kitalu ni sahihi. Uthibitishaji pekee ambao rika
+  litaufanya ni kuhakikisha kwamba kichwa cha kitalu kina kiasi sahihi
+  cha uthibitisho wa kazi. Kwa sababu uthibitisho wa kazi ni ghali kuzalisha
+  (karibu $150,000 USD wakati wa kuandika), inawezekana kidogo kwamba
+  mchimbaji angeidanganya tu kupoteza bandwidth ya nodi za uwasilishaji.
+  Kuruka uthibitishaji kabla ya uwasilishaji huruhusu vitalu vipya kusafiri katika
+  mtandao na ucheleweshaji mdogo katika kila hatua.
++
+Hasara ya hali ya upitishaji mkubwa wa data ni kwamba nodi yako inaweza
+kupokea habari inayojirudia kutoka kwa kila rika la upitishaji mkubwa wa data unalochagua.
+Kufikia wakati huu wa kuandika, Bitcoin Core kwa sasa inaomba tu rika tatu kutumie
+hali ya upitishaji mkubwa wa data (na inajaribu kuchagua rika ambayo yana historia ya
+kutangaza vitalu haraka).
+
+// released into the public domain by Nicolas Dorier
+[[bip152_illustration]]
+.Hali za BIP152 zikilinganishwa (kutoka BIP152). Mstari wenye kivuli unaonyesha muda inachomchukua nodi kuthibitisha kitalu.
+image::images/mbc3_1002.png["BIP152"]
+
+Majina ya njia mbili (ambayo yanatoka BIP152) yanaweza kuchanganya kidogo.
+Hali ya upitishaji mdogo wa data huokoa bandwidth kwa kutotuma vitalu
+katika hali nyingi. Hali ya upitishaji mkubwa wa data hutumia bandwidth zaidi kuliko hali ya
+upitishaji mdogo wa data lakini, katika hali nyingi, bandwidth kidogo sana zaidi
+kuliko bandwidth iliyotumiwa kwa uwasilishaji wa vitalu kabla ya vitalu vya muhtasari ((("Bitcoin network", "nodes", "compact block relay", startref="bitcoin-network-node-compact-relay")))((("nodes", "compact block relay", startref="node-compact-relay")))((("blocks", "compact block relay", startref="block-compact-relay")))((("compact block relay", startref="compact-block-relay")))((("mining", "blocks", "compact block relay", startref="mining-block-compact-relay")))kutekelezwa.
+
+=== Mitandao ya Kibinafsi ya Uwasilishaji wa Vitalu
+
+Ingawa((("Bitcoin network", "nodes", "private block relay", id="bitcoin-network-node-private-relay")))((("nodes", "private block relay", id="node-private-relay")))((("blocks", "private block relay", id="block-private-relay")))((("private block relay", id="private-block-relay")))((("mining", "blocks", "private block relay", id="mining-block-private-relay"))) vitalu vya muhtasari vina mchango mkubwa katika kupunguza muda
+unaohitajika kwa vitalu kusambaa katika mtandao,
+inawezekana kupunguza ucheleweshaji zaidi. Tofauti na
+vitalu vya muhtasari, ingawa, suluhu nyingine zinahusisha biashara ambazo
+zinazifanya zisiweze kupatikana au zisizofaa kwa mtandao wa umma wa uwasilishaji wa P2P.
+Kwa sababu hiyo, kumekuwa na majaribio na mitandao ya kibinafsi ya uwasilishaji
+kwa vitalu.
+
+Mbinu moja rahisi ni kuchagua njia awali kati ya vituo. Kwa
+mfano, mtandao wa uwasilishaji wenye seva zinazoendesha katika vituo vya data karibu na kuu
+za nyuzi za fiber optic za bahari inaweza kuweza kupeleka vitalu vipya
+haraka kuliko kusubiri kitalu kifike kwenye nodi inayoendeshwa na mtumiaji wa nyumbani
+umbali wa kilomita nyingi kutoka kwa nyuzi ya fiber optic.
+
+Mbinu nyingine, ngumu zaidi, ni((("FEC (Forward Error Correction)")))((("Forward Error Correction (FEC)"))) Urekebishaji wa Makosa Mbele (FEC).
+Hii huruhusu ujumbe wa kitalu cha muhtasari kugawanywa katika sehemu kadhaa, na
+kila sehemu kuwa na data ya ziada iliyoongezwa. Ikiwa sehemu yoyote haipokewi,
+sehemu hiyo inaweza kurejeshwa kutoka sehemu zilizopokelewa.
+Kulingana na mipangilio, hadi sehemu kadhaa zinaweza
+kurejeshwa ikiwa zimepotea.
+
+FEC huepuka tatizo la kitalu cha muhtasari (au sehemu zake) kutofika
+kwa sababu ya matatizo ya muunganisho wa mtandao wa msingi.
+Matatizo hayo hutokea mara kwa mara lakini hatuoni mara nyingi
+kwa sababu tunatumia zaidi itifaki zinazoomba tena data
+iliyopotea kiotomatiki. Hata hivyo, kuomba tena data mara tatu husababisha muda wa
+kuipokea. Kwa mfano:
+
+1. Alice anatuma data fulani kwa Bob.
+2. Bob haipokei data (au imeharibiwa). Bob anaomba tena
+   data kutoka kwa Alice.
+3. Alice anatuma data tena.
+
+Mbinu ya tatu ni kudhani kwamba nodi zote zinazopokea data zina
+karibu miamala yote sawa katika bwawa lao la kumbukumbu, kwa hivyo zinaweza zote
+kukubali kitalu sawa cha muhtasari. Hiyo si tu inatuokoa wakati wa kukokotoa
+kitalu cha muhtasari katika kila hatua, lakini inamaanisha kwamba kila hatua inaweza
+kuwasilisha pakiti za FEC kwa hatua inayofuata hata kabla ya kuzithibitisha.
+
+Biashara kwa kila moja ya njia zilizotangulia ni kwamba zinafanya kazi vizuri na
+usanidi wa kati lakini si katika mtandao uliogatuliwa ambapo nodi binafsi
+haziwezi kuziamini nodi nyingine. Seva katika vituo vya data zinagharimu pesa na
+mara nyingi zinaweza kufikiwa na waendeshaji wa kituo cha data, na kuzifanya kuwa za
+kuaminika kidogo kuliko kompyuta salama ya nyumbani. Kuwasilisha data kabla ya
+kuthibitisha inafanya iwe rahisi kupoteza bandwidth, kwa hivyo inaweza kwa busara tu
+kutumiwa kwenye mtandao wa kibinafsi ambapo kuna kiwango fulani cha uaminifu na
+uwajibikaji kati ya pande.
+
+https://oreil.ly/30ZKi[Mtandao wa Uwasilishaji wa Bitcoin] uliundwa((("Bitcoin Relay Network"))) na
+msanidi programu Matt Corallo mnamo 2015 ili kuwezesha usawazishaji wa haraka wa
+vitalu kati ya wachimbaji na ucheleweshaji mdogo sana. Mtandao ulikuwa na
+seva kadhaa za kibinafsi (VPS) zilizohifadhiwa kwenye
+miundombinu duniani kote na ulihudumia kuunganisha wengi
+wa wachimbaji na vikundi vya uchimbaji.
+
+Mtandao wa Uwasilishaji wa Bitcoin wa awali uliandaliwa mnamo 2016
+na kuanzishwa ((("FIBRE (Fast Internet Bitcoin Relay Engine)")))((("Fast Internet Bitcoin Relay Engine (FIBRE)")))kwa _Injini ya Haraka ya Uwasilishaji wa Bitcoin kwenye Intaneti_ au
+https://bitcoinfibre.org[_FIBRE_], pia iliyoundwa na msanidi programu Matt
+Corallo. FIBRE ni programu inayoruhusu kuendesha mtandao wa uwasilishaji wa UDP ambao
+unawasilisha vitalu ndani ya mtandao wa nodi. FIBRE inatekeleza FEC na uboreshaji
+wa _kitalu cha muhtasari_ ili zaidi kupunguza kiasi cha data inayohamishwa na ((("Bitcoin network", "nodes", "private block relay", startref="bitcoin-network-node-private-relay")))((("nodes", "private block relay", startref="node-private-relay")))((("blocks", "private block relay", startref="block-private-relay")))((("private block relay", startref="private-block-relay")))((("mining", "blocks", "private block relay", startref="mining-block-private-relay")))ucheleweshaji wa mtandao.
+
+=== Ugunduzi wa Mtandao
+
+Nodi((("Bitcoin network", "nodes", "network discovery", id="bitcoin-network-node-discovery")))((("nodes", "network discovery", id="node-discovery")))((("network discovery", id="network-discovery"))) mpya inapoanza, lazima igundue nodi nyingine za
+Bitcoin kwenye mtandao ili kushiriki. Kuanza
+mchakato huu, nodi mpya lazima igundua angalau nodi moja iliyopo kwenye
+mtandao na kuunganika nayo. Eneo la kijiografia la nodi nyingine
+halina umuhimu; topiolojia ya mtandao wa Bitcoin haijafafanuliwa kijiografia.
+Kwa hivyo, nodi yoyote iliyopo ya Bitcoin inaweza kuchaguliwa bila utaratibu.
+
+Kuunganika na rika linalojulikana, nodi huanzisha muunganisho wa TCP, kawaida kwenye
+bandari 8333 (bandari inayojulikana kwa ujumla kama inayotumiwa na Bitcoin), au
+bandari mbadala ikiwa imetolewa. Baada ya kuanzisha muunganisho, nodi
+itaanzisha "msalimiano" (angalia <<network_handshake>>) kwa
+kutuma ujumbe wa +version+, ambao una habari za kitambulisho za msingi,
+ikiwa ni pamoja na:
+
++Version+:: Toleo la itifaki ya P2P ya Bitcoin ambayo mteja "anazungumza" (mfano, 70002)
++nLocalServices+:: Orodha ya huduma za ndani zinazoungwa mkono na nodi
++nTime+:: Wakati wa sasa
++addrYou+:: Anwani ya IP ya nodi ya mbali, kama inavyoonekana kutoka kwa nodi hii
++addrMe+:: Anwani ya IP ya nodi ya ndani, kama ilivyogunduliwa na nodi ya ndani
++subver+:: Toleo dogo linaloonyesha aina ya programu inayoendesha kwenye nodi hii (mfano, [.keep-together]#+/Satoshi:0.9.2.1/+#)
++BestHeight+:: Urefu wa vitalu vya mnyororo wa vitalu wa nodi hii
++fRelay+:: Sehemu iliyoongezwa na BIP37 kwa kuomba kutopokea miamala isiyothibitishwa
+
+Ujumbe wa +version+ daima ni ujumbe wa kwanza unaotumwa na rika lolote kwa
+rika jingine. Rika la ndani linalopokea ujumbe wa +version+ litachunguza
++Version+ iliyotangazwa ya rika la mbali na kuamua kama rika la mbali ni
+linafanana. Ikiwa rika la mbali linafanana, rika la ndani litathibitisha
+ujumbe wa +version+ na kuanzisha muunganisho kwa kutuma
++verack+.
+
+[role="less_space pagebreak-before"]
+Nodi mpya inawezaje kupata rika? Njia ya kwanza ni kuuliza DNS kwa kutumia
+_mbegu za DNS_ kadhaa, ambazo ni((("DNS seeds"))) seva za DNS zinazotoa orodha ya anwani za IP
+za nodi za Bitcoin. Baadhi ya mbegu hizo za DNS hutoa orodha tuli ya
+anwani za IP za nodi za Bitcoin zinazohifadhiwa. Baadhi ya mbegu za
+DNS ni utekelezaji maalum wa BIND (Berkeley Internet Name Daemon)
+unaorudisha sehemu nasibu kutoka orodha ya anwani za nodi za Bitcoin
+zilizokusanywa na mtambazaji au nodi ya Bitcoin inayoendelea. Mteja wa Bitcoin Core
+una majina ya mbegu kadhaa tofauti za DNS. Utofauti wa
+umiliki na utofauti wa utekelezaji wa mbegu tofauti za DNS
+unapeana kiwango cha juu cha kuaminika kwa mchakato wa awali wa kuanza.
+Katika mteja wa Bitcoin Core, chaguo la kutumia mbegu za DNS linadhibitiwa
+na swichi ya chaguo +-dnsseed+ (imewekwa 1 kwa chaguo-msingi, kutumia
+mbegu ya DNS).
+
+Badala yake, nodi ya kuanza ambayo haijui chochote kuhusu mtandao
+lazima ipewa anwani ya IP ya angalau nodi moja ya Bitcoin, baada ya hapo
+inaweza kuanzisha miunganisho kupitia utambulisho zaidi. Hoja ya
+mstari wa amri +-seednode+ inaweza kutumika kuunganika nodi moja
+tu kwa utambulisho ukitumia kama mbegu. Baada ya nodi ya mbegu ya awali
+kutumiwa kuunda utambulisho, mteja atakata muunganisho nayo na
+kutumia rika zilizogunduliwa hivi karibuni.
+
+[[network_handshake]]
+.Msalimiano wa awali kati ya rika.
+image::images/mbc3_1003.png["NetworkHandshake"]
+
+Mara muunganisho mmoja au zaidi unapoanzishwa, nodi mpya itatuma
+ujumbe wa +addr+ ulio na anwani yake ya IP kwa majirani yake. Majirani
+watawasilisha, kwa upande wao, ujumbe wa +addr+ kwa majirani wao,
+kuhakikisha kwamba nodi iliyounganishwa hivi karibuni inajulikana vizuri na imeunganishwa vizuri zaidi.
+Zaidi ya hayo, nodi iliyounganishwa hivi karibuni inaweza kutuma +getaddr+ kwa
+majirani yake, kuwauliza warudishe orodha ya anwani za IP za rika nyingine.
+Hivyo, nodi inaweza kupata rika za kuunganika nazo na kutangaza uwepo wake
+kwenye mtandao ili nodi nyingine zipate kuipata.
+<<address_propagation>> inaonyesha itifaki ya ugunduzi wa anwani.
+
+
+[[address_propagation]]
+.Usambazaji na ugunduzi wa anwani.
+image::images/mbc3_1004.png["AddressPropagation"]
+
+Nodi lazima iunganike na rika kadhaa tofauti ili kuanzisha
+njia mbalimbali kwenye mtandao wa Bitcoin. Njia hazitegemeki—nodi
+huja na kuondoka—kwa hivyo nodi lazima iendelee kugundua nodi mpya kadri
+inavyopoteza miunganisho ya zamani pamoja na kusaidia nodi nyingine zinapoanza.
+Muunganisho mmoja tu unahitajika kuanza kwa sababu nodi ya kwanza inaweza
+kutoa utambulisho kwa nodi zake za rika na rika hizo zinaweza kutoa
+utambulisho zaidi. Pia si lazima wala ni upotevu wa rasilimali za mtandao
+kuunganika na zaidi ya nodi chache. Baada ya kuanza, nodi
+itakumbuka miunganisho yake ya hivi karibuni iliyofanikiwa ya rika ili ikiwa
+imeanzishwa upya, inaweza kuanzisha tena miunganisho na mtandao wake wa zamani wa rika haraka.
+Ikiwa hakuna rika za zamani zinazositibu ombi lake la muunganisho,
+nodi inaweza kutumia nodi mbegu kuanza tena.
+
+Kwenye nodi inayoendesha mteja wa Bitcoin Core, unaweza kuorodhesha miunganisho ya rika
+kwa amri ya +getpeerinfo+:
+
+[source,bash]
+----
+$ bitcoin-cli getpeerinfo
+----
+[source,json]
+----
+[
+  {
+    "id": 0,
+    "addr": "82.64.116.5:8333",
+    "addrbind": "192.168.0.133:50564",
+    "addrlocal": "72.253.6.11:50564",
+    "network": "ipv4",
+    "services": "0000000000000409",
+    "servicesnames": [
+      "NETWORK",
+      "WITNESS",
+      "NETWORK_LIMITED"
+    ],
+    "lastsend": 1683829947,
+    "lastrecv": 1683829989,
+    "last_transaction": 0,
+    "last_block": 1683829989,
+    "bytessent": 3558504,
+    "bytesrecv": 6016081,
+    "conntime": 1683647841,
+    "timeoffset": 0,
+    "pingtime": 0.204744,
+    "minping": 0.20337,
+    "version": 70016,
+    "subver": "/Satoshi:24.0.1/",
+    "inbound": false,
+    "bip152_hb_to": true,
+    "bip152_hb_from": false,
+    "startingheight": 788954,
+    "presynced_headers": -1,
+    "synced_headers": 789281,
+    "synced_blocks": 789281,
+    "inflight": [
+    ],
+    "relaytxes": false,
+    "minfeefilter": 0.00000000,
+    "addr_relay_enabled": false,
+    "addr_processed": 0,
+    "addr_rate_limited": 0,
+    "permissions": [
+    ],
+    "bytessent_per_msg": {
+      ...
+    },
+    "bytesrecv_per_msg": {
+      ...
+    },
+    "connection_type": "block-relay-only"
+  },
+]
+----
+
+Ili kubatilisha usimamizi wa kiotomatiki wa rika na kubainisha orodha ya
+anwani za IP, watumiaji wanaweza kutoa chaguo +-connect=<IPAddress>+ na
+kubainisha anwani moja au zaidi za IP. Ikiwa chaguo hili linatumiwa, nodi
+itaunganika tu kwenye anwani za IP zilizochaguliwa badala ya kugundua na
+kudumisha miunganisho ya rika kiotomatiki.
+
+Ikiwa hakuna trafiki kwenye muunganisho, nodi zitatuma mara kwa mara
+ujumbe ili kudumisha muunganisho. Ikiwa nodi haijashirikiana kwenye
+muunganisho kwa muda mrefu sana, inadhaniwa imekatika muunganisho
+na rika jipya litatafutwa. Kwa hivyo, mtandao hujirekebisha kiotomatiki
+kwa nodi za muda na matatizo ya mtandao na unaweza kukua kikaboni na
+kupungua kama inavyohitajika bila ((("Bitcoin network", "nodes", "network discovery", startref="bitcoin-network-node-discovery")))((("nodes", "network discovery", startref="node-discovery")))((("network discovery", startref="network-discovery")))udhibiti wa kati.
+
+=== Nodi Kamili
+
+Nodi kamili ((("Bitcoin network", "full nodes, purpose of")))((("full nodes", "purpose of")))ni nodi zinazothibitisha kila muamala katika kila kitalu kwenye
+mnyororo wa vitalu sahihi wenye uthibitisho wa kazi zaidi.
+
+Nodi kamili
+hushughulikia kila kitalu kwa uhuru, kuanzia baada ya kitalu cha kwanza kabisa
+(kitalu cha mwanzo) na kuendelea hadi kitalu kipya kinachojulikana katika
+mtandao. Nodi kamili inaweza kwa uhuru na kwa mamlaka
+kuthibitisha muamala wowote.
+Nodi kamili hutegemea mtandao ili
+kupokea masasisho kuhusu vitalu vipya vya miamala, ambayo kisha inathibitisha
+na kuingiza katika mtazamo wake wa ndani wa hati gani zinasimamia
+bitcoin zipi, zinazoitwa seti ((("UTXOs (unspent transaction outputs)")))ya _matokeo ya miamala ambayo haijatumika_ (UTXO).
+
+Kuendesha nodi kamili inakupa
+uzoefu halisi wa Bitcoin: uthibitishaji huru wa miamala yote
+bila haja ya kutegemea au kuamini mifumo mingine yoyote.
+
+Kuna utekelezaji kadhaa mbadala wa
+nodi kamili, zilizojengwa kwa lugha tofauti za programu
+na miundo ya programu, au ambazo zilizofanya maamuzi tofauti ya muundo.
+Hata hivyo, utekelezaji wa kawaida zaidi
+ni Bitcoin Core.
+Zaidi ya asilimia 95 ya nodi kamili kwenye mtandao wa Bitcoin huendesha
+matoleo mbalimbali ya Bitcoin Core. Inatambuliwa kama "Satoshi" katika
+mfuatano wa toleo dogo unaotumwa katika ujumbe wa +version+ na kuonyeshwa na
+amri ya +getpeerinfo+ kama tulioona awali; kwa mfano, [.keep-together]#+/Satoshi:24.0.1/+#.
+
+=== Kubadilishana "Hesabu"
+
+Jambo la kwanza((("Bitcoin network", "nodes", "syncing blockchain", id="bitcoin-network-node-sync")))((("nodes", "syncing blockchain", id="node-sync")))((("full nodes", "syncing blockchain", id="full-node-sync")))((("blockchain", "syncing", id="blockchain-sync")))((("syncing blockchain", id="sync-blockchain"))) ambalo nodi kamili
+itafanya mara inapoungana na rika ni kujaribu kuunda mnyororo kamili
+wa vichwa vya vitalu. Ikiwa ni nodi mpya kabisa na haina mnyororo wa vitalu kabisa, inajua
+kitalu kimoja tu, kitalu cha mwanzo, ambacho kimewekwa kwa njia ya kudumu katika
+programu ya mteja. Kuanzia baada ya kitalu #0 (kitalu cha mwanzo), nodi mpya
+itahitaji kupakua vitalu mamia ya maelfu ili
+kusawazishwa na mtandao na kuanzisha tena mnyororo kamili wa vitalu.
+
+Mchakato wa
+kusawazisha mnyororo wa vitalu huanza na ujumbe wa +version+
+kwa sababu unabeba +BestHeight+, urefu wa sasa wa mnyororo wa vitalu wa nodi
+(idadi ya vitalu). Nodi itaona ujumbe wa +version+ kutoka kwa rika zake,
+kujua vitalu vingapi kila kimoja kinavyo, na kuweza kulinganisha na
+vitalu vingapi ina katika mnyororo wake wa vitalu. Rika zilizounganishwa zitabadilishana
+ujumbe wa +getheaders+ unaobeba hash ya kitalu cha juu
+kwenye mnyororo wao wa vitalu wa ndani. Moja ya rika litaweza
+kutambua hash iliyopokelewa kama ya kitalu ambacho si juu,
+bali ni cha kitalu cha zamani zaidi, hivyo kuhitimisha kwamba mnyororo wake wa vitalu wa ndani
+ni mrefu zaidi kuliko mnyororo wa vitalu wa nodi ya mbali.
+
+Rika lenye mnyororo mrefu zaidi wa vitalu lina vitalu zaidi kuliko nodi nyingine
+na linaweza kutambua vichwa gani ambavyo nodi nyingine inahitaji ili
+"kupata kasi". Litatambua vichwa 2,000 vya kwanza kushiriki kwa kutumia
+ujumbe wa +headers+. Nodi itaendelea kuomba vichwa vya ziada
+mpaka ipokee moja kwa kila kitalu ambacho rika la mbali linakidai kuwa nacho.
+
+Sambamba, nodi itaanza kuomba vitalu kwa kila kichwa
+kilichopokea awali kwa kutumia ujumbe wa +getdata+. Nodi itaomba
+vitalu tofauti kutoka kwa kila rika iliyochaguliwa, kuiruhusu kukata
+miunganisho kwa rika ambazo ni polepole zaidi kuliko wastani ili
+kupata rika mpya (na labda za haraka zaidi).
+
+Hebu tuseme, kwa mfano, kwamba nodi ina tu kitalu cha mwanzo. Itapokea kisha ujumbe wa +headers+ kutoka kwa rika zake ulio na vichwa
+vya vitalu 2,000 vifuatavyo katika mnyororo. Itaanza kuomba vitalu
+kutoka kwa rika zake zote zilizounganishwa, ikidumisha foleni ya hadi vitalu 1,024.
+Vitalu vinahitaji kuthibitishwa kwa mpangilio, kwa hivyo ikiwa kitalu cha zamani zaidi katika
+foleni—kitalu ambacho nodi inahitaji kuthibitisha kifuatacho—haijapokewa
+bado, nodi inakata muunganisho kwa rika ambalo ilipaswa
+kutoa kitalu hicho. Kisha inapata rika jipya ambalo linaweza kutoa
+kitalu kimoja kabla ya rika zote nyingine za nodi kuweza
+kutoa vitalu 1,023.
+
+Kila kitalu kinapopokelewa, kinaongezwa kwenye
+mnyororo wa vitalu, kama tutakavyoona katika <<blockchain>>. Mnyororo wa vitalu wa ndani ukiwa
+ukijengwa polepole, vitalu zaidi vinaombwa na kupokelewa, na
+mchakato unaendelea mpaka nodi ipate kasi na mtandao wengine.
+
+Mchakato huu wa kulinganisha mnyororo wa vitalu wa ndani na rika na
+kupata vitalu vyovyote vinavyokosekana hutokea wakati wowote nodi imetulia kwa
+muda mrefu((("Bitcoin network", "nodes", "syncing blockchain", startref="bitcoin-network-node-sync")))((("nodes", "syncing blockchain", startref="node-sync")))((("full nodes", "syncing blockchain", startref="full-node-sync")))((("blockchain", "syncing", startref="blockchain-sync")))((("syncing blockchain", startref="sync-blockchain"))) wa muda.
+
+[[spv_nodes]]
+=== Wateja Wepesi
+
+Wateja((("Bitcoin network", "lightweight clients", id="bitcoin-network-lightweight")))((("lightweight clients", id="lightweight")))((("SPV (simplified-payment-verification) clients", id="spv-lightweight"))) wengi wa Bitcoin wameundwa kuendeshwa kwenye vifaa vyenye nafasi na
+nguvu ndogo, kama vile simu mahiri, kompyuta za kubeba, au mifumo iliyopachikwa.
+Kwa vifaa hivyo, njia ya _uthibitishaji rahisi wa malipo_ (SPV)
+hutumiwa kuwaruhusu kufanya kazi bila kuthibitisha mnyororo kamili
+wa vitalu. Aina hizi za wateja huitwa wateja
+wepesi.
+
+Wateja wepesi hupakua vichwa vya vitalu tu na hawapakui
+miamala iliyojumuishwa katika kila kitalu. Mnyororo unaotokana wa vichwa,
+bila miamala, ni ndogo mara 10,000 zaidi ya mnyororo kamili wa vitalu.
+Wateja wepesi hawawezi kuunda picha kamili ya UTXO zote zinazopatikana
+kwa kutumia kwa sababu hawajui kuhusu miamala yote kwenye mtandao.
+Badala yake, wanathibitisha miamala kwa kutumia njia tofauti kidogo
+inayotegemea rika kutoa mtazamo wa sehemu za sehemu muhimu za mnyororo wa vitalu kwa ombi.
+
+Kwa mfano, nodi kamili ni kama msafiri katika mji mgeni, akiwa na
+ramani ya kina ya kila barabara na kila anwani. Kwa kulinganisha, mteja mwepesi
+ni kama msafiri katika mji mgeni anayeuliza wageni wa nasibu kwa
+maelekezo ya hatua kwa hatua huku akijua njia kuu moja tu. Ingawa
+wasafiri wote wanaweza kuthibitisha uwepo wa barabara kwa kuitembelea, msafiri
+asiye na ramani hajui kilichopo chini ya barabara yoyote ya upande
+wala hajui barabara nyingine zipi zinazo. Amesimama mbele ya
+Kanisa Na. 23, msafiri asiye na ramani hawezi kujua ikiwa kuna
+dazeni nyingine za anwani za [.keep-together]#"Kanisa Na. 23# katika jiji na ikiwa hii
+ndiyo sahihi. Nafasi bora ya msafiri asiye na ramani ni kuuliza
+watu wa kutosha na kutumaini kwamba baadhi yao hawajaribu kumdhuru.
+
+Wateja wepesi huthibitisha miamala kwa kurejelea _kina_ chake katika mnyororo wa vitalu. Wakati nodi kamili itaunda mnyororo uliothibitishwa kikamilifu wa vitalu maelfu unaoshuka chini ya mnyororo wa vitalu (nyuma kwa wakati) hadi kitalu cha mwanzo, mteja mwepesi atathibitisha uthibitisho wa kazi wa vitalu vyote (lakini si kama vitalu na miamala yao yote ni sahihi) na kuunganisha mnyororo huo kwenye muamala unaovutia.
+
+Kwa mfano, wakati wa kuchunguza muamala katika kitalu 800,000, nodi kamili
+inathibitisha vitalu vyote 800,000 hadi kitalu cha mwanzo na kujenga hifadhidata kamili
+ya UTXO, kuanzisha uhalali wa muamala kwa kuthibitisha kwamba
+muamala upo na matokeo yake bado hayajatumika. Mteja mwepesi anaweza
+tu kuthibitisha kwamba muamala upo. Mteja huanzisha kiungo
+kati ya muamala na kitalu kinachobeba, kwa kutumia _njia ya merkle_
+(angalia <<merkle_trees>>). Kisha, mteja mwepesi husubiri mpaka aone
+vitalu sita 800,001 hadi 800,006 vilivyopangwa juu ya kitalu lenye
+muamala na kuithibitisha kwa kuanzisha kina chake chini ya vitalu
+800,006 hadi 800,001. Ukweli kwamba nodi nyingine kwenye mtandao zilikubali
+kitalu 800,000 na kwamba wachimbaji walifanya kazi inayohitajika kuzalisha vitalu sita zaidi
+juu yake ni uthibitisho, kwa njia ya wakili, kwamba muamala kweli kweli upo.
+
+Mteja mwepesi kawaida hawezi kushawishiwa kwamba muamala upo katika kitalu
+pale ambapo muamala hauwezi kweli kweli kuwepo. Mteja mwepesi huanzisha
+uwepo wa muamala katika kitalu kwa kuomba uthibitisho wa njia ya merkle
+na kwa kuthibitisha uthibitisho wa kazi katika mnyororo wa vitalu.
+Hata hivyo, uwepo wa muamala unaweza "kufichwa" kutoka kwa mteja mwepesi.
+Mteja mwepesi anaweza kwa uhakika kuthibitisha kwamba muamala upo lakini hawezi kuthibitisha
+kwamba muamala, kama vile matumizi mara mbili ya UTXO ile ile,
+haipo kwa sababu hana rekodi ya miamala yote. Udhaifu huu
+unaweza kutumika katika shambulio la kukataa huduma au kwa
+shambulio la matumizi mara mbili dhidi ya wateja wepesi. Ili kujitetea dhidi ya hili, mteja mwepesi
+anahitaji kuunganika kwa nasibu kwa wateja kadhaa ili kuongeza
+uwezekano kwamba yuko mawasiliano na angalau nodi moja ya uaminifu. Haja
+hii ya kuunganika kwa nasibu inamaanisha kwamba wateja wepesi pia wana uwezekano wa
+mashambulizi ya kugawanya mtandao au mashambulizi ya Sybil, ambapo wameunganishwa
+kwa nodi au mitandao ya bandia na hawana ufikiaji kwa nodi za uaminifu au
+mtandao wa kweli wa Bitcoin.
+
+Kwa madhumuni mengi ya vitendo, wateja wepesi walioungamanishwa vizuri ni salama wa kutosha,
+wakigonga usawa kati ya mahitaji ya rasilimali, uhalisi, na usalama.
+Kwa usalama usioweza kupingwa, ingawa, hakuna kinachoshinda kuendesha nodi kamili
+yako mwenyewe.
+
+[TIP]
+====
+Nodi kamili inathibitisha muamala kwa kukagua mnyororo mzima wa
+vitalu maelfu chini yake ili kuhakikisha kwamba UTXO ipo na
+haijatumika, wakati mteja mwepesi tu anathibitisha kwamba muamala
+upo na kukagua kwamba kitalu kinachobeba muamala hiyo
+kimetumbukizwa na vitalu vichache juu yake.
+====
+
+Kupata vichwa vya vitalu vinavyohitajika kuthibitisha muamala ni sehemu ya
+mnyororo, wateja wepesi hutumia ujumbe wa +getheaders+.
+Rika linalojibu litatuma hadi vichwa 2,000 vya vitalu
+kwa kutumia ujumbe mmoja wa +headers+. Angalia mchoro katika
+<<spv_synchronization>>.
+
+[[spv_synchronization]]
+.Mteja mwepesi akisawazisha vichwa vya vitalu.
+image::images/mbc3_1005.png["Header synchronization"]
+
+Vichwa vya vitalu huruhusu mteja mwepesi kuthibitisha kwamba kitalu chochote cha mtu binafsi
+ni cha mnyororo wa vitalu wenye uthibitisho wa kazi zaidi, lakini haziambie
+mteja ni vitalu vipi vilivyo na miamala inayovutia kwa
+pochi yake. Mteja angeweza kupakua kila kitalu na kukagua, lakini hiyo
+ingetumia sehemu kubwa ya rasilimali ambazo ingechukua kuendesha nodi kamili,
+kwa hivyo wasanidi programu walikuwa wakitafuta njia nyingine za kutatua tatizo.
+
+Muda mfupi baada ya kuanzishwa kwa wateja wepesi, wasanidi programu wa Bitcoin
+waliongeza kipengele kinachoitwa _vichujio vya bloom_ katika jaribio la
+kupunguza bandwidth ambayo wateja wepesi walihitaji kutumia kujifunza kuhusu
+miamala yao ya kuingia na kutoka.
+Vichujio vya bloom huruhusu wateja wepesi kupokea sehemu ndogo ya
+miamala bila kufunua kwa moja kwa moja anwani zipi wanazovutiwa nazo,
+kupitia utaratibu wa kuchuja unaotumia uwezekano
+badala ya ((("Bitcoin network", "lightweight clients", startref="bitcoin-network-lightweight")))((("lightweight clients", startref="lightweight")))((("SPV (simplified-payment-verification) clients", startref="spv-lightweight")))mifumo thabiti.
+
+[[bloom_filters]]
+=== Vichujio vya Bloom
+
+Kichujio cha bloom((("Bitcoin network", "bloom filters", "operational overview", id="bitcoin-network-bloom-overview")))((("bloom filters", "operational overview", id="bloom-overview"))) ni kichujio cha kutafuta kwa uwezekano, njia ya
+kuelezea mfumo unaotakiwa bila kuubainisha hasa. Vichujio vya
+bloom hutoa njia bora ya kuelezea mfumo wa utafutaji huku
+vkilinda faragha. Vinatumiwa na wateja wepesi kuuliza rika zao kwa
+miamala inayolingana na mfumo maalum bila kufunua hasa
+anwani zipi, funguo, au miamala wanayotafuta.
+
+Katika mfano wetu wa awali, msafiri asiye na ramani anauliza
+maelekezo kwenda anwani maalum, "Kanisa Na. 23." Wakiuliza mgeni
+maelekezo kwa barabara hii, wanafunua kwa bahati mbaya marudio yao. Kichujio cha
+bloom ni kama kuuliza, "Je, kuna barabara yoyote katika
+mtaa huu ambayo jina lake linaishia na R-C-H?" Swali kama hilo
+linafunua kidogo zaidi kuhusu marudio yanayotakiwa kuliko kuuliza kwa "Kanisa
+Na. 23." Kwa kutumia mbinu hii, msafiri angeweza kubainisha anwani inayotakiwa
+kwa maelezo zaidi kama vile "inayoishia na U-R-C-H" au kwa maelezo kidogo kama vile
+"inayoishia na H." Kwa kubadilisha usahihi wa utafutaji, msafiri
+anafunua habari zaidi au kidogo kwa gharama ya kupata matokeo zaidi au kidogo
+maalum. Wakiuliza kwa mfumo usio maalum zaidi, wanapata
+anwani nyingi zaidi zinazowezekana na faragha bora, lakini matokeo mengi si
+muhimu. Wakiuliza kwa mfumo maalum sana, wanapata matokeo
+machache lakini wanapoteza faragha.
+
+Vichujio vya bloom hutumikia kazi hii kwa kuruhusu mteja mwepesi kubainisha mfumo wa
+utafutaji kwa miamala ambao unaweza kuelekezwa kuelekea usahihi au
+faragha. Kichujio cha bloom chenye maelezo zaidi kitatoa matokeo sahihi, lakini
+kwa gharama ya kufunua mifumo inayovutia mteja mwepesi,
+hivyo kufunua anwani zinazomilikiwa na pochi ya mtumiaji. Kichujio cha bloom
+chenye maelezo kidogo kitatoa data zaidi kuhusu miamala zaidi, nyingi
+zisizohusu mteja, lakini kitaruhusu mteja kudumisha faragha bora.
+
+==== Jinsi Vichujio vya Bloom Vinavyofanya Kazi
+
+Vichujio vya bloom vitekelezwa kama safu ya N ya nambari za binari za ukubwa unaobadilika
+(sehemu ya biti) na idadi inayobadilika ya M ya vitendakazi vya hash. Vitendakazi
+vya hash vimeundwa kutoa kila wakati matokeo kati ya 1 na
+N, inayolingana na safu ya nambari za binari. Vitendakazi vya hash
+vinazalishwa kwa njia inayoweza kudhibitiwa, ili mteja yeyote anayetekeleza kichujio cha bloom
+atatumia vitendakazi sawa za hash na kupata matokeo sawa
+kwa ingizo maalum. Kwa kuchagua vichujio vya bloom vya urefu tofauti (N) na
+idadi tofauti (M) ya vitendakazi vya hash, kichujio cha bloom kinaweza kurekebishwa,
+kubadilisha kiwango cha usahihi na hivyo faragha.
+
+Katika <<bloom1>>, tunatumia safu ndogo sana ya biti 16 na seti ya vitendakazi tatu
+vya hash kuonyesha jinsi vichujio vya bloom vinavyofanya kazi.
+
+[[bloom1]]
+.Mfano wa kichujio rahisi cha bloom, chenye sehemu ya biti 16 na vitendakazi vitatu vya hash.
+image::images/mbc3_1006.png["Bloom1"]
+
+Kichujio cha bloom kinaanzishwa ili safu ya biti iwe sifuri zote. Kuongeza
+mfumo kwenye kichujio cha bloom, mfumo unahashiwa na kila kitendakazi cha hash
+kwa mtiririko. Kutumia kitendakazi cha kwanza cha hash kwenye ingizo kunasababisha
+nambari kati ya 1 na N. Biti inayolingana katika safu (iliyoindexiwa
+kutoka 1 hadi N) hupatikana na kuwekwa kama +1+, hivyo kurekodi matokeo ya
+kitendakazi cha hash. Kisha, kitendakazi kifuatacho cha hash kinatumiwa kuweka biti nyingine
+na kadhalika. Vitendakazi vyote M vya hash vikitekelezwa, mfumo wa utafutaji
+utakuwa "umerekodiwa" katika kichujio cha bloom kama biti M ambazo zimebadilishwa
+kutoka +0+ hadi +1+.
+
+<<bloom2>> ni mfano wa kuongeza mfumo "A" kwenye kichujio rahisi cha bloom kilichoonyeshwa katika <<bloom1>>.
+
+Kuongeza mfumo wa pili ni rahisi kama kurudia mchakato huu. Mfumo
+unahashiwa na kila kitendakazi cha hash kwa mtiririko, na matokeo yanarekodiwa
+kwa kuweka biti kwa +1+. Angalia kwamba kichujio cha bloom kinapojazwa na mifumo zaidi,
+matokeo ya kitendakazi cha hash yanaweza kulingana na biti
+iliyowekwa tayari kama +1+, ambapo biti haibadiliki. Kimsingi,
+mifumo zaidi ikirekodi kwenye biti zinazoingiliana, kichujio cha bloom
+kinaanza kushibiwa na biti zaidi zilizowekwa kama +1+ na usahihi wa
+kichujio hupungua. Hii ndiyo sababu kichujio ni muundo wa data wa uwezekano—kinapata usahihi mdogo zaidi mifumo zaidi inapoongezwa. Usahihi
+unategemea idadi ya mifumo iliyoongezwa dhidi ya ukubwa wa safu ya biti
+(N) na idadi ya vitendakazi vya hash (M). Safu kubwa ya biti na vitendakazi zaidi
+vya hash vinaweza kurekodi mifumo zaidi kwa usahihi wa juu zaidi. Safu ndogo ya
+biti au vitendakazi vichache vya hash vitarekodi mifumo michache zaidi na kutoa
+usahihi mdogo zaidi.
+
+[[bloom2]]
+.Kuongeza mfumo "A" kwenye kichujio chetu rahisi cha bloom.
+image::images/mbc3_1007.png["Bloom2"]
+
+<<bloom3>> ni mfano wa kuongeza mfumo wa pili "B" kwenye kichujio rahisi cha bloom.
+
+[[bloom3]]
+.Kuongeza mfumo wa pili "B" kwenye kichujio chetu rahisi cha bloom.
+image::images/mbc3_1008.png["Bloom3"]
+
+[role="less_space pagebreak-before"]
+Kujua kama mfumo ni sehemu ya kichujio cha bloom, mfumo unahashiwa na
+kila kitendakazi cha hash na mfumo wa biti unaotokana hujaribiwa dhidi ya
+safu ya biti. Ikiwa biti zote zilizoindexiwa na vitendakazi vya hash zimewekwa kama +1+,
+basi mfumo _uwezekano_ umerekodiwa katika kichujio cha bloom. Kwa sababu biti
+zinaweza kuwekwa kwa sababu ya mwingiliano kutoka mifumo mingi, jibu
+si la uhakika, bali ni la uwezekano. Kwa maneno rahisi, mechi chanya ya kichujio cha bloom
+ni "Labda, ndiyo."
+
+<<bloom4>> ni mfano wa kujua uwepo wa mfumo "X" katika
+kichujio rahisi cha bloom. Biti zinazolingana zimewekwa kama +1+, kwa hivyo
+mfumo uwezekano ni mechi.
+
+[[bloom4]]
+.Kujua uwepo wa mfumo "X" katika kichujio cha bloom. Matokeo ni mechi chanya ya uwezekano, inayomaanisha "Labda."
+image::images/mbc3_1009.png["Bloom4"]
+
+Kwa upande mwingine, ikiwa mfumo unajaribiwa dhidi ya kichujio cha bloom na biti yoyote
+moja imewekwa kama +0+, hii inathibitisha kwamba mfumo haukurekodiwa
+katika kichujio cha bloom. Matokeo mabaya si uwezekano, ni
+uhakika. Kwa maneno rahisi, mechi mbaya kwenye kichujio cha bloom ni
+"Hakika si!"
+
+<<bloom5>> ni mfano wa kujua uwepo wa mfumo "Y" katika
+kichujio rahisi cha bloom. Moja ya biti zinazolingana imewekwa kama +0+, kwa hivyo
+mfumo kwa hakika((("Bitcoin network", "bloom filters", "operational overview", startref="bitcoin-network-bloom-overview")))((("bloom filters", "operational overview", startref="bloom-overview"))) si mechi.
+
+[[bloom5]]
+.Kujua uwepo wa mfumo "Y" katika kichujio cha bloom. Matokeo ni mechi mbaya ya uhakika, inayomaanisha "Hakika Si!"
+image::images/mbc3_1010.png[]
+
+==== Jinsi Wateja Wepesi Wanavyotumia Vichujio vya Bloom
+
+Vichujio vya bloom ((("Bitcoin network", "bloom filters", "lightweight clients and", id="bitcoin-network-bloom-lightweight")))((("bloom filters", "lightweight clients and", id="bloom-lightweight")))((("lightweight clients", "bloom filters and", id="lightweight-bloom")))vinatumiwa kuchuja miamala (na vitalu vinavyobeba
+miamala hiyo) ambayo mteja mwepesi anapokea kutoka kwa rika zake, kuchagua tu
+miamala inayovutia mteja mwepesi bila kufunua hasa
+anwani au funguo anazovutiwa nazo.
+
+Mteja mwepesi ataanzisha kichujio cha bloom
+kama "tupu"; katika hali hiyo, kichujio cha bloom hatalingana na mifumo yoyote.
+Mteja mwepesi kisha ataunda orodha ya anwani zote, funguo, na
+heshi anazovutiwa nazo. Atafanya hivi kwa kutoa
+hash ya ufunguo wa umma, hash ya hati, na vitambulisho vya muamala kutoka
+kwa UTXO yoyote inayodhibitiwa na pochi yake. Mteja mwepesi kisha huongeza kila moja ya hizi kwenye
+kichujio cha bloom ili kichujio cha bloom "kilingane" ikiwa mifumo hii
+ipo katika muamala, bila kufunua mifumo yenyewe.
+
+Mteja mwepesi kisha atatuma
+ujumbe wa +filterload+ kwa rika ulio na kichujio cha bloom cha kutumia kwenye
+muunganisho. Kwenye rika, vichujio vya bloom hukaguliwa dhidi ya kila
+muamala unaoingia. Nodi kamili hukagua sehemu kadhaa za
+muamala dhidi ya kichujio cha bloom, ikitafuta mechi ikiwa ni pamoja na:
+
+++++
+<ul>
+<li>Kitambulisho cha muamala</li>
+<li>Vipengele vya data kutoka kwa hati za kila matokeo ya muamala (kila ufunguo na hash katika hati)</li>
+<li class="less_space pagebreak-before">Kila moja ya pembejeo za muamala</li>
+<li>Kila moja ya vipengele vya data vya saini ya pembejeo (au hati za ushahidi)</li>
+</ul>
+++++
+
+
+Kwa kukagua dhidi ya vipengele hivi vyote, vichujio vya bloom vinaweza kutumika
+kulingana na hash za ufunguo wa umma, hati, maadili ya +OP_RETURN+, funguo za umma katika
+saini, au kipengele chochote cha siku zijazo cha mkataba mahiri au hati ngumu.
+
+Kichujio kinapoanzishwa, rika kisha litajaribu matokeo ya kila
+muamala dhidi ya kichujio cha bloom. Miamala inayolingana tu na kichujio
+ndiyo inayotumwa kwa mteja.
+
+Kwa jibu la ujumbe wa +getdata+ kutoka kwa mteja, rika zitatuma
+ujumbe wa +merkleblock+ unaobeba vichwa tu vya vitalu vinavyolingana na kichujio
+na njia ya merkle (angalia <<merkle_trees>>) kwa kila
+muamala unaolingana. Rika kisha pia litatuma ujumbe wa +tx+
+unaobeba miamala inayolingana na kichujio.
+
+Nodi kamili ikituma miamala kwa mteja mwepesi, mteja mwepesi
+hutupa matokeo chanya ya uongo yoyote na kutumia miamala iliyolingana vizuri
+kusasisha seti yake ya UTXO na salio la pochi. Akisasisha mtazamo wake wa
+seti ya UTXO, pia hubadilisha kichujio cha bloom kulingana na miamala yoyote ya siku zijazo
+inayorejelea UTXO aliyoipata. Nodi kamili kisha hutumia
+kichujio kipya cha bloom kulingana na miamala mipya na mchakato mzima
+unarudiwa.
+
+Mteja akiweka kichujio cha bloom anaweza kuongeza mifumo kwenye
+kichujio kwa njia ya mwingiliano kwa kutuma ujumbe wa +filteradd+. Kufuta kichujio cha bloom, mteja
+anaweza kutuma ujumbe wa +filterclear+. Kwa sababu haiwezekani
+kuondoa mfumo kutoka kwenye kichujio cha bloom, mteja lazima afute na kutuma tena
+kichujio kipya cha bloom ikiwa mfumo hautakiwi tena.
+
+Itifaki ya mtandao na utaratibu wa kichujio cha bloom kwa wateja wepesi imebainishwa
+katika BIP37.
+
+Kwa bahati mbaya, baada ya uwekaji wa vichujio vya bloom, ikawa wazi
+kwamba havitoa faragha nyingi sana. Nodi kamili inayopokea kichujio cha bloom
+kutoka kwa rika ingeweza kutumia kichujio hicho kwenye mnyororo mzima wa vitalu kupata
+miamala yote ya mteja (pamoja na matokeo chanya ya uongo). Kisha
+ingeweza kutafuta mifumo na mahusiano kati ya miamala.
+Miamala ya matokeo chanya ya uongo iliyochaguliwa kwa nasibu haitakuwa na uwezekano wa kuwa na
+uhusiano wa mzazi-mtoto kutoka matokeo hadi pembejeo, lakini miamala kutoka
+kwa pochi ya mtumiaji itakuwa na uwezekano mkubwa wa kuwa na uhusiano huo. Ikiwa
+miamala yote inayohusiana ina sifa fulani, kama vile
+angalau matokeo moja ya P2PKH, basi miamala isiyo na sifa hiyo
+inaweza kudhaniwa kutokuhusiana na pochi.
+
+Pia iligunduliwa kwamba vichujio vilivyoundwa maalum vingeweza kulazimisha
+nodi kamili zinazovishughulikia kufanya kazi kubwa,
+ambazo zingeweza kusababisha mashambulizi ya kukataa huduma.
+
+Kwa sababu hizo mbili, Bitcoin Core hatimaye ilipunguza msaada kwa
+vichujio vya bloom kwa wateja tu kwenye anwani za IP ambazo kuruhusiwa wazi
+na mwendeshaji wa nodi. Hii ilimaanisha kwamba njia mbadala ya kusaidia
+wateja wepesi kupata miamala yao((("Bitcoin network", "bloom filters", "lightweight clients and", startref="bitcoin-network-bloom-lightweight")))((("bloom filters", "lightweight clients and", startref="bloom-lightweight")))((("lightweight clients", "bloom filters and", startref="lightweight-bloom"))) ilihitajika.
+
+=== Vichujio vya Vitalu vya Muhtasari
+
+// https://lists.linuxfoundation.org/pipermail/bitcoin-dev/2016-May/012636.html
+
+Wazo((("Bitcoin network", "compact block filters", id="bitcoin-network-compact-filter")))((("compact block filters", id="compact-block-filter")))((("blocks", "compact block filters", id="block-compact-filter"))) liliandikwa kwenye orodha ya barua pepe ya Bitcoin-Dev na msanidi programu asiyejulikana
+mnamo 2016 la kubadilisha mchakato wa kichujio cha bloom. Kwa kichujio cha bloom cha BIP37,
+kila mteja huhash anwani zao kuunda kichujio cha bloom na nodi huhash sehemu za kila muamala kujaribu kulingana na
+kichujio hicho. Katika pendekezo jipya, nodi huhash sehemu za kila muamala
+katika kitalu kuunda kichujio cha bloom na wateja huhash anwani zao kujaribu
+kulingana na kichujio hicho. Mteja akipata mechi, anapakua kitalu kizima.
+
+[NOTE]
+====
+Licha ya ufanani wa majina, _vitalu vya muhtasari_ vya BIP152 na
+_vichujio vya vitalu vya muhtasari_ vya BIP157/158 havihusiani.
+====
+
+Hii inaruhusu nodi kuunda kichujio kimoja kwa kila kitalu, ambacho wanaweza
+kuhifadhi kwenye diski na kutumikia mara kwa mara, kuondoa
+udhaifu wa kukataa huduma na BIP37. Wateja hawatoi nodi kamili
+habari yoyote kuhusu anwani zao za zamani au za siku zijazo. Wanapakua tu vitalu,
+ambavyo vinaweza kuwa na maelfu ya miamala ambayo haikuundwa na mteja.
+Wanaweza hata kupakua kila kitalu kinacholingana kutoka kwa rika tofauti,
+na kufanya iwe ngumu zaidi kwa nodi kamili kuunganisha
+miamala inayomilikiwa na mteja mmoja kwa vitalu vingi.
+
+Wazo hili la vichujio vilivyoundwa na seva havipatii faragha kamili;
+bado huweka gharama fulani kwenye nodi kamili (na vinahitaji wateja wepesi
+kutumia bandwidth zaidi kwa upakuaji wa vitalu), na vichujio vinaweza
+kutumika tu kwa miamala iliyothibitishwa (si miamala isiyothibitishwa). Hata hivyo,
+ni ya faragha zaidi na ya kuaminika zaidi kuliko vichujio vya bloom vya BIP37 vilivyoombwa na mteja.
+
+Baada ya maelezo ya wazo la awali kulingana na vichujio vya bloom,
+wasanidi programu walitambua kwamba kulikuwa na muundo bora wa data kwa
+vichujio vilivyoundwa na seva, unaoitwa Seti Zilizosimbwa kwa Golomb-Rice (GCS).
+
+==== Seti Zilizosimbwa kwa Golomb-Rice (GCS)
+
+Fikiri((("Bitcoin network", "compact block filters", "GCS (Golomb-Rice coded sets)", id="bitcoin-network-compact-filter-gcs")))((("compact block filters", "GCS (Golomb-Rice coded sets)", id="compact-block-filter-gcs")))((("blocks", "compact block filters", "GCS (Golomb-Rice coded sets)", id="block-compact-filter-gcs")))((("GCS (Golomb-Rice coded sets)", id="gcs-filter"))) kwamba Alice anataka kutuma orodha ya nambari kwa Bob. Njia rahisi
+ya kufanya hivyo ni tu kumtumia orodha nzima ya nambari:
+
+----
+849
+653
+476
+900
+379
+----
+
+Lakini kuna njia bora zaidi. Kwanza, Alice anaweka orodha kwa
+mpangilio wa nambari:
+
+----
+379
+476
+653
+849
+900
+----
+
+Kisha, Alice anatuma nambari ya kwanza. Kwa nambari zilizobaki, anatuma
+tofauti kati ya nambari hiyo na nambari iliyotangulia. Kwa
+mfano, kwa nambari ya pili, anatuma 97 (476 – 379); kwa nambari ya tatu,
+anatuma 177 (653 – 476); na kadhalika:
+
+----
+379
+97
+177
+196
+51
+----
+
+Tunaweza kuona kwamba tofauti kati ya nambari mbili katika orodha iliyopangwa
+inazalisha nambari ambazo ni fupi kuliko nambari za asili. Baada ya
+kupokea orodha hii, Bob anaweza kuunda tena orodha ya asili kwa kuongeza tu
+kila nambari na iliyotangulia. Hiyo inamaanisha tunaokoa nafasi
+bila kupoteza habari yoyote, kinachoitwa ((("lossless encoding")))_usimbaji bila hasara_.
+
+Ikiwa tunachagua nambari kwa nasibu ndani ya safu ya thamani iliyowekwa, basi
+nambari zaidi tunazochagua, ndogo zaidi ukubwa wa wastani wa
+tofauti. Hiyo inamaanisha kiasi cha data tunachohitaji kuhamisha hakiongezeki
+haraka kama urefu wa orodha yetu unavyoongezeka (hadi hatua fulani).
+
+Zaidi ya hayo, urefu wa nambari zilizochaguliwa kwa nasibu katika
+orodha ya tofauti kwa asili unaelekea urefu mfupi zaidi.
+Fikiria kuchagua nambari mbili kwa nasibu kutoka 1 hadi 6; hii ni sawa
+na kuviringisha kete mbili. Kuna mchanganyiko 36 tofauti wa kete mbili:
+
+[cols="1,1,1,1,1,1"]
+|===
+| 1 1 | 1 2 | 1 3 | 1 4 | 1 5 | 1 6
+| 2 1 | 2 2 | 2 3 | 2 4 | 2 5 | 2 6
+| 3 1 | 3 2 | 3 3 | 3 4 | 3 5 | 3 6
+| 4 1 | 4 2 | 4 3 | 4 4 | 4 5 | 4 6
+| 5 1 | 5 2 | 5 3 | 5 4 | 5 5 | 5 6
+| 6 1 | 6 2 | 6 3 | 6 4 | 6 5 | 6 6
+|===
+
+Hebu tupate tofauti kati ya kubwa zaidi ya nambari na ndogo zaidi ya nambari:
+
+[role="less_space pagebreak-before"]
+[cols="1,1,1,1,1,1"]
+|===
+| 0 | 1 | 2 | 3 | 4 | 5
+| 1 | 0 | 1 | 2 | 3 | 4
+| 2 | 1 | 0 | 1 | 2 | 3
+| 3 | 2 | 1 | 0 | 1 | 2
+| 4 | 3 | 2 | 1 | 0 | 1
+| 5 | 4 | 3 | 2 | 1 | 0
+|===
+
+Tukihesabu mara ngapi kila tofauti inatokea, tunaona kwamba
+tofauti ndogo zina uwezekano mkubwa zaidi wa kutokea kuliko tofauti
+kubwa:
+
+++++
+<table>
+
+<thead>
+<tr>
+<th>Tofauti</th>
+<th>Matukio</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>0</p></td>
+<td><p>6</p></td>
+</tr>
+<tr>
+<td><p>1</p></td>
+<td><p>10</p></td>
+</tr>
+<tr>
+<td><p>2</p></td>
+<td><p>8</p></td>
+</tr>
+<tr>
+<td><p>3</p></td>
+<td><p>6</p></td>
+</tr>
+<tr>
+<td><p>4</p></td>
+<td><p>4</p></td>
+</tr>
+<tr>
+<td><p>5</p></td>
+<td><p>2</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Ikiwa tunajua kwamba tunaweza kuhitaji kuhifadhi nambari kubwa (kwa sababu tofauti kubwa
+zinaweza kutokea, hata kama ni nadra), lakini mara nyingi tutahitaji
+kuhifadhi nambari ndogo, tunaweza kusimba kila nambari kwa kutumia mfumo ambao
+unatumia nafasi ndogo kwa nambari ndogo na nafasi ya ziada kwa nambari kubwa.
+Kwa wastani, mfumo huo utafanya kazi bora zaidi kuliko kutumia kiasi sawa
+cha nafasi kwa kila nambari.
+
+Usimbaji wa Golomb hutoa uwezo huo. Usimbaji wa Rice ni sehemu ndogo ya usimbaji wa Golomb
+ulio rahisi zaidi kutumia katika hali fulani, ikiwa ni pamoja na
+matumizi ya vichujio vya vitalu vya ((("Bitcoin network", "compact block filters", "GCS (Golomb-Rice coded sets)", startref="bitcoin-network-compact-filter-gcs")))((("compact block filters", "GCS (Golomb-Rice coded sets)", startref="compact-block-filter-gcs")))((("blocks", "compact block filters", "GCS (Golomb-Rice coded sets)", startref="block-compact-filter-gcs")))((("GCS (Golomb-Rice coded sets)", startref="gcs-filter")))Bitcoin.
+
+==== Data Gani ya Kujumuisha katika Kichujio cha Vitalu
+
+Lengo letu kuu((("Bitcoin network", "compact block filters", "what to include", id="bitcoin-network-compact-filter-include")))((("compact block filters", "what to include", id="compact-block-filter-include")))((("blocks", "compact block filters", "what to include", id="block-compact-filter-include"))) ni kuruhusu pochi kujifunza kama kitalu kina
+muamala unaouathiri pochi hiyo. Kwa pochi kuwa na ufanisi, inahitaji
+kujifunza aina mbili za habari:
+
+Imepokea pesa lini::
+
+Hasa, muamala
+   unapobeba matokeo yenye hati ambayo pochi inadhibiti (kama vile kwa
+   kudhibiti ufunguo wa kibinafsi ulioruhusiwa)
+
+Imetumia pesa lini::
+
+Hasa, pembejeo ya muamala
+   inapoirejelea matokeo ya awali ya muamala ambayo pochi ilidhibiti
+
+Lengo la sekondari wakati wa muundo wa vichujio vya vitalu vya muhtasari lilikuwa kuruhusu
+pochi inayopokea kichujio kuthibitisha kwamba ilipokea kichujio sahihi
+kutoka kwa rika. Kwa mfano, ikiwa pochi ilipakua kitalu
+ambacho kichujio kiliundwa nacho, pochi ingeweza kuzalisha kichujio chake mwenyewe.
+Kisha ingeweza kulinganisha kichujio chake na kichujio cha rika na
+kuthibitisha kwamba vilikuwa sawa, kuthibitisha kwamba rika lilikuwa limezalisha
+kichujio sahihi.
+
+Kwa malengo yote ya msingi na ya sekondari kutimizwa, kichujio kingehitaji
+kurejelea aina mbili za habari:
+
+* Hati kwa kila matokeo katika kila muamala katika kitalu
+
+* Kidokezo cha matokeo kwa kila pembejeo katika kila muamala katika kitalu
+
+Muundo wa mapema kwa vichujio vya vitalu vya muhtasari ulijumuisha habari zote mbili hizo,
+lakini ilionekana kwamba kulikuwa na njia bora zaidi
+ya kutimiza lengo la msingi ikiwa tungeacha lengo la sekondari. Katika
+muundo mpya, kichujio cha vitalu bado kingeurejelea aina mbili za habari,
+lakini zingekuwa zinazohusiana zaidi:
+
+* Kama awali, hati kwa kila matokeo katika kila muamala katika
+kitalu.
+
+* Kwa mabadiliko, pia ingeurejelea hati ya matokeo
+inayorejewa na kidokezo cha matokeo kwa kila pembejeo katika kila muamala katika
+kitalu. Kwa maneno mengine, hati ya matokeo inayotumika.
+
+Hii ilikuwa na faida kadhaa. Kwanza, ilimaanisha kwamba pochi hazihitaji
+kufuatilia vidokezo vya matokeo; badala yake zingeweza tu kutafuta
+hati za matokeo ambazo zinatarajia kupokea pesa. Pili, wakati wowote muamala
+wa baadaye katika kitalu unatumia matokeo ya muamala wa awali
+katika kitalu kile kile, zote mbili zitarejelea hati ile ile
+ya matokeo. Zaidi ya rejeleo moja kwa hati ile ile ya matokeo ni
+ya ziada katika kichujio cha vitalu vya muhtasari, kwa hivyo nakala za ziada zinaweza
+kuondolewa, kupunguza ukubwa wa vichujio.
+
+Nodi kamili zinapothibitisha kitalu, zinahitaji ufikiaji wa hati za matokeo
+kwa matokeo ya muamala ya sasa katika kitalu na matokeo ya muamala
+kutoka vitalu vya awali ambavyo virejelewi katika pembejeo, kwa hivyo
+zinaweza kuunda vichujio vya vitalu vya muhtasari katika mfano huu uliorahisishwa.
+Lakini kitalu chenyewe hakijumuishi hati za matokeo kutoka miamala
+iliyojumuishwa katika vitalu vya awali, kwa hivyo hakuna njia rahisi kwa mteja
+kuthibitisha kichujio cha vitalu kilijengwa vizuri. Hata hivyo, kuna
+mbadala ambao unaweza kusaidia mteja kugundua kama rika inampotosha:
+kupata kichujio kile kile kutoka ((("Bitcoin network", "compact block filters", "what to include", startref="bitcoin-network-compact-filter-include")))((("compact block filters", "what to include", startref="compact-block-filter-include")))((("blocks", "compact block filters", "what to include", startref="block-compact-filter-include")))kwa rika nyingi.
+
+==== Kupakua Vichujio vya Vitalu kutoka kwa Rika Nyingi
+
+Rika ((("Bitcoin network", "compact block filters", "downloading multiple", id="bitcoin-network-compact-filter-download")))((("compact block filters", "downloading multiple", id="compact-block-filter-download")))((("blocks", "compact block filters", "downloading multiple", id="block-compact-filter-download")))((("downloading multiple block filters", id="download-multiple-block")))((("multiple block filters, downloading", id="multiple-block-download")))linaweza kutoa kwa pochi kichujio kisichosahihi. Kuna njia mbili
+za kuunda kichujio kisichosahihi. Rika linaweza kuunda kichujio kinachorejelea
+miamala ambayo kwa kweli haionekani katika kitalu kinachohusiana (matokeo chanya ya uongo).
+Kwa njia nyingine, rika linaweza kuunda kichujio
+ambacho harejelea miamala ambayo kweli kweli yanaonekana katika
+kitalu kinachohusiana (matokeo mabaya ya uongo).
+
+Ulinzi wa kwanza dhidi ya kichujio kisichosahihi ni kwa mteja kupata
+kichujio kutoka kwa rika nyingi. Itifaki ya BIP157 inaruhusu
+mteja kupakua tu ahadi fupi ya baiti 32 kwa kichujio ili
+kuamua kama kila rika linatangaza kichujio sawa na rika zote nyingine za
+mteja. Hiyo inapunguza kiasi cha bandwidth ambacho mteja
+lazima atumie kuuliza rika nyingi tofauti kwa vichujio vyao, ikiwa rika zote
+hizo zinakubaliana.
+
+Ikiwa rika mbili au zaidi tofauti zina vichujio tofauti kwa kitalu kile kile,
+mteja anaweza kuvipakua vyote. Kisha anaweza pia kupakua
+kitalu kinachohusiana. Ikiwa kitalu kina muamala wowote unaohusiana na
+pochi ambao si sehemu ya moja ya vichujio, pochi inaweza
+kuwa na uhakika kwamba rika lolote lililounda kichujio hicho lilikuwa
+lisilo sahihi—Seti Zilizosimbwa kwa Golomb-Rice daima zitajumuisha
+mechi inayowezekana.
+
+Kwa njia nyingine, ikiwa kitalu hana muamala ambao
+kichujio kilisema kingeweza kulingana na pochi, hiyo si uthibitisho kwamba kichujio kilikuwa
+kisichosahihi. Ili kupunguza ukubwa wa GCS, tunaruhusiwa idadi fulani ya
+matokeo chanya ya uongo. Pochi inachoweza kufanya ni kuendelea kupakua
+vichujio vya ziada kutoka kwa rika, kwa nasibu au zinapoonyesha
+mechi, na kisha kufuatilia kiwango cha matokeo chanya ya uongo ya mteja. Ikiwa
+kinatofautiana kwa kiasi kikubwa na kiwango cha matokeo chanya ya uongo ambacho vichujio
+viliundwa kutumia, pochi inaweza kuacha kutumia rika hilo. Katika hali nyingi,
+matokeo pekee ya kichujio kisachosahihi ni kwamba pochi inatumia
+bandwidth zaidi kuliko((("Bitcoin network", "compact block filters", "downloading multiple", startref="bitcoin-network-compact-filter-download")))((("compact block filters", "downloading multiple", startref="compact-block-filter-download")))((("blocks", "compact block filters", "downloading multiple", startref="block-compact-filter-download")))((("downloading multiple block filters", startref="download-multiple-block")))((("multiple block filters, downloading", startref="multiple-block-download"))) inavyotarajiwa.
+
+==== Kupunguza Bandwidth kwa Usimbaji Wenye Hasara
+
+Data ((("Bitcoin network", "compact block filters", "lossy encoding")))((("compact block filters", "lossy encoding")))((("blocks", "compact block filters", "lossy encoding")))((("lossy encoding")))kuhusu miamala katika kitalu ambayo tunataka kuwasilisha
+ni hati ya matokeo. Hati za matokeo zinatofautiana kwa urefu na kufuata mifumo,
+ambayo inamaanisha tofauti kati yao hazitasambazwa sawasawa
+kama tunavyotaka. Hata hivyo, tumeona tayari katika maeneo mengi katika kitabu hiki
+kwamba tunaweza kutumia kitendakazi cha hash kuunda ahadi ya data fulani na
+pia kuzalisha thamani inayoonekana kama nambari iliyochaguliwa kwa nasibu.
+
+Katika maeneo mengine katika kitabu hiki, tumetumia kitendakazi cha hash cha kriptografia salama
+kinachotoa uhakika kuhusu nguvu ya ahadi yake na
+jinsi matokeo yake yasivyotofautishwa na nasibu. Hata hivyo, kuna
+vitendakazi vya hash visivyo vya kriptografia vya haraka zaidi na vinavyoweza kusanidiwa zaidi, kama vile
+kitendakazi cha SipHash ambacho tutakitumia kwa vichujio vya vitalu vya muhtasari.
+
+Maelezo ya algorithm inayotumiwa yamebainishwa katika BIP158, lakini kiini ni
+kwamba kila hati ya matokeo inapunguzwa hadi ahadi ya biti 64 kwa kutumia
+SipHash na baadhi ya shughuli za hesabu. Unaweza kufikiri hii kama
+kuchukua seti ya nambari kubwa na kuzipunguza hadi nambari fupi, mchakato
+unaopoteza data (kwa hivyo unaitwa _usimbaji wenye hasara_). Kwa kupoteza
+data fulani, hatuhitaji kuhifadhi habari nyingi baadaye,
+ambayo inaokoa nafasi. Katika kesi hii, tunaenda kutoka hati ya kawaida ya matokeo
+ya biti 160 au zaidi hadi biti 64 tu.
+
+==== Kutumia Vichujio vya Vitalu vya Muhtasari
+
+Thamani za biti 64 kwa kila ahadi ya hati ya matokeo katika kitalu
+zinapangwa, maingizo yanayojirudia yaondolewa, na GCS inajengwa kwa
+kupata tofauti (delta) kati ya kila ingizo. Kichujio hicho cha vitalu vya muhtasari
+kisha husambazwa na rika kwa wateja wao (kama vile pochi).
+
+Mteja hutumia delta kuunda tena ahadi za asili. Mteja,
+kama vile pochi, pia huchukua hati zote za matokeo anazofuatilia
+na kuzalisha ahadi kwa njia ile ile kama BIP158. Anakagua kama ahadi zake
+zozote zilizozalishwa zinalingana na ahadi katika kichujio.
+
+Kumbuka mfano wetu wa hasara ya vichujio vya vitalu vya muhtasari
+kuwa kama kupunguza nambari. Fikiri mteja anatafuta kitalu
+kinachobeba nambari 123456 na kwamba kichujio cha vitalu vya muhtasari sahihi (lakini chenye hasara)
+kina nambari 1234. Mteja atakapoona
+1234, atapakua kitalu kinachohusiana.
+
+Kuna uhakika wa 100% kwamba kichujio sahihi chenye 1234 kitaruhusu
+mteja kujifunza kuhusu kitalu kilicho na 123456, kinachoitwa _mechi chanya ya kweli_.
+Hata hivyo, kuna uwezekano pia kwamba kitalu kinaweza kuwa na
+123400, 123401, au karibu maingizo mengine mengi ambayo si kile
+mteja anatafuta (katika mfano huu), ((("false positives")))kinachoitwa _mechi chanya ya uongo_.
+
+Kiwango cha mechi chanya za kweli cha 100% ni nzuri. Inamaanisha kwamba pochi inaweza
+kutegemea vichujio vya vitalu vya muhtasari kupata kila muamala unaoathiri pochi hiyo.
+Kiwango cha mechi chanya za uongo si sifuri inamaanisha kwamba pochi itaishia
+kupakua vitalu fulani ambavyo havina miamala inayovutia
+pochi. Matokeo makuu ya hili ni kwamba mteja atatumia
+bandwidth ya ziada, ambayo si tatizo kubwa sana. Kiwango cha kweli cha
+mechi chanya za uongo kwa vichujio vya vitalu vya muhtasari vya BIP158 ni cha chini sana, kwa hivyo
+si tatizo kubwa. Kiwango cha mechi chanya za uongo pia kinaweza kusaidia kuimarisha
+faragha ya mteja, kama inavyofanya kwa vichujio vya bloom, ingawa yeyote anayetaka
+faragha bora zaidi bado anapaswa kutumia nodi kamili yake mwenyewe.
+
+Katika muda mrefu, wasanidi programu wengine wanaunga mkono vitalu kujitolea kwenye
+kichujio kwa kitalu hicho, na mpango unaowezekana zaidi ukiwa kila
+muamala wa coinbase kujitolea kwenye kichujio kwa kitalu hicho. Nodi kamili
+zingekokotoa kichujio kwa kila kitalu zenyewe na kukubali tu
+kitalu ikiwa kina ahadi sahihi. Hiyo itaruhusu
+mteja mwepesi kupakua kichwa cha vitalu cha baiti 80, muamala wa coinbase (kawaida) mdogo,
+na kichujio kwa kitalu hicho ili kupokea
+uthibitisho wa nguvu kwamba kichujio ((("Bitcoin network", "compact block filters", startref="bitcoin-network-compact-filter")))((("compact block filters", startref="compact-block-filter")))((("blocks", "compact block filters", startref="block-compact-filter")))kilikuwa sahihi.
+
+
+[role="less_space pagebreak-before"]
+=== Wateja Wepesi na Faragha
+
+Wateja wepesi ((("Bitcoin network", "lightweight clients", "privacy")))((("lightweight clients", "privacy")))((("privacy", "lightweight clients")))wana faragha dhaifu zaidi kuliko nodi kamili. Nodi kamili
+hupakua miamala yote na kwa hivyo haifunui habari yoyote
+kuhusu kama inatumia anwani fulani katika pochi yake. Mteja mwepesi
+hupakua tu miamala inayohusiana na pochi yake kwa njia fulani.
+
+Vichujio vya bloom na vichujio vya vitalu vya muhtasari ni njia za kupunguza upotezaji wa faragha. Bila vyao,
+mteja mwepesi angelazimika kuorodhesha wazi anwani alizovutiwa nazo,
+na kuunda ukiukaji mkubwa wa faragha. Hata hivyo, hata na
+vichujio, mpinzani anayefuatilia trafiki ya mteja mwepesi au
+aliyeunganika naye moja kwa moja kama nodi katika mtandao wa P2P anaweza kukusanya habari za kutosha
+kwa muda ili kujifunza anwani katika pochi ya mteja
+mwepesi.
+
+=== Miunganisho Iliyosimbwa na Iliyothibitishwa
+
+Watumiaji wengi wapya((("Bitcoin network", "encryption")))((("encryption")))((("Tor transport"))) wa
+Bitcoin wanadhani kwamba mawasiliano ya mtandao wa nodi ya Bitcoin yamesimbwa. Kwa kweli, utekelezaji wa asili wa Bitcoin unawasiliana
+wazi kabisa, kama inavyofanya utekelezaji wa kisasa wa Bitcoin Core
+wakati wa kuandika.
+
+Kama njia ya kuongeza faragha na usalama wa
+mtandao wa P2P wa Bitcoin, kuna suluhu inayotoa usimbaji wa
+mawasiliano: _usafiri wa Tor_.
+
+Tor, ambayo
+inasimama kwa _Mtandao wa Uelekezaji wa Vitunguu_, ni mradi wa programu na
+mtandao unaotoa usimbaji na ufunikaji wa data kupitia
+njia za mtandao za nasibu ambazo zinatoa kutotajwa jina, kutofuatiliwa, na
+faragha.
+
+Bitcoin Core ((("Bitcoin Core", "Tor transport")))inatoa chaguo kadhaa za usanidi zinazokuruhusu kuendesha
+nodi ya Bitcoin na trafiki yake ikisafirishwa kwenye mtandao wa Tor. Mbali na hilo,
+Bitcoin Core pia inaweza kutoa huduma iliyofichwa ya Tor kuruhusu
+nodi nyingine za Tor kuunganika kwenye nodi yako moja kwa moja kupitia Tor.
+
+Kuanzia toleo la Bitcoin Core 0.12, nodi itatoa huduma iliyofichwa ya Tor
+kiotomatiki ikiwa inaweza kuunganika kwenye huduma ya Tor ya ndani. Ikiwa
+una Tor iliyosanikishwa na mchakato wa Bitcoin Core unafanya kazi kama mtumiaji mwenye
+ruhusa za kutosha za kufikia kidakuzi cha uthibitishaji cha Tor, inapaswa
+kufanya kazi kiotomatiki. Tumia bendera ya +debug+ kuwasha uchunguzi makosa wa Bitcoin Core
+kwa huduma ya Tor kama hivi:
+
+----
+$ bitcoind --daemon --debug=tor
+----
+
+Unapaswa kuona ++tor: ADD_ONION successful++ katika kumbukumbu, ikionyesha kwamba
+Bitcoin Core imeongeza huduma iliyofichwa kwenye mtandao wa Tor.
+
+Unaweza kupata maelekezo zaidi ya kuendesha Bitcoin Core kama huduma iliyofichwa ya Tor
+katika nyaraka za Bitcoin Core (_docs/tor.md_) na mafunzo mbalimbali
+ya mtandaoni.
+
+[role="less_space pagebreak-before"]
+[[mempool]]
+=== Mabwawa ya Kumbukumbu na Mabwawa ya Mayatima
+
+Karibu((("Bitcoin network", "mempools")))((("Bitcoin network", "orphan pools")))((("memory pool")))((("orphan pools")))((("unconfirmed transactions")))((("transactions", "unconfirmed"))) kila nodi kwenye mtandao wa Bitcoin
+hudumisha orodha ya muda ya miamala isiyothibitishwa inayoitwa
+_bwawa la kumbukumbu_ (_mempool_). Nodi hutumia bwawa hili
+kufuatilia miamala inayojulikana kwa mtandao lakini bado haijajumuishwa katika mnyororo wa vitalu, inayoitwa _miamala isiyothibitishwa_.
+
+Miamala isiyothibitishwa inapopokelewa na kuthibitishwa, inaongezwa kwenye
+mempool na kusambazwa kwa nodi jirani kuenea
+kwenye mtandao.
+
+Utekelezaji fulani wa nodi
+pia hudumisha bwawa tofauti la miamala ya mayatima. Ikiwa
+pembejeo za muamala zinairejelea muamala ambao bado haujulikani,
+kama vile mzazi anayekosekana, muamala wa yatima utahifadhiwa
+kwa muda katika bwawa la mayatima mpaka muamala wa mzazi ufike.
+
+Muamala unapoongezwa kwenye mempool, bwawa la mayatima
+hukaguliwa kwa mayatima yoyote yanayorejelea matokeo ya muamala huu (watoto wake).
+Mayatima yoyote yanayolingana kisha yanathibitishwa. Ikiwa ni sahihi, yanaondolewa
+kutoka kwenye bwawa la mayatima na kuongezwa kwenye mempool,
+kukamilisha mnyororo ulianza na muamala wa mzazi. Kwa kuzingatia
+muamala ulioongezwa hivi karibuni, ambao si yatima tena, mchakato
+unarudiwa kwa ujirudiaji kutafuta wazao wowote zaidi mpaka wazao zaidi
+hawapati. Kupitia mchakato huu, kuwasili kwa muamala wa mzazi
+husababisha ujenzi wa maporomoko wa mnyororo mzima wa miamala
+inayotegemea kila mmoja kwa kuunganisha tena mayatima na
+wazazi wao hadi chini ya mnyororo.
+
+Utekelezaji fulani wa Bitcoin pia hudumisha hifadhidata ya UTXO,
+ambayo ni seti ya matokeo yote ya miamala ambayo haijatumika kwenye
+mnyororo wa vitalu. Hii inawakilisha seti tofauti ya data kutoka kwa mempool. Tofauti na
+mempool na mabwawa ya mayatima, hifadhidata ya UTXO
+ina maingizo ya mamilioni ya matokeo ya miamala ambayo hayajatumika,
+kila kitu ambacho haijatumika tangu kitalu cha mwanzo kabisa.
+Hifadhidata ya UTXO imehifadhiwa kama
+jedwali kwenye hifadhi ya kudumu.
+
+Wakati mempool na mabwawa ya mayatima yanawakilisha mtazamo wa ndani wa nodi mmoja
+na yanaweza kutofautiana kwa kiasi kikubwa kutoka nodi hadi nodi kulingana na
+wakati nodi ilipoanzishwa au kuanzishwa upya, hifadhidata ya UTXO inawakilisha
+makubaliano yanayotokana na mtandao na kwa hivyo kawaida haitatofautiana
+kati ya nodi.
+
+Sasa kwa kuwa tumejifunza kuhusu aina nyingi za data na
+miundo inayotumiwa na nodi na wateja kutuma data kwenye mtandao wa Bitcoin,
+ni wakati wa kutazama programu inayohusika na
+kulinda usalama na utendaji wa mtandao.

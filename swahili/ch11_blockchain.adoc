@@ -1,0 +1,819 @@
+[[blockchain]]
+== Mnyororo wa Vitalu
+
+Mnyororo ((("blockchain", "explained", id="blockchain-explain")))wa vitalu ni historia ya kila muamala wa Bitcoin uliothibitishwa.
+Ndiyo kinachomruhusu kila nodi kamili kuamua kwa uhuru funguo na
+hati zipi zinasimamia bitcoin zipi. Katika sura hii, tutaangalia
+muundo wa mnyororo wa vitalu na kuona jinsi unavyotumia
+ahadi za kriptografia na mbinu nyingine za akili
+kufanya kila sehemu yake iwe rahisi kwa nodi kamili (na wakati mwingine wateja wepesi) kuthibitisha.
+
+Muundo wa data wa mnyororo wa vitalu ni
+orodha iliyopangwa na inayounganishwa nyuma ya vitalu vya miamala. Mnyororo wa vitalu
+unaweza kuhifadhiwa kama faili tambarare au katika hifadhidata rahisi.
+Vitalu vimeunganishwa "nyuma," kila kimoja kikirejelea kitalu kilichotangulia katika
+mnyororo. Mnyororo wa vitalu mara nyingi huonyeshwa
+kama mrundikano wima, vitalu vikipigwa safu moja juu ya nyingine na
+kitalu cha kwanza kikitumikia msingi wa mrundikano. Uonyesho wa
+vitalu vilivyopigwa juu ya kila kimoja husababisha matumizi ya maneno kama vile
+"urefu" kumaanisha umbali kutoka kitalu cha kwanza, na "juu" au
+"ncha" kumaanisha kitalu kilichoongezwa hivi karibuni.
+
+Kila kitalu
+ndani ya mnyororo wa vitalu kinatambuliwa na hash, iliyozalishwa kwa kutumia
+algorithm ya hash ya kriptografia ya SHA256 kwenye kichwa cha kitalu. Kila
+kitalu pia kinajitolea kwa kitalu kilichotangulia, kinachojulikana kama ((("parent blocks")))kitalu _mzazi_,
+kupitia sehemu ya "hash ya kitalu kilichotangulia" katika kichwa cha kitalu.
+Mfululizo wa hash zinazoiunganisha kila kitalu na mzazi wake huunda mnyororo
+unaorudi nyuma hadi kitalu cha kwanza kabisa kilichoundwa, kinachojulikana ((("genesis block")))kama
+_kitalu cha mwanzo_.
+
+Ingawa kitalu kina mzazi mmoja tu, kinaweza kuwa na ((("child blocks")))watoto
+wengi. Kila mmoja wa watoto anajitolea kwa kitalu kile kile cha mzazi.
+Watoto wengi hutokea wakati wa "tawi" la mnyororo wa vitalu, hali ya muda
+ambayo inaweza kutokea wakati vitalu tofauti vinagunduliwa karibu
+wakati mmoja na wachimbaji tofauti (angalia <<forks>>). Hatimaye mtoto mmoja tu
+wa kitalu anakuwa sehemu ya mnyororo wa vitalu unaokubaliwa na nodi kamili zote, na "tawi" hilo linatatuliwa.
+
+Sehemu ya "hash ya kitalu kilichotangulia" ipo ndani ya kichwa cha kitalu na hivyo
+inaathiri hash ya kitalu _cha sasa_.
+Mabadiliko yoyote kwa kitalu cha mzazi
+yanahitaji hash ya kitalu cha mtoto ibadilike, ambayo inahitaji mabadiliko katika
+kiashiria cha mjukuu, ambayo kwa upande wake hubadilisha mjukuu, na kadhalika.
+Mfululizo huu unahakikisha kwamba kitalu kikisha kuwa na vizazi vingi
+vinavyofuata, hakiwezi kubadilishwa bila kulazimisha kukokotoa upya
+vitalu vyote vilivyofuata. Kwa sababu kukokotoa kama hiyo kutahitaji
+hesabu kubwa (na kwa hivyo matumizi ya nishati), uwepo wa mnyororo mrefu wa vitalu hufanya historia ya kina ya mnyororo wa vitalu kuwa haiwezekani kufanya mabadiliko,
+ambayo ni kipengele muhimu cha usalama wa Bitcoin.
+
+Njia moja ya kufikiria mnyororo wa vitalu ni kama tabaka katika mfumo wa
+kijiolojia, au sampuli ya msingi wa barafu. Tabaka za uso zinaweza kubadilika na
+misimu, au hata kupigwa na upepo kabla ya kupata wakati wa kukaa. Lakini
+mara unapoenda sentimita chache kirefu, tabaka za kijiolojia zinakuwa thabiti zaidi. Wakati
+unaangalia futi kadhaa chini, unatazama
+picha ya wakati uliopita ambayo haikuguswa kwa mamilioni ya
+miaka. Katika mnyororo wa vitalu, vitalu vichache vya hivi karibuni vinaweza kurekebishwa ikiwa
+kuna upangaji upya wa mnyororo kwa sababu ya tawi. Vitalu sita vya juu ni
+kama sentimita chache za udongo wa uso. Lakini mara unapoingia kwa kina zaidi katika
+mnyororo wa vitalu, zaidi ya vitalu sita, vitalu vina uwezekano mdogo na mdogo
+wa kubadilika. Baada ya vitalu 100 nyuma kuna utulivu mkubwa sana kwamba
+muamala wa coinbase—muamala unaobeba thawabu katika
+bitcoin kwa kuunda kitalu kipya—unaweza kutumika.
+Ingawa itifaki daima inaruhusu mnyororo kubatilishwa na mnyororo mrefu zaidi na ingawa
+uwezekano wa kitalu chochote kubatilishwa daima upo, uwezekano wa tukio kama hilo
+hupungua kadri muda unavyopita mpaka ((("blockchain", "explained", startref="blockchain-explain")))unakuwa
+mdogo sana.
+
+=== Muundo wa Kitalu
+
+Kitalu ((("blocks", "structure of")))ni muundo wa data wa chombo kinachokusanya
+miamala kwa kujumuishwa katika mnyororo wa vitalu.
+Kitalu kimejengwa na kichwa, chenye metadata, ikifuatiwa na orodha ndefu
+ya miamala inayounda wingi wa ukubwa wake. Kichwa cha kitalu ni
+baiti 80, wakati ukubwa wote wa miamala yote katika kitalu unaweza kuwa
+hadi takriban baiti 4,000,000. Kitalu kamili,
+chenye miamala yote, kwa hivyo kinaweza kuwa karibu mara 50,000 kubwa zaidi kuliko kichwa cha vitalu.
+<<block_structure1>> inaelezea jinsi Bitcoin Core inavyohifadhi muundo wa kitalu.
+
+++++
+<table id="block_structure1">
+<caption>Muundo wa kitalu</caption>
+<thead>
+<tr>
+<th>Ukubwa</th>
+<th>Sehemu</th>
+<th>Maelezo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>baiti 4</p></td>
+<td><p>Ukubwa wa Kitalu</p></td>
+<td><p>Ukubwa wa kitalu, kwa baiti, ukifuata sehemu hii</p></td>
+</tr>
+<tr>
+<td><p>baiti 80</p></td>
+<td><p>Kichwa cha Kitalu</p></td>
+<td><p>Sehemu kadhaa zinaunda kichwa cha kitalu</p></td>
+</tr>
+<tr>
+<td><p>baiti 1–3 (compactSize)</p></td>
+<td><p>Kihesabu cha Miamala</p></td>
+<td><p>Miamala mingapi inayofuata</p></td>
+</tr>
+<tr>
+<td><p>Inabadilika</p></td>
+<td><p>Miamala</p></td>
+<td><p>Miamala iliyorekodiwa katika kitalu hiki</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+
+[[block_header]]
+=== Kichwa cha Kitalu
+
+Kichwa ((("blocks", "block header")))((("block header")))cha kitalu kinajumuisha
+metadata ya kitalu kama inavyoonyeshwa katika <<block_header_structure_ch09>>.
+
+++++
+<table id="block_header_structure_ch09">
+<caption>Muundo wa kichwa cha kitalu</caption>
+<thead>
+<tr>
+<th>Ukubwa</th>
+<th>Sehemu</th>
+<th>Maelezo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><p>baiti 4</p></td>
+<td><p>Toleo</p></td>
+<td><p>Awali ilikuwa sehemu ya toleo; matumizi yake yamebadilika kwa wakati</p></td>
+</tr>
+<tr>
+<td><p>baiti 32</p></td>
+<td><p>Hash ya Kitalu Kilichotangulia</p></td>
+<td><p>Hash ya kitalu kilichotangulia (mzazi) katika mnyororo</p></td>
+</tr>
+<tr>
+<td><p>baiti 32</p></td>
+<td><p>Mzizi wa Merkle</p></td>
+<td><p>Hash ya mzizi ya mti wa merkle wa miamala ya kitalu hiki</p></td>
+</tr>
+<tr>
+<td><p>baiti 4</p></td>
+<td><p>Muhuri wa Wakati</p></td>
+<td><p>Wakati wa takriban wa kuundwa kwa kitalu hiki (wakati wa kipindi cha Unix)</p></td>
+</tr>
+<tr>
+<td><p>baiti 4</p></td>
+<td><p>Lengo</p></td>
+<td><p>Usimbaji mfupi wa lengo la uthibitisho wa kazi kwa kitalu hiki</p></td>
+</tr>
+<tr>
+<td><p>baiti 4</p></td>
+<td><p>Nonce</p></td>
+<td><p>Data ya nasibu inayotumiwa kwa algorithm ya uthibitisho wa kazi</p></td>
+</tr>
+</tbody>
+</table>
+++++
+
+Nonce, lengo, na muhuri wa wakati vinatumiwa katika mchakato wa
+uchimbaji na vitajadiliwa kwa kina zaidi katika <<mining>>.
+
+[[block_hash]]
+=== Vitambulisho vya Kitalu: Hash ya Kichwa cha Kitalu na Urefu wa Kitalu
+
+Kitambulisho ((("blocks", "identifiers", id="block-identify")))((("block header hash", id="block-header-hash")))((("block height", id="block-height")))cha msingi cha kitalu
+ni hash yake ya kriptografia, ahadi iliyoundwa kwa kuhash
+kichwa cha kitalu mara mbili kupitia algorithm ya SHA256. Hash inayotokana ya baiti 32
+inaitwa _hash ya kitalu_ lakini kwa usahihi zaidi ni _hash ya kichwa cha kitalu_,
+pass:[<span class="keep-together">kwa sababu ni kichwa cha kitalu tu kinachotumiwa
+kuikokotoa. Kwa mfano,</span>]
++000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f+ ni
+hash ya kitalu cha kitalu cha kwanza kwenye mnyororo wa vitalu wa Bitcoin. Hash ya kitalu
+inatambua kitalu kwa kipekee na bila utata na inaweza kupatikana kwa uhuru
+na nodi yoyote kwa kuhash tu kichwa cha kitalu.
+
+Angalia kwamba hash ya kitalu kwa kweli haijumuishwi ndani ya
+muundo wa data wa kitalu.
+Badala yake, hash ya kitalu inahesabiwa na kila nodi kama
+kitalu kinapopokelewa kutoka mtandaoni. Hash ya kitalu inaweza kuhifadhiwa katika
+jedwali tofauti la hifadhidata kama sehemu ya metadata ya kitalu, ili kurahisisha
+kuindeksi na urejeshaji wa haraka wa vitalu kutoka diski.
+
+Njia ya pili ya kutambua kitalu ni kwa nafasi yake katika mnyororo wa vitalu,
+inayoitwa pass:[<span class="keep-together"><em>urefu wa kitalu</em>. Kitalu cha mwanzo kipo katika urefu wa kitalu 0 (sifuri) na ni</span>]
+pass:[<span class="keep-together">kitalu kile kile kilichorejelewa awali na hash ifuatayo ya kitalu</span>]
++000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f+. Kitalu
+kinaweza kwa hivyo kutambuliwa kwa njia mbili: kwa kurejelea hash ya kitalu
+au kwa kurejelea urefu wa kitalu. Kila kitalu kilichofuata kilichoongezwa "juu ya"
+kitalu hicho cha kwanza kipo nafasi moja "juu zaidi" katika mnyororo wa vitalu, kama
+visanduku vilivyopigwa moja juu ya kingine. Urefu wa vitalu 800,000 ulifikiwa
+wakati wa kuandika kitabu hiki katikati ya mwaka 2023, kumaanisha kulikuwa na
+vitalu 800,000 vilivyopigwa juu ya kitalu cha kwanza kilichoundwa mnamo Januari
+2009.
+
+Tofauti na hash ya kitalu, urefu wa kitalu si kitambulisho cha kipekee.
+Ingawa kitalu kimoja daima kitakuwa na urefu maalum na usiobadilika wa kitalu,
+kinyume chake si kweli—urefu wa kitalu hauitambui daima kitalu kimoja. Vitalu viwili au zaidi vinaweza kuwa na urefu sawa wa kitalu,
+vikishindana kwa nafasi ile ile katika mnyororo wa vitalu. Hali hii
+inajadiliwa kwa kina katika sehemu ya <<forks>>. Katika vitalu vya mapema, urefu wa kitalu
+haukuwa sehemu ya muundo wa data wa kitalu; haukuhifadhiwa ndani ya
+kitalu. Kila nodi ilitambua kwa nguvu nafasi ya kitalu (urefu)
+katika mnyororo wa vitalu kilipopokelewa kutoka mtandao wa Bitcoin. Mabadiliko ya baadaye ya itifaki
+(BIP34) ilianza kujumuisha urefu wa kitalu katika muamala wa coinbase, ingawa lengo lake
+lilikuwa kuhakikisha kwamba kila kitalu kilikuwa na muamala tofauti wa coinbase. Nodi bado zinahitaji kutambua kwa nguvu urefu wa kitalu ili kuthibitisha sehemu ya coinbase. Urefu wa kitalu unaweza pia kuhifadhiwa kama metadata katika jedwali la hifadhidata lililoindexiwa kwa urejeshaji wa haraka.
+
+[TIP]
+====
+_Hash ya kitalu_ cha kitalu daima inatambua kitalu kimoja kwa kipekee. Kitalu
+pia daima kina _urefu maalum wa kitalu_. Hata hivyo, si daima kwamba urefu maalum wa kitalu unatambua kitalu kimoja. Badala yake, vitalu viwili au zaidi vinaweza kushindana kwa nafasi moja((("blocks", "identifiers", startref="block-identify")))((("block header hash", startref="block-header-hash")))((("block height", startref="block-height"))) katika
+mnyororo wa vitalu.
+====
+
+=== Kitalu cha Mwanzo
+
+Kitalu cha kwanza((("blockchain", "genesis block", id="blockchain-genesis")))((("genesis block", id="genesis-block")))((("Bitcoin Core", "genesis block", id="bitcoin-core-genesis"))) katika mnyororo wa vitalu kinaitwa _kitalu cha mwanzo_
+na kiliundwa mnamo 2009. Ni babu wa pamoja wa vitalu vyote katika
+mnyororo wa vitalu, kumaanisha kwamba ukianza kitalu chochote na kufuata
+mnyororo nyuma kwa wakati, hatimaye utafika kitalu cha mwanzo.
+
+Kila nodi huanza daima na mnyororo wa vitalu wa angalau kitalu kimoja kwa sababu
+kitalu cha mwanzo kimesimbwa kwa njia ya kudumu ndani ya Bitcoin Core,
+hivyo kwamba hakiwezi kubadilishwa. Kila nodi daima "inajua"
+hash na muundo wa kitalu cha mwanzo, wakati wa kudumu ulioundwa nao,
+na hata muamala mmoja ndani yake. Kwa hivyo, kila nodi ina hatua ya kuanza
+kwa mnyororo wa vitalu, "mzizi" salama ambao mnyororo wa vitalu wenye kuaminiwa unaweza kujengwa nawo.
+
+Angalia kitalu cha mwanzo kilichosimbwa kwa njia ya kudumu ndani ya mteja wa Bitcoin Core
+katika https://oreil.ly/FqPW5[_chainparams.cpp_].
+
+Kitambulisho cha hash kinachofuata ni cha kitalu cha mwanzo:
+
+----
+000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+----
+
+Unaweza kutafuta hash hiyo ya kitalu katika karibu tovuti yoyote ya kichunguzi cha vitalu, kama
+vile _blockstream.info_, na utapata ukurasa unaobainisha maudhui
+ya kitalu hiki, na URL inayobeba hash hiyo:
+
+[quote]
+____
+https://blockstream.info/block/000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+____
+
+Kwa njia mbadala, unaweza kupata kitalu kwa kutumia Bitcoin Core kwenye mstari wa amri:
+
+----
+$ bitcoin-cli getblock \
+  000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f
+----
+[source,json]
+----
+{
+  "hash": "000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f",
+  "confirmations": 790496,
+  "height": 0,
+  "version": 1,
+  "versionHex": "00000001",
+  "merkleroot": "4a5e1e4baab89f3a32518a88c3[...]76673e2cc77ab2127b7afdeda33b",
+  "time": 1231006505,
+  "mediantime": 1231006505,
+  "nonce": 2083236893,
+  "bits": "1d00ffff",
+  "difficulty": 1,
+  "chainwork": "[...]000000000000000000000000000000000000000000000100010001",
+  "nTx": 1,
+  "nextblockhash": "00000000839a8e6886ab5951d7[...]fc90947ee320161bbf18eb6048",
+  "strippedsize": 285,
+  "size": 285,
+  "weight": 1140,
+  "tx": [
+    "4a5e1e4baab89f3a32518a88c31bc87f618f76673e2cc77ab2127b7afdeda33b"
+  ]
+}
+----
+
+Kitalu cha mwanzo kina ujumbe ndani yake. Pembejeo ya muamala wa coinbase
+ina maandishi "The Times 03/Jan/2009 Chancellor on
+brink of second bailout for banks." Ujumbe huu ulikusudiwa kutoa
+uthibitisho wa tarehe ya mapema zaidi ambapo kitalu hiki kingeweza kuundwa, kwa kurejelea
+kichwa cha gazeti la Uingereza _The Times_. Pia hutumika kama ukumbusho
+wa mzaha kuhusu umuhimu wa mfumo wa fedha huru,
+na uzinduzi wa Bitcoin ukitokea wakati mmoja na mgawanyiko mkubwa wa fedha duniani
+ambao haujawahi kutokea. Ujumbe uliingizwa katika
+kitalu cha kwanza na Satoshi Nakamoto, ((("Nakamoto, Satoshi")))((("blockchain", "genesis block", startref="blockchain-genesis")))((("genesis block", startref="genesis-block")))((("Bitcoin Core", "genesis block", startref="bitcoin-core-genesis")))muundaji wa Bitcoin.
+
+=== Kuunganisha Vitalu katika Mnyororo wa Vitalu
+
+Nodi((("blockchain", "linking blocks", id="blockchain-link")))((("blocks", "linking in blockchain", id="block-link")))((("linking blocks in blockchain", id="link-block"))) kamili za Bitcoin huthibitisha kila
+kitalu katika mnyororo wa vitalu baada ya kitalu cha mwanzo. Mtazamo wao wa ndani wa
+mnyororo wa vitalu husasishwa mara kwa mara vitalu vipya vinapopatikana na kutumika
+kupanua mnyororo. Nodi inapopokea vitalu vinavyoingia kutoka mtandaoni,
+itathibitisha vitalu hivi na kisha kuviunganisha na mtazamo wake wa mnyororo wa vitalu uliopo.
+Kuanzisha kiungo, nodi itachunguza kichwa cha kitalu kinachoingia
+na kutafuta "hash ya kitalu kilichotangulia."
+
+[role="less_space pagebreak-before"]
+Hebu tuseme, kwa mfano, kwamba nodi ina vitalu 277,314 katika nakala ya ndani
+ya mnyororo wa vitalu. Kitalu cha mwisho kinachojulikana na nodi ni kitalu
+277,314, chenye hash ya kichwa cha kitalu ya:
+
+----
+00000000000000027e7ba6fe7bad39faf3b5a83daed765f05f7d1b71a1632249
+----
+
+Nodi ya Bitcoin kisha inapokea kitalu kipya kutoka mtandaoni, ambacho inakichunguza kama ifuatavyo:
+
+[source,json]
+----
+{
+    "size" : 43560,
+    "version" : 2,
+    "previousblockhash" :
+        "00000000000000027e7ba6fe7bad39faf3b5a83daed765f05f7d1b71a1632249",
+    "merkleroot" :
+        "5e049f4030e0ab2debb92378f53c0a6e09548aea083f3ab25e1d94ea1155e29d",
+    "time" : 1388185038,
+    "difficulty" : 1180923195.25802612,
+    "nonce" : 4215469401,
+    "tx" : [
+        "257e7497fb8bc68421eb2c7b699dbab234831600e7352f0d9e6522c7cf3f6c77",
+        "[... miamala mingi imeachwa ...]",
+        "05cfd38f6ae6aa83674cc99e4d75a1458c165b7ab84725eda41d018a09176634"
+    ]
+}
+----
+
+Ukiangalia kitalu hiki kipya, nodi inapata sehemu ya +previousblockhash+,
+inayobeba hash ya kitalu cha mzazi wake. Ni hash inayojulikana kwa nodi,
+ile ya kitalu cha mwisho kwenye mnyororo katika urefu 277,314. Kwa hivyo,
+kitalu hiki kipya ni mtoto wa kitalu cha mwisho kwenye mnyororo na kinapanua
+mnyororo wa vitalu uliopo. Nodi huongeza kitalu hiki kipya mwishoni mwa
+mnyororo, na kufanya mnyororo wa vitalu kuwa mrefu zaidi na urefu mpya wa 277,315.
+<<chain_of_blocks>> inaonyesha mnyororo wa vitalu vitatu, vilivyounganishwa na
+marejeleo katika((("blockchain", "linking blocks", startref="blockchain-link")))((("blocks", "linking in blockchain", startref="block-link")))((("linking blocks in blockchain", startref="link-block"))) sehemu ya +previousblockhash+.
+
+[[chain_of_blocks]]
+.Vitalu vilivyounganishwa katika mnyororo, kila kimoja kikirejelea hash ya kichwa cha kitalu kilichotangulia.
+image::images/mbc3_1101.png[]
+
+[[merkle_trees]]
+=== Miti ya Merkle
+
+Kila kitalu((("blockchain", "merkle trees", id="blockchain-merkle")))((("merkle trees", id="merkle-tree-explain"))) katika mnyororo wa vitalu wa Bitcoin kina
+muhtasari wa miamala yote katika kitalu kwa kutumia _mti wa merkle_.
+
+_Mti wa merkle_, unaojulikana pia
+kama _mti wa hash ya binari_, ni ((("binary hash trees")))muundo wa data unaotumiwa kwa ufanisi
+kumuhtasari na kuthibitisha uadilifu wa seti kubwa za data. Miti ya
+merkle ni miti ya binari inayobeba hash za kriptografia. Neno "mti"
+linatumiwa katika sayansi ya kompyuta kuelezea muundo wa data wenye matawi, lakini
+miti hii kawaida huonyeshwa kwa kugeuzwa chini na "mzizi" juu
+na "majani" chini ya mchoro, kama utakavyoona katika
+mifano inayofuata.
+
+Miti ya merkle hutumiwa katika Bitcoin kumuhtasari miamala yote katika
+kitalu, kuzalisha ahadi ya jumla kwa seti nzima ya
+miamala na kuruhusu mchakato bora sana wa kuthibitisha kama
+muamala umejumuishwa katika kitalu. Mti wa merkle hujengwa kwa
+kuhash jozi za vipengele kwa ujirudiaji mpaka kuwe na hash moja tu, inayoitwa
+_mzizi_, au _mzizi wa merkle_. Algorithm ya hash ya kriptografia inayotumiwa katika
+miti ya merkle ya Bitcoin ni SHA256 iliyotumiwa mara mbili, inayojulikana pia kama
+double-SHA256.
+
+Vipengele N vya data vikihashiwa na kumuhtariswa katika mti wa merkle, unaweza
+kukagua kama kipengele chochote kimoja cha data kimejumuishwa katika mti kwa
+takriban hesabu za +log~2~(N)+, na kuufanya huu kuwa muundo bora sana wa data.
+
+Mti wa merkle hujengwa kutoka chini kwenda juu. Katika mfano ufuatao, tunaanza
+na miamala minne, A, B, C, na D, ambayo inaunda _majani_ ya
+mti wa merkle, kama inavyoonyeshwa katika <<simple_merkle>>. Miamala hihifadhiwi
+katika mti wa merkle; badala yake, data yao inahashiwa na hash
+inayotokana inahifadhiwa katika kila nodi ya jani kama H~A~, H~B~, H~C~, na
+H~D~:
+
+++++
+<pre data-type="codelisting">
+H<sub>A</sub> = SHA256(SHA256(Muamala A))
+</pre>
+++++
+
+Jozi zinazofuatana za nodi za majani kisha zinamuhtariswa katika nodi ya mzazi kwa
+kuunganisha hash mbili na kuzihash pamoja. Kwa mfano, kuunda
+nodi ya mzazi H~AB~, hash mbili za baiti 32 za watoto
+zinaungwa pamoja kuunda mfuatano wa baiti 64. Mfuatano huo kisha
+unahashiwa mara mbili kuzalisha hash ya nodi ya mzazi:
+
+++++
+<pre data-type="codelisting">
+H<sub>AB</sub> = SHA256(SHA256(H<sub>A</sub> || H<sub>B</sub>))
+</pre>
+++++
+
+Mchakato unaendelea mpaka kuwe na nodi moja tu juu, nodi
+inayojulikana kama mzizi wa merkle. Hash hiyo ya baiti 32 huhifadhiwa katika kichwa cha kitalu
+na inamuhtasiri data yote katika miamala yote minne.
+<<simple_merkle>> inaonyesha jinsi mzizi unavyokokotolewa kwa hash za jozi za
+nodi.
+
+[[simple_merkle]]
+.Kukokotoa nodi katika mti wa merkle.
+image::images/mbc3_1102.png["merkle_tree"]
+
+Kwa sababu mti wa merkle ni mti wa binari, unahitaji
+idadi ya nodi za majani za usawa. Ikiwa kuna idadi isiyo ya usawa ya miamala
+ya kumuhtasiri, hash ya mwisho ya muamala itarudiwa kuunda
+idadi ya nodi za majani ya usawa, inayojulikana pia ((("balanced merkle trees")))kama _mti wa usawa_. Hii
+inaonyeshwa katika <<merkle_tree_odd>>, ambapo muamala C unarudiwa.
+Vivyo hivyo, ikiwa kuna idadi isiyo ya usawa ya hash za kushughulikia katika kiwango chochote,
+hash ya mwisho inarudiwa.
+
+[[merkle_tree_odd]]
+.Kurudia kipengele kimoja cha data kunafikia idadi ya usawa ya vipengele vya data.
+image::images/mbc3_1103.png["merkle_tree_odd"]
+
+.Kasoro ya Muundo katika Mti wa Merkle wa Bitcoin
+****
+Maoni yaliyopanuliwa katika msimbo wa chanzo wa Bitcoin Core, yaliyotolewa tena hapa na marekebisho kidogo, yanaelezea
+tatizo kubwa katika muundo wa urudiaji wa Bitcoin wa vipengele visivyo vya usawa
+katika mti wake wa merkle:
+
+
+____
+ONYO! Unasoma hii kwa sababu unajifunza kuhusu kriptografia
+na/au kuunda mfumo mpya utakaotumia miti ya merkle, kumbuka
+kwamba algorithm ifuatayo ya mti wa merkle ina kasoro kubwa inayohusiana na
+vitambulisho vya miamala vinavyorudiwa, ikisababisha udhaifu (CVE-2012-2459).
+
+Sababu ni kwamba ikiwa idadi ya hash katika orodha katika kiwango fulani
+ni isiyo ya usawa, ile ya mwisho inarudiwa kabla ya kukokotoa kiwango kifuatacho (ambayo
+ni ya kawaida katika miti ya merkle). Hii inasababisha mfululizo fulani wa
+miamala kusababisha mzizi sawa wa merkle. Kwa mfano, miti miwili
+katika <<cve_tree>>:
+
+[[cve_tree]]
+[role="width-90"]
+.Miti miwili ya merkle ya mtindo wa Bitcoin yenye mzizi sawa lakini idadi tofauti ya majani.
+image::images/mbc3_1104.png["Two Bitcoin-style merkle trees with the same root but a different number of leaves"]
+
+Orodha za miamala [1,2,3,4,5,6] na [1,2,3,4,5,6,5,6] (ambapo 5 na
+6 zinarudiwa) zinasababisha hash sawa ya mzizi A (kwa sababu hash ya zote mbili
+za (F) na (F,F) ni C).
+
+Udhaifu unatokana na uwezo wa kutuma kitalu chenye orodha kama hiyo ya
+miamala, yenye mzizi sawa wa merkle, na hash sawa ya kitalu kama
+asili bila urudiaji, na kusababisha uthibitishaji kushindwa. Ikiwa nodi
+inayopokea inashughulikia kutambua kitalu hicho kama batili kabisa
+hata hivyo, itashindwa kukubali matoleo yasiyobadilishwa zaidi (na hivyo yanayowezekana
+sahihi) ya kitalu kile kile. Tunajikinga dhidi ya hili kwa kugundua
+hali ambapo tungehash hash mbili zinazofanana mwishoni mwa orodha
+pamoja, na kuishughulikia ile ile kama kitalu chenye mzizi batili wa merkle.
+Tukidhaniya kwamba hakuna migongano ya double-SHA256, hii itagundua njia zote
+zinazojulikana za kubadilisha miamala bila kuathiri mzizi wa merkle.
+
+++++
+<p data-type="attribution">Bitcoin Core <em>src/consensus/merkle.cpp</em></p>
+++++
+____
+
+****
+
+[role="less_space pagebreak-before"]
+Njia ile ile ya kuunda mti kutoka kwa miamala minne inaweza
+kufanywa kwa ujumla kuunda miti ya ukubwa wowote. Katika Bitcoin ni kawaida
+kuwa na miamala elfu kadhaa katika kitalu kimoja,
+ambayo inamuhtariswa kwa njia ile ile hasa, ikizalisha tu baiti 32
+za data kama mzizi mmoja wa merkle. Katika <<merkle_tree_large>>, utaona
+mti uliojengwa kutoka kwa miamala 16. Angalia kwamba ingawa mzizi
+unaonekana mkubwa kuliko nodi za majani katika mchoro, ni ukubwa sawa kabisa,
+baiti 32 tu. Kama kuna muamala mmoja au
+miamala kumi elfu katika kitalu, mzizi wa merkle daima unawamuhtasiri
+katika baiti 32.
+
+Kuthibitisha kwamba muamala maalum
+umejumuishwa katika kitalu, nodi inahitaji tu kuzalisha takriban +log~2~(N)+ hash za baiti 32,
+zinazounda ((("authentication path")))((("merkle path")))_njia ya uthibitisho_ au _njia ya merkle_
+inayounganisha muamala maalum na mzizi wa mti. Hii
+ni muhimu hasa idadi ya miamala inavyoongezeka kwa sababu
+logarithm ya msingi-2 ya idadi ya miamala huongezeka polepole zaidi sana. Hii inaruhusu nodi za Bitcoin kwa ufanisi kuzalisha njia za hash 10 au
+12 (baiti 320–384), ambazo zinaweza kutoa uthibitisho wa muamala mmoja
+kutoka kwa zaidi ya miamala elfu katika kitalu chenye megabaiti nyingi.
+
+[[merkle_tree_large]]
+.Mti wa merkle ukimuhtasiri vipengele vingi vya data.
+image::images/mbc3_1105.png["merkle_tree_large"]
+
+Katika <<merkle_tree_path>>, nodi inaweza kuthibitisha kwamba muamala K
+umejumuishwa katika kitalu kwa kuzalisha njia ya merkle yenye urefu wa hash nne tu
+za baiti 32 (baiti 128 jumla). Njia inajumuisha hash nne (zilizoonyeshwa na msingi wenye kivuli) H~L~,
+H~IJ~, H~MNOP~, na H~ABCDEFGH~. Kwa hash hizo nne zilizotolewa kama
+njia ya uthibitisho, nodi yoyote inaweza kuthibitisha kwamba H~K~ (yenye msingi mweusi
+chini ya mchoro) imejumuishwa katika mzizi wa merkle kwa kukokotoa hash nne za ziada za jozi H~KL~, H~IJKL~,
+H~IJKLMNOP~, na mzizi wa mti wa merkle (ulioainishwa na mstari wa nukta katika mchoro).
+
+[[merkle_tree_path]]
+.Njia ya merkle inayotumiwa kuthibitisha kujumuishwa kwa kipengele cha data.
+image::images/mbc3_1106.png["merkle_tree_path"]
+
+Ufanisi wa miti ya merkle unakuwa wazi ukubwa unavyoongezeka.
+Kitalu kikubwa zaidi kinachowezekana kinaweza kubeba karibu miamala 16,000 katika baiti 4,000,000,
+lakini kuthibitisha muamala wowote mmoja kati ya miamala hiyo 16,000
+ni sehemu ya kitalu hicho kunahitaji tu nakala ya muamala, nakala
+ya kichwa cha vitalu cha baiti 80, na baiti 448 kwa uthibitisho wa merkle. Hiyo
+hufanya uthibitisho mkubwa zaidi unaowezekana kuwa karibu mara 10,000 mdogo kuliko
+kitalu kikubwa zaidi cha Bitcoin kinachowezekana.
+
+=== Miti ya Merkle na Wateja Wepesi
+
+Miti ya merkle ((("Bitcoin network", "lightweight clients", "merkle trees and")))((("lightweight clients", "merkle trees and")))inatumiwa kwa upana na wateja wepesi. Wateja wepesi hawana
+miamala yote na hawapakui vitalu kamili, vitalu vya kichwa tu. Ili kuthibitisha
+kwamba muamala umejumuishwa katika kitalu,
+bila kulazimika kupakua miamala yote katika kitalu, wanatumia
+njia ya merkle.
+
+Fikiria, kwa mfano, mteja mwepesi anayevutiwa na
+malipo yanayoingia kwa anwani iliyopo katika pochi yake. Mteja mwepesi
+ataanzisha kichujio cha bloom (angalia <<bloom_filters>>) kwenye miunganisho yake kwa
+rika ili kupunguza miamala inayopokelewa kwa zile tu zenye
+anwani za kuvutia. Rika linapoona muamala unaolingana na
+kichujio cha bloom, litatuma kitalu hicho kwa kutumia ujumbe wa +merkleblock+.
+Ujumbe wa +merkleblock+ unabeba kichwa cha kitalu pamoja na njia ya merkle
+inayounganisha muamala wa kuvutia na mzizi wa merkle katika kitalu.
+Mteja mwepesi anaweza kutumia njia hii ya merkle kuunganisha muamala na
+kichwa cha kitalu na kuthibitisha kwamba muamala umejumuishwa katika kitalu. Mteja mwepesi
+pia hutumia kichwa cha kitalu kuunganisha kitalu na mnyororo mwingine wa vitalu. Mchanganyiko wa viungo hivi viwili, kati ya muamala
+na kitalu na kati ya kitalu na mnyororo wa vitalu, unathibitisha kwamba
+muamala umerekodiwa katika mnyororo wa vitalu. Kwa ujumla, mteja mwepesi
+atakuwa amepokea chini ya kilobyte moja ya data kwa kichwa cha kitalu na
+njia ya merkle, kiasi cha data ambacho ni zaidi ya mara elfu kidogo
+kuliko kitalu kamili (karibu MB 2 ((("blockchain", "merkle trees", startref="blockchain-merkle")))((("merkle trees", startref="merkle-tree-explain")))kwa sasa).
+
+=== Minyororo ya Vitalu ya Majaribio ya Bitcoin
+
+Unaweza kushangaa
+kujua kwamba kuna mnyororo zaidi ya mmoja wa vitalu unaotumika na Bitcoin. Mnyororo wa vitalu wa Bitcoin "mkuu", ule ulioundwa na Satoshi Nakamoto
+tarehe 3 Januari 2009, ule wenye kitalu cha mwanzo tulichosoma katika
+sura hii, ((("mainnet")))unaitwa _mainnet_. Kuna minyororo mingine ya vitalu ya Bitcoin inayotumiwa
+kwa madhumuni ya majaribio: kwa sasa _testnet_, _signet_, na
+_regtest_. Hebu tuangalie kila moja kwa mtiririko.
+
+==== Testnet: Uwanja wa Kucheza wa Majaribio wa Bitcoin
+
+Testnet ((("blockchain", "test blockchains", "testnet", id="blockchain-test-testnet")))((("test blockchains", "testnet", id="test-block-testnet")))((("testnet", id="testnet")))ni jina la mnyororo wa vitalu wa majaribio, mtandao, na sarafu inayotumiwa
+kwa madhumuni ya majaribio. Testnet ni mtandao wa P2P hai ulio na vipengele vyote,
+wenye pochi, bitcoin za majaribio (sarafu za testnet), uchimbaji, na vipengele
+vingine vyote vya mainnet. Tofauti muhimu zaidi ni kwamba sarafu za testnet
+zimekusudiwa kuwa hazina thamani.
+
+Maendeleo yoyote ya programu yanayokusudiwa kwa matumizi ya uzalishaji kwenye
+mainnet ya Bitcoin yanaweza kujaribiwa kwanza kwenye testnet na sarafu za majaribio.
+Hii inalinda wasanidi programu dhidi ya hasara za fedha kwa sababu ya hitilafu na
+mtandao dhidi ya tabia isiyotarajiwa kwa sababu ya hitilafu.
+
+Testnet ya sasa inaitwa _testnet3_, marudio ya tatu ya
+testnet, iliyoanzishwa upya mnamo Februari 2011 ili kurekebisha ugumu kutoka
+testnet iliyotangulia. Testnet3 ni mnyororo mkubwa wa vitalu, zaidi ya GB 30 katika
+mwaka 2023. Itachukua muda kusawazishwa kikamilifu na kutumia rasilimali
+kwenye kompyuta yako. Si nyingi kama mainnet, lakini si "wepesi" hasa
+pia.
+
+[TIP]
+====
+Testnet na minyororo mingine ya vitalu ya majaribio iliyoelezwa katika kitabu hiki hazitumii
+viambishi sawa vya anwani kama anwani za mainnet ili kuzuia mtu
+kutuma bitcoin za kweli kwa bahati mbaya kwa anwani ya majaribio. Anwani za mainnet
+zinaanza na +1+, +3+, au +bc1+. Anwani kwa mitandao ya majaribio
+iliyotajwa katika kitabu hiki zinaanza na +m+, +n+, au +tb1+. Mitandao mingine ya majaribio,
+au itifaki mpya zinazoendelezwa kwenye mitandao ya majaribio, zinaweza kutumia
+viambishi vingine vya anwani au mabadiliko.
+====
+
+===== Kutumia testnet
+
+Bitcoin Core, kama((("Bitcoin Core", "testnet"))) programu nyingi nyingine za Bitcoin, ina msaada kamili
+kwa uendeshaji kwenye testnet kama mbadala wa mainnet. Kazi zote za Bitcoin Core
+zinafanya kazi kwenye testnet, ikiwa ni pamoja na pochi, uchimbaji wa sarafu za testnet,
+na kusawazisha nodi kamili ya testnet.
+
+[role="less_space pagebreak-before"]
+Kuanza Bitcoin Core kwenye testnet badala ya mainnet unatumia
+swichi ya +testnet+:
+
+----
+$ bitcoind -testnet
+----
+
+Katika kumbukumbu unapaswa kuona kwamba bitcoind inaunda mnyororo mpya wa vitalu katika
+saraka ndogo ya +testnet3+ ya saraka ya chaguo-msingi ya bitcoind:
+
+----
+bitcoind: Using data directory /home/username/.bitcoin/testnet3
+----
+
+Kuunganika na bitcoind, unatumia zana ya mstari wa amri ya +bitcoin-cli+, lakini
+lazima pia uibadilishe kwenye hali ya testnet:
+
+----
+$ bitcoin-cli -testnet getblockchaininfo
+{
+  "chain": "test",
+  "blocks": 1088,
+  "headers": 139999,
+  "bestblockhash": "0000000063d29909d475a1c[...]368e56cce5d925097bf3a2084370128",
+  "difficulty": 1,
+  "mediantime": 1337966158,
+  "verificationprogress": 0.001644065914099759,
+  "chainwork": "[...]000000000000000000000000000000000000000000044104410441",
+  "pruned": false,
+  "softforks": [
+
+  [...]
+----
+
+Unaweza pia kuendesha kwenye testnet3 na utekelezaji mwingine wa nodi kamili, kama vile
++btcd+ (imeandikwa kwa Go) na +bcoin+ (imeandikwa kwa JavaScript), ili
+kujaribu na kujifunza katika lugha na mifumo mingine ya programu.
+
+Testnet3 inaunga mkono vipengele vyote vya mainnet, ikiwa ni pamoja na
+segregated witness v0 na v1 (angalia <<segwit>> na <<taproot>>). Kwa hivyo, testnet3 pia inaweza
+kutumiwa kujaribu vipengele vya segregated witness.
+
+===== Matatizo ya testnet
+
+Testnet haitumii tu muundo wa data sawa na Bitcoin, pia
+hutumia utaratibu sawa kabisa wa usalama wa uthibitisho wa kazi kama
+Bitcoin. Tofauti zinazoonekana kwa testnet ni kwamba ugumu wake wa chini
+ni nusu ya ule wa Bitcoin na kwamba inaruhusiwa kujumuisha
+kitalu kwa ugumu wa chini ikiwa muhuri wa wakati wa kitalu hicho ni zaidi ya
+dakika 20 baada ya kitalu kilichotangulia.
+
+Kwa bahati mbaya, utaratibu wa usalama wa PoW wa Bitcoin ulibuniwa kutegemea
+motisha za kiuchumi—motisha ambazo hazipo katika mnyororo wa vitalu wa majaribio
+uliozuiwa kuwa na thamani. Kwenye mainnet, wachimbaji wana motisha
+ya kujumuisha miamala ya watumiaji katika vitalu vyao kwa sababu miamala hiyo
+inalipa ada. Kwenye testnet, miamala bado ina kitu kinachoitwa ada, lakini
+ada hizo hazina thamani ya kiuchumi. Hiyo inamaanisha kwamba motisha pekee
+kwa mchimbaji wa testnet kujumuisha miamala ni
+kwa sababu wanataka kusaidia watumiaji na wasanidi programu kujaribu programu yao.
+
+Kwa bahati mbaya, watu wanaopenda kuvuruga mifumo mara nyingi huhisi motisha kali zaidi,
+angalau kwa muda mfupi. Kwa sababu uchimbaji wa PoW umebuniwa
+kuwa bila ruhusa, yeyote anaweza kuchimba, iwe nia yake ni nzuri
+au la. Hiyo inamaanisha wachimbaji wanaovuruga wanaweza kuunda vitalu vingi mfululizo kwenye
+testnet bila kujumuisha miamala yoyote ya watumiaji. Mashambulizi hayo
+yanapotokea, testnet inakuwa haiwezi kutumiwa na watumiaji na ((("blockchain", "test blockchains", "testnet", startref="blockchain-test-testnet")))((("test blockchains", "testnet", startref="test-block-testnet")))((("testnet", startref="testnet")))wasanidi programu.
+
+==== Signet: Testnet ya Ushahidi wa Mamlaka
+
+Hakuna ((("blockchain", "test blockchains", "signet", id="blockchain-test-signet")))((("test blockchains", "signet", id="test-block-signet")))((("signet", id="signet")))njia inayojulikana kwa mfumo unaotegemea PoW bila ruhusa
+kutoa mnyororo wa vitalu unaoweza kutumika sana bila kuanzisha motisha za kiuchumi, kwa hivyo wasanidi programu wa itifaki ya Bitcoin walianza kuzingatia
+mbadala. Lengo kuu lilikuwa kuhifadhi muundo mwingi wa
+Bitcoin iwezekanavyo ili programu iweze kuendesha kwenye testnet na mabadiliko madogo—lakini pia kutoa mazingira ambayo yangebaki yakitumika.
+Lengo la sekondari lilikuwa kuzalisha muundo unaoweza kutumika tena ambao ungeruhusu
+wasanidi programu wa programu mpya kuunda kwa urahisi mitandao yao ya majaribio.
+
+Suluhisho lililotekelezwa katika Bitcoin Core na programu nyingine linaitwa
+_signet_, kama ilivyobainishwa na BIP325. Signet ni mtandao wa majaribio ambapo kila
+kitalu lazima kibebe uthibitisho (kama vile saini) kwamba uundaji wa kitalu hicho
+uliidhinishwa na mamlaka inayoaminiwa.
+
+Wakati uchimbaji katika Bitcoin una ruhusa—yeyote anaweza kuufanya—uchimbaji kwenye
+signet una ruhusa kamili. Wale tu wenye ruhusa wanaweza kuufanya.
+Hii ingekuwa mabadiliko yasiyokubalika kabisa kwa mainnet ya Bitcoin—hakuna
+atakayetumia programu hiyo—lakini ni ya busara kwenye testnet ambapo sarafu hazina
+thamani na lengo pekee ni kujaribu programu na mifumo.
+
+Signet za BIP325 zimebuniwa kufanya iwe rahisi sana kuunda yako mwenyewe. Ikiwa
+hukubaliani na jinsi mtu mwingine anaendesha signet yake, unaweza
+kuanza signet yako mwenyewe na kuunganisha programu yako nayo.
+
+===== Signet ya chaguo-msingi na signet maalum
+
+Bitcoin Core inaunga mkono((("Bitcoin Core", "signet")))((("default signet")))((("custom signets"))) signet ya chaguo-msingi, ambayo tunaamini kuwa
+signet inayotumika zaidi wakati wa kuandika. Kwa sasa inaendeshwa na
+wachangiaji wawili wa mradi huo. Ukianza Bitcoin Core na
+parameta ya +signet+ na bila parameta nyingine zinazohusiana na signet, hii ndiyo
+signet utakayotumia.
+
+Kufikia wakati huu wa kuandika, signet ya chaguo-msingi ina vitalu takriban 150,000 na
+ina ukubwa wa takriban gigabaiti moja. Inaunga mkono vipengele vyote vile vile kama
+mainnet ya Bitcoin na pia hutumiwa kujaribu uboreshaji uliopendekezwa kupitia
+mradi wa Bitcoin Inquisition, ambao ni uma wa programu wa Bitcoin
+Core iliyoundwa tu kuendesha kwenye signet.
+
+Ukitaka kutumia signet tofauti, inayoitwa _signet maalum_, utahitaji
+kujua hati inayotumiwa kuamua wakati kitalu kimeidhinishwa, inayoitwa((("challenge script"))) hati ya _changamoto_. Hii ni hati ya kawaida ya Bitcoin, kwa hivyo inaweza kutumia vipengele kama vile multisig kuruhusu watu wengi
+kuiidhinisha vitalu. Unaweza pia kuhitaji kuunganika kwenye nodi mbegu inayokupatia anwani za rika kwenye signet maalum. Kwa
+mfano:
+
+----
+bitcoind -signet -signetchallenge=0123...cdef -signetseednode=example.com:1234
+----
+
+Kufikia wakati huu wa kuandika, kwa ujumla tunapendekeza kwamba majaribio ya umma ya
+programu ya uchimbaji yafanyike kwenye testnet3 na kwamba majaribio mengine yote ya umma ya
+programu ya Bitcoin yafanyike kwenye signet ya chaguo-msingi.
+
+Kushirikiana na signet uliyochagua, unaweza kutumia parameta ya +-signet+ na
++bitcoin-cli+, kama vile ulivyotumia testnet. Kwa((("blockchain", "test blockchains", "signet", startref="blockchain-test-signet")))((("test blockchains", "signet", startref="test-block-signet")))((("signet", startref="signet"))) mfano:
+
+----
+$ bitcoin-cli -signet getblockchaininfo
+{
+  "chain": "signet",
+  "blocks": 143619,
+  "headers": 143619,
+  "bestblockhash": "000000c46cb3505ddd296537[...]ad1c5768e2908439382447572a93",
+  "difficulty": 0.003020638517858618,
+  "time": 1684530244,
+  "mediantime": 1684526116,
+  "verificationprogress": 0.999997961940662,
+  "initialblockdownload": false,
+  "chainwork": "[...]000000000000000000000000000000000000000000019ab37d2194",
+  "size_on_disk": 769525915,
+  "pruned": false,
+  "warnings": ""
+}
+----
+
+==== Regtest: Mnyororo wa Vitalu wa Ndani
+
+Regtest, ((("blockchain", "test blockchains", "regtest", id="blockchain-test-regtest")))((("test blockchains", "regtest", id="test-block-regtest")))((("regtest", id="regtest")))inayosimama kwa
+"Majaribio ya Urudi," ni kipengele cha Bitcoin Core kinachokuruhusu
+kuunda mnyororo wa vitalu wa ndani kwa madhumuni ya majaribio. Tofauti na signet na testnet3, ambazo
+ni minyororo ya vitalu ya majaribio ya umma na inayoshirikiwa, minyororo ya vitalu ya regtest
+imekusudiwa kuendeshwa kama mifumo iliyofungwa kwa majaribio ya ndani. Unaanzisha mnyororo wa vitalu wa regtest kutoka mwanzo. Unaweza
+kuongeza nodi nyingine kwenye mtandao au kuiendesha na nodi moja tu
+kujaribu programu ya Bitcoin Core.
+
+Kuanza ((("Bitcoin Core", "regtest")))Bitcoin Core katika hali ya regtest, unatumia bendera ya +regtest+:
+
+----
+$ bitcoind -regtest
+----
+
+Kama ilivyo na testnet, Bitcoin Core itaanzisha mnyororo mpya wa vitalu
+chini ya saraka ndogo ya _regtest_ ya saraka yako ya chaguo-msingi ya bitcoind:
+
+----
+bitcoind: Using data directory /home/username/.bitcoin/regtest
+----
+
+[role="less_space pagebreak-before"]
+Kutumia zana ya mstari wa amri, unahitaji pia kubainisha bendera ya +regtest+.
+Hebu tujaribu amri ya +getblockchaininfo+ kukagua mnyororo wa vitalu wa regtest:
+
+----
+$ bitcoin-cli -regtest getblockchaininfo
+{
+  "chain": "regtest",
+  "blocks": 0,
+  "headers": 0,
+  "bestblockhash": "0f9188f13cb7b2c71f2a335e3[...]b436012afca590b1a11466e2206",
+  "difficulty": 4.656542373906925e-10,
+  "mediantime": 1296688602,
+  "verificationprogress": 1,
+  "chainwork": "[...]000000000000000000000000000000000000000000000000000002",
+  "pruned": false,
+  [...]
+----
+
+Kama unavyoona, bado hakuna vitalu. Hebu tuunde pochi ya chaguo-msingi,
+tupate anwani, na kisha tuchimbe (vitalu 500) kupata thawabu:
+
+----
+$ bitcoin-cli -regtest createwallet ""
+
+$ bitcoin-cli -regtest getnewaddress
+bcrt1qwvfhw8pf79kw6tvpmtxyxwcfnd2t4e8v6qfv4a
+
+$ bitcoin-cli -regtest generatetoaddress 500 \
+  bcrt1qwvfhw8pf79kw6tvpmtxyxwcfnd2t4e8v6qfv4a
+[
+  "3153518205e4630d2800a4cb65b9d2691ac68eea99afa7fd36289cb266b9c2c0",
+  "621330dd5bdabcc03582b0e49993702a8d4c41df60f729cc81d94b6e3a5b1556",
+  "32d3d83538ba128be3ba7f9dbb8d1ef03e1b536f65e8701893f70dcc1fe2dbf2",
+  ...,
+  "32d55180d010ffebabf1c3231e1666e9eeed02c905195f2568c987c2751623c7"
+]
+----
+
+Itachukua sekunde chache tu kuchimba vitalu hivi vyote, ambayo
+kwa hakika inafanya iwe rahisi kwa majaribio. Ukikagua salio la pochi yako,
+utaona kwamba umepata thawabu kwa vitalu 400 vya kwanza (thawabu za coinbase
+lazima ziwe kirefu cha vitalu 100 kabla ya kuweza ((("blockchain", "test blockchains", "regtest", startref="blockchain-test-regtest")))((("test blockchains", "regtest", startref="test-block-regtest")))((("regtest", startref="regtest")))kuzitumia):
+
+----
+$ bitcoin-cli -regtest getbalance
+12462.50000000
+----
+
+=== Kutumia Minyororo ya Vitalu ya Majaribio kwa Maendeleo
+
+Minyororo ((("blockchain", "test blockchains", "development usage")))((("test blockchains", "development usage")))mbalimbali ya vitalu ya Bitcoin (regtest, signet, testnet3, mainnet) inatoa safu
+ya mazingira ya majaribio kwa maendeleo ya bitcoin. Tumia minyororo ya vitalu ya majaribio
+kama unatengeneza kwa Bitcoin Core au mteja mwingine wa makubaliano ya nodi kamili; ukitengeneza programu kama vile pochi, soko la kubadilishana,
+tovuti ya biashara ya mtandaoni; au hata ukitengeneza mikataba mahiri mpya na hati ngumu.
+
+Unaweza kutumia minyororo ya vitalu ya majaribio kuanzisha mfululizo wa maendeleo.
+Jaribu msimbo wako kwa ndani kwenye regtest unapoiunda. Ukisha
+tayari kuijaribu kwenye mtandao wa umma, badilisha kwenye signet au testnet kudhihirisha
+msimbo wako kwa mazingira yanayobadilika zaidi na utofauti mkubwa wa msimbo na
+programu. Hatimaye, ukisha kuwa na uhakika kwamba msimbo wako unafanya kazi kama
+inavyotarajiwa, badilisha kwenye mainnet kuiweka katika uzalishaji. Unapofanya
+mabadiliko, uboreshaji, marekebisho ya hitilafu, n.k., anza mfululizo tena,
+ukitumia kila mabadiliko kwanza kwenye regtest, kisha kwenye signet au testnet, na hatimaye
+katika uzalishaji.
+
+Sasa kwa kuwa tunajua data gani mnyororo wa vitalu unabeba na jinsi ahadi za kriptografia
+zinavyofunga kwa usalama sehemu mbalimbali pamoja, tutaangalia
+ahadi maalum ambayo hutoa usalama wa kompyuta na
+kuhakikisha kwamba hakuna kitalu kinachoweza kubadilishwa bila kufuta uhalali wa vitalu vyote vingine
+vilivyojengwa juu yake: kazi ya uchimbaji ya Bitcoin.

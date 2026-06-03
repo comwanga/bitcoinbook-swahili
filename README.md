@@ -68,27 +68,6 @@ Toleo la hivi karibuni la PDF linapatikana kwenye [Releases](../../releases).
 
 ---
 
-## Kujenga PDF
-
-Unahitaji [Docker](https://www.docker.com/) au Ruby + asciidoctor-pdf.
-
-### Kwa Docker
-
-```bash
-docker run --rm -v "$(pwd):/documents" asciidoctor/docker-asciidoctor \
-  asciidoctor-pdf /documents/swahili/book.adoc \
-  -o /documents/kujifunza-bitcoin-swahili.pdf
-```
-
-### Kwa asciidoctor-pdf (Ruby)
-
-```bash
-gem install asciidoctor-pdf rouge
-asciidoctor-pdf swahili/book.adoc -o kujifunza-bitcoin-swahili.pdf
-```
-
----
-
 ## Kuchangia
 
 Ukitaka kusaidia kuboresha tafsiri:

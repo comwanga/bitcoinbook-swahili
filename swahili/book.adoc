@@ -9,8 +9,8 @@
 :source-highlighter: rouge
 :lang: sw
 :appendix-caption: Kiambatisho
-:chapter-label: Sura
-:part-label: Sehemu
+:chapter-signifier: Sura
+:part-signifier: Sehemu
 :preface-title: Utangulizi
 :figure-caption: Kielezo
 :example-caption: Mfano

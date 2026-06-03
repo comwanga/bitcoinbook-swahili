@@ -1,0 +1,12 @@
+# PDF outputs - distributed via GitHub Releases only
+*.pdf
+
+# Python cache
+__pycache__/
+*.pyc
+.mypy_cache/
+.pytest_cache/
+
+# Local tools and references
+bitcoinbook-third_edition_print1/
+bitcoinbook-swahili/

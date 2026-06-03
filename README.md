@@ -1,4 +1,4 @@
-# Kujua Bitcoin — Tafsiri ya Kiswahili
+# Kujifunza Bitcoin — Tafsiri ya Kiswahili
 
 Tafsiri ya Kiswahili ya kitabu *Mastering Bitcoin: Programming the Open Blockchain* (Toleo la 3) na Andreas M. Antonopoulos na David A. Harding.
 
@@ -76,16 +76,15 @@ Unahitaji [Docker](https://www.docker.com/) au Ruby + asciidoctor-pdf.
 
 ```bash
 docker run --rm -v "$(pwd):/documents" asciidoctor/docker-asciidoctor \
-  asciidoctor-pdf -a imagesdir=/documents/bitcoinbook-third_edition_print1/images \
-  /documents/swahili/book.adoc -o /documents/kujua-bitcoin-swahili.pdf
+  asciidoctor-pdf /documents/swahili/book.adoc \
+  -o /documents/kujifunza-bitcoin-swahili.pdf
 ```
 
 ### Kwa asciidoctor-pdf (Ruby)
 
 ```bash
 gem install asciidoctor-pdf rouge
-asciidoctor-pdf -a imagesdir=./bitcoinbook-third_edition_print1/images \
-  swahili/book.adoc -o kujua-bitcoin-swahili.pdf
+asciidoctor-pdf swahili/book.adoc -o kujifunza-bitcoin-swahili.pdf
 ```
 
 ---

@@ -12,6 +12,14 @@
 :chapter-label: Sura
 :part-label: Sehemu
 :preface-title: Utangulizi
+:figure-caption: Kielezo
+:example-caption: Mfano
+:table-caption: Jedwali
+:note-caption: Kumbuka
+:warning-caption: Onyo
+:tip-caption: Kidokezo
+:caution-caption: Tahadhari
+:important-caption: Muhimu
 :front-cover-image: image:{docdir}/images/cover_swahili.png[fit=fill]
 
 Na Andreas M. Antonopoulos na David A. Harding. +

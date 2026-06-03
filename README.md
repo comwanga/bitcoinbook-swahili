@@ -1,4 +1,4 @@
-# Kujua Bitcoin — Tafsiri ya Kiswahili
+# Kujifunza Bitcoin — Tafsiri ya Kiswahili
 
 Tafsiri ya Kiswahili ya kitabu *Mastering Bitcoin: Programming the Open Blockchain* (Toleo la 3) na Andreas M. Antonopoulos na David A. Harding.
 

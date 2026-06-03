@@ -1,7 +1,7 @@
 [[ch12]]
 == Programu za Safu ya Pili
 
-Sasa tujengewe uelewa wetu wa mfumo wa msingi wa Bitcoin (safu ya _kwanza_) kwa kuuangalia kama jukwaa kwa programu zingine, au _safu za pili_. Katika sura hii tutaangalia vipengele vinavyotolewa na Bitcoin kama jukwaa la programu. Tutazingatia _primitifu_ za ujenzi wa programu, ambazo zinaunda vizuizi vya msingi vya programu yoyote ya mnyororo wa vitalu. Tutaangalia programu kadhaa muhimu zinazotumia primitifu hizi, kama vile uthibitisho wa upande wa mteja, njia za malipo, na njia za malipo zilizopangwa (Lightning Network).
+Sasa tujenge uelewa wetu wa mfumo wa msingi wa Bitcoin (safu ya _kwanza_) kwa kuuangalia kama jukwaa kwa programu zingine, au _safu za pili_. Katika sura hii tutaangalia vipengele vinavyotolewa na Bitcoin kama jukwaa la programu. Tutazingatia _primitifu_ za ujenzi wa programu, ambazo zinaunda vizuizi vya msingi vya programu yoyote ya mnyororo wa vitalu. Tutaangalia programu kadhaa muhimu zinazotumia primitifu hizi, kama vile uthibitisho wa upande wa mteja, njia za malipo, na njia za malipo zilizopangwa (Lightning Network).
 
 === Vizuizi vya Ujenzi (Primitifu)
 
@@ -48,7 +48,7 @@ Orodha ya vizuizi vya ujenzi si kamili, na zaidi zinaongezwa na kila kipengele k
 
 === Programu kutoka kwa Vizuizi vya Ujenzi
 
-Vizuizi ((("Bitcoin", "as application platform", "example applications", secondary-sortas="application platform", id="bitcoin-app-platform-example")))((("application platform, Bitcoin as", "example applications", id="app-platform-example")))vya ujenzi vinavyotolewa na Bitcoin ni vipengele vya jukwaa la uaminifu ambavyo vinaweza kutumika kutunga programu. Hapa kuna mifano michache ya programu ambazo zipo leo na vizuizi vya ujenzi wanaovitumia:
+Vizuizi ((("Bitcoin", "as application platform", "example applications", secondary-sortas="application platform", id="bitcoin-app-platform-example")))((("application platform, Bitcoin as", "example applications", id="app-platform-example"))) vya ujenzi vinavyotolewa na Bitcoin ni vipengele vya jukwaa la uaminifu ambavyo vinaweza kutumika kutunga programu. Hapa kuna mifano michache ya programu ambazo zipo leo na vizuizi vya ujenzi wanaovitumia:
 
 Uthibitisho wa Uwepo (Notari ya Kidijitali):: Kutobadilika + Muhuri wa Wakati + Udumu. Muamala kwenye mnyororo wa vitalu unaweza kufunga thamani, ukithibitisha kwamba kipande cha data kilikuwepo wakati uliporekodiwa (Muhuri wa Wakati). Ahadi haiwezi kubadilishwa baada ya ukweli (Kutobadilika), na uthibitisho utahifadhiwa kwa kudumu (Udumu).
 

@@ -114,7 +114,7 @@ chenye miamala yote, kwa hivyo kinaweza kuwa karibu mara 50,000 kubwa zaidi kuli
 [[block_header]]
 === Kichwa cha Kitalu
 
-Kichwa ((("blocks", "block header")))((("block header")))cha kitalu kinajumuisha
+Kichwa ((("blocks", "block header")))((("block header"))) cha kitalu kinajumuisha
 metadata ya kitalu kama inavyoonyeshwa katika <<block_header_structure_ch09>>.
 
 ++++
@@ -168,7 +168,7 @@ uchimbaji na vitajadiliwa kwa kina zaidi katika <<mining>>.
 [[block_hash]]
 === Vitambulisho vya Kitalu: Hash ya Kichwa cha Kitalu na Urefu wa Kitalu
 
-Kitambulisho ((("blocks", "identifiers", id="block-identify")))((("block header hash", id="block-header-hash")))((("block height", id="block-height")))cha msingi cha kitalu
+Kitambulisho ((("blocks", "identifiers", id="block-identify")))((("block header hash", id="block-header-hash")))((("block height", id="block-height"))) cha msingi cha kitalu
 ni hash yake ya kriptografia, ahadi iliyoundwa kwa kuhash
 kichwa cha kitalu mara mbili kupitia algorithm ya SHA256. Hash inayotokana ya baiti 32
 inaitwa _hash ya kitalu_ lakini kwa usahihi zaidi ni _hash ya kichwa cha kitalu_,
@@ -374,7 +374,7 @@ takriban hesabu za +log~2~(N)+, na kuufanya huu kuwa muundo bora sana wa data.
 
 Mti wa merkle hujengwa kutoka chini kwenda juu. Katika mfano ufuatao, tunaanza
 na miamala minne, A, B, C, na D, ambayo inaunda _majani_ ya
-mti wa merkle, kama inavyoonyeshwa katika <<simple_merkle>>. Miamala hihifadhiwi
+mti wa merkle, kama inavyoonyeshwa katika <<simple_merkle>>. Miamala hayahifadhiwi
 katika mti wa merkle; badala yake, data yao inahashiwa na hash
 inayotokana inahifadhiwa katika kila nodi ya jani kama H~A~, H~B~, H~C~, na
 H~D~:

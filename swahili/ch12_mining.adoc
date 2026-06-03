@@ -17,7 +17,7 @@ Uchimbaji
 ni moja ya mifumo ambayo kwayo _usalama wa makubaliano_ ya Bitcoin _unagawanywa_.
 ====
 
-Wachimbaji ((("mining", "operational overview", id="mining-overview")))wanarekodi miamala mipya kwenye mnyororo wa vitalu wa kimataifa. Kitalu
+Wachimbaji ((("mining", "operational overview", id="mining-overview"))) wanarekodi miamala mipya kwenye mnyororo wa vitalu wa kimataifa. Kitalu
 kipya, chenye miamala iliyotokea tangu kitalu cha mwisho, _huchimbwa_
 kila dakika 10 kwa wastani, na hivyo kuongeza miamala hiyo
 kwenye mnyororo wa vitalu. Miamala inayokuwa sehemu ya kitalu
@@ -81,7 +81,7 @@ kukubaliwa na mtandao wa Bitcoin kupitia mchakato wa ((("mining", "operational o
 
 === Uchumi wa Bitcoin na Uundaji wa Sarafu
 
-Bitcoini ((("bitcoins", "mining", "currency creation", id="bitcoin-mining-create")))((("mining", "currency creation", id="mining-create")))((("currency creation", id="currency-create")))((("Bitcoin", "economics of", id="bitcoin-economics")))((("economics of Bitcoin", id="economics")))zinatengenezwa wakati wa uundaji wa kila kitalu kwa
+Bitcoini ((("bitcoins", "mining", "currency creation", id="bitcoin-mining-create")))((("mining", "currency creation", id="mining-create")))((("currency creation", id="currency-create")))((("Bitcoin", "economics of", id="bitcoin-economics")))((("economics of Bitcoin", id="economics"))) zinatengenezwa wakati wa uundaji wa kila kitalu kwa
 kiwango kisicho na mabadiliko na kinachopungua. Kila kitalu, kinachoundwa kwa wastani kila dakika 10,
 kina bitcoini mpya kabisa, zilizoundwa kutoka kwa hewa. Kila
 vitalu 210,000, au takriban kila miaka minne, kiwango cha utoaji wa sarafu
@@ -143,7 +143,7 @@ wa kupanua ugavi wa ((("bitcoins", "mining", "currency creation", startref="bitc
 
 .Pesa za Kupungua kwa Thamani
 ****
-Matokeo ((("deflation", id="deflation")))((("inflation", id="inflation")))muhimu zaidi na yanayojadiliwa ya
+Matokeo ((("deflation", id="deflation")))((("inflation", id="inflation"))) muhimu zaidi na yanayojadiliwa ya
 utoaji wa fedha uliowekwa na unaopungua ni kwamba sarafu huwa na tabia ya kuwa
 _kupungua kwa thamani_ (deflationary) kwa asili. Kupungua kwa bei ni jambo la kuongezeka kwa thamani kutokana na kutofautiana kwa ugavi na mahitaji ambayo huinua thamani (na kiwango cha kubadilishana) cha sarafu. Kupungua kwa bei ni kinyume cha mfumuko wa bei; kunamaanisha kwamba pesa zina nguvu zaidi ya ununuzi kwa muda.
 
@@ -325,76 +325,76 @@ muundo wa ingizo la muamala wa ((("inputs", "coinbase versus regular transaction
 
 ++++
 <table id="table_8-1">
-<caption>The structure of a "normal" transaction input</caption>
+<caption>Muundo wa ingizo la muamala wa "kawaida"</caption>
 <thead>
 <tr>
-<th>Size</th>
-<th>Field</th>
-<th>Description</th>
+<th>Ukubwa</th>
+<th>Sehemu</th>
+<th>Maelezo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>32 bytes</p></td>
-<td><p>Transaction Hash</p></td>
-<td><p>Pointer to the transaction containing the UTXO to be spent</p></td>
+<td><p>baiti 32</p></td>
+<td><p>Heshi ya Muamala</p></td>
+<td><p>Kiungo cha muamala unaobeba UTXO ya kutumika</p></td>
 </tr>
 <tr>
-<td><p>4 bytes</p></td>
-<td><p>Output Index</p></td>
-<td><p>The index number of the UTXO to be spent, first one is 0</p></td>
+<td><p>baiti 4</p></td>
+<td><p>Fahirisi ya Matokeo</p></td>
+<td><p>Nambari ya fahirisi ya UTXO ya kutumika, ya kwanza ni 0</p></td>
 </tr>
 <tr>
-<td><p>1–9 bytes (compactSize)</p></td>
-<td><p>Script Size</p></td>
-<td><p>Script length in bytes, to follow</p></td>
+<td><p>baiti 1–9 (compactSize)</p></td>
+<td><p>Ukubwa wa Hati</p></td>
+<td><p>Urefu wa hati kwa baiti, inayofuata</p></td>
 </tr>
 <tr>
-<td><p>Variable</p></td>
-<td><p>Input Script</p></td>
-<td><p>A script that fulfills the conditions of the UTXO output script</p></td>
+<td><p>Inabadilika</p></td>
+<td><p>Hati ya Ingizo</p></td>
+<td><p>Hati inayotimiza masharti ya hati ya matokeo ya UTXO</p></td>
 </tr>
 <tr>
-<td><p>4 bytes</p></td>
-<td><p>Sequence Number</p></td>
-<td><p>Multipurpose field used for BIP68 timelocks and transaction replacement signaling</p></td>
+<td><p>baiti 4</p></td>
+<td><p>Nambari ya Mlolongo</p></td>
+<td><p>Sehemu ya matumizi mengi inayotumika kwa timelocks za BIP68 na ishara za uingizwaji wa muamala</p></td>
 </tr>
 </tbody>
 </table>
 <table id="table_8-2">
-<caption>The structure of a coinbase transaction input</caption>
+<caption>Muundo wa ingizo la muamala wa coinbase</caption>
 <thead>
 <tr>
-<th>Size</th>
-<th>Field</th>
-<th>Description</th>
+<th>Ukubwa</th>
+<th>Sehemu</th>
+<th>Maelezo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>32 bytes</p></td>
-<td><p>Transaction Hash</p></td>
-<td><p>All bits are zero: Not a transaction hash reference</p></td>
+<td><p>baiti 32</p></td>
+<td><p>Heshi ya Muamala</p></td>
+<td><p>Biti zote ni sifuri: Sio rejeleo la heshi ya muamala</p></td>
 </tr>
 <tr>
-<td><p>4 bytes</p></td>
-<td><p>Output Index</p></td>
-<td><p>All bits are ones: 0xFFFFFFFF</p></td>
+<td><p>baiti 4</p></td>
+<td><p>Fahirisi ya Matokeo</p></td>
+<td><p>Biti zote ni moja: 0xFFFFFFFF</p></td>
 </tr>
 <tr>
-<td><p>1 byte</p></td>
-<td><p>Coinbase Data Size</p></td>
-<td><p>Length of the coinbase data, from 2 to 100 bytes</p></td>
+<td><p>baiti 1</p></td>
+<td><p>Ukubwa wa Data ya Coinbase</p></td>
+<td><p>Urefu wa data ya coinbase, kutoka baiti 2 hadi 100</p></td>
 </tr>
 <tr>
-<td><p>Variable</p></td>
-<td><p>Coinbase Data</p></td>
-<td><p>Arbitrary data used for extra nonce and mining tags; in v2 blocks, must begin with block height</p></td>
+<td><p>Inabadilika</p></td>
+<td><p>Data ya Coinbase</p></td>
+<td><p>Data ya kiholela inayotumika kwa nonce za ziada na vitambulisho vya uchimbaji; katika vitalu vya v2, lazima ianze na urefu wa kitalu</p></td>
 </tr>
 <tr>
-<td><p>4 bytes</p></td>
-<td><p>Sequence Number</p></td>
-<td><p>Set to 0xFFFFFFFF</p></td>
+<td><p>baiti 4</p></td>
+<td><p>Nambari ya Mlolongo</p></td>
+<td><p>Imewekwa kwa 0xFFFFFFFF</p></td>
 </tr>
 </tbody>
 </table>
@@ -421,44 +421,44 @@ kama ilivyoorodheshwa kwenye <<block_header_structure_ch10>>.
 
 ++++
 <table id="block_header_structure_ch10">
-<caption>The structure of the block header</caption>
+<caption>Muundo wa kichwa cha kitalu</caption>
 <thead>
 <tr>
-<th>Size</th>
-<th>Field</th>
-<th>Description</th>
+<th>Ukubwa</th>
+<th>Sehemu</th>
+<th>Maelezo</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><p>4 bytes</p></td>
-<td><p>Version</p></td>
-<td><p>A multipurpose bitfield</p></td>
+<td><p>baiti 4</p></td>
+<td><p>Toleo</p></td>
+<td><p>Sehemu ya vipande ya matumizi mengi</p></td>
 </tr>
 <tr>
-<td><p>32 bytes</p></td>
-<td><p>Previous Block Hash</p></td>
-<td><p>A reference to the hash of the previous (parent) block in the chain</p></td>
+<td><p>baiti 32</p></td>
+<td><p>Hash ya Kitalu Kilichotangulia</p></td>
+<td><p>Rejeleo la hash ya kitalu kilichotangulia (mzazi) katika mnyororo</p></td>
 </tr>
 <tr>
-<td><p>32 bytes</p></td>
-<td><p>Merkle Root</p></td>
-<td><p>A hash that is the root of the merkle tree of this block's transactions</p></td>
+<td><p>baiti 32</p></td>
+<td><p>Mzizi wa Merkle</p></td>
+<td><p>Hash inayokuwa mzizi wa mti wa merkle wa miamala ya kitalu hiki</p></td>
 </tr>
 <tr>
-<td><p>4 bytes</p></td>
-<td><p>Timestamp</p></td>
-<td><p>The approximate creation time of this block (seconds from Unix Epoch)</p></td>
+<td><p>baiti 4</p></td>
+<td><p>Muhuri wa Wakati</p></td>
+<td><p>Wakati wa takriban wa kuundwa kwa kitalu hiki (sekunde tangu Kipindi cha Unix)</p></td>
 </tr>
 <tr>
-<td><p>4 bytes</p></td>
-<td><p>Target</p></td>
-<td><p>The proof-of-work algorithm target for this block</p></td>
+<td><p>baiti 4</p></td>
+<td><p>Lengo</p></td>
+<td><p>Lengo la algoriti ya uthibitisho wa kazi kwa kitalu hiki</p></td>
 </tr>
 <tr>
-<td><p>4 bytes</p></td>
+<td><p>baiti 4</p></td>
 <td><p>Nonce</p></td>
-<td><p>A counter used for the proof-of-work algorithm</p></td>
+<td><p>Kihesabu kinachotumiwa kwa algoriti ya uthibitisho wa kazi</p></td>
 </tr>
 </tbody>
 </table>
@@ -564,16 +564,7 @@ Msemo «Hello, World! 32» unazalisha heshi inayofuata, ambayo inakidhi vigezo v
 
 ++++
 <p class="fix_tracking3">
-To give a simple analogy, imagine a game where players throw a pair of
-dice repeatedly, trying to throw less than a specified target. In the
-first round, the target is 12. Unless you throw double-6, you win. In
-the next round the target is 11. Players must throw 10 or less to win,
-again an easy task. Let's say a few rounds later the target is down to
-5. Now, more than half the dice throws will exceed the target and
-therefore be invalid. It takes more dice throws to win
-the lower the target gets. Eventually, when the target is 3 (the minimum
-possible), only one throw out of every 36, or about 3% of them, will produce a
-winning result.
+Kutoa mfano rahisi, fikiria mchezo ambapo wachezaji wanatupa jozi ya dadu mara kwa mara, wakijaribu kutupa chini ya lengo lililowekwa. Katika raundi ya kwanza, lengo ni 12. Isipokuwa utupe 6-mara mbili, unashinda. Katika raundi inayofuata lengo ni 11. Wachezaji lazima watupe 10 au chini zaidi kushinda, tena kazi rahisi. Tuseme baada ya raundi chache lengo limeshuka hadi 5. Sasa, zaidi ya nusu ya mapigo ya dadu yatazidi lengo na kwa hivyo kuwa batili. Inahitaji mapigo zaidi ya dadu kushinda kadri lengo linavyoshuka. Hatimaye, lengo likiwa 3 (ndogo kabisa inayowezekana), tupa moja kati ya kila 36, au takriban 3% yao, itazalisha matokeo ya ushindi.
 </p>
 ++++
 
@@ -595,13 +586,7 @@ $ echo "Hello, world! 32" | sha256sum
 
 ++++
 <p class="fix_tracking3">
-Although it only takes one hash computation to verify, it took
-us 32 hash computations to find a nonce that worked. If we had a lower
-target (higher difficulty), it would take many more hash computations to
-find a suitable nonce, but only one hash computation for anyone to
-verify. And by knowing the target, anyone can estimate the
-difficulty using statistics and therefore know roughly how much work was needed
-to find such a nonce.
+Ingawa inahitaji hesabu moja tu ya heshi kuthibitisha, ilituchukua hesabu 32 za heshi kupata nonce iliyofanya kazi. Kama tungekuwa na lengo la chini zaidi (ugumu mkubwa zaidi), ingechukua hesabu nyingi zaidi za heshi kupata nonce inayofaa, lakini hesabu moja tu ya heshi kwa mtu yeyote kuthibitisha. Na kwa kujua lengo, mtu yeyote anaweza kukadiri ugumu kwa kutumia takwimu na kwa hivyo kujua takriban kiasi gani cha kazi kilichohitajika kupata nonce hiyo.
 </p>
 ++++
 
@@ -612,15 +597,7 @@ PoW lazima izalishe heshi ambayo ni _ndogo kuliko_ lengo. Lengo kubwa zaidi kuna
 
 ++++
 <p class="fix_tracking3">
-Bitcoin's PoW is very similar to the challenge
-shown in <a data-type="xref" href="#sha256_example_generator_output2">#sha256_example_generator_output2</a>. The miner constructs a
-candidate block filled with transactions. Next, the miner calculates the
-hash of this block's header and sees if it is smaller than the current
-<em>target</em>. If the hash is not less than the target, the miner will modify
-the nonce (usually just incrementing it by one) and try again. At the
-current difficulty in the Bitcoin network, miners have to try
-a huge number of times before finding a nonce that results in a low
-enough block header hash.
+PoW ya Bitcoin inafanana sana na changamoto inayoonyeshwa katika <a data-type="xref" href="#sha256_example_generator_output2"><<sha256_example_generator_output2>></a>. Mchimbaji anaunda kitalu mgombea kilichojaa miamala. Kisha, mchimbaji anahesabu hash ya kichwa cha kitalu hiki na kuona kama ni ndogo kuliko <em>lengo</em> la sasa. Ikiwa hash si ndogo kuliko lengo, mchimbaji atabadilisha nonce (kawaida ni kuiongeza moja) na kujaribu tena. Kwa ugumu wa sasa kwenye mtandao wa Bitcoin, wachimbaji lazima wajaribu mara nyingi sana kabla ya kupata nonce inayozalisha hash ya kichwa cha kitalu ndogo ya kutosha.
 </p>
 ++++
 
@@ -735,16 +712,7 @@ Katika Bitcoin ((("decentralized consensus", "timestamps and", id="decentral-con
 
 ++++
 <p class="fix_tracking">
-The timestamps set in block headers are set by the miners. There is a
-certain degree of latitude allowed by the consensus rules to account for
-differences in clock accuracy between decentralized nodes. However, this
-creates an unfortunate incentive for miners to lie about the time in a
-block.  For example, if a miner sets their time in the future, they can
-lower difficulty, allowing them to mine more blocks and claim some of
-the block subsidy reserved for future miners.  If they can set their
-times in the past for some blocks, they can use the current time for
-some other blocks, and so again make it look like there's a long time
-between blocks for the purpose of manipulating difficulty.
+Muhuri wa wakati uliowekwa kwenye vichwa vya vitalu umewekwa na wachimbaji. Kuna kiwango fulani cha uhuru unaoruhusuwa na sheria za makubaliano kuzingatia tofauti katika usahihi wa saa kati ya nodi za desentralizesheni. Hata hivyo, hii inazalisha kivutio kisichofaa kwa wachimbaji kusema uongo kuhusu wakati katika kitalu. Kwa mfano, ikiwa mchimbaji anaweka wakati wake katika siku zijazo, anaweza kupunguza ugumu, na kumwezesha kuchimba vitalu zaidi na kudai baadhi ya ruzuku ya kitalu iliyohifadhiwa kwa wachimbaji wa baadaye. Ikiwa wanaweza kuweka nyakati zao zamani kwa vitalu fulani, wanaweza kutumia wakati wa sasa kwa vitalu vingine, na hivyo tena kufanya ionekane kwamba kuna muda mrefu kati ya vitalu kwa madhumuni ya kudanganya ugumu.
 </p>
 ++++
 
@@ -764,20 +732,7 @@ hili unapokadiri thamani inayotakiwa ya kusimba kwenye wakati wa kufuli, mlolong
 
 ++++
 <p class="fix_tracking">
-As
-we saw earlier, Jing's node has constructed a candidate block and
-prepared it for mining. Jing has several hardware mining rigs with
-application-specific integrated circuits, where hundreds of thousands of
-integrated circuits run Bitcoin's double SHA256 algorithm in parallel at incredible
-speeds. Many of these specialized machines are connected to his mining
-node over USB or a local area network. Next, the mining node running on
-Jing's desktop transmits the block header to his mining hardware, which
-starts testing trillions of variations of the header per second. Because
-the nonce is only
-32 bits, after exhausting all the nonce possibilities (about 4 billion),
-the mining hardware changes the block header (adjusting the coinbase
-extra nonce space, versionbits, or timestamp) and resets the nonce counter, testing
-new combinations.</p>
+Kama tulivyoona awali, nodi ya Jing imeunda kitalu mgombea na kukiandaa kwa uchimbaji. Jing ana mifumo kadhaa ya uchimbaji wa vifaa yenye saketi maalum za maombi (ASIC), ambapo mamia ya maelfu ya saketi zinafanya algoriti ya double SHA256 ya Bitcoin kwa wakati mmoja kwa kasi ya kushangaza. Mashine nyingi maalum kama hizi zimeunganishwa kwenye nodi yake ya uchimbaji kupitia USB au mtandao wa eneo la karibu. Kisha, nodi ya uchimbaji inayofanya kazi kwenye kompyuta ya mezani ya Jing inasambaza kichwa cha kitalu kwenye vifaa vyake vya uchimbaji, ambavyo huanza kujaribu trilioni za tofauti za kichwa kwa sekunde. Kwa sababu nonce ni biti 32 tu, baada ya kuchunguza uwezekano wote wa nonce (takriban bilioni 4), vifaa vya uchimbaji hubadilisha kichwa cha kitalu (kurekebisha nafasi ya nonce ya ziada ya coinbase, versionbits, au muhuri wa wakati) na kuweka upya kihesabu cha nonce, kujaribu mchanganyiko mpya.</p>
 ++++
 
 Takriban dakika 11 baada ya kuanza kuchimba kitalu fulani, moja ya

@@ -1,4 +1,4 @@
-= Kujifunza Bitcoin: Kuprogramu Blockchain Huriahii (Toleo la 3)
+= Kujifunza Bitcoin: Kuprogramu Blockchain Huria (Toleo la 3)
 :doctype: book
 :toc:
 :toc-title: Yaliyomo
